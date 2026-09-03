@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic portfolio of YOUR NAME — research, projects, code, and CV.">
+  <title>YOUR NAME | Academic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark">✦</span>
+      <span>YOUR NAME</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#code">Code</a>
+      <a href="assets/cv/YOUR-NAME-CV.pdf">CV</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Researcher · Scholar · Developer</p>
+      <h1>YOUR NAME</h1>
+      <p class="hero-copy">
+        I study <strong>YOUR RESEARCH AREA</strong>, with particular interests in
+        <strong>TOPIC ONE</strong>, <strong>TOPIC TWO</strong>, and
+        <strong>TOPIC THREE</strong>.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#research">Explore my work</a>
+        <a class="button secondary" href="assets/cv/YOUR-NAME-CV.pdf">Download CV</a>
+      </div>
+      <p class="terminal-line"><span>&gt;</span> currently investigating: YOUR CURRENT QUESTION<span class="cursor">_</span></p>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-heading">
+        <span>01</span>
+        <h2>About</h2>
+      </div>
+      <div class="two-column">
+        <div>
+          <p class="lead">
+            I am a [student / research assistant / independent researcher] interested in
+            [brief intellectual problem].
+          </p>
+          <p>
+            My work draws on [methods, disciplines, or theoretical approaches].
+            I am currently preparing for PhD applications in [field].
+          </p>
+        </div>
+        <aside class="fact-card">
+          <dl>
+            <div><dt>Field</dt><dd>YOUR FIELD</dd></div>
+            <div><dt>Methods</dt><dd>R · Python · YOUR METHODS</dd></div>
+            <div><dt>Interests</dt><dd>TOPIC A · TOPIC B</dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:you@example.com">you@example.com</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <div class="section-heading">
+        <span>02</span>
+        <h2>Research</h2>
+      </div>
+      <div class="cards">
+        <article class="card featured">
+          <p class="card-kicker">Working paper</p>
+          <h3>Title of Your Most Important Research Project</h3>
+          <p>
+            One or two sentences explaining the research question, method, and why it matters.
+          </p>
+          <div class="tags"><span>R</span><span>Methods</span><span>Topic</span></div>
+          <div class="card-links">
+            <a href="#">Abstract</a>
+            <a href="#">Paper</a>
+            <a href="#">Code</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="card-kicker">Project</p>
+          <h3>Second Research Project</h3>
+          <p>A concise description focused on the scholarly contribution.</p>
+          <div class="tags"><span>Python</span><span>Data</span></div>
+          <div class="card-links"><a href="#">Repository</a></div>
+        </article>
+
+        <article class="card">
+          <p class="card-kicker">In progress</p>
+          <h3>Current Research Question</h3>
+          <p>Describe an active line of inquiry without overselling unfinished work.</p>
+          <div class="tags"><span>Ongoing</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <span>03</span>
+        <h2>Selected Projects</h2>
+      </div>
+      <div class="project-list">
+        <article>
+          <div>
+            <p class="card-kicker">01 / Analysis</p>
+            <h3>Project Name</h3>
+            <p>What you built, analyzed, or discovered, and what skill it demonstrates.</p>
+          </div>
+          <a href="#">View project ↗</a>
+        </article>
+        <article>
+          <div>
+            <p class="card-kicker">02 / Reproducibility</p>
+            <h3>Project Name</h3>
+            <p>Describe the dataset, methods, or reproducible workflow.</p>
+          </div>
+          <a href="#">View project ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="code" class="section">
+      <div class="section-heading">
+        <span>04</span>
+        <h2>Code Notes</h2>
+      </div>
+      <div class="code-block">
+<pre><code><span class="comment"># Example: replace this with a useful snippet</span>
+library(tidyverse)
+
+results &lt;- data |&gt;
+  filter(!is.na(outcome)) |&gt;
+  group_by(group) |&gt;
+  summarise(
+    mean_outcome = mean(outcome),
+    .groups = "drop"
+  )</code></pre>
+      </div>
+      <p class="muted">Use this section for compact, well-documented snippets. Put larger work in separate GitHub repositories.</p>
+    </section>
+
+    <section class="section contact">
+      <p class="eyebrow">Correspondence</p>
+      <h2>Interested in overlapping questions?</h2>
+      <p>I am open to discussing research, methods, and potential collaboration.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="mailto:you@example.com">Email me</a>
+        <a class="button secondary" href="https://github.com/YOUR-USERNAME">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> YOUR NAME</p>
+    <p>Built with HTML/CSS and hosted on GitHub Pages.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

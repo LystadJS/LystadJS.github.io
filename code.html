@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Computational statistics, software, GitHub repositories, Gists, reproducible workflows, and technical notes by John S. Lystad.">
+  <meta name="theme-color" content="#070709">
+  <meta property="og:title" content="Code &amp; Development | John S. Lystad">
+  <meta property="og:description" content="Computational statistics, software, GitHub repositories, Gists, reproducible workflows, and technical notes by John S. Lystad.">
+  <meta property="og:type" content="website">
+  <title>Code &amp; Development | John S. Lystad</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="code">
+
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="John S. Lystad home">
+      <span class="brand-sigil" aria-hidden="true"><span>J</span></span>
+      <span class="brand-text">
+        <span class="brand-name">John S. Lystad</span>
+        <span class="brand-role">Statistics · Policy · Computation</span>
+      </span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="about.html" data-page="about">About</a>
+      <a href="research.html" data-page="research">Research</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="code.html" data-page="code">Code &amp; Development</a>
+      <a href="cv.html" data-page="cv">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+  <section class="page-hero">
+    <div class="site-shell page-hero-grid">
+      <div class="reveal">
+        <p class="kicker">Technical laboratory / 04</p>
+        <h1>Code &amp;<br>Development</h1>
+        <p>Computational statistics, software, GitHub repositories, Gists, reproducible workflows, utilities, and technical notes.</p>
+      </div>
+      <aside class="page-index-card reveal">
+        <div><span>Languages</span><strong>R · Python</strong></div>
+        <div><span>Primary use</span><strong>Analysis · Modeling · Automation</strong></div>
+        <div><span>Public profile</span><strong>github.com/LystadJS</strong></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="site-shell">
+    <section class="section reveal">
+      <div class="section-header">
+        <div class="section-index">01 / Build</div>
+        <div>
+          <h2>Technical work should prove something.</h2>
+          <p>Instead of listing languages, this page is built to show reproducible code, reusable tools, and computational judgment.</p>
+        </div>
+      </div>
+
+      <div class="code-layout">
+        <article class="code-card">
+          <p class="card-kicker">Computational statistics</p>
+          <h3>Reproducible analysis in R</h3>
+          <p>Use compact annotated examples here; link larger analyses to dedicated repositories.</p>
+          <div class="code-sample">
+<pre><code><span class="code-comment"># Example analysis pattern</span>
+library(tidyverse)
+
+results &lt;- data |&gt;
+  filter(!is.na(outcome)) |&gt;
+  group_by(group) |&gt;
+  summarise(
+    n = n(),
+    mean_outcome = mean(outcome),
+    .groups = "drop"
+  )</code></pre>
+          </div>
+        </article>
+
+        <aside class="code-card">
+          <p class="card-kicker">Technical profile</p>
+          <h3>What belongs here</h3>
+          <div class="repo-list">
+            <div class="repo-item"><div><h3>GitHub repositories</h3><p>Full projects with READMEs, data notes, tests, and reproducible outputs.</p></div><a href="https://github.com/LystadJS">Open ↗</a></div>
+            <div class="repo-item"><div><h3>Gists</h3><p>Compact utilities, patterns, and snippets worth reusing.</p></div><a href="https://gist.github.com/LystadJS">Open ↗</a></div>
+            <div class="repo-item"><div><h3>Technical notes</h3><p>Short explanations of methods, implementation details, or lessons learned.</p></div><span class="tag">Add later</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <div class="section-index">02 / Portfolio</div>
+        <div>
+          <h2>Featured repositories</h2>
+          <p>Replace these placeholders with the strongest few projects—not every repository you have ever created.</p>
+        </div>
+      </div>
+
+      <div class="work-grid">
+        <article class="work-card">
+          <p class="card-kicker">Repository slot / 01</p>
+          <h3>Your strongest computational-statistics project</h3>
+          <p>State the statistical problem, what you implemented, and what makes the repository worth opening.</p>
+          <div class="meta"><span class="tag">R or Python</span><span class="tag">Reproducible</span></div>
+          <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
+        </article>
+
+        <article class="work-card">
+          <p class="card-kicker">Repository slot / 02</p>
+          <h3>A reusable tool or software project</h3>
+          <p>Use this for packages, utilities, automation, simulation code, data tooling, or other reusable development work.</p>
+          <div class="meta"><span class="tag">Software</span><span class="tag">Tooling</span></div>
+          <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-title">John S. Lystad</div>
+      <div class="footer-copy">Applied computational statistics for research, policy, and real-world decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:jl17842@nyu.edu">NYU Email</a>
+      <a href="mailto:lystadjs@gmail.com">Personal Email</a>
+      <a href="https://github.com/LystadJS">GitHub</a>
+      <a href="cv.html">Curriculum Vitae</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

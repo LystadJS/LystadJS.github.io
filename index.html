@@ -3,132 +3,206 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Academic website for YOUR NAME: research, publications, projects, CV, and notes.">
-  <meta name="theme-color" content="#070910">
-  <title>YOUR NAME — Researcher</title>
-  <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="description" content="Academic and professional portfolio of John S. Lystad: computational statistics, research, policy projects, code, and CV.">
+  <meta name="theme-color" content="#070709">
+  <meta property="og:title" content="John S. Lystad | Computational Statistics, Policy &amp; Research">
+  <meta property="og:description" content="Academic and professional portfolio of John S. Lystad: computational statistics, research, policy projects, code, and CV.">
+  <meta property="og:type" content="website">
+  <title>John S. Lystad | Computational Statistics, Policy &amp; Research</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
-  <nav class="nav" aria-label="Primary navigation">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true"><span>JL</span></span>
-      <span>John S. Lystad <small></small></span>
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="John S. Lystad home">
+      <span class="brand-sigil" aria-hidden="true"><span>J</span></span>
+      <span class="brand-text">
+        <span class="brand-name">John S. Lystad</span>
+        <span class="brand-role">Statistics · Policy · Computation</span>
+      </span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html" aria-current="page">Home</a>
-<a href="research.html">Research</a>
-<a href="projects.html">Projects</a>
-<a href="notes.html">Notes</a>
-<a href="cv.html" class="nav-cv">CV</a>
-    </div>
-  </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="about.html" data-page="about">About</a>
+      <a href="research.html" data-page="research">Research</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="code.html" data-page="code">Code &amp; Development</a>
+      <a href="cv.html" data-page="cv">CV</a>
+    </nav>
+  </div>
 </header>
 
 <main id="content">
-  <section class="hero">
-    <div>
-      <p class="eyebrow">Applied Computational Statistics // New York University</p>
-      <h1>YOUR NAME<span class="accent">researches things.</span></h1>
-      <p class="lede">
-        I am a [ROLE / DEGREE STATUS] working on [1–2 sentence description of your research].
-        My work connects <strong>[AREA A]</strong>, <strong>[AREA B]</strong>, and
-        <strong>[AREA C]</strong>.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="research.html">Explore research →</a>
-        <a class="button secondary" href="cv.html">View CV</a>
+  <div class="site-shell">
+    <section class="hero">
+      <div class="reveal">
+        <p class="kicker">Researcher · Computer Scientist · Statistician</p>
+        <h1>John S.<br><span class="surname">Lystad</span></h1>
+        <p class="hero-lede">
+          I use <strong>applied computational statistics</strong> to study difficult human systems and support decisions in
+          <strong>humanitarian assistance</strong>, <strong>security</strong>, and <strong>emerging technology governance</strong>.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="research.html">Academic research</a>
+          <a class="button button-secondary" href="projects.html">Applied projects</a>
+          <a class="button button-secondary" href="code.html">Code &amp; development</a>
+        </div>
+        <p class="hero-note"><span class="prompt">&gt;</span><span>current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation</span></p>
       </div>
-    </div>
 
-    <aside class="signal-panel" aria-label="Research profile snapshot">
-      <div class="crosshair" aria-hidden="true"></div>
-      <div class="signal-copy">
-        <div class="big-number">01</div>
-        <p class="code-label">CURRENT SIGNAL</p>
-        <h3>[One sharp sentence about the question you are obsessed with right now.]</h3>
-        <p>Last updated: September 2026 · Status: active inquiry</p>
+      <aside class="hero-instrument reveal" aria-label="Profile overview">
+        <div class="instrument-top">
+          <span>Analytical instrument / JSL-01</span>
+          <span>Active</span>
+        </div>
+        <div class="instrument-core" aria-hidden="true">
+          <div class="orbit one"></div>
+          <div class="orbit two"></div>
+          <div class="orbit three"></div>
+          <svg class="electric-path" viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="energy" x1="0" x2="1">
+                <stop offset="0" stop-color="#65457e"/>
+                <stop offset=".55" stop-color="#bf3152"/>
+                <stop offset="1" stop-color="#91a8bb"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 138 L49 126 L61 88 L83 115 L103 68 L121 130 L143 101 L156 156 L175 124 L194 139 L213 105 L243 119"/>
+          </svg>
+          <div class="instrument-center"><span>JSL</span></div>
+        </div>
+        <div class="instrument-readout">
+          <div><span>Discipline</span><strong>Computational Statistics</strong></div>
+          <div><span>Practice</span><strong>Policy &amp; Operations</strong></div>
+          <div><span>Methods</span><strong>R · Python · Causal</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <div class="section-index">01 / Practice</div>
+        <div>
+          <h2>Three bodies of work. One analytical practice.</h2>
+          <p>The site separates scholarship, applied professional work, and technical development so each can be evaluated on its own terms.</p>
+        </div>
       </div>
-    </aside>
-  </section>
 
-  <section class="section">
-    <div class="section-head">
-      <div><p class="kicker">01 / Focus</p><h2>Current work</h2></div>
-      <p>Use these cards for the three research directions you want a faculty member, collaborator, or hiring committee to remember.</p>
-    </div>
-    <div class="grid-3">
-      <article class="card">
-        <p class="meta">Research Thread A</p>
-        <h3><a class="stretched" href="research.html">[Short research theme]</a></h3>
-        <p>Describe the problem, why it matters, and the method or theory you bring to it.</p>
-        <div class="tag-row"><span class="tag">METHOD</span><span class="tag">TOPIC</span></div>
-      </article>
-      <article class="card">
-        <p class="meta">Research Thread B</p>
-        <h3><a class="stretched" href="research.html">[Second research theme]</a></h3>
-        <p>Make this distinct from the first. Aim for a coherent research identity, not a list of everything you have ever done.</p>
-        <div class="tag-row"><span class="tag">THEORY</span><span class="tag">DATA</span></div>
-      </article>
-      <article class="card">
-        <p class="meta">Research Thread C</p>
-        <h3><a class="stretched" href="research.html">[Third research theme]</a></h3>
-        <p>This can be a future-facing agenda: the question you want to develop in graduate school or your next role.</p>
-        <div class="tag-row"><span class="tag">FUTURE</span><span class="tag">AGENDA</span></div>
-      </article>
-    </div>
-  </section>
+      <div class="mode-grid">
+        <a class="mode-card" href="research.html" data-index="R">
+          <p class="card-kicker">Academic</p>
+          <h3>Research</h3>
+          <p>Papers, works in progress, research questions, methods, and the academic agenda I am developing for doctoral study.</p>
+          <span class="arrow">Enter research archive →</span>
+        </a>
 
-  <section class="section">
-    <div class="section-head">
-      <div><p class="kicker">02 / Selected</p><h2>Featured outputs</h2></div>
-      <p>Prioritize work that demonstrates research independence, methodological competence, and a clear intellectual trajectory.</p>
-    </div>
-    <div class="wiki-list">
-      <article class="wiki-row">
-        <div class="date">2026</div>
-        <h3>[Paper / thesis / preprint title]</h3>
-        <p>A one-sentence contribution statement. <a href="research.html">Details →</a></p>
-      </article>
-      <article class="wiki-row">
-        <div class="date">2026</div>
-        <h3>[Research project title]</h3>
-        <p>A concise project summary with the result or question first. <a href="projects.html">Project →</a></p>
-      </article>
-      <article class="wiki-row">
-        <div class="date">NOTES</div>
-        <h3>[Methods / reading / lab notebook]</h3>
-        <p>Short public notes can demonstrate how you think without pretending unfinished work is a publication. <a href="notes.html">Browse notes →</a></p>
-      </article>
-    </div>
-  </section>
+        <a class="mode-card" href="projects.html" data-index="P">
+          <p class="card-kicker">Applied</p>
+          <h3>Projects</h3>
+          <p>Real-world policy and operational work where statistics, computation, and evidence inform decisions in government and multilateral settings.</p>
+          <span class="arrow">Open project dossiers →</span>
+        </a>
 
-  <section class="section">
-    <div class="section-head">
-      <div><p class="kicker">03 / Contact</p><h2>Work together</h2></div>
-      <p>I am interested in conversations about [TOPICS], research collaborations, and [PhD / RA / academic opportunities].</p>
-    </div>
-    <div class="inline-links">
-      <a class="button primary" href="mailto:YOUR.EMAIL@EXAMPLE.COM">Email me</a>
-      <a class="button secondary" href="https://github.com/YOUR-USERNAME">GitHub</a>
-      <a class="button secondary" href="https://www.linkedin.com/in/YOUR-LINKEDIN/">LinkedIn</a>
-    </div>
-  </section>
+        <a class="mode-card" href="code.html" data-index="C">
+          <p class="card-kicker">Technical</p>
+          <h3>Code &amp; Development</h3>
+          <p>Computational statistics, reusable software, GitHub repositories, Gists, reproducible workflows, and technical notes.</p>
+          <span class="arrow">Inspect technical work →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section reveal current-signal-section">
+      <div class="section-header">
+        <div class="section-index">02 / Current Signal</div>
+        <div>
+          <h2>Statistics with consequences.</h2>
+          <p>My interests sit where incomplete data, complex institutions, and consequential decisions meet. This is the live readout.</p>
+        </div>
+      </div>
+
+      <div class="signal-console" aria-label="Current research signal terminal">
+        <div class="console-hardware" aria-hidden="true">
+          <span class="console-screw screw-a"></span>
+          <span class="console-screw screw-b"></span>
+          <span class="console-screw screw-c"></span>
+          <span class="console-screw screw-d"></span>
+        </div>
+
+        <div class="console-bar">
+          <div class="console-title">
+            <span class="status-lamp" aria-hidden="true"></span>
+            <span>JSL RESEARCH CONSOLE // CURRENT_SIGNAL</span>
+          </div>
+          <span class="console-status">LINK: ACTIVE</span>
+        </div>
+
+        <div class="console-screen">
+          <p class="console-line console-muted">Last login: analytical workstation / public interface</p>
+          <p class="console-line">
+            <span class="console-user">lystad@laboratory</span><span class="console-path">:~/research</span><span class="console-prompt">$</span>
+            <span class="console-command"> ./current_signal --mode=humanitarian --verbose</span>
+          </p>
+
+          <div class="console-output" role="presentation">
+            <p><span class="output-key">[FIELD]</span><span class="output-value">applied computational statistics</span></p>
+            <p><span class="output-key">[CURRENT]</span><span class="output-value">open-source AI + autonomous weapon non-proliferation</span></p>
+            <p><span class="output-key">[METHODS]</span><span class="output-value">R · Python · causal inference · messy &amp; missing data</span></p>
+            <p><span class="output-key">[CONTEXT]</span><span class="output-value">humanitarian assistance · security · international policy</span></p>
+            <p><span class="output-key">[MISSION]</span><span class="output-value">reduce uncertainty where analytical decisions affect people</span></p>
+          </div>
+
+          <p class="console-line console-ready">
+            <span class="console-user">lystad@laboratory</span><span class="console-path">:~/research</span><span class="console-prompt">$</span>
+            <span class="console-cursor" aria-hidden="true">█</span>
+          </p>
+        </div>
+
+        <div class="console-readout">
+          <div><span>Primary field</span><strong>Computational Statistics</strong></div>
+          <div><span>Complement</span><strong>Sociology</strong></div>
+          <div><span>Data condition</span><strong>Incomplete / Messy</strong></div>
+          <div><span>Desired output</span><strong>Useful Decisions</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="contact-panel">
+        <p class="eyebrow">Correspondence</p>
+        <h2>Research, methods, policy, or collaboration.</h2>
+        <p>I am currently preparing for PhD applications in computational statistics and welcome substantive conversations around overlapping questions.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:jl17842@nyu.edu">Email</a>
+          <a class="button button-secondary" href="https://github.com/LystadJS">GitHub</a>
+          <a class="button button-secondary" href="cv.html">View CV</a>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div>© <span data-year></span> YOUR NAME · Built on GitHub Pages.</div>
     <div>
-      <a href="https://github.com/YOUR-USERNAME">GitHub</a>
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/">LinkedIn</a>
-      <a href="mailto:YOUR.EMAIL@EXAMPLE.COM">Email</a>
+      <div class="footer-title">John S. Lystad</div>
+      <div class="footer-copy">Applied computational statistics for research, policy, and real-world decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:jl17842@nyu.edu">NYU Email</a>
+      <a href="mailto:lystadjs@gmail.com">Personal Email</a>
+      <a href="https://github.com/LystadJS">GitHub</a>
+      <a href="cv.html">Curriculum Vitae</a>
     </div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
-</body></html>
+
+</body>
+</html>

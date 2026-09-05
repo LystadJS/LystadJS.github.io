@@ -3,52 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Page not found.">
-  <meta name="theme-color" content="#070910">
-  <title>404 — Page not found</title>
-  <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="description" content="The requested page could not be found.">
+  <meta name="theme-color" content="#070709">
+  <meta property="og:title" content="Page Not Found | John S. Lystad">
+  <meta property="og:description" content="The requested page could not be found.">
+  <meta property="og:type" content="website">
+  <title>Page Not Found | John S. Lystad</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-page="404">
 
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
-  <nav class="nav" aria-label="Primary navigation">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true"><span>AX</span></span>
-      <span>YOUR NAME <small>// RESEARCH LOG</small></span>
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="John S. Lystad home">
+      <span class="brand-sigil" aria-hidden="true"><span>J</span></span>
+      <span class="brand-text">
+        <span class="brand-name">John S. Lystad</span>
+        <span class="brand-role">Statistics · Policy · Computation</span>
+      </span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a href="projects.html">Projects</a>
-<a href="notes.html">Notes</a>
-<a href="cv.html" class="nav-cv">CV</a>
-    </div>
-  </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="about.html" data-page="about">About</a>
+      <a href="research.html" data-page="research">Research</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="code.html" data-page="code">Code &amp; Development</a>
+      <a href="cv.html" data-page="cv">CV</a>
+    </nav>
+  </div>
 </header>
 
 <main id="content">
-  <section class="hero" style="min-height:65vh">
+  <div class="site-shell not-found">
     <div>
-      <p class="eyebrow">ERROR // SIGNAL LOST</p>
-      <h1>404<span class="accent">wrong alley.</span></h1>
-      <p class="lede">That page does not exist, moved, or never should have been deployed.</p>
-      <a class="button primary" href="index.html">Return home →</a>
+      <p class="kicker">Error / specimen not found</p>
+      <h1>404</h1>
+      <p>The requested page is not in this archive.</p>
+      <a class="button button-primary" href="index.html">Return home</a>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div>© <span data-year></span> YOUR NAME · Built on GitHub Pages.</div>
     <div>
-      <a href="https://github.com/YOUR-USERNAME">GitHub</a>
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/">LinkedIn</a>
-      <a href="mailto:YOUR.EMAIL@EXAMPLE.COM">Email</a>
+      <div class="footer-title">John S. Lystad</div>
+      <div class="footer-copy">Applied computational statistics for research, policy, and real-world decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:jl17842@nyu.edu">NYU Email</a>
+      <a href="mailto:lystadjs@gmail.com">Personal Email</a>
+      <a href="https://github.com/LystadJS">GitHub</a>
+      <a href="cv.html">Curriculum Vitae</a>
     </div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
-</body></html>
+
+</body>
+</html>

@@ -3,86 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Curriculum vitae of YOUR NAME.">
-  <meta name="theme-color" content="#070910">
-  <title>CV — YOUR NAME</title>
-  <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="description" content="Curriculum vitae for John S. Lystad.">
+  <meta name="theme-color" content="#070709">
+  <meta property="og:title" content="CV | John S. Lystad">
+  <meta property="og:description" content="Curriculum vitae for John S. Lystad.">
+  <meta property="og:type" content="website">
+  <title>CV | John S. Lystad</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-page="cv">
 
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
-  <nav class="nav" aria-label="Primary navigation">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true"><span>AX</span></span>
-      <span>YOUR NAME <small>// RESEARCH LOG</small></span>
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="John S. Lystad home">
+      <span class="brand-sigil" aria-hidden="true"><span>J</span></span>
+      <span class="brand-text">
+        <span class="brand-name">John S. Lystad</span>
+        <span class="brand-role">Statistics · Policy · Computation</span>
+      </span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a href="projects.html">Projects</a>
-<a href="notes.html">Notes</a>
-<a href="cv.html" aria-current="page" class="nav-cv">CV</a>
-    </div>
-  </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="about.html" data-page="about">About</a>
+      <a href="research.html" data-page="research">Research</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="code.html" data-page="code">Code &amp; Development</a>
+      <a href="cv.html" data-page="cv">CV</a>
+    </nav>
+  </div>
 </header>
 
 <main id="content">
-  <header class="page-hero">
-    <p class="eyebrow">CURRICULUM VITAE // SELECTED</p>
-    <h1>CV</h1>
-    <p class="lede">A web-readable CV for fast scanning. Add your canonical PDF as <code>assets/cv.pdf</code> and change the button below from <code>#</code> to <code>assets/cv.pdf</code>.</p>
-  </header>
-
-  <div class="cv-layout">
-    <aside class="cv-side">
-      <p class="code-label">YOUR NAME</p>
-      <p>[Role / program]<br>[Institution]<br>[City, State/Country]</p>
-      <a class="button primary" href="#">Download PDF CV</a>
-      <p style="margin-top:1rem">YOUR.EMAIL@EXAMPLE.COM</p>
-    </aside>
-
-    <div class="cv-main">
-      <section>
-        <p class="kicker">Education</p>
-        <div class="cv-item"><div class="when">2024–PRESENT</div><div><strong>[Degree], [Field]</strong><span>[University] · Advisor: [Name, if appropriate]</span></div></div>
-        <div class="cv-item"><div class="when">2020–2024</div><div><strong>[Degree], [Field]</strong><span>[University] · [Honors]</span></div></div>
-      </section>
-
-      <section>
-        <p class="kicker">Research experience</p>
-        <div class="cv-item"><div class="when">2025–PRESENT</div><div><strong>[Research role]</strong><span>[Lab / PI / department]. One-line description of substantive work.</span></div></div>
-      </section>
-
-      <section>
-        <p class="kicker">Publications</p>
-        <div class="cv-item"><div class="when">2026</div><div><strong>[Publication title]</strong><span>YOUR NAME, Coauthor. [Venue/status].</span></div></div>
-      </section>
-
-      <section>
-        <p class="kicker">Methods & tools</p>
-        <div class="cv-item"><div class="when">QUANT</div><div><strong>[Methods]</strong><span>R, Python, SQL, Git, [domain tools]</span></div></div>
-      </section>
-
-      <section>
-        <p class="kicker">Awards & service</p>
-        <div class="cv-item"><div class="when">2026</div><div><strong>[Award / service]</strong><span>[Institution / organization]</span></div></div>
-      </section>
+  <section class="page-hero">
+    <div class="site-shell page-hero-grid">
+      <div class="reveal">
+        <p class="kicker">Curriculum vitae / 05</p>
+        <h1>CV</h1>
+        <p>The canonical academic record: education, research, professional experience, methods, presentations, service, and technical work.</p>
+      </div>
+      <aside class="page-index-card reveal">
+        <div><span>Preferred format</span><strong>PDF</strong></div>
+        <div><span>File location</span><strong>assets/cv/John-S-Lystad-CV.pdf</strong></div>
+        <div><span>Update rule</span><strong>Replace the PDF; keep the filename</strong></div>
+      </aside>
     </div>
+  </section>
+
+  <div class="site-shell">
+    <section class="section reveal">
+      <div class="cv-frame">
+        <div class="cv-placeholder">
+          <p class="eyebrow">PDF slot ready</p>
+          <h2>Add your current CV</h2>
+          <p>Place your PDF at <code>assets/cv/John-S-Lystad-CV.pdf</code>. Once it exists, the download button below will work without any other site edits.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="button button-primary" href="assets/cv/John-S-Lystad-CV.pdf">Download CV</a>
+            <a class="button button-secondary" href="mailto:jl17842@nyu.edu">Request by email</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div>© <span data-year></span> YOUR NAME · Built on GitHub Pages.</div>
     <div>
-      <a href="https://github.com/YOUR-USERNAME">GitHub</a>
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/">LinkedIn</a>
-      <a href="mailto:YOUR.EMAIL@EXAMPLE.COM">Email</a>
+      <div class="footer-title">John S. Lystad</div>
+      <div class="footer-copy">Applied computational statistics for research, policy, and real-world decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:jl17842@nyu.edu">NYU Email</a>
+      <a href="mailto:lystadjs@gmail.com">Personal Email</a>
+      <a href="https://github.com/LystadJS">GitHub</a>
+      <a href="cv.html">Curriculum Vitae</a>
     </div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
-</body></html>
+
+</body>
+</html>

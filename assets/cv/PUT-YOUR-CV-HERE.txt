@@ -1,1 +1,0 @@
-Place your CV PDF in this folder and update the links in index.html.

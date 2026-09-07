@@ -507,23 +507,23 @@ main { overflow: clip; }
 }
 
 .node-nw {
-  left: 26px;
-  top: 32px;
+  left: 14px;
+  top: 20px;
 }
 
 .node-ne {
-  right: 26px;
-  top: 32px;
+  right: 14px;
+  top: 20px;
 }
 
 .node-sw {
-  left: 26px;
-  bottom: 32px;
+  left: 14px;
+  bottom: 20px;
 }
 
 .node-se {
-  right: 26px;
-  bottom: 32px;
+  right: 14px;
+  bottom: 20px;
 }
 
 .node-title {
@@ -1742,16 +1742,16 @@ code {
   .node-detail { display: none; }
 
   .node-nw,
-  .node-ne { top: 26px; }
+  .node-ne { top: 18px; }
 
   .node-sw,
-  .node-se { bottom: 26px; }
+  .node-se { bottom: 18px; }
 
   .node-nw,
-  .node-sw { left: 10px; }
+  .node-sw { left: 4px; }
 
   .node-ne,
-  .node-se { right: 10px; }
+  .node-se { right: 4px; }
 
   .constellation-center {
     width: 126px;

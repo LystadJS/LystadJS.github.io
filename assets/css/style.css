@@ -329,11 +329,11 @@ main { overflow: clip; }
   position: relative;
   border: 1px solid var(--line);
   background:
-    radial-gradient(circle at 50% 38%, rgba(141,23,50,.055), transparent 18rem),
-    linear-gradient(135deg, rgba(101,69,126,.05), transparent 42%),
-    rgba(13,11,16,.84);
+    radial-gradient(circle at 50% 33%, rgba(141,23,50,.06), transparent 17rem),
+    linear-gradient(135deg, rgba(101,69,126,.045), transparent 44%),
+    rgba(13,11,16,.86);
   box-shadow: var(--shadow);
-  padding: 1.2rem;
+  padding: 1.18rem;
   isolation: isolate;
   overflow: hidden;
 }
@@ -342,7 +342,7 @@ main { overflow: clip; }
   content: "";
   position: absolute;
   inset: 7px;
-  border: 1px solid rgba(180,148,112,.06);
+  border: 1px solid rgba(180,148,112,.055);
   pointer-events: none;
 }
 
@@ -351,12 +351,13 @@ main { overflow: clip; }
   z-index: 4;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
-  padding-bottom: .95rem;
+  padding-bottom: .9rem;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: .61rem;
+  font-size: .58rem;
   letter-spacing: .09em;
   text-transform: uppercase;
 }
@@ -364,14 +365,14 @@ main { overflow: clip; }
 .instrument-active {
   display: inline-flex;
   align-items: center;
-  gap: .45rem;
-  color: #b2a6b1;
+  gap: .42rem;
+  color: #b8acb7;
 }
 
 .constellation-core {
   position: relative;
-  min-height: 392px;
-  margin: .35rem 0 .8rem;
+  min-height: 338px;
+  margin: .3rem 0 .85rem;
 }
 
 .constellation-map {
@@ -382,282 +383,333 @@ main { overflow: clip; }
   overflow: visible;
 }
 
-.constellation-halo {
+.constellation-ring {
   fill: none;
-  stroke: rgba(146,112,172,.18);
+  stroke: rgba(146,112,172,.15);
   stroke-width: 1;
-  stroke-dasharray: 2 8;
-}
-
-.constellation-halo.inner {
-  stroke: rgba(191,49,82,.14);
-  stroke-dasharray: 1 7;
+  stroke-dasharray: 2 10;
 }
 
 .constellation-link {
-  stroke: rgba(200,188,199,.16);
+  stroke: rgba(208,197,205,.13);
   stroke-width: 1;
 }
 
 .constellation-point {
-  fill: #0d0a0f;
-  stroke: #8d596e;
-  stroke-width: 1.2;
+  fill: #0a080b;
+  stroke: #9c6178;
+  stroke-width: 1.15;
 }
 
-.heartbeat-shadow,
-.heartbeat-path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.heartbeat-shadow {
-  stroke: rgba(191,49,82,.13);
-  stroke-width: 5;
-  filter: blur(4px);
-}
-
-.heartbeat-path {
-  stroke: url(#pulseGradient);
-  stroke-width: 1.8;
-  stroke-dasharray: 500 110;
-  animation: heartbeat-flow 6.5s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(191,49,82,.28));
-}
-
-@keyframes heartbeat-flow {
-  to { stroke-dashoffset: -610; }
-}
-
-.constellation-node {
+.constellation-label {
   position: absolute;
   z-index: 5;
-  width: 122px;
-  padding: .52rem .52rem;
-  border: 1px solid rgba(74,53,71,.8);
-  background: rgba(10,8,12,.9);
+  width: 108px;
   text-align: center;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  color: #cfc4cc;
+  transition: color 160ms ease, transform 160ms ease;
 }
 
-.constellation-node:hover,
-.constellation-node:focus-visible {
-  border-color: rgba(191,49,82,.58);
-  background: rgba(18,13,20,.98);
+.constellation-label:hover,
+.constellation-label:focus-visible {
+  color: var(--paper);
   outline: none;
 }
 
-.node-title {
+.constellation-label span {
   display: block;
-  color: #d6cad2;
   font-family: var(--serif);
-  font-size: .97rem;
+  font-size: .98rem;
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.05;
 }
 
-.node-detail {
+.constellation-label small {
   display: block;
   margin-top: .18rem;
-  color: #7f7481;
+  color: #706672;
   font-family: var(--mono);
-  font-size: .46rem;
-  line-height: 1.42;
+  font-size: .43rem;
   letter-spacing: .03em;
+  line-height: 1.35;
 }
 
-.node-top {
+.label-computation {
   left: 50%;
-  top: 12px;
+  top: 9px;
   transform: translateX(-50%);
 }
-.node-top:hover,
-.node-top:focus-visible { transform: translateX(-50%) translateY(-2px); }
 
-.node-right {
-  right: 10px;
+.label-statistics {
+  right: 2px;
   top: 50%;
   transform: translateY(-50%);
 }
-.node-right:hover,
-.node-right:focus-visible { transform: translateY(calc(-50% - 2px)); }
 
-.node-bottom {
+.label-policy {
   left: 50%;
-  bottom: 12px;
+  bottom: 9px;
   transform: translateX(-50%);
 }
-.node-bottom:hover,
-.node-bottom:focus-visible { transform: translateX(-50%) translateY(-2px); }
 
-.node-left {
-  left: 10px;
+.label-human {
+  left: 2px;
   top: 50%;
   transform: translateY(-50%);
 }
-.node-left:hover,
-.node-left:focus-visible { transform: translateY(calc(-50% - 2px)); }
+
+.label-computation:hover,
+.label-computation:focus-visible,
+.label-policy:hover,
+.label-policy:focus-visible {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.label-statistics:hover,
+.label-statistics:focus-visible,
+.label-human:hover,
+.label-human:focus-visible {
+  transform: translateY(calc(-50% - 2px));
+}
 
 .constellation-center {
   position: absolute;
   z-index: 7;
   left: 50%;
   top: 50%;
-  width: 168px;
-  min-height: 122px;
+  width: 164px;
+  min-height: 116px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: .85rem;
-  border: 1px solid #5b3c4d;
+  padding: .8rem;
+  border: 1px solid #583848;
   background:
-    radial-gradient(circle at center, rgba(141,23,50,.12), transparent 70%),
-    #0a080b;
+    radial-gradient(circle at center, rgba(141,23,50,.12), transparent 72%),
+    #09070a;
   box-shadow:
-    0 0 0 7px rgba(7,7,9,.84),
-    0 0 34px rgba(141,23,50,.12);
+    0 0 0 7px rgba(7,7,9,.88),
+    0 0 30px rgba(141,23,50,.12);
   text-align: center;
   transition: border-color 160ms ease, box-shadow 160ms ease;
+  animation: center-heartbeat 4.6s ease-in-out infinite;
 }
 
 .constellation-center:hover,
 .constellation-center:focus-visible {
   border-color: var(--crimson-bright);
   box-shadow:
-    0 0 0 7px rgba(7,7,9,.84),
-    0 0 38px rgba(141,23,50,.2);
+    0 0 0 7px rgba(7,7,9,.88),
+    0 0 36px rgba(141,23,50,.22);
   outline: none;
+}
+
+.center-pulse {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(191,49,82,.18);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.pulse-one { animation: pulse-ring 4.6s ease-out infinite; }
+.pulse-two { animation: pulse-ring 4.6s ease-out 0.16s infinite; }
+
+@keyframes center-heartbeat {
+  0%, 13%, 21%, 100% { transform: translate(-50%, -50%) scale(1); }
+  15% { transform: translate(-50%, -50%) scale(1.035); }
+  18% { transform: translate(-50%, -50%) scale(1.012); }
+}
+
+@keyframes pulse-ring {
+  0%, 12% { opacity: 0; transform: scale(1); }
+  15% { opacity: .42; }
+  28% { opacity: 0; transform: scale(1.18); }
+  100% { opacity: 0; transform: scale(1.18); }
 }
 
 .center-kicker {
   color: var(--crimson-bright);
   font-family: var(--mono);
-  font-size: .48rem;
+  font-size: .46rem;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
 
 .constellation-center strong {
-  margin: .32rem 0;
+  margin: .3rem 0;
   color: var(--paper);
   font-family: var(--serif);
-  font-size: 1.03rem;
+  font-size: 1rem;
   line-height: 1.04;
   font-weight: 600;
 }
 
 .center-subject {
-  color: #958695;
+  color: #928391;
   font-family: var(--mono);
-  font-size: .49rem;
+  font-size: .46rem;
   letter-spacing: .05em;
   text-transform: uppercase;
 }
 
-.heartbeat-deck {
+.vital-sign {
   position: relative;
   z-index: 4;
-  border-top: 1px solid var(--line);
+  margin-top: .25rem;
   padding-top: .9rem;
+  border-top: 1px solid var(--line);
 }
 
-.heartbeat-header {
+.vital-heading {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: .55rem;
 }
 
-.heartbeat-kicker,
-.heartbeat-state {
-  color: #8c808d;
+.vital-kicker {
+  display: block;
+  color: #857986;
   font-family: var(--mono);
-  font-size: .56rem;
-  letter-spacing: .09em;
+  font-size: .5rem;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
-.heartbeat-state {
-  color: #b7a9b4;
+.vital-heading strong {
+  display: block;
+  margin-top: .12rem;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.05;
 }
 
-.heartbeat-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(180px, .85fr);
-  gap: .9rem;
+.vital-state {
+  display: inline-flex;
   align-items: center;
-  padding: .75rem .8rem;
+  gap: .42rem;
+  color: #a99da8;
+  font-family: var(--mono);
+  font-size: .5rem;
+  letter-spacing: .09em;
+}
+
+.vital-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--crimson-bright);
+  box-shadow: 0 0 11px rgba(191,49,82,.65);
+  animation: vital-dot 4.6s ease-in-out infinite;
+}
+
+@keyframes vital-dot {
+  0%, 13%, 21%, 100% { transform: scale(1); opacity: .72; }
+  15% { transform: scale(1.75); opacity: 1; }
+  18% { transform: scale(1.18); opacity: .9; }
+}
+
+.vital-monitor {
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(74,53,71,.72);
   background:
-    linear-gradient(rgba(159,124,151,.02) 1px, transparent 1px),
-    rgba(8,7,9,.92);
-  background-size: 100% 4px, auto;
+    linear-gradient(rgba(160,126,153,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,126,153,.018) 1px, transparent 1px),
+    #070608;
+  background-size: 20px 20px, 20px 20px, auto;
+}
+
+.vital-monitor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(191,49,82,0) 43%,
+    rgba(191,49,82,.07) 49%,
+    rgba(191,49,82,.14) 50%,
+    rgba(191,49,82,.04) 51%,
+    transparent 58%
+  );
+  transform: translateX(-100%);
+  animation: monitor-scan 4.6s linear infinite;
+}
+
+@keyframes monitor-scan {
+  to { transform: translateX(100%); }
 }
 
 .heartbeat-monitor {
+  display: block;
   width: 100%;
-  height: 84px;
+  height: 118px;
 }
 
-.heartbeat-monitor-shadow,
-.heartbeat-monitor-path {
+.heartbeat-base,
+.heartbeat-glow,
+.heartbeat-live {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.heartbeat-monitor-shadow {
+.heartbeat-base {
+  stroke: rgba(158,130,145,.17);
+  stroke-width: 1.15;
+}
+
+.heartbeat-glow {
   stroke: rgba(191,49,82,.18);
-  stroke-width: 6;
-  filter: blur(4px);
+  stroke-width: 8;
+  filter: url(#pulseGlow);
 }
 
-.heartbeat-monitor-path {
-  stroke: var(--crimson-bright);
-  stroke-width: 2.1;
-  stroke-dasharray: 620 90;
-  animation: monitor-sweep 4.4s linear infinite;
-  filter: drop-shadow(0 0 7px rgba(191,49,82,.34));
+.heartbeat-live {
+  stroke: url(#livePulse);
+  stroke-width: 2.35;
+  stroke-dasharray: 178 900;
+  animation: heartbeat-sweep 4.6s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(191,49,82,.32));
 }
 
-@keyframes monitor-sweep {
-  to { stroke-dashoffset: -710; }
+@keyframes heartbeat-sweep {
+  to { stroke-dashoffset: -1078; }
 }
 
-.heartbeat-copy strong {
-  display: block;
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.08;
+.heartbeat-runner {
+  fill: #e24d70;
+  filter: drop-shadow(0 0 8px rgba(226,77,112,.9));
 }
 
-.heartbeat-copy p {
-  margin: .4rem 0 0;
-  color: #9e93a0;
-  font-size: .82rem;
+.vital-copy {
+  margin: .7rem 0 0;
+  color: #948995;
+  font-size: .78rem;
   line-height: 1.55;
 }
 
 .heartbeat-links {
   display: flex;
   flex-wrap: wrap;
-  gap: .85rem;
-  margin-top: .7rem;
+  gap: .9rem;
+  margin-top: .65rem;
 }
 
 .heartbeat-links a {
-  color: #cfc2cd;
+  color: #c8bbc6;
   font-family: var(--mono);
-  font-size: .63rem;
+  font-size: .58rem;
   border-bottom: 1px solid var(--crimson);
 }
-
 .section {
   padding: clamp(5rem, 9vw, 8rem) 0;
   border-top: 1px solid var(--line);
@@ -1564,13 +1616,13 @@ code {
   .page-hero h1 { font-size: clamp(3.6rem, 18vw, 5.4rem); }
 
   .hero-constellation { padding: .9rem; }
-  .constellation-core { min-height: 360px; }
-  .constellation-node { width: 106px; padding: .45rem; }
-  .node-detail { font-size: .41rem; }
-  .constellation-center { width: 146px; min-height: 110px; }
-  .constellation-center strong { font-size: .93rem; }
-  .heartbeat-panel { grid-template-columns: 1fr; }
-  .heartbeat-copy strong { font-size: 1.08rem; }
+  .constellation-core { min-height: 324px; }
+  .constellation-label { width: 92px; }
+  .constellation-label span { font-size: .88rem; }
+  .constellation-label small { font-size: .39rem; }
+  .constellation-center { width: 142px; min-height: 106px; }
+  .constellation-center strong { font-size: .9rem; }
+  .heartbeat-monitor { height: 102px; }
 
   .signal-strip,
   .method-grid {
@@ -1592,27 +1644,38 @@ code {
     flex-direction: column;
     gap: .35rem;
   }
-  .constellation-core { min-height: 390px; }
-  .node-left, .node-right { top: 50%; }
-  .heartbeat-header {
+
+  .constellation-core { min-height: 332px; }
+
+  .vital-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: .25rem;
+    gap: .35rem;
   }
 }
 
 @media (max-width: 430px) {
-  .constellation-core { min-height: 404px; }
-  .constellation-node { width: 98px; }
-  .node-left { left: 2px; }
-  .node-right { right: 2px; }
+  .constellation-core { min-height: 320px; }
+
+  .constellation-label { width: 78px; }
+  .constellation-label span { font-size: .78rem; }
+  .constellation-label small { display: none; }
+
+  .label-human { left: -2px; }
+  .label-statistics { right: -2px; }
+
   .constellation-center {
-    width: 136px;
-    min-height: 104px;
+    width: 124px;
+    min-height: 98px;
+    padding: .65rem;
   }
-  .constellation-center strong { font-size: .86rem; }
-  .center-kicker, .center-subject { font-size: .42rem; }
-  .heartbeat-monitor { height: 70px; }
+
+  .constellation-center strong { font-size: .8rem; }
+  .center-kicker,
+  .center-subject { font-size: .39rem; }
+
+  .heartbeat-monitor { height: 92px; }
+  .vital-copy { font-size: .72rem; }
   .heartbeat-links { gap: .55rem; }
 }
 
@@ -1624,6 +1687,11 @@ code {
     transition-duration: .001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  .heartbeat-path,
-  .heartbeat-monitor-path { stroke-dasharray: none; }
+  .heartbeat-live { stroke-dasharray: none; }
+  .constellation-center,
+  .center-pulse,
+  .vital-dot,
+  .vital-monitor::after {
+    animation: none !important;
+  }
 }

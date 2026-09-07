@@ -402,14 +402,25 @@ main { overflow: clip; }
   fill: url(#centerGlow);
 }
 
-.constellation-link {
-  stroke: url(#connectorGradient);
-  stroke-width: 1.35;
-  stroke-dasharray: 4 7;
+
+.constellation-link-base {
+  stroke: rgba(200, 177, 192, .30);
+  stroke-width: 1;
   stroke-linecap: round;
-  opacity: .72;
-  filter: drop-shadow(0 0 3px rgba(191,49,82,.24));
-  animation: constellation-current 7s linear infinite;
+  vector-effect: non-scaling-stroke;
+}
+
+.constellation-link {
+  stroke: #8f5573;
+  stroke-width: 1.75;
+  stroke-dasharray: 5 6;
+  stroke-linecap: round;
+  opacity: .95;
+  vector-effect: non-scaling-stroke;
+  filter:
+    drop-shadow(0 0 2px rgba(146,112,172,.34))
+    drop-shadow(0 0 4px rgba(191,49,82,.18));
+  animation: constellation-current 5.5s linear infinite;
 }
 
 @keyframes constellation-current {
@@ -417,10 +428,13 @@ main { overflow: clip; }
 }
 
 .constellation-joint {
-  fill: #120a0f;
-  stroke: #bf3152;
-  stroke-width: 1.25;
-  filter: drop-shadow(0 0 4px rgba(191,49,82,.34));
+  fill: #140b11;
+  stroke: #c04a67;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  filter:
+    drop-shadow(0 0 3px rgba(191,49,82,.48))
+    drop-shadow(0 0 6px rgba(101,69,126,.18));
 }
 
 .constellation-core::before,
@@ -493,23 +507,23 @@ main { overflow: clip; }
 }
 
 .node-nw {
-  left: 34px;
-  top: 40px;
+  left: 26px;
+  top: 32px;
 }
 
 .node-ne {
-  right: 34px;
-  top: 40px;
+  right: 26px;
+  top: 32px;
 }
 
 .node-sw {
-  left: 34px;
-  bottom: 40px;
+  left: 26px;
+  bottom: 32px;
 }
 
 .node-se {
-  right: 34px;
-  bottom: 40px;
+  right: 26px;
+  bottom: 32px;
 }
 
 .node-title {
@@ -1728,16 +1742,16 @@ code {
   .node-detail { display: none; }
 
   .node-nw,
-  .node-ne { top: 32px; }
+  .node-ne { top: 26px; }
 
   .node-sw,
-  .node-se { bottom: 32px; }
+  .node-se { bottom: 26px; }
 
   .node-nw,
-  .node-sw { left: 16px; }
+  .node-sw { left: 10px; }
 
   .node-ne,
-  .node-se { right: 16px; }
+  .node-se { right: 10px; }
 
   .constellation-center {
     width: 126px;

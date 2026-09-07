@@ -67,37 +67,47 @@
 
         <div class="constellation-core">
           <svg class="constellation-map" viewBox="0 0 420 360" aria-hidden="true">
-            <circle class="constellation-ring" cx="210" cy="180" r="126"/>
-            <line class="constellation-link" x1="210" y1="180" x2="210" y2="54"/>
-            <line class="constellation-link" x1="210" y1="180" x2="336" y2="180"/>
-            <line class="constellation-link" x1="210" y1="180" x2="210" y2="306"/>
-            <line class="constellation-link" x1="210" y1="180" x2="84" y2="180"/>
+            <defs>
+              <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#bf3152" stop-opacity=".14"/>
+                <stop offset="100%" stop-color="#bf3152" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
 
-            <circle class="constellation-point" cx="210" cy="54" r="3.5"/>
-            <circle class="constellation-point" cx="336" cy="180" r="3.5"/>
-            <circle class="constellation-point" cx="210" cy="306" r="3.5"/>
-            <circle class="constellation-point" cx="84" cy="180" r="3.5"/>
+            <circle class="constellation-ring outer" cx="210" cy="180" r="132"/>
+            <circle class="constellation-ring inner" cx="210" cy="180" r="92"/>
+            <circle class="constellation-center-glow" cx="210" cy="180" r="92"/>
+
+            <line class="constellation-link" x1="210" y1="180" x2="210" y2="54"/>
+            <line class="constellation-link" x1="210" y1="180" x2="352" y2="180"/>
+            <line class="constellation-link" x1="210" y1="180" x2="210" y2="306"/>
+            <line class="constellation-link" x1="210" y1="180" x2="68" y2="180"/>
+
+            <circle class="constellation-joint" cx="210" cy="54" r="4"/>
+            <circle class="constellation-joint" cx="352" cy="180" r="4"/>
+            <circle class="constellation-joint" cx="210" cy="306" r="4"/>
+            <circle class="constellation-joint" cx="68" cy="180" r="4"/>
           </svg>
 
-          <a class="constellation-label label-computation" href="code.html">
-            <span>Computation</span>
-            <small>R · Python</small>
-          </a>
+          <div class="constellation-node node-top">
+            <span class="node-title">Computation</span>
+            <span class="node-detail">R · Python · Development</span>
+          </div>
 
-          <a class="constellation-label label-statistics" href="research.html">
-            <span>Statistics</span>
-            <small>Inference · Missingness</small>
-          </a>
+          <div class="constellation-node node-right">
+            <span class="node-title">Statistics</span>
+            <span class="node-detail">Inference · Missing Data</span>
+          </div>
 
-          <a class="constellation-label label-policy" href="projects.html">
-            <span>Policy</span>
-            <small>Decision Support</small>
-          </a>
+          <div class="constellation-node node-bottom">
+            <span class="node-title">Policy</span>
+            <span class="node-detail">Decision Support · Security</span>
+          </div>
 
-          <a class="constellation-label label-human" href="research.html">
-            <span>Human Systems</span>
-            <small>Social Science</small>
-          </a>
+          <div class="constellation-node node-left">
+            <span class="node-title">Human Systems</span>
+            <span class="node-detail">Social Science · Humanitarian</span>
+          </div>
 
           <a class="constellation-center" href="research.html" aria-label="View current research">
             <span class="center-pulse pulse-one" aria-hidden="true"></span>
@@ -106,6 +116,25 @@
             <strong>Open-source AI +<br>Autonomous Weapons</strong>
             <span class="center-subject">Non-Proliferation</span>
           </a>
+        </div>
+
+        <div class="constellation-readout" aria-label="Constellation interpretation">
+          <div>
+            <span>Computation</span>
+            <strong>R · Python · Reproducibility</strong>
+          </div>
+          <div>
+            <span>Statistics</span>
+            <strong>Causal Inference · Missingness</strong>
+          </div>
+          <div>
+            <span>Human Systems</span>
+            <strong>Humanitarian Crises · Social Science</strong>
+          </div>
+          <div>
+            <span>Policy</span>
+            <strong>Decision Support · Multilateral Security</strong>
+          </div>
         </div>
 
         <div class="vital-sign" aria-label="Human-centered research pulse">
@@ -122,8 +151,8 @@
               <defs>
                 <linearGradient id="livePulse" x1="0" x2="1">
                   <stop offset="0" stop-color="#65457e"/>
-                  <stop offset=".36" stop-color="#8d1732"/>
-                  <stop offset=".58" stop-color="#d13a5d"/>
+                  <stop offset=".34" stop-color="#8d1732"/>
+                  <stop offset=".57" stop-color="#e04869"/>
                   <stop offset="1" stop-color="#65457e"/>
                 </linearGradient>
                 <filter id="pulseGlow" x="-30%" y="-80%" width="160%" height="260%">
@@ -132,29 +161,29 @@
               </defs>
 
               <path class="heartbeat-base"
-                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
-                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
-                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
-                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
+                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
+                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
+                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
 
               <path class="heartbeat-glow"
-                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
-                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
-                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
-                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
+                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
+                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
+                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
 
               <path class="heartbeat-live"
-                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
-                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
-                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
-                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
+                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
+                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
+                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
 
-              <circle class="heartbeat-runner" r="4.6">
-                <animateMotion dur="4.6s" repeatCount="indefinite"
-                  path="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
-                        L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
-                        L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
-                        L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+              <circle class="heartbeat-runner" r="4.8">
+                <animateMotion dur="3.8s" repeatCount="indefinite"
+                  path="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
+                        L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
+                        L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
+                        L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
               </circle>
             </svg>
           </div>

@@ -371,7 +371,7 @@ main { overflow: clip; }
 
 .constellation-core {
   position: relative;
-  min-height: 356px;
+  min-height: 376px;
   margin: .35rem 0 .8rem;
 }
 
@@ -413,10 +413,35 @@ main { overflow: clip; }
   stroke-width: 1.15;
 }
 
+.constellation-core::before,
+.constellation-core::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  opacity: .22;
+}
+
+.constellation-core::before {
+  width: 1px;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(transparent, rgba(146,112,172,.16), transparent);
+}
+
+.constellation-core::after {
+  width: 74%;
+  height: 1px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, transparent, rgba(141,23,50,.16), transparent);
+}
+
 .constellation-node {
   position: absolute;
   z-index: 6;
-  width: 118px;
+  width: 122px;
   padding: .56rem .55rem;
   border: 1px solid rgba(74,53,71,.8);
   background: rgba(10,8,12,.9);
@@ -424,28 +449,24 @@ main { overflow: clip; }
   text-align: center;
 }
 
-.node-top {
-  left: 50%;
-  top: 6px;
-  transform: translateX(-50%);
+.node-nw {
+  left: 4px;
+  top: 24px;
 }
 
-.node-right {
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+.node-ne {
+  right: 4px;
+  top: 24px;
 }
 
-.node-bottom {
-  left: 50%;
-  bottom: 6px;
-  transform: translateX(-50%);
+.node-sw {
+  left: 4px;
+  bottom: 24px;
 }
 
-.node-left {
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+.node-se {
+  right: 4px;
+  bottom: 24px;
 }
 
 .node-title {
@@ -472,8 +493,8 @@ main { overflow: clip; }
   z-index: 7;
   left: 50%;
   top: 50%;
-  width: 170px;
-  min-height: 122px;
+  width: 154px;
+  min-height: 116px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -1643,11 +1664,11 @@ code {
   .page-hero h1 { font-size: clamp(3.6rem, 18vw, 5.4rem); }
 
   .hero-constellation { padding: .92rem; }
-  .constellation-core { min-height: 338px; }
-  .constellation-node { width: 106px; padding: .5rem .45rem; }
+  .constellation-core { min-height: 364px; }
+  .constellation-node { width: 112px; padding: .5rem .45rem; }
   .node-title { font-size: .88rem; }
   .node-detail { font-size: .41rem; }
-  .constellation-center { width: 154px; min-height: 112px; }
+  .constellation-center { width: 146px; min-height: 108px; }
   .constellation-center strong { font-size: .93rem; }
   .constellation-readout { grid-template-columns: 1fr; }
   .heartbeat-monitor { height: 110px; }
@@ -1683,7 +1704,7 @@ code {
 }
 
 @media (max-width: 430px) {
-  .constellation-core { min-height: 324px; }
+  .constellation-core { min-height: 336px; }
 
   .constellation-node {
     width: 92px;
@@ -1693,15 +1714,22 @@ code {
   .node-title { font-size: .78rem; }
   .node-detail { display: none; }
 
-  .node-left { left: 2px; }
-  .node-right { right: 2px; }
-  .node-top { top: 12px; }
-  .node-bottom { bottom: 12px; }
+  .node-nw,
+  .node-ne { top: 24px; }
+
+  .node-sw,
+  .node-se { bottom: 24px; }
+
+  .node-nw,
+  .node-sw { left: 0; }
+
+  .node-ne,
+  .node-se { right: 0; }
 
   .constellation-center {
-    width: 132px;
-    min-height: 102px;
-    padding: .68rem;
+    width: 126px;
+    min-height: 98px;
+    padding: .64rem;
   }
 
   .constellation-center strong { font-size: .82rem; }

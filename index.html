@@ -41,22 +41,45 @@
 <main id="content">
   <div class="site-shell">
     <section class="hero">
-      <div class="reveal">
-        <p class="kicker">Researcher · Statistician · Computer Scientist</p>
-        <h1>John S.<br><span class="surname">Lystad</span></h1>
-        <p class="hero-lede">
-          My work integrates <strong>applied computational statistics</strong> and <strong>social science</strong> to study consequential social problems and support decision-making in high-stakes situations. I have a particular interest in
-          <strong>humanitarian crises</strong>, <strong>counterterrorism</strong>, <strong>deradicalization</strong>, and <strong>human security</strong>.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="research.html">Academic Research</a>
-          <a class="button button-secondary" href="projects.html">Applied Projects</a>
-          <a class="button button-secondary" href="code.html">Code &amp; Development</a>
+      <div class="hero-profile reveal">
+        <figure class="hero-headshot" aria-label="Portrait of John S. Lystad">
+          <div class="headshot-frame">
+            <div class="headshot-fallback" aria-hidden="true">
+              <span>JSL</span>
+              <small>portrait awaiting specimen</small>
+            </div>
+            <img class="headshot-image" alt="Portrait of John S. Lystad">
+            <span class="headshot-corner corner-tl" aria-hidden="true"></span>
+            <span class="headshot-corner corner-tr" aria-hidden="true"></span>
+            <span class="headshot-corner corner-bl" aria-hidden="true"></span>
+            <span class="headshot-corner corner-br" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+            <span>PROFILE // JSL</span>
+            <span>PORTRAIT</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero-identity">
+          <p class="kicker">Researcher · Statistician · Computer Scientist</p>
+          <h1>John S.<br><span class="surname">Lystad</span></h1>
         </div>
-       <p class="hero-note">
-        <span class="prompt">&gt;</span>
-        <span>current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation<span class="console-cursor" aria-hidden="true">█</span></span>
-        </p>
+
+        <div class="hero-details">
+          <p class="hero-lede">
+            My work integrates <strong>applied computational statistics</strong> and <strong>social science</strong> to study consequential social problems and support decision-making in high-stakes situations. I have a particular interest in
+            <strong>humanitarian crises</strong>, <strong>counterterrorism</strong>, <strong>deradicalization</strong>, and <strong>human security</strong>.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="research.html">Academic Research</a>
+            <a class="button button-secondary" href="projects.html">Applied Projects</a>
+            <a class="button button-secondary" href="code.html">Code &amp; Development</a>
+          </div>
+          <p class="hero-note">
+            <span class="prompt">&gt;</span>
+            <span>current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation<span class="console-cursor" aria-hidden="true">█</span></span>
+          </p>
+        </div>
       </div>
 
       <aside class="hero-constellation reveal" aria-label="Current research signal and research constellation">
@@ -83,44 +106,46 @@
             <ellipse class="constellation-ring inner" cx="210" cy="180" rx="88" ry="70"/>
             <circle class="constellation-center-glow" cx="210" cy="180" r="92"/>
 
-            <line class="constellation-link-base" x1="210" y1="180" x2="110" y2="79"/>
+            <line class="constellation-link-base" data-connector="nw" x1="210" y1="180" x2="110" y2="79"/>
+            <line class="constellation-link" data-connector="nw" x1="210" y1="180" x2="110" y2="79"/>
 
+            <line class="constellation-link-base" data-connector="ne" x1="210" y1="180" x2="310" y2="79"/>
+            <line class="constellation-link" data-connector="ne" x1="210" y1="180" x2="310" y2="79"/>
 
-            <line class="constellation-link" x1="210" y1="180" x2="110" y2="79"/>
-            <line class="constellation-link-base" x1="210" y1="180" x2="310" y2="79"/>
+            <line class="constellation-link-base" data-connector="sw" x1="210" y1="180" x2="110" y2="281"/>
+            <line class="constellation-link" data-connector="sw" x1="210" y1="180" x2="110" y2="281"/>
 
-            <line class="constellation-link" x1="210" y1="180" x2="310" y2="79"/>
-            <line class="constellation-link-base" x1="210" y1="180" x2="110" y2="281"/>
+            <line class="constellation-link-base" data-connector="se" x1="210" y1="180" x2="310" y2="281"/>
+            <line class="constellation-link" data-connector="se" x1="210" y1="180" x2="310" y2="281"/>
 
-            <line class="constellation-link" x1="210" y1="180" x2="110" y2="281"/>
-            <line class="constellation-link-base" x1="210" y1="180" x2="310" y2="281"/>
-
-            <line class="constellation-link" x1="210" y1="180" x2="310" y2="281"/>
-
-            <circle class="constellation-joint" cx="110" cy="79" r="4"/>
-            <circle class="constellation-joint" cx="310" cy="79" r="4"/>
-            <circle class="constellation-joint" cx="110" cy="281" r="4"/>
-            <circle class="constellation-joint" cx="310" cy="281" r="4"/>
+            <circle class="constellation-joint" data-joint="nw" cx="110" cy="79" r="4"/>
+            <circle class="constellation-joint" data-joint="ne" cx="310" cy="79" r="4"/>
+            <circle class="constellation-joint" data-joint="sw" cx="110" cy="281" r="4"/>
+            <circle class="constellation-joint" data-joint="se" cx="310" cy="281" r="4"/>
           </svg>
 
-          <div class="constellation-node node-nw">
+          <div class="constellation-node node-nw" data-node="nw">
             <span class="node-title">Computation</span>
             <span class="node-detail">R · Python · Development</span>
+            <span class="node-contact" aria-hidden="true"></span>
           </div>
 
-          <div class="constellation-node node-ne">
+          <div class="constellation-node node-ne" data-node="ne">
             <span class="node-title">Statistics</span>
             <span class="node-detail">Inference · Missing Data</span>
+            <span class="node-contact" aria-hidden="true"></span>
           </div>
 
-          <div class="constellation-node node-se">
+          <div class="constellation-node node-se" data-node="se">
             <span class="node-title">Policy</span>
             <span class="node-detail">Decision Support · Security</span>
+            <span class="node-contact" aria-hidden="true"></span>
           </div>
 
-          <div class="constellation-node node-sw">
+          <div class="constellation-node node-sw" data-node="sw">
             <span class="node-title">Human Systems</span>
             <span class="node-detail">Social Science · Humanitarian</span>
+            <span class="node-contact" aria-hidden="true"></span>
           </div>
 
           <a class="constellation-center" href="research.html" aria-label="View current research">
@@ -314,6 +339,105 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+(() => {
+  const target = document.querySelector(".headshot-image");
+  if (!target) return;
+
+  const candidates = [
+    "assets/images/headshot.jpg",
+    "assets/images/headshot.jpeg",
+    "assets/images/headshot.png",
+    "assets/images/headshot.webp"
+  ];
+
+  let index = 0;
+
+  function tryNextHeadshot() {
+    if (index >= candidates.length) {
+      target.hidden = true;
+      return;
+    }
+
+    const candidate = candidates[index++];
+    const probe = new Image();
+
+    probe.onload = () => {
+      target.src = candidate;
+      target.hidden = false;
+    };
+
+    probe.onerror = tryNextHeadshot;
+    probe.src = candidate;
+  }
+
+  tryNextHeadshot();
+})();
+</script>
+
+<script>
+(() => {
+  const core = document.querySelector(".constellation-core");
+  if (!core) return;
+
+  const svg = core.querySelector(".constellation-map");
+  if (!svg) return;
+
+  const specs = {
+    nw: { selector: ".node-nw", edge: "bottom" },
+    ne: { selector: ".node-ne", edge: "bottom" },
+    sw: { selector: ".node-sw", edge: "top" },
+    se: { selector: ".node-se", edge: "top" }
+  };
+
+  function screenToSvg(x, y) {
+    const matrix = svg.getScreenCTM();
+    if (!matrix) return null;
+    const point = svg.createSVGPoint();
+    point.x = x;
+    point.y = y;
+    return point.matrixTransform(matrix.inverse());
+  }
+
+  function alignConstellationConnectors() {
+    for (const [key, spec] of Object.entries(specs)) {
+      const node = core.querySelector(spec.selector);
+      if (!node) continue;
+
+      const rect = node.getBoundingClientRect();
+      const screenX = rect.left + rect.width / 2;
+      const screenY = spec.edge === "bottom" ? rect.bottom : rect.top;
+      const point = screenToSvg(screenX, screenY);
+      if (!point) continue;
+
+      svg.querySelectorAll(`[data-connector="${key}"]`).forEach(line => {
+        line.setAttribute("x2", point.x.toFixed(2));
+        line.setAttribute("y2", point.y.toFixed(2));
+      });
+
+      const joint = svg.querySelector(`[data-joint="${key}"]`);
+      if (joint) {
+        joint.setAttribute("cx", point.x.toFixed(2));
+        joint.setAttribute("cy", point.y.toFixed(2));
+      }
+    }
+  }
+
+  alignConstellationConnectors();
+
+  if ("ResizeObserver" in window) {
+    const observer = new ResizeObserver(alignConstellationConnectors);
+    observer.observe(core);
+  } else {
+    window.addEventListener("resize", alignConstellationConnectors, { passive: true });
+  }
+
+  window.addEventListener("load", alignConstellationConnectors, { once: true });
+})();
+</script>
+
 <script src="assets/js/main.js"></script>
 
 </body>

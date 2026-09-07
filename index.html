@@ -62,90 +62,109 @@
       <aside class="hero-constellation reveal" aria-label="Current research signal and research constellation">
         <div class="instrument-top">
           <span>Current Signal // Research Constellation</span>
-          <span class="instrument-active"><span class="status-lamp" aria-hidden="true"></span>Active</span>
+          <span class="instrument-active"><span class="status-lamp" aria-hidden="true"></span>Live</span>
         </div>
 
         <div class="constellation-core">
-          <svg class="constellation-map" viewBox="0 0 420 420" aria-hidden="true">
-            <defs>
-              <linearGradient id="pulseGradient" x1="0" x2="1">
-                <stop offset="0" stop-color="#65457e"/>
-                <stop offset=".42" stop-color="#8d1732"/>
-                <stop offset=".58" stop-color="#bf3152"/>
-                <stop offset="1" stop-color="#65457e"/>
-              </linearGradient>
-            </defs>
+          <svg class="constellation-map" viewBox="0 0 420 360" aria-hidden="true">
+            <circle class="constellation-ring" cx="210" cy="180" r="126"/>
+            <line class="constellation-link" x1="210" y1="180" x2="210" y2="54"/>
+            <line class="constellation-link" x1="210" y1="180" x2="336" y2="180"/>
+            <line class="constellation-link" x1="210" y1="180" x2="210" y2="306"/>
+            <line class="constellation-link" x1="210" y1="180" x2="84" y2="180"/>
 
-            <circle class="constellation-halo" cx="210" cy="210" r="150"/>
-            <circle class="constellation-halo inner" cx="210" cy="210" r="104"/>
-
-            <line class="constellation-link" x1="210" y1="210" x2="210" y2="66"/>
-            <line class="constellation-link" x1="210" y1="210" x2="354" y2="210"/>
-            <line class="constellation-link" x1="210" y1="210" x2="210" y2="354"/>
-            <line class="constellation-link" x1="210" y1="210" x2="66" y2="210"/>
-
-            <circle class="constellation-point" cx="210" cy="66" r="4"/>
-            <circle class="constellation-point" cx="354" cy="210" r="4"/>
-            <circle class="constellation-point" cx="210" cy="354" r="4"/>
-            <circle class="constellation-point" cx="66" cy="210" r="4"/>
-
-            <path class="heartbeat-shadow"
-              d="M8 220 L48 220 L66 215 L81 229 L95 182 L109 258 L126 220 L158 220 L176 215 L191 230 L206 168 L220 266 L238 220 L270 220 L286 215 L301 228 L316 192 L330 244 L346 220 L412 220"/>
-            <path class="heartbeat-path"
-              d="M8 220 L48 220 L66 215 L81 229 L95 182 L109 258 L126 220 L158 220 L176 215 L191 230 L206 168 L220 266 L238 220 L270 220 L286 215 L301 228 L316 192 L330 244 L346 220 L412 220"/>
+            <circle class="constellation-point" cx="210" cy="54" r="3.5"/>
+            <circle class="constellation-point" cx="336" cy="180" r="3.5"/>
+            <circle class="constellation-point" cx="210" cy="306" r="3.5"/>
+            <circle class="constellation-point" cx="84" cy="180" r="3.5"/>
           </svg>
 
-          <a class="constellation-node node-top" href="code.html">
-            <span class="node-title">Computation</span>
-            <span class="node-detail">R · Python</span>
+          <a class="constellation-label label-computation" href="code.html">
+            <span>Computation</span>
+            <small>R · Python</small>
           </a>
 
-          <a class="constellation-node node-right" href="research.html">
-            <span class="node-title">Statistics</span>
-            <span class="node-detail">Inference · Missingness</span>
+          <a class="constellation-label label-statistics" href="research.html">
+            <span>Statistics</span>
+            <small>Inference · Missingness</small>
           </a>
 
-          <a class="constellation-node node-bottom" href="projects.html">
-            <span class="node-title">Policy</span>
-            <span class="node-detail">Decision Support</span>
+          <a class="constellation-label label-policy" href="projects.html">
+            <span>Policy</span>
+            <small>Decision Support</small>
           </a>
 
-          <a class="constellation-node node-left" href="research.html">
-            <span class="node-title">Human Systems</span>
-            <span class="node-detail">Social Science</span>
+          <a class="constellation-label label-human" href="research.html">
+            <span>Human Systems</span>
+            <small>Social Science</small>
           </a>
 
           <a class="constellation-center" href="research.html" aria-label="View current research">
+            <span class="center-pulse pulse-one" aria-hidden="true"></span>
+            <span class="center-pulse pulse-two" aria-hidden="true"></span>
             <span class="center-kicker">Current inquiry</span>
             <strong>Open-source AI +<br>Autonomous Weapons</strong>
             <span class="center-subject">Non-Proliferation</span>
           </a>
         </div>
 
-        <div class="heartbeat-deck" aria-label="Human-centered research pulse">
-          <div class="heartbeat-header">
-            <span class="heartbeat-kicker">Human Signal</span>
-            <span class="heartbeat-state">Pulse: Active</span>
-          </div>
-
-          <div class="heartbeat-panel">
-            <svg class="heartbeat-monitor" viewBox="0 0 720 120" aria-hidden="true">
-              <path class="heartbeat-monitor-shadow"
-                d="M0 70 L72 70 L96 63 L116 80 L134 28 L154 103 L176 70 L258 70 L281 61 L302 83 L326 16 L348 108 L372 70 L453 70 L474 63 L496 80 L514 34 L534 96 L557 70 L720 70"/>
-              <path class="heartbeat-monitor-path"
-                d="M0 70 L72 70 L96 63 L116 80 L134 28 L154 103 L176 70 L258 70 L281 61 L302 83 L326 16 L348 108 L372 70 L453 70 L474 63 L496 80 L514 34 L534 96 L557 70 L720 70"/>
-            </svg>
-
-            <div class="heartbeat-copy">
+        <div class="vital-sign" aria-label="Human-centered research pulse">
+          <div class="vital-heading">
+            <div>
+              <span class="vital-kicker">Human Signal</span>
               <strong>Research with a pulse.</strong>
-              <p>Human-centered statistical work for consequential decisions under uncertainty, imperfect data conditions, and real-world stakes.</p>
             </div>
+            <span class="vital-state"><span class="vital-dot" aria-hidden="true"></span>ACTIVE</span>
           </div>
+
+          <div class="vital-monitor">
+            <svg class="heartbeat-monitor" viewBox="0 0 760 150" role="img" aria-label="Animated heartbeat waveform">
+              <defs>
+                <linearGradient id="livePulse" x1="0" x2="1">
+                  <stop offset="0" stop-color="#65457e"/>
+                  <stop offset=".36" stop-color="#8d1732"/>
+                  <stop offset=".58" stop-color="#d13a5d"/>
+                  <stop offset="1" stop-color="#65457e"/>
+                </linearGradient>
+                <filter id="pulseGlow" x="-30%" y="-80%" width="160%" height="260%">
+                  <feGaussianBlur stdDeviation="5"/>
+                </filter>
+              </defs>
+
+              <path class="heartbeat-base"
+                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
+                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
+                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
+                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+
+              <path class="heartbeat-glow"
+                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
+                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
+                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
+                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+
+              <path class="heartbeat-live"
+                d="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
+                   L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
+                   L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
+                   L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+
+              <circle class="heartbeat-runner" r="4.6">
+                <animateMotion dur="4.6s" repeatCount="indefinite"
+                  path="M0 83 L74 83 L96 78 L114 90 L132 42 L151 114 L173 83
+                        L246 83 L268 77 L287 92 L311 27 L332 123 L356 83
+                        L430 83 L450 78 L469 90 L488 48 L507 110 L530 83
+                        L603 83 L624 77 L642 91 L662 39 L681 116 L704 83 L760 83"/>
+              </circle>
+            </svg>
+          </div>
+
+          <p class="vital-copy">Statistical rigor in service of consequential, human-centered decisions—especially when uncertainty is high, the data are imperfect, and the stakes are real.</p>
 
           <div class="heartbeat-links">
-            <a href="research.html">Academic archive ↗</a>
-            <a href="projects.html">Applied casework ↗</a>
-            <a href="code.html">Technical work ↗</a>
+            <a href="research.html">Research ↗</a>
+            <a href="projects.html">Applied Casework ↗</a>
+            <a href="code.html">Technical Work ↗</a>
           </div>
         </div>
       </aside>

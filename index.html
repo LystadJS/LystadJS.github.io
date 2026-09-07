@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="About John S. Lystad: Computational statistics, social science, research, and quantitative decision support.">
+  <meta name="description" content="John S. Lystad — computational statistics, social science, research, policy decision support, and technical development.">
   <meta name="theme-color" content="#070709">
-  <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="About John S. Lystad: Computational statistics, social science, research, and quantitative decision support.">
+  <meta property="og:title" content="John S. Lystad | Computational Statistics, Research & Decision Support">
+  <meta property="og:description" content="Computational statistics, social science, academic research, policy decision support, and technical development by John S. Lystad.">
   <meta property="og:type" content="website">
-  <title>About | John S. Lystad</title>
+  <title>John S. Lystad | Computational Statistics, Research & Decision Support</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,31 +59,86 @@
         </p>
       </div>
 
-      <aside class="hero-instrument reveal" aria-label="Profile overview">
+      <aside class="hero-constellation reveal" aria-label="Current research signal and research constellation">
         <div class="instrument-top">
-          <span>Analysis</span>
-          <span>Active</span>
+          <span>Current Signal // Research Constellation</span>
+          <span class="instrument-active"><span class="status-lamp" aria-hidden="true"></span>Active</span>
         </div>
-        <div class="instrument-core" aria-hidden="true">
-          <div class="orbit one"></div>
-          <div class="orbit two"></div>
-          <div class="orbit three"></div>
-          <svg class="electric-path" viewBox="0 0 260 260">
+
+        <div class="constellation-core">
+          <svg class="constellation-map" viewBox="0 0 420 420" aria-hidden="true">
             <defs>
-              <linearGradient id="energy" x1="0" x2="1">
+              <linearGradient id="pulseGradient" x1="0" x2="1">
                 <stop offset="0" stop-color="#65457e"/>
-                <stop offset=".55" stop-color="#bf3152"/>
-                <stop offset="1" stop-color="#91a8bb"/>
+                <stop offset=".42" stop-color="#8d1732"/>
+                <stop offset=".58" stop-color="#bf3152"/>
+                <stop offset="1" stop-color="#65457e"/>
               </linearGradient>
             </defs>
-            <path d="M18 138 L49 126 L61 88 L83 115 L103 68 L121 130 L143 101 L156 156 L175 124 L194 139 L213 105 L243 119"/>
+
+            <circle class="constellation-halo" cx="210" cy="210" r="156"/>
+            <circle class="constellation-halo inner" cx="210" cy="210" r="108"/>
+
+            <line class="constellation-link" x1="210" y1="210" x2="210" y2="58"/>
+            <line class="constellation-link" x1="210" y1="210" x2="360" y2="210"/>
+            <line class="constellation-link" x1="210" y1="210" x2="210" y2="362"/>
+            <line class="constellation-link" x1="210" y1="210" x2="60" y2="210"/>
+
+            <circle class="constellation-point" cx="210" cy="58" r="4"/>
+            <circle class="constellation-point" cx="360" cy="210" r="4"/>
+            <circle class="constellation-point" cx="210" cy="362" r="4"/>
+            <circle class="constellation-point" cx="60" cy="210" r="4"/>
+
+            <path class="heartbeat-shadow"
+              d="M10 222 L54 222 L72 216 L86 230 L100 188 L114 254 L130 222 L166 222 L180 216 L193 231 L207 176 L221 260 L238 222 L274 222 L288 216 L301 228 L314 195 L328 243 L343 222 L410 222"/>
+            <path class="heartbeat-path"
+              d="M10 222 L54 222 L72 216 L86 230 L100 188 L114 254 L130 222 L166 222 L180 216 L193 231 L207 176 L221 260 L238 222 L274 222 L288 216 L301 228 L314 195 L328 243 L343 222 L410 222"/>
           </svg>
-          <div class="instrument-center"><span>JSL</span></div>
+
+          <a class="constellation-node node-top" href="code.html">
+            <span class="node-title">Computation</span>
+            <span class="node-detail">R · Python · Development</span>
+          </a>
+
+          <a class="constellation-node node-right" href="research.html">
+            <span class="node-title">Statistics</span>
+            <span class="node-detail">Inference · Missing Data</span>
+          </a>
+
+          <a class="constellation-node node-bottom" href="projects.html">
+            <span class="node-title">Policy</span>
+            <span class="node-detail">Security · Decision Support</span>
+          </a>
+
+          <a class="constellation-node node-left" href="research.html">
+            <span class="node-title">Human Systems</span>
+            <span class="node-detail">Social Science · Humanitarian</span>
+          </a>
+
+          <span class="connection-label label-top">implementation</span>
+          <span class="connection-label label-right">inference</span>
+          <span class="connection-label label-bottom">consequence</span>
+          <span class="connection-label label-left">substance</span>
+
+          <a class="constellation-center" href="research.html" aria-label="View current research">
+            <span class="center-kicker">Current inquiry</span>
+            <strong>Open-source AI +<br>Autonomous Weapons</strong>
+            <span class="center-subject">Non-Proliferation</span>
+          </a>
         </div>
-        <div class="instrument-readout">
-          <div><span>Discipline</span><strong>Applied Computational Statistics</strong></div>
-          <div><span>Practice</span><strong>Operations &amp; Decision-making Support</strong></div>
-          <div><span>Methods</span><strong>R · Python · Messy and Missing Data · Causal Inference</strong></div>
+
+        <div class="constellation-terminal">
+          <div class="terminal-command">
+            <span class="console-user">LystadJS@laboratory</span><span class="console-path">:~/Research</span><span class="console-prompt">$</span>
+            <span> inspect --current</span><span class="console-cursor" aria-hidden="true">█</span>
+          </div>
+          <div class="terminal-output">signal: active · objective: evidence for consequential, human-centered decisions</div>
+        </div>
+
+        <div class="constellation-actions" aria-label="Explore portfolio">
+          <a href="research.html"><span>Research</span><strong>Academic archive ↗</strong></a>
+          <a href="projects.html"><span>Projects</span><strong>Applied casework ↗</strong></a>
+          <a href="code.html"><span>Code</span><strong>Technical work ↗</strong></a>
         </div>
       </aside>
     </section>

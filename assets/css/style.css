@@ -371,8 +371,8 @@ main { overflow: clip; }
 
 .constellation-core {
   position: relative;
-  min-height: 326px;
-  margin: .3rem 0 .65rem;
+  min-height: 310px;
+  margin: .25rem 0 .55rem;
 }
 
 .constellation-map {
@@ -403,14 +403,24 @@ main { overflow: clip; }
 }
 
 .constellation-link {
-  stroke: rgba(208,197,205,.14);
-  stroke-width: 1;
+  stroke: url(#connectorGradient);
+  stroke-width: 1.35;
+  stroke-dasharray: 4 7;
+  stroke-linecap: round;
+  opacity: .72;
+  filter: drop-shadow(0 0 3px rgba(191,49,82,.24));
+  animation: constellation-current 7s linear infinite;
+}
+
+@keyframes constellation-current {
+  to { stroke-dashoffset: -44; }
 }
 
 .constellation-joint {
-  fill: #0a080b;
-  stroke: #9c6178;
-  stroke-width: 1.15;
+  fill: #120a0f;
+  stroke: #bf3152;
+  stroke-width: 1.25;
+  filter: drop-shadow(0 0 4px rgba(191,49,82,.34));
 }
 
 .constellation-core::before,
@@ -445,28 +455,61 @@ main { overflow: clip; }
   padding: .5rem .5rem;
   border: 1px solid rgba(74,53,71,.8);
   background: rgba(10,8,12,.9);
-  box-shadow: inset 0 0 0 1px rgba(180,148,112,.04);
+  box-shadow:
+    inset 0 0 0 1px rgba(180,148,112,.04),
+    0 0 14px rgba(0,0,0,.18);
   text-align: center;
 }
 
+.constellation-node::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(191,49,82,.6);
+  border-radius: 50%;
+  background: #0a080b;
+  box-shadow: 0 0 5px rgba(191,49,82,.28);
+}
+
+.node-nw::before {
+  right: -3px;
+  bottom: -3px;
+}
+
+.node-ne::before {
+  left: -3px;
+  bottom: -3px;
+}
+
+.node-sw::before {
+  right: -3px;
+  top: -3px;
+}
+
+.node-se::before {
+  left: -3px;
+  top: -3px;
+}
+
 .node-nw {
-  left: 24px;
-  top: 28px;
+  left: 34px;
+  top: 40px;
 }
 
 .node-ne {
-  right: 24px;
-  top: 28px;
+  right: 34px;
+  top: 40px;
 }
 
 .node-sw {
-  left: 24px;
-  bottom: 28px;
+  left: 34px;
+  bottom: 40px;
 }
 
 .node-se {
-  right: 24px;
-  bottom: 28px;
+  right: 34px;
+  bottom: 40px;
 }
 
 .node-title {
@@ -1635,7 +1678,7 @@ code {
   .page-hero h1 { font-size: clamp(3.6rem, 18vw, 5.4rem); }
 
   .hero-constellation { padding: .92rem; }
-  .constellation-core { min-height: 316px; }
+  .constellation-core { min-height: 302px; }
   .constellation-node { width: 112px; padding: .5rem .45rem; }
   .node-title { font-size: .88rem; }
   .node-detail { font-size: .41rem; }
@@ -1664,7 +1707,7 @@ code {
     gap: .35rem;
   }
 
-  .constellation-core { min-height: 310px; }
+  .constellation-core { min-height: 296px; }
 
   .vital-heading {
     align-items: flex-start;
@@ -1674,7 +1717,7 @@ code {
 }
 
 @media (max-width: 430px) {
-  .constellation-core { min-height: 292px; }
+  .constellation-core { min-height: 286px; }
 
   .constellation-node {
     width: 92px;
@@ -1685,16 +1728,16 @@ code {
   .node-detail { display: none; }
 
   .node-nw,
-  .node-ne { top: 22px; }
+  .node-ne { top: 32px; }
 
   .node-sw,
-  .node-se { bottom: 22px; }
+  .node-se { bottom: 32px; }
 
   .node-nw,
-  .node-sw { left: 10px; }
+  .node-sw { left: 16px; }
 
   .node-ne,
-  .node-se { right: 10px; }
+  .node-se { right: 16px; }
 
   .constellation-center {
     width: 126px;
@@ -1720,6 +1763,7 @@ code {
   .reveal { opacity: 1; transform: none; }
   .heartbeat-live { stroke-dasharray: none; animation: none !important; }
   .constellation-center,
+  .constellation-link,
   .center-pulse,
   .vital-dot,
   .vital-monitor::after {

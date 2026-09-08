@@ -43,16 +43,18 @@
   <section class="page-hero cv-page-hero">
     <div class="site-shell page-hero-grid">
       <div class="reveal">
-        <p class="kicker">Curriculum vitae</p>
+        <p class="kicker">Curriculum vitae / living record</p>
         <h1>CV</h1>
-        <p>A frequently updated record of scholarly research, applied projects, and technical work.</p>
+        <p>A continuously maintained record of research, applied analytical work, computational methods, and technical practice. The HTML version is optimized for browsing; the PDF remains the canonical portable copy.</p>
         <div class="cv-hero-actions">
           <a class="button button-primary" href="assets/cv/John-S-Lystad-CV.pdf">Download PDF</a>
-          <a class="button button-secondary cv-print-button" type="button" data-print-cv>Print / Save PDF</a>
+          <button class="button button-secondary cv-print-button" type="button" data-print-cv>Print / Save PDF</button>
         </div>
       </div>
       <aside class="page-index-card reveal">
-        <div><span>Last Updated</span><strong data-cv-updated>Continuously maintained</strong></div>
+        <div><span>Format</span><strong>Living HTML + canonical PDF</strong></div>
+        <div><span>Updated</span><strong data-cv-updated>Continuously maintained</strong></div>
+        <div><span>Focus</span><strong>Research · Policy · Computation</strong></div>
       </aside>
     </div>
   </section>
@@ -60,14 +62,15 @@
   <div class="site-shell cv-layout">
     <aside class="cv-sidebar" aria-label="CV section navigation">
       <div class="cv-sidebar-inner">
+        <p class="cv-sidebar-kicker">Index / JSL-CV</p>
         <h2>Curriculum Vitae</h2>
         <nav class="cv-toc">
           <a href="#profile" class="active">Profile</a>
-          <a href="#research-focus">Academic Disciplines</a>
+          <a href="#research-focus">Research Focus</a>
           <a href="#professional-work">Professional Experience</a>
           <a href="#research-portfolio">Research Portfolio</a>
           <a href="#selected-projects">Selected Projects</a>
-          <a href="#technical-methods">Technical Works</a>
+          <a href="#technical-methods">Technical Methods</a>
         </nav>
         <div class="cv-sidebar-actions">
           <a href="assets/cv/John-S-Lystad-CV.pdf">Download PDF ↗</a>
@@ -98,11 +101,11 @@
       </section>
 
       <section class="cv-section" id="research-focus">
-        <div class="cv-section-label">Academic Disciplines</div>
+        <div class="cv-section-label">Research Focus</div>
         <div class="cv-section-body">
           <div class="cv-interest-grid">
-            <div><span>Substantive</span><strong>Human systems under consequential constraints</strong><p>Humanitarian crises, security, radicalization, and institutional decision-making.</p></div>
             <div><span>Methodological</span><strong>Inference under imperfect data conditions</strong><p>Missingness, measurement limitations, complex interactions, and uncertainty.</p></div>
+            <div><span>Substantive</span><strong>Human systems under consequential constraints</strong><p>Humanitarian crises, security, radicalization, and institutional decision-making.</p></div>
             <div><span>Emerging Technology</span><strong>AI governance and proliferation risk</strong><p>Open-source artificial intelligence, autonomous systems, and non-proliferation.</p></div>
             <div><span>Translation</span><strong>Evidence for decision support</strong><p>Turning technical results into interpretable choices, risks, and tradeoffs.</p></div>
           </div>
@@ -111,23 +114,306 @@
 
       <section class="cv-section" id="professional-work">
         <div class="cv-section-label">Professional Experience</div>
-        <div class="cv-section-body">
-          <article class="cv-entry cv-entry-featured">
-            <div class="cv-entry-rail"><span class="cv-entry-type">Current</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
-            <div class="cv-entry-content">
-              <div class="cv-entry-heading">
-                <div><p class="cv-entry-kicker">Government · Multilateral · Applied Statistics</p><h3>Diplomatic-Military Advisor to the U.S. Mission to the United Nations</h3></div>
-                <span class="cv-entry-context">New York City, New York, United States</span>
+        <div class="cv-section-body cv-experience-list">
+
+          <article class="cv-org-entry cv-org-featured">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Government · Multilateral · Applied Statistics</p>
+                  <h3>U.S. Department of State</h3>
+                  <p class="cv-org-context">U.S. Mission to the United Nations · New York, NY</p>
+                </div>
+                <div class="cv-org-logo" data-logo="state-department" aria-label="U.S. Department of State logo">
+                  <span class="cv-org-logo-fallback">DOS</span>
+                  <img alt="U.S. Department of State logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Diplomatic-Military Advisor to the U.S. Mission to the United Nations</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Jun. 2026 – Present</span>
+                    <span>New York, NY</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Spearheaded an interagency task force on AI nonproliferation, developing policy options for U.S. Ambassadors Mike Waltz and Dan Negrea to constrain rogue states, violent non-state actors, and other malicious entities from acquiring, developing, or deploying AI capabilities that could enable weapons of mass destruction or automated lethal systems.</li>
+                  <li>Develop and test experimental data science and statistical workflows in Palantir Foundry, Proving Ground, and Funhouse, integrating large, complex datasets to support quantitative analysis, modeling, and evidence-based assessment of emerging technology, international governance, and U.S. strategic policy questions.</li>
+                  <li>Helped lead U.S. engagement on the UN Security Council’s “Food Under Fire” agenda, representing U.S. policy positions and delivering quantitative, data-driven analysis to support senior-level deliberations on conflict-driven food insecurity, humanitarian access, and civilian protection.</li>
+                  <li>Applied computational statistics, machine learning, and advanced quantitative methods to translate complex data into actionable analysis for U.S. negotiators, diplomats, and policymakers, informing courses of action to advance U.S. Mission objectives across the multilateral system.</li>
+                </ul>
               </div>
-              <p>U.S. Department of State</p>
-              <ul class="cv-bullets">
-                <li>Spearheaded an interagency task force on AI nonproliferation, developing policy options for U.S. Ambassadors Mike Waltz and Dan Negrea to constrain rogue states, violent non-state actors, and other malicious entities from acquiring, developing, or deploying AI capabilities that could enable weapons of mass destruction or automated lethal systems.</li>
-                <li>Develop and test experimental data science and statistical workflows in Palantir Foundry, Proving Ground, and Funhouse, integrating large, complex datasets to support quantitative analysis, modeling, and evidence-based assessment of emerging technology, international governance, and U.S. strategic policy questions.</li>
-                <li>Helped lead U.S. engagement on the UN Security Council’s “Food Under Fire” agenda, representing U.S. policy positions and delivering quantitative, data-driven analysis to support senior-level deliberations on conflict-driven food insecurity, humanitarian access, and civilian protection.</li>
-                <li>Applied computational statistics, machine learning, and advanced quantitative methods to translate complex data into actionable analysis for U.S. negotiators, diplomats, and policymakers, informing courses of action to advance U.S. Mission objectives across the multilateral system.</li>
-              </ul>
             </div>
           </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Military · Leadership · Technical Operations</p>
+                  <h3>United States Army</h3>
+                  <p class="cv-org-context">Nov. 2021 – Present</p>
+                </div>
+                <div class="cv-org-logo" data-logo="us-army" aria-label="United States Army logo">
+                  <span class="cv-org-logo-fallback">USA</span>
+                  <img alt="United States Army logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Officer Commissioning Candidate</h4>
+                    <span class="cv-role-type">Part-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Jul. 2025 – Present</span>
+                    <span>New York, NY</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Integrated prior active-duty enlisted experience into officer development, peer mentorship, and practical problem-solving during team-based exercises.</li>
+                  <li>Received extensive training through a structured leadership program emphasizing decision-making, planning, ethics, and team performance under time constraints and stressful conditions.</li>
+                </ul>
+              </div>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Infantry Company Communications Chief</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Apr. 2024 – Jul. 2025</span>
+                    <span>Joint Base Elmendorf-Richardson, AK</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Directed company-level tactical communications and served as the Commander’s primary radio-telephone operator, maintaining reliable command-and-control connectivity for senior leaders during airborne, field-training, and contingency operations.</li>
+                  <li>Designed and implemented new tactical communications Standard Operating Procedures that improved communications reliability and interoperability across mortar, scout, sniper, medic, and headquarters elements during field and contingency operations.</li>
+                  <li>Accounted for, maintained, and safeguarded more than $75 million in sensitive communications and mission-essential equipment, sustaining full accountability and operational readiness with no loss or security incidents.</li>
+                  <li>Planned, configured, and troubleshot tactical communications networks across multiple subordinate elements, integrating radio systems, communications security procedures, and command-post capabilities to enable continuous information flow between battalion leadership and dispersed maneuver units.</li>
+                </ul>
+              </div>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Infantry Squad Leader</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Mar. 2023 – Jul. 2025</span>
+                    <span>Joint Base Elmendorf-Richardson, AK</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Led an Airborne Infantry squad in a rapid-response battalion, maintaining personnel, equipment, and operational readiness for worldwide combat and contingency deployment within 18 hours of notification.</li>
+                  <li>Built and led the 11th Airborne Division’s highest-rated Indirect Fire Infantry Squad, driving standards in tactical proficiency, discipline, physical readiness, and team development that earned selection to represent the division at the 2024 International Best Mortar Competition.</li>
+                  <li>Trained, mentored, and developed more than 25 Soldiers in tactical fundamentals, leadership, and professional development, preparing personnel for advanced military schools, increased responsibility, and follow-on leadership positions.</li>
+                </ul>
+              </div>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Indirect Fire Infantryman</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Nov. 2021 – Jul. 2025</span>
+                    <span>Joint Base Elmendorf-Richardson, AK</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Selected for and completed advanced infantry and cold-weather training, including Airborne School, the Cold Weather Leadership Course, Military Mountaineering Course, Infantry Mortar Leader Course, and Expert Infantryman Badge qualification, developing specialized expertise in airborne, alpine, arctic, and indirect-fire operations.</li>
+                  <li>Contributed to the interagency Arctic Working Group, helping develop and evaluate solutions for employing indirect-fire systems in extreme cold-weather environments and improving operational effectiveness in Arctic conditions.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Research · Counterterrorism · Structured Data</p>
+                  <h3>National Consortium for the Study of Terrorism and Responses to Terrorism (START)</h3>
+                  <p class="cv-org-context">College Park, MD</p>
+                </div>
+                <div class="cv-org-logo" data-logo="start" aria-label="START logo">
+                  <span class="cv-org-logo-fallback">START</span>
+                  <img alt="START logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Counterterrorism Researcher</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>May 2021 – Feb. 2022</span>
+                    <span>College Park, MD</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Conducted systematic open-source research on terrorist and extremist incidents, organizations, weapons, tactics, targets, and operational outcomes.</li>
+                  <li>Collected, coded, validated, and synthesized structured data to support comparative analysis of terrorism, targeted violence, and emerging security threats.</li>
+                  <li>Analyzed patterns in weapon selection, tactical adaptation, ideology, geography, organizational behavior, and attack outcomes across incidents and actors.</li>
+                  <li>Applied consistent research methodologies and coding standards to complex, incomplete, and sometimes conflicting open-source information, supporting reliable longitudinal and cross-case analysis.</li>
+                  <li>Contributed to interdisciplinary research examining how violent organizations adapt to changing political, technological, and security environments.</li>
+                  <li>Produced research and analytical outputs that strengthened experience in open-source intelligence, quantitative security analysis, structured data development, and evidence-based assessment of international security challenges.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Journalism · Public Affairs · Investigative Research</p>
+                  <h3>Various Publications</h3>
+                </div>
+                <div class="cv-org-logo" data-logo="various-publications" aria-label="Various Publications logo">
+                  <span class="cv-org-logo-fallback">PRESS</span>
+                  <img alt="Various Publications logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Freelance Journalist</h4>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Aug. 2018 – Nov. 2021</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Reported and wrote on public affairs, human rights, social issues, politics, community concerns, and international developments for a range of publications and audiences.</li>
+                  <li>Conducted independent research using interviews, public records, open-source materials, government documents, and media reporting to investigate complex or sensitive topics.</li>
+                  <li>Used Freedom of Information Act (FOIA) and other public-records processes to request, obtain, and analyze government records in support of reporting and fact-finding.</li>
+                  <li>Covered issues involving vulnerable communities, institutional accountability, public policy, conflict, and social change, adapting research methods to different subject areas and reporting environments.</li>
+                  <li>Developed and maintained sources, verified competing claims, and synthesized incomplete or conflicting information into clear, evidence-based reporting.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Journalism · Conflict · MENA</p>
+                  <h3>Arabia Policy</h3>
+                  <p class="cv-org-context">Remote</p>
+                </div>
+                <div class="cv-org-logo" data-logo="arabia-policy" aria-label="Arabia Policy logo">
+                  <span class="cv-org-logo-fallback">AP</span>
+                  <img alt="Arabia Policy logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Journalist</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Feb. 2020 – Aug. 2020</span>
+                    <span>Remote</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Reported on conflict, security, and humanitarian developments across the Middle East and North Africa, with a focus on non-state armed groups, proxy conflict, and regional instability.</li>
+                  <li>Conducted remote open-source research on ISIS activity, Houthi operations in Yemen, foreign mercenary involvement, and other conflict dynamics affecting regional security.</li>
+                  <li>Monitored developments across fragmented and rapidly changing information environments, synthesizing reporting from local, regional, and international sources to assess emerging trends.</li>
+                  <li>Analyzed the interaction among armed groups, state actors, foreign intervention, and humanitarian conditions in Yemen and other conflict-affected areas.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Journalism · North Africa · Field Reporting</p>
+                  <h3>Morocco World News</h3>
+                  <p class="cv-org-context">Rabat, Morocco</p>
+                </div>
+                <div class="cv-org-logo" data-logo="morocco-world-news" aria-label="Morocco World News logo">
+                  <span class="cv-org-logo-fallback">MWN</span>
+                  <img alt="Morocco World News logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Journalist</h4>
+                    <span class="cv-role-type">Full-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>May 2019 – Aug. 2019</span>
+                    <span>Rabat, Morocco</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Reported on political, security, and humanitarian developments across North Africa, with a primary focus on Morocco, Algeria, the Libyan Civil War, and regional migration.</li>
+                  <li>Conducted investigative and open-source research on reported arms deals and weapons transfers associated with the Libyan conflict, tracking actors, transactions, and regional security implications.</li>
+                  <li>Reported directly on migrant and refugee communities in northern Morocco, developing sources and gathering first-hand information in politically sensitive environments subject to heightened official scrutiny.</li>
+                  <li>Conducted source outreach, interviews, and field reporting across linguistic and cultural boundaries, using French and Arabic to support reporting and information collection.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="cv-org-entry">
+            <div class="cv-org-main">
+              <header class="cv-org-header">
+                <div>
+                  <p class="cv-entry-kicker">Academic Research · Political Violence · Comparative Analysis</p>
+                  <h3>Florida State University</h3>
+                  <p class="cv-org-context">Tallahassee, FL</p>
+                </div>
+                <div class="cv-org-logo" data-logo="florida-state-university" aria-label="Florida State University logo">
+                  <span class="cv-org-logo-fallback">FSU</span>
+                  <img alt="Florida State University logo" loading="lazy">
+                </div>
+              </header>
+
+              <div class="cv-role">
+                <div class="cv-role-heading">
+                  <div>
+                    <h4>Research Assistant</h4>
+                    <span class="cv-role-type">Part-time</span>
+                  </div>
+                  <div class="cv-role-meta">
+                    <span>Sep. 2018 – May 2019</span>
+                    <span>Tallahassee, FL</span>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>Supported faculty research on how ideology, institutions, and political movements shape efforts to produce large-scale political and institutional change under the guidance of Dr. John Kelsay.</li>
+                  <li>Conducted comparative historical research examining how religious and ideological frameworks influenced political mobilization, organizational strategy, and political violence across different national and international contexts.</li>
+                  <li>Analyzed the Irish Republican Brotherhood and the 1916 Easter Rising as a case study in the interaction among political ideology, religious identity, nationalism, and institutional change.</li>
+                  <li>Researched al-Qaeda and Osama bin Laden as a comparative case examining how ideological narratives, transnational networks, and political grievances can shape non-state organizations and international security challenges.</li>
+                  <li>Synthesized primary and secondary sources into structured research findings, developing an early foundation in comparative political analysis, international affairs, and policy-relevant research.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
         </div>
       </section>
 
@@ -233,6 +519,42 @@
   }
 })();
 </script>
+
+<script>
+(() => {
+  const logoSlots = [...document.querySelectorAll(".cv-org-logo[data-logo]")];
+  const extensions = ["svg", "png", "webp", "jpg", "jpeg"];
+
+  logoSlots.forEach(slot => {
+    const key = slot.dataset.logo;
+    const img = slot.querySelector("img");
+    if (!key || !img) return;
+
+    let index = 0;
+
+    function tryNext() {
+      if (index >= extensions.length) {
+        slot.classList.add("logo-missing");
+        return;
+      }
+
+      const candidate = `assets/images/experience/${key}.${extensions[index++]}`;
+      const probe = new Image();
+
+      probe.onload = () => {
+        img.src = candidate;
+        slot.classList.add("logo-loaded");
+      };
+
+      probe.onerror = tryNext;
+      probe.src = candidate;
+    }
+
+    tryNext();
+  });
+})();
+</script>
+
 <script src="assets/js/main.js"></script>
 </body>
 </html>

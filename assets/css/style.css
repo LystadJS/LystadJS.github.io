@@ -114,32 +114,51 @@ button, input, textarea, select { font: inherit; }
 }
 
 .brand-sigil {
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--line-bright);
+  width: 44px;
+  height: 44px;
+  border: 1px solid #5a4654;
   display: grid;
   place-items: center;
   transform: rotate(45deg);
   background:
     linear-gradient(
-      135deg,
-      rgba(141,23,50,.22),
-      rgba(101,69,126,.13)
-    );
+      145deg,
+      rgba(255,255,255,.025),
+      rgba(141,23,50,.09) 45%,
+      rgba(101,69,126,.08)
+    ),
+    #0d0a0e;
   box-shadow:
-    inset 0 0 16px rgba(191,49,82,.08),
-    0 0 12px rgba(141,23,50,.08);
+    inset 1px 1px 0 rgba(238,229,217,.05),
+    inset -1px -1px 0 rgba(0,0,0,.65),
+    inset 0 0 14px rgba(0,0,0,.32),
+    0 0 10px rgba(141,23,50,.06);
+  position: relative;
 }
 
 .brand-sigil span {
   transform: rotate(-45deg);
-  color: var(--crimson-bright);
   font-family: var(--serif);
-  font-size: .66rem;
+  font-size: .74rem;
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .075em;
   line-height: 1;
   white-space: nowrap;
+
+  /* engraved lettering */
+  color: #b8aeb4;
+  text-shadow:
+    -1px -1px 0 rgba(0,0,0,.85),
+    1px 1px 0 rgba(238,229,217,.07),
+    0 0 3px rgba(191,49,82,.10);
+}
+
+.brand-sigil::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(238,229,217,.07);
+  pointer-events: none;
 }
 
 .sigil-monogram {

@@ -2074,3 +2074,260 @@ code {
   .cv-interest-grid>div,.cv-tags span,.cv-disclosure { background:transparent !important; }
   a { color:inherit !important; }
 }
+
+/* === Professional Experience / Institutional logo system ========== */
+
+.cv-experience-list {
+  display: grid;
+  gap: 0;
+}
+
+.cv-org-entry {
+  position: relative;
+  padding: 0 0 3.2rem;
+}
+
+.cv-org-entry + .cv-org-entry {
+  padding-top: 3.2rem;
+  border-top: 1px solid rgba(49,38,50,.78);
+}
+
+.cv-org-entry:last-child {
+  padding-bottom: 0;
+}
+
+.cv-org-main {
+  min-width: 0;
+}
+
+.cv-org-header {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 76px;
+  gap: 1.35rem;
+  align-items: start;
+  margin-bottom: 1.45rem;
+}
+
+.cv-org-header h3 {
+  margin: 0;
+  max-width: 720px;
+  color: #e3d8dd;
+  font-family: var(--serif);
+  font-size: clamp(1.55rem,2.3vw,2rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.cv-org-context {
+  margin: .36rem 0 0;
+  color: #817582;
+  font-family: var(--mono);
+  font-size: .57rem;
+  line-height: 1.45;
+}
+
+.cv-org-featured .cv-org-header h3 {
+  color: var(--paper);
+}
+
+.cv-org-logo {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  justify-self: end;
+  border: 1px solid #4a3547;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(141,23,50,.08), transparent 65%),
+    rgba(12,10,14,.9);
+  box-shadow:
+    inset 0 0 0 4px #0b090c,
+    inset 0 0 0 5px rgba(180,148,112,.10),
+    0 12px 30px rgba(0,0,0,.22);
+}
+
+.cv-org-logo::before,
+.cv-org-logo::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+
+.cv-org-logo::before {
+  left: 8px;
+  top: 8px;
+  border-left: 1px solid rgba(191,49,82,.58);
+  border-top: 1px solid rgba(191,49,82,.58);
+}
+
+.cv-org-logo::after {
+  right: 8px;
+  bottom: 8px;
+  border-right: 1px solid rgba(146,112,172,.52);
+  border-bottom: 1px solid rgba(146,112,172,.52);
+}
+
+.cv-org-logo img {
+  position: absolute;
+  inset: 7px;
+  z-index: 3;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  filter: saturate(.88) contrast(1.03);
+  transition: opacity 180ms ease;
+}
+
+.cv-org-logo.logo-loaded img {
+  opacity: 1;
+}
+
+.cv-org-logo-fallback {
+  position: relative;
+  z-index: 2;
+  max-width: 60px;
+  padding: .3rem;
+  color: rgba(238,229,217,.30);
+  font-family: var(--serif);
+  font-size: .82rem;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: .02em;
+}
+
+.cv-org-logo.logo-loaded .cv-org-logo-fallback {
+  opacity: 0;
+}
+
+.cv-role {
+  position: relative;
+  margin-left: 1.15rem;
+  padding: 1.45rem 0 0 1.4rem;
+  border-left: 1px solid rgba(74,53,71,.64);
+}
+
+.cv-role + .cv-role {
+  margin-top: 1.55rem;
+  padding-top: 1.55rem;
+  border-top: 1px solid rgba(49,38,50,.56);
+}
+
+.cv-role::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 1.75rem;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #96536b;
+  border-radius: 50%;
+  background: #0b090d;
+  box-shadow: 0 0 6px rgba(191,49,82,.22);
+}
+
+.cv-org-featured .cv-role::before {
+  border-color: var(--crimson-bright);
+  background: #6f162b;
+  box-shadow: 0 0 9px rgba(191,49,82,.36);
+}
+
+.cv-role-heading {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(150px,auto);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cv-role-heading h4 {
+  margin: 0;
+  color: #d8ccd3;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+.cv-role-type {
+  display: inline-block;
+  margin-top: .3rem;
+  color: #706672;
+  font-family: var(--mono);
+  font-size: .5rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.cv-role-meta {
+  display: grid;
+  justify-items: end;
+  gap: .12rem;
+  color: #786d79;
+  font-family: var(--mono);
+  font-size: .53rem;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.cv-role .cv-bullets {
+  margin-top: .85rem;
+}
+
+.cv-role .cv-bullets li {
+  max-width: 900px;
+}
+
+@media (max-width:700px) {
+  .cv-org-header {
+    grid-template-columns: minmax(0,1fr) 62px;
+    gap: 1rem;
+  }
+
+  .cv-org-logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .cv-role {
+    margin-left: .25rem;
+    padding-left: 1rem;
+  }
+
+  .cv-role-heading {
+    grid-template-columns: 1fr;
+    gap: .45rem;
+  }
+
+  .cv-role-meta {
+    justify-items: start;
+    text-align: left;
+  }
+}
+
+@media print {
+  .cv-org-logo {
+    border-color: #cfc7cc;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .cv-org-logo::before,
+  .cv-org-logo::after {
+    display: none;
+  }
+
+  .cv-role {
+    border-left-color: #cfc7cc;
+  }
+
+  .cv-org-entry,
+  .cv-role {
+    break-inside: avoid;
+  }
+}

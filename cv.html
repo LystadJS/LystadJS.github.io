@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="About John S. Lystad: Computational statistics, social science, research, and quantitative decision support.">
+  <meta name="description" content="Curriculum vitae of John S. Lystad — computational statistics, social science, research, policy decision support, and technical development.">
   <meta name="theme-color" content="#070709">
-  <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="About John S. Lystad: Computational statistics, social science, research, and quantitative decision support.">
+  <meta property="og:title" content="CV | John S. Lystad">
+  <meta property="og:description" content="Living curriculum vitae of John S. Lystad — research, applied work, computational methods, and technical practice.">
   <meta property="og:type" content="website">
-  <title>About | John S. Lystad</title>
+  <title>CV | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,7 @@
 <body data-page="cv">
 
 <a class="skip-link" href="#content">Skip to content</a>
+
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="John S. Lystad home">
@@ -39,43 +40,166 @@
 </header>
 
 <main id="content">
-  <section class="page-hero">
+  <section class="page-hero cv-page-hero">
     <div class="site-shell page-hero-grid">
       <div class="reveal">
-        <p class="kicker">Curriculum vitae / 05</p>
+        <p class="kicker">Curriculum vitae / living record</p>
         <h1>CV</h1>
-        <p>The canonical academic record: education, research, professional experience, methods, presentations, service, and technical work.</p>
+        <p>A continuously maintained record of research, applied analytical work, computational methods, and technical practice. The HTML version is optimized for browsing; the PDF remains the canonical portable copy.</p>
+        <div class="cv-hero-actions">
+          <a class="button button-primary" href="assets/cv/John-S-Lystad-CV.pdf">Download PDF</a>
+          <button class="button button-secondary cv-print-button" type="button" data-print-cv>Print / Save PDF</button>
+        </div>
       </div>
       <aside class="page-index-card reveal">
-        <div><span>Preferred format</span><strong>PDF</strong></div>
-        <div><span>File location</span><strong>assets/cv/John-S-Lystad-CV.pdf</strong></div>
+        <div><span>Format</span><strong>Living HTML + canonical PDF</strong></div>
+        <div><span>Updated</span><strong data-cv-updated>Continuously maintained</strong></div>
+        <div><span>Focus</span><strong>Research · Policy · Computation</strong></div>
       </aside>
     </div>
   </section>
 
-  <div class="site-shell">
-    <section class="section reveal">
-      <div class="cv-frame">
-        <div class="cv-placeholder">
-          <p class="eyebrow">PDF slot ready</p>
-          <h2>Add your current CV</h2>
-          <p>Place your PDF at <code>assets/cv/John-S-Lystad-CV.pdf</code>.</p>
-          <div class="hero-actions" style="justify-content:center">
-            <a class="button button-primary" href="assets/cv/John-S-Lystad-CV.pdf">Download CV</a>
-            <a class="button button-secondary" href="mailto:jl17842@nyu.edu">Request by email</a>
-          </div>
+  <div class="site-shell cv-layout">
+    <aside class="cv-sidebar" aria-label="CV section navigation">
+      <div class="cv-sidebar-inner">
+        <p class="cv-sidebar-kicker">Index / JSL-CV</p>
+        <h2>Curriculum Vitae</h2>
+        <nav class="cv-toc">
+          <a href="#profile" class="active">Profile</a>
+          <a href="#research-focus">Research Focus</a>
+          <a href="#professional-work">Professional Work</a>
+          <a href="#research-portfolio">Research Portfolio</a>
+          <a href="#selected-projects">Selected Projects</a>
+          <a href="#technical-methods">Technical Methods</a>
+        </nav>
+        <div class="cv-sidebar-actions">
+          <a href="assets/cv/John-S-Lystad-CV.pdf">Download PDF ↗</a>
+          <a href="mailto:jl17842@nyu.edu">Contact ↗</a>
         </div>
       </div>
-    </section>
+    </aside>
+
+    <article class="cv-document">
+      <header class="cv-document-header" id="profile">
+        <div>
+          <p class="eyebrow">John S. Lystad</p>
+          <h2>Computational statistics for consequential decisions.</h2>
+        </div>
+        <div class="cv-contact-block">
+          <a href="mailto:jl17842@nyu.edu">jl17842@nyu.edu</a>
+          <a href="mailto:lystadjs@gmail.com">lystadjs@gmail.com</a>
+          <a href="https://github.com/LystadJS">github.com/LystadJS</a>
+        </div>
+      </header>
+
+      <section class="cv-section">
+        <div class="cv-section-label">Profile</div>
+        <div class="cv-section-body">
+          <p class="cv-lead">Researcher, statistician, and computer scientist working at the intersection of applied computational statistics and social science, with an emphasis on decision-making under uncertainty, imperfect real-world data conditions, and high-consequence policy environments.</p>
+          <p>Primary substantive interests include humanitarian crises, counterterrorism, deradicalization, human security, and emerging technology governance.</p>
+        </div>
+      </section>
+
+      <section class="cv-section" id="research-focus">
+        <div class="cv-section-label">Research Focus</div>
+        <div class="cv-section-body">
+          <div class="cv-interest-grid">
+            <div><span>Methodological</span><strong>Inference under imperfect data conditions</strong><p>Missingness, measurement limitations, complex interactions, and uncertainty.</p></div>
+            <div><span>Substantive</span><strong>Human systems under consequential constraints</strong><p>Humanitarian crises, security, radicalization, and institutional decision-making.</p></div>
+            <div><span>Emerging Technology</span><strong>AI governance and proliferation risk</strong><p>Open-source artificial intelligence, autonomous systems, and non-proliferation.</p></div>
+            <div><span>Translation</span><strong>Evidence for decision support</strong><p>Turning technical results into interpretable choices, risks, and tradeoffs.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cv-section" id="professional-work">
+        <div class="cv-section-label">Professional Work</div>
+        <div class="cv-section-body">
+          <article class="cv-entry cv-entry-featured">
+            <div class="cv-entry-rail"><span class="cv-entry-type">Current</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content">
+              <div class="cv-entry-heading">
+                <div><p class="cv-entry-kicker">Government · Multilateral · Applied Statistics</p><h3>Policy and Statistical Decision Support</h3></div>
+                <span class="cv-entry-context">U.S. Department of State / United Nations contexts</span>
+              </div>
+              <p>Applied statistical and computational analysis supporting policy, operational, and senior-level decision-making in government and multilateral environments.</p>
+              <ul class="cv-bullets">
+                <li>Evaluate policy options and operational tradeoffs under uncertainty.</li>
+                <li>Extract decision-relevant evidence from incomplete, heterogeneous, and operationally generated data.</li>
+                <li>Translate technical findings for policymaker and nontechnical interpretation.</li>
+                <li>Develop analytical workflows designed for consequential, real-world decisions.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cv-section" id="research-portfolio">
+        <div class="cv-section-label">Research Portfolio</div>
+        <div class="cv-section-body">
+          <article class="cv-entry">
+            <div class="cv-entry-rail"><span class="cv-entry-type">Current inquiry</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content">
+              <p class="cv-entry-kicker">Emerging Technology · Security</p>
+              <h3>Open-Source AI and Autonomous Weapon Non-Proliferation</h3>
+              <p>Research examining how open-source artificial intelligence alters the technical, institutional, and governance conditions surrounding autonomous weapons and proliferation risk.</p>
+              <div class="cv-tags"><span>AI Governance</span><span>Security</span><span>Non-Proliferation</span></div>
+            </div>
+          </article>
+          <article class="cv-entry">
+            <div class="cv-entry-rail"><span class="cv-entry-type">In progress</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content">
+              <p class="cv-entry-kicker">Humanitarian · Risk</p>
+              <h3>Protecting Healthcare Workers</h3>
+              <p>Developing academic work on risk, protection, and quantitative evidence in environments where healthcare workers face elevated threats.</p>
+              <div class="cv-tags"><span>Humanitarian</span><span>Risk</span><span>Applied Statistics</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cv-section" id="selected-projects">
+        <div class="cv-section-label">Selected Projects</div>
+        <div class="cv-section-body">
+          <article class="cv-entry">
+            <div class="cv-entry-rail"><span class="cv-entry-type">Humanitarian</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content"><h3>Himalayan Flood Response</h3><p class="cv-entry-subtitle">Humanitarian Access and Response Effectiveness along the Nepalese-Chinese Border</p><p>Applied analysis focused on humanitarian access and response effectiveness in a difficult cross-border operating environment.</p></div>
+          </article>
+          <article class="cv-entry">
+            <div class="cv-entry-rail"><span class="cv-entry-type">Multilateral</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content"><h3>Artificial Intelligence Non-Proliferation</h3><p class="cv-entry-subtitle">United Nations and the Multilateral Ecosystem</p><p>Policy-oriented work examining AI non-proliferation in multilateral settings and translating technical change into governance questions.</p></div>
+          </article>
+          <article class="cv-entry">
+            <div class="cv-entry-rail"><span class="cv-entry-type">Security</span><span class="cv-entry-marker" aria-hidden="true"></span></div>
+            <div class="cv-entry-content"><h3>Countering Autonomous Weapons Proliferation</h3><p>Applied policy analysis of proliferation risks created by increasingly accessible autonomous systems and enabling technologies.</p></div>
+          </article>
+          <div class="cv-disclosure"><span>Disclosure</span><p>Public project descriptions should remain unclassified, open-source, and free of sensitive, restricted, or non-public operational data.</p></div>
+        </div>
+      </section>
+
+      <section class="cv-section" id="technical-methods">
+        <div class="cv-section-label">Technical Methods</div>
+        <div class="cv-section-body">
+          <div class="cv-method-groups">
+            <div class="cv-method-group"><span>Statistical Modeling</span><div class="cv-tags"><span>Regression Modeling</span><span>Causal Inference</span><span>Cluster Analysis</span><span>Unsupervised Learning</span><span>Missing &amp; Messy Data</span></div></div>
+            <div class="cv-method-group"><span>Data &amp; Computing</span><div class="cv-tags"><span>R</span><span>Python</span><span>Data Wrangling</span><span>Data Engineering</span><span>Large-Scale Data</span><span>Applied Data Science</span></div></div>
+            <div class="cv-method-group"><span>Development</span><div class="cv-tags"><span>Methods Engineering</span><span>Reproducibility</span><span>Technical Practice</span><span>Machine-Augmented Workflows</span><span>Automation</span></div></div>
+            <div class="cv-method-group"><span>Decision Practice</span><div class="cv-tags"><span>Decision Support</span><span>Evidence Translation</span><span>Policy Analysis</span><span>Uncertainty Communication</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="cv-document-footer">
+        <div><span class="eyebrow">Canonical record</span><p>For formal applications and citation, use the downloadable PDF. This web CV is optimized for browsing and should remain synchronized with the canonical document.</p></div>
+        <a class="button button-primary" href="assets/cv/John-S-Lystad-CV.pdf">Download CV</a>
+      </footer>
+    </article>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div>
-      <div class="footer-title">John S. Lystad</div>
-      <div class="footer-copy">Computational statistics, social science, research, and quantitative decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
-    </div>
+    <div><div class="footer-title">John S. Lystad</div><div class="footer-copy">Computational statistics, social science, research, and quantitative decision support.<br>© <span data-current-year></span> John S. Lystad.</div></div>
     <div class="footer-links">
       <a href="cv.html">Curriculum Vitae</a>
       <a href="mailto:jl17842@nyu.edu">NYU Email</a>
@@ -85,7 +209,33 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/main.js"></script>
 
+<script>
+(() => {
+  const printButton = document.querySelector("[data-print-cv]");
+  if (printButton) printButton.addEventListener("click", () => window.print());
+
+  const updated = document.querySelector("[data-cv-updated]");
+  if (updated) {
+    const parsed = new Date(document.lastModified);
+    if (!Number.isNaN(parsed.getTime())) {
+      updated.textContent = parsed.toLocaleDateString(undefined, {year: "numeric", month: "long"});
+    }
+  }
+
+  const links = [...document.querySelectorAll(".cv-toc a")];
+  const sections = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (!visible.length) return;
+      const id = `#${visible[0].target.id}`;
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === id));
+    }, {rootMargin: "-20% 0px -65% 0px", threshold: 0});
+    sections.forEach(s => observer.observe(s));
+  }
+})();
+</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

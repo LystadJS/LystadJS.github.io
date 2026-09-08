@@ -114,51 +114,104 @@ button, input, textarea, select { font: inherit; }
 }
 
 .brand-sigil {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #5a4654;
+  position: relative;
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
+
   transform: rotate(45deg);
+
+  border: 1px solid #59434f;
+
   background:
+    radial-gradient(
+      circle at center,
+      rgba(141, 23, 50, .10),
+      transparent 58%
+    ),
     linear-gradient(
       145deg,
-      rgba(255,255,255,.025),
-      rgba(141,23,50,.09) 45%,
-      rgba(101,69,126,.08)
+      rgba(255,255,255,.035),
+      rgba(101,69,126,.06) 45%,
+      rgba(141,23,50,.08)
     ),
-    #0d0a0e;
+    #0c090d;
+
   box-shadow:
-    inset 1px 1px 0 rgba(238,229,217,.05),
-    inset -1px -1px 0 rgba(0,0,0,.65),
-    inset 0 0 14px rgba(0,0,0,.32),
-    0 0 10px rgba(141,23,50,.06);
-  position: relative;
+    inset 1px 1px 0 rgba(238,229,217,.055),
+    inset -1px -1px 0 rgba(0,0,0,.75),
+    inset 0 0 18px rgba(0,0,0,.42),
+
+    /* faint oxblood leakage around the plate */
+    0 0 7px rgba(141,23,50,.16),
+    0 0 18px rgba(141,23,50,.08);
 }
 
+
+/* etched inner border */
+.brand-sigil::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+
+  border: 1px solid rgba(238,229,217,.065);
+
+  box-shadow:
+    inset 1px 1px 0 rgba(0,0,0,.55),
+    1px 1px 0 rgba(255,255,255,.018);
+
+  pointer-events: none;
+}
+
+
 .brand-sigil span {
+  position: relative;
+
   transform: rotate(-45deg);
+
   font-family: var(--serif);
-  font-size: .74rem;
+  font-size: .78rem;
   font-weight: 700;
   letter-spacing: .075em;
   line-height: 1;
   white-space: nowrap;
 
-  /* engraved lettering */
-  color: #b8aeb4;
+  /* engraved pewter surface */
+  color: #aaa0a6;
+
   text-shadow:
-    -1px -1px 0 rgba(0,0,0,.85),
-    1px 1px 0 rgba(238,229,217,.07),
-    0 0 3px rgba(191,49,82,.10);
+    /* dark cut edge */
+    -1px -1px 0 rgba(0,0,0,.95),
+
+    /* lower engraved highlight */
+    1px 1px 0 rgba(238,229,217,.08),
+
+    /* light leaking through engraving */
+    0 0 2px rgba(210,48,78,.75),
+    0 0 5px rgba(191,49,82,.52),
+    0 0 10px rgba(141,23,50,.30);
 }
 
-.brand-sigil::before {
-  content: "";
+
+/* blurred light behind the engraved letters */
+.brand-sigil span::before {
+  content: "JSL";
+
   position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(238,229,217,.07);
-  pointer-events: none;
+  inset: 0;
+
+  color: var(--crimson-bright);
+
+  opacity: .55;
+  filter: blur(4px);
+
+  text-shadow:
+    0 0 5px rgba(191,49,82,.9),
+    0 0 11px rgba(141,23,50,.65),
+    0 0 18px rgba(141,23,50,.34);
+
+  z-index: -1;
 }
 
 .sigil-monogram {

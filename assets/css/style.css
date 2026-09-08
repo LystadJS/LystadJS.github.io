@@ -1968,10 +1968,15 @@ code {
   align-items:start;
   padding:clamp(4rem,7vw,6rem) 0 clamp(6rem,9vw,9rem);
 }
-.cv-sidebar-inner {
+.cv-sidebar {
   position: sticky;
   top: 96px;
   align-self: start;
+  max-height: calc(100vh - 120px);
+}
+
+.cv-sidebar-inner {
+  position: static;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -2066,6 +2071,12 @@ code {
 
 @media (max-width:900px) {
   .cv-layout { grid-template-columns:1fr; gap:2.5rem; }
+  .cv-sidebar {
+    position: static;
+    top: auto;
+    max-height: none;
+  }
+
   .cv-sidebar-inner {
     position: static;
     max-height: none;
@@ -2442,4 +2453,36 @@ code {
   .cv-role {
     break-inside: avoid;
   }
+}
+
+
+/* Loaded experience logos: show the mark only, without a storage square. */
+.cv-org-logo.logo-loaded,
+.cv-role-logo.logo-loaded {
+  overflow: visible;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.cv-org-logo.logo-loaded::before,
+.cv-org-logo.logo-loaded::after,
+.cv-role-logo.logo-loaded::before {
+  display: none !important;
+}
+
+.cv-org-logo.logo-loaded img,
+.cv-role-logo.logo-loaded img {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 1 !important;
+  object-fit: contain;
+  object-position: center;
+  filter: none !important;
+}
+
+.cv-org-logo.logo-loaded .cv-org-logo-fallback,
+.cv-role-logo.logo-loaded .cv-role-logo-fallback {
+  display: none !important;
 }

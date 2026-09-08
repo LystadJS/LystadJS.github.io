@@ -2205,6 +2205,31 @@ code {
   a { color:inherit !important; }
 }
 
+@media (max-width: 700px) {
+
+  .cv-entry.cv-entry-with-action {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-entry.cv-entry-with-action .cv-entry-rail {
+    grid-column: 1;
+  }
+
+  .cv-entry.cv-entry-with-action .cv-entry-content {
+    grid-column: 1;
+  }
+
+  .cv-side-button {
+    grid-column: 1;
+
+    justify-self: start;
+
+    margin:
+      .8rem
+      0
+      0;
+  }
+}
 /* === Professional Experience / Institutional logo system ========== */
 
 .cv-experience-list {

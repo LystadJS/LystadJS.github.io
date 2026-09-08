@@ -2740,3 +2740,10 @@ code {
   transform: translateX(2px);
   outline: none;
 }
+
+.cv-peer-reviewed {
+  color: var(--crimson-bright);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .085em;
+}

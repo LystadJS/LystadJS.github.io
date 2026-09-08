@@ -2548,7 +2548,6 @@ code {
   }
 }
 
-
 /* Loaded experience logos: show the mark only, without a storage square. */
 .cv-org-logo.logo-loaded,
 .cv-role-logo.logo-loaded {
@@ -2578,4 +2577,84 @@ code {
 .cv-org-logo.logo-loaded .cv-org-logo-fallback,
 .cv-role-logo.logo-loaded .cv-role-logo-fallback {
   display: none !important;
+}
+
+/* GitHub repository link for CV/research entries */
+.cv-project-with-repo {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cv-repo-button {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  margin-top: .15rem;
+
+  border: 1px solid var(--line-bright);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(141,23,50,.10),
+      transparent 70%
+    ),
+    rgba(10,8,12,.85);
+
+  color: #aaa0ac;
+
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.cv-repo-button:hover,
+.cv-repo-button:focus-visible {
+  color: var(--paper);
+  border-color: var(--crimson-bright);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(141,23,50,.18),
+      transparent 72%
+    ),
+    rgba(14,10,14,.95);
+
+  box-shadow:
+    0 0 8px rgba(191,49,82,.18),
+    0 0 16px rgba(141,23,50,.08);
+
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.cv-repo-button svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+
+@media (max-width: 560px) {
+  .cv-project-with-repo {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: .75rem;
+  }
+
+  .cv-repo-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cv-repo-button svg {
+    width: 16px;
+    height: 16px;
+  }
 }

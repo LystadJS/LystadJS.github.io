@@ -2658,3 +2658,77 @@ code {
     height: 16px;
   }
 }
+
+/* Entries with an external project/repository link */
+.cv-entry.cv-entry-with-action {
+  grid-template-columns:
+    92px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+}
+
+
+/* Visible project action */
+.cv-side-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 78px;
+  min-height: 38px;
+
+  margin-left: 1.25rem;
+  padding: .55rem .8rem;
+
+  border: 1px solid var(--line-bright);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(141,23,50,.11),
+      rgba(101,69,126,.07)
+    ),
+    rgba(10,8,12,.78);
+
+  color: #c9bdc7;
+
+  font-family: var(--mono);
+  font-size: .59rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.cv-side-button:hover,
+.cv-side-button:focus-visible {
+  color: var(--paper);
+
+  border-color: var(--crimson-bright);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(141,23,50,.22),
+      rgba(101,69,126,.10)
+    ),
+    #0c090d;
+
+  box-shadow:
+    0 0 8px rgba(191,49,82,.14),
+    inset 0 0 10px rgba(141,23,50,.06);
+
+  transform: translateX(2px);
+
+  outline: none;
+}

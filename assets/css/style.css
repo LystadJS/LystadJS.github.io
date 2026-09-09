@@ -2708,29 +2708,47 @@ body[data-page="cv"] main {
   align-items: start;
 }
 
-.cv-role-heading:has(.cv-role-logo) {
+/* Roles with a position icon use the right column only for the icon/meta.
+   Bullets begin immediately below the role title instead of waiting for the
+   full icon + metadata stack, eliminating the empty horizontal band. */
+.cv-role:has(.cv-role-logo) {
+  display: grid;
   grid-template-columns: minmax(0, 1fr) 132px;
-  grid-template-areas:
-    "role-title role-logo"
-    "role-title role-meta";
+  grid-template-rows: auto auto;
   column-gap: 1rem;
-  row-gap: .28rem;
+  row-gap: .08rem;
+  align-items: start;
 }
 
-.cv-role-heading:has(.cv-role-logo) > div:first-child {
-  grid-area: role-title;
+.cv-role:has(.cv-role-logo) .cv-role-heading {
+  display: contents;
 }
 
-.cv-role-heading:has(.cv-role-logo) .cv-role-logo {
-  grid-area: role-logo;
+.cv-role:has(.cv-role-logo) .cv-role-heading > div:first-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.cv-role:has(.cv-role-logo) .cv-role-logo {
+  grid-column: 2;
+  grid-row: 1;
   justify-self: end;
 }
 
-.cv-role-heading:has(.cv-role-logo) .cv-role-meta {
-  grid-area: role-meta;
+.cv-role:has(.cv-role-logo) .cv-role-meta {
+  grid-column: 2;
+  grid-row: 2;
   width: 132px;
+  margin-top: .08rem;
   justify-items: end;
   text-align: right;
+}
+
+.cv-role:has(.cv-role-logo) .cv-bullets {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: .28rem;
+  padding-right: .5rem;
 }
 
 .cv-role-heading h4 {
@@ -2960,18 +2978,20 @@ body[data-page="cv"] main {
     gap: .45rem .8rem;
   }
 
-  .cv-role-heading:has(.cv-role-logo) {
+  .cv-role:has(.cv-role-logo) {
     grid-template-columns: minmax(0, 1fr) 118px;
-    grid-template-areas:
-      "role-title role-logo"
-      "role-title role-meta";
-    gap: .25rem .8rem;
+    column-gap: .8rem;
+    row-gap: .05rem;
   }
 
-  .cv-role-heading:has(.cv-role-logo) .cv-role-meta {
+  .cv-role:has(.cv-role-logo) .cv-role-meta {
     width: 118px;
-    justify-items: end;
-    text-align: right;
+    margin-top: .05rem;
+  }
+
+  .cv-role:has(.cv-role-logo) .cv-bullets {
+    margin-top: .22rem;
+    padding-right: .35rem;
   }
 
   .cv-role-heading:not(:has(.cv-role-logo)) .cv-role-meta {
@@ -2981,18 +3001,38 @@ body[data-page="cv"] main {
 }
 
 @media (max-width: 520px) {
-  .cv-role-heading:has(.cv-role-logo) {
+  .cv-role:has(.cv-role-logo) {
+    display: block;
+  }
+
+  .cv-role:has(.cv-role-logo) .cv-role-heading {
+    display: grid;
     grid-template-columns: minmax(0, 1fr) 58px;
     grid-template-areas:
       "role-title role-logo"
       "role-meta role-meta";
+    gap: .2rem .7rem;
   }
 
-  .cv-role-heading:has(.cv-role-logo) .cv-role-meta {
+  .cv-role:has(.cv-role-logo) .cv-role-heading > div:first-child {
+    grid-area: role-title;
+  }
+
+  .cv-role:has(.cv-role-logo) .cv-role-logo {
+    grid-area: role-logo;
+  }
+
+  .cv-role:has(.cv-role-logo) .cv-role-meta {
+    grid-area: role-meta;
     width: auto;
     justify-items: start;
     text-align: left;
-    margin-top: .15rem;
+    margin-top: .1rem;
+  }
+
+  .cv-role:has(.cv-role-logo) .cv-bullets {
+    margin-top: .35rem;
+    padding-right: 0;
   }
 
   .cv-technical-group {

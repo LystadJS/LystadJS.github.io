@@ -2356,7 +2356,8 @@ body[data-page="cv"] main {
   margin-top: 1rem;
 }
 
-.cv-tags span {
+.cv-tags span,
+.cv-tags a {
   display: inline-flex;
   align-items: center;
   min-height: 24px;
@@ -2564,6 +2565,136 @@ body[data-page="cv"] main {
 
 .cv-method-group .cv-tags {
   margin-top: .65rem;
+}
+
+
+/* Skills & Certifications: two-level hierarchy */
+.cv-skill-domains {
+  display: grid;
+  gap: 2.75rem;
+}
+
+.cv-skill-domain {
+  position: relative;
+  padding-bottom: 2.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.cv-skill-domain:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.cv-skill-domain-header {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.cv-skill-domain-index {
+  padding-top: .18rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .1em;
+}
+
+.cv-skill-domain-header h3 {
+  margin: 0;
+  color: #ddd2d8;
+  font-family: var(--serif);
+  font-size: 1.58rem;
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+.cv-skill-domain-header p {
+  max-width: 720px;
+  margin: .42rem 0 0;
+  color: #827783;
+  font-size: .79rem;
+  line-height: 1.5;
+}
+
+.cv-skill-domain .cv-method-groups {
+  margin-left: 40px;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(74,53,71,.55);
+}
+
+.cv-skill-domain .cv-method-group {
+  position: relative;
+  padding-bottom: 1.2rem;
+}
+
+.cv-skill-domain .cv-method-group::before {
+  content: "";
+  position: absolute;
+  left: calc(-1rem - 4px);
+  top: .27rem;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #795163;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.cv-skill-domain .cv-method-group > span {
+  color: #a095a1;
+  font-size: .58rem;
+  letter-spacing: .09em;
+}
+
+.cv-skill-domain .cv-tags {
+  margin-top: .62rem;
+}
+
+/* Every skill tag is a repository button/link. */
+.cv-tags .cv-skill-tag {
+  position: relative;
+  cursor: pointer;
+  border-color: rgba(74,53,71,.95);
+  color: #aaa0aa;
+  background:
+    linear-gradient(135deg, rgba(141,23,50,.035), rgba(101,69,126,.025)),
+    rgba(255,255,255,.008);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.cv-tags .cv-skill-tag::after {
+  content: "↗";
+  margin-left: .38rem;
+  color: #765d70;
+  font-size: .48rem;
+  opacity: .72;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.cv-tags .cv-skill-tag:hover,
+.cv-tags .cv-skill-tag:focus-visible {
+  color: var(--paper);
+  border-color: var(--crimson-bright);
+  background:
+    linear-gradient(135deg, rgba(141,23,50,.13), rgba(101,69,126,.06)),
+    rgba(12,9,13,.92);
+  box-shadow:
+    0 0 8px rgba(191,49,82,.10),
+    inset 0 0 9px rgba(141,23,50,.045);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.cv-tags .cv-skill-tag:hover::after,
+.cv-tags .cv-skill-tag:focus-visible::after {
+  color: var(--crimson-bright);
+  opacity: 1;
 }
 
 /* Academic and professional experience */
@@ -2969,6 +3100,20 @@ body[data-page="cv"] main {
 }
 
 @media (max-width: 700px) {
+  .cv-skill-domain-header {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: .7rem;
+  }
+
+  .cv-skill-domain .cv-method-groups {
+    margin-left: 30px;
+    padding-left: .8rem;
+  }
+
+  .cv-skill-domain .cv-method-group::before {
+    left: calc(-.8rem - 4px);
+  }
+
   .cv-document-header {
     grid-template-columns: 1fr;
   }
@@ -3167,6 +3312,7 @@ body[data-page="cv"] main {
   }
 
   .cv-tags span,
+  .cv-tags a,
   .cv-disclosure,
   .cv-technical-group {
     background: transparent !important;
@@ -3187,6 +3333,10 @@ body[data-page="cv"] main {
 
   .cv-role {
     border-left-color: #cfc7cc;
+  }
+
+  .cv-skill-tag::after {
+    display: none;
   }
 
   a {

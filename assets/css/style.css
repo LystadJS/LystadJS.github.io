@@ -2555,11 +2555,11 @@ body[data-page="cv"] main {
 
 .cv-org-entry {
   position: relative;
-  padding: 0 0 3.2rem;
+  padding: 0 0 2.4rem;
 }
 
 .cv-org-entry + .cv-org-entry {
-  padding-top: 3.2rem;
+  padding-top: 2.4rem;
   border-top: 1px solid rgba(49,38,50,.78);
 }
 
@@ -2574,9 +2574,9 @@ body[data-page="cv"] main {
 .cv-org-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 76px;
-  gap: 1.35rem;
-  align-items: start;
-  margin-bottom: .95rem;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: .25rem;
 }
 
 .cv-org-header h3 {
@@ -2672,13 +2672,13 @@ body[data-page="cv"] main {
 .cv-role {
   position: relative;
   margin-left: 1.15rem;
-  padding: 1.15rem 0 0 1.4rem;
+  padding: .6rem 0 0 1.4rem;
   border-left: 1px solid rgba(74,53,71,.64);
 }
 
 .cv-role + .cv-role {
-  margin-top: 1.55rem;
-  padding-top: 1.55rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(49,38,50,.56);
 }
 
@@ -2686,7 +2686,7 @@ body[data-page="cv"] main {
   content: "";
   position: absolute;
   left: -4px;
-  top: 1.45rem;
+  top: .9rem;
   width: 7px;
   height: 7px;
   border: 1px solid #96536b;
@@ -2704,12 +2704,33 @@ body[data-page="cv"] main {
 .cv-role-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(150px, auto);
-  gap: 1rem;
+  gap: .75rem;
   align-items: start;
 }
 
 .cv-role-heading:has(.cv-role-logo) {
-  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) 58px;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  grid-template-areas:
+    "role-title role-logo"
+    "role-title role-meta";
+  column-gap: 1rem;
+  row-gap: .28rem;
+}
+
+.cv-role-heading:has(.cv-role-logo) > div:first-child {
+  grid-area: role-title;
+}
+
+.cv-role-heading:has(.cv-role-logo) .cv-role-logo {
+  grid-area: role-logo;
+  justify-self: end;
+}
+
+.cv-role-heading:has(.cv-role-logo) .cv-role-meta {
+  grid-area: role-meta;
+  width: 132px;
+  justify-items: end;
+  text-align: right;
 }
 
 .cv-role-heading h4 {
@@ -2724,16 +2745,16 @@ body[data-page="cv"] main {
 .cv-role-meta {
   display: grid;
   justify-items: end;
-  gap: .12rem;
+  gap: .08rem;
   color: #786d79;
   font-family: var(--mono);
-  font-size: .53rem;
-  line-height: 1.45;
+  font-size: .52rem;
+  line-height: 1.35;
   text-align: right;
 }
 
 .cv-role .cv-bullets {
-  margin-top: .85rem;
+  margin-top: .5rem;
 }
 
 .cv-role .cv-bullets li {
@@ -2934,28 +2955,46 @@ body[data-page="cv"] main {
     padding-left: 1rem;
   }
 
-  .cv-role-heading,
-  .cv-role-heading:has(.cv-role-logo) {
+  .cv-role-heading {
     grid-template-columns: 1fr auto;
-    gap: .6rem 1rem;
+    gap: .45rem .8rem;
   }
 
-  .cv-role-heading .cv-role-meta {
-    grid-column: 1;
+  .cv-role-heading:has(.cv-role-logo) {
+    grid-template-columns: minmax(0, 1fr) 118px;
+    grid-template-areas:
+      "role-title role-logo"
+      "role-title role-meta";
+    gap: .25rem .8rem;
   }
 
-  .cv-role-heading .cv-role-logo {
-    grid-column: 2;
-    grid-row: 1 / span 2;
+  .cv-role-heading:has(.cv-role-logo) .cv-role-meta {
+    width: 118px;
+    justify-items: end;
+    text-align: right;
   }
 
-  .cv-role-meta {
+  .cv-role-heading:not(:has(.cv-role-logo)) .cv-role-meta {
     justify-items: start;
     text-align: left;
   }
 }
 
 @media (max-width: 520px) {
+  .cv-role-heading:has(.cv-role-logo) {
+    grid-template-columns: minmax(0, 1fr) 58px;
+    grid-template-areas:
+      "role-title role-logo"
+      "role-meta role-meta";
+  }
+
+  .cv-role-heading:has(.cv-role-logo) .cv-role-meta {
+    width: auto;
+    justify-items: start;
+    text-align: left;
+    margin-top: .15rem;
+  }
+
   .cv-technical-group {
     padding: 1rem;
   }

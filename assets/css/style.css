@@ -1964,6 +1964,25 @@ code {
 
 
 @media (max-width: 700px) {
+  .cv-org-army .cv-role:has(.cv-role-logo) {
+    display: block;
+  }
+
+  .cv-org-army .cv-role:has(.cv-role-logo) .cv-role-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(118px, auto) 58px;
+    grid-template-areas: "role-title role-meta role-logo";
+    gap: .35rem .7rem;
+    align-items: start;
+  }
+
+  .cv-org-army .cv-role:has(.cv-role-logo) .cv-role-meta {
+    width: auto;
+    justify-items: end;
+    text-align: right;
+  }
+
+
   .instrument-top {
     align-items: flex-start;
     flex-direction: column;
@@ -2861,6 +2880,45 @@ body[data-page="cv"] main {
   display: none;
 }
 
+
+/* United States Army roles only:
+   keep role metadata beside the role icon so it does not create a second row. */
+.cv-org-army .cv-role:has(.cv-role-logo) {
+  display: block;
+}
+
+.cv-org-army .cv-role:has(.cv-role-logo) .cv-role-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) 58px;
+  grid-template-areas: "role-title role-meta role-logo";
+  column-gap: .8rem;
+  row-gap: 0;
+  align-items: start;
+}
+
+.cv-org-army .cv-role:has(.cv-role-logo) .cv-role-heading > div:first-child {
+  grid-area: role-title;
+}
+
+.cv-org-army .cv-role:has(.cv-role-logo) .cv-role-meta {
+  grid-area: role-meta;
+  width: auto;
+  margin-top: 0;
+  justify-items: end;
+  text-align: right;
+  align-self: start;
+}
+
+.cv-org-army .cv-role:has(.cv-role-logo) .cv-role-logo {
+  grid-area: role-logo;
+  justify-self: end;
+}
+
+.cv-org-army .cv-role:has(.cv-role-logo) .cv-bullets {
+  margin-top: .35rem;
+  padding-right: 0;
+}
+
 /* Responsive CV */
 @media (max-width: 900px) {
   .cv-layout {
@@ -3001,6 +3059,20 @@ body[data-page="cv"] main {
 }
 
 @media (max-width: 520px) {
+  .cv-org-army .cv-role:has(.cv-role-logo) .cv-role-heading {
+    grid-template-columns: minmax(0, 1fr) 58px;
+    grid-template-areas:
+      "role-title role-logo"
+      "role-meta role-meta";
+  }
+
+  .cv-org-army .cv-role:has(.cv-role-logo) .cv-role-meta {
+    justify-items: start;
+    text-align: left;
+    margin-top: .1rem;
+  }
+
+
   .cv-role:has(.cv-role-logo) {
     display: block;
   }

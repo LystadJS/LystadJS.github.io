@@ -2576,7 +2576,7 @@ body[data-page="cv"] main {
   grid-template-columns: minmax(0, 1fr) 76px;
   gap: 1.35rem;
   align-items: start;
-  margin-bottom: 1.45rem;
+  margin-bottom: .95rem;
 }
 
 .cv-org-header h3 {
@@ -2672,7 +2672,7 @@ body[data-page="cv"] main {
 .cv-role {
   position: relative;
   margin-left: 1.15rem;
-  padding: 1.45rem 0 0 1.4rem;
+  padding: 1.15rem 0 0 1.4rem;
   border-left: 1px solid rgba(74,53,71,.64);
 }
 
@@ -2686,7 +2686,7 @@ body[data-page="cv"] main {
   content: "";
   position: absolute;
   left: -4px;
-  top: 1.75rem;
+  top: 1.45rem;
   width: 7px;
   height: 7px;
   border: 1px solid #96536b;

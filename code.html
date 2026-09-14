@@ -97,8 +97,7 @@
           </div>
 
           <p class="console-line console-ready">
-            <span class="console-muted">module loaded //</span>
-            <span id="terminal-ready">PCA</span>
+            <span id="terminal-ready">$PCA ></span>
             <span class="console-cursor">▋</span>
           </p>
         </div>
@@ -318,9 +317,8 @@ summary(pca_fit)
     umap: {
       label: "UMAP",
       file: "umap.R",
-      status: "R / nonlinear manifold learning",
-      code: `# UMAP embedding
-library(tidyverse)
+      status: "R | Uniform Manifold Approximation and Projection",
+      code: `library(tidyverse)
 library(uwot)
 
 set.seed(1501211)

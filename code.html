@@ -161,6 +161,22 @@
                   <small>Uniform Manifold Approximation and Projection</small>
                 </span>
               </button>
+              
+              <button class="code-method-button" type="button" data-code-snippet="kmeans" aria-pressed="false">
+                <span class="code-method-index">03</span>
+                <span class="code-method-copy">
+                  <strong>K-Means</strong>
+                  <small></small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="hierarchalclustering" aria-pressed="false">
+                <span class="code-method-index">04</span>
+                <span class="code-method-copy">
+                  <strong>Hierarchal Clustering</strong>
+                  <small></small>
+                </span>
+              </button>
             </div>
           </div>
 
@@ -465,6 +481,247 @@ summary(fit)
 vc <- as.data.frame(VarCorr(fit))
 icc <- vc$vcov[1] / sum(vc$vcov)
 icc
+`
+    },
+
+    kmeans: {
+      label: "K-Means",
+      file: "kmeans.R",
+      status: "R | K-Means Clustering",
+      code: `library(tidyverse)
+library(cluster)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. SELECT NUMBER OF CLUSTERS:
+k_values <- 2:10
+
+k_results <- map_dfr(
+  k_values,
+  ~ {
+    fit <- kmeans(
+      x,
+      centers = .x,
+      nstart = 50,
+      iter.max = 100
+    )
+
+    tibble(
+      k = .x,
+      total_within_ss = fit$tot.withinss,
+      silhouette = mean(
+        silhouette(fit$cluster, dist(x))[, "sil_width"]
+      )
+    )
+  }
+)
+
+------------------------------------------------------------------------------------------
+# 3. FIT K-MEANS:
+k <- 3                          # Selected number of clusters
+
+kmeans_fit <- kmeans(
+  x,
+  centers = k,                  # Number of clusters
+  nstart = 50,                  # Random initializations
+  iter.max = 100,               # Maximum iterations
+  algorithm = "Hartigan-Wong"   # K-means optimization algorithm
+)
+
+------------------------------------------------------------------------------------------
+# 4. EXTRACT CLUSTER ASSIGNMENTS:
+clusters <- factor(
+  kmeans_fit$cluster
+)
+
+cluster_centers <- as_tibble(
+  kmeans_fit$centers,
+  rownames = "cluster"
+)
+
+------------------------------------------------------------------------------------------
+# 5. ATTACH CLUSTERS TO ORIGINAL DATA:
+kmeans_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 6. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 7. VISUALIZATION:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster
+  )
+) +
+  geom_point(
+    alpha = 0.70,
+    size = 2
+  ) +
+  stat_ellipse(
+    linewidth = 0.7,
+    show.legend = FALSE
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 8. EVALUATE CLUSTER QUALITY:
+silhouette_scores <- silhouette(
+  kmeans_fit$cluster,
+  dist(x)
+)
+
+mean_silhouette <- mean(
+  silhouette_scores[, "sil_width"]
+)
+`
+    },
+
+    hierarchical: {
+      label: "Hierarchical",
+      file: "hierarchical.R",
+      status: "R | Hierarchical Clustering",
+      code: `library(tidyverse)
+library(cluster)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. CALCULATE DISTANCE MATRIX:
+distance_matrix <- dist(
+  x,
+  method = "euclidean"          # Pairwise distance between observations
+)
+
+------------------------------------------------------------------------------------------
+# 3. FIT HIERARCHICAL CLUSTERING:
+hierarchical_fit <- hclust(
+  distance_matrix,
+  method = "ward.D2"            # Minimize within-cluster variance
+)
+
+------------------------------------------------------------------------------------------
+# 4. VISUALIZE DENDROGRAM:
+plot(
+  hierarchical_fit,
+  labels = FALSE,
+  hang = -1,
+  main = NULL,
+  xlab = NULL,
+  sub = NULL,
+  ylab = "Height"
+)
+
+------------------------------------------------------------------------------------------
+# 5. CUT DENDROGRAM INTO CLUSTERS:
+k <- 3                          # Selected number of clusters
+
+clusters <- cutree(
+  hierarchical_fit,
+  k = k
+) |>
+  factor()
+
+------------------------------------------------------------------------------------------
+# 6. ATTACH CLUSTERS TO ORIGINAL DATA:
+hierarchical_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 7. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 8. VISUALIZE CLUSTERS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster
+  )
+) +
+  geom_point(
+    alpha = 0.70,
+    size = 2
+  ) +
+  stat_ellipse(
+    linewidth = 0.7,
+    show.legend = FALSE
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 9. EVALUATE CLUSTER QUALITY:
+silhouette_scores <- silhouette(
+  as.integer(clusters),
+  distance_matrix
+)
+
+mean_silhouette <- mean(
+  silhouette_scores[, "sil_width"]
+)
 `
     },
 

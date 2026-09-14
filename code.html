@@ -152,7 +152,7 @@
                 <span class="code-method-index">01</span>
                 <span class="code-method-copy">
                   <strong>PCA</strong>
-                  <small>Linear dimension reduction</small>
+                  <small>Principal Componenet Analysis</small>
                 </span>
               </button>
 
@@ -160,7 +160,7 @@
                 <span class="code-method-index">02</span>
                 <span class="code-method-copy">
                   <strong>UMAP</strong>
-                  <small>Nonlinear manifold learning</small>
+                  <small>Uniform Manifold Approximation and Projection</small>
                 </span>
               </button>
             </div>
@@ -183,8 +183,8 @@
               <button class="code-method-button" type="button" data-code-snippet="missing" aria-pressed="false">
                 <span class="code-method-index">02</span>
                 <span class="code-method-copy">
-                  <strong>Missing Data</strong>
-                  <small>Multiple imputation</small>
+                  <strong>MICE</strong>
+                  <small>Multiple Imputation by Chained Equations</small>
                 </span>
               </button>
             </div>
@@ -192,7 +192,7 @@
 
           <div class="code-library-group" role="group" aria-labelledby="code-group-visualization">
             <span class="code-library-group-title" id="code-group-visualization">
-              <span>03</span> Visualization
+              <span>03</span> Data Visualization
             </span>
 
             <div class="code-method-list">
@@ -290,9 +290,8 @@
     pca: {
       label: "PCA",
       file: "pca.R",
-      status: "R / exploratory dimension reduction",
-      code: `# Principal Component Analysis
-library(tidyverse)
+      status: "R | Principal Component Analysis",
+      code: `library(tidyverse)
 
 x <- data |>
   select(where(is.numeric)) |>

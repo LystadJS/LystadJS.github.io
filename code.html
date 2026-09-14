@@ -9,7 +9,7 @@
     <meta content="Code and Development | John S. Lystad" property="og:title"/>
     <meta content="About John S. Lystad: Computational statistics, social science, research, and quantitative decision support." property="og:description"/>
     <meta content="website" property="og:type"/>
-  <title>About | John S. Lystad</title>
+    <title>About | John S. Lystad</title>
     <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -18,7 +18,7 @@
   </head>
 <body data-page="code">
   <a class="skip-link" href="#content">Skip to content</a>
-  
+
 <header class="site-header">
 <div class="header-inner">
   <a aria-label="John S. Lystad home" class="brand" href="index.html">
@@ -40,6 +40,7 @@
   </nav>
 </div>
 </header>
+
 <main id="content">
   <section class="page-hero code-page-hero">
     <div class="site-shell page-hero-grid">
@@ -55,58 +56,108 @@
                 </aside>
               </div>
     </section>
-      <div class="site-shell code-page-layout">
-<section class="code-page-section reveal"><div class="code-section-label">01 | Archive</div><div class="code-section-body"><div class="code-section-heading">
-<h2>Technical work in service of humanity</h2>
-<p>No person is above accountability or scrutiny. My body of work emphasizes reproduceability, accountability, and auditability in every stage. I welcome and embrace criticism and evaluation of my work, as self-improvement is a never-ending workflow.</p>
-</div><div class="code-layout">
-  <article class="code-card">
-  <p class="card-kicker">Computational Methods</p>
-  <h3>Reproducible Workflows and Analysis</h3>
-    <div class="code-sample">
-    <pre><code><span class="code-comment"># Example analysis pattern</span>
-    library(tidyverse)
-    
-    results &lt;- data |&gt;
-      filter(!is.na(outcome)) |&gt;
-      group_by(group) |&gt;
-      summarise(
-        n = n(),
-        mean_outcome = mean(outcome),
-        .groups = "drop"
-      )</code></pre>
+
+<div class="site-shell code-page-layout">
+<section class="code-page-section reveal">
+  <div class="code-section-label">01 | Archive</div>
+
+  <div class="code-section-body">
+    <div class="code-section-heading">
+      <h2>Technical work in service of humanity</h2>
+      <p>No person is above accountability or scrutiny. My body of work emphasizes reproduceability, accountability, and auditability in every stage. I welcome and embrace criticism and evaluation of my work, as self-improvement is a never-ending workflow.</p>
     </div>
-  </article>
-<aside class="code-card">
-<p class="card-kicker">Technical portfolio</p>
-<div class="repo-list">
-<div class="repo-item"><div><h3>GitHub Repositories</h3><p>Full projects with methodology, data, code, tests, and reproducible outputs.</p></div><a href="https://github.com/LystadJS">View ↗</a></div>
-<div class="repo-item"><div><h3>Gists</h3><p>Adaptable utilities, workflows, and code snippets with varied use cases.</p></div><a href="https://gist.github.com/LystadJS">View ↗</a></div>
-<div class="repo-item"><div><h3>Technical Notes</h3><p>Methods, implementation details, pre- and post-mortem analyses, and after-action evaluations.</p></div><span class="tag">View ↗</span></div>
-</div>
-</aside>
-</div></div></section>
-<section class="code-page-section reveal"><div class="code-section-label">02 | Highlights</div><div class="code-section-body"><div class="code-section-heading">
-<h2>Featured public repositories</h2>
-<p>A curated selection of repositories demonstrating applied computational statistics, reproducible analytical workflows, and software development for research and decision support. Each project emphasizes not only implementation, but also methodological judgment, transparency, and the practical use of code under real-world data constraints.</p>
-</div><div class="work-grid">
-<article class="work-card">
-<p class="card-kicker">Repository slot / 01</p>
-<h3>Your strongest computational-statistics project</h3>
-<p>State the statistical problem, what you implemented, and what makes the repository worth opening.</p>
-<div class="meta"><span class="tag">R or Python</span><span class="tag">Reproducible</span></div>
-<div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
-</article>
-<article class="work-card">
-<p class="card-kicker">Repository slot / 02</p>
-<h3>A reusable tool or software project</h3>
-<p>Use this for packages, utilities, automation, simulation code, data tooling, or other reusable development work.</p>
-<div class="meta"><span class="tag">Software</span><span class="tag">Tooling</span></div>
-<div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
-</article>
-</div></div></section>
+
+    <div class="code-layout">
+
+      <!-- Interactive code terminal -->
+      <article class="signal-console" aria-label="Interactive code terminal">
+        <div class="console-hardware" aria-hidden="true">
+          <span class="console-screw screw-a"></span>
+          <span class="console-screw screw-b"></span>
+          <span class="console-screw screw-c"></span>
+          <span class="console-screw screw-d"></span>
+        </div>
+
+        <div class="console-bar">
+          <div class="console-title">
+            <span class="status-lamp" aria-hidden="true"></span>
+            <span id="terminal-file">pca.R</span>
+          </div>
+          <span class="console-status" id="terminal-status">R / exploratory dimension reduction</span>
+        </div>
+
+        <div class="console-screen" aria-live="polite">
+          <p class="console-line">
+            <span class="console-user">jsl</span><span class="console-muted">@portfolio</span>:<span class="console-path">~/methods</span><span class="console-prompt">$</span>
+            <span class="console-command" id="terminal-command">cat pca.R</span>
+          </p>
+
+          <div class="console-output">
+            <pre><code id="terminal-code"></code></pre>
+          </div>
+
+          <p class="console-line console-ready">
+            <span class="console-muted">module loaded //</span>
+            <span id="terminal-ready">PCA</span>
+            <span class="console-cursor">▋</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Method selector -->
+      <aside class="code-card">
+        <p class="card-kicker">Code Library</p>
+        <h3>Load a method</h3>
+        <p>Select a method to replace the contents of the terminal. Each module can later be replaced with the exact script or Gist you want to showcase.</p>
+
+        <div class="repo-list" role="group" aria-label="Code examples">
+          <button class="button button-primary" type="button" data-code-snippet="pca" aria-pressed="true">PCA</button>
+          <button class="button button-secondary" type="button" data-code-snippet="umap" aria-pressed="false">UMAP</button>
+          <button class="button button-secondary" type="button" data-code-snippet="multilevel" aria-pressed="false">Multilevel Models</button>
+          <button class="button button-secondary" type="button" data-code-snippet="missing" aria-pressed="false">Missing Data</button>
+          <button class="button button-secondary" type="button" data-code-snippet="diagnostics" aria-pressed="false">Data Diagnostics</button>
+        </div>
+
+        <div class="work-links">
+          <a href="https://gist.github.com/LystadJS">Browse Gists ↗</a>
+          <a href="https://github.com/LystadJS">GitHub ↗</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<section class="code-page-section reveal">
+  <div class="code-section-label">02 | Highlights</div>
+  <div class="code-section-body">
+    <div class="code-section-heading">
+      <h2>Featured public repositories</h2>
+      <p>A curated selection of repositories demonstrating applied computational statistics, reproducible analytical workflows, and software development for research and decision support. Each project emphasizes not only implementation, but also methodological judgment, transparency, and the practical use of code under real-world data constraints.</p>
+    </div>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <p class="card-kicker">Repository slot / 01</p>
+        <h3>Your strongest computational-statistics project</h3>
+        <p>State the statistical problem, what you implemented, and what makes the repository worth opening.</p>
+        <div class="meta"><span class="tag">R or Python</span><span class="tag">Reproducible</span></div>
+        <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
+      </article>
+
+      <article class="work-card">
+        <p class="card-kicker">Repository slot / 02</p>
+        <h3>A reusable tool or software project</h3>
+        <p>Use this for packages, utilities, automation, simulation code, data tooling, or other reusable development work.</p>
+        <div class="meta"><span class="tag">Software</span><span class="tag">Tooling</span></div>
+        <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
+      </article>
+    </div>
+  </div>
+</section>
 </div>
 </main>
+
 <footer class="site-footer">
 <div class="footer-inner">
 <div>
@@ -122,6 +173,188 @@
 </div>
 </div>
 </footer>
+
 <script src="assets/js/main.js"></script>
+
+<script>
+(() => {
+  const codeLibrary = {
+    pca: {
+      label: "PCA",
+      file: "pca.R",
+      status: "R / exploratory dimension reduction",
+      code: `# Principal Component Analysis
+library(tidyverse)
+
+x <- data |>
+  select(where(is.numeric)) |>
+  drop_na()
+
+pca_fit <- prcomp(
+  x,
+  center = TRUE,
+  scale. = TRUE
+)
+
+scores <- as_tibble(pca_fit$x)
+loadings <- as_tibble(
+  pca_fit$rotation,
+  rownames = "variable"
+)
+
+summary(pca_fit)
+`
+    },
+
+    umap: {
+      label: "UMAP",
+      file: "umap.R",
+      status: "R / nonlinear manifold learning",
+      code: `# UMAP embedding
+library(tidyverse)
+library(uwot)
+
+x <- data |>
+  select(where(is.numeric)) |>
+  drop_na() |>
+  scale()
+
+set.seed(42)
+
+embedding <- umap(
+  x,
+  n_neighbors = 15,
+  min_dist = 0.10,
+  metric = "euclidean"
+)
+
+umap_df <- as_tibble(embedding) |>
+  set_names(c("UMAP1", "UMAP2"))
+`
+    },
+
+    multilevel: {
+      label: "Multilevel Models",
+      file: "multilevel.R",
+      status: "R / hierarchical modeling",
+      code: `# Random-intercept multilevel model
+library(tidyverse)
+library(lme4)
+
+model_data <- data |>
+  drop_na(outcome, predictor, group_id)
+
+fit <- lmer(
+  outcome ~ predictor + (1 | group_id),
+  data = model_data,
+  REML = TRUE
+)
+
+summary(fit)
+
+# Variance components / ICC
+vc <- as.data.frame(VarCorr(fit))
+icc <- vc$vcov[1] / sum(vc$vcov)
+icc
+`
+    },
+
+    missing: {
+      label: "Missing Data",
+      file: "missing-data.R",
+      status: "R / multiple imputation",
+      code: `# Multiple imputation workflow
+library(tidyverse)
+library(mice)
+
+analysis_data <- data |>
+  select(outcome, predictor, covariate_a, covariate_b)
+
+set.seed(42)
+
+imp <- mice(
+  analysis_data,
+  m = 20,
+  maxit = 20,
+  method = "pmm",
+  printFlag = FALSE
+)
+
+fit <- with(
+  imp,
+  lm(outcome ~ predictor + covariate_a + covariate_b)
+)
+
+pooled <- pool(fit)
+summary(pooled, conf.int = TRUE)
+`
+    },
+
+    diagnostics: {
+      label: "Data Diagnostics",
+      file: "diagnostics.R",
+      status: "R / validation and QA",
+      code: `# Compact data-quality audit
+library(tidyverse)
+
+audit <- tibble(
+  variable = names(data),
+  type = map_chr(data, ~ class(.x)[1]),
+  missing_n = map_int(data, ~ sum(is.na(.x))),
+  missing_pct = map_dbl(data, ~ mean(is.na(.x))),
+  unique_n = map_int(data, n_distinct)
+)
+
+duplicate_rows <- data |>
+  duplicated() |>
+  sum()
+
+audit |>
+  arrange(desc(missing_pct))
+
+duplicate_rows
+`
+    }
+  };
+
+  const fileEl = document.getElementById("terminal-file");
+  const statusEl = document.getElementById("terminal-status");
+  const commandEl = document.getElementById("terminal-command");
+  const codeEl = document.getElementById("terminal-code");
+  const readyEl = document.getElementById("terminal-ready");
+  const buttons = document.querySelectorAll("[data-code-snippet]");
+
+  if (!fileEl || !statusEl || !commandEl || !codeEl || !readyEl || !buttons.length) {
+    return;
+  }
+
+  const loadSnippet = (key) => {
+    const snippet = codeLibrary[key];
+    if (!snippet) return;
+
+    fileEl.textContent = snippet.file;
+    statusEl.textContent = snippet.status;
+    commandEl.textContent = `cat ${snippet.file}`;
+    codeEl.textContent = snippet.code.trim();
+    readyEl.textContent = snippet.label;
+
+    buttons.forEach((button) => {
+      const isActive = button.dataset.codeSnippet === key;
+      button.setAttribute("aria-pressed", String(isActive));
+      button.classList.toggle("button-primary", isActive);
+      button.classList.toggle("button-secondary", !isActive);
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      loadSnippet(button.dataset.codeSnippet);
+    });
+  });
+
+  loadSnippet("pca");
+})();
+</script>
+
 </body>
 </html>

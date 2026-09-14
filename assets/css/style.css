@@ -2174,7 +2174,6 @@ body[data-page="cv"] main {
 /* Document structure */
 .cv-document {
   min-width: 0;
-  border-top: 1px solid var(--line);
 }
 
 .cv-document-header {
@@ -2215,9 +2214,6 @@ body[data-page="cv"] main {
   border-bottom: 1px solid var(--line);
 }
 
-body[data-page="about"] .about-section:first-child {
-  border-top: 1px solid var(--line);
-}
 
 .cv-section-label {
   padding-top: .2rem;
@@ -3548,6 +3544,16 @@ body[data-page="about"] .about-section {
   gap: 2.2rem;
   padding: 3.7rem 0;
   border-bottom: 1px solid var(--line);
+}
+
+/* The opening profile section uses the full content width rather than the
+   labeled section rail used by subsequent About sections. */
+body[data-page="about"] .about-intro-section {
+  display: block;
+}
+
+body[data-page="about"] .about-intro-section .about-section-body {
+  width: 100%;
 }
 
 body[data-page="about"] .about-section-label {

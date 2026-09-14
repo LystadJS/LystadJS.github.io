@@ -2215,6 +2215,10 @@ body[data-page="cv"] main {
   border-bottom: 1px solid var(--line);
 }
 
+body[data-page="about"] .about-section:first-child {
+  border-top: 1px solid var(--line);
+}
+
 .cv-section-label {
   padding-top: .2rem;
   color: var(--crimson-bright);
@@ -3505,5 +3509,184 @@ body[data-page="cv"] main {
 
   a {
     color: inherit !important;
+  }
+}
+
+/* === Compact About page — aligned to Living CV spacing ================ */
+body[data-page="about"] main {
+  overflow: visible;
+}
+
+body[data-page="about"] .about-page-hero {
+  padding: clamp(4rem, 6vw, 5.5rem) 0 clamp(3rem, 5vw, 4rem);
+}
+
+body[data-page="about"] .about-page-hero .page-hero-grid {
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+body[data-page="about"] .about-page-hero h1 {
+  margin: .35rem 0 .75rem;
+}
+
+body[data-page="about"] .about-page-hero p:not(.kicker) {
+  margin: 0;
+  line-height: 1.55;
+}
+
+body[data-page="about"] .page-index-card div {
+  padding: .55rem 0;
+}
+
+body[data-page="about"] .about-layout {
+  padding: clamp(4rem, 7vw, 6rem) 0 clamp(5rem, 8vw, 7rem);
+}
+
+body[data-page="about"] .about-section {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 2.2rem;
+  padding: 3.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-page="about"] .about-section-label {
+  padding-top: .2rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .61rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body[data-page="about"] .about-section-label::before {
+  content: "§ ";
+  color: #725b50;
+}
+
+body[data-page="about"] .about-section-body {
+  min-width: 0;
+}
+
+body[data-page="about"] .prose-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, .55fr);
+  gap: clamp(2rem, 4vw, 3.2rem);
+  align-items: start;
+}
+
+body[data-page="about"] .prose .lead {
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+  line-height: 1.35;
+}
+
+body[data-page="about"] .prose p {
+  margin: .82rem 0 0;
+  font-size: .92rem;
+  line-height: 1.65;
+}
+
+body[data-page="about"] .prose .lead + p {
+  margin-top: 1rem;
+}
+
+body[data-page="about"] .fact-row {
+  grid-template-columns: 105px minmax(0, 1fr);
+  gap: .8rem;
+  padding: .72rem 0;
+}
+
+body[data-page="about"] .fact-row dt {
+  font-size: .58rem;
+}
+
+body[data-page="about"] .fact-row dd {
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+body[data-page="about"] .about-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .35rem;
+  margin-bottom: 1.4rem;
+}
+
+body[data-page="about"] .about-section-heading h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.25rem, 4vw, 3.15rem);
+  line-height: .98;
+  font-weight: 600;
+  letter-spacing: -.03em;
+}
+
+body[data-page="about"] .about-section-heading p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.55;
+}
+
+body[data-page="about"] .method-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+}
+
+body[data-page="about"] .method-card {
+  min-height: 0;
+  padding: 1rem 1.05rem;
+}
+
+body[data-page="about"] .method-card .card-kicker {
+  margin: 0 0 .45rem;
+  font-size: .54rem;
+}
+
+body[data-page="about"] .method-card h3 {
+  margin: 0;
+  font-size: 1.28rem;
+  line-height: 1.12;
+}
+
+body[data-page="about"] .method-card h3 + p {
+  margin-top: .55rem;
+}
+
+body[data-page="about"] .method-card p:not(.card-kicker) {
+  margin-bottom: 0;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  body[data-page="about"] .prose-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  body[data-page="about"] .about-section {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding: 3rem 0;
+  }
+
+  body[data-page="about"] .method-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-page="about"] .about-page-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  body[data-page="about"] .fact-row {
+    grid-template-columns: 1fr;
+    gap: .2rem;
+    padding: .65rem 0;
   }
 }

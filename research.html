@@ -14,7 +14,9 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/jsvectormap.min.css" rel="stylesheet"/>
 <link href="assets/css/style.css" rel="stylesheet"/>
+<link href="assets/css/empirical-explorer.css" rel="stylesheet"/>
 </head>
 <body data-page="research">
 <a class="skip-link" href="#content">Skip to content</a>
@@ -89,56 +91,61 @@
 <div class="work-links"><span class="placeholder-link">Abstract forthcoming</span></div>
 </article>
 </div></div></section>
-  
-<section class="research-section reveal">
-  <div class="research-section-label">02 | Agenda</div>
-<div class="research-section-body">
-  <div class="research-section-heading">
-  <h2>Research agenda</h2>
-    <p>A developing academic agenda focused on how statistical and computational methods can be implemented into social science research when data is incomplete, uncertainty is consequential, and the systems being studied are complex, human, and policy-relevant.</p>
-</div>
-  <div class="method-grid">
-    <article class="method-card">
-      <p class="card-kicker">Inference</p>
-      <h3>What survives bad data?</h3>
-      <p>How should inference change when data are missing, biased, heterogeneous, or produced for operational rather than research purposes?</p>
-    </article>
-    <article class="method-card">
-      <p class="card-kicker">Governance</p>
-      <h3>How does openness change proliferation?</h3>
-      <p>What changes when strategically relevant technical capability diffuses through open-source models, code, and tooling?</p>
-    </article>
-    <article class="method-card">
-      <p class="card-kicker">Human systems</p>
-      <h3>How can risk be measured responsibly?</h3>
-      <p>What can statistical models contribute when the objects of analysis are people, institutions, and high-consequence environments?</p>
-    </article>
-    <article class="method-card">
-      <p class="card-kicker">Translation</p>
-      <h3>When does evidence change a decision?</h3>
-      <p>How should uncertainty be communicated when analysis must move from model output to policy or practice?</p>
-    </article>
+
+<section class="research-section research-section--explorer reveal">
+  <div class="research-section-label">02 | Empirical Settings</div>
+  <div class="research-section-body">
+    <div class="research-section-heading">
+      <h2>Empirical settings</h2>
+      <p>Geographic settings in which statistical and computational methods are applied to political violence, extremism, terrorism, humanitarian risk, and other complex human systems.</p>
+    </div>
+
+    <div class="empirical-explorer">
+      <div class="empirical-toolbar">
+        <div id="empirical-filters" class="empirical-filters" aria-label="Filter empirical settings"></div>
+        <div class="empirical-legend" aria-hidden="true">
+          <span class="empirical-legend-mark"></span>
+          <span>Research setting</span>
+        </div>
+      </div>
+
+      <div class="empirical-grid">
+        <div class="empirical-map-wrap">
+          <div id="empirical-map" class="empirical-map" aria-label="Interactive map of empirical research settings"></div>
+          <p class="empirical-map-note">Hover to preview · Select a country to explore</p>
+        </div>
+
+        <aside id="empirical-panel" class="empirical-panel" aria-live="polite" aria-label="Selected empirical setting">
+          <div class="empirical-panel-inner empirical-panel-empty">
+            <p class="empirical-panel-kicker">Geographic research explorer</p>
+            <h3>Loading empirical settings…</h3>
+          </div>
+        </aside>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 </div>
 </main>
-  
-  <footer class="site-footer">
-    <div class="footer-inner">
+
+<footer class="site-footer">
+  <div class="footer-inner">
     <div>
       <div class="footer-title">John S. Lystad</div>
-    <div class="footer-copy">Computational statistics, social science, research, and quantitative decision support.<br/>© <span data-current-year=""></span> John S. Lystad.</div>
+      <div class="footer-copy">Computational statistics, social science, research, and quantitative decision support.<br/>© <span data-current-year=""></span> John S. Lystad.</div>
     </div>
-      <div class="footer-links">
-        <a href="cv.html">Curriculum Vitae</a>
-        <a href="mailto:jl17842@nyu.edu">NYU Email</a>
-        <a href="mailto:lystadjs@gmail.com">Personal Email</a>
-        <a href="https://github.com/LystadJS">GitHub</a>
-        <a href="https://linkedin.com/LystadJS">LinkedIn</a>
-      </div>
+    <div class="footer-links">
+      <a href="cv.html">Curriculum Vitae</a>
+      <a href="mailto:jl17842@nyu.edu">NYU Email</a>
+      <a href="mailto:lystadjs@gmail.com">Personal Email</a>
+      <a href="https://github.com/LystadJS">GitHub</a>
+      <a href="https://linkedin.com/LystadJS">LinkedIn</a>
     </div>
-  </footer>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/jsvectormap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/world.js"></script>
+<script src="assets/js/empirical-explorer.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

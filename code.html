@@ -331,7 +331,8 @@ x <- data |>
   drop_na() |>
   scale()
 
-# 2. FIT UMAP ------------------------------------------
+----------------------------------------------------------------------------------
+# 2. FIT UMAP:
 umap_fit <- umap(
   x,
   n_neighbors = 15,     # Size of the local neighborhood

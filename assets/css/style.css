@@ -4271,8 +4271,11 @@ body[data-page="code"] .console-screen {
 }
 
 body[data-page="code"] .console-output {
-  overflow: auto;
-  max-height: 410px;
+  /* Long scripts determine the terminal height instead of being clipped
+     into a vertically scrolling viewport. */
+  overflow-x: auto;
+  overflow-y: visible;
+  max-height: none;
   padding-right: .85rem;
   scrollbar-width: thin;
   scrollbar-color: rgba(146,112,172,.28) transparent;
@@ -4298,9 +4301,6 @@ body[data-page="code"] .console-output code {
     min-height: 420px;
   }
 
-  body[data-page="code"] .console-output {
-    max-height: 310px;
-  }
 }
 
 @media (max-width: 560px) {

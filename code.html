@@ -97,7 +97,7 @@
           </div>
 
           <p class="console-line console-ready">
-            <span id="terminal-ready">$PCA &gt; </span>
+            <span id="terminal-ready">$PCA &gt;</span>
             <span class="console-cursor">▋</span>
           </p>
         </div>
@@ -545,7 +545,7 @@ duplicate_rows
     statusEl.textContent = snippet.status;
     commandEl.textContent = `cat ${snippet.file}`;
     codeEl.textContent = snippet.code.trim();
-    readyEl.textContent = snippet.label;
+    readyEl.textContent = `$${snippet.label} >`;
 
     buttons.forEach((button) => {
       const isActive = button.dataset.codeSnippet === key;

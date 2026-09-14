@@ -104,23 +104,132 @@
         </div>
       </article>
 
-      <!-- Method selector -->
-      <aside class="code-card">
-        <p class="card-kicker">Code Library</p>
-        <h3>Load a method</h3>
-        <p>Select a method to replace the contents of the terminal. Each module can later be replaced with the exact script or Gist you want to showcase.</p>
+      <!-- Repository hubs + categorized method selector -->
+      <aside class="code-card code-library-panel">
+        <div class="code-library-hubs">
+          <span class="code-library-span">Repository Hubs</span>
 
-        <div class="repo-list" role="group" aria-label="Code examples">
-          <button class="button button-primary" type="button" data-code-snippet="pca" aria-pressed="true">PCA</button>
-          <button class="button button-secondary" type="button" data-code-snippet="umap" aria-pressed="false">UMAP</button>
-          <button class="button button-secondary" type="button" data-code-snippet="multilevel" aria-pressed="false">Multilevel Models</button>
-          <button class="button button-secondary" type="button" data-code-snippet="missing" aria-pressed="false">Missing Data</button>
-          <button class="button button-secondary" type="button" data-code-snippet="diagnostics" aria-pressed="false">Data Diagnostics</button>
+          <div class="code-hub-list">
+            <a class="code-hub-link" href="https://github.com/LystadJS" target="_blank" rel="noreferrer">
+              <span>
+                <strong>GitHub Repositories</strong>
+                <small>Full projects, packages, data, tests, and reproducible outputs.</small>
+              </span>
+              <span class="code-hub-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="code-hub-link" href="https://gist.github.com/LystadJS" target="_blank" rel="noreferrer">
+              <span>
+                <strong>Gists</strong>
+                <small>Adaptable utilities, workflows, and focused code examples.</small>
+              </span>
+              <span class="code-hub-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <div class="code-hub-link code-hub-link-muted" aria-disabled="true">
+              <span>
+                <strong>Technical Notes</strong>
+                <small>Methods, implementation notes, and after-action evaluations.</small>
+              </span>
+              <span class="code-hub-status">Index pending</span>
+            </div>
+          </div>
         </div>
 
-        <div class="work-links">
-          <a href="https://gist.github.com/LystadJS">Browse Gists ↗</a>
-          <a href="https://github.com/LystadJS">GitHub ↗</a>
+        <div class="code-library-index">
+          <div class="code-library-intro">
+            <span class="code-library-span">Example Library</span>
+            <h3>Load a method</h3>
+            <p>Select an example to replace the terminal contents.</p>
+          </div>
+
+          <div class="code-library-group" role="group" aria-labelledby="code-group-unsupervised">
+            <span class="code-library-group-title" id="code-group-unsupervised">
+              <span>01</span> Unsupervised Learning
+            </span>
+
+            <div class="code-method-list">
+              <button class="code-method-button" type="button" data-code-snippet="pca" aria-pressed="true">
+                <span class="code-method-index">01</span>
+                <span class="code-method-copy">
+                  <strong>PCA</strong>
+                  <small>Linear dimension reduction</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="umap" aria-pressed="false">
+                <span class="code-method-index">02</span>
+                <span class="code-method-copy">
+                  <strong>UMAP</strong>
+                  <small>Nonlinear manifold learning</small>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="code-library-group" role="group" aria-labelledby="code-group-modeling">
+            <span class="code-library-group-title" id="code-group-modeling">
+              <span>02</span> Statistical Modeling
+            </span>
+
+            <div class="code-method-list">
+              <button class="code-method-button" type="button" data-code-snippet="multilevel" aria-pressed="false">
+                <span class="code-method-index">01</span>
+                <span class="code-method-copy">
+                  <strong>Multilevel Models</strong>
+                  <small>Hierarchical estimation</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="missing" aria-pressed="false">
+                <span class="code-method-index">02</span>
+                <span class="code-method-copy">
+                  <strong>Missing Data</strong>
+                  <small>Multiple imputation</small>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="code-library-group" role="group" aria-labelledby="code-group-visualization">
+            <span class="code-library-group-title" id="code-group-visualization">
+              <span>03</span> Visualization
+            </span>
+
+            <div class="code-method-list">
+              <button class="code-method-button" type="button" data-code-snippet="ggplot" aria-pressed="false">
+                <span class="code-method-index">01</span>
+                <span class="code-method-copy">
+                  <strong>ggplot2</strong>
+                  <small>Publication graphics</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="network" aria-pressed="false">
+                <span class="code-method-index">02</span>
+                <span class="code-method-copy">
+                  <strong>Network Graphs</strong>
+                  <small>Relational structure</small>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="code-library-group" role="group" aria-labelledby="code-group-quality">
+            <span class="code-library-group-title" id="code-group-quality">
+              <span>04</span> Data Quality &amp; Diagnostics
+            </span>
+
+            <div class="code-method-list">
+              <button class="code-method-button" type="button" data-code-snippet="diagnostics" aria-pressed="false">
+                <span class="code-method-index">01</span>
+                <span class="code-method-copy">
+                  <strong>Data Diagnostics</strong>
+                  <small>Missingness, duplicates, uniqueness</small>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </aside>
 
@@ -290,6 +399,62 @@ summary(pooled, conf.int = TRUE)
 `
     },
 
+
+    ggplot: {
+      label: "ggplot2",
+      file: "publication-plot.R",
+      status: "R / publication visualization",
+      code: `# Publication-ready visualization
+library(tidyverse)
+
+plot_data <- data |>
+  drop_na(x, y, group)
+
+ggplot(
+  plot_data,
+  aes(x = x, y = y, group = group)
+) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 1.8) +
+  labs(
+    x = "X",
+    y = "Y",
+    caption = "Source: analytical dataset"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.minor = element_blank(),
+    plot.title.position = "plot"
+  )
+`
+    },
+
+    network: {
+      label: "Network Graphs",
+      file: "network-graph.R",
+      status: "R / relational visualization",
+      code: `# Network visualization
+library(tidyverse)
+library(igraph)
+library(ggraph)
+
+graph <- graph_from_data_frame(
+  d = edges,
+  vertices = nodes,
+  directed = FALSE
+)
+
+ggraph(graph, layout = "fr") +
+  geom_edge_link(alpha = 0.30) +
+  geom_node_point(aes(size = centrality)) +
+  geom_node_text(
+    aes(label = name),
+    repel = TRUE
+  ) +
+  theme_graph()
+`
+    },
+
     diagnostics: {
       label: "Data Diagnostics",
       file: "diagnostics.R",
@@ -341,8 +506,6 @@ duplicate_rows
     buttons.forEach((button) => {
       const isActive = button.dataset.codeSnippet === key;
       button.setAttribute("aria-pressed", String(isActive));
-      button.classList.toggle("button-primary", isActive);
-      button.classList.toggle("button-secondary", !isActive);
     });
   };
 

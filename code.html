@@ -468,34 +468,111 @@ icc
 `
     },
 
-    missing: {
-      label: "Missing Data",
-      file: "missing-data.R",
-      status: "R / multiple imputation",
-      code: `# Multiple imputation workflow
-library(tidyverse)
+mice: {
+      label: "MICE",
+      file: "mice.R",
+      status: "R | Multiple Imputation by Chained Equations",
+      code: `library(tidyverse)
 library(mice)
 
-analysis_data <- data |>
-  select(outcome, predictor, covariate_a, covariate_b)
+set.seed(1501211)
 
-set.seed(42)
+------------------------------------------------------------------------------------------
+# 1. INSPECT MISSING DATA:
+md.pattern(data)
 
-imp <- mice(
-  analysis_data,
-  m = 20,
-  maxit = 20,
-  method = "pmm",
+missing_summary <- data |>
+  summarise(
+    across(
+      everything(),
+      ~ mean(is.na(.x))
+    )
+  ) |>
+  pivot_longer(
+    everything(),
+    names_to = "variable",
+    values_to = "missing_rate"
+  )
+
+------------------------------------------------------------------------------------------
+# 2. INITIALIZE IMPUTATION SETTINGS:
+mice_init <- mice(
+  data,
+  maxit = 0,
   printFlag = FALSE
 )
 
-fit <- with(
-  imp,
-  lm(outcome ~ predictor + covariate_a + covariate_b)
+methods <- mice_init$method
+predictor_matrix <- mice_init$predictorMatrix
+
+------------------------------------------------------------------------------------------
+# 3. DEFINE IMPUTATION METHODS:
+methods <- make.method(data)
+
+methods[sapply(data, is.numeric)] <- "pmm"       # Predictive mean matching
+methods[sapply(data, is.logical)] <- "logreg"    # Binary logistic regression
+
+factor_vars <- names(data)[sapply(data, is.factor)]
+
+for (variable in factor_vars) {
+  methods[variable] <- if (
+    nlevels(data[[variable]]) == 2
+  ) "logreg" else "polyreg"
+}
+
+methods[colSums(is.na(data)) == 0] <- ""          # Do not impute complete variables
+
+------------------------------------------------------------------------------------------
+# 4. DEFINE PREDICTOR MATRIX:
+predictor_matrix <- make.predictorMatrix(data)
+
+diag(predictor_matrix) <- 0                       # Variable cannot predict itself
+
+------------------------------------------------------------------------------------------
+# 5. RUN MULTIPLE IMPUTATION:
+mice_fit <- mice(
+  data,
+  m = 20,                         # Number of imputed datasets
+  maxit = 20,                     # Number of chained-equation iterations
+  method = methods,
+  predictorMatrix = predictor_matrix,
+  seed = 1501211,
+  printFlag = FALSE
 )
 
-pooled <- pool(fit)
-summary(pooled, conf.int = TRUE)
+------------------------------------------------------------------------------------------
+# 6. CHECK IMPUTATION CONVERGENCE:
+plot(mice_fit)
+
+densityplot(
+  mice_fit
+)
+
+stripplot(
+  mice_fit,
+  pch = 20,
+  cex = 0.6
+)
+
+------------------------------------------------------------------------------------------
+# 7. EXTRACT COMPLETED DATASETS:
+completed_data <- complete(
+  mice_fit,
+  action = "all"
+)
+
+completed_long <- complete(
+  mice_fit,
+  action = "long",
+  include = TRUE
+)
+
+------------------------------------------------------------------------------------------
+# 8. EXTRACT A SINGLE IMPUTED DATASET:
+data_imputed <- complete(
+  mice_fit,
+  action = 1
+)
 `
     },
 

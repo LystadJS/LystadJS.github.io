@@ -325,13 +325,14 @@ library(uwot)
 
 set.seed(1501211)
 
-# 1. PREPARE FEATURE MATRIX ----------------------------
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
 x <- data |>
   select(where(is.numeric)) |>
   drop_na() |>
   scale()
 
---------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 # 2. FIT UMAP:
 umap_fit <- umap(
   x,
@@ -347,16 +348,19 @@ umap_fit <- umap(
   verbose = FALSE
 )
 
-# 3. EXTRACT UMAP COORDINATES ---------------------------
+------------------------------------------------------------------------------------------
+# 3. EXTRACT UMAP COORDINATES:
 umap_coords <- as_tibble(umap_fit$embedding) |>
   setNames(c("UMAP1", "UMAP2"))
 
-# 4. ATTACH COORDINATES TO ORIGINAL DATA -----------------
+------------------------------------------------------------------------------------------
+# 4. ATTACH COORDINATES TO ORIGINAL DATA:
 umap_data <- data |>
   drop_na() |>
   bind_cols(umap_coords)
 
-# 5. VISUALIZATION ------------------------------------------
+------------------------------------------------------------------------------------------
+# 5. VISUALIZATION:
 ggplot(umap_data, aes(x = UMAP1, y = UMAP2)) +
   geom_point(alpha = 0.70, size = 2) +
   coord_equal() +
@@ -366,7 +370,8 @@ ggplot(umap_data, aes(x = UMAP1, y = UMAP2)) +
   ) +
   theme_minimal()
 
-# 6. PROJECT NEW OBSERVATIONS --------------------------------
+------------------------------------------------------------------------------------------
+# 6. PROJECT NEW OBSERVATIONS:
 new_x <- new_data |>
   select(where(is.numeric)) |>
   scale(

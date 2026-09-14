@@ -3550,6 +3550,9 @@ body[data-page="about"] .about-section {
    labeled section rail used by subsequent About sections. */
 body[data-page="about"] .about-intro-section {
   display: block;
+  /* Match the CV: the layout itself supplies the top offset below the hero.
+     Do not add a second section-height spacer before the opening content. */
+  padding-top: 0;
 }
 
 body[data-page="about"] .about-intro-section .about-section-body {

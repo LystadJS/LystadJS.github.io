@@ -3976,3 +3976,28 @@ body[data-page="code"] .work-links { margin-top: .72rem; padding-top: 0; }
 body[data-page="code"] .work-links a, body[data-page="code"] .work-links span { font-size: .62rem; }
 @media (max-width:700px){body[data-page="code"] .code-page-section{grid-template-columns:1fr;gap:1.1rem;padding:3rem 0}body[data-page="code"] .code-page-section:first-child{padding-top:0}body[data-page="code"] .code-layout{grid-template-columns:1fr}}
 @media (max-width:560px){body[data-page="code"] .code-page-hero{padding-top:3.5rem;padding-bottom:2.75rem}}
+
+/* === Shared inner-page hero alignment ===================================
+   Keep the bottom divider at one fixed desktop level across About,
+   Research, Projects, Code & Development, and CV for smoother page changes. */
+@media (min-width: 701px) {
+  body[data-page="about"] .page-hero,
+  body[data-page="research"] .page-hero,
+  body[data-page="projects"] .page-hero,
+  body[data-page="code"] .page-hero,
+  body[data-page="cv"] .page-hero {
+    height: 426px;
+    min-height: 426px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Applied Work: give the large display title a little more breathing room
+   before the descriptive subtitle. */
+body[data-page="projects"] .projects-page-hero h1 {
+  margin-bottom: 1.15rem;
+  line-height: .90;
+}

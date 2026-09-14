@@ -323,22 +323,62 @@ summary(pca_fit)
 library(tidyverse)
 library(uwot)
 
+set.seed(1501211)
+
+# 1. PREPARE FEATURE MATRIX ----------------------------
 x <- data |>
   select(where(is.numeric)) |>
   drop_na() |>
   scale()
 
-set.seed(42)
-
-embedding <- umap(
+# 2. FIT UMAP ------------------------------------------
+umap_fit <- umap(
   x,
-  n_neighbors = 15,
-  min_dist = 0.10,
-  metric = "euclidean"
+  n_neighbors = 15,     # Size of the local neighborhood
+  n_components = 2,     # Number of embedding dimensions
+  metric = "euclidean", # Distance metric in the original feature space
+  min_dist = 0.10,      # Minimum spacing between embedded observations
+  spread = 1,           # Overall scale of the embedding
+  init = "spectral",    # Starting configuration
+  n_epochs = 500,       # Number of optimization iterations
+  learning_rate = 1,    # Optimization step size
+  ret_model = TRUE,     # Retain fitted model for later projection
+  verbose = FALSE
 )
 
-umap_df <- as_tibble(embedding) |>
-  set_names(c("UMAP1", "UMAP2"))
+# 3. EXTRACT UMAP COORDINATES ---------------------------
+umap_coords <- as_tibble(umap_fit$embedding) |>
+  setNames(c("UMAP1", "UMAP2"))
+
+# 4. ATTACH COORDINATES TO ORIGINAL DATA -----------------
+umap_data <- data |>
+  drop_na() |>
+  bind_cols(umap_coords)
+
+# 5. VISUALIZATION ------------------------------------------
+ggplot(umap_data, aes(x = UMAP1, y = UMAP2)) +
+  geom_point(alpha = 0.70, size = 2) +
+  coord_equal() +
+  labs(
+    x = "UMAP 1",
+    y = "UMAP 2"
+  ) +
+  theme_minimal()
+
+# 6. PROJECT NEW OBSERVATIONS --------------------------------
+new_x <- new_data |>
+  select(where(is.numeric)) |>
+  scale(
+    center = attr(x, "scaled:center"),
+    scale = attr(x, "scaled:scale")
+  )
+
+new_coords <- umap_transform(
+  new_x,
+  umap_fit
+) |>
+  as_tibble() |>
+  setNames(c("UMAP1", "UMAP2"))
 `
     },
 

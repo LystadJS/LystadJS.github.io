@@ -293,23 +293,82 @@
       status: "R | Principal Component Analysis",
       code: `library(tidyverse)
 
-x <- data |>
-  select(where(is.numeric)) |>
-  drop_na()
+set.seed(1501211)
 
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+pca_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- pca_data_complete |>
+  select(where(is.numeric))
+
+------------------------------------------------------------------------------------------
+# 2. FIT PCA:
 pca_fit <- prcomp(
   x,
-  center = TRUE,
-  scale. = TRUE
+  center = TRUE,   # Center each variable around its mean
+  scale. = TRUE,   # Standardize variables to unit variance
+  rank. = NULL     # Retain all available principal components
 )
 
-scores <- as_tibble(pca_fit$x)
-loadings <- as_tibble(
+------------------------------------------------------------------------------------------
+# 3. EXTRACT PRINCIPAL COMPONENT COORDINATES:
+pca_coords <- as_tibble(pca_fit$x[, 1:2]) |>
+  setNames(c("PC1", "PC2"))
+
+------------------------------------------------------------------------------------------
+# 4. ATTACH COORDINATES TO ORIGINAL DATA:
+pca_data <- pca_data_complete |>
+  bind_cols(pca_coords)
+
+------------------------------------------------------------------------------------------
+# 5. CALCULATE VARIANCE EXPLAINED:
+variance_explained <- pca_fit$sdev^2 / sum(pca_fit$sdev^2)
+
+variance_table <- tibble(
+  component = paste0("PC", seq_along(variance_explained)),
+  variance_explained = variance_explained,
+  cumulative_variance = cumsum(variance_explained)
+)
+
+------------------------------------------------------------------------------------------
+# 6. EXTRACT VARIABLE LOADINGS:
+pca_loadings <- as_tibble(
   pca_fit$rotation,
   rownames = "variable"
 )
 
-summary(pca_fit)
+------------------------------------------------------------------------------------------
+# 7. VISUALIZATION:
+ggplot(pca_data, aes(x = PC1, y = PC2)) +
+  geom_point(alpha = 0.70, size = 2) +
+  coord_equal() +
+  labs(
+    x = paste0(
+      "PC1 (",
+      scales::percent(variance_explained[1], accuracy = 0.1),
+      ")"
+    ),
+    y = paste0(
+      "PC2 (",
+      scales::percent(variance_explained[2], accuracy = 0.1),
+      ")"
+    )
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 8. PROJECT NEW OBSERVATIONS:
+new_x <- new_data |>
+  select(all_of(colnames(x)))
+
+new_coords <- predict(
+  pca_fit,
+  newdata = new_x
+) |>
+  as_tibble() |>
+  select(PC1, PC2)
 `
     },
 

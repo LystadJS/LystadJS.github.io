@@ -1,13 +1,12 @@
 window.JSL_EMPIRICAL_DATA = {
   countryNames: {
-    AF:"Afghanistan",AE:"United Arab Emirates",AM:"Armenia",AU:"Australia",AZ:"Azerbaijan",
-    BD:"Bangladesh",BE:"Belgium",BF:"Burkina Faso",BH:"Bahrain",BN:"Brunei",CA:"Canada",CD:"Democratic Republic of the Congo",
-    CM:"Cameroon",CN:"China",DE:"Germany",DJ:"Djibouti",DZ:"Algeria",EG:"Egypt",ES:"Spain",FR:"France",GB:"United Kingdom",
-    GE:"Georgia",ID:"Indonesia",IL:"Israel",IN:"India",IQ:"Iraq",IR:"Iran",JO:"Jordan",JP:"Japan",KG:"Kyrgyzstan",
-    KW:"Kuwait",KZ:"Kazakhstan",LB:"Lebanon",LK:"Sri Lanka",LY:"Libya",MA:"Morocco",ML:"Mali",MV:"Maldives",
-    MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NE:"Niger",NG:"Nigeria",NP:"Nepal",OM:"Oman",PH:"Philippines",
-    PK:"Pakistan",PS:"West Bank and Gaza Strip",QA:"Qatar",RU:"Russia",SA:"Saudi Arabia",SO:"Somalia",SY:"Syria",
-    TD:"Chad",TJ:"Tajikistan",TN:"Tunisia",TR:"Turkey",TZ:"Tanzania",UG:"Uganda",US:"United States",YE:"Yemen"
+    AF:"Afghanistan",AE:"United Arab Emirates",AM:"Armenia",AT:"Austria",AU:"Australia",AZ:"Azerbaijan",
+    BD:"Bangladesh",BE:"Belgium",BF:"Burkina Faso",BG:"Bulgaria",BH:"Bahrain",BN:"Brunei",BR:"Brazil",CA:"Canada",CD:"Democratic Republic of the Congo",
+    CM:"Cameroon",CN:"China",CY:"Cyprus",CZ:"Czechia",DE:"Germany",DJ:"Djibouti",DK:"Denmark",DZ:"Algeria",EE:"Estonia",EG:"Egypt",ES:"Spain",FI:"Finland",FR:"France",GB:"United Kingdom",
+    GE:"Georgia",GR:"Greece",HR:"Croatia",HU:"Hungary",ID:"Indonesia",IE:"Ireland",IL:"Israel",IN:"India",IQ:"Iraq",IR:"Iran",IT:"Italy",JO:"Jordan",JP:"Japan",KG:"Kyrgyzstan",KR:"South Korea",
+    KW:"Kuwait",KZ:"Kazakhstan",LB:"Lebanon",LK:"Sri Lanka",LT:"Lithuania",LU:"Luxembourg",LV:"Latvia",LY:"Libya",MA:"Morocco",ML:"Mali",MT:"Malta",MV:"Maldives",
+    MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NE:"Niger",NG:"Nigeria",NL:"Netherlands",NP:"Nepal",OM:"Oman",PH:"Philippines",PK:"Pakistan",PL:"Poland",PS:"West Bank and Gaza Strip",PT:"Portugal",
+    QA:"Qatar",RO:"Romania",RU:"Russia",SA:"Saudi Arabia",SE:"Sweden",SI:"Slovenia",SK:"Slovakia",SO:"Somalia",SY:"Syria",TD:"Chad",TJ:"Tajikistan",TN:"Tunisia",TR:"Turkey",TZ:"Tanzania",UG:"Uganda",US:"United States",YE:"Yemen"
   },
 
   scopeDefinitions: {
@@ -99,7 +98,9 @@ window.JSL_EMPIRICAL_DATA = {
       themes:["United Nations","AI governance","Multilateral policy"],systems:["UN and multilateral governance","Emerging technology governance"],
       challenges:["Cross-institutional policy comparison","Rapid technical change"],methods:["Policy analysis","Comparative multilateral analysis"],
       scopes:["emergingTechnology","humanSecurity"],
-      countries:[],global:true,href:"research.html#project-ai-nonproliferation"
+      countries:[],
+      mapCountries:["CN","US","AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","JP","KR","BR","IN","IL","SA","AE"],
+      global:true,href:"research.html#project-ai-nonproliferation"
     },
     autonomousWeapons: {
       title:"Countering autonomous weapons proliferation",
@@ -108,7 +109,9 @@ window.JSL_EMPIRICAL_DATA = {
       themes:["Autonomy","Security","Non-proliferation"],systems:["Autonomous systems","Technology proliferation"],
       challenges:["Technology diffusion","Dual-use capability","Multilateral coordination"],methods:["Policy analysis","Risk assessment"],
       scopes:["emergingTechnology","humanSecurity"],
-      countries:[],global:true,href:"research.html#project-autonomous-weapons"
+      countries:[],
+      mapCountries:["CN","US","AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","JP","KR","BR","IN","IL","SA","AE"],
+      global:true,href:"research.html#project-autonomous-weapons"
     },
     ambassadorAdvising: {
       title:"Statistical analysis for policy and Ambassador-level advising",

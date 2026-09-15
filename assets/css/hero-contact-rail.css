@@ -2,19 +2,62 @@
    Loaded only on the homepage by assets/js/main.js. */
 
 body[data-page="index"] .hero {
+  width: min(calc(100vw - 2rem), 1380px);
+  margin-left: 50%;
+  transform: translateX(-50%);
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
+  min-height: auto;
+  align-items: start;
+  padding: clamp(3.25rem, 6vw, 5.5rem) 0 clamp(2.75rem, 5vw, 4.5rem);
 }
 
 body[data-page="index"] .hero-profile {
   width: 100%;
   max-width: none;
-  grid-template-columns: clamp(150px, 17vw, 205px) minmax(0, 1fr) 52px;
+  display: grid;
+  grid-template-columns: clamp(150px, 16vw, 205px) minmax(0, 1fr) 52px;
+  grid-template-rows: auto auto;
   column-gap: clamp(1.5rem, 3vw, 2.4rem);
+  row-gap: clamp(.75rem, 1.3vw, 1.1rem);
+  align-items: start;
+}
+
+/* Portrait occupies the left column across both text rows, allowing the name
+   and lede to stack immediately beside it with no dead space. */
+body[data-page="index"] .hero-headshot {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: start;
+}
+
+body[data-page="index"] .hero-identity {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: none;
+  align-self: end;
+}
+
+body[data-page="index"] .hero-identity h1 {
+  max-width: none;
+  margin-bottom: .8rem;
 }
 
 body[data-page="index"] .hero-details {
-  grid-column: 1 / 3;
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  padding-top: .85rem;
+  border-top: 1px solid rgba(74,53,71,.46);
+}
+
+body[data-page="index"] .hero-lede,
+body[data-page="index"] .hero-note {
+  width: 100%;
+  max-width: none;
 }
 
 /* Keep the hero compact: navigation is handled by the header and contact rail. */
@@ -23,7 +66,7 @@ body[data-page="index"] .hero-details > .hero-actions {
 }
 
 body[data-page="index"] .hero-note {
-  margin: 1rem 0 0;
+  margin: .9rem 0 0;
 }
 
 body[data-page="index"] .hero-contact-rail {
@@ -138,13 +181,23 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 980px) {
+  body[data-page="index"] .hero {
+    width: calc(100vw - 2rem);
+  }
+
   body[data-page="index"] .hero-profile {
     grid-template-columns: minmax(145px, 185px) minmax(0, 1fr) 48px;
     max-width: none;
   }
 
+  body[data-page="index"] .hero-headshot {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  body[data-page="index"] .hero-identity,
   body[data-page="index"] .hero-details {
-    grid-column: 1 / 3;
+    grid-column: 2;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -160,13 +213,7 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
     column-gap: 1.1rem;
   }
 
-  body[data-page="index"] .hero-details {
-    grid-column: 1 / 3;
-  }
-
   body[data-page="index"] .hero-contact-rail {
-    grid-column: 3;
-    grid-row: 1 / 3;
     gap: .42rem;
     padding-left: .45rem;
   }
@@ -182,10 +229,15 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 560px) {
+  body[data-page="index"] .hero {
+    padding-top: 2.5rem;
+  }
+
   body[data-page="index"] .hero-profile {
     grid-template-columns: minmax(0, 1fr) 42px;
+    grid-template-rows: auto auto auto;
     column-gap: .85rem;
-    row-gap: 1.3rem;
+    row-gap: 1.15rem;
   }
 
   body[data-page="index"] .hero-headshot,

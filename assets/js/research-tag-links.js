@@ -54,4 +54,18 @@
     }
     tag.replaceWith(link);
   });
+
+  /* Promote the AI-governance project from a forthcoming placeholder to its
+     sanitized public reproducibility repository without changing card layout. */
+  const aiCard = document.getElementById("project-ai-nonproliferation");
+  const aiWorkLinks = aiCard?.querySelector(".work-links");
+  if (aiWorkLinks) {
+    const link = document.createElement("a");
+    link.href = "https://github.com/LystadJS/project-ai-governance-non-proliferation";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Public reproducibility repository ↗";
+    link.setAttribute("aria-label", "Open the public AI governance reproducibility repository");
+    aiWorkLinks.replaceChildren(link);
+  }
 })();

@@ -1,0 +1,30 @@
+/* Research / applied work tag links, mirroring CV skill-tag behavior. */
+.research-tag-link {
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.research-tag-link::after {
+  content: " ↗";
+  opacity: .45;
+  font-size: .86em;
+}
+
+.research-tag-link:hover,
+.research-tag-link:focus-visible {
+  color: var(--paper);
+  border-color: var(--line-bright);
+  background: rgba(255,255,255,.035);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+#applied-research .research-tag-link:hover,
+#applied-research .research-tag-link:focus-visible {
+  border-color: rgba(146,112,172,.55);
+  background: rgba(101,69,126,.07);
+}

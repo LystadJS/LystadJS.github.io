@@ -10,9 +10,8 @@ body[data-page="index"] .hero {
   padding: clamp(3.25rem, 6vw, 5.5rem) 0 clamp(2.75rem, 5vw, 4.5rem);
 }
 
-/* Restore the original visual hierarchy without dividing the hero into content
-   columns: portrait + identity form one centered row, while the lede and current
-   inquiry occupy a full-width row beneath them. */
+/* Portrait and name share the top row.  The lede and current inquiry then take
+   the full remaining hero width up to the external-link rail. */
 body[data-page="index"] .hero-profile {
   position: relative;
   width: 100%;
@@ -20,11 +19,11 @@ body[data-page="index"] .hero-profile {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   column-gap: clamp(1.5rem, 3vw, 2.4rem);
   row-gap: clamp(1rem, 1.8vw, 1.45rem);
   padding-right: 64px;
-  text-align: center;
+  text-align: left;
 }
 
 body[data-page="index"] .hero-headshot {
@@ -35,19 +34,21 @@ body[data-page="index"] .hero-headshot {
 }
 
 body[data-page="index"] .hero-identity {
-  flex: 0 1 min(720px, calc(100% - 250px));
+  flex: 1 1 0;
+  min-width: 0;
   width: auto;
-  max-width: 720px;
+  max-width: none;
   margin: 0;
-  text-align: center;
+  text-align: left;
 }
 
 body[data-page="index"] .hero-identity .kicker,
 body[data-page="index"] .hero-identity h1 {
-  text-align: center;
+  text-align: left;
 }
 
 body[data-page="index"] .hero-identity h1 {
+  width: 100%;
   max-width: none;
   margin: .35rem 0 .5rem;
 }
@@ -60,7 +61,7 @@ body[data-page="index"] .hero-details {
   margin: 0;
   padding-top: .95rem;
   border-top: 1px solid rgba(74,53,71,.46);
-  text-align: center;
+  text-align: left;
   align-self: stretch;
 }
 
@@ -70,7 +71,7 @@ body[data-page="index"] .hero-note {
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  text-align: center;
+  text-align: left;
 }
 
 body[data-page="index"] .hero-details > .hero-actions {
@@ -78,7 +79,7 @@ body[data-page="index"] .hero-details > .hero-actions {
 }
 
 body[data-page="index"] .hero-note {
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: .9rem;
 }
 
@@ -203,10 +204,6 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
     padding-right: 58px;
   }
 
-  body[data-page="index"] .hero-identity {
-    flex-basis: min(620px, calc(100% - 225px));
-  }
-
   body[data-page="index"] .hero-contact-rail {
     width: 48px;
     padding-left: .55rem;
@@ -223,11 +220,6 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   body[data-page="index"] .hero-headshot {
     flex-basis: 145px;
     width: 145px;
-  }
-
-  body[data-page="index"] .hero-identity {
-    flex-basis: calc(100% - 175px);
-    max-width: none;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -254,6 +246,7 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   body[data-page="index"] .hero-profile {
     flex-direction: column;
     flex-wrap: nowrap;
+    align-items: flex-start;
     gap: 1rem;
     padding-right: 48px;
   }

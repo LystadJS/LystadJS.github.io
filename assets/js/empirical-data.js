@@ -146,38 +146,42 @@ window.JSL_EMPIRICAL_DATA = {
     }
   },
 
-  /* Country coverage is active now. Scope assignments are intentionally
-     left empty until the user supplies the reporting-specific details. */
+  /* Reporting records can belong to Investigative Journalism, Foreign Correspondence, or both. */
   journalismProjects: {
     journalismUnitedStates: {
       shortTitle:"United States",title:"Journalistic Work — United States",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["US"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
+      scopes:["investigativeJournalism"],countries:["US"],href:null
     },
     journalismMorocco: {
       shortTitle:"Morocco",title:"Journalistic Work — Morocco",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["MA"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
+      scopes:["investigativeJournalism","foreignCorrespondence"],countries:["MA"],href:null
     },
     journalismSpain: {
       shortTitle:"Spain",title:"Journalistic Work — Spain",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["ES"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
+      scopes:["investigativeJournalism","foreignCorrespondence"],countries:["ES"],href:null
     },
     journalismFrance: {
       shortTitle:"France",title:"Journalistic Work — France",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["FR"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
+      scopes:["investigativeJournalism","foreignCorrespondence"],countries:["FR"],href:null
     },
     journalismAlgeria: {
       shortTitle:"Algeria",title:"Journalistic Work — Algeria",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["DZ"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
+      scopes:["investigativeJournalism","foreignCorrespondence"],countries:["DZ"],href:null
     }
   }
 };

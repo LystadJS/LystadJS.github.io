@@ -1,4 +1,4 @@
-/* Post-deploy QA refinements for the homepage hero and Research Program map. */
+/* Final homepage QA refinements for the hero and Research Program map. */
 
 body[data-page="index"] .hero {
   padding: clamp(4.1rem, 7vw, 6.1rem) 0 clamp(3.1rem, 5vw, 4.2rem);
@@ -17,20 +17,121 @@ body[data-page="index"] .hero {
   margin-bottom: clamp(1.8rem, 3vw, 2.35rem);
 }
 
+/* Lock the desktop visualization footprint so detail-copy changes do not
+   move the graph or shift the sections below it. */
 .rpm-workspace {
+  height: 540px;
   min-height: 540px;
 }
 
+.rpm-detail {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+/* Resting state: everything neutral except the computational-statistics core. */
+.rpm-method .rpm-shape,
+.rpm-method.rpm-primary .rpm-shape,
+.rpm-problem .rpm-shape {
+  fill: rgba(12, 10, 14, .95);
+  stroke: rgba(145, 132, 147, .40);
+  stroke-width: 1;
+}
+
+.rpm-method.rpm-primary {
+  filter: none;
+}
+
+.rpm-edge,
+.rpm-edge.rpm-method-edge,
 .rpm-edge.rpm-problem-edge {
-  opacity: .12;
+  stroke: #746978;
+  stroke-width: 1;
+}
+
+.rpm-edge.rpm-method-edge {
+  opacity: .16;
+}
+
+.rpm-edge.rpm-problem-edge {
+  opacity: .11;
 }
 
 .rpm-map[data-mode="questions"] .rpm-question-edge {
-  opacity: .16;
+  opacity: .15;
+}
+
+/* The center remains the only colored node at rest. */
+.rpm-center .rpm-shape,
+.rpm-center.is-active .rpm-shape {
+  fill: rgba(141, 23, 50, .11);
+  stroke: rgba(191, 49, 82, .82);
+  stroke-width: 1.15 !important;
+}
+
+/* Interaction must never change SVG geometry.  Only color/opacity changes. */
+.rpm-node,
+.rpm-node .rpm-shape,
+.rpm-edge {
+  transform-box: fill-box;
+}
+
+.rpm-node {
+  filter: none !important;
+  transition: opacity 140ms ease !important;
+}
+
+.rpm-node .rpm-shape {
+  transition: fill 140ms ease, stroke 140ms ease !important;
+}
+
+.rpm-edge {
+  transition: opacity 140ms ease, stroke 140ms ease !important;
+}
+
+.rpm-node:hover,
+.rpm-node:focus-visible,
+.rpm-node.is-active,
+.rpm-method.rpm-primary:hover,
+.rpm-method.rpm-primary:focus-visible {
+  filter: none !important;
+}
+
+.rpm-node.is-active .rpm-shape,
+.rpm-node.is-related .rpm-shape {
+  stroke-width: 1 !important;
+}
+
+.rpm-edge.is-active {
+  stroke: var(--crimson-bright);
+  stroke-width: 1 !important;
+  filter: none !important;
+}
+
+.rpm-node.is-active:not(.rpm-center) .rpm-shape {
+  fill: rgba(141, 23, 50, .13);
+  stroke: var(--crimson-bright);
+}
+
+.rpm-node.is-related .rpm-shape {
+  stroke: rgba(191, 49, 82, .52);
 }
 
 .rpm-node.is-muted {
   opacity: .10 !important;
+}
+
+/* Keep the selected Problems/Questions control visually selected but neutral,
+   so it does not compete with the center node. */
+.rpm-mode button.is-active {
+  color: var(--paper);
+  background: rgba(255, 255, 255, .035);
+  box-shadow: inset 0 0 0 1px rgba(200, 188, 199, .10);
+}
+
+.rpm-legend-symbol {
+  color: #8f838f;
 }
 
 .rpm-detail-summary,
@@ -39,6 +140,11 @@ body[data-page="index"] .hero {
 }
 
 @media (max-width: 980px) {
+  .rpm-workspace {
+    height: auto;
+    min-height: 0;
+  }
+
   .rpm-map-wrap {
     min-height: 510px;
   }
@@ -46,6 +152,9 @@ body[data-page="index"] .hero {
   .rpm-detail {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
+    height: 330px;
+    min-height: 330px;
+    overflow-y: auto;
   }
 
   .rpm-detail-head {

@@ -1,40 +1,175 @@
 (() => {
   "use strict";
 
-  const RESEARCH_CASES = {
-    IQ: {
-      country: "Iraq",
+  const COUNTRY_NAMES = {
+    AF: "Afghanistan",
+    AE: "United Arab Emirates",
+    AM: "Armenia",
+    AU: "Australia",
+    AZ: "Azerbaijan",
+    BD: "Bangladesh",
+    BE: "Belgium",
+    BF: "Burkina Faso",
+    BH: "Bahrain",
+    BN: "Brunei",
+    CD: "Democratic Republic of the Congo",
+    CM: "Cameroon",
+    DE: "Germany",
+    DJ: "Djibouti",
+    DZ: "Algeria",
+    EG: "Egypt",
+    FR: "France",
+    GB: "United Kingdom",
+    GE: "Georgia",
+    ID: "Indonesia",
+    IL: "Israel",
+    IN: "India",
+    IQ: "Iraq",
+    IR: "Iran",
+    JO: "Jordan",
+    KG: "Kyrgyzstan",
+    KW: "Kuwait",
+    KZ: "Kazakhstan",
+    LB: "Lebanon",
+    LK: "Sri Lanka",
+    LY: "Libya",
+    MA: "Morocco",
+    ML: "Mali",
+    MV: "Maldives",
+    MX: "Mexico",
+    MY: "Malaysia",
+    MZ: "Mozambique",
+    NE: "Niger",
+    NG: "Nigeria",
+    OM: "Oman",
+    PH: "Philippines",
+    PK: "Pakistan",
+    PS: "West Bank and Gaza Strip",
+    QA: "Qatar",
+    RU: "Russia",
+    SA: "Saudi Arabia",
+    SO: "Somalia",
+    SY: "Syria",
+    TD: "Chad",
+    TJ: "Tajikistan",
+    TN: "Tunisia",
+    TR: "Turkey",
+    TZ: "Tanzania",
+    UG: "Uganda",
+    YE: "Yemen"
+  };
+
+  const PROJECTS = {
+    targetMap: {
+      shortTitle: "Target Map",
+      title: "The Caliphate's Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq",
+      status: "Published",
+      year: "2026",
+      question: "How closely did Islamic State attack patterns correspond to district-level ethnosectarian composition and target type?",
       themes: ["Political violence", "Terrorism"],
-      summary:
-        "An empirical setting for research on insurgent violence, ethnosectarian composition, geographic concentration, and target selection.",
-      systems: [
-        "Insurgent violence",
-        "Ethnosectarian geography",
-        "Civilian targeting"
+      systems: ["Insurgent violence", "Ethnosectarian geography", "Civilian targeting"],
+      challenges: ["Spatial composition", "Event heterogeneity", "Target-type variation"],
+      methods: ["Population-weighted geography", "Statistical modeling", "Data visualization"],
+      countries: ["IQ"],
+      href: null
+    },
+
+    lethality: {
+      shortTitle: "Estimating Lethality",
+      title: "Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism",
+      status: "Published",
+      year: "2026",
+      question: "How do missing casualty observations and perpetrator-attribution bias alter estimates of lethality in Islamic State-linked suicide attacks?",
+      themes: ["Terrorism", "Missing data"],
+      systems: ["Suicide attacks", "Islamic State-linked terrorism", "Attack lethality"],
+      challenges: ["Missing casualty data", "Attribution bias", "Cross-country event data"],
+      methods: ["Missing-data analysis", "Comparative event analysis", "R"],
+      countries: [
+        "AF", "DZ", "AU", "BH", "BD", "BE", "BF", "CM", "TD", "CD", "EG", "FR",
+        "GE", "DE", "IN", "ID", "IR", "IQ", "IL", "JO", "KZ", "KW", "KG", "LB",
+        "LY", "MY", "MV", "ML", "MZ", "NE", "NG", "PK", "PH", "RU", "SA", "SO",
+        "LK", "SY", "TJ", "TZ", "TN", "TR", "UG", "GB", "PS", "YE"
       ],
-      challenges: [
-        "Spatial composition",
-        "Event heterogeneity",
-        "Target-type variation"
+      href: null
+    },
+
+    climate: {
+      shortTitle: "Climate Change",
+      title: "The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa",
+      status: "Published",
+      year: "2022",
+      question: "How could projected climate stress intensify resource scarcity, governance pressure, and conditions exploitable by terrorist organizations across the Middle East and North Africa?",
+      themes: ["Climate risk", "Human security", "Terrorism"],
+      systems: ["Climate stress", "Resource scarcity", "Terrorist network development"],
+      challenges: ["Scenario uncertainty", "Cross-country climate exposure", "Multi-source integration"],
+      methods: ["Climate scenario comparison", "Spatial analysis", "Data visualization"],
+      countries: [
+        "DZ", "BH", "DJ", "EG", "IR", "IQ", "IL", "JO", "KW", "LB",
+        "LY", "MA", "OM", "QA", "SA", "SY", "TN", "AE", "PS", "YE"
       ],
-      methods: [
-        "Population-weighted geography",
-        "Statistical modeling",
-        "Data visualization"
+      href: null
+    },
+
+    vanguards: {
+      shortTitle: "Vanguards of Terror",
+      title: "Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency, 1999–2019",
+      status: "Published",
+      year: "2022",
+      question: "How consistent were the strategic and tactical behaviors of Islamic State wilayat across the movement's geographic expansion through 2019?",
+      themes: ["Terrorism", "Organizational behavior"],
+      systems: ["Islamic State wilayat", "Tactical cohesion", "Strategic variation"],
+      challenges: ["Cross-unit comparability", "Longitudinal conflict data", "Organizational heterogeneity"],
+      methods: ["Comparative analysis", "Longitudinal analysis", "OSINT"],
+      countries: [
+        "AF", "DZ", "AM", "AZ", "BD", "BN", "BF", "CM", "TD", "CD", "EG", "GE",
+        "IN", "ID", "IQ", "LY", "MY", "ML", "MZ", "NE", "NG", "PK", "PH", "RU",
+        "SA", "SO", "SY", "TZ", "TN", "TR", "UG", "YE"
       ],
-      projects: [
-        {
-          title:
-            "The Caliphate's Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq",
-          status: "Published",
-          year: "2026",
-          question:
-            "How closely did Islamic State attack patterns correspond to district-level ethnosectarian composition and target type?",
-          href: null
-        }
-      ]
+      href: null
     }
   };
+
+  function unique(values) {
+    return [...new Set(values)];
+  }
+
+  function buildResearchCases() {
+    const cases = {};
+
+    Object.entries(PROJECTS).forEach(([projectId, project]) => {
+      project.countries.forEach((code) => {
+        if (!COUNTRY_NAMES[code]) return;
+
+        if (!cases[code]) {
+          cases[code] = {
+            country: COUNTRY_NAMES[code],
+            themes: [],
+            systems: [],
+            challenges: [],
+            methods: [],
+            projects: []
+          };
+        }
+
+        cases[code].themes.push(...project.themes);
+        cases[code].systems.push(...project.systems);
+        cases[code].challenges.push(...project.challenges);
+        cases[code].methods.push(...project.methods);
+        cases[code].projects.push({ id: projectId, ...project });
+      });
+    });
+
+    Object.values(cases).forEach((item) => {
+      item.themes = unique(item.themes);
+      item.systems = unique(item.systems);
+      item.challenges = unique(item.challenges);
+      item.methods = unique(item.methods);
+    });
+
+    return cases;
+  }
+
+  const RESEARCH_CASES = buildResearchCases();
 
   const mapElement = document.getElementById("empirical-map");
   const panel = document.getElementById("empirical-panel");
@@ -78,7 +213,7 @@
     const item = getCase(code);
     if (!item) return false;
     if (activeFilter === "all") return true;
-    return item.themes.includes(activeFilter);
+    return item.projects.some((project) => project.id === activeFilter);
   }
 
   function tagHTML(items = []) {
@@ -102,14 +237,13 @@
     );
   }
 
-  function getAllThemes() {
-    return [...new Set(Object.values(RESEARCH_CASES).flatMap((item) => item.themes))].sort();
-  }
-
   function renderFilters() {
     const buttons = [
-      { value: "all", label: "All settings" },
-      ...getAllThemes().map((theme) => ({ value: theme, label: theme }))
+      { value: "all", label: "All research" },
+      ...Object.entries(PROJECTS).map(([value, project]) => ({
+        value,
+        label: project.shortTitle
+      }))
     ];
 
     filters.innerHTML = buttons.map(({ value, label }) => `
@@ -124,21 +258,22 @@
     `).join("");
   }
 
-  function renderDefaultPanel() {
-    const visibleCases = Object.entries(RESEARCH_CASES)
-      .filter(([code]) => matchesCurrentFilter(code))
-      .map(([, item]) => item);
+  function visibleProjects() {
+    if (activeFilter === "all") return Object.keys(PROJECTS);
+    return PROJECTS[activeFilter] ? [activeFilter] : [];
+  }
 
-    const countryCount = visibleCases.length;
-    const projectCount = visibleCases.reduce((total, item) => total + item.projects.length, 0);
+  function renderDefaultPanel() {
+    const countryCount = Object.keys(RESEARCH_CASES).filter(matchesCurrentFilter).length;
+    const projectCount = visibleProjects().length;
 
     panel.innerHTML = `
       <div class="empirical-panel-inner empirical-panel-empty">
         <p class="empirical-panel-kicker">Geographic research explorer</p>
         <h3>Select an empirical setting.</h3>
         <p>
-          Highlighted countries contain research associated with that setting.
-          Hover for a preview or select a country for the complete research record.
+          Highlighted countries appear in the selected research project.
+          Hover for a preview or select a country to see every project connected to that setting.
         </p>
         <div class="empirical-summary">
           <div class="empirical-summary-item">
@@ -147,7 +282,7 @@
           </div>
           <div class="empirical-summary-item">
             <strong>${projectCount}</strong>
-            <span>${pluralize(projectCount, "linked project")}</span>
+            <span>${pluralize(projectCount, "project")}</span>
           </div>
         </div>
       </div>
@@ -160,11 +295,18 @@
     const item = getCase(code);
     if (!item) return;
 
+    const visibleCountryProjects = item.projects.filter(
+      (project) => activeFilter === "all" || project.id === activeFilter
+    );
+
     panel.innerHTML = `
       <div class="empirical-panel-inner empirical-panel-empty">
         <p class="empirical-panel-kicker">Empirical setting</p>
         <h3 class="empirical-country-title">${escapeHTML(item.country)}</h3>
-        <p>${escapeHTML(item.summary)}</p>
+        <p>
+          ${visibleCountryProjects.length} ${pluralize(visibleCountryProjects.length, "research project")} connected to this setting.
+          Select the country to view the projects, systems, methods, and statistical challenges represented here.
+        </p>
 
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Research domains</p>
@@ -173,8 +315,8 @@
 
         <div class="empirical-summary">
           <div class="empirical-summary-item">
-            <strong>${item.projects.length}</strong>
-            <span>${pluralize(item.projects.length, "linked project")}</span>
+            <strong>${visibleCountryProjects.length}</strong>
+            <span>${pluralize(visibleCountryProjects.length, "linked project")}</span>
           </div>
           <div class="empirical-summary-item">
             <strong>→</strong>
@@ -191,7 +333,11 @@
     const item = getCase(code);
     if (!item) return;
 
-    const projectsHTML = item.projects.map((project) => {
+    const visibleCountryProjects = item.projects.filter(
+      (project) => activeFilter === "all" || project.id === activeFilter
+    );
+
+    const projectsHTML = visibleCountryProjects.map((project) => {
       const statusLine = [project.status, project.year].filter(Boolean).join(" · ");
       const linkHTML = project.href
         ? `<a class="empirical-project-link" href="${escapeHTML(project.href)}">View research</a>`
@@ -207,13 +353,19 @@
       `;
     }).join("");
 
+    const activeProjectIds = new Set(visibleCountryProjects.map((project) => project.id));
+    const activeThemes = unique(visibleCountryProjects.flatMap((project) => project.themes));
+    const activeSystems = unique(visibleCountryProjects.flatMap((project) => project.systems));
+    const activeChallenges = unique(visibleCountryProjects.flatMap((project) => project.challenges));
+    const activeMethods = unique(visibleCountryProjects.flatMap((project) => project.methods));
+
     panel.innerHTML = `
       <div class="empirical-panel-inner">
         <header class="empirical-country-header">
           <p class="empirical-panel-kicker">Selected setting</p>
           <h3 class="empirical-country-title">${escapeHTML(item.country)}</h3>
           <p class="empirical-country-count">
-            ${item.projects.length} ${pluralize(item.projects.length, "research project")}
+            ${activeProjectIds.size} ${pluralize(activeProjectIds.size, "research project")}
           </p>
           <button
             class="empirical-close"
@@ -225,22 +377,22 @@
 
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Research domains</p>
-          ${tagHTML(item.themes)}
+          ${tagHTML(activeThemes)}
         </div>
 
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Systems studied</p>
-          ${tagHTML(item.systems)}
+          ${tagHTML(activeSystems)}
         </div>
 
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Statistical challenges</p>
-          ${tagHTML(item.challenges)}
+          ${tagHTML(activeChallenges)}
         </div>
 
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Methods</p>
-          ${tagHTML(item.methods)}
+          ${tagHTML(activeMethods)}
         </div>
 
         <div class="empirical-projects">
@@ -259,7 +411,7 @@
       const hasResearch = Boolean(getCase(code));
       const visible = matchesCurrentFilter(code);
 
-      region.classList.toggle("empirical-region--active", hasResearch);
+      region.classList.toggle("empirical-region--active", hasResearch && visible);
       region.classList.toggle("empirical-region--filtered", hasResearch && !visible);
       region.classList.toggle("empirical-region--preview", previewCountry === code && visible);
       region.classList.toggle("empirical-region--selected", lockedCountry === code && visible);
@@ -370,7 +522,10 @@
           return;
         }
 
-        const count = item.projects.length;
+        const count = item.projects.filter(
+          (project) => activeFilter === "all" || project.id === activeFilter
+        ).length;
+
         tooltip.text(
           `<strong>${escapeHTML(item.country)}</strong><span>${count} ${pluralize(count, "project")} · click to explore</span>`,
           true

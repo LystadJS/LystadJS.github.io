@@ -1,4 +1,4 @@
-/* Final homepage QA refinements for the hero and Research Program map. */
+/* Network/cluster-analysis presentation for the homepage research program. */
 
 body[data-page="index"] .hero {
   padding: clamp(4.1rem, 7vw, 6.1rem) 0 clamp(3.1rem, 5vw, 4.2rem);
@@ -10,18 +10,36 @@ body[data-page="index"] .hero {
 
 .rpm-section::before {
   top: 5rem;
-  height: 470px;
+  height: 500px;
 }
 
 .rpm-section .section-header {
   margin-bottom: clamp(1.8rem, 3vw, 2.35rem);
 }
 
-/* Lock the desktop visualization footprint so detail-copy changes do not
-   move the graph or shift the sections below it. */
+.rpm-section .section-header p strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
 .rpm-workspace {
-  height: 540px;
-  min-height: 540px;
+  height: 570px;
+  min-height: 570px;
+}
+
+.rpm-map-wrap {
+  background:
+    radial-gradient(circle at 49% 48%, rgba(141,23,50,.045), transparent 13rem),
+    radial-gradient(circle at 52% 45%, rgba(101,69,126,.035), transparent 28rem),
+    rgba(7,7,9,.13);
+}
+
+.rpm-map-wrap::before {
+  background: none;
+}
+
+.rpm-map {
+  overflow: hidden;
 }
 
 .rpm-detail {
@@ -30,108 +48,215 @@ body[data-page="index"] .hero {
   scrollbar-gutter: stable;
 }
 
-/* Resting state: everything neutral except the computational-statistics core. */
-.rpm-method .rpm-shape,
-.rpm-method.rpm-primary .rpm-shape,
-.rpm-problem .rpm-shape {
-  fill: rgba(12, 10, 14, .95);
-  stroke: rgba(145, 132, 147, .40);
+.rpm-cluster-halo {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.rpm-cluster-halo ellipse {
+  fill: rgba(255,255,255,.008);
+  stroke: rgba(145,132,147,.18);
   stroke-width: 1;
+  stroke-dasharray: 4 6;
+  vector-effect: non-scaling-stroke;
 }
 
-.rpm-method.rpm-primary {
-  filter: none;
+.rpm-cluster-halo text {
+  fill: #625965;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .12em;
 }
 
-.rpm-edge,
-.rpm-edge.rpm-method-edge,
-.rpm-edge.rpm-problem-edge {
-  stroke: #746978;
-  stroke-width: 1;
+.rpm-cluster-halo.is-related ellipse {
+  fill: rgba(141,23,50,.018);
+  stroke: rgba(191,49,82,.34);
 }
 
-.rpm-edge.rpm-method-edge {
-  opacity: .16;
+.rpm-cluster-halo.is-related text {
+  fill: #8f7882;
 }
 
-.rpm-edge.rpm-problem-edge {
-  opacity: .11;
-}
-
-.rpm-map[data-mode="questions"] .rpm-question-edge {
-  opacity: .15;
-}
-
-/* The center remains the only colored node at rest. */
-.rpm-center .rpm-shape,
-.rpm-center.is-active .rpm-shape {
-  fill: rgba(141, 23, 50, .11);
-  stroke: rgba(191, 49, 82, .82);
-  stroke-width: 1.15 !important;
-}
-
-/* Interaction must never change SVG geometry.  Only color/opacity changes. */
-.rpm-node,
-.rpm-node .rpm-shape,
-.rpm-edge {
-  transform-box: fill-box;
-}
-
-.rpm-node {
-  filter: none !important;
-  transition: opacity 140ms ease !important;
-}
-
-.rpm-node .rpm-shape {
-  transition: fill 140ms ease, stroke 140ms ease !important;
+.rpm-cluster-halo.is-muted {
+  opacity: .18;
 }
 
 .rpm-edge {
-  transition: opacity 140ms ease, stroke 140ms ease !important;
+  stroke: #6d6570;
+  stroke-width: .85;
+  opacity: .09;
+  vector-effect: non-scaling-stroke;
+  transition: opacity 140ms ease, stroke 140ms ease;
 }
 
-.rpm-node:hover,
-.rpm-node:focus-visible,
-.rpm-node.is-active,
-.rpm-method.rpm-primary:hover,
-.rpm-method.rpm-primary:focus-visible {
-  filter: none !important;
+.rpm-edge-core {
+  opacity: .18;
 }
 
-.rpm-node.is-active .rpm-shape,
-.rpm-node.is-related .rpm-shape {
-  stroke-width: 1 !important;
+.rpm-edge-method {
+  opacity: .12;
+}
+
+.rpm-edge-domain {
+  opacity: .095;
+}
+
+.rpm-edge-domain-link {
+  opacity: .075;
+  stroke-dasharray: 3 5;
+}
+
+.rpm-edge-question {
+  opacity: .12;
+  stroke-dasharray: 3 5;
 }
 
 .rpm-edge.is-active {
   stroke: var(--crimson-bright);
   stroke-width: 1 !important;
+  opacity: .9 !important;
   filter: none !important;
 }
 
-.rpm-node.is-active:not(.rpm-center) .rpm-shape {
-  fill: rgba(141, 23, 50, .13);
+.rpm-edge.is-muted {
+  opacity: .018 !important;
+}
+
+.rpm-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.rpm-network-node {
+  cursor: pointer;
+  filter: none !important;
+  transition: opacity 140ms ease !important;
+  outline: none;
+}
+
+.rpm-network-node .rpm-shape {
+  fill: #0f0c11;
+  stroke: rgba(164,151,164,.48);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: fill 140ms ease, stroke 140ms ease !important;
+}
+
+.rpm-kind-domain .rpm-shape {
+  fill: rgba(255,255,255,.008);
+  stroke: rgba(183,171,181,.48);
+  stroke-width: 1.05;
+}
+
+.rpm-kind-question .rpm-shape {
+  fill: rgba(255,255,255,.006);
+  stroke: rgba(151,139,153,.44);
+  stroke-dasharray: 3 3;
+}
+
+.rpm-kind-core .rpm-shape,
+.rpm-kind-core.is-active .rpm-shape {
+  fill: rgba(141,23,50,.12);
+  stroke: rgba(191,49,82,.88);
+  stroke-width: 1.2;
+}
+
+.rpm-primary .rpm-shape {
+  fill: #0f0c11;
+  stroke: rgba(164,151,164,.54);
+}
+
+.rpm-network-node:hover,
+.rpm-network-node:focus-visible,
+.rpm-network-node.is-active,
+.rpm-network-node.is-related {
+  filter: none !important;
+}
+
+.rpm-network-node.is-active:not(.rpm-kind-core) .rpm-shape {
+  fill: rgba(141,23,50,.12);
   stroke: var(--crimson-bright);
 }
 
-.rpm-node.is-related .rpm-shape {
-  stroke: rgba(191, 49, 82, .52);
+.rpm-network-node.is-related .rpm-shape {
+  stroke: rgba(191,49,82,.58);
 }
 
-.rpm-node.is-muted {
-  opacity: .10 !important;
+.rpm-network-node.is-muted {
+  opacity: .09 !important;
 }
 
-/* Keep the selected Problems/Questions control visually selected but neutral,
-   so it does not compete with the center node. */
+.rpm-network-node.is-related,
+.rpm-network-node.is-active {
+  opacity: 1 !important;
+}
+
+.rpm-network-node-label,
+.rpm-network-center-label {
+  fill: #b6aab6;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.rpm-kind-domain .rpm-network-node-label {
+  fill: #c3b8c1;
+}
+
+.rpm-kind-question .rpm-network-node-label {
+  fill: #aea3b0;
+}
+
+.rpm-network-node-sub,
+.rpm-network-center-sub {
+  fill: #716673;
+  font-family: var(--mono);
+  font-size: 6.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+}
+
+.rpm-network-center-label {
+  fill: var(--paper);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.rpm-network-center-sub {
+  font-family: var(--mono);
+  font-size: 6.5px;
+}
+
+.rpm-network-node.is-active .rpm-network-node-label,
+.rpm-network-node.is-related .rpm-network-node-label {
+  fill: var(--paper);
+}
+
 .rpm-mode button.is-active {
   color: var(--paper);
-  background: rgba(255, 255, 255, .035);
-  box-shadow: inset 0 0 0 1px rgba(200, 188, 199, .10);
+  background: rgba(255,255,255,.035);
+  box-shadow: inset 0 0 0 1px rgba(238,229,217,.055);
 }
 
-.rpm-legend-symbol {
-  color: #8f838f;
+.rpm-mode button:hover,
+.rpm-mode button:focus-visible {
+  background: rgba(255,255,255,.02);
+}
+
+.rpm-footer-legend {
+  gap: .85rem;
+}
+
+.rpm-symbol-method,
+.rpm-symbol-domain,
+.rpm-symbol-question {
+  color: #9d929e;
 }
 
 .rpm-detail-summary,
@@ -139,22 +264,26 @@ body[data-page="index"] .hero {
   text-wrap: pretty;
 }
 
+@media (max-width: 1100px) {
+  .rpm-workspace {
+    grid-template-columns: minmax(0, 1.75fr) minmax(270px, .72fr);
+  }
+}
+
 @media (max-width: 980px) {
   .rpm-workspace {
     height: auto;
     min-height: 0;
+    grid-template-columns: 1fr;
   }
 
   .rpm-map-wrap {
-    min-height: 510px;
+    min-height: 535px;
   }
 
   .rpm-detail {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
-    height: 330px;
-    min-height: 330px;
-    overflow-y: auto;
   }
 
   .rpm-detail-head {
@@ -194,6 +323,10 @@ body[data-page="index"] .hero {
     padding: 3.1rem 0 4rem;
   }
 
+  .rpm-section::before {
+    display: none;
+  }
+
   .rpm-system-label {
     width: 100%;
     flex-wrap: wrap;
@@ -203,12 +336,22 @@ body[data-page="index"] .hero {
     margin-left: auto;
   }
 
+  .rpm-map-wrap,
+  .rpm-detail {
+    display: none;
+  }
+
   .rpm-mobile {
+    display: block;
     min-height: 0;
   }
 
   .rpm-footer-state {
     display: none;
+  }
+
+  .rpm-footer-legend {
+    gap: .6rem;
   }
 }
 
@@ -223,5 +366,14 @@ body[data-page="index"] .hero {
 
   .rpm-topbar {
     gap: .75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rpm-network-node,
+  .rpm-network-node .rpm-shape,
+  .rpm-edge,
+  .rpm-cluster-halo {
+    transition: none !important;
   }
 }

@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/research-program.css">
 </head>
 <body data-page="index">
 
@@ -40,6 +41,7 @@
 
 <main id="content">
   <div class="site-shell">
+
     <section class="hero">
       <div class="hero-profile reveal">
         <figure class="hero-headshot" aria-label="Portrait of John S. Lystad">
@@ -62,162 +64,352 @@
 
         <div class="hero-details">
           <p class="hero-lede">
-            My work integrates <strong>computational statistics</strong> and <strong>social science</strong> to study consequential social problems and support decision-making in high-stakes situations. I have a particular interest in
-            <strong>humanitarian issues</strong>, <strong>counterterrorism</strong>, <strong>deradicalization</strong>, and <strong>human security</strong>.
+            My work integrates <strong>computational statistics</strong> and <strong>social science</strong>
+            to study consequential social problems and support decision-making in high-stakes situations.
+            I have a particular interest in <strong>humanitarian issues</strong>,
+            <strong>counterterrorism</strong>, <strong>deradicalization</strong>, and
+            <strong>human security</strong>.
           </p>
+
           <div class="hero-actions">
             <a class="button button-primary" href="research.html">Academic Research</a>
             <a class="button button-secondary" href="projects.html">Applied Projects</a>
             <a class="button button-secondary" href="code.html">Code &amp; Development</a>
           </div>
+
           <p class="hero-note">
             <span class="prompt">&gt;</span>
             <span>current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation<span class="console-cursor" aria-hidden="true">█</span></span>
           </p>
         </div>
       </div>
+    </section>
 
-      <aside class="hero-constellation reveal" aria-label="Current research signal and research constellation">
-        <div class="instrument-top">
-          <span>Current Signal</span>
-          <span class="instrument-active"><span class="status-lamp" aria-hidden="true"></span>Live</span>
+    <section class="section reveal rpm-section" id="research-program">
+      <div class="section-header">
+        <div class="section-index">01 / Research Program</div>
+        <div>
+          <h2>Problems define the questions. Statistics defines the approach.</h2>
+          <p>
+            My research uses computational statistics—especially unsupervised learning—to study
+            political violence, terrorism and extremism, institutional behavior, and human-created
+            humanitarian crises when categories are incomplete, contested, or changing.
+          </p>
         </div>
+      </div>
 
-        <div class="constellation-core">
-          <svg class="constellation-map" viewBox="0 0 420 360" aria-hidden="true">
-            <defs>
-              <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#bf3152" stop-opacity=".14"/>
-                <stop offset="100%" stop-color="#bf3152" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="connectorGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#65457e"/>
-                <stop offset="48%" stop-color="#9270ac"/>
-                <stop offset="100%" stop-color="#bf3152"/>
-              </linearGradient>
-            </defs>
-
-            <ellipse class="constellation-ring outer" cx="210" cy="180" rx="125" ry="103"/>
-            <ellipse class="constellation-ring inner" cx="210" cy="180" rx="88" ry="70"/>
-            <circle class="constellation-center-glow" cx="210" cy="180" r="92"/>
-
-            <line class="constellation-link-base" data-connector="nw" x1="210" y1="180" x2="110" y2="79"/>
-            <line class="constellation-link" data-connector="nw" x1="210" y1="180" x2="110" y2="79"/>
-
-            <line class="constellation-link-base" data-connector="ne" x1="210" y1="180" x2="310" y2="79"/>
-            <line class="constellation-link" data-connector="ne" x1="210" y1="180" x2="310" y2="79"/>
-
-            <line class="constellation-link-base" data-connector="sw" x1="210" y1="180" x2="110" y2="281"/>
-            <line class="constellation-link" data-connector="sw" x1="210" y1="180" x2="110" y2="281"/>
-
-            <line class="constellation-link-base" data-connector="se" x1="210" y1="180" x2="310" y2="281"/>
-            <line class="constellation-link" data-connector="se" x1="210" y1="180" x2="310" y2="281"/>
-
-            <circle class="constellation-joint" data-joint="nw" cx="110" cy="79" r="4"/>
-            <circle class="constellation-joint" data-joint="ne" cx="310" cy="79" r="4"/>
-            <circle class="constellation-joint" data-joint="sw" cx="110" cy="281" r="4"/>
-            <circle class="constellation-joint" data-joint="se" cx="310" cy="281" r="4"/>
-          </svg>
-
-          <div class="constellation-node node-nw" data-node="nw">
-            <span class="node-title">Technical Methods</span>
-            <span class="node-detail">R · Python · Large-Scale Computing</span>
-            <span class="node-contact" aria-hidden="true"></span>
+      <div class="rpm-instrument">
+        <div class="rpm-topbar">
+          <div class="rpm-system-label">
+            <span>Research Program</span>
+            <span class="rpm-system-state"><span class="rpm-state-dot" aria-hidden="true"></span>Interactive map</span>
           </div>
 
-          <div class="constellation-node node-ne" data-node="ne">
-            <span class="node-title">Statistics</span>
-            <span class="node-detail">Regression · Model Evaluation · Messy &amp; Missing Data</span>
-            <span class="node-contact" aria-hidden="true"></span>
-          </div>
-
-          <div class="constellation-node node-se" data-node="se">
-            <span class="node-title">Decision Support</span>
-            <span class="node-detail">Data Visualization · Research Translation</span>
-            <span class="node-contact" aria-hidden="true"></span>
-          </div>
-
-          <div class="constellation-node node-sw" data-node="sw">
-            <span class="node-title">Data Science</span>
-            <span class="node-detail">Unsupervised Machine Learning · OSINT</span>
-            <span class="node-contact" aria-hidden="true"></span>
-          </div>
-
-          <a class="constellation-center" href="research.html" aria-label="View current research">
-            <span class="center-pulse pulse-one" aria-hidden="true"></span>
-            <span class="center-pulse pulse-two" aria-hidden="true"></span>
-            <span class="center-kicker">Current inquiry</span>
-            <strong>Open-source AI &amp; autonomous weapon non-proliferation</strong>
-          </a>
-        </div>
-
-        <div class="vital-sign" aria-label="Human-centered research pulse">
-          <div class="vital-heading">
-            <div>
-              <span class="vital-kicker">Research in service of humanity</span>
+          <div class="rpm-controls">
+            <div class="rpm-mode" aria-label="Research map outer layer">
+              <button type="button" class="is-active" data-rpm-mode="problems">Problems</button>
+              <button type="button" data-rpm-mode="questions">Questions</button>
             </div>
-            <span class="vital-state"><span class="vital-dot" aria-hidden="true"></span>ACTIVE</span>
           </div>
+        </div>
 
-          <div class="vital-monitor">
-            <svg class="heartbeat-monitor" viewBox="0 0 760 150" role="img" aria-label="Animated heartbeat waveform">
+        <div class="rpm-workspace">
+          <div class="rpm-map-wrap">
+            <svg class="rpm-map" id="rpm-map" data-mode="problems" viewBox="0 0 820 560"
+                 role="img" aria-labelledby="rpm-title rpm-desc">
+              <title id="rpm-title">Interactive research program map</title>
+              <desc id="rpm-desc">
+                Computational statistics connects six methodological areas to four substantive research
+                problems. A second view replaces the substantive problems with four recurring open
+                methodological questions.
+              </desc>
+
               <defs>
-                <linearGradient id="livePulse" x1="0" x2="1">
-                  <stop offset="0" stop-color="#65457e"/>
-                  <stop offset=".34" stop-color="#8d1732"/>
-                  <stop offset=".57" stop-color="#e04869"/>
-                  <stop offset="1" stop-color="#65457e"/>
+                <linearGradient id="rpmConnector" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#65457e"/>
+                  <stop offset="48%" stop-color="#9270ac"/>
+                  <stop offset="100%" stop-color="#bf3152"/>
                 </linearGradient>
-                <filter id="pulseGlow" x="-30%" y="-80%" width="160%" height="260%">
-                  <feGaussianBlur stdDeviation="5"/>
+
+                <filter id="rpmLineGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="1.4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
                 </filter>
               </defs>
 
-              <path class="heartbeat-base"
-                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
-                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
-                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
-                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="unsupervised"
+                    d="M410,280 C410,231 410,194 410,153"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="networks"
+                    d="M410,280 C456,257 498,238 542,219"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="longitudinal"
+                    d="M410,280 C458,307 496,331 539,354"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="bayesian"
+                    d="M410,280 C410,329 410,369 410,412"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="nlp"
+                    d="M410,280 C363,307 325,331 281,354"/>
+              <path class="rpm-edge rpm-method-edge" data-a="center" data-b="spatial"
+                    d="M410,280 C364,257 322,238 278,219"/>
 
-              <path class="heartbeat-glow"
-                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
-                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
-                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
-                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="unsupervised" data-b="violence"
+                    d="M410,153 C304,140 208,137 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="unsupervised" data-b="extremism"
+                    d="M410,153 C292,222 197,310 108,415"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="unsupervised" data-b="institutions"
+                    d="M410,153 C515,140 613,137 712,145"/>
 
-              <path class="heartbeat-live"
-                d="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
-                   L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
-                   L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
-                   L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="networks" data-b="violence"
+                    d="M542,219 C391,191 250,163 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="networks" data-b="extremism"
+                    d="M542,219 C390,264 251,333 108,415"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="networks" data-b="institutions"
+                    d="M542,219 C602,189 653,165 712,145"/>
 
-              <circle class="heartbeat-runner" r="4.8">
-                <animateMotion dur="3.8s" repeatCount="indefinite"
-                  path="M0 83 L62 83 L88 79 L110 90 L127 42 L146 115 L168 83
-                        L235 83 L255 78 L274 92 L300 24 L322 124 L346 83
-                        L415 83 L436 78 L456 90 L474 49 L493 109 L516 83
-                        L585 83 L606 78 L626 92 L652 35 L672 117 L698 83 L760 83"/>
-              </circle>
+              <path class="rpm-edge rpm-problem-edge" data-a="longitudinal" data-b="violence"
+                    d="M539,354 C384,302 247,226 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="longitudinal" data-b="institutions"
+                    d="M539,354 C601,284 654,212 712,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="longitudinal" data-b="humanitarian"
+                    d="M539,354 C603,377 655,398 712,415"/>
+
+              <path class="rpm-edge rpm-problem-edge" data-a="nlp" data-b="violence"
+                    d="M281,354 C225,289 168,217 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="nlp" data-b="extremism"
+                    d="M281,354 C220,376 166,399 108,415"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="nlp" data-b="institutions"
+                    d="M281,354 C437,303 575,226 712,145"/>
+
+              <path class="rpm-edge rpm-problem-edge" data-a="spatial" data-b="violence"
+                    d="M278,219 C217,188 166,164 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="spatial" data-b="humanitarian"
+                    d="M278,219 C438,264 574,334 712,415"/>
+
+              <path class="rpm-edge rpm-problem-edge" data-a="bayesian" data-b="violence"
+                    d="M410,412 C300,331 204,236 108,145"/>
+              <path class="rpm-edge rpm-problem-edge" data-a="bayesian" data-b="humanitarian"
+                    d="M410,412 C517,414 614,415 712,415"/>
+
+              <path class="rpm-edge rpm-question-edge" data-a="q-latent" data-b="unsupervised"
+                    d="M108,145 C209,138 304,140 410,153"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-latent" data-b="spatial"
+                    d="M108,145 C165,165 218,188 278,219"/>
+
+              <path class="rpm-edge rpm-question-edge" data-a="q-labels" data-b="unsupervised"
+                    d="M108,415 C196,311 292,222 410,153"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-labels" data-b="nlp"
+                    d="M108,415 C167,399 220,377 281,354"/>
+
+              <path class="rpm-edge rpm-question-edge" data-a="q-diffusion" data-b="networks"
+                    d="M712,145 C653,165 602,189 542,219"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-diffusion" data-b="longitudinal"
+                    d="M712,145 C654,213 601,285 539,354"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-diffusion" data-b="nlp"
+                    d="M712,145 C575,226 437,303 281,354"/>
+
+              <path class="rpm-edge rpm-question-edge" data-a="q-change" data-b="longitudinal"
+                    d="M712,415 C655,398 603,377 539,354"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-change" data-b="bayesian"
+                    d="M712,415 C614,415 517,414 410,412"/>
+              <path class="rpm-edge rpm-question-edge" data-a="q-change" data-b="unsupervised"
+                    d="M712,415 C606,319 510,229 410,153"/>
+
+              <g class="rpm-node rpm-center is-active" tabindex="0" role="button"
+                 data-id="center" transform="translate(410 280)">
+                <polygon class="rpm-shape"
+                         points="-89,-45 -64,-64 64,-64 89,-45 89,45 64,64 -64,64 -89,45"/>
+                <text class="rpm-center-main" text-anchor="middle" y="-4">Computational</text>
+                <text class="rpm-center-main" text-anchor="middle" y="19">Statistics</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="40">Research core</text>
+              </g>
+
+              <g class="rpm-node rpm-method rpm-primary" tabindex="0" role="button"
+                 data-id="unsupervised" transform="translate(410 153)">
+                <polygon class="rpm-shape" points="-93,0 -66,-34 66,-34 93,0 66,34 -66,34"/>
+                <text text-anchor="middle" y="-3">Unsupervised Learning</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="16">Primary methodological focus</text>
+              </g>
+
+              <g class="rpm-node rpm-method" tabindex="0" role="button"
+                 data-id="networks" transform="translate(542 219)">
+                <polygon class="rpm-shape" points="-65,0 -46,-27 46,-27 65,0 46,27 -46,27"/>
+                <text text-anchor="middle" y="4">Networks</text>
+              </g>
+
+              <g class="rpm-node rpm-method" tabindex="0" role="button"
+                 data-id="longitudinal" transform="translate(539 354)">
+                <polygon class="rpm-shape" points="-68,0 -48,-27 48,-27 68,0 48,27 -48,27"/>
+                <text text-anchor="middle" y="4">Longitudinal</text>
+              </g>
+
+              <g class="rpm-node rpm-method" tabindex="0" role="button"
+                 data-id="bayesian" transform="translate(410 412)">
+                <polygon class="rpm-shape" points="-72,0 -51,-27 51,-27 72,0 51,27 -51,27"/>
+                <text text-anchor="middle" y="-3">Bayesian /</text>
+                <text text-anchor="middle" y="13">Statistical Learning</text>
+              </g>
+
+              <g class="rpm-node rpm-method" tabindex="0" role="button"
+                 data-id="nlp" transform="translate(281 354)">
+                <polygon class="rpm-shape" points="-59,0 -42,-27 42,-27 59,0 42,27 -42,27"/>
+                <text text-anchor="middle" y="4">Text / NLP</text>
+              </g>
+
+              <g class="rpm-node rpm-method" tabindex="0" role="button"
+                 data-id="spatial" transform="translate(278 219)">
+                <polygon class="rpm-shape" points="-58,0 -41,-27 41,-27 58,0 41,27 -41,27"/>
+                <text text-anchor="middle" y="4">Spatial</text>
+              </g>
+
+              <g class="rpm-node rpm-problem rpm-layer-problem" tabindex="0" role="button"
+                 data-id="violence" transform="translate(108 145)">
+                <rect class="rpm-shape" x="-77" y="-24" width="154" height="48"/>
+                <text text-anchor="middle" y="4">Political Violence</text>
+              </g>
+
+              <g class="rpm-node rpm-problem rpm-layer-problem" tabindex="0" role="button"
+                 data-id="extremism" transform="translate(108 415)">
+                <rect class="rpm-shape" x="-88" y="-29" width="176" height="58"/>
+                <text text-anchor="middle" y="-3">Terrorism &amp;</text>
+                <text text-anchor="middle" y="14">Extremism</text>
+              </g>
+
+              <g class="rpm-node rpm-problem rpm-layer-problem" tabindex="0" role="button"
+                 data-id="institutions" transform="translate(712 145)">
+                <rect class="rpm-shape" x="-91" y="-29" width="182" height="58"/>
+                <text text-anchor="middle" y="-3">Institutions &amp;</text>
+                <text text-anchor="middle" y="14">Governance</text>
+              </g>
+
+              <g class="rpm-node rpm-problem rpm-layer-problem" tabindex="0" role="button"
+                 data-id="humanitarian" transform="translate(712 415)">
+                <rect class="rpm-shape" x="-96" y="-29" width="192" height="58"/>
+                <text text-anchor="middle" y="-3">Human-Created</text>
+                <text text-anchor="middle" y="14">Humanitarian Crises</text>
+              </g>
+
+              <g class="rpm-node rpm-question rpm-layer-question" tabindex="-1" role="button"
+                 aria-hidden="true" data-id="q-latent" transform="translate(108 145)">
+                <rect class="rpm-shape" x="-91" y="-31" rx="14" width="182" height="62"/>
+                <text text-anchor="middle" y="-8">What structure exists</text>
+                <text text-anchor="middle" y="9">before labels?</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="23">Latent structure</text>
+              </g>
+
+              <g class="rpm-node rpm-question rpm-layer-question" tabindex="-1" role="button"
+                 aria-hidden="true" data-id="q-labels" transform="translate(108 415)">
+                <rect class="rpm-shape" x="-91" y="-31" rx="14" width="182" height="62"/>
+                <text text-anchor="middle" y="-8">What if categories</text>
+                <text text-anchor="middle" y="9">are contested?</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="23">Ground truth</text>
+              </g>
+
+              <g class="rpm-node rpm-question rpm-layer-question" tabindex="-1" role="button"
+                 aria-hidden="true" data-id="q-diffusion" transform="translate(712 145)">
+                <rect class="rpm-shape" x="-91" y="-31" rx="14" width="182" height="62"/>
+                <text text-anchor="middle" y="-8">Diffusion or merely</text>
+                <text text-anchor="middle" y="9">similar behavior?</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="23">Process evidence</text>
+              </g>
+
+              <g class="rpm-node rpm-question rpm-layer-question" tabindex="-1" role="button"
+                 aria-hidden="true" data-id="q-change" transform="translate(712 415)">
+                <rect class="rpm-shape" x="-91" y="-31" rx="14" width="182" height="62"/>
+                <text text-anchor="middle" y="-8">Real movement or</text>
+                <text text-anchor="middle" y="9">changing geometry?</text>
+                <text class="rpm-svg-mono" text-anchor="middle" y="23">Longitudinal uncertainty</text>
+              </g>
             </svg>
           </div>
 
-          <p class="vital-copy">Methodological rigor in support of decision-making in consequential, high-stakes situations, where uncertainty is high and data is imperfect.</p>
+          <aside class="rpm-detail" aria-live="polite">
+            <div class="rpm-detail-head">
+              <p class="rpm-detail-kicker" id="rpm-detail-kicker">Research core</p>
+              <h3 id="rpm-detail-title">Computational Statistics</h3>
+              <p class="rpm-detail-summary" id="rpm-detail-summary">
+                Statistical computing for discovering structure, measuring change,
+                and quantifying uncertainty in complex human systems.
+              </p>
+            </div>
 
-          <div class="heartbeat-links">
-            <a href="research.html">Research ↗</a>
-            <a href="projects.html">Applied Projects ↗</a>
-            <a href="code.html">Technical Work ↗</a>
+            <div class="rpm-detail-block">
+              <p class="rpm-detail-label">What it answers</p>
+              <ul class="rpm-detail-list" id="rpm-detail-questions"></ul>
+            </div>
+
+            <div class="rpm-detail-block">
+              <p class="rpm-detail-label">Methods / concepts</p>
+              <div class="rpm-chips" id="rpm-detail-methods"></div>
+            </div>
+
+            <div class="rpm-detail-block">
+              <p class="rpm-detail-label">Selected work</p>
+              <ul class="rpm-detail-list" id="rpm-detail-projects"></ul>
+            </div>
+
+            <div class="rpm-detail-foot">
+              Hover to trace direct relationships. Click to lock a selection. Use the top-right control to replace research problems with open questions.
+            </div>
+          </aside>
+
+          <div class="rpm-mobile" aria-label="Research program mobile view">
+            <div class="rpm-mobile-item is-open">
+              <button class="rpm-mobile-trigger" type="button">
+                <span class="rpm-mobile-name">Unsupervised Learning</span>
+                <span class="rpm-mobile-symbol">−</span>
+              </button>
+              <div class="rpm-mobile-content">
+                <p>Primary methodological focus: discovering latent structure when categories are unknown, incomplete, or contested.</p>
+                <span>UMAP</span><span>PCA</span><span>HDBSCAN</span><span>Mixture Models</span>
+              </div>
+            </div>
+
+            <div class="rpm-mobile-item">
+              <button class="rpm-mobile-trigger" type="button">
+                <span class="rpm-mobile-name">Political Violence &amp; Extremism</span>
+                <span class="rpm-mobile-symbol">+</span>
+              </button>
+              <div class="rpm-mobile-content">
+                <p>Latent organization, behavioral similarity, conflict dynamics, extremist networks, and changing group structure.</p>
+                <span>Clustering</span><span>Networks</span><span>Text / NLP</span>
+              </div>
+            </div>
+
+            <div class="rpm-mobile-item">
+              <button class="rpm-mobile-trigger" type="button">
+                <span class="rpm-mobile-name">Institutions &amp; Humanitarian Crises</span>
+                <span class="rpm-mobile-symbol">+</span>
+              </button>
+              <div class="rpm-mobile-content">
+                <p>Institutional diffusion, governance behavior, conflict-driven crises, and complex high-stakes systems.</p>
+                <span>Longitudinal</span><span>Networks</span><span>Spatial</span>
+              </div>
+            </div>
           </div>
         </div>
-      </aside>
+
+        <div class="rpm-footer">
+          <div class="rpm-footer-legend" aria-label="Map legend">
+            <span class="rpm-legend-item"><span class="rpm-legend-symbol">◆</span> Method</span>
+            <span class="rpm-legend-item"><span class="rpm-legend-symbol">□</span> Research problem</span>
+            <span class="rpm-legend-item"><span class="rpm-legend-symbol">▭</span> Open question</span>
+            <span class="rpm-legend-item"><span class="rpm-legend-symbol">●</span> Primary focus: unsupervised learning</span>
+          </div>
+          <span class="rpm-footer-state">Select a node to trace its relationships</span>
+        </div>
+      </div>
     </section>
 
     <section class="section reveal">
       <div class="section-header">
-        <div class="section-index">01 / Practice</div>
+        <div class="section-index">02 / Practice</div>
         <div>
           <h2>Three bodies of work. One analytical methodology.</h2>
-          <p>The site separates scholarship, applied professional work, and technical development so each can be evaluated on its own terms.</p>
+          <p>
+            The site separates scholarship, applied professional work, and technical
+            development so each can be evaluated on its own terms.
+          </p>
         </div>
       </div>
 
@@ -245,61 +437,6 @@
       </div>
     </section>
 
-    <section class="section reveal current-signal-section">
-      <div class="section-header">
-        <div class="section-index">02 / Current Signal</div>
-        <div>
-          <h2>Methodological rigor with real-world impact</h2>
-          <p>My priorities center around addressing high-stakes situations using statistical methods that remain useful when the world is messy: incomplete information, invisible covariates, complex interactions, and imperfect measurement. This is what's drawing my attention now.</p>
-        </div>
-      </div>
-
-      <div class="signal-console" aria-label="Current research signal terminal">
-        <div class="console-hardware" aria-hidden="true">
-          <span class="console-screw screw-a"></span>
-          <span class="console-screw screw-b"></span>
-          <span class="console-screw screw-c"></span>
-          <span class="console-screw screw-d"></span>
-        </div>
-
-        <div class="console-bar">
-          <div class="console-title">
-            <span class="status-lamp" aria-hidden="true"></span>
-            <span>ANALYSIS TERMINAL</span>
-          </div>
-          <span class="console-status">LINK: ACTIVE</span>
-        </div>
-
-        <div class="console-screen">
-          <p class="console-line console-muted">UNCLASSIFIED</p>
-          <p class="console-line">
-            <span class="console-user">LystadJS@laboratory</span><span class="console-path">:~/Research</span><span class="console-prompt">$</span>
-            <span class="console-command"> ./current_signal --mode=humanitarian</span>
-          </p>
-
-          <div class="console-output" role="presentation">
-            <p><span class="output-key">[FIELD]</span><span class="output-value">applied computational statistics</span></p>
-            <p><span class="output-key">[CURRENT]</span><span class="output-value">open-source AI + autonomous weapon non-proliferation</span></p>
-            <p><span class="output-key">[METHODS]</span><span class="output-value">R · Python · messy &amp; missing data · causal inference </span></p>
-            <p><span class="output-key">[CONTEXT]</span><span class="output-value">humanitarian crises · counterterrorism · deradicalization · human security</span></p>
-            <p><span class="output-key">[MISSION]</span><span class="output-value">reduce uncertainty where analytical decisions affect people and guide decision-making in service of humanity</span></p>
-          </div>
-
-          <p class="console-line console-ready">
-            <span class="console-user">LystadJS@laboratory</span><span class="console-path">:~/Research</span><span class="console-prompt">$</span>
-            <span class="console-cursor" aria-hidden="true">█</span>
-          </p>
-        </div>
-
-        <div class="console-readout">
-          <div><span>Primary field</span><strong>Computational Statistics</strong></div>
-          <div><span>Complement</span><strong>Social Science</strong></div>
-          <div><span>Data condition</span><strong>Missing &amp; Messy</strong></div>
-          <div><span>Guiding principle</span><strong>Use what can be known to protect what can be lost. "That others may live."</strong></div>
-        </div>
-      </div>
-    </section>
-
     <section class="section reveal">
       <div class="contact-panel">
         <p class="eyebrow">Correspondence</p>
@@ -314,6 +451,7 @@
         </div>
       </div>
     </section>
+
   </div>
 </main>
 
@@ -332,7 +470,6 @@
     </div>
   </div>
 </footer>
-
 
 <script>
 (() => {
@@ -370,67 +507,7 @@
 })();
 </script>
 
-<script>
-(() => {
-  const core = document.querySelector(".constellation-core");
-  if (!core) return;
-
-  const svg = core.querySelector(".constellation-map");
-  if (!svg) return;
-
-  const specs = {
-    nw: { selector: ".node-nw", edge: "bottom" },
-    ne: { selector: ".node-ne", edge: "bottom" },
-    sw: { selector: ".node-sw", edge: "top" },
-    se: { selector: ".node-se", edge: "top" }
-  };
-
-  function screenToSvg(x, y) {
-    const matrix = svg.getScreenCTM();
-    if (!matrix) return null;
-    const point = svg.createSVGPoint();
-    point.x = x;
-    point.y = y;
-    return point.matrixTransform(matrix.inverse());
-  }
-
-  function alignConstellationConnectors() {
-    for (const [key, spec] of Object.entries(specs)) {
-      const node = core.querySelector(spec.selector);
-      if (!node) continue;
-
-      const rect = node.getBoundingClientRect();
-      const screenX = rect.left + rect.width / 2;
-      const screenY = spec.edge === "bottom" ? rect.bottom : rect.top;
-      const point = screenToSvg(screenX, screenY);
-      if (!point) continue;
-
-      svg.querySelectorAll(`[data-connector="${key}"]`).forEach(line => {
-        line.setAttribute("x2", point.x.toFixed(2));
-        line.setAttribute("y2", point.y.toFixed(2));
-      });
-
-      const joint = svg.querySelector(`[data-joint="${key}"]`);
-      if (joint) {
-        joint.setAttribute("cx", point.x.toFixed(2));
-        joint.setAttribute("cy", point.y.toFixed(2));
-      }
-    }
-  }
-
-  alignConstellationConnectors();
-
-  if ("ResizeObserver" in window) {
-    const observer = new ResizeObserver(alignConstellationConnectors);
-    observer.observe(core);
-  } else {
-    window.addEventListener("resize", alignConstellationConnectors, { passive: true });
-  }
-
-  window.addEventListener("load", alignConstellationConnectors, { once: true });
-})();
-</script>
-
+<script src="assets/js/research-program.js"></script>
 <script src="assets/js/main.js"></script>
 
 </body>

@@ -17,6 +17,15 @@ body[data-page="index"] .hero-details {
   grid-column: 1 / 3;
 }
 
+/* Keep the hero compact: navigation is handled by the header and contact rail. */
+body[data-page="index"] .hero-details > .hero-actions {
+  display: none;
+}
+
+body[data-page="index"] .hero-note {
+  margin: 1rem 0 0;
+}
+
 body[data-page="index"] .hero-contact-rail {
   grid-column: 3;
   grid-row: 1 / 3;

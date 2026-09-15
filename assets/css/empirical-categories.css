@@ -1,0 +1,277 @@
+/* ============================================================
+   EMPIRICAL EXPLORER CATEGORY STACK
+   Research -> Applied Projects -> Army -> Journalism
+   ============================================================ */
+
+.empirical-toolbar {
+  align-items: flex-start;
+}
+
+.empirical-filters {
+  flex: 1 1 auto;
+  display: grid;
+  gap: .48rem;
+  min-width: 0;
+}
+
+.empirical-filter-row {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: .7rem;
+  align-items: center;
+}
+
+.empirical-filter-row + .empirical-filter-row {
+  padding-top: .45rem;
+  border-top: 1px solid rgba(255,255,255,.035);
+}
+
+.empirical-filter-row-label {
+  color: #756b78;
+  font-family: var(--mono);
+  font-size: .5rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.empirical-filter-row-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .36rem;
+  min-width: 0;
+}
+
+/* Existing UN button now lives in its own row, so remove divider offset. */
+.empirical-filter-row .empirical-filter--un {
+  margin-left: 0;
+}
+
+.empirical-filter-row .empirical-filter--un::before {
+  display: none;
+}
+
+/* Army button */
+.empirical-filter--army {
+  color: #9aaa68;
+  border-color: rgba(75,83,32,.48);
+  background: rgba(75,83,32,.07);
+}
+
+.empirical-filter--army:hover,
+.empirical-filter--army:focus-visible {
+  color: #c7d39a;
+  border-color: rgba(113,126,52,.72);
+  background: rgba(75,83,32,.14);
+}
+
+.empirical-filter--army.is-active {
+  color: #edf1dd;
+  border-color: rgba(138,151,71,.88);
+  background: rgba(75,83,32,.28);
+  box-shadow: inset 0 0 0 1px rgba(178,190,112,.07), 0 0 15px rgba(75,83,32,.12);
+}
+
+/* Journalism button */
+.empirical-filter--journalism {
+  color: #7898ba;
+  border-color: rgba(25,55,88,.56);
+  background: rgba(25,55,88,.08);
+}
+
+.empirical-filter--journalism:hover,
+.empirical-filter--journalism:focus-visible {
+  color: #aec6df;
+  border-color: rgba(52,91,130,.78);
+  background: rgba(25,55,88,.16);
+}
+
+.empirical-filter--journalism.is-active {
+  color: #edf5fc;
+  border-color: rgba(75,116,158,.92);
+  background: rgba(25,55,88,.32);
+  box-shadow: inset 0 0 0 1px rgba(118,157,196,.08), 0 0 15px rgba(25,55,88,.14);
+}
+
+/* ============================================================
+   ARMY MODE
+   Army green: #4b5320
+   ============================================================ */
+
+.empirical-explorer.is-army-mode {
+  border-color: rgba(104,116,50,.40);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.014), rgba(75,83,32,.045) 45%, rgba(91,100,41,.065)),
+    rgba(9,11,8,.79);
+}
+
+.empirical-explorer.is-army-mode .empirical-toolbar {
+  border-bottom-color: rgba(104,116,50,.24);
+}
+
+.empirical-explorer.is-army-mode .empirical-legend-mark {
+  border-color: rgba(176,190,103,.80);
+  background: #4b5320;
+  box-shadow: 0 0 10px rgba(75,83,32,.34);
+}
+
+.empirical-explorer.is-army-mode .empirical-map-wrap {
+  border-right-color: rgba(104,116,50,.22);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(75,83,32,.12), transparent 55%),
+    rgba(7,9,6,.52);
+}
+
+.empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--category-active {
+  fill: #4b5320 !important;
+  stroke: rgba(214,223,168,.48) !important;
+  stroke-width: .68 !important;
+  opacity: .96;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px rgba(75,83,32,.18));
+}
+
+.empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--preview {
+  fill: #6c782f !important;
+  stroke: #edf1dd !important;
+  stroke-width: 1 !important;
+  transform: scale(1.045);
+  filter:
+    drop-shadow(0 3px 3px rgba(0,0,0,.58))
+    drop-shadow(0 0 8px rgba(105,118,48,.44));
+  opacity: 1;
+}
+
+.empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--selected {
+  fill: #7d8939 !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.1 !important;
+  transform: scale(1.055);
+  filter:
+    drop-shadow(0 4px 5px rgba(0,0,0,.62))
+    drop-shadow(0 0 10px rgba(104,116,50,.50));
+  opacity: 1;
+}
+
+.empirical-explorer.is-army-mode .empirical-panel {
+  background: linear-gradient(180deg, rgba(28,32,15,.94), rgba(10,12,8,.96));
+  scrollbar-color: rgba(104,116,50,.60) transparent;
+}
+
+.empirical-explorer.is-army-mode .empirical-panel-kicker,
+.empirical-explorer.is-army-mode .empirical-project-status {
+  color: #a8b36d;
+}
+
+.empirical-explorer.is-army-mode .empirical-country-header,
+.empirical-explorer.is-army-mode .empirical-meta-section,
+.empirical-explorer.is-army-mode .empirical-project,
+.empirical-explorer.is-army-mode .empirical-summary-item {
+  border-color: rgba(104,116,50,.24);
+}
+
+.empirical-explorer.is-army-mode .empirical-tag {
+  border-color: rgba(104,116,50,.30);
+  background: rgba(75,83,32,.07);
+}
+
+/* ============================================================
+   JOURNALISM MODE
+   Deliberately darker than UN blue.
+   ============================================================ */
+
+.empirical-explorer.is-journalism-mode {
+  border-color: rgba(35,69,104,.42);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.014), rgba(25,55,88,.05) 45%, rgba(31,66,102,.075)),
+    rgba(7,10,14,.80);
+}
+
+.empirical-explorer.is-journalism-mode .empirical-toolbar {
+  border-bottom-color: rgba(35,69,104,.26);
+}
+
+.empirical-explorer.is-journalism-mode .empirical-legend-mark {
+  border-color: rgba(105,144,184,.82);
+  background: #193758;
+  box-shadow: 0 0 10px rgba(25,55,88,.36);
+}
+
+.empirical-explorer.is-journalism-mode .empirical-map-wrap {
+  border-right-color: rgba(35,69,104,.22);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(25,55,88,.13), transparent 55%),
+    rgba(5,8,12,.53);
+}
+
+.empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--category-active {
+  fill: #193758 !important;
+  stroke: rgba(175,203,230,.46) !important;
+  stroke-width: .68 !important;
+  opacity: .97;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px rgba(25,55,88,.20));
+}
+
+.empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--preview {
+  fill: #2b557d !important;
+  stroke: #edf5fc !important;
+  stroke-width: 1 !important;
+  transform: scale(1.045);
+  filter:
+    drop-shadow(0 3px 3px rgba(0,0,0,.58))
+    drop-shadow(0 0 8px rgba(48,91,132,.44));
+  opacity: 1;
+}
+
+.empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--selected {
+  fill: #376b9a !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.1 !important;
+  transform: scale(1.055);
+  filter:
+    drop-shadow(0 4px 5px rgba(0,0,0,.62))
+    drop-shadow(0 0 10px rgba(48,91,132,.50));
+  opacity: 1;
+}
+
+.empirical-explorer.is-journalism-mode .empirical-panel {
+  background: linear-gradient(180deg, rgba(12,30,48,.95), rgba(7,13,20,.96));
+  scrollbar-color: rgba(48,91,132,.62) transparent;
+}
+
+.empirical-explorer.is-journalism-mode .empirical-panel-kicker,
+.empirical-explorer.is-journalism-mode .empirical-project-status {
+  color: #7ba1c5;
+}
+
+.empirical-explorer.is-journalism-mode .empirical-country-header,
+.empirical-explorer.is-journalism-mode .empirical-meta-section,
+.empirical-explorer.is-journalism-mode .empirical-project,
+.empirical-explorer.is-journalism-mode .empirical-summary-item {
+  border-color: rgba(48,91,132,.25);
+}
+
+.empirical-explorer.is-journalism-mode .empirical-tag {
+  border-color: rgba(48,91,132,.31);
+  background: rgba(25,55,88,.075);
+}
+
+@media (max-width: 760px) {
+  .empirical-toolbar {
+    flex-direction: column;
+  }
+
+  .empirical-filters {
+    width: 100%;
+  }
+
+  .empirical-filter-row {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+
+  .empirical-filter-row-label {
+    padding-left: .15rem;
+  }
+}

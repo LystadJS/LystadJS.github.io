@@ -5,11 +5,34 @@
   const explorer = document.querySelector(".empirical-explorer");
   if (!panel || !explorer) return;
 
-  const client = window.JSLResearchRegistry || {
-    ready: Promise.resolve(null),
-    repositoryIndex: "https://github.com/LystadJS?tab=repositories",
-    resolveFrom: () => null
-  };
+  const client = window.JSLResearchRegistry || (() => {
+    const registryUrl = "https://raw.githubusercontent.com/LystadJS/research-registry/main/dist/research-registry.json";
+    const repositoryIndex = "https://github.com/LystadJS?tab=repositories";
+    const ready = fetch(registryUrl, { cache: "no-store" })
+      .then(response => {
+        if (!response.ok) throw new Error(`Research registry request failed: ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        if (!data || data.schema_version !== "1.0") throw new Error("Unsupported research registry schema");
+        return data;
+      })
+      .catch(error => {
+        console.warn("Research registry unavailable; repository links will use fallback destinations.", error);
+        return null;
+      });
+
+    const created = {
+      url: registryUrl,
+      repositoryIndex,
+      ready,
+      resolveFrom(registry, kind, id) {
+        return registry?.[kind]?.[id]?.url || null;
+      }
+    };
+    window.JSLResearchRegistry = created;
+    return created;
+  })();
 
   const normalize = value => String(value || "").trim().toLowerCase();
 

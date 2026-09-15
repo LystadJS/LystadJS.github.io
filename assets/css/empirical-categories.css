@@ -32,25 +32,43 @@
   display: none;
 }
 
+/*
+   Every row uses the same fixed anchor geometry:
+
+   [ right-aligned all button ] | [ left-aligned scope buttons ]
+
+   The first button keeps its intrinsic width; only its object is aligned
+   against a shared right edge. This keeps button text centered while making
+   every separator occupy exactly the same x-position.
+*/
 .empirical-filter-row-buttons {
+  --all-anchor-width: 180px;
+  --scope-start-offset: 1.55rem;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: .36rem;
   min-width: 0;
+  min-height: 2.2rem;
+  padding-left: calc(var(--all-anchor-width) + var(--scope-start-offset));
 }
 
-/* Category-colored divider immediately after the first/all button. */
 .empirical-filter-row-buttons > .empirical-filter:first-child {
-  position: relative;
-  margin-right: .95rem;
+  position: absolute;
+  top: 50%;
+  right: calc(100% - var(--all-anchor-width));
+  transform: translateY(-50%);
+  margin: 0;
+  white-space: nowrap;
 }
 
-.empirical-filter-row-buttons > .empirical-filter:first-child::after {
+/* One shared separator axis for all four rows. */
+.empirical-filter-row-buttons::before {
   content: "";
   position: absolute;
   top: 50%;
-  right: -.67rem;
+  left: calc(var(--all-anchor-width) + .72rem);
   width: 1px;
   height: 1.45rem;
   transform: translateY(-50%);
@@ -58,22 +76,27 @@
   pointer-events: none;
 }
 
-.empirical-filter-row--research .empirical-filter:first-child::after {
+/* Retire the previous button-relative divider. */
+.empirical-filter-row-buttons > .empirical-filter:first-child::after {
+  display: none !important;
+}
+
+.empirical-filter-row--research .empirical-filter-row-buttons::before {
   background: var(--crimson-bright);
   box-shadow: 0 0 7px rgba(191,49,82,.16);
 }
 
-.empirical-filter-row--applied .empirical-filter:first-child::after {
+.empirical-filter-row--applied .empirical-filter-row-buttons::before {
   background: #009edb;
   box-shadow: 0 0 7px rgba(0,158,219,.16);
 }
 
-.empirical-filter-row--military .empirical-filter:first-child::after {
+.empirical-filter-row--military .empirical-filter-row-buttons::before {
   background: #6c782f;
   box-shadow: 0 0 7px rgba(108,120,47,.16);
 }
 
-.empirical-filter-row--journalism .empirical-filter:first-child::after {
+.empirical-filter-row--journalism .empirical-filter-row-buttons::before {
   background: #2b557d;
   box-shadow: 0 0 7px rgba(43,85,125,.16);
 }
@@ -95,8 +118,7 @@
   box-shadow: none;
 }
 
-/* Preserve relative positioning only for the first button so its divider
-   remains anchored correctly. Other buttons use the normal flow. */
+/* All subgroup buttons stay in normal flow and begin from the same left edge. */
 .empirical-filter-row-buttons > .empirical-filter:not(:first-child) {
   position: static;
   margin-left: 0;
@@ -306,11 +328,15 @@
 }
 
 @media (max-width: 900px) {
-  .empirical-filter-row {
-    grid-template-columns: minmax(0, 1fr);
+  .empirical-filter-row-buttons {
+    --all-anchor-width: 165px;
+    --scope-start-offset: 1.4rem;
   }
+}
 
-  .empirical-filter-row-buttons > .empirical-filter:first-child {
-    margin-right: .85rem;
+@media (max-width: 620px) {
+  .empirical-filter-row-buttons {
+    --all-anchor-width: 155px;
+    --scope-start-offset: 1.25rem;
   }
 }

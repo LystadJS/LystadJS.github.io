@@ -4,9 +4,9 @@ window.JSL_EMPIRICAL_DATA = {
     BD:"Bangladesh",BE:"Belgium",BF:"Burkina Faso",BG:"Bulgaria",BH:"Bahrain",BN:"Brunei",BR:"Brazil",CA:"Canada",CD:"Democratic Republic of the Congo",
     CM:"Cameroon",CN:"China",CY:"Cyprus",CZ:"Czechia",DE:"Germany",DJ:"Djibouti",DK:"Denmark",DZ:"Algeria",EE:"Estonia",EG:"Egypt",ES:"Spain",FI:"Finland",FR:"France",GB:"United Kingdom",
     GE:"Georgia",GR:"Greece",HR:"Croatia",HU:"Hungary",ID:"Indonesia",IE:"Ireland",IL:"Israel",IN:"India",IQ:"Iraq",IR:"Iran",IT:"Italy",JO:"Jordan",JP:"Japan",KG:"Kyrgyzstan",KR:"South Korea",
-    KW:"Kuwait",KZ:"Kazakhstan",LB:"Lebanon",LK:"Sri Lanka",LT:"Lithuania",LU:"Luxembourg",LV:"Latvia",LY:"Libya",MA:"Morocco",ML:"Mali",MT:"Malta",MV:"Maldives",
-    MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NE:"Niger",NG:"Nigeria",NL:"Netherlands",NP:"Nepal",OM:"Oman",PH:"Philippines",PK:"Pakistan",PL:"Poland",PS:"West Bank and Gaza Strip",PT:"Portugal",
-    QA:"Qatar",RO:"Romania",RU:"Russia",SA:"Saudi Arabia",SE:"Sweden",SI:"Slovenia",SK:"Slovakia",SO:"Somalia",SY:"Syria",TD:"Chad",TJ:"Tajikistan",TN:"Tunisia",TR:"Turkey",TZ:"Tanzania",UG:"Uganda",US:"United States",YE:"Yemen"
+    KW:"Kuwait",KZ:"Kazakhstan",LB:"Lebanon",LK:"Sri Lanka",LT:"Lithuania",LU:"Luxembourg",LV:"Latvia",LY:"Libya",MA:"Morocco",ML:"Mali",MM:"Myanmar",MT:"Malta",MV:"Maldives",
+    MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NE:"Niger",NG:"Nigeria",NL:"Netherlands",NP:"Nepal",OM:"Oman",PH:"Philippines",PK:"Pakistan",PL:"Poland",PS:"Palestine",PT:"Portugal",
+    QA:"Qatar",RO:"Romania",RU:"Russia",SA:"Saudi Arabia",SE:"Sweden",SI:"Slovenia",SK:"Slovakia",SO:"Somalia",SY:"Syria",TD:"Chad",TJ:"Tajikistan",TN:"Tunisia",TR:"Turkey",TZ:"Tanzania",UA:"Ukraine",UG:"Uganda",US:"United States",YE:"Yemen"
   },
 
   scopeDefinitions: {
@@ -90,6 +90,26 @@ window.JSL_EMPIRICAL_DATA = {
       challenges:["Cross-border operating environment","Access constraints","Response evaluation"],methods:["Operational analysis"],
       scopes:["humanitarianResponse","humanSecurity"],
       countries:["NP","CN"],global:false,href:"research.html#project-himalayan-flood"
+    },
+    foodUnderFire: {
+      title:"Food Under Fire",
+      status:"Applied project",
+      summary:"UN-facing analytical work related to the Food Under Fire agenda item, focused on the interaction between armed conflict, food insecurity, humanitarian access, and civilian protection.",
+      themes:["United Nations","Food security","Humanitarian response"],systems:["Conflict-related food insecurity","Humanitarian access","Civilian protection"],
+      challenges:["Conflict-driven food insecurity","Humanitarian access constraints","Cross-context evidence synthesis"],methods:["Policy analysis","Comparative multilateral analysis"],
+      scopes:["humanitarianResponse","humanSecurity"],
+      countries:[],global:true,href:"research.html#project-food-under-fire"
+    },
+    protectingAidWorkers: {
+      title:"Protecting Aid Workers",
+      status:"Applied project",
+      summary:"UN-facing analytical work related to the Protecting Aid Workers agenda item, focused on threats to humanitarian personnel, operating access, and protection challenges across conflict environments.",
+      themes:["United Nations","Humanitarian protection","Human security"],systems:["Humanitarian operations","Aid worker protection","Conflict environments"],
+      challenges:["Threats to humanitarian personnel","Access constraints","Cross-conflict comparison"],methods:["Policy analysis","Comparative multilateral analysis"],
+      scopes:["humanitarianResponse","humanSecurity"],
+      countries:[],
+      mapCountries:["SY","MM","PS","IL","RU","UA","LB","IR"],
+      global:true,href:"research.html#project-protecting-aid-workers"
     },
     aiNonProliferation: {
       title:"Artificial Intelligence Non-Proliferation at the United Nations and across the Multilateral Ecosystem",

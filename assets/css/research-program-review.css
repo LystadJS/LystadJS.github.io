@@ -1,4 +1,4 @@
-/* Network/cluster-analysis presentation for the homepage research program. */
+/* Three-neighborhood conceptual network for the homepage Research Program. */
 
 body[data-page="index"] .hero {
   padding: clamp(4.1rem, 7vw, 6.1rem) 0 clamp(3.1rem, 5vw, 4.2rem);
@@ -10,7 +10,7 @@ body[data-page="index"] .hero {
 
 .rpm-section::before {
   top: 5rem;
-  height: 500px;
+  height: 520px;
 }
 
 .rpm-section .section-header {
@@ -23,14 +23,14 @@ body[data-page="index"] .hero {
 }
 
 .rpm-workspace {
-  height: 570px;
-  min-height: 570px;
+  height: 610px;
+  min-height: 610px;
 }
 
 .rpm-map-wrap {
   background:
-    radial-gradient(circle at 49% 48%, rgba(141,23,50,.045), transparent 13rem),
-    radial-gradient(circle at 52% 45%, rgba(101,69,126,.035), transparent 28rem),
+    radial-gradient(circle at 50% 48%, rgba(141,23,50,.035), transparent 14rem),
+    radial-gradient(circle at 54% 42%, rgba(101,69,126,.03), transparent 30rem),
     rgba(7,7,9,.13);
 }
 
@@ -55,73 +55,61 @@ body[data-page="index"] .hero {
 }
 
 .rpm-cluster-halo ellipse {
-  fill: rgba(255,255,255,.008);
-  stroke: rgba(145,132,147,.18);
+  fill: rgba(255,255,255,.006);
+  stroke: rgba(145,132,147,.14);
   stroke-width: 1;
-  stroke-dasharray: 4 6;
+  stroke-dasharray: 4 7;
   vector-effect: non-scaling-stroke;
 }
 
-.rpm-cluster-halo text {
-  fill: #625965;
-  font-family: var(--mono);
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: .12em;
-}
-
 .rpm-cluster-halo.is-related ellipse {
-  fill: rgba(141,23,50,.018);
-  stroke: rgba(191,49,82,.34);
-}
-
-.rpm-cluster-halo.is-related text {
-  fill: #8f7882;
+  fill: rgba(141,23,50,.017);
+  stroke: rgba(191,49,82,.30);
 }
 
 .rpm-cluster-halo.is-muted {
-  opacity: .18;
+  opacity: .17;
 }
 
 .rpm-edge {
   stroke: #6d6570;
   stroke-width: .85;
-  opacity: .09;
+  opacity: .075;
   vector-effect: non-scaling-stroke;
   transition: opacity 140ms ease, stroke 140ms ease;
 }
 
 .rpm-edge-core {
-  opacity: .18;
+  opacity: .17;
 }
 
 .rpm-edge-method {
-  opacity: .12;
+  opacity: .10;
 }
 
 .rpm-edge-domain {
-  opacity: .095;
+  opacity: .085;
 }
 
 .rpm-edge-domain-link {
-  opacity: .075;
+  opacity: .06;
   stroke-dasharray: 3 5;
 }
 
 .rpm-edge-question {
-  opacity: .12;
+  opacity: .10;
   stroke-dasharray: 3 5;
 }
 
 .rpm-edge.is-active {
   stroke: var(--crimson-bright);
   stroke-width: 1 !important;
-  opacity: .9 !important;
+  opacity: .90 !important;
   filter: none !important;
 }
 
 .rpm-edge.is-muted {
-  opacity: .018 !important;
+  opacity: .015 !important;
 }
 
 .rpm-hidden {
@@ -138,15 +126,15 @@ body[data-page="index"] .hero {
 
 .rpm-network-node .rpm-shape {
   fill: #0f0c11;
-  stroke: rgba(164,151,164,.48);
+  stroke: rgba(164,151,164,.47);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   transition: fill 140ms ease, stroke 140ms ease !important;
 }
 
 .rpm-kind-domain .rpm-shape {
-  fill: rgba(255,255,255,.008);
-  stroke: rgba(183,171,181,.48);
+  fill: rgba(255,255,255,.007);
+  stroke: rgba(183,171,181,.46);
   stroke-width: 1.05;
 }
 
@@ -185,7 +173,7 @@ body[data-page="index"] .hero {
 }
 
 .rpm-network-node.is-muted {
-  opacity: .09 !important;
+  opacity: .085 !important;
 }
 
 .rpm-network-node.is-related,
@@ -197,7 +185,7 @@ body[data-page="index"] .hero {
 .rpm-network-center-label {
   fill: #b6aab6;
   font-family: var(--sans);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 600;
   letter-spacing: .01em;
   pointer-events: none;
@@ -216,7 +204,7 @@ body[data-page="index"] .hero {
 .rpm-network-center-sub {
   fill: #716673;
   font-family: var(--mono);
-  font-size: 6.5px;
+  font-size: 6.2px;
   font-weight: 500;
   letter-spacing: .12em;
 }
@@ -266,7 +254,7 @@ body[data-page="index"] .hero {
 
 @media (max-width: 1100px) {
   .rpm-workspace {
-    grid-template-columns: minmax(0, 1.75fr) minmax(270px, .72fr);
+    grid-template-columns: minmax(0, 1.78fr) minmax(270px, .70fr);
   }
 }
 
@@ -278,7 +266,7 @@ body[data-page="index"] .hero {
   }
 
   .rpm-map-wrap {
-    min-height: 535px;
+    min-height: 570px;
   }
 
   .rpm-detail {

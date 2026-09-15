@@ -1,0 +1,160 @@
+/* ============================================================
+   UN PROJECTS MODE
+   Loaded after empirical-explorer.css so blue mode can override
+   the research layer without changing the base explorer styles.
+   ============================================================ */
+
+.empirical-filter--un {
+  position: relative;
+  margin-left: .65rem;
+  color: #72c9ea;
+  border-color: rgba(0,158,219,.22);
+  background: rgba(0,158,219,.035);
+}
+
+.empirical-filter--un::before {
+  content: "";
+  position: absolute;
+  left: -.55rem;
+  top: .15rem;
+  bottom: .15rem;
+  width: 1px;
+  background: rgba(0,158,219,.28);
+}
+
+.empirical-filter--un:hover,
+.empirical-filter--un:focus-visible {
+  color: #b9e8f8;
+  border-color: rgba(0,158,219,.58);
+  background: rgba(0,158,219,.08);
+}
+
+.empirical-filter--un.is-active {
+  color: #e5f7fd;
+  border-color: rgba(0,158,219,.78);
+  background: rgba(0,158,219,.17);
+  box-shadow: inset 0 0 0 1px rgba(88,199,239,.08), 0 0 16px rgba(0,158,219,.08);
+}
+
+.empirical-explorer.is-un-mode {
+  border-color: rgba(0,158,219,.28);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.015), rgba(0,111,154,.035) 44%, rgba(0,158,219,.055)),
+    rgba(8,12,15,.76);
+}
+
+.empirical-explorer.is-un-mode .empirical-toolbar {
+  border-bottom-color: rgba(0,158,219,.20);
+}
+
+.empirical-explorer.is-un-mode .empirical-legend-mark {
+  border-color: rgba(88,199,239,.82);
+  background: #009edb;
+  box-shadow: 0 0 10px rgba(0,158,219,.32);
+}
+
+.empirical-explorer.is-un-mode .empirical-map-wrap {
+  border-right-color: rgba(0,158,219,.18);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0,158,219,.105), transparent 55%),
+    rgba(5,11,14,.50);
+}
+
+.empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--un-scope {
+  fill: #075a78 !important;
+  stroke: rgba(88,199,239,.24) !important;
+  stroke-width: .48 !important;
+  opacity: .72;
+  cursor: default;
+  filter: none;
+  transform: none;
+}
+
+.empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--un-specific {
+  fill: #009edb !important;
+  stroke: rgba(229,247,253,.58) !important;
+  stroke-width: .72 !important;
+  opacity: .98;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px rgba(0,158,219,.18));
+}
+
+.empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--preview {
+  fill: #43c0ed !important;
+  stroke: #e5f7fd !important;
+  stroke-width: 1 !important;
+  transform: scale(1.045);
+  filter:
+    drop-shadow(0 3px 3px rgba(0,0,0,.58))
+    drop-shadow(0 0 8px rgba(0,158,219,.44));
+  opacity: 1;
+}
+
+.empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--selected {
+  fill: #58c7ef !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.1 !important;
+  transform: scale(1.055);
+  filter:
+    drop-shadow(0 4px 5px rgba(0,0,0,.62))
+    drop-shadow(0 0 10px rgba(0,158,219,.50));
+  opacity: 1;
+}
+
+.empirical-explorer.is-un-mode .empirical-map .jvm-region:focus-visible {
+  stroke: #e5f7fd !important;
+  filter: drop-shadow(0 0 8px rgba(0,158,219,.55));
+}
+
+.empirical-explorer.is-un-mode .empirical-panel {
+  background:
+    linear-gradient(180deg, rgba(8,34,45,.93), rgba(7,15,20,.95));
+  scrollbar-color: rgba(0,158,219,.55) transparent;
+}
+
+.empirical-explorer.is-un-mode .empirical-panel-kicker,
+.empirical-explorer.is-un-mode .empirical-project-status {
+  color: #58c7ef;
+}
+
+.empirical-explorer.is-un-mode .empirical-country-header,
+.empirical-explorer.is-un-mode .empirical-meta-section,
+.empirical-explorer.is-un-mode .empirical-project,
+.empirical-explorer.is-un-mode .empirical-summary-item {
+  border-color: rgba(0,158,219,.19);
+}
+
+.empirical-explorer.is-un-mode .empirical-project:first-of-type {
+  border-top-color: rgba(88,199,239,.42);
+}
+
+.empirical-explorer.is-un-mode .empirical-tag {
+  border-color: rgba(0,158,219,.24);
+  background: rgba(0,158,219,.035);
+}
+
+.empirical-explorer.is-un-mode .empirical-project-link {
+  border-bottom-color: #009edb;
+}
+
+.empirical-explorer.is-un-mode .empirical-project-link:hover,
+.empirical-explorer.is-un-mode .empirical-project-link:focus-visible {
+  color: #58c7ef;
+}
+
+.empirical-explorer.is-un-mode .empirical-close:hover,
+.empirical-explorer.is-un-mode .empirical-close:focus-visible {
+  border-color: rgba(0,158,219,.58);
+  color: #e5f7fd;
+}
+
+@media (max-width: 620px) {
+  .empirical-filter--un {
+    margin-left: 0;
+    margin-top: .2rem;
+  }
+
+  .empirical-filter--un::before {
+    display: none;
+  }
+}

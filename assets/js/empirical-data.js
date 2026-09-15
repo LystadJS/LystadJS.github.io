@@ -10,6 +10,33 @@ window.JSL_EMPIRICAL_DATA = {
     TD:"Chad",TJ:"Tajikistan",TN:"Tunisia",TR:"Turkey",TZ:"Tanzania",UG:"Uganda",US:"United States",YE:"Yemen"
   },
 
+  scopeDefinitions: {
+    research: [
+      { id:"all", label:"Academic Research" },
+      { id:"politicalViolence", label:"Political Violence" },
+      { id:"terrorismResponses", label:"Terrorism and Responses to Terrorism" },
+      { id:"anthropoceneHumanEcology", label:"Anthropocene Dynamics and Human Ecology" }
+    ],
+    applied: [
+      { id:"all", label:"Applied Projects" },
+      { id:"humanitarianResponse", label:"Humanitarian Response" },
+      { id:"emergingTechnology", label:"Emerging Technology" },
+      { id:"humanSecurity", label:"Human Security" }
+    ],
+    military: [
+      { id:"all", label:"Military Service" },
+      { id:"activeDuty", label:"Active-Duty" },
+      { id:"armyReserves", label:"Army Reserves" },
+      { id:"multinationalSecurity", label:"Multinational Security Cooperation" },
+      { id:"specializedTraining", label:"Specialized Training" }
+    ],
+    journalism: [
+      { id:"all", label:"Independent Reporting" },
+      { id:"investigativeJournalism", label:"Investigative Journalism" },
+      { id:"foreignCorrespondence", label:"Foreign Correspondence" }
+    ]
+  },
+
   researchProjects: {
     targetMap: {
       shortTitle:"Target Map",
@@ -20,6 +47,7 @@ window.JSL_EMPIRICAL_DATA = {
       systems:["Insurgent violence","Ethnosectarian geography","Civilian targeting"],
       challenges:["Spatial composition","Event heterogeneity","Target-type variation"],
       methods:["Population-weighted geography","Statistical modeling","Data visualization"],
+      scopes:["politicalViolence","terrorismResponses"],
       countries:["IQ"],href:"research.html#paper-target-map"
     },
     lethality: {
@@ -29,6 +57,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How do missing casualty observations and perpetrator-attribution bias alter estimates of lethality in Islamic State-linked suicide attacks?",
       themes:["Terrorism","Missing data"],systems:["Suicide attacks","Islamic State-linked terrorism","Attack lethality"],
       challenges:["Missing casualty data","Attribution bias","Cross-country event data"],methods:["Missing-data analysis","Comparative event analysis","R"],
+      scopes:["politicalViolence","terrorismResponses"],
       countries:["AF","DZ","AU","BH","BD","BE","BF","CM","TD","CD","EG","FR","GE","DE","IN","ID","IR","IQ","IL","JO","KZ","KW","KG","LB","LY","MY","MV","ML","MZ","NE","NG","PK","PH","RU","SA","SO","LK","SY","TJ","TZ","TN","TR","UG","GB","PS","YE"],href:"research.html#paper-estimating-lethality"
     },
     climate: {
@@ -38,6 +67,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How could projected climate stress intensify resource scarcity, governance pressure, and conditions exploitable by terrorist organizations across the Middle East and North Africa?",
       themes:["Climate risk","Human security","Terrorism"],systems:["Climate stress","Resource scarcity","Terrorist network development"],
       challenges:["Scenario uncertainty","Cross-country climate exposure","Multi-source integration"],methods:["Climate scenario comparison","Spatial analysis","Data visualization"],
+      scopes:["terrorismResponses","anthropoceneHumanEcology"],
       countries:["DZ","BH","DJ","EG","IR","IQ","IL","JO","KW","LB","LY","MA","OM","QA","SA","SY","TN","AE","PS","YE"],href:"research.html#paper-climate-terrorism"
     },
     vanguards: {
@@ -47,6 +77,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How consistent were the strategic and tactical behaviors of Islamic State wilayat across the movement's geographic expansion through 2019?",
       themes:["Terrorism","Organizational behavior"],systems:["Islamic State wilayat","Tactical cohesion","Strategic variation"],
       challenges:["Cross-unit comparability","Longitudinal conflict data","Organizational heterogeneity"],methods:["Comparative analysis","Longitudinal analysis","OSINT"],
+      scopes:["politicalViolence","terrorismResponses"],
       countries:["AF","DZ","AM","AZ","BD","BN","BF","CM","TD","CD","EG","GE","IN","ID","IQ","LY","MY","ML","MZ","NE","NG","PK","PH","RU","SA","SO","SY","TZ","TN","TR","UG","YE"],href:"research.html#paper-vanguards"
     }
   },
@@ -58,6 +89,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"An applied analysis focused on humanitarian access and response effectiveness in a difficult cross-border operating environment.",
       themes:["Humanitarian","Access","Operational analysis"],systems:["Cross-border humanitarian access","Disaster response effectiveness"],
       challenges:["Cross-border operating environment","Access constraints","Response evaluation"],methods:["Operational analysis"],
+      scopes:["humanitarianResponse","humanSecurity"],
       countries:["NP","CN"],global:false,href:"research.html#project-himalayan-flood"
     },
     aiNonProliferation: {
@@ -66,6 +98,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"Policy-oriented work examining AI non-proliferation in UN and multilateral settings, with emphasis on translating technical change into governance questions.",
       themes:["United Nations","AI governance","Multilateral policy"],systems:["UN and multilateral governance","Emerging technology governance"],
       challenges:["Cross-institutional policy comparison","Rapid technical change"],methods:["Policy analysis","Comparative multilateral analysis"],
+      scopes:["emergingTechnology","humanSecurity"],
       countries:[],global:true,href:"research.html#project-ai-nonproliferation"
     },
     autonomousWeapons: {
@@ -74,6 +107,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"An applied policy project on the proliferation risks created by increasingly accessible autonomous systems and enabling technologies.",
       themes:["Autonomy","Security","Non-proliferation"],systems:["Autonomous systems","Technology proliferation"],
       challenges:["Technology diffusion","Dual-use capability","Multilateral coordination"],methods:["Policy analysis","Risk assessment"],
+      scopes:["emergingTechnology","humanSecurity"],
       countries:[],global:true,href:"research.html#project-autonomous-weapons"
     },
     ambassadorAdvising: {
@@ -82,92 +116,66 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"Public descriptions of analyses used to support senior decision-making in State Department and United Nations contexts.",
       themes:["Statistics","Decision support","Policy"],systems:["Senior decision support","United Nations policy contexts"],
       challenges:["Decision-making under uncertainty","Translation of analysis to policy"],methods:["Statistical analysis","Decision support"],
+      scopes:["humanSecurity"],
       countries:[],global:true,href:"research.html#project-ambassador-advising"
     }
   },
 
-  /* Army entries are intentionally country-specific placeholders.
-     Update each record independently later without changing the map code. */
+  /* Country coverage is active now.  Scope assignments are intentionally
+     left empty until the user supplies the specific military details. */
   armyProjects: {
     armyJapan: {
-      shortTitle:"Japan",
-      title:"U.S. Army Experience — Japan",
-      status:"Details forthcoming",
+      shortTitle:"Japan",title:"U.S. Army Experience — Japan",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
-      themes:["U.S. Army","Leadership","Operational experience"],
-      systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
-      countries:["JP"],href:null
+      themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["JP"],href:null
     },
     armyUnitedStates: {
-      shortTitle:"United States",
-      title:"U.S. Army Experience — United States",
-      status:"Details forthcoming",
+      shortTitle:"United States",title:"U.S. Army Experience — United States",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
-      themes:["U.S. Army","Leadership","Operational experience"],
-      systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
-      countries:["US"],href:null
+      themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["US"],href:null
     },
     armyCanada: {
-      shortTitle:"Canada",
-      title:"U.S. Army Experience — Canada",
-      status:"Details forthcoming",
+      shortTitle:"Canada",title:"U.S. Army Experience — Canada",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
-      themes:["U.S. Army","Leadership","Operational experience"],
-      systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
-      countries:["CA"],href:null
+      themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["CA"],href:null
     }
   },
 
-  /* Journalism entries are also placeholders so dates, outlets, roles,
-     articles, links, and methods can be filled in later country by country. */
+  /* Country coverage is active now.  Scope assignments are intentionally
+     left empty until the user supplies the reporting-specific details. */
   journalismProjects: {
     journalismUnitedStates: {
-      shortTitle:"United States",
-      title:"Journalistic Work — United States",
-      status:"Details forthcoming",
+      shortTitle:"United States",title:"Journalistic Work — United States",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
-      countries:["US"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["US"],href:null
     },
     journalismMorocco: {
-      shortTitle:"Morocco",
-      title:"Journalistic Work — Morocco",
-      status:"Details forthcoming",
+      shortTitle:"Morocco",title:"Journalistic Work — Morocco",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
-      countries:["MA"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["MA"],href:null
     },
     journalismSpain: {
-      shortTitle:"Spain",
-      title:"Journalistic Work — Spain",
-      status:"Details forthcoming",
+      shortTitle:"Spain",title:"Journalistic Work — Spain",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
-      countries:["ES"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["ES"],href:null
     },
     journalismFrance: {
-      shortTitle:"France",
-      title:"Journalistic Work — France",
-      status:"Details forthcoming",
+      shortTitle:"France",title:"Journalistic Work — France",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
-      countries:["FR"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["FR"],href:null
     },
     journalismAlgeria: {
-      shortTitle:"Algeria",
-      title:"Journalistic Work — Algeria",
-      status:"Details forthcoming",
+      shortTitle:"Algeria",title:"Journalistic Work — Algeria",status:"Details forthcoming",
       summary:"Country-specific journalism work reserved for later expansion.",
       themes:["Journalism","Reporting","Writing"],systems:["Public affairs","Field reporting"],
-      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],
-      countries:["DZ"],href:null
+      challenges:["Details forthcoming"],methods:["Reporting","Research","Writing"],scopes:[],countries:["DZ"],href:null
     }
   }
 };

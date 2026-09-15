@@ -1,17 +1,17 @@
-/* Homepage hero expansion + compact contact rail.
-   Loaded only on the homepage by assets/js/main.js. */
+/* Homepage hero + compact contact rail.
+   Uses the same shell, spacing, divider, and alignment conventions as the
+   interior page heroes while preserving the portrait-next-to-name identity. */
 
 body[data-page="index"] .hero {
-  width: min(calc(100vw - 2rem), 1380px);
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  margin: 0;
+  transform: none;
   display: block;
   min-height: auto;
-  padding: clamp(3.25rem, 6vw, 5.5rem) 0 clamp(2.75rem, 5vw, 4.5rem);
+  padding: clamp(5rem, 8vw, 7rem) 0 4rem;
+  border-bottom: 1px solid var(--line);
 }
 
-/* Portrait and name share the top row.  The lede and current inquiry then take
-   the full remaining hero width up to the external-link rail. */
 body[data-page="index"] .hero-profile {
   position: relative;
   width: 100%;
@@ -20,24 +20,25 @@ body[data-page="index"] .hero-profile {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  column-gap: clamp(1.5rem, 3vw, 2.4rem);
-  row-gap: clamp(1rem, 1.8vw, 1.45rem);
-  padding-right: 64px;
+  column-gap: clamp(1.6rem, 3vw, 2.5rem);
+  row-gap: clamp(1.4rem, 2.4vw, 2rem);
+  padding-right: 68px;
   text-align: left;
 }
 
+/* Identity row: portrait directly beside the name, within the same centered
+   site shell used by Research, About, Code, and CV. */
 body[data-page="index"] .hero-headshot {
-  flex: 0 0 clamp(150px, 16vw, 205px);
-  width: clamp(150px, 16vw, 205px);
+  flex: 0 0 clamp(150px, 15vw, 195px);
+  width: clamp(150px, 15vw, 195px);
   margin: 0;
   align-self: center;
 }
 
 body[data-page="index"] .hero-identity {
-  flex: 1 1 0;
+  flex: 1 1 560px;
   min-width: 0;
-  width: auto;
-  max-width: none;
+  max-width: 920px;
   margin: 0;
   text-align: left;
 }
@@ -48,18 +49,22 @@ body[data-page="index"] .hero-identity h1 {
 }
 
 body[data-page="index"] .hero-identity h1 {
-  width: 100%;
-  max-width: none;
-  margin: .35rem 0 .5rem;
+  max-width: 920px;
+  margin: .45rem 0 1rem;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: .88;
+  letter-spacing: -.05em;
 }
 
+/* Full-width copy row beneath the identity. It uses all space up to the
+   reserved contact rail rather than inheriting the width of the name block. */
 body[data-page="index"] .hero-details {
   flex: 0 0 100%;
   width: 100%;
   max-width: none;
   min-width: 0;
   margin: 0;
-  padding-top: .95rem;
+  padding-top: 1.25rem;
   border-top: 1px solid rgba(74,53,71,.46);
   text-align: left;
   align-self: stretch;
@@ -80,7 +85,7 @@ body[data-page="index"] .hero-details > .hero-actions {
 
 body[data-page="index"] .hero-note {
   justify-content: flex-start;
-  margin-top: .9rem;
+  margin-top: 1rem;
 }
 
 body[data-page="index"] .hero-contact-rail {
@@ -196,12 +201,12 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 980px) {
-  body[data-page="index"] .hero {
-    width: calc(100vw - 2rem);
-  }
-
   body[data-page="index"] .hero-profile {
     padding-right: 58px;
+  }
+
+  body[data-page="index"] .hero-identity {
+    flex-basis: 480px;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -212,14 +217,19 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 
 @media (max-width: 780px) {
   body[data-page="index"] .hero-profile {
-    column-gap: 1.1rem;
-    row-gap: 1.1rem;
+    column-gap: 1.25rem;
+    row-gap: 1.25rem;
     padding-right: 54px;
   }
 
   body[data-page="index"] .hero-headshot {
     flex-basis: 145px;
     width: 145px;
+  }
+
+  body[data-page="index"] .hero-identity {
+    flex: 1 1 360px;
+    max-width: none;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -240,7 +250,7 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 
 @media (max-width: 560px) {
   body[data-page="index"] .hero {
-    padding-top: 2.5rem;
+    padding: 4rem 0 3rem;
   }
 
   body[data-page="index"] .hero-profile {

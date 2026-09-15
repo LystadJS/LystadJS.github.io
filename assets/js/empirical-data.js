@@ -121,30 +121,32 @@ window.JSL_EMPIRICAL_DATA = {
     }
   },
 
-  /* Country coverage is active now.  Scope assignments are intentionally
-     left empty until the user supplies the specific military details. */
+  /* Military-service countries can belong to more than one scope. */
   armyProjects: {
     armyJapan: {
       shortTitle:"Japan",title:"U.S. Army Experience — Japan",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
       themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["JP"],href:null
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
+      scopes:["activeDuty","multinationalSecurity"],countries:["JP"],href:null
     },
     armyUnitedStates: {
       shortTitle:"United States",title:"U.S. Army Experience — United States",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
       themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["US"],href:null
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
+      scopes:["activeDuty","armyReserves","specializedTraining"],countries:["US"],href:null
     },
     armyCanada: {
       shortTitle:"Canada",title:"U.S. Army Experience — Canada",status:"Details forthcoming",
       summary:"Country-specific Army experience reserved for later expansion.",
       themes:["U.S. Army","Leadership","Operational experience"],systems:["Military service","Operational environment"],
-      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],scopes:[],countries:["CA"],href:null
+      challenges:["Details forthcoming"],methods:["Leadership","Operational analysis"],
+      scopes:["activeDuty","multinationalSecurity"],countries:["CA"],href:null
     }
   },
 
-  /* Country coverage is active now.  Scope assignments are intentionally
+  /* Country coverage is active now. Scope assignments are intentionally
      left empty until the user supplies the reporting-specific details. */
   journalismProjects: {
     journalismUnitedStates: {

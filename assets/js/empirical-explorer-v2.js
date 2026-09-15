@@ -63,8 +63,10 @@
   function buildCountryCases(projects, explicitOnly = false) {
     const cases = {};
     projects.forEach(project => {
-      if (explicitOnly && project.global) return;
-      (project.countries || []).forEach(code => {
+      const codes = (project.mapCountries?.length ? project.mapCountries : project.countries) || [];
+      if (explicitOnly && project.global && codes.length === 0) return;
+
+      codes.forEach(code => {
         if (!D.countryNames[code]) return;
         cases[code] ??= { country:D.countryNames[code], projects:[] };
         cases[code].projects.push(project);
@@ -77,9 +79,10 @@
     return buildCountryCases(selectedProjects(), mode === "applied");
   }
 
-  function globalAppliedProjects() {
+  function globalAppliedProjects(excludeProjects = []) {
     if (mode !== "applied") return [];
-    return selectedProjects().filter(project => project.global);
+    const excludedIds = new Set(excludeProjects.map(project => project.id));
+    return selectedProjects().filter(project => project.global && !excludedIds.has(project.id));
   }
 
   function tags(items = []) {
@@ -121,7 +124,7 @@
     }
 
     if (note) {
-      if (mode === "applied") note.textContent = "Only countries tied to country-specific applied work are highlighted";
+      if (mode === "applied") note.textContent = "Only countries tied to explicit applied-project coverage are highlighted";
       else if (mode === "military") note.textContent = "Military-service scope assignments can be added later in the data file";
       else if (mode === "journalism") note.textContent = "Reporting-scope assignments can be added later in the data file";
       else note.textContent = "Hover to preview · Select a country to explore";
@@ -168,7 +171,7 @@
     if ((mode === "military" || mode === "journalism") && scope !== "all" && projects.length === 0) {
       description = "This scope is ready for entries, but no countries or records have been assigned to it yet. Add scope assignments later in assets/js/empirical-data.js.";
     } else if (mode === "applied") {
-      description = "Projects are grouped by applied scope. Global or multilateral projects remain listed here without implying country-level coverage on the map.";
+      description = "Projects are grouped by applied scope. Global or multilateral projects with explicit mapped-country coverage are highlighted; other global work remains listed without implying country-level coverage.";
     } else if (mode === "military") {
       description = "Country coverage is active now. Specific service categories can be assigned to each country record later without changing the map interface.";
     } else if (mode === "journalism") {
@@ -197,12 +200,12 @@
     const item = cases[code];
     if (!item) return;
 
-    const globals = globalAppliedProjects();
+    const globals = globalAppliedProjects(item.projects);
     panel.innerHTML = `
       <div class="empirical-panel-inner empirical-panel-empty">
         <p class="empirical-panel-kicker">${esc(activeDefinition().label)}</p>
         <h3 class="empirical-country-title">${esc(item.country)}</h3>
-        <p>${item.projects.length} ${plural(item.projects.length,"country-specific entry")} connected to this setting${globals.length ? `, plus ${globals.length} global / multilateral ${plural(globals.length,"entry")}` : ""}.</p>
+        <p>${item.projects.length} ${plural(item.projects.length,"country-linked entry")} connected to this setting${globals.length ? `, plus ${globals.length} additional global / multilateral ${plural(globals.length,"entry")}` : ""}.</p>
         <div class="empirical-meta-section">
           <p class="empirical-meta-label">Domains</p>
           ${tags(item.projects.flatMap(project => project.themes || []))}
@@ -220,7 +223,7 @@
     const cases = currentCases();
     const item = cases[code];
     if (!item) return;
-    const globals = globalAppliedProjects();
+    const globals = globalAppliedProjects(item.projects);
 
     const domains = uniq(item.projects.flatMap(project => project.themes || []));
     const systems = uniq(item.projects.flatMap(project => project.systems || []));
@@ -232,15 +235,15 @@
         <header class="empirical-country-header">
           <p class="empirical-panel-kicker">${esc(activeDefinition().label)}</p>
           <h3 class="empirical-country-title">${esc(item.country)}</h3>
-          <p class="empirical-country-count">${item.projects.length} ${plural(item.projects.length,"country-specific entry")}</p>
+          <p class="empirical-country-count">${item.projects.length} ${plural(item.projects.length,"country-linked entry")}</p>
           <button class="empirical-close" type="button" data-close-country aria-label="Close ${esc(item.country)}">×</button>
         </header>
         ${domains.length ? `<div class="empirical-meta-section"><p class="empirical-meta-label">Domains</p>${tags(domains)}</div>` : ""}
         ${systems.length ? `<div class="empirical-meta-section"><p class="empirical-meta-label">Systems / context</p>${tags(systems)}</div>` : ""}
         ${challenges.length ? `<div class="empirical-meta-section"><p class="empirical-meta-label">Analytical challenges</p>${tags(challenges)}</div>` : ""}
         ${methods.length ? `<div class="empirical-meta-section"><p class="empirical-meta-label">Methods / competencies</p>${tags(methods)}</div>` : ""}
-        <div class="empirical-projects"><p class="empirical-projects-title">Country-specific work</p>${item.projects.map(project => card(project)).join("")}</div>
-        ${globals.length ? `<div class="empirical-projects"><p class="empirical-projects-title">Global / multilateral work in this scope</p>${globals.map(project => card(project,"Global / multilateral")).join("")}</div>` : ""}
+        <div class="empirical-projects"><p class="empirical-projects-title">Country-linked work</p>${item.projects.map(project => card(project, project.global ? "Global / multilateral" : null)).join("")}</div>
+        ${globals.length ? `<div class="empirical-projects"><p class="empirical-projects-title">Additional global / multilateral work in this scope</p>${globals.map(project => card(project,"Global / multilateral")).join("")}</div>` : ""}
       </div>
     `;
     animatePanel();

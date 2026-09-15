@@ -1,0 +1,51 @@
+/* ============================================================
+   EMPIRICAL EXPLORER CONSISTENCY PASS
+   Keeps country states geometrically consistent across Research,
+   UN, Army, and Journalism modes.
+   ============================================================ */
+
+/* UN mode: only explicitly country-specific project settings receive blue.
+   Global / multilateral projects remain available in the side panel without
+   implying country-level coverage on the map. */
+.empirical-explorer.is-un-mode
+.empirical-map
+.jvm-region.empirical-region--un-scope:not(.empirical-region--un-specific) {
+  fill: #211b23 !important;
+  stroke: #3c303d !important;
+  stroke-width: .45 !important;
+  opacity: .68;
+  cursor: default;
+  filter: none !important;
+  transform: none !important;
+}
+
+/* One shared pop-out geometry for every category.  Color remains mode-specific. */
+.empirical-map .jvm-region.empirical-region--preview {
+  stroke-width: 1 !important;
+  transform: scale(1.045) !important;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 1;
+}
+
+.empirical-map .jvm-region.empirical-region--selected {
+  stroke-width: 1.1 !important;
+  transform: scale(1.055) !important;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 1;
+}
+
+/* Keep inactive/non-relevant geography visually stable in category modes. */
+.empirical-explorer.is-un-mode .empirical-map .jvm-region:not(.empirical-region--un-specific),
+.empirical-explorer.is-army-mode .empirical-map .jvm-region:not(.empirical-region--category-active),
+.empirical-explorer.is-journalism-mode .empirical-map .jvm-region:not(.empirical-region--category-active) {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empirical-map .jvm-region.empirical-region--preview,
+  .empirical-map .jvm-region.empirical-region--selected {
+    transform: none !important;
+  }
+}

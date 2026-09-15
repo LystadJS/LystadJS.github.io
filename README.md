@@ -4,7 +4,7 @@
 
 **Computational Statistics · Social Science · International Policy**
 
-[Live site](https://lystadjs.github.io/) · [Research](https://lystadjs.github.io/research.html) · [Projects](https://lystadjs.github.io/projects.html) · [Code & Development](https://lystadjs.github.io/code.html) · [CV](https://lystadjs.github.io/cv.html)
+[Live site](https://lystadjs.github.io/) · [Research](https://lystadjs.github.io/research.html) · [Code & Development](https://lystadjs.github.io/code.html) · [CV](https://lystadjs.github.io/cv.html)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## Overview
 
-This repository is the source for **LystadJS.github.io**, my academic and technical portfolio. The site separates three bodies of work—academic research, applied projects, and code/development—while presenting them through a shared methodological and visual framework.
+This repository is the source for **LystadJS.github.io**, my academic and technical portfolio. The site presents academic research and applied analytical work together on a unified Research page while preserving a clear distinction between the two, with code/development maintained as a separate technical body of work.
 
 The site is intentionally static and dependency-light: HTML, CSS, and JavaScript are served directly by GitHub Pages without a framework or build pipeline.
 
@@ -24,8 +24,8 @@ The site is intentionally static and dependency-light: HTML, CSS, and JavaScript
 |---|---|
 | `index.html` | Research identity, current signal, and primary navigation |
 | `about.html` | Background and research orientation |
-| `research.html` | Academic research and works in progress |
-| `projects.html` | Applied analytical projects |
+| `research.html` | Academic research, applied research, and the Empirical Settings Explorer |
+| `projects.html` | Legacy redirect to `research.html#applied-research` |
 | `code.html` | Repositories, development work, and technical methods |
 | `cv.html` | Curriculum vitae |
 | `notes.html` / `notes/` | Technical and research notes |
@@ -62,7 +62,7 @@ Because the site uses relative asset paths, previewing through an HTTP server is
 
 - Shared visual rules belong in `assets/css/style.css`.
 - Shared interactions belong in `assets/js/main.js` unless a page-specific script is materially clearer inline.
-- Public-facing research and project descriptions should remain consistent with the underlying repository documentation.
+- Public-facing academic and applied research descriptions should remain consistent with the underlying repository documentation.
 - The website should link outward to reproducible technical artifacts rather than duplicate full project documentation.
 
 ## Related repositories

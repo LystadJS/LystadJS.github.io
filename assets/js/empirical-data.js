@@ -20,7 +20,7 @@ window.JSL_EMPIRICAL_DATA = {
       systems:["Insurgent violence","Ethnosectarian geography","Civilian targeting"],
       challenges:["Spatial composition","Event heterogeneity","Target-type variation"],
       methods:["Population-weighted geography","Statistical modeling","Data visualization"],
-      countries:["IQ"]
+      countries:["IQ"],href:"research.html#paper-target-map"
     },
     lethality: {
       shortTitle:"Estimating Lethality",
@@ -29,7 +29,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How do missing casualty observations and perpetrator-attribution bias alter estimates of lethality in Islamic State-linked suicide attacks?",
       themes:["Terrorism","Missing data"],systems:["Suicide attacks","Islamic State-linked terrorism","Attack lethality"],
       challenges:["Missing casualty data","Attribution bias","Cross-country event data"],methods:["Missing-data analysis","Comparative event analysis","R"],
-      countries:["AF","DZ","AU","BH","BD","BE","BF","CM","TD","CD","EG","FR","GE","DE","IN","ID","IR","IQ","IL","JO","KZ","KW","KG","LB","LY","MY","MV","ML","MZ","NE","NG","PK","PH","RU","SA","SO","LK","SY","TJ","TZ","TN","TR","UG","GB","PS","YE"]
+      countries:["AF","DZ","AU","BH","BD","BE","BF","CM","TD","CD","EG","FR","GE","DE","IN","ID","IR","IQ","IL","JO","KZ","KW","KG","LB","LY","MY","MV","ML","MZ","NE","NG","PK","PH","RU","SA","SO","LK","SY","TJ","TZ","TN","TR","UG","GB","PS","YE"],href:"research.html#paper-estimating-lethality"
     },
     climate: {
       shortTitle:"Climate Change",
@@ -38,7 +38,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How could projected climate stress intensify resource scarcity, governance pressure, and conditions exploitable by terrorist organizations across the Middle East and North Africa?",
       themes:["Climate risk","Human security","Terrorism"],systems:["Climate stress","Resource scarcity","Terrorist network development"],
       challenges:["Scenario uncertainty","Cross-country climate exposure","Multi-source integration"],methods:["Climate scenario comparison","Spatial analysis","Data visualization"],
-      countries:["DZ","BH","DJ","EG","IR","IQ","IL","JO","KW","LB","LY","MA","OM","QA","SA","SY","TN","AE","PS","YE"]
+      countries:["DZ","BH","DJ","EG","IR","IQ","IL","JO","KW","LB","LY","MA","OM","QA","SA","SY","TN","AE","PS","YE"],href:"research.html#paper-climate-terrorism"
     },
     vanguards: {
       shortTitle:"Vanguards of Terror",
@@ -47,7 +47,7 @@ window.JSL_EMPIRICAL_DATA = {
       question:"How consistent were the strategic and tactical behaviors of Islamic State wilayat across the movement's geographic expansion through 2019?",
       themes:["Terrorism","Organizational behavior"],systems:["Islamic State wilayat","Tactical cohesion","Strategic variation"],
       challenges:["Cross-unit comparability","Longitudinal conflict data","Organizational heterogeneity"],methods:["Comparative analysis","Longitudinal analysis","OSINT"],
-      countries:["AF","DZ","AM","AZ","BD","BN","BF","CM","TD","CD","EG","GE","IN","ID","IQ","LY","MY","ML","MZ","NE","NG","PK","PH","RU","SA","SO","SY","TZ","TN","TR","UG","YE"]
+      countries:["AF","DZ","AM","AZ","BD","BN","BF","CM","TD","CD","EG","GE","IN","ID","IQ","LY","MY","ML","MZ","NE","NG","PK","PH","RU","SA","SO","SY","TZ","TN","TR","UG","YE"],href:"research.html#paper-vanguards"
     }
   },
 
@@ -58,7 +58,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"An applied analysis focused on humanitarian access and response effectiveness in a difficult cross-border operating environment.",
       themes:["Humanitarian","Access","Operational analysis"],systems:["Cross-border humanitarian access","Disaster response effectiveness"],
       challenges:["Cross-border operating environment","Access constraints","Response evaluation"],methods:["Operational analysis"],
-      countries:["NP","CN"],global:false,href:"projects.html"
+      countries:["NP","CN"],global:false,href:"research.html#project-himalayan-flood"
     },
     aiNonProliferation: {
       title:"Artificial Intelligence Non-Proliferation at the United Nations and across the Multilateral Ecosystem",
@@ -66,7 +66,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"Policy-oriented work examining AI non-proliferation in UN and multilateral settings, with emphasis on translating technical change into governance questions.",
       themes:["United Nations","AI governance","Multilateral policy"],systems:["UN and multilateral governance","Emerging technology governance"],
       challenges:["Cross-institutional policy comparison","Rapid technical change"],methods:["Policy analysis","Comparative multilateral analysis"],
-      countries:[],global:true,href:"projects.html"
+      countries:[],global:true,href:"research.html#project-ai-nonproliferation"
     },
     autonomousWeapons: {
       title:"Countering autonomous weapons proliferation",
@@ -74,7 +74,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"An applied policy project on the proliferation risks created by increasingly accessible autonomous systems and enabling technologies.",
       themes:["Autonomy","Security","Non-proliferation"],systems:["Autonomous systems","Technology proliferation"],
       challenges:["Technology diffusion","Dual-use capability","Multilateral coordination"],methods:["Policy analysis","Risk assessment"],
-      countries:[],global:true,href:"projects.html"
+      countries:[],global:true,href:"research.html#project-autonomous-weapons"
     },
     ambassadorAdvising: {
       title:"Statistical analysis for policy and Ambassador-level advising",
@@ -82,7 +82,7 @@ window.JSL_EMPIRICAL_DATA = {
       summary:"Public descriptions of analyses used to support senior decision-making in State Department and United Nations contexts.",
       themes:["Statistics","Decision support","Policy"],systems:["Senior decision support","United Nations policy contexts"],
       challenges:["Decision-making under uncertainty","Translation of analysis to policy"],methods:["Statistical analysis","Decision support"],
-      countries:[],global:true,href:"projects.html"
+      countries:[],global:true,href:"research.html#project-ambassador-advising"
     }
   }
 };

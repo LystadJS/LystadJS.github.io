@@ -169,13 +169,46 @@
                 </span>
               </button>
 
-              <button class="code-method-button" type="button" data-code-snippet="hierarchal" aria-pressed="false">
+              <button class="code-method-button" type="button" data-code-snippet="expectationMaximization" aria-pressed="false">
                 <span class="code-method-index">04</span>
                 <span class="code-method-copy">
-                  <strong>Hierarchal Clustering</strong>
-                  <small></small>
+                  <strong>EM</strong>
+                  <small>Expectation-Maximization Algorithm</small>
                 </span>
               </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="dbscan" aria-pressed="false">
+                <span class="code-method-index">05</span>
+                <span class="code-method-copy">
+                  <strong>DBSCAN</strong>
+                  <small>Density-based Spatial Clustering of Applications with Noise</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="hdbscan" aria-pressed="false">
+                <span class="code-method-index">06</span>
+                <span class="code-method-copy">
+                  <strong>HDBSCAN</strong>
+                  <small>Hierarchical Density-based Spatial Clustering of Applications with Noise</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="hard" aria-pressed="false">
+                <span class="code-method-index">07</span>
+                <span class="code-method-copy">
+                  <strong>Hard Clustering</strong>
+                  <small>Hard Partition Clustering</small>
+                </span>
+              </button>
+
+              <button class="code-method-button" type="button" data-code-snippet="fuzzy" aria-pressed="false">
+                <span class="code-method-index">08</span>
+                <span class="code-method-copy">
+                  <strong>Fuzzy Clustering</strong>
+                  <small>Fuzzy C-Means Clustering</small>
+                </span>
+              </button>
+              
             </div>
           </div>
 
@@ -599,6 +632,639 @@ silhouette_scores <- silhouette(
 mean_silhouette <- mean(
   silhouette_scores[, "sil_width"]
 )
+`
+    },
+
+    expectationMaximization: {
+      label: "Expectation-Maximization",
+      file: "expectation_maximization.R",
+      status: "R | Expectation-Maximization for Gaussian Mixture Models",
+      code: `library(tidyverse)
+library(mclust)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. SELECT NUMBER OF MIXTURE COMPONENTS:
+gmm_selection <- Mclust(
+  x,
+  G = 1:10                    # Candidate numbers of mixture components
+)
+
+best_g <- gmm_selection$G      # BIC-selected number of components
+
+------------------------------------------------------------------------------------------
+# 3. FIT GAUSSIAN MIXTURE MODEL WITH EM:
+em_fit <- Mclust(
+  x,
+  G = best_g                   # Number of Gaussian mixture components
+)
+
+------------------------------------------------------------------------------------------
+# 4. EXTRACT CLUSTER ASSIGNMENTS:
+clusters <- factor(
+  em_fit$classification
+)
+
+------------------------------------------------------------------------------------------
+# 5. EXTRACT POSTERIOR MEMBERSHIP PROBABILITIES:
+membership <- as_tibble(
+  em_fit$z
+) |>
+  setNames(
+    paste0("cluster_", seq_len(best_g))
+  )
+
+max_membership <- apply(
+  em_fit$z,
+  1,
+  max
+)
+
+------------------------------------------------------------------------------------------
+# 6. EXTRACT CLASSIFICATION UNCERTAINTY:
+uncertainty <- em_fit$uncertainty
+
+------------------------------------------------------------------------------------------
+# 7. ATTACH RESULTS TO ORIGINAL DATA:
+em_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters,
+    membership = max_membership,
+    uncertainty = uncertainty
+  ) |>
+  bind_cols(
+    membership
+  )
+
+------------------------------------------------------------------------------------------
+# 8. EXTRACT MIXTURE MODEL PARAMETERS:
+mixing_proportions <- em_fit$parameters$pro
+
+cluster_means <- em_fit$parameters$mean
+
+cluster_variance <- em_fit$parameters$variance
+
+------------------------------------------------------------------------------------------
+# 9. IDENTIFY UNCERTAIN OBSERVATIONS:
+uncertain_cases <- em_data |>
+  arrange(
+    desc(uncertainty)
+  )
+
+------------------------------------------------------------------------------------------
+# 10. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters,
+    membership = max_membership
+  )
+
+------------------------------------------------------------------------------------------
+# 11. VISUALIZE MIXTURE COMPONENTS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster,
+    alpha = membership
+  )
+) +
+  geom_point(
+    size = 2
+  ) +
+  stat_ellipse(
+    linewidth = 0.7,
+    show.legend = FALSE
+  ) +
+  scale_alpha(
+    range = c(0.25, 1)
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Component",
+    alpha = "Membership"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 12. INSPECT MODEL FIT:
+em_fit$bic                       # Bayesian Information Criterion
+
+em_fit$loglik                    # Maximized log-likelihood
+
+summary(
+  em_fit
+)
+`
+    },
+
+    dbscan: {
+      label: "DBSCAN",
+      file: "dbscan.R",
+      status: "R | Density-Based Spatial Clustering",
+      code: `library(tidyverse)
+library(dbscan)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. CHOOSE MINIMUM POINTS:
+min_pts <- 5                     # Minimum points required for a dense region
+
+------------------------------------------------------------------------------------------
+# 3. INSPECT K-NEAREST-NEIGHBOR DISTANCES:
+kNNdistplot(
+  x,
+  k = min_pts
+)
+
+abline(
+  h = 0.5,                       # Candidate epsilon threshold
+  lty = 2
+)
+
+------------------------------------------------------------------------------------------
+# 4. FIT DBSCAN:
+eps <- 0.5                       # Maximum neighborhood radius
+
+dbscan_fit <- dbscan(
+  x,
+  eps = eps,
+  minPts = min_pts,
+  borderPoints = TRUE
+)
+
+------------------------------------------------------------------------------------------
+# 5. EXTRACT CLUSTER ASSIGNMENTS:
+cluster_id <- dbscan_fit$cluster
+
+clusters <- if_else(
+  cluster_id == 0,
+  "Noise",                       # DBSCAN labels noise observations as 0
+  paste0("Cluster ", cluster_id)
+) |>
+  factor()
+
+------------------------------------------------------------------------------------------
+# 6. ATTACH CLUSTERS TO ORIGINAL DATA:
+dbscan_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 7. SUMMARIZE CLUSTERS:
+cluster_summary <- dbscan_data |>
+  count(
+    cluster,
+    name = "n"
+  ) |>
+  mutate(
+    proportion = n / sum(n)
+  )
+
+------------------------------------------------------------------------------------------
+# 8. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 9. VISUALIZE CLUSTERS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster
+  )
+) +
+  geom_point(
+    alpha = 0.70,
+    size = 2
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 10. EXTRACT NOISE OBSERVATIONS:
+noise_data <- dbscan_data |>
+  filter(
+    cluster == "Noise"
+  )
+`
+    },
+
+    hdbscan: {
+      label: "HDBSCAN",
+      file: "hdbscan.R",
+      status: "R | Hierarchical Density-Based Spatial Clustering",
+      code: `library(tidyverse)
+library(dbscan)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. DEFINE MINIMUM CLUSTER DENSITY:
+min_pts <- 5                     # Minimum points used to define dense regions
+
+------------------------------------------------------------------------------------------
+# 3. FIT HDBSCAN:
+hdbscan_fit <- hdbscan(
+  x,
+  minPts = min_pts
+)
+
+------------------------------------------------------------------------------------------
+# 4. EXTRACT CLUSTER ASSIGNMENTS:
+cluster_id <- hdbscan_fit$cluster
+
+clusters <- if_else(
+  cluster_id == 0,
+  "Noise",                       # HDBSCAN labels noise observations as 0
+  paste0("Cluster ", cluster_id)
+) |>
+  factor()
+
+------------------------------------------------------------------------------------------
+# 5. EXTRACT MEMBERSHIP STRENGTH:
+membership_probability <- hdbscan_fit$membership_prob
+
+outlier_score <- hdbscan_fit$outlier_scores
+
+------------------------------------------------------------------------------------------
+# 6. ATTACH RESULTS TO ORIGINAL DATA:
+hdbscan_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters,
+    membership_probability = membership_probability,
+    outlier_score = outlier_score
+  )
+
+------------------------------------------------------------------------------------------
+# 7. SUMMARIZE CLUSTERS:
+cluster_summary <- hdbscan_data |>
+  group_by(
+    cluster
+  ) |>
+  summarise(
+    n = n(),
+    mean_membership = mean(membership_probability),
+    mean_outlier_score = mean(outlier_score),
+    .groups = "drop"
+  )
+
+------------------------------------------------------------------------------------------
+# 8. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters,
+    membership_probability = membership_probability
+  )
+
+------------------------------------------------------------------------------------------
+# 9. VISUALIZE CLUSTERS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster,
+    alpha = membership_probability
+  )
+) +
+  geom_point(
+    size = 2
+  ) +
+  scale_alpha(
+    range = c(0.25, 1)
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster",
+    alpha = "Membership"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------------
+# 10. IDENTIFY POTENTIAL OUTLIERS:
+potential_outliers <- hdbscan_data |>
+  arrange(
+    desc(outlier_score)
+  )
+`
+    },
+
+    hard: {
+      label: "Hard Clustering",
+      file: "hard_clustering.R",
+      status: "R | Hard Partition Clustering",
+      code: `library(tidyverse)
+library(cluster)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. DEFINE NUMBER OF CLUSTERS:
+k <- 3                           # Each observation will belong to one cluster
+
+------------------------------------------------------------------------------------------
+# 3. FIT HARD CLUSTERING:
+hard_fit <- kmeans(
+  x,
+  centers = k,
+  nstart = 50,                   # Random initializations
+  iter.max = 100,                # Maximum optimization iterations
+  algorithm = "Hartigan-Wong"
+)
+
+------------------------------------------------------------------------------------------
+# 4. EXTRACT HARD CLUSTER ASSIGNMENTS:
+clusters <- factor(
+  hard_fit$cluster
+)
+
+------------------------------------------------------------------------------------------
+# 5. CREATE MEMBERSHIP INDICATORS:
+hard_membership <- model.matrix(
+  ~ clusters - 1
+) |>
+  as_tibble()
+
+names(hard_membership) <- paste0(
+  "cluster_",
+  seq_len(k)
+)
+
+------------------------------------------------------------------------------------------
+# 6. ATTACH RESULTS TO ORIGINAL DATA:
+hard_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters
+  ) |>
+  bind_cols(
+    hard_membership
+  )
+
+------------------------------------------------------------------------------------------
+# 7. EXTRACT CLUSTER CENTERS:
+cluster_centers <- as_tibble(
+  hard_fit$centers,
+  rownames = "cluster"
+)
+
+------------------------------------------------------------------------------------------
+# 8. CALCULATE CLUSTER QUALITY:
+silhouette_scores <- silhouette(
+  hard_fit$cluster,
+  dist(x)
+)
+
+mean_silhouette <- mean(
+  silhouette_scores[, "sil_width"]
+)
+
+------------------------------------------------------------------------------------------
+# 9. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters
+  )
+
+------------------------------------------------------------------------------------------
+# 10. VISUALIZE HARD CLUSTERS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster
+  )
+) +
+  geom_point(
+    alpha = 0.70,
+    size = 2
+  ) +
+  stat_ellipse(
+    linewidth = 0.7,
+    show.legend = FALSE
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster"
+  ) +
+  theme_minimal()
+`
+    },
+
+    fuzzy: {
+      label: "Fuzzy",
+      file: "fuzzy_clustering.R",
+      status: "R | Fuzzy C-Means Clustering",
+      code: `library(tidyverse)
+library(e1071)
+
+set.seed(1501211)
+
+------------------------------------------------------------------------------------------
+# 1. PREPARE FEATURE MATRIX:
+cluster_data_complete <- data |>
+  drop_na(where(is.numeric))
+
+x <- cluster_data_complete |>
+  select(where(is.numeric)) |>
+  scale()
+
+------------------------------------------------------------------------------------------
+# 2. DEFINE CLUSTER PARAMETERS:
+k <- 3                           # Number of clusters
+fuzziness <- 2                   # Controls degree of fuzzy membership
+
+------------------------------------------------------------------------------------------
+# 3. FIT FUZZY C-MEANS:
+fuzzy_fit <- cmeans(
+  x,
+  centers = k,
+  m = fuzziness,                 # Fuzziness parameter
+  iter.max = 100,                # Maximum optimization iterations
+  dist = "euclidean",            # Distance metric
+  method = "cmeans"
+)
+
+------------------------------------------------------------------------------------------
+# 4. EXTRACT MEMBERSHIP PROBABILITIES:
+membership <- as_tibble(
+  fuzzy_fit$membership
+) |>
+  setNames(
+    paste0("cluster_", seq_len(k))
+  )
+
+------------------------------------------------------------------------------------------
+# 5. EXTRACT PRIMARY CLUSTER ASSIGNMENTS:
+clusters <- factor(
+  fuzzy_fit$cluster
+)
+
+max_membership <- apply(
+  fuzzy_fit$membership,
+  1,
+  max
+)
+
+------------------------------------------------------------------------------------------
+# 6. ATTACH RESULTS TO ORIGINAL DATA:
+fuzzy_data <- cluster_data_complete |>
+  mutate(
+    cluster = clusters,
+    max_membership = max_membership
+  ) |>
+  bind_cols(
+    membership
+  )
+
+------------------------------------------------------------------------------------------
+# 7. EXTRACT CLUSTER CENTERS:
+cluster_centers <- as_tibble(
+  fuzzy_fit$centers,
+  rownames = "cluster"
+)
+
+------------------------------------------------------------------------------------------
+# 8. IDENTIFY AMBIGUOUS OBSERVATIONS:
+ambiguous_cases <- fuzzy_data |>
+  arrange(
+    max_membership
+  )
+
+------------------------------------------------------------------------------------------
+# 9. REDUCE TO TWO DIMENSIONS FOR VISUALIZATION:
+pca_fit <- prcomp(
+  x,
+  center = FALSE,
+  scale. = FALSE
+)
+
+cluster_coords <- as_tibble(
+  pca_fit$x[, 1:2]
+) |>
+  setNames(c("PC1", "PC2")) |>
+  mutate(
+    cluster = clusters,
+    membership = max_membership
+  )
+
+------------------------------------------------------------------------------------------
+# 10. VISUALIZE FUZZY CLUSTERS:
+ggplot(
+  cluster_coords,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = cluster,
+    alpha = membership
+  )
+) +
+  geom_point(
+    size = 2
+  ) +
+  scale_alpha(
+    range = c(0.25, 1)
+  ) +
+  coord_equal() +
+  labs(
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster",
+    alpha = "Membership"
+  ) +
+  theme_minimal()
 `
     },
 

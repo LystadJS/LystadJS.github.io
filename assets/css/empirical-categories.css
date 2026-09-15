@@ -16,8 +16,8 @@
 
 .empirical-filter-row {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: .8rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   align-items: center;
 }
 
@@ -26,20 +26,56 @@
   border-top: 1px solid rgba(255,255,255,.035);
 }
 
+/* The former far-left row identifiers are intentionally hidden.
+   The first ("all") button now serves as the row's category anchor. */
 .empirical-filter-row-label {
-  color: #756b78;
-  font-family: var(--mono);
-  font-size: .5rem;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  display: none;
 }
 
 .empirical-filter-row-buttons {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: .36rem;
   min-width: 0;
+}
+
+/* Category-colored divider immediately after the first/all button. */
+.empirical-filter-row-buttons > .empirical-filter:first-child {
+  position: relative;
+  margin-right: .95rem;
+}
+
+.empirical-filter-row-buttons > .empirical-filter:first-child::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -.67rem;
+  width: 1px;
+  height: 1.45rem;
+  transform: translateY(-50%);
+  opacity: .88;
+  pointer-events: none;
+}
+
+.empirical-filter-row--research .empirical-filter:first-child::after {
+  background: var(--crimson-bright);
+  box-shadow: 0 0 7px rgba(191,49,82,.16);
+}
+
+.empirical-filter-row--applied .empirical-filter:first-child::after {
+  background: #009edb;
+  box-shadow: 0 0 7px rgba(0,158,219,.16);
+}
+
+.empirical-filter-row--military .empirical-filter:first-child::after {
+  background: #6c782f;
+  box-shadow: 0 0 7px rgba(108,120,47,.16);
+}
+
+.empirical-filter-row--journalism .empirical-filter:first-child::after {
+  background: #2b557d;
+  box-shadow: 0 0 7px rgba(43,85,125,.16);
 }
 
 /* ------------------------------------------------------------
@@ -51,12 +87,20 @@
 .empirical-filter--un,
 .empirical-filter--army,
 .empirical-filter--journalism {
-  position: static;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   color: var(--muted);
   border-color: transparent;
   background: transparent;
   box-shadow: none;
+}
+
+/* Preserve relative positioning only for the first button so its divider
+   remains anchored correctly. Other buttons use the normal flow. */
+.empirical-filter-row-buttons > .empirical-filter:not(:first-child) {
+  position: static;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .empirical-filter--un::before,
@@ -263,11 +307,10 @@
 
 @media (max-width: 900px) {
   .empirical-filter-row {
-    grid-template-columns: 1fr;
-    gap: .35rem;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .empirical-filter-row-label {
-    padding-left: .15rem;
+  .empirical-filter-row-buttons > .empirical-filter:first-child {
+    margin-right: .85rem;
   }
 }

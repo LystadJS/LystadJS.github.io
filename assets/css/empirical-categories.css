@@ -1,6 +1,6 @@
 /* ============================================================
-   EMPIRICAL EXPLORER CATEGORY STACK
-   Research -> Applied Projects -> Army -> Journalism
+   EMPIRICAL EXPLORER SCOPE STACK
+   Research -> Applied Projects -> Military Service -> Independent Reporting
    ============================================================ */
 
 .empirical-toolbar {
@@ -10,19 +10,19 @@
 .empirical-filters {
   flex: 1 1 auto;
   display: grid;
-  gap: .48rem;
+  gap: .5rem;
   min-width: 0;
 }
 
 .empirical-filter-row {
   display: grid;
-  grid-template-columns: 118px minmax(0, 1fr);
-  gap: .7rem;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: .8rem;
   align-items: center;
 }
 
 .empirical-filter-row + .empirical-filter-row {
-  padding-top: .45rem;
+  padding-top: .48rem;
   border-top: 1px solid rgba(255,255,255,.035);
 }
 
@@ -42,29 +42,60 @@
   min-width: 0;
 }
 
-/* Existing UN button now lives in its own row, so remove divider offset. */
-.empirical-filter-row .empirical-filter--un {
-  margin-left: 0;
+/* ------------------------------------------------------------
+   ALL INACTIVE BUTTONS FOLLOW THE RESEARCH-ROW STANDARD.
+   No category color box or colored text until selected.
+   ------------------------------------------------------------ */
+
+.empirical-filter--research,
+.empirical-filter--un,
+.empirical-filter--army,
+.empirical-filter--journalism {
+  position: static;
+  margin: 0;
+  color: var(--muted);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
 }
 
-.empirical-filter-row .empirical-filter--un::before {
-  display: none;
+.empirical-filter--un::before,
+.empirical-filter--army::before,
+.empirical-filter--journalism::before {
+  display: none !important;
 }
 
-/* Army button */
-.empirical-filter--army {
-  color: #9aaa68;
-  border-color: rgba(75,83,32,.48);
-  background: rgba(75,83,32,.07);
-}
-
+.empirical-filter--research:hover,
+.empirical-filter--research:focus-visible,
+.empirical-filter--un:hover,
+.empirical-filter--un:focus-visible,
 .empirical-filter--army:hover,
-.empirical-filter--army:focus-visible {
-  color: #c7d39a;
-  border-color: rgba(113,126,52,.72);
-  background: rgba(75,83,32,.14);
+.empirical-filter--army:focus-visible,
+.empirical-filter--journalism:hover,
+.empirical-filter--journalism:focus-visible {
+  color: var(--paper);
+  border-color: var(--line-bright);
+  background: transparent;
+  outline: none;
+  box-shadow: none;
 }
 
+/* Academic research active state: existing oxblood standard. */
+.empirical-filter--research.is-active {
+  color: var(--paper);
+  border-color: rgba(191,49,82,.42);
+  background: rgba(141,23,50,.12);
+}
+
+/* Applied Projects active state: UN blue. */
+.empirical-filter--un.is-active {
+  color: #e5f7fd;
+  border-color: rgba(0,158,219,.76);
+  background: rgba(0,158,219,.17);
+  box-shadow: inset 0 0 0 1px rgba(88,199,239,.08), 0 0 16px rgba(0,158,219,.08);
+}
+
+/* Military Service active state: Army green. */
 .empirical-filter--army.is-active {
   color: #edf1dd;
   border-color: rgba(138,151,71,.88);
@@ -72,20 +103,7 @@
   box-shadow: inset 0 0 0 1px rgba(178,190,112,.07), 0 0 15px rgba(75,83,32,.12);
 }
 
-/* Journalism button */
-.empirical-filter--journalism {
-  color: #7898ba;
-  border-color: rgba(25,55,88,.56);
-  background: rgba(25,55,88,.08);
-}
-
-.empirical-filter--journalism:hover,
-.empirical-filter--journalism:focus-visible {
-  color: #aec6df;
-  border-color: rgba(52,91,130,.78);
-  background: rgba(25,55,88,.16);
-}
-
+/* Independent Reporting active state: dark navy. */
 .empirical-filter--journalism.is-active {
   color: #edf5fc;
   border-color: rgba(75,116,158,.92);
@@ -94,8 +112,7 @@
 }
 
 /* ============================================================
-   ARMY MODE
-   Army green: #4b5320
+   MILITARY SERVICE MODE
    ============================================================ */
 
 .empirical-explorer.is-army-mode {
@@ -134,23 +151,17 @@
 .empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--preview {
   fill: #6c782f !important;
   stroke: #edf1dd !important;
-  stroke-width: 1 !important;
-  transform: scale(1.045);
   filter:
     drop-shadow(0 3px 3px rgba(0,0,0,.58))
     drop-shadow(0 0 8px rgba(105,118,48,.44));
-  opacity: 1;
 }
 
 .empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--selected {
   fill: #7d8939 !important;
   stroke: #ffffff !important;
-  stroke-width: 1.1 !important;
-  transform: scale(1.055);
   filter:
     drop-shadow(0 4px 5px rgba(0,0,0,.62))
     drop-shadow(0 0 10px rgba(104,116,50,.50));
-  opacity: 1;
 }
 
 .empirical-explorer.is-army-mode .empirical-panel {
@@ -176,8 +187,7 @@
 }
 
 /* ============================================================
-   JOURNALISM MODE
-   Deliberately darker than UN blue.
+   INDEPENDENT REPORTING MODE
    ============================================================ */
 
 .empirical-explorer.is-journalism-mode {
@@ -216,23 +226,17 @@
 .empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--preview {
   fill: #2b557d !important;
   stroke: #edf5fc !important;
-  stroke-width: 1 !important;
-  transform: scale(1.045);
   filter:
     drop-shadow(0 3px 3px rgba(0,0,0,.58))
     drop-shadow(0 0 8px rgba(48,91,132,.44));
-  opacity: 1;
 }
 
 .empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--selected {
   fill: #376b9a !important;
   stroke: #ffffff !important;
-  stroke-width: 1.1 !important;
-  transform: scale(1.055);
   filter:
     drop-shadow(0 4px 5px rgba(0,0,0,.62))
     drop-shadow(0 0 10px rgba(48,91,132,.50));
-  opacity: 1;
 }
 
 .empirical-explorer.is-journalism-mode .empirical-panel {
@@ -257,15 +261,7 @@
   background: rgba(25,55,88,.075);
 }
 
-@media (max-width: 760px) {
-  .empirical-toolbar {
-    flex-direction: column;
-  }
-
-  .empirical-filters {
-    width: 100%;
-  }
-
+@media (max-width: 900px) {
   .empirical-filter-row {
     grid-template-columns: 1fr;
     gap: .35rem;

@@ -1,0 +1,118 @@
+/* Standardized research-program typography and label hierarchy. */
+.rpm-network-center-label{
+  fill:var(--paper);
+  font-family:var(--serif);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:0;
+  text-rendering:geometricPrecision;
+}
+
+.rpm-network-node-label{
+  fill:#beb3be;
+  font-family:var(--sans);
+  font-size:9.1px;
+  font-weight:600;
+  letter-spacing:0;
+  text-rendering:geometricPrecision;
+}
+
+.rpm-kind-pillar .rpm-network-node-label{
+  fill:var(--paper);
+  font-family:var(--serif);
+  font-size:10.1px;
+  font-weight:600;
+  letter-spacing:0;
+}
+
+.rpm-kind-method .rpm-network-node-label,
+.rpm-kind-domain .rpm-network-node-label{
+  font-family:var(--sans);
+  font-size:9.1px;
+  font-weight:600;
+  letter-spacing:0;
+}
+
+.rpm-kind-method .rpm-network-node-label{fill:#c6bbc6;}
+.rpm-kind-domain .rpm-network-node-label{fill:#b7adb8;}
+.rpm-network-node-sub{display:none!important;}
+
+/* Detail panel: one consistent academic register. */
+.rpm-detail-head{padding:1.35rem 1.35rem 1.18rem;}
+.rpm-detail-kicker{
+  margin:0 0 .48rem;
+  font-size:.52rem;
+  line-height:1;
+  letter-spacing:.13em;
+}
+.rpm-detail h3{
+  font-size:clamp(1.42rem,1.75vw,1.68rem);
+  line-height:1.08;
+  letter-spacing:0;
+}
+.rpm-detail-summary{
+  margin:.66rem 0 0;
+  color:#978a98;
+  font-size:.76rem;
+  line-height:1.56;
+}
+.rpm-detail-block{padding:.96rem 1.35rem;}
+.rpm-detail-label{
+  margin:0 0 .52rem;
+  font-size:.49rem;
+  line-height:1;
+  letter-spacing:.12em;
+}
+.rpm-detail-list{gap:.44rem;}
+.rpm-detail-list li{
+  padding-left:.82rem;
+  color:#aea2ae;
+  font-size:.71rem;
+  line-height:1.48;
+}
+.rpm-chips{gap:.34rem;}
+.rpm-chip{
+  padding:.29rem .4rem;
+  font-size:.48rem;
+  line-height:1.2;
+  letter-spacing:.025em;
+}
+.rpm-detail-foot{
+  padding:.86rem 1.35rem .94rem;
+  color:#786d79;
+  font-size:.46rem;
+  line-height:1.55;
+  letter-spacing:.025em;
+  text-transform:none;
+}
+
+/* Legend and mobile labels use the same nomenclature scale. */
+.rpm-footer-legend{
+  gap:.8rem;
+  font-size:.48rem;
+  letter-spacing:.085em;
+}
+.rpm-footer-state{
+  font-size:.47rem;
+  letter-spacing:.075em;
+}
+.rpm-mobile-name{
+  font-size:1.08rem;
+  line-height:1.15;
+}
+.rpm-mobile-content{
+  font-size:.76rem;
+  line-height:1.58;
+}
+.rpm-mobile-content a,
+.rpm-mobile-content span{
+  font-size:.49rem;
+  letter-spacing:.02em;
+}
+
+@media (max-width:980px){
+  .rpm-network-center-label{font-size:14.6px;}
+  .rpm-kind-pillar .rpm-network-node-label{font-size:9.8px;}
+  .rpm-kind-method .rpm-network-node-label,
+  .rpm-kind-domain .rpm-network-node-label{font-size:8.9px;}
+}

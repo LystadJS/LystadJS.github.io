@@ -1,9 +1,6 @@
-/* Three-neighborhood conceptual network for the homepage Research Program. */
+/* Research Program: Computational Statistics for Anticipatory Human Security */
 
-/* Remove legacy homepage width constraints left behind by the former action-button layout.
-   research-program.css still defines .hero-details as a two-column grid even though the
-   second column's buttons no longer render. Resetting it here removes that invisible column.
-   The same legacy stylesheet also caps the Research Program heading/copy at 760px. */
+/* Preserve homepage fixes from earlier QA passes. */
 body[data-page="index"] .hero-details {
   display: block;
   grid-template-columns: none;
@@ -38,7 +35,7 @@ body[data-page="index"] .hero {
 
 .rpm-section::before {
   top: 5rem;
-  height: 520px;
+  height: 540px;
 }
 
 .rpm-section .section-header {
@@ -51,24 +48,19 @@ body[data-page="index"] .hero {
 }
 
 .rpm-workspace {
-  height: 610px;
-  min-height: 610px;
+  height: 640px;
+  min-height: 640px;
 }
 
 .rpm-map-wrap {
   background:
-    radial-gradient(circle at 50% 48%, rgba(141,23,50,.035), transparent 14rem),
-    radial-gradient(circle at 54% 42%, rgba(101,69,126,.03), transparent 30rem),
+    radial-gradient(circle at 50% 48%, rgba(141,23,50,.036), transparent 15rem),
+    radial-gradient(circle at 54% 42%, rgba(101,69,126,.028), transparent 31rem),
     rgba(7,7,9,.13);
 }
 
-.rpm-map-wrap::before {
-  background: none;
-}
-
-.rpm-map {
-  overflow: hidden;
-}
+.rpm-map-wrap::before { background: none; }
+.rpm-map { overflow: hidden; }
 
 .rpm-detail {
   min-height: 0;
@@ -76,6 +68,7 @@ body[data-page="index"] .hero {
   scrollbar-gutter: stable;
 }
 
+/* Pillar halos: visible intellectual structure, not employer/application buckets. */
 .rpm-cluster-halo {
   opacity: 1;
   pointer-events: none;
@@ -84,67 +77,55 @@ body[data-page="index"] .hero {
 
 .rpm-cluster-halo ellipse {
   fill: rgba(255,255,255,.006);
-  stroke: rgba(145,132,147,.14);
+  stroke: rgba(145,132,147,.15);
   stroke-width: 1;
   stroke-dasharray: 4 7;
   vector-effect: non-scaling-stroke;
 }
 
+.rpm-cluster-halo text {
+  fill: #665d69;
+  font-family: var(--mono);
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+}
+
 .rpm-cluster-halo.is-related ellipse {
   fill: rgba(141,23,50,.017);
-  stroke: rgba(191,49,82,.30);
+  stroke: rgba(191,49,82,.31);
 }
 
-.rpm-cluster-halo.is-muted {
-  opacity: .17;
-}
+.rpm-cluster-halo.is-related text { fill: #9b818b; }
+.rpm-cluster-halo.is-muted { opacity: .16; }
 
+/* Edges remain deliberately quiet until inspected. */
 .rpm-edge {
   stroke: #6d6570;
   stroke-width: .85;
-  opacity: .075;
+  opacity: .07;
   vector-effect: non-scaling-stroke;
   transition: opacity 140ms ease, stroke 140ms ease;
 }
 
-.rpm-edge-core {
-  opacity: .17;
-}
-
-.rpm-edge-method {
-  opacity: .10;
-}
-
-.rpm-edge-domain {
-  opacity: .085;
-}
-
-.rpm-edge-domain-link {
-  opacity: .06;
-  stroke-dasharray: 3 5;
-}
-
-.rpm-edge-question {
-  opacity: .10;
-  stroke-dasharray: 3 5;
-}
+.rpm-edge-pillar { opacity: .18; stroke-width: 1; }
+.rpm-edge-method { opacity: .10; }
+.rpm-edge-method-link { opacity: .055; stroke-dasharray: 2 5; }
+.rpm-edge-domain { opacity: .075; }
+.rpm-edge-domain-link { opacity: .045; stroke-dasharray: 3 5; }
+.rpm-edge-question { opacity: .10; stroke-dasharray: 3 5; }
 
 .rpm-edge.is-active {
   stroke: var(--crimson-bright);
   stroke-width: 1 !important;
-  opacity: .90 !important;
+  opacity: .92 !important;
   filter: none !important;
 }
 
-.rpm-edge.is-muted {
-  opacity: .015 !important;
-}
+.rpm-edge.is-muted { opacity: .012 !important; }
+.rpm-hidden { opacity: 0 !important; pointer-events: none !important; }
 
-.rpm-hidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
+/* Nodes: geometry never changes on interaction, preventing jitter. */
 .rpm-network-node {
   cursor: pointer;
   filter: none !important;
@@ -160,14 +141,20 @@ body[data-page="index"] .hero {
   transition: fill 140ms ease, stroke 140ms ease !important;
 }
 
+.rpm-kind-pillar .rpm-shape {
+  fill: rgba(255,255,255,.01);
+  stroke: rgba(190,177,190,.60);
+  stroke-width: 1.1;
+}
+
 .rpm-kind-domain .rpm-shape {
-  fill: rgba(255,255,255,.007);
-  stroke: rgba(183,171,181,.46);
-  stroke-width: 1.05;
+  fill: rgba(255,255,255,.006);
+  stroke: rgba(183,171,181,.43);
+  stroke-width: 1;
 }
 
 .rpm-kind-question .rpm-shape {
-  fill: rgba(255,255,255,.006);
+  fill: rgba(255,255,255,.005);
   stroke: rgba(151,139,153,.44);
   stroke-dasharray: 3 3;
 }
@@ -179,9 +166,10 @@ body[data-page="index"] .hero {
   stroke-width: 1.2;
 }
 
+/* Signature method is larger, but neutral at rest. */
 .rpm-primary .rpm-shape {
   fill: #0f0c11;
-  stroke: rgba(164,151,164,.54);
+  stroke: rgba(180,166,180,.56);
 }
 
 .rpm-network-node:hover,
@@ -200,39 +188,34 @@ body[data-page="index"] .hero {
   stroke: rgba(191,49,82,.58);
 }
 
-.rpm-network-node.is-muted {
-  opacity: .085 !important;
-}
-
+.rpm-network-node.is-muted { opacity: .075 !important; }
 .rpm-network-node.is-related,
-.rpm-network-node.is-active {
-  opacity: 1 !important;
-}
+.rpm-network-node.is-active { opacity: 1 !important; }
 
 .rpm-network-node-label,
 .rpm-network-center-label {
   fill: #b6aab6;
   font-family: var(--sans);
-  font-size: 9.5px;
+  font-size: 9.3px;
   font-weight: 600;
   letter-spacing: .01em;
   pointer-events: none;
   user-select: none;
 }
 
-.rpm-kind-domain .rpm-network-node-label {
-  fill: #c3b8c1;
+.rpm-kind-pillar .rpm-network-node-label {
+  fill: #c6bbc6;
+  font-size: 9.1px;
 }
 
-.rpm-kind-question .rpm-network-node-label {
-  fill: #aea3b0;
-}
+.rpm-kind-domain .rpm-network-node-label { fill: #c3b8c1; }
+.rpm-kind-question .rpm-network-node-label { fill: #aea3b0; }
 
 .rpm-network-node-sub,
 .rpm-network-center-sub {
   fill: #716673;
   font-family: var(--mono);
-  font-size: 6.2px;
+  font-size: 6.1px;
   font-weight: 500;
   letter-spacing: .12em;
 }
@@ -246,13 +229,12 @@ body[data-page="index"] .hero {
 
 .rpm-network-center-sub {
   font-family: var(--mono);
-  font-size: 6.5px;
+  font-size: 5.9px;
+  letter-spacing: .10em;
 }
 
 .rpm-network-node.is-active .rpm-network-node-label,
-.rpm-network-node.is-related .rpm-network-node-label {
-  fill: var(--paper);
-}
+.rpm-network-node.is-related .rpm-network-node-label { fill: var(--paper); }
 
 .rpm-mode button.is-active {
   color: var(--paper);
@@ -261,29 +243,19 @@ body[data-page="index"] .hero {
 }
 
 .rpm-mode button:hover,
-.rpm-mode button:focus-visible {
-  background: rgba(255,255,255,.02);
-}
+.rpm-mode button:focus-visible { background: rgba(255,255,255,.02); }
 
-.rpm-footer-legend {
-  gap: .85rem;
-}
-
+.rpm-footer-legend { gap: .8rem; }
+.rpm-symbol-pillar,
 .rpm-symbol-method,
 .rpm-symbol-domain,
-.rpm-symbol-question {
-  color: #9d929e;
-}
+.rpm-symbol-question { color: #9d929e; }
 
 .rpm-detail-summary,
-.rpm-detail-list li {
-  text-wrap: pretty;
-}
+.rpm-detail-list li { text-wrap: pretty; }
 
 @media (max-width: 1100px) {
-  .rpm-workspace {
-    grid-template-columns: minmax(0, 1.78fr) minmax(270px, .70fr);
-  }
+  .rpm-workspace { grid-template-columns: minmax(0, 1.8fr) minmax(270px, .68fr); }
 }
 
 @media (max-width: 980px) {
@@ -293,9 +265,7 @@ body[data-page="index"] .hero {
     grid-template-columns: 1fr;
   }
 
-  .rpm-map-wrap {
-    min-height: 570px;
-  }
+  .rpm-map-wrap { min-height: 595px; }
 
   .rpm-detail {
     display: grid;
@@ -308,23 +278,9 @@ body[data-page="index"] .hero {
     border-right: 1px solid var(--line);
   }
 
-  .rpm-detail > .rpm-detail-block:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-    border-right: 0;
-  }
-
-  .rpm-detail > .rpm-detail-block:nth-child(3) {
-    grid-column: 2;
-    grid-row: 2;
-    border-right: 0;
-  }
-
-  .rpm-detail > .rpm-detail-block:nth-child(4) {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    border-right: 0;
-  }
+  .rpm-detail > .rpm-detail-block:nth-child(2) { grid-column: 2; grid-row: 1; border-right: 0; }
+  .rpm-detail > .rpm-detail-block:nth-child(3) { grid-column: 2; grid-row: 2; border-right: 0; }
+  .rpm-detail > .rpm-detail-block:nth-child(4) { grid-column: 1 / -1; grid-row: 3; border-right: 0; }
 }
 
 @media (max-width: 820px) {
@@ -335,61 +291,26 @@ body[data-page="index"] .hero {
 }
 
 @media (max-width: 720px) {
-  .rpm-section {
-    padding: 3.1rem 0 4rem;
-  }
-
-  .rpm-section::before {
-    display: none;
-  }
-
-  .rpm-system-label {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .rpm-system-state {
-    margin-left: auto;
-  }
-
+  .rpm-section { padding: 3.1rem 0 4rem; }
+  .rpm-section::before { display: none; }
+  .rpm-system-label { width: 100%; flex-wrap: wrap; }
+  .rpm-system-state { margin-left: auto; }
   .rpm-map-wrap,
-  .rpm-detail {
-    display: none;
-  }
-
-  .rpm-mobile {
-    display: block;
-    min-height: 0;
-  }
-
-  .rpm-footer-state {
-    display: none;
-  }
-
-  .rpm-footer-legend {
-    gap: .6rem;
-  }
+  .rpm-detail { display: none; }
+  .rpm-mobile { display: block; min-height: 0; }
+  .rpm-footer-state { display: none; }
+  .rpm-footer-legend { gap: .6rem; }
 }
 
 @media (max-width: 620px) {
-  body[data-page="index"] .hero-profile {
-    row-gap: 1.15rem;
-  }
-
-  body[data-page="index"] .hero-identity {
-    margin-top: .2rem;
-  }
-
-  .rpm-topbar {
-    gap: .75rem;
-  }
+  body[data-page="index"] .hero-profile { row-gap: 1.15rem; }
+  body[data-page="index"] .hero-identity { margin-top: .2rem; }
+  .rpm-topbar { gap: .75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .rpm-network-node,
   .rpm-network-node .rpm-shape,
   .rpm-edge,
-  .rpm-cluster-halo {
-    transition: none !important;
-  }
+  .rpm-cluster-halo { transition: none !important; }
 }

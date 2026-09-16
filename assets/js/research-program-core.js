@@ -35,10 +35,10 @@
     else if (/(cluster|hdbscan|hierarchical|mixture|fuzzy|density)/.test(x)) url = REPOS.clustering;
     else if (/(dimension|dimensionality|pca|umap|mds|embedding)/.test(x)) url = REPOS.dimension;
     else if (/(network|centrality|community|bipartite|diffusion)/.test(x)) url = REPOS.networks;
-    else if (/(longitudinal|panel|trajectory|alignment|multilevel|mixed|partial pooling|nested)/.test(x)) url = REPOS.longitudinal;
-    else if (/(missing|imputation|missingness)/.test(x)) url = REPOS.missing;
-    else if (/(spatial|distance|geographic|population-weighted)/.test(x)) url = REPOS.spatial;
-    else if (/(text|nlp|natural language|language processing|extraction|attribution|classification|embedding)/.test(x)) url = REPOS.unTranscript;
+    else if (/(longitudinal|panel|trajectory|alignment|multilevel|mixed|partial pooling|nested|reml|icc)/.test(x)) url = REPOS.longitudinal;
+    else if (/(missing|imputation|missingness|mice|fiml)/.test(x)) url = REPOS.missing;
+    else if (/(spatial|distance|geographic|population-weighted|moran|kriging)/.test(x)) url = REPOS.spatial;
+    else if (/(text|nlp|natural language|language processing|extraction|attribution|classification|embedding|transformer|topic|content analysis)/.test(x)) url = REPOS.unTranscript;
     else if (/(human ecology|climate|environment)/.test(x)) url = REPOS.ecology;
     else if (/humanitarian/.test(x)) url = REPOS.humanitarian;
     else if (/human security/.test(x)) url = REPOS.humansecurity;
@@ -80,14 +80,18 @@
 
   function shapeMarkup(node, kind) {
     if (kind === "pillar") return `<polygon class="rpm-shape" points="0,${-node.r} ${node.r * .86},0 0,${node.r} ${-node.r * .86},0" />`;
-    if (kind === "project") return `<rect class="rpm-shape" x="${-node.r}" y="${-node.r}" width="${node.r * 2}" height="${node.r * 2}" />`;
+    if (kind === "domain" || kind === "project") return `<rect class="rpm-shape" x="${-node.r}" y="${-node.r}" width="${node.r * 2}" height="${node.r * 2}" />`;
     return `<circle class="rpm-shape" r="${node.r}" />`;
   }
 
   function labelMarkup(node, id) {
-    if (DATA[id].kind === "project") return "";
+    const d = DATA[id];
+    if (d.kind === "project") return "";
+    if (d.kind === "specific_method") {
+      return `<text class="rpm-specific-method-label" text-anchor="middle" dominant-baseline="middle" y=".5" aria-hidden="true">${node.short || d.title}</text>`;
+    }
     if (id === "center") {
-      return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-7">Computational</tspan><tspan x="0" y="15">Statistics</tspan></text>`;
+      return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-6">Computational</tspan><tspan x="0" y="13">Statistics</tspan></text>`;
     }
     const start = node.r + 15;
     const lines = node.lines.map((line, i) => `<tspan x="0" y="${start + i * 13}">${line}</tspan>`).join("");
@@ -97,11 +101,12 @@
 
   function nodeMarkup(id, node) {
     const d = DATA[id];
-    return `<g class="rpm-node rpm-network-node rpm-kind-${d.kind}${node.primary ? " rpm-primary" : ""}${id === "center" ? " is-active" : ""}" role="button" tabindex="0" aria-hidden="false" data-id="${id}" transform="translate(${node.x} ${node.y})">${d.kind === "project" ? `<title>${d.title}</title>` : ""}${shapeMarkup(node, d.kind)}${labelMarkup(node, id)}</g>`;
+    const needsTitle = d.kind === "project" || d.kind === "specific_method";
+    return `<g class="rpm-node rpm-network-node rpm-kind-${d.kind}${node.primary ? " rpm-primary" : ""}${id === "center" ? " is-active" : ""}" role="button" tabindex="0" aria-hidden="false" data-id="${id}" transform="translate(${node.x} ${node.y})">${needsTitle ? `<title>${d.title}</title>` : ""}${shapeMarkup(node, d.kind)}${labelMarkup(node, id)}</g>`;
   }
 
   map.setAttribute("viewBox", "0 0 980 650");
-  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Statistical research organized around latent structure, degraded-information inference, anticipatory statistics, and high-stakes human-security applications.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
+  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Statistical research organized as pillars, method frameworks, specific methods, application domains, and specific research projects.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
 
   const nodeById = new Map([...map.querySelectorAll(".rpm-node")].map(node => [node.dataset.id, node]));
   const edgeElements = [...map.querySelectorAll(".rpm-edge")];
@@ -132,7 +137,13 @@
       .filter(item => item.href);
     detailCache.set(id, {
       label: d.kind === "pillar" ? "Core questions" : "In plain English",
-      kicker: d.kind === "core" ? "Research identity" : d.kind === "pillar" ? "Research pillar" : d.kind === "method" ? "Method" : d.kind === "domain" ? "Application domain" : "Project / study",
+      kicker:
+        d.kind === "core" ? "Research identity" :
+        d.kind === "pillar" ? "Research pillar" :
+        d.kind === "method" ? "Method framework" :
+        d.kind === "specific_method" ? "Specific method" :
+        d.kind === "domain" ? "Application domain" :
+        "Project / study",
       title: d.title,
       summary: d.summary,
       bullets: d.bullets.map(x => `<li>${x}</li>`).join(""),

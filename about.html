@@ -153,6 +153,46 @@
       </div>
     </section>
 
+    <section class="reading-shelf-section reveal" aria-labelledby="reading-shelf-title">
+      <header class="reading-shelf-heading">
+        <div>
+          <span class="eyebrow">Personal Library · Current Inputs</span>
+          <h2 id="reading-shelf-title">Reading Shelf</h2>
+        </div>
+        <p>
+          What I am reading now, what I have recently finished, and what is waiting next.
+          Select a spine to inspect the book and its place in the queue.
+        </p>
+      </header>
+
+      <div class="reading-library-shell">
+        <div class="reading-library-topbar">
+          <span>JSL / Personal Library</span>
+          <span id="reading-library-count">0 volumes</span>
+        </div>
+
+        <div id="reading-bookshelf"></div>
+
+        <aside class="reading-inspector" aria-live="polite">
+          <div>
+            <div class="reading-inspector-kicker" id="reading-inspector-status">Reading now</div>
+            <h3 id="reading-inspector-title">Select a volume</h3>
+            <p class="reading-inspector-author" id="reading-inspector-author">—</p>
+          </div>
+          <div>
+            <p class="reading-inspector-copy" id="reading-inspector-note">Book details will appear here.</p>
+            <div class="reading-tags" id="reading-inspector-tags"></div>
+          </div>
+        </aside>
+
+        <div class="reading-library-footer">
+          <span id="reading-current-count">0 currently reading</span>
+          <span id="reading-recent-count">0 recently read</span>
+          <span id="reading-next-count">0 up next</span>
+        </div>
+      </div>
+    </section>
+
     <section class="section reveal">
       <div class="contact-panel">
         <p class="eyebrow">Correspondence</p>
@@ -163,7 +203,7 @@
           <a class="button button-secondary" href="mailto:jl17842@nyu.edu">NYU Email</a>
           <a class="button button-secondary" href="mailto:lystadjs@gmail.com">Personal Email</a>
           <a class="button button-secondary" href="https://github.com/LystadJS">GitHub</a>
-          <a class="button button-secondary" href="https://linkedin.com/LystadJS">LinkedIn</a>
+          <a class="button button-secondary" href="https://linkedin.com/in/LystadJS">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -181,11 +221,233 @@
       <a href="mailto:jl17842@nyu.edu">NYU Email</a>
       <a href="mailto:lystadjs@gmail.com">Personal Email</a>
       <a href="https://github.com/LystadJS">GitHub</a>
-      <a href="https://linkedin.com/LystadJS">LinkedIn</a>
+      <a href="https://linkedin.com/in/LystadJS">LinkedIn</a>
     </div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
+<script>
+  (() => {
+    const bookshelf = document.getElementById("reading-bookshelf");
+    if (!bookshelf) return;
+
+    const readingLibrary = [
+      {
+        title: "An Introduction to Statistical Learning",
+        author: "James · Witten · Hastie · Tibshirani",
+        status: "current",
+        topics: ["Statistical Learning", "Machine Learning"],
+        note: "Core reference for statistical learning methods, model assessment, regularization, tree-based methods, and unsupervised learning.",
+        tone: "oxblood",
+        size: "tall",
+        width: "wide",
+        lean: ""
+      },
+      {
+        title: "R for Data Science",
+        author: "Grolemund · Çetinkaya-Rundel · Wickham",
+        status: "current",
+        topics: ["R", "Data Science"],
+        note: "Working reference for data import, transformation, visualization, workflow, and reproducible analysis in R.",
+        tone: "plum",
+        size: "medium",
+        width: "medium",
+        lean: ""
+      },
+      {
+        title: "Text Mining with R",
+        author: "Silge · Robinson",
+        status: "current",
+        topics: ["Text Mining", "NLP", "R"],
+        note: "Text-as-data methods using tidy workflows, including tokenization, sentiment analysis, topic models, and document comparison.",
+        tone: "slate",
+        size: "short",
+        width: "medium",
+        lean: "left"
+      },
+      {
+        title: "Speech and Language Processing",
+        author: "Jurafsky · Martin",
+        status: "current",
+        topics: ["NLP", "Language Models", "Speech"],
+        note: "A broad technical reference for modern natural-language processing, speech, representation, and language-model methods.",
+        tone: "charcoal",
+        size: "tall",
+        width: "wide",
+        lean: ""
+      },
+      {
+        title: "Eighty Six",
+        author: "Asato Asato",
+        status: "current",
+        topics: ["Fiction", "Light Novel"],
+        note: "Current nontechnical reading.",
+        tone: "parchment",
+        size: "medium",
+        width: "narrow",
+        lean: "right"
+      },
+      {
+        title: "Regression and Other Stories",
+        author: "Gelman · Hill · Vehtari",
+        status: "recent",
+        topics: ["Regression", "Statistics"],
+        note: "Recently completed. A practical treatment of regression modeling, interpretation, workflow, and statistical judgment.",
+        tone: "wine",
+        size: "medium",
+        width: "wide",
+        lean: ""
+      },
+      {
+        title: "Bayesian Inference",
+        author: "",
+        status: "recent",
+        topics: ["Bayesian Statistics"],
+        note: "Recently completed. Author and edition can be added once you decide how much bibliographic detail you want the shelf to display.",
+        tone: "plum",
+        size: "short",
+        width: "medium",
+        lean: "left"
+      },
+      {
+        title: "American Caesar",
+        author: "William Manchester",
+        status: "recent",
+        topics: ["Biography", "Military History"],
+        note: "Recently completed biography and military-history reading.",
+        tone: "olive",
+        size: "tall",
+        width: "medium",
+        lean: ""
+      },
+      {
+        title: "The Coldest Winter",
+        author: "David Halberstam",
+        status: "recent",
+        topics: ["Military History", "Korean War"],
+        note: "Recently completed history of the Korean War.",
+        tone: "blue",
+        size: "medium",
+        width: "wide",
+        lean: "right"
+      },
+      {
+        title: "Deep Learning",
+        author: "Bishop · Bishop",
+        status: "next",
+        topics: ["Deep Learning", "Machine Learning"],
+        note: "Next in the queue: deeper foundations in neural networks, representation learning, and modern machine-learning methods.",
+        tone: "oxblood",
+        size: "tall",
+        width: "wide",
+        lean: ""
+      }
+    ];
+
+    const shelfConfig = [
+      { key: "current", label: "Currently Reading", meta: "Active Shelf" },
+      { key: "recent", label: "Recently Read", meta: "Archive" },
+      { key: "next", label: "Up Next", meta: "Queue" }
+    ];
+
+    const statusLabel = {
+      current: "Reading now",
+      recent: "Recently read",
+      next: "Up next"
+    };
+
+    const countNode = document.getElementById("reading-library-count");
+    const titleNode = document.getElementById("reading-inspector-title");
+    const authorNode = document.getElementById("reading-inspector-author");
+    const statusNode = document.getElementById("reading-inspector-status");
+    const noteNode = document.getElementById("reading-inspector-note");
+    const tagsNode = document.getElementById("reading-inspector-tags");
+
+    function inspectBook(book, button) {
+      document.querySelectorAll(".reading-book.is-active").forEach((el) => el.classList.remove("is-active"));
+      if (button) button.classList.add("is-active");
+
+      statusNode.textContent = statusLabel[book.status];
+      titleNode.textContent = book.title;
+      authorNode.textContent = book.author || "Author details to be added";
+      noteNode.textContent = book.note;
+
+      tagsNode.replaceChildren();
+      book.topics.forEach((topic) => {
+        const tag = document.createElement("span");
+        tag.className = "reading-tag";
+        tag.textContent = topic;
+        tagsNode.appendChild(tag);
+      });
+    }
+
+    shelfConfig.forEach((shelfInfo) => {
+      const books = readingLibrary.filter((book) => book.status === shelfInfo.key);
+      const shelf = document.createElement("section");
+      shelf.className = `reading-shelf reading-shelf-${shelfInfo.key}`;
+
+      const label = document.createElement("div");
+      label.className = "reading-shelf-label";
+
+      const labelText = document.createElement("strong");
+      labelText.textContent = shelfInfo.label;
+
+      const labelMeta = document.createElement("span");
+      labelMeta.textContent = `${shelfInfo.meta} · ${String(books.length).padStart(2, "0")} volume${books.length === 1 ? "" : "s"}`;
+
+      label.append(labelText, labelMeta);
+
+      const stage = document.createElement("div");
+      stage.className = "reading-shelf-stage";
+
+      books.forEach((book, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = [
+          "reading-book",
+          `reading-tone-${book.tone}`,
+          `reading-size-${book.size}`,
+          `reading-width-${book.width}`,
+          book.lean ? `reading-lean-${book.lean}` : ""
+        ].filter(Boolean).join(" ");
+
+        button.setAttribute(
+          "aria-label",
+          `${book.title}${book.author ? ` by ${book.author.replaceAll(" · ", ", ")}` : ""}. ${statusLabel[book.status]}.`
+        );
+
+        const title = document.createElement("span");
+        title.className = "reading-book-title";
+        title.textContent = book.title;
+
+        const mark = document.createElement("span");
+        mark.className = "reading-book-mark";
+        mark.textContent = String(index + 1).padStart(2, "0");
+
+        button.append(title, mark);
+        button.addEventListener("mouseenter", () => inspectBook(book, button));
+        button.addEventListener("focus", () => inspectBook(book, button));
+        button.addEventListener("click", () => inspectBook(book, button));
+        stage.appendChild(button);
+      });
+
+      shelf.append(label, stage);
+      bookshelf.appendChild(shelf);
+    });
+
+    const currentCount = readingLibrary.filter((book) => book.status === "current").length;
+    const recentCount = readingLibrary.filter((book) => book.status === "recent").length;
+    const nextCount = readingLibrary.filter((book) => book.status === "next").length;
+
+    countNode.textContent = `${String(readingLibrary.length).padStart(2, "0")} volumes`;
+    document.getElementById("reading-current-count").textContent = `${currentCount} currently reading`;
+    document.getElementById("reading-recent-count").textContent = `${recentCount} recently read`;
+    document.getElementById("reading-next-count").textContent = `${nextCount} up next`;
+
+    const firstBookButton = document.querySelector(".reading-book");
+    if (readingLibrary.length && firstBookButton) inspectBook(readingLibrary[0], firstBookButton);
+  })();
+</script>
 
 </body>
 </html>

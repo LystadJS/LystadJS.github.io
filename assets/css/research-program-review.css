@@ -68,7 +68,7 @@ body[data-page="index"] .hero {
   scrollbar-gutter: stable;
 }
 
-/* Pillar halos: visible intellectual structure, not employer/application buckets. */
+/* Pillar halos: cleaner, quieter cluster guides. */
 .rpm-cluster-halo {
   opacity: 1;
   pointer-events: none;
@@ -76,28 +76,44 @@ body[data-page="index"] .hero {
 }
 
 .rpm-cluster-halo ellipse {
-  fill: rgba(255,255,255,.006);
-  stroke: rgba(145,132,147,.15);
+  fill: rgba(255,255,255,.004);
+  stroke: rgba(145,132,147,.12);
   stroke-width: 1;
-  stroke-dasharray: 4 7;
+  stroke-dasharray: 4 8;
   vector-effect: non-scaling-stroke;
 }
 
-.rpm-cluster-halo text {
-  fill: #665d69;
+.rpm-cluster-halo-stem {
+  fill: none;
+  stroke: rgba(145,132,147,.20);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.rpm-cluster-halo-label {
+  fill: #736875;
   font-family: var(--mono);
-  font-size: 7.5px;
-  font-weight: 500;
-  letter-spacing: .12em;
+  font-size: 6.9px;
+  font-weight: 600;
+  letter-spacing: .11em;
 }
 
 .rpm-cluster-halo.is-related ellipse {
-  fill: rgba(141,23,50,.017);
-  stroke: rgba(191,49,82,.31);
+  fill: rgba(141,23,50,.012);
+  stroke: rgba(191,49,82,.24);
 }
 
-.rpm-cluster-halo.is-related text { fill: #9b818b; }
-.rpm-cluster-halo.is-muted { opacity: .16; }
+.rpm-cluster-halo.is-related .rpm-cluster-halo-stem {
+  stroke: rgba(191,49,82,.32);
+}
+
+.rpm-cluster-halo.is-related .rpm-cluster-halo-label {
+  fill: #b79ca7;
+}
+
+.rpm-cluster-halo.is-muted {
+  opacity: .15;
+}
 
 /* Edges remain deliberately quiet until inspected. */
 .rpm-edge {
@@ -108,10 +124,10 @@ body[data-page="index"] .hero {
   transition: opacity 140ms ease, stroke 140ms ease;
 }
 
-.rpm-edge-pillar { opacity: .18; stroke-width: 1; }
+.rpm-edge-pillar { opacity: .19; stroke-width: 1.02; }
 .rpm-edge-method { opacity: .10; }
 .rpm-edge-method-link { opacity: .055; stroke-dasharray: 2 5; }
-.rpm-edge-domain { opacity: .075; }
+.rpm-edge-domain { opacity: .07; }
 .rpm-edge-domain-link { opacity: .045; stroke-dasharray: 3 5; }
 .rpm-edge-question { opacity: .10; stroke-dasharray: 3 5; }
 
@@ -134,23 +150,26 @@ body[data-page="index"] .hero {
 }
 
 .rpm-network-node .rpm-shape {
-  fill: #0f0c11;
-  stroke: rgba(164,151,164,.47);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   transition: fill 140ms ease, stroke 140ms ease !important;
 }
 
+.rpm-kind-method .rpm-shape {
+  fill: rgba(14, 11, 17, .92);
+  stroke: rgba(177,165,179,.60);
+}
+
 .rpm-kind-pillar .rpm-shape {
-  fill: rgba(255,255,255,.01);
-  stroke: rgba(190,177,190,.60);
-  stroke-width: 1.1;
+  fill: rgba(141,23,50,.15);
+  stroke: rgba(191,49,82,.86);
+  stroke-width: 1.2;
 }
 
 .rpm-kind-domain .rpm-shape {
-  fill: rgba(255,255,255,.006);
-  stroke: rgba(183,171,181,.43);
-  stroke-width: 1;
+  fill: rgba(255,255,255,.008);
+  stroke: rgba(183,171,181,.38);
+  stroke-width: .95;
 }
 
 .rpm-kind-question .rpm-shape {
@@ -168,8 +187,9 @@ body[data-page="index"] .hero {
 
 /* Signature method is larger, but neutral at rest. */
 .rpm-primary .rpm-shape {
-  fill: #0f0c11;
-  stroke: rgba(180,166,180,.56);
+  fill: rgba(16, 12, 18, .94);
+  stroke: rgba(203,189,204,.72);
+  stroke-width: 1.15;
 }
 
 .rpm-network-node:hover,
@@ -196,26 +216,39 @@ body[data-page="index"] .hero {
 .rpm-network-center-label {
   fill: #b6aab6;
   font-family: var(--sans);
-  font-size: 9.3px;
+  font-size: 9.25px;
   font-weight: 600;
   letter-spacing: .01em;
   pointer-events: none;
   user-select: none;
 }
 
-.rpm-kind-pillar .rpm-network-node-label {
+.rpm-kind-method .rpm-network-node-label {
   fill: #c6bbc6;
-  font-size: 9.1px;
 }
 
-.rpm-kind-domain .rpm-network-node-label { fill: #c3b8c1; }
-.rpm-kind-question .rpm-network-node-label { fill: #aea3b0; }
+.rpm-kind-pillar .rpm-network-node-label {
+  fill: var(--paper);
+  font-family: var(--serif);
+  font-size: 9.65px;
+  font-weight: 600;
+}
+
+.rpm-kind-domain .rpm-network-node-label {
+  fill: #b8adb9;
+  font-size: 8.95px;
+  font-weight: 560;
+}
+
+.rpm-kind-question .rpm-network-node-label {
+  fill: #aea3b0;
+}
 
 .rpm-network-node-sub,
 .rpm-network-center-sub {
   fill: #716673;
   font-family: var(--mono);
-  font-size: 6.1px;
+  font-size: 6.05px;
   font-weight: 500;
   letter-spacing: .12em;
 }

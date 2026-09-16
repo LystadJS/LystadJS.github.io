@@ -136,16 +136,16 @@
     humansecurity:{x:690,y:550,r:28,lines:["Human","Security"],groups:["degraded","anticipatory"]},
     climate:{x:865,y:565,r:24,lines:["Climate &","Environmental Risk"],groups:["degraded","anticipatory"]},
 
-    proj_target:{x:125,y:430,r:6,lines:[],groups:["structure","anticipatory"]},
-    proj_lethality:{x:220,y:445,r:6,lines:[],groups:["structure","degraded"]},
-    proj_vanguards:{x:120,y:225,r:6,lines:[],groups:["structure"]},
-    proj_climate:{x:410,y:600,r:6,lines:[],groups:["structure","anticipatory"]},
-    proj_flood:{x:780,y:500,r:6,lines:[],groups:["degraded","anticipatory"]},
-    proj_food:{x:785,y:425,r:6,lines:[],groups:["degraded","anticipatory"]},
-    proj_aid:{x:805,y:385,r:6,lines:[],groups:["degraded","anticipatory"]},
-    proj_ai:{x:875,y:215,r:6,lines:[],groups:["degraded","anticipatory"]},
-    proj_autonomous:{x:885,y:350,r:6,lines:[],groups:["degraded","anticipatory"]},
-    proj_ambassador:{x:755,y:315,r:6,lines:[],groups:["degraded","anticipatory"]}
+    proj_target:{x:125,y:455,r:6,lines:[],groups:["structure","anticipatory"]},
+    proj_lethality:{x:215,y:455,r:6,lines:[],groups:["structure","degraded"]},
+    proj_vanguards:{x:225,y:515,r:6,lines:[],groups:["structure","anticipatory"]},
+    proj_climate:{x:820,y:535,r:6,lines:[],groups:["structure","anticipatory"]},
+    proj_flood:{x:795,y:475,r:6,lines:[],groups:["degraded","anticipatory"]},
+    proj_food:{x:810,y:405,r:6,lines:[],groups:["degraded","anticipatory"]},
+    proj_aid:{x:900,y:410,r:6,lines:[],groups:["degraded","anticipatory"]},
+    proj_ai:{x:950,y:135,r:6,lines:[],groups:["degraded","anticipatory"]},
+    proj_autonomous:{x:950,y:275,r:6,lines:[],groups:["degraded","anticipatory"]},
+    proj_ambassador:{x:750,y:535,r:6,lines:[],groups:["degraded","anticipatory"]}
   };
 
   const HALOS = [
@@ -174,16 +174,16 @@
     ["humanecology","humansecurity","domain-link"],["humanecology","climate","domain-link"],["humanitarian","humansecurity","domain-link"],
     ["humansecurity","climate","domain-link"],["ainonproliferation","autonomous","domain-link"],
 
-    ["proj_target","counterextremism","project"],["proj_target","political","project"],["proj_target","spatial","project"],
-    ["proj_lethality","counterextremism","project"],["proj_lethality","missing","project"],["proj_lethality","validation","project"],
-    ["proj_vanguards","counterextremism","project"],["proj_vanguards","political","project"],["proj_vanguards","networks","project"],
-    ["proj_climate","climate","project"],["proj_climate","humanecology","project"],["proj_climate","counterextremism","project"],
-    ["proj_flood","humanitarian","project"],["proj_flood","humanecology","project"],["proj_flood","spatial","project"],
+    ["proj_target","counterextremism","project"],["proj_target","political","project"],["proj_target","spatial","project"],["proj_target","networks","project"],
+    ["proj_lethality","counterextremism","project"],["proj_lethality","missing","project"],["proj_lethality","validation","project"],["proj_lethality","dimension","project"],
+    ["proj_vanguards","counterextremism","project"],["proj_vanguards","political","project"],["proj_vanguards","networks","project"],["proj_vanguards","longitudinal","project"],
+    ["proj_climate","climate","project"],["proj_climate","humanecology","project"],["proj_climate","counterextremism","project"],["proj_climate","spatial","project"],["proj_climate","multilevel","project"],["proj_climate","forecasting","project"],
+    ["proj_flood","humanitarian","project"],["proj_flood","humanecology","project"],["proj_flood","climate","project"],["proj_flood","spatial","project"],
     ["proj_food","humanitarian","project"],["proj_food","humansecurity","project"],["proj_food","forecasting","project"],
     ["proj_aid","humanitarian","project"],["proj_aid","humansecurity","project"],["proj_aid","nlp","project"],
-    ["proj_ai","ainonproliferation","project"],["proj_ai","networks","project"],["proj_ai","dimension","project"],
-    ["proj_autonomous","autonomous","project"],["proj_autonomous","ainonproliferation","project"],["proj_autonomous","forecasting","project"],
-    ["proj_ambassador","validation","project"],["proj_ambassador","humansecurity","project"],["proj_ambassador","center","project"]
+    ["proj_ai","ainonproliferation","project"],["proj_ai","autonomous","project"],["proj_ai","networks","project"],["proj_ai","dimension","project"],["proj_ai","unsupervised","project"],
+    ["proj_autonomous","autonomous","project"],["proj_autonomous","ainonproliferation","project"],["proj_autonomous","humansecurity","project"],["proj_autonomous","networks","project"],["proj_autonomous","forecasting","project"],["proj_autonomous","bayesian","project"],
+    ["proj_ambassador","humansecurity","project"],["proj_ambassador","validation","project"],["proj_ambassador","forecasting","project"],["proj_ambassador","bayesian","project"]
   ].map(([a,b,type]) => ({a,b,type}));
 
   const MOBILE_GROUPS = [

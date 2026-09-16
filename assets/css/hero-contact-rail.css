@@ -1,6 +1,5 @@
-/* Homepage hero + compact contact rail.
-   Uses the same shell, spacing, divider, and alignment conventions as the
-   interior page heroes while preserving the portrait-next-to-name identity. */
+/* Homepage hero + compact Practice index + contact rail.
+   Mirrors the spacing and two-part composition of the interior page heroes. */
 
 body[data-page="index"] .hero {
   width: 100%;
@@ -16,29 +15,34 @@ body[data-page="index"] .hero-profile {
   position: relative;
   width: 100%;
   max-width: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  column-gap: clamp(1.6rem, 3vw, 2.5rem);
-  row-gap: clamp(1.4rem, 2.4vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr);
+  gap: 3rem;
+  align-items: end;
   padding-right: 68px;
   text-align: left;
 }
 
-/* Identity row: portrait directly beside the name, within the same centered
-   site shell used by Research, About, Code, and CV. */
+/* Larger left side: portrait + name above a full-width lede. */
+body[data-page="index"] .hero-main {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr);
+  column-gap: clamp(1.6rem, 3vw, 2.5rem);
+  row-gap: clamp(1.25rem, 2vw, 1.7rem);
+  align-items: center;
+}
+
 body[data-page="index"] .hero-headshot {
-  flex: 0 0 clamp(150px, 15vw, 195px);
-  width: clamp(150px, 15vw, 195px);
+  width: 100%;
   margin: 0;
   align-self: center;
 }
 
 body[data-page="index"] .hero-identity {
-  flex: 1 1 560px;
   min-width: 0;
-  max-width: 920px;
+  width: 100%;
+  max-width: none;
   margin: 0;
   text-align: left;
 }
@@ -56,10 +60,8 @@ body[data-page="index"] .hero-identity h1 {
   letter-spacing: -.05em;
 }
 
-/* Full-width copy row beneath the identity. It uses all space up to the
-   reserved contact rail rather than inheriting the width of the name block. */
 body[data-page="index"] .hero-details {
-  flex: 0 0 100%;
+  grid-column: 1 / -1;
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -67,7 +69,6 @@ body[data-page="index"] .hero-details {
   padding-top: 1.25rem;
   border-top: 1px solid rgba(74,53,71,.46);
   text-align: left;
-  align-self: stretch;
 }
 
 body[data-page="index"] .hero-lede,
@@ -88,6 +89,93 @@ body[data-page="index"] .hero-note {
   margin-top: 1rem;
 }
 
+/* Distilled replacement for the former full 02 / Practice section. */
+body[data-page="index"] .hero-practice-index {
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1.35rem;
+  border-left: 1px solid var(--line-bright);
+}
+
+body[data-page="index"] .hero-practice-kicker {
+  margin: 0 0 .55rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+body[data-page="index"] .hero-practice-index h2 {
+  margin: 0 0 .75rem;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
+  line-height: .98;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+body[data-page="index"] .hero-practice-copy {
+  margin: 0 0 .9rem;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+body[data-page="index"] .hero-practice-links {
+  border-top: 1px solid var(--line);
+}
+
+body[data-page="index"] .hero-practice-links a {
+  display: block;
+  padding: .72rem 0 .68rem;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: padding-left 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+body[data-page="index"] .hero-practice-links a:hover,
+body[data-page="index"] .hero-practice-links a:focus-visible {
+  padding-left: .45rem;
+  border-bottom-color: rgba(191,49,82,.42);
+  background: linear-gradient(90deg, rgba(141,23,50,.055), transparent 72%);
+  outline: none;
+}
+
+body[data-page="index"] .hero-practice-links span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .54rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body[data-page="index"] .hero-practice-links strong {
+  display: block;
+  margin-top: .12rem;
+  color: #d8ccd5;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+body[data-page="index"] .hero-practice-links small {
+  display: block;
+  margin-top: .18rem;
+  color: #827683;
+  font-family: var(--mono);
+  font-size: .5rem;
+  line-height: 1.4;
+  letter-spacing: .025em;
+}
+
+/* External profile/contact rail remains independent of the Practice index. */
 body[data-page="index"] .hero-contact-rail {
   position: absolute;
   top: 0;
@@ -101,7 +189,7 @@ body[data-page="index"] .hero-contact-rail {
   gap: .52rem;
   min-width: 0;
   padding-left: .75rem;
-  border-left: 1px solid rgba(145, 132, 147, .18);
+  border-left: 1px solid rgba(145,132,147,.18);
   z-index: 3;
 }
 
@@ -111,9 +199,9 @@ body[data-page="index"] .hero-contact-link {
   place-items: center;
   width: 38px;
   height: 38px;
-  color: rgba(216, 210, 216, .58);
-  border: 1px solid rgba(200, 193, 200, .09);
-  background: rgba(220, 220, 224, .025);
+  color: rgba(216,210,216,.58);
+  border: 1px solid rgba(200,193,200,.09);
+  background: rgba(220,220,224,.025);
   text-decoration: none;
   transition:
     color 160ms ease,
@@ -143,11 +231,11 @@ body[data-page="index"] .hero-contact-link[data-brand="linkedin"] svg {
 
 body[data-page="index"] .hero-contact-link:hover,
 body[data-page="index"] .hero-contact-link:focus-visible {
-  color: rgba(238, 229, 217, .96);
-  border-color: rgba(191, 49, 82, .42);
-  background: rgba(191, 49, 82, .055);
+  color: rgba(238,229,217,.96);
+  border-color: rgba(191,49,82,.42);
+  background: rgba(191,49,82,.055);
   transform: translateX(-2px);
-  box-shadow: 0 0 16px rgba(141, 23, 50, .10);
+  box-shadow: 0 0 16px rgba(141,23,50,.10);
   outline: none;
 }
 
@@ -158,9 +246,9 @@ body[data-page="index"] .hero-contact-link::before {
   top: 50%;
   transform: translateY(-50%) translateX(4px);
   padding: .34rem .48rem;
-  border: 1px solid rgba(74, 53, 71, .78);
-  background: rgba(10, 9, 12, .96);
-  color: rgba(216, 205, 214, .88);
+  border: 1px solid rgba(74,53,71,.78);
+  background: rgba(10,9,12,.96);
+  color: rgba(216,205,214,.88);
   font-family: var(--mono);
   font-size: .55rem;
   line-height: 1;
@@ -185,12 +273,7 @@ body[data-page="index"] .hero-contact-link::after {
   top: 9px;
   bottom: 9px;
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(191, 49, 82, .24),
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, rgba(191,49,82,.24), transparent);
   opacity: 0;
   transition: opacity 160ms ease;
 }
@@ -202,11 +285,13 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 
 @media (max-width: 980px) {
   body[data-page="index"] .hero-profile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
     padding-right: 58px;
   }
 
-  body[data-page="index"] .hero-identity {
-    flex-basis: 480px;
+  body[data-page="index"] .hero-practice-index {
+    max-width: 680px;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -216,20 +301,14 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 780px) {
-  body[data-page="index"] .hero-profile {
+  body[data-page="index"] .hero-main {
+    grid-template-columns: 145px minmax(0, 1fr);
     column-gap: 1.25rem;
     row-gap: 1.25rem;
+  }
+
+  body[data-page="index"] .hero-profile {
     padding-right: 54px;
-  }
-
-  body[data-page="index"] .hero-headshot {
-    flex-basis: 145px;
-    width: 145px;
-  }
-
-  body[data-page="index"] .hero-identity {
-    flex: 1 1 360px;
-    max-width: none;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -254,23 +333,29 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   }
 
   body[data-page="index"] .hero-profile {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
     padding-right: 48px;
+  }
+
+  body[data-page="index"] .hero-main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   body[data-page="index"] .hero-headshot,
   body[data-page="index"] .hero-identity,
   body[data-page="index"] .hero-details {
-    flex: 0 0 auto;
+    grid-column: 1;
     width: 100%;
     max-width: none;
   }
 
   body[data-page="index"] .hero-headshot {
     width: min(58vw, 190px);
+  }
+
+  body[data-page="index"] .hero-practice-index {
+    padding-left: 1rem;
   }
 
   body[data-page="index"] .hero-contact-rail {

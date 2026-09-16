@@ -316,9 +316,9 @@
   };
 
   const HALOS = [
-    { id: "structure", label: "LATENT STRUCTURE + TRANSITION", cx: 270, cy: 205, rx: 245, ry: 165 },
-    { id: "degraded", label: "INFERENCE UNDER DEGRADED INFORMATION", cx: 700, cy: 205, rx: 235, ry: 165 },
-    { id: "anticipatory", label: "ANTICIPATORY SYSTEMS + EVIDENCE", cx: 485, cy: 455, rx: 275, ry: 155 }
+    { id: "structure", lines: ["LATENT STRUCTURE", "+ TRANSITION"], cx: 270, cy: 205, rx: 245, ry: 165, labelX: 270, labelY: 20, stemFromY: 26, stemToY: 40 },
+    { id: "degraded", lines: ["DEGRADED INFORMATION", "+ INFERENCE"], cx: 700, cy: 205, rx: 235, ry: 165, labelX: 700, labelY: 20, stemFromY: 26, stemToY: 40 },
+    { id: "anticipatory", lines: ["ANTICIPATORY SYSTEMS", "+ EVIDENCE"], cx: 485, cy: 455, rx: 275, ry: 155, labelX: 485, labelY: 618, stemFromY: 603, stemToY: 610 }
   ];
 
   const EDGES = [
@@ -406,9 +406,11 @@
   if (footerState) footerState.textContent = "Statistician first · human-security applications second";
 
   function haloMarkup(h) {
+    const tspans = h.lines.map((line, i) => `<tspan x="${h.labelX}" dy="${i === 0 ? 0 : 8.5}">${line}</tspan>`).join("");
     return `<g class="rpm-cluster-halo" data-cluster="${h.id}">
       <ellipse cx="${h.cx}" cy="${h.cy}" rx="${h.rx}" ry="${h.ry}" />
-      <text x="${h.cx - h.rx + 13}" y="${h.cy - h.ry + 18}">${h.label}</text>
+      <path class="rpm-cluster-halo-stem" d="M ${h.labelX} ${h.stemFromY} L ${h.labelX} ${h.stemToY}" />
+      <text class="rpm-cluster-halo-label" x="${h.labelX}" y="${h.labelY}" text-anchor="middle">${tspans}</text>
     </g>`;
   }
 

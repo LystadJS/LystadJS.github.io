@@ -49,44 +49,44 @@
   LAYOUT.center.r = 56;
 
   Object.assign(LAYOUT, {
-    sm_kmeans:{x:145,y:120,r:11,short:"K-MEANS",lines:[],groups:["structure"]},
-    sm_gmm:{x:235,y:120,r:11,short:"GMM",lines:[],groups:["structure"]},
+    sm_kmeans:{x:145,y:145,r:8,lines:[],groups:["structure"]},
+    sm_gmm:{x:235,y:145,r:8,lines:[],groups:["structure"]},
 
-    sm_dbscan:{x:40,y:225,r:11,short:"DBSCAN",lines:[],groups:["structure"]},
-    sm_hdbscan:{x:40,y:285,r:11,short:"HDBSCAN",lines:[],groups:["structure"]},
+    sm_dbscan:{x:45,y:235,r:8,lines:[],groups:["structure"]},
+    sm_hdbscan:{x:45,y:275,r:8,lines:[],groups:["structure"]},
 
-    sm_pca:{x:285,y:45,r:11,short:"PCA",lines:[],groups:["structure"]},
-    sm_umap:{x:365,y:45,r:11,short:"UMAP",lines:[],groups:["structure"]},
+    sm_pca:{x:295,y:55,r:8,lines:[],groups:["structure"]},
+    sm_umap:{x:355,y:55,r:8,lines:[],groups:["structure"]},
 
-    sm_louvain:{x:395,y:105,r:11,short:"LOUVAIN",lines:[],groups:["structure","anticipatory"]},
-    sm_centrality:{x:460,y:105,r:11,short:"CENTRAL",lines:[],groups:["structure","anticipatory"]},
+    sm_louvain:{x:395,y:120,r:8,lines:[],groups:["structure","anticipatory"]},
+    sm_centrality:{x:455,y:120,r:8,lines:[],groups:["structure","anticipatory"]},
 
-    sm_panel:{x:275,y:365,r:11,short:"PANEL",lines:[],groups:["structure","anticipatory"]},
-    sm_changepoint:{x:270,y:440,r:11,short:"CHANGE",lines:[],groups:["structure","anticipatory"]},
+    sm_panel:{x:300,y:380,r:8,lines:[],groups:["structure","anticipatory"]},
+    sm_changepoint:{x:370,y:380,r:8,lines:[],groups:["structure","anticipatory"]},
 
-    sm_reml:{x:620,y:45,r:11,short:"REML",lines:[],groups:["degraded"]},
-    sm_icc:{x:695,y:45,r:11,short:"ICC",lines:[],groups:["degraded"]},
+    sm_reml:{x:630,y:55,r:8,lines:[],groups:["degraded"]},
+    sm_icc:{x:690,y:55,r:8,lines:[],groups:["degraded"]},
 
-    sm_mice:{x:805,y:120,r:11,short:"MICE",lines:[],groups:["degraded"]},
-    sm_fiml:{x:875,y:220,r:11,short:"FIML",lines:[],groups:["degraded"]},
+    sm_mice:{x:795,y:135,r:8,lines:[],groups:["degraded"]},
+    sm_fiml:{x:855,y:135,r:8,lines:[],groups:["degraded"]},
 
-    sm_mcmc:{x:795,y:250,r:11,short:"MCMC",lines:[],groups:["degraded"]},
-    sm_hmc:{x:790,y:325,r:11,short:"HMC",lines:[],groups:["degraded"]},
+    sm_mcmc:{x:810,y:265,r:8,lines:[],groups:["degraded"]},
+    sm_hmc:{x:870,y:265,r:8,lines:[],groups:["degraded"]},
 
-    sm_bootstrap:{x:665,y:330,r:11,short:"BOOT",lines:[],groups:["degraded","anticipatory"]},
-    sm_cv:{x:655,y:395,r:11,short:"CV",lines:[],groups:["degraded","anticipatory"]},
+    sm_bootstrap:{x:685,y:340,r:8,lines:[],groups:["degraded","anticipatory"]},
+    sm_cv:{x:745,y:340,r:8,lines:[],groups:["degraded","anticipatory"]},
 
-    sm_topic:{x:530,y:100,r:11,short:"TOPIC",lines:[],groups:["degraded","anticipatory"]},
-    sm_content:{x:515,y:200,r:11,short:"CONTENT",lines:[],groups:["degraded","anticipatory"]},
+    sm_topic:{x:545,y:115,r:8,lines:[],groups:["degraded","anticipatory"]},
+    sm_content:{x:605,y:115,r:8,lines:[],groups:["degraded","anticipatory"]},
 
-    sm_embeddings:{x:750,y:95,r:11,short:"EMBED",lines:[],groups:["degraded","anticipatory"]},
-    sm_transformers:{x:770,y:165,r:11,short:"TRANSF",lines:[],groups:["degraded","anticipatory"]},
+    sm_embeddings:{x:690,y:105,r:8,lines:[],groups:["degraded","anticipatory"]},
+    sm_transformers:{x:735,y:105,r:8,lines:[],groups:["degraded","anticipatory"]},
 
-    sm_arima:{x:465,y:500,r:11,short:"ARIMA",lines:[],groups:["anticipatory"]},
-    sm_statespace:{x:555,y:500,r:11,short:"STATE",lines:[],groups:["anticipatory"]},
+    sm_arima:{x:475,y:520,r:8,lines:[],groups:["anticipatory"]},
+    sm_statespace:{x:545,y:520,r:8,lines:[],groups:["anticipatory"]},
 
-    sm_moran:{x:350,y:505,r:11,short:"MORAN I",lines:[],groups:["anticipatory"]},
-    sm_kriging:{x:390,y:545,r:11,short:"KRIG",lines:[],groups:["anticipatory"]}
+    sm_moran:{x:300,y:525,r:8,lines:[],groups:["anticipatory"]},
+    sm_kriging:{x:350,y:525,r:8,lines:[],groups:["anticipatory"]}
   });
 
   EDGES.push(

@@ -1,5 +1,7 @@
 /* Homepage hero + compact Practice index + contact rail.
-   Mirrors the spacing and two-part composition of the interior page heroes. */
+   Uses the same shell and spacing conventions as the interior page heroes.
+   The layout is cache-safe: no Practice column is reserved unless the panel
+   actually exists in the DOM. */
 
 body[data-page="index"] .hero {
   width: 100%;
@@ -16,30 +18,33 @@ body[data-page="index"] .hero-profile {
   width: 100%;
   max-width: none;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr);
-  gap: 3rem;
-  align-items: end;
+  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr);
+  grid-template-areas:
+    "headshot identity"
+    "details  details";
+  column-gap: clamp(1.6rem, 3vw, 2.5rem);
+  row-gap: clamp(1.4rem, 2.4vw, 2rem);
+  align-items: center;
   padding-right: 68px;
   text-align: left;
 }
 
-/* Larger left side: portrait + name above a full-width lede. */
+/* main.js may wrap the original hero elements in .hero-main. Making that
+   wrapper layout-transparent prevents cached JS/CSS versions from creating
+   an empty grid column. */
 body[data-page="index"] .hero-main {
-  min-width: 0;
-  display: grid;
-  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr);
-  column-gap: clamp(1.6rem, 3vw, 2.5rem);
-  row-gap: clamp(1.25rem, 2vw, 1.7rem);
-  align-items: center;
+  display: contents;
 }
 
 body[data-page="index"] .hero-headshot {
+  grid-area: headshot;
   width: 100%;
   margin: 0;
   align-self: center;
 }
 
 body[data-page="index"] .hero-identity {
+  grid-area: identity;
   min-width: 0;
   width: 100%;
   max-width: none;
@@ -61,7 +66,7 @@ body[data-page="index"] .hero-identity h1 {
 }
 
 body[data-page="index"] .hero-details {
-  grid-column: 1 / -1;
+  grid-area: details;
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -89,8 +94,17 @@ body[data-page="index"] .hero-note {
   margin-top: 1rem;
 }
 
-/* Distilled replacement for the former full 02 / Practice section. */
+/* Only create the right-side Practice region after the panel is present. */
+body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
+  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr) minmax(255px, .58fr);
+  grid-template-areas:
+    "headshot identity practice"
+    "details  details  practice";
+  column-gap: clamp(1.6rem, 3vw, 2.5rem);
+}
+
 body[data-page="index"] .hero-practice-index {
+  grid-area: practice;
   min-width: 0;
   align-self: stretch;
   display: flex;
@@ -175,7 +189,7 @@ body[data-page="index"] .hero-practice-links small {
   letter-spacing: .025em;
 }
 
-/* External profile/contact rail remains independent of the Practice index. */
+/* External profile/contact rail remains independent of the Practice panel. */
 body[data-page="index"] .hero-contact-rail {
   position: absolute;
   top: 0;
@@ -203,13 +217,7 @@ body[data-page="index"] .hero-contact-link {
   border: 1px solid rgba(200,193,200,.09);
   background: rgba(220,220,224,.025);
   text-decoration: none;
-  transition:
-    color 160ms ease,
-    opacity 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
+  transition: color 160ms ease, opacity 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 body[data-page="index"] .hero-contact-link svg {
@@ -284,9 +292,14 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 980px) {
-  body[data-page="index"] .hero-profile {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  body[data-page="index"] .hero-profile,
+  body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
+    grid-template-columns: 145px minmax(0, 1fr);
+    grid-template-areas:
+      "headshot identity"
+      "details  details"
+      "practice practice";
+    gap: 1.5rem 1.25rem;
     padding-right: 58px;
   }
 
@@ -301,13 +314,8 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 }
 
 @media (max-width: 780px) {
-  body[data-page="index"] .hero-main {
-    grid-template-columns: 145px minmax(0, 1fr);
-    column-gap: 1.25rem;
-    row-gap: 1.25rem;
-  }
-
-  body[data-page="index"] .hero-profile {
+  body[data-page="index"] .hero-profile,
+  body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
     padding-right: 54px;
   }
 
@@ -332,22 +340,16 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
     padding: 4rem 0 3rem;
   }
 
-  body[data-page="index"] .hero-profile {
-    gap: 1.5rem;
-    padding-right: 48px;
-  }
-
-  body[data-page="index"] .hero-main {
+  body[data-page="index"] .hero-profile,
+  body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "headshot"
+      "identity"
+      "details"
+      "practice";
     gap: 1rem;
-  }
-
-  body[data-page="index"] .hero-headshot,
-  body[data-page="index"] .hero-identity,
-  body[data-page="index"] .hero-details {
-    grid-column: 1;
-    width: 100%;
-    max-width: none;
+    padding-right: 48px;
   }
 
   body[data-page="index"] .hero-headshot {

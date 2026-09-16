@@ -11,57 +11,6 @@
 
   section.classList.add("rpm-anticipatory-identity");
 
-  /* Academic-identity language: statistics first, catastrophic-risk applications second. */
-  Object.assign(DATA.center, {
-    summary: "Make catastrophic risk legible early enough to matter.",
-    bullets: ["Discover hidden structure.", "Quantify uncertainty.", "Detect consequential change early."]
-  });
-  Object.assign(DATA.pillar_structure, {
-    title: "Latent Structure & Catastrophic Transition",
-    summary: "Discover hidden organization and detect consequential state change.",
-    bullets: ["What structure exists before labels?", "When does change become transition?", "Which changes precede fragmentation or escalation?"]
-  });
-  Object.assign(DATA.pillar_degraded, {
-    summary: "Draw defensible inference from incomplete, sparse, biased, or delayed evidence.",
-    bullets: ["What can the evidence support?", "Which claims survive alternative assumptions?", "How much uncertainty must remain explicit?"]
-  });
-  Object.assign(DATA.pillar_anticipatory, {
-    title: "Anticipatory Statistics",
-    summary: "Detect consequential risk early without overstating what the evidence can predict.",
-    bullets: ["Can risk become legible before outcomes are obvious?", "Which signals are strong enough to matter?", "How should early warning carry uncertainty?"]
-  });
-  Object.assign(DATA.unsupervised, {
-    summary: "Discover latent structure without predefined labels.",
-    bullets: ["Find groups, regimes, and structure before categories are imposed."]
-  });
-  Object.assign(DATA.forecasting, {
-    summary: "Estimate evolving risk while keeping uncertainty explicit.",
-    bullets: ["Early warning without false precision."]
-  });
-  Object.assign(DATA.massviolence, {
-    summary: "Large-scale organized harm, escalation, and catastrophic transition.",
-    bullets: ["Study the transition before the endpoint is obvious."]
-  });
-  Object.assign(DATA.counterextremism, {
-    summary: "Terrorist and extremist systems, organizational behavior, adaptation, and intervention-relevant structure.",
-    bullets: ["A high-stakes application of structure, behavior, and change."]
-  });
-  Object.assign(DATA.humanitarian, {
-    summary: "Crises produced or intensified by conflict, political decisions, institutional failure, and organized violence.",
-    bullets: ["Where degraded information and nonlinear change matter most."]
-  });
-  Object.assign(DATA.humansecurity, {
-    summary: "Threats to human life and well-being across violent, environmental, institutional, and technological systems.",
-    bullets: ["The substantive frame tying the program together."]
-  });
-
-  if (LAYOUT.pillar_anticipatory) LAYOUT.pillar_anticipatory.lines = ["Anticipatory", "Statistics"];
-  const anticipatoryMobile = MOBILE_GROUPS.find(group => group.title === "Anticipatory Systems");
-  if (anticipatoryMobile) {
-    anticipatoryMobile.title = "Anticipatory Statistics";
-    anticipatoryMobile.summary = "Early warning, evolving risk, and decision-relevant statistical signal.";
-  }
-
   const detailLabels = [...section.querySelectorAll(".rpm-detail-label")];
   const kicker = document.getElementById("rpm-detail-kicker");
   const title = document.getElementById("rpm-detail-title");
@@ -84,12 +33,12 @@
     let url = REPOS.computing;
     if (/unsupervised/.test(x)) url = REPOS.unsupervised;
     else if (/(cluster|hdbscan|hierarchical|mixture|fuzzy|density)/.test(x)) url = REPOS.clustering;
-    else if (/(dimension|pca|umap|mds|embedding)/.test(x)) url = REPOS.dimension;
+    else if (/(dimension|dimensionality|pca|umap|mds|embedding)/.test(x)) url = REPOS.dimension;
     else if (/(network|centrality|community|bipartite|diffusion)/.test(x)) url = REPOS.networks;
     else if (/(longitudinal|panel|trajectory|alignment|multilevel|mixed|partial pooling|nested)/.test(x)) url = REPOS.longitudinal;
     else if (/(missing|imputation|missingness)/.test(x)) url = REPOS.missing;
     else if (/(spatial|distance|geographic|population-weighted)/.test(x)) url = REPOS.spatial;
-    else if (/(text|nlp|extraction|attribution|classification)/.test(x)) url = REPOS.unTranscript;
+    else if (/(text|nlp|natural language|language processing|extraction|attribution|classification|embedding)/.test(x)) url = REPOS.unTranscript;
     else if (/(human ecology|climate|environment)/.test(x)) url = REPOS.ecology;
     else if (/humanitarian/.test(x)) url = REPOS.humanitarian;
     else if (/human security/.test(x)) url = REPOS.humansecurity;
@@ -111,6 +60,7 @@
       multilevel: REPOS.longitudinal,
       validation: REPOS.computing,
       nlp: REPOS.unTranscript,
+      naturallanguage: REPOS.unTranscript,
       spatial: REPOS.spatial,
       forecasting: REPOS.computing,
       political: REPOS.political,
@@ -137,7 +87,7 @@
   function labelMarkup(node, id) {
     if (DATA[id].kind === "project") return "";
     if (id === "center") {
-      return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-8">Computational</tspan><tspan x="0" y="14">Statistics</tspan><tspan class="rpm-network-center-sub" x="0" y="34">MAKE CATASTROPHIC RISK LEGIBLE</tspan></text>`;
+      return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-7">Computational</tspan><tspan x="0" y="15">Statistics</tspan></text>`;
     }
     const start = node.r + 15;
     const lines = node.lines.map((line, i) => `<tspan x="0" y="${start + i * 13}">${line}</tspan>`).join("");
@@ -151,7 +101,7 @@
   }
 
   map.setAttribute("viewBox", "0 0 980 650");
-  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Computational statistics organized around latent structure, degraded-information inference, anticipatory statistics, and high-stakes human-security applications.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
+  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Statistical research organized around latent structure, degraded-information inference, anticipatory statistics, and high-stakes human-security applications.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
 
   const nodeById = new Map([...map.querySelectorAll(".rpm-node")].map(node => [node.dataset.id, node]));
   const edgeElements = [...map.querySelectorAll(".rpm-edge")];

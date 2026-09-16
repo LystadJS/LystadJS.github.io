@@ -1,5 +1,33 @@
 /* Three-neighborhood conceptual network for the homepage Research Program. */
 
+/* Remove legacy homepage width constraints left behind by the former action-button layout.
+   research-program.css still defines .hero-details as a two-column grid even though the
+   second column's buttons no longer render. Resetting it here removes that invisible column.
+   The same legacy stylesheet also caps the Research Program heading/copy at 760px. */
+body[data-page="index"] .hero-details {
+  display: block;
+  grid-template-columns: none;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+body[data-page="index"] .hero-lede,
+body[data-page="index"] .hero-note {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.rpm-section .section-header > div:last-child {
+  width: 100%;
+  min-width: 0;
+}
+
+.rpm-section .section-header h2,
+.rpm-section .section-header p {
+  width: 100%;
+  max-width: none;
+}
+
 body[data-page="index"] .hero {
   padding: clamp(4.1rem, 7vw, 6.1rem) 0 clamp(3.1rem, 5vw, 4.2rem);
 }

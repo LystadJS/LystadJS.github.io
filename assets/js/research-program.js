@@ -11,384 +11,404 @@
     center: {
       kind: "core",
       title: "Computational Statistics",
-      summary: "Using statistical computing to find structure, measure change, and represent uncertainty across research, policy, and operational problems.",
+      summary: "Computational statistics for anticipatory human security: making catastrophic threats more legible before they become irreversible.",
       plain: [
-        "The map is arranged by shared research setting and application context, not by a formal empirical distance.",
-        "Nodes that sit between neighborhoods are intentionally placed there because they connect more than one part of the research program."
+        "The research identity is methodological first: discover hidden structure, quantify uncertainty, and detect consequential change in complex human systems.",
+        "Political violence, humanitarian crises, emerging technologies, and security problems are application domains for that statistical program—not substitutes for it."
       ],
-      methods: ["Unsupervised learning", "Networks", "Longitudinal models", "Text analysis", "Spatial statistics", "Probabilistic models"],
-      projects: ["AI-governance diffusion", "UN evidence systems", "Conflict and violence structure mapping"]
+      methods: ["Unsupervised learning", "Longitudinal analysis", "Network methods", "Missing-data methods", "Spatial statistics", "Probabilistic inference"],
+      projects: ["driftmapR", "Political-violence structure analysis", "AI-governance diffusion", "Humanitarian-risk analysis"]
+    },
+
+    pillar_structure: {
+      kind: "pillar",
+      title: "Latent Structure & Catastrophic Transition",
+      summary: "Discovering hidden organization and identifying when complex systems are reorganizing toward qualitatively different states.",
+      plain: [
+        "The first question is often not 'what predicts the outcome?' but 'what structure exists before we know what the categories should be?'",
+        "The second is whether changes in that structure signal fragmentation, escalation, convergence, or transition."
+      ],
+      methods: ["Unsupervised learning", "Clustering", "Dimension reduction", "Networks", "Longitudinal methods"],
+      projects: ["Latent actor structure", "Changing embeddings", "Mass-violence structure", "Conflict transition analysis"]
+    },
+    pillar_degraded: {
+      kind: "pillar",
+      title: "Inference Under Degraded Information",
+      summary: "Producing defensible statistical claims when evidence is missing, delayed, biased, sparse, heterogeneous, or only partially observed.",
+      plain: [
+        "High-stakes data are rarely clean enough to justify pretending uncertainty away.",
+        "The goal is to determine what the evidence actually supports, what remains uncertain, and which conclusions survive reasonable alternative assumptions."
+      ],
+      methods: ["Missing-data methods", "Bayesian models", "Multilevel models", "Sensitivity analysis", "Text extraction"],
+      projects: ["Data-quality audits", "Evidence-linked extraction", "Robustness studies", "Sparse-event analysis"]
+    },
+    pillar_anticipatory: {
+      kind: "pillar",
+      title: "Anticipatory Systems & Evidence Translation",
+      summary: "Turning structural change, uncertainty, and heterogeneous evidence into early-warning systems and interpretable decision-relevant analysis.",
+      plain: [
+        "Anticipation does not mean pretending to predict the future with certainty.",
+        "It means identifying meaningful signals early enough to improve understanding before outcomes become obvious or irreversible."
+      ],
+      methods: ["Forecasting", "Early warning", "Spatial statistics", "Longitudinal methods", "Networks", "Evidence translation"],
+      projects: ["Humanitarian-risk monitoring", "AI-governance forecasting", "Conflict trajectory analysis", "Evidence-linked decision support"]
     },
 
     unsupervised: {
       kind: "method",
       title: "Unsupervised Learning",
-      summary: "Finding meaningful structure without requiring a known outcome label in advance.",
-      plain: ["Ask the data what groups or patterns exist before deciding what the categories should be."],
-      methods: ["Clustering", "Representation learning", "Latent structure"],
-      projects: ["Conflict actor structure", "AI-governance mapping", "Changing latent spaces"]
+      summary: "The signature toolkit for discovering structure without requiring predefined labels or outcomes.",
+      plain: ["Ask what groups, regimes, or patterns are present before deciding what the categories should be."],
+      methods: ["HDBSCAN", "Hierarchical clustering", "Mixture models", "Representation learning"],
+      projects: ["Conflict actor structure", "Governance mapping", "Latent risk regimes"]
     },
     clustering: {
       kind: "method",
       title: "Clustering",
-      summary: "Grouping observations that behave or look similar without a predefined answer key.",
-      plain: ["Useful when the groups themselves are part of the research question."],
-      methods: ["HDBSCAN", "Hierarchical clustering", "K-means", "Fuzzy clustering"],
-      projects: ["Actor typologies", "Behavioral group discovery", "Coalition structure"]
+      summary: "Grouping observations that behave similarly so that the groups themselves become objects of scientific study.",
+      plain: ["Useful when the research question concerns hidden subgroups, coalitions, regimes, or typologies."],
+      methods: ["Density clustering", "Hierarchical clustering", "Fuzzy clustering"],
+      projects: ["Actor typologies", "Behavioral grouping", "Coalition structure"]
     },
     dimension: {
       kind: "method",
       title: "Dimension Reduction",
-      summary: "Compressing many variables into a smaller representation while preserving important structure.",
-      plain: ["Turns a large feature space into a map that can be inspected, compared, and tracked over time."],
-      methods: ["UMAP", "PCA", "MDS", "Embeddings"],
-      projects: ["Longitudinal maps", "Governance similarity maps", "Exploratory structure"]
-    },
-    multilevel: {
-      kind: "method",
-      title: "Multilevel Models",
-      summary: "Modeling observations that are nested inside larger structures such as places, organizations, countries, or time periods.",
-      plain: ["Separates case-level variation from the larger systems those cases belong to."],
-      methods: ["Mixed effects", "Partial pooling", "Nested data"],
-      projects: ["Cross-national analysis", "Institutional comparisons", "Repeated actor data"]
+      summary: "Compressing high-dimensional data into interpretable representations while preserving important structure.",
+      plain: ["A complicated feature space becomes a map that can be inspected, compared, and tracked through time."],
+      methods: ["PCA", "UMAP", "MDS", "Embeddings"],
+      projects: ["Longitudinal maps", "Governance embeddings", "Exploratory structure"]
     },
     networks: {
       kind: "method",
       title: "Network Analysis",
-      summary: "Studying systems where relationships among actors, institutions, or venues matter as much as the actors themselves.",
-      plain: ["This is a bridge method: it links theoretical structure to coalition, influence, diffusion, and institutional questions."],
-      methods: ["Centrality", "Communities", "Bipartite networks", "Temporal networks"],
-      projects: ["Country–venue networks", "Institutional diffusion", "Actor–institution systems"]
-    },
-    nlp: {
-      kind: "method",
-      title: "Text / NLP",
-      summary: "Turning documents, transcripts, and statements into structured evidence that can be analyzed statistically.",
-      plain: ["The goal is to preserve who said what and in what context while making large text collections measurable."],
-      methods: ["Information extraction", "Text embeddings", "Attribution", "Classification"],
-      projects: ["UN transcript automation", "Stance extraction", "Evidence-linked summarization"]
-    },
-    messy: {
-      kind: "method",
-      title: "Messy & Missing Data",
-      summary: "Building analyses that remain useful when real-world evidence is incomplete, inconsistent, delayed, or imperfectly measured.",
-      plain: ["The data-quality problem is treated as part of the research design rather than a preprocessing inconvenience."],
-      methods: ["Multiple imputation", "Robust preprocessing", "Sensitivity checks"],
-      projects: ["Evidence pipelines", "Data-quality audits", "Missing-data workflows"]
+      summary: "Studying systems where relationships among actors, institutions, or events are substantively meaningful.",
+      plain: ["Networks help identify communities, bridges, diffusion pathways, and changing relational structure."],
+      methods: ["Centrality", "Community detection", "Bipartite networks", "Temporal networks"],
+      projects: ["Country–venue networks", "Institutional diffusion", "Conflict networks"]
     },
     longitudinal: {
       kind: "method",
       title: "Longitudinal Methods",
-      summary: "Studying how people, organizations, clusters, and systems change over time.",
-      plain: ["A snapshot can hide the story; repeated observations show movement, persistence, and structural change."],
+      summary: "Studying how latent structure, entities, risks, and relationships change through time.",
+      plain: ["Repeated observations distinguish persistence, movement, transition, and structural change from a single snapshot."],
       methods: ["Panel models", "Repeated embeddings", "Trajectory analysis", "Alignment"],
       projects: ["driftmapR", "Cluster correspondence", "Movement uncertainty"]
     },
-    spatial: {
+    missing: {
       kind: "method",
-      title: "Spatial Statistics",
-      summary: "Studying how geography and distance shape conflict, risk, humanitarian conditions, and operational behavior.",
-      plain: ["Nearby events are often related; spatial methods model that dependence instead of ignoring it."],
-      methods: ["Spatial dependence", "Distance analysis", "Geographic clustering"],
-      projects: ["Conflict geography", "Humanitarian-risk mapping", "Event-pattern analysis"]
+      title: "Messy & Missing Data",
+      summary: "Treating incomplete and imperfect evidence as part of the inferential problem rather than a preprocessing nuisance.",
+      plain: ["Missingness, inconsistent reporting, and weak measurement can change the answer; they must be modeled and audited."],
+      methods: ["Multiple imputation", "Missingness analysis", "Robust preprocessing"],
+      projects: ["Evidence pipelines", "Data-quality audits", "Missing-data workflows"]
     },
     bayesian: {
       kind: "method",
       title: "Bayesian / Probabilistic Models",
-      summary: "Representing uncertainty directly when evidence is incomplete, noisy, sparse, or evolving.",
-      plain: ["Instead of pretending the answer is exact, these models describe what is more or less plausible."],
-      methods: ["Bayesian models", "Hierarchical models", "Probabilistic inference"],
-      projects: ["Dynamic political models", "Uncertainty studies", "Sensitivity analysis"]
+      summary: "Representing uncertainty directly when evidence is sparse, noisy, dependent, or evolving.",
+      plain: ["These models describe what is more or less plausible instead of hiding uncertainty behind a single estimate."],
+      methods: ["Bayesian updating", "Hierarchical models", "Probabilistic inference"],
+      projects: ["Dynamic risk models", "Uncertainty studies", "Sparse-event inference"]
+    },
+    multilevel: {
+      kind: "method",
+      title: "Multilevel Models",
+      summary: "Modeling observations that are nested within larger structures such as actors, places, institutions, countries, or time periods.",
+      plain: ["Separates case-level variation from the systems those cases belong to."],
+      methods: ["Mixed effects", "Partial pooling", "Nested data"],
+      projects: ["Cross-national analysis", "Institutional comparisons", "Repeated actor data"]
+    },
+    validation: {
+      kind: "method",
+      title: "Sensitivity & Validation",
+      summary: "Testing whether conclusions survive reasonable alternative assumptions, samples, specifications, and measurement choices.",
+      plain: ["A result is more useful when you know what makes it disappear."],
+      methods: ["Sensitivity analysis", "Bootstrap validation", "Robustness checks"],
+      projects: ["Model audits", "Calibration studies", "Evidence validation"]
+    },
+    nlp: {
+      kind: "method",
+      title: "Text / NLP",
+      summary: "Transforming documents, transcripts, and statements into structured evidence without losing attribution or context.",
+      plain: ["Large text collections become measurable while preserving who said what and where the evidence came from."],
+      methods: ["Information extraction", "Embeddings", "Attribution", "Classification"],
+      projects: ["UN transcript automation", "Stance extraction", "Evidence-linked summarization"]
+    },
+    spatial: {
+      kind: "method",
+      title: "Spatial Statistics",
+      summary: "Studying how geography, proximity, and spatial dependence shape risk and human outcomes.",
+      plain: ["Events that occur near one another are often related; spatial methods model that dependence rather than ignoring it."],
+      methods: ["Spatial dependence", "Distance analysis", "Geographic clustering"],
+      projects: ["Conflict geography", "Humanitarian-risk mapping", "Climate-risk analysis"]
+    },
+    forecasting: {
+      kind: "method",
+      title: "Forecasting & Early Warning",
+      summary: "Estimating how systems may evolve while keeping uncertainty explicit and emphasizing signal detection over false precision.",
+      plain: ["The aim is not certainty about the future; it is earlier recognition of meaningful change."],
+      methods: ["Forecasting", "Change detection", "Scenario analysis"],
+      projects: ["AI-governance forecasting", "Risk monitoring", "Early-warning systems"]
     },
 
-    violence: {
+    political: {
       kind: "domain",
       title: "Political Violence",
-      summary: "Studying latent organization, escalation, fragmentation, and changing behavior in violent political systems.",
-      plain: ["This sits close to the research-heavy side of the map but connects directly to counterterrorism and conflict analysis."],
+      summary: "Studying organization, escalation, fragmentation, and changing behavior in violent political systems.",
+      plain: ["This is a substantive testbed for methods that discover hidden groups, transitions, and relational structure."],
       methods: ["Unsupervised learning", "Networks", "Longitudinal methods"],
-      projects: ["Conflict actor structure", "Violence typologies", "Event-pattern analysis"]
-    },
-    humanecology: {
-      kind: "domain",
-      title: "Human Ecology",
-      summary: "Studying how human populations, institutions, environments, and social systems interact to produce vulnerability and adaptation.",
-      plain: ["It sits between theory-driven research and applied multilateral work because the questions naturally span both."],
-      methods: ["Dimension reduction", "Multilevel models", "Network analysis"],
-      projects: ["Human-systems analysis", "Environmental and social vulnerability"]
+      projects: ["Violence typologies", "Actor structure", "Event-pattern analysis"]
     },
     massviolence: {
       kind: "domain",
       title: "Mass Violence",
-      summary: "Studying large-scale organized harm, escalation, and the structures that precede or sustain it.",
-      plain: ["This is another bridge between academic research and applied policy because the same structural questions matter for explanation and prevention."],
-      methods: ["Unsupervised learning", "Networks", "Multilevel models"],
-      projects: ["Escalation patterns", "Mass-violence risk structure"]
+      summary: "Studying large-scale organized harm and the structural changes that precede or sustain catastrophic escalation.",
+      plain: ["The central scientific problem is recognizing meaningful transition before the endpoint is obvious."],
+      methods: ["Unsupervised learning", "Longitudinal methods", "Forecasting"],
+      projects: ["Escalation structure", "Mass-violence risk analysis"]
     },
     counterextremism: {
       kind: "domain",
       title: "Counterterrorism and counterextremism",
-      summary: "Studying terrorist and extremist systems, behaviors, networks, and intervention-relevant structure.",
-      plain: ["Its position between research and military-facing work is intentional: the domain depends on both explanatory science and operational application."],
-      methods: ["Unsupervised learning", "Networks", "Spatial statistics", "Probabilistic models"],
-      projects: ["Extremist structure analysis", "Counterterrorism analytics", "Behavioral clustering"]
+      summary: "Applying statistical methods to terrorist and extremist systems while keeping the scientific focus on organization, change, and intervention-relevant structure.",
+      plain: ["This is an application domain for the broader statistical program, not the identity of the program itself."],
+      methods: ["Unsupervised learning", "Networks", "Text / NLP", "Spatial statistics"],
+      projects: ["Extremist structure analysis", "Behavioral clustering", "Counterterrorism analytics"]
     },
-    conflict: {
+    humanecology: {
       kind: "domain",
-      title: "Conflict Dynamics",
-      summary: "Studying how conflicts develop, spread, reorganize, and change across time and space.",
-      plain: ["This leans toward operational work but remains connected to academic research on violence and structural change."],
-      methods: ["Longitudinal methods", "Spatial statistics", "Probabilistic models"],
-      projects: ["Trajectory analysis", "Conflict-network dynamics", "Movement analysis"]
+      title: "Human Ecology",
+      summary: "Studying how populations, institutions, environments, and social systems interact to produce vulnerability, adaptation, and risk.",
+      plain: ["Human ecology broadens anticipatory human security beyond conflict alone."],
+      methods: ["Multilevel models", "Spatial statistics", "Networks"],
+      projects: ["Human-systems analysis", "Environmental and social vulnerability"]
     },
-
-    institutions: {
+    humanitarian: {
       kind: "domain",
-      title: "Institutions & Governance",
-      summary: "Studying how states and institutions form, transmit, negotiate, and formalize policy ideas.",
-      plain: ["This is placed firmly in the multilateral and diplomatic neighborhood of the map."],
-      methods: ["Networks", "Text / NLP", "Multilevel models"],
-      projects: ["UN process influence", "Institutional typologies", "Multilateral networks"]
+      title: "Human-Created Humanitarian Crises",
+      summary: "Studying crises produced or intensified by conflict, political decisions, institutional failure, and organized violence.",
+      plain: ["These crises are ideal examples of degraded information, nonlinear change, and urgent evidence translation."],
+      methods: ["Missing-data methods", "Spatial statistics", "Forecasting", "Probabilistic models"],
+      projects: ["Humanitarian-risk modeling", "Conflict-driven crisis analysis", "Early-warning analysis"]
     },
-    aigov: {
+    humansecurity: {
       kind: "domain",
-      title: "AI Governance",
-      summary: "Studying how artificial-intelligence rules and governance models spread across countries and institutions.",
-      plain: ["It bridges research and diplomatic application because it combines methodological questions about diffusion with live institutional processes."],
-      methods: ["Networks", "Text / NLP", "Longitudinal methods"],
-      projects: ["AI-governance diffusion", "Venue networks", "Regulatory forecasting"]
+      title: "Human Security",
+      summary: "The broad substantive frame: threats to human life and well-being arising from violent, political, institutional, environmental, and technological systems.",
+      plain: ["Human security is the application space that ties otherwise different high-stakes problems together."],
+      methods: ["Forecasting", "Spatial statistics", "Longitudinal methods", "Sensitivity analysis"],
+      projects: ["Risk mapping", "Crisis analysis", "Humanitarian decision support"]
+    },
+    climate: {
+      kind: "domain",
+      title: "Climate & Environmental Risk",
+      summary: "Studying environmental stress as part of interacting human systems rather than as an isolated physical hazard.",
+      plain: ["The interest is in how environmental change interacts with vulnerability, institutions, conflict, and humanitarian outcomes."],
+      methods: ["Spatial statistics", "Multilevel models", "Forecasting"],
+      projects: ["Climate-risk analysis", "Human-ecology research", "Food-security applications"]
     },
     ainonproliferation: {
       kind: "domain",
       title: "AI Non-Proliferation",
-      summary: "Studying multilateral and diplomatic approaches to limiting dangerous proliferation of advanced AI capabilities.",
-      plain: ["This is placed firmly inside the UN / State-oriented neighborhood because the core problem is institutional, diplomatic, and multilateral."],
-      methods: ["Network analysis", "Text / NLP", "Messy & missing data"],
+      summary: "Studying the spread and governance of advanced AI capabilities as an emerging human-security problem.",
+      plain: ["This is one emerging-technology application of diffusion analysis, degraded evidence, and anticipatory governance."],
+      methods: ["Networks", "Text / NLP", "Forecasting", "Missing-data methods"],
       projects: ["Open-source AI non-proliferation", "Multilateral AI governance"]
     },
     autonomous: {
       kind: "domain",
       title: "Autonomous Systems",
-      summary: "Studying governance and risk surrounding autonomous systems, including autonomous weapons and open-source AI capabilities.",
-      plain: ["This sits between diplomatic and military-facing work because the technology creates both governance and operational questions."],
-      methods: ["Networks", "Probabilistic models", "Longitudinal methods"],
-      projects: ["Autonomous-weapon non-proliferation", "Open-source AI governance"]
-    },
-    humanitarian: {
-      kind: "domain",
-      title: "Human-Created Humanitarian Crises",
-      summary: "Studying crises generated or intensified by conflict, political decisions, institutional failure, and organized violence.",
-      plain: ["It remains connected to multilateral response but is pulled toward the operational side because crisis conditions are experienced on the ground."],
-      methods: ["Spatial statistics", "Longitudinal methods", "Probabilistic models", "Missing-data methods"],
-      projects: ["Humanitarian-risk modeling", "Conflict-driven crisis analysis", "Early-structure detection"]
-    },
-    humansecurity: {
-      kind: "domain",
-      title: "Human Security",
-      summary: "Studying threats to people that emerge from conflict, instability, governance failure, and complex social systems.",
-      plain: ["This is a bridge between diplomatic and military-facing work, with a slight operational pull."],
-      methods: ["Spatial statistics", "Longitudinal methods", "Probabilistic models"],
-      projects: ["Risk mapping", "Humanitarian decision support", "Crisis analysis"]
+      summary: "Studying governance and risk surrounding autonomous systems, including autonomous weapons and related emerging technologies.",
+      plain: ["The statistical problem is to understand diffusion, uncertainty, and changing risk before governance catches up."],
+      methods: ["Networks", "Probabilistic models", "Forecasting"],
+      projects: ["Autonomous-systems governance", "Weapons non-proliferation"]
     },
 
     "q-latent": {
       kind: "question",
       title: "What structure exists before labels?",
-      summary: "A recurring question whenever the meaningful groups are unknown before the analysis begins.",
+      summary: "A foundational question for unsupervised learning and latent-structure research.",
       plain: ["Can the data reveal groups or regimes before we decide what to call them?"],
       methods: ["Unsupervised learning", "Clustering", "Dimension reduction"],
-      projects: ["Conflict actor structure", "AI-governance maps"]
+      projects: ["Actor structure", "Latent risk regimes"]
     },
-    "q-labels": {
+    "q-transition": {
       kind: "question",
-      title: "What if categories are contested?",
-      summary: "Political and security labels are often incomplete, disputed, or strategically defined.",
-      plain: ["The model should not treat a disputed category as unquestioned ground truth."],
-      methods: ["Unsupervised learning", "Text / NLP", "Probabilistic models"],
-      projects: ["Latent-structure studies", "Attribution and stance extraction"]
+      title: "When is a system approaching catastrophic transition?",
+      summary: "A question about whether structural change can reveal escalation before the final outcome is obvious.",
+      plain: ["Which changes are ordinary variation, and which indicate that the system is reorganizing into something more dangerous?"],
+      methods: ["Longitudinal methods", "Networks", "Forecasting"],
+      projects: ["Mass-violence transition", "Conflict trajectories"]
     },
-    "q-diffusion": {
+    "q-degraded": {
       kind: "question",
-      title: "Diffusion or similar behavior?",
-      summary: "Observed similarity does not prove that an idea or behavior actually moved from one actor to another.",
-      plain: ["What evidence shows real transmission rather than coincidence or common exposure?"],
-      methods: ["Network analysis", "Longitudinal methods", "Text evidence"],
-      projects: ["AI-governance diffusion", "Institutional process analysis"]
+      title: "What can be inferred from degraded information?",
+      summary: "A core inference question for missing, biased, sparse, delayed, or heterogeneous evidence.",
+      plain: ["What does the evidence support when the dataset is not clean enough for easy answers?"],
+      methods: ["Missing-data methods", "Bayesian models", "Multilevel models"],
+      projects: ["Evidence pipelines", "Sparse-event analysis"]
     },
-    "q-proliferation": {
+    "q-robust": {
       kind: "question",
-      title: "How does dangerous capability spread?",
-      summary: "A question about technological diffusion, institutional response, and the movement of capabilities across actors and borders.",
-      plain: ["Which pathways make proliferation more likely, and where can institutions observe or interrupt them?"],
-      methods: ["Network analysis", "Text / NLP", "Messy & missing data"],
-      projects: ["AI non-proliferation", "Autonomous-systems governance"]
+      title: "What survives alternative assumptions?",
+      summary: "A robustness question about whether conclusions remain stable when reasonable analytical choices change.",
+      plain: ["Which claims disappear when the model, sample, missing-data treatment, or measurement choices change?"],
+      methods: ["Sensitivity analysis", "Validation", "Probabilistic models"],
+      projects: ["Model audits", "Calibration studies"]
     },
     "q-early": {
       kind: "question",
-      title: "Can structure reveal risk early?",
-      summary: "Emerging organization may become visible before conventional labels or outcome measures stabilize.",
-      plain: ["Can subtle structural changes provide useful warning before a crisis is obvious?"],
-      methods: ["Unsupervised learning", "Longitudinal methods", "Spatial statistics"],
-      projects: ["Early-structure detection", "Conflict dynamics"]
+      title: "Can risk become legible before outcomes are visible?",
+      summary: "The central anticipatory question: whether structural signals can become useful before conventional indicators fully register the threat.",
+      plain: ["Can we recognize a dangerous pattern early enough to understand it before it becomes irreversible?"],
+      methods: ["Forecasting", "Spatial statistics", "Longitudinal methods"],
+      projects: ["Early-warning systems", "Humanitarian-risk monitoring"]
     },
-    "q-change": {
+    "q-translation": {
       kind: "question",
-      title: "Real change or changing geometry?",
-      summary: "Repeated statistical maps can move even when the underlying system has not changed substantively.",
-      plain: ["How can we tell genuine movement from changes caused by the mapping method itself?"],
-      methods: ["Longitudinal embeddings", "Alignment", "Bootstrap uncertainty"],
-      projects: ["driftmapR"]
-    },
-    "q-missing": {
-      kind: "question",
-      title: "What survives incomplete evidence?",
-      summary: "High-stakes political data are often missing, delayed, biased, or inconsistently observed.",
-      plain: ["Which conclusions remain credible after explicitly accounting for imperfect evidence?"],
-      methods: ["Messy & missing data", "Probabilistic models", "Multilevel models"],
-      projects: ["Data-quality audits", "Sensitivity analysis", "Evidence pipelines"]
+      title: "Which signals are strong enough to become evidence?",
+      summary: "A translation question about moving from exploratory structure to defensible, interpretable evidence for real decisions.",
+      plain: ["How do we turn a statistical pattern into something useful without overstating what the data prove?"],
+      methods: ["Validation", "Text / NLP", "Networks", "Forecasting"],
+      projects: ["Evidence-linked systems", "Research translation"]
     }
   };
 
-  /*
-    Positions are intentionally curated to create three implicit neighborhoods:
-    research-heavy work at upper-left, diplomatic/multilateral work at upper-right,
-    and military/operational work toward the lower-left / lower-center.
-    Those neighborhoods are not labeled in the UI.
-  */
   const LAYOUT = {
-    center: { x: 450, y: 300, r: 46, lines: ["Computational", "Statistics"], groups: ["academic", "un", "military"] },
+    center: { x: 480, y: 315, r: 45, lines: ["Computational", "Statistics"], groups: ["structure", "degraded", "anticipatory"] },
 
-    unsupervised: { x: 300, y: 165, r: 31, lines: ["Unsupervised", "Learning"], groups: ["academic"], primary: true },
-    clustering: { x: 185, y: 115, r: 22, lines: ["Clustering"], groups: ["academic"] },
-    dimension: { x: 350, y: 78, r: 22, lines: ["Dimension", "Reduction"], groups: ["academic"] },
-    multilevel: { x: 175, y: 255, r: 20, lines: ["Multilevel", "Models"], groups: ["academic"] },
+    pillar_structure: { x: 295, y: 225, r: 34, lines: ["Latent Structure", "& Transition"], groups: ["structure"], pillar: true },
+    pillar_degraded: { x: 665, y: 225, r: 34, lines: ["Degraded", "Information"], groups: ["degraded"], pillar: true },
+    pillar_anticipatory: { x: 480, y: 455, r: 36, lines: ["Anticipatory", "Systems"], groups: ["anticipatory"], pillar: true },
 
-    networks: { x: 535, y: 178, r: 26, lines: ["Network", "Analysis"], groups: ["academic", "un"] },
-    nlp: { x: 650, y: 140, r: 21, lines: ["Text / NLP"], groups: ["un"] },
-    messy: { x: 700, y: 285, r: 21, lines: ["Messy &", "Missing Data"], groups: ["un"] },
+    unsupervised: { x: 175, y: 145, r: 31, lines: ["Unsupervised", "Learning"], groups: ["structure"], primary: true },
+    clustering: { x: 65, y: 225, r: 21, lines: ["Clustering"], groups: ["structure"] },
+    dimension: { x: 285, y: 78, r: 22, lines: ["Dimension", "Reduction"], groups: ["structure"] },
+    networks: { x: 405, y: 145, r: 25, lines: ["Network", "Analysis"], groups: ["structure", "anticipatory"] },
+    longitudinal: { x: 340, y: 395, r: 24, lines: ["Longitudinal", "Methods"], groups: ["structure", "anticipatory"] },
 
-    longitudinal: { x: 565, y: 405, r: 24, lines: ["Longitudinal", "Methods"], groups: ["un", "military"] },
-    spatial: { x: 315, y: 445, r: 22, lines: ["Spatial", "Statistics"], groups: ["military"] },
-    bayesian: { x: 435, y: 500, r: 23, lines: ["Bayesian /", "Probabilistic"], groups: ["military"] },
+    multilevel: { x: 640, y: 82, r: 21, lines: ["Multilevel", "Models"], groups: ["degraded"] },
+    missing: { x: 805, y: 145, r: 24, lines: ["Messy &", "Missing Data"], groups: ["degraded"] },
+    bayesian: { x: 820, y: 270, r: 24, lines: ["Bayesian /", "Probabilistic"], groups: ["degraded"] },
+    validation: { x: 700, y: 355, r: 22, lines: ["Sensitivity", "& Validation"], groups: ["degraded", "anticipatory"] },
+    nlp: { x: 585, y: 125, r: 22, lines: ["Text / NLP"], groups: ["degraded", "anticipatory"] },
 
-    violence: { x: 72, y: 160, r: 23, lines: ["Political", "Violence"], groups: ["academic"] },
-    humanecology: { x: 445, y: 100, r: 22, lines: ["Human", "Ecology"], groups: ["academic", "un"] },
-    massviolence: { x: 455, y: 155, r: 22, lines: ["Mass", "Violence"], groups: ["academic", "un"] },
+    forecasting: { x: 485, y: 555, r: 28, lines: ["Forecasting", "& Early Warning"], groups: ["anticipatory"] },
+    spatial: { x: 315, y: 535, r: 22, lines: ["Spatial", "Statistics"], groups: ["anticipatory"] },
 
-    counterextremism: { x: 235, y: 345, r: 28, lines: ["Counterterrorism", "& counterextremism"], groups: ["academic", "military"] },
-    conflict: { x: 220, y: 525, r: 22, lines: ["Conflict", "Dynamics"], groups: ["academic", "military"] },
+    political: { x: 65, y: 78, r: 23, lines: ["Political", "Violence"], groups: ["structure", "anticipatory"] },
+    massviolence: { x: 80, y: 340, r: 24, lines: ["Mass", "Violence"], groups: ["structure", "anticipatory"] },
+    counterextremism: { x: 165, y: 505, r: 26, lines: ["Counterterrorism", "& counterextremism"], groups: ["structure", "anticipatory"] },
+    humanecology: { x: 255, y: 590, r: 22, lines: ["Human", "Ecology"], groups: ["structure", "anticipatory"] },
 
-    aigov: { x: 795, y: 92, r: 23, lines: ["AI", "Governance"], groups: ["academic", "un"] },
-    institutions: { x: 815, y: 180, r: 24, lines: ["Institutions &", "Governance"], groups: ["un"] },
-    ainonproliferation: { x: 805, y: 275, r: 27, lines: ["AI", "Non-Proliferation"], groups: ["un"] },
+    ainonproliferation: { x: 895, y: 95, r: 27, lines: ["AI", "Non-Proliferation"], groups: ["degraded", "anticipatory"] },
+    autonomous: { x: 900, y: 305, r: 22, lines: ["Autonomous", "Systems"], groups: ["degraded", "anticipatory"] },
+    humanitarian: { x: 835, y: 470, r: 28, lines: ["Human-Created", "Humanitarian Crises"], groups: ["degraded", "anticipatory"] },
+    humansecurity: { x: 665, y: 575, r: 28, lines: ["Human", "Security"], groups: ["degraded", "anticipatory"] },
+    climate: { x: 855, y: 590, r: 24, lines: ["Climate &", "Environmental Risk"], groups: ["degraded", "anticipatory"] },
 
-    autonomous: { x: 735, y: 355, r: 22, lines: ["Autonomous", "Systems"], groups: ["un", "military"] },
-    humanitarian: { x: 690, y: 455, r: 28, lines: ["Human-Created", "Humanitarian Crises"], groups: ["un", "military"] },
-    humansecurity: { x: 575, y: 535, r: 23, lines: ["Human", "Security"], groups: ["un", "military"] },
-
-    "q-latent": { x: 105, y: 120, r: 24, lines: ["Structure before", "labels?"], groups: ["academic"], question: true },
-    "q-labels": { x: 230, y: 245, r: 23, lines: ["Contested", "categories?"], groups: ["academic", "un"], question: true },
-    "q-diffusion": { x: 800, y: 135, r: 24, lines: ["Diffusion or", "similarity?"], groups: ["un"], question: true },
-    "q-proliferation": { x: 805, y: 270, r: 24, lines: ["Capability", "proliferation?"], groups: ["un"], question: true },
-    "q-early": { x: 705, y: 430, r: 23, lines: ["Early structural", "warning?"], groups: ["un", "military"], question: true },
-    "q-change": { x: 350, y: 540, r: 24, lines: ["Real change or", "geometry?"], groups: ["military"], question: true },
-    "q-missing": { x: 590, y: 525, r: 24, lines: ["Incomplete", "evidence?"], groups: ["un", "military"], question: true }
+    "q-latent": { x: 70, y: 95, r: 24, lines: ["Structure before", "labels?"], groups: ["structure"], question: true },
+    "q-transition": { x: 90, y: 330, r: 25, lines: ["Catastrophic", "transition?"], groups: ["structure", "anticipatory"], question: true },
+    "q-degraded": { x: 890, y: 95, r: 24, lines: ["Degraded", "information?"], groups: ["degraded"], question: true },
+    "q-robust": { x: 900, y: 305, r: 24, lines: ["Robust to", "assumptions?"], groups: ["degraded"], question: true },
+    "q-early": { x: 835, y: 470, r: 25, lines: ["Risk legible", "early?"], groups: ["anticipatory"], question: true },
+    "q-translation": { x: 660, y: 575, r: 25, lines: ["Signal to", "evidence?"], groups: ["degraded", "anticipatory"], question: true }
   };
 
   const HALOS = [
-    { id: "academic", cx: 255, cy: 175, rx: 240, ry: 155 },
-    { id: "un", cx: 690, cy: 205, rx: 220, ry: 175 },
-    { id: "military", cx: 345, cy: 470, rx: 275, ry: 145 }
+    { id: "structure", label: "LATENT STRUCTURE + TRANSITION", cx: 270, cy: 205, rx: 245, ry: 165 },
+    { id: "degraded", label: "INFERENCE UNDER DEGRADED INFORMATION", cx: 700, cy: 205, rx: 235, ry: 165 },
+    { id: "anticipatory", label: "ANTICIPATORY SYSTEMS + EVIDENCE", cx: 485, cy: 455, rx: 275, ry: 155 }
   ];
 
   const EDGES = [
-    ["center", "unsupervised", "core"], ["center", "networks", "core"], ["center", "nlp", "core"],
-    ["center", "messy", "core"], ["center", "longitudinal", "core"], ["center", "spatial", "core"],
-    ["center", "bayesian", "core"], ["center", "multilevel", "core"],
+    ["center", "pillar_structure", "pillar"], ["center", "pillar_degraded", "pillar"], ["center", "pillar_anticipatory", "pillar"],
 
-    ["unsupervised", "clustering", "method"], ["unsupervised", "dimension", "method"],
-    ["clustering", "dimension", "method"], ["dimension", "multilevel", "method"],
-    ["networks", "nlp", "method"], ["networks", "longitudinal", "method"],
-    ["nlp", "messy", "method"], ["messy", "longitudinal", "method"],
-    ["longitudinal", "spatial", "method"], ["longitudinal", "bayesian", "method"],
-    ["spatial", "bayesian", "method"],
+    ["pillar_structure", "unsupervised", "method"], ["pillar_structure", "clustering", "method"],
+    ["pillar_structure", "dimension", "method"], ["pillar_structure", "networks", "method"],
+    ["pillar_structure", "longitudinal", "method"],
 
-    ["violence", "unsupervised", "domain"], ["violence", "clustering", "domain"], ["violence", "networks", "domain"],
-    ["humanecology", "dimension", "domain"], ["humanecology", "multilevel", "domain"], ["humanecology", "networks", "domain"],
-    ["massviolence", "unsupervised", "domain"], ["massviolence", "multilevel", "domain"], ["massviolence", "networks", "domain"],
+    ["pillar_degraded", "multilevel", "method"], ["pillar_degraded", "missing", "method"],
+    ["pillar_degraded", "bayesian", "method"], ["pillar_degraded", "validation", "method"],
+    ["pillar_degraded", "nlp", "method"],
 
-    ["counterextremism", "unsupervised", "domain"], ["counterextremism", "networks", "domain"],
-    ["counterextremism", "spatial", "domain"], ["counterextremism", "bayesian", "domain"],
-    ["conflict", "spatial", "domain"], ["conflict", "longitudinal", "domain"], ["conflict", "bayesian", "domain"],
+    ["pillar_anticipatory", "forecasting", "method"], ["pillar_anticipatory", "spatial", "method"],
+    ["pillar_anticipatory", "longitudinal", "method"], ["pillar_anticipatory", "networks", "method"],
+    ["pillar_anticipatory", "nlp", "method"], ["pillar_anticipatory", "validation", "method"],
 
-    ["institutions", "networks", "domain"], ["institutions", "nlp", "domain"], ["institutions", "multilevel", "domain"],
-    ["aigov", "networks", "domain"], ["aigov", "nlp", "domain"], ["aigov", "longitudinal", "domain"],
-    ["ainonproliferation", "networks", "domain"], ["ainonproliferation", "nlp", "domain"], ["ainonproliferation", "messy", "domain"],
+    ["unsupervised", "clustering", "method-link"], ["unsupervised", "dimension", "method-link"],
+    ["networks", "longitudinal", "method-link"], ["missing", "bayesian", "method-link"],
+    ["missing", "validation", "method-link"], ["bayesian", "multilevel", "method-link"],
+    ["forecasting", "longitudinal", "method-link"], ["forecasting", "spatial", "method-link"],
 
-    ["autonomous", "networks", "domain"], ["autonomous", "longitudinal", "domain"], ["autonomous", "bayesian", "domain"],
-    ["humanitarian", "messy", "domain"], ["humanitarian", "longitudinal", "domain"],
-    ["humanitarian", "spatial", "domain"], ["humanitarian", "bayesian", "domain"],
-    ["humansecurity", "longitudinal", "domain"], ["humansecurity", "spatial", "domain"], ["humansecurity", "bayesian", "domain"],
+    ["political", "unsupervised", "domain"], ["political", "networks", "domain"], ["political", "longitudinal", "domain"],
+    ["massviolence", "unsupervised", "domain"], ["massviolence", "forecasting", "domain"], ["massviolence", "longitudinal", "domain"],
+    ["counterextremism", "unsupervised", "domain"], ["counterextremism", "networks", "domain"], ["counterextremism", "nlp", "domain"], ["counterextremism", "spatial", "domain"],
+    ["humanecology", "multilevel", "domain"], ["humanecology", "spatial", "domain"], ["humanecology", "networks", "domain"],
 
-    ["violence", "massviolence", "domain-link"], ["massviolence", "humanecology", "domain-link"],
-    ["violence", "counterextremism", "domain-link"], ["counterextremism", "conflict", "domain-link"],
-    ["humanecology", "institutions", "domain-link"], ["massviolence", "humanitarian", "domain-link"],
-    ["institutions", "aigov", "domain-link"], ["aigov", "ainonproliferation", "domain-link"],
-    ["ainonproliferation", "autonomous", "domain-link"], ["autonomous", "humanitarian", "domain-link"],
-    ["humanitarian", "humansecurity", "domain-link"], ["conflict", "humansecurity", "domain-link"],
+    ["humanitarian", "missing", "domain"], ["humanitarian", "bayesian", "domain"], ["humanitarian", "spatial", "domain"], ["humanitarian", "forecasting", "domain"],
+    ["humansecurity", "forecasting", "domain"], ["humansecurity", "longitudinal", "domain"], ["humansecurity", "spatial", "domain"], ["humansecurity", "validation", "domain"],
+    ["climate", "spatial", "domain"], ["climate", "multilevel", "domain"], ["climate", "forecasting", "domain"],
+    ["ainonproliferation", "networks", "domain"], ["ainonproliferation", "nlp", "domain"], ["ainonproliferation", "forecasting", "domain"], ["ainonproliferation", "missing", "domain"],
+    ["autonomous", "networks", "domain"], ["autonomous", "bayesian", "domain"], ["autonomous", "forecasting", "domain"],
+
+    ["political", "massviolence", "domain-link"], ["political", "counterextremism", "domain-link"],
+    ["massviolence", "humanitarian", "domain-link"], ["humanecology", "humansecurity", "domain-link"],
+    ["humanecology", "climate", "domain-link"], ["humanitarian", "humansecurity", "domain-link"],
+    ["humansecurity", "climate", "domain-link"], ["ainonproliferation", "autonomous", "domain-link"],
 
     ["q-latent", "unsupervised", "question"], ["q-latent", "clustering", "question"], ["q-latent", "dimension", "question"],
-    ["q-labels", "unsupervised", "question"], ["q-labels", "nlp", "question"], ["q-labels", "bayesian", "question"],
-    ["q-diffusion", "networks", "question"], ["q-diffusion", "longitudinal", "question"], ["q-diffusion", "nlp", "question"],
-    ["q-proliferation", "networks", "question"], ["q-proliferation", "nlp", "question"], ["q-proliferation", "messy", "question"],
-    ["q-early", "longitudinal", "question"], ["q-early", "spatial", "question"], ["q-early", "messy", "question"],
-    ["q-change", "longitudinal", "question"], ["q-change", "bayesian", "question"], ["q-change", "dimension", "question"],
-    ["q-missing", "messy", "question"], ["q-missing", "bayesian", "question"], ["q-missing", "multilevel", "question"]
+    ["q-transition", "longitudinal", "question"], ["q-transition", "networks", "question"], ["q-transition", "forecasting", "question"],
+    ["q-degraded", "missing", "question"], ["q-degraded", "bayesian", "question"], ["q-degraded", "multilevel", "question"],
+    ["q-robust", "validation", "question"], ["q-robust", "bayesian", "question"], ["q-robust", "missing", "question"],
+    ["q-early", "forecasting", "question"], ["q-early", "spatial", "question"], ["q-early", "longitudinal", "question"],
+    ["q-translation", "validation", "question"], ["q-translation", "nlp", "question"], ["q-translation", "networks", "question"], ["q-translation", "forecasting", "question"]
   ].map(([a, b, type]) => ({ a, b, type }));
 
   const section = document.querySelector(".rpm-section");
   const map = document.getElementById("rpm-map");
   if (!section || !map) return;
 
-  section.classList.add("rpm-network-v4");
+  section.classList.add("rpm-anticipatory-identity");
 
   const heading = section.querySelector(".section-header h2");
   const intro = section.querySelector(".section-header p");
-  if (heading) heading.textContent = "A research program organized by shared problems and applications.";
+  if (heading) heading.textContent = "Computational Statistics for Anticipatory Human Security.";
   if (intro) {
-    intro.innerHTML = "Nearby nodes tend to share data, questions, or application context; bridge nodes connect otherwise distinct parts of the program. <strong>Computational statistics</strong> remains the center, with <strong>unsupervised learning</strong> as the primary methodological focus.";
+    intro.innerHTML = "Make catastrophic threats to human security legible before they become irreversible. The research program is organized around <strong>latent structure and transition</strong>, <strong>inference under degraded information</strong>, and <strong>anticipatory systems and evidence translation</strong>.";
   }
 
   const modeButtons = [...section.querySelectorAll("[data-rpm-mode]")];
   if (modeButtons[0]) {
-    modeButtons[0].textContent = "Domains";
-    modeButtons[0].dataset.rpmMode = "network";
+    modeButtons[0].textContent = "Program";
+    modeButtons[0].dataset.rpmMode = "program";
   }
   if (modeButtons[1]) modeButtons[1].textContent = "Questions";
 
   const detailLabels = [...section.querySelectorAll(".rpm-detail-label")];
   if (detailLabels[0]) detailLabels[0].textContent = "In plain English";
-  if (detailLabels[1]) detailLabels[1].textContent = "Related methods / concepts";
+  if (detailLabels[1]) detailLabels[1].textContent = "Methods / concepts";
   if (detailLabels[2]) detailLabels[2].textContent = "Selected work";
 
   const detailFoot = section.querySelector(".rpm-detail-foot");
-  if (detailFoot) detailFoot.textContent = "Node position shows conceptual grouping, not a measured score. Hover to trace direct links; click to lock a neighborhood.";
+  if (detailFoot) detailFoot.textContent = "The map is a conceptual research architecture, not a fitted embedding. Position indicates intellectual proximity; node size indicates emphasis, not an empirical score.";
 
   const legend = section.querySelector(".rpm-footer-legend");
   if (legend) {
     legend.innerHTML = `
+      <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-pillar">◆</span> Research pillar</span>
       <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-method">●</span> Method</span>
-      <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-domain">○</span> Research domain</span>
-      <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-question">◌</span> Open question</span>
-      <span class="rpm-legend-item">Node size = emphasis, not an empirical score</span>`;
+      <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-domain">○</span> Application domain</span>
+      <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-question">◌</span> Open question</span>`;
   }
 
   const footerState = section.querySelector(".rpm-footer-state");
-  if (footerState) footerState.textContent = "Select a node to inspect its network";
+  if (footerState) footerState.textContent = "Statistician first · human-security applications second";
 
   function haloMarkup(h) {
-    return `<g class="rpm-cluster-halo rpm-cluster-context" data-cluster="${h.id}">
+    return `<g class="rpm-cluster-halo" data-cluster="${h.id}">
       <ellipse cx="${h.cx}" cy="${h.cy}" rx="${h.rx}" ry="${h.ry}" />
+      <text x="${h.cx - h.rx + 13}" y="${h.cy - h.ry + 18}">${h.label}</text>
     </g>`;
   }
 
@@ -398,18 +418,26 @@
     return `<line class="rpm-edge rpm-edge-${e.type}${e.type === "question" ? " rpm-hidden" : ""}" data-a="${e.a}" data-b="${e.b}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" />`;
   }
 
+  function shapeMarkup(id, node, kind) {
+    if (kind === "pillar") {
+      const r = node.r;
+      return `<polygon class="rpm-shape" points="0,${-r} ${r * .86},0 0,${r} ${-r * .86},0" />`;
+    }
+    return `<circle class="rpm-shape" r="${node.r}" />`;
+  }
+
   function labelMarkup(node, id) {
     if (id === "center") {
       return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true">
-        <tspan x="0" y="-6">Computational</tspan>
-        <tspan x="0" y="16">Statistics</tspan>
-        <tspan class="rpm-network-center-sub" x="0" y="34">RESEARCH CORE</tspan>
+        <tspan x="0" y="-8">Computational</tspan>
+        <tspan x="0" y="14">Statistics</tspan>
+        <tspan class="rpm-network-center-sub" x="0" y="34">ANTICIPATORY HUMAN SECURITY</tspan>
       </text>`;
     }
 
     const start = node.r + 15;
     const tspans = node.lines.map((line, i) => `<tspan x="0" y="${start + i * 13}">${line}</tspan>`).join("");
-    const primary = node.primary ? `<tspan class="rpm-network-node-sub" x="0" y="${start + node.lines.length * 13 + 2}">PRIMARY METHOD</tspan>` : "";
+    const primary = node.primary ? `<tspan class="rpm-network-node-sub" x="0" y="${start + node.lines.length * 13 + 2}">SIGNATURE METHOD</tspan>` : "";
     return `<text class="rpm-network-node-label" text-anchor="middle" aria-hidden="true">${tspans}${primary}</text>`;
   }
 
@@ -419,20 +447,19 @@
     const extra = `${node.primary ? " rpm-primary" : ""}${kind === "question" ? " rpm-hidden" : ""}`;
     const hidden = kind === "question" ? ` tabindex="-1" aria-hidden="true"` : ` tabindex="0" aria-hidden="false"`;
     return `<g class="rpm-node rpm-network-node rpm-kind-${kind}${extra}${id === "center" ? " is-active" : ""}" role="button" data-id="${id}" transform="translate(${node.x} ${node.y})"${hidden}>
-      <circle class="rpm-shape" r="${node.r}" />
+      ${shapeMarkup(id, node, kind)}
       ${labelMarkup(node, id)}
     </g>`;
   }
 
   function renderNetwork() {
-    const nodeIds = Object.keys(LAYOUT);
-    map.setAttribute("viewBox", "0 0 900 600");
+    map.setAttribute("viewBox", "0 0 960 640");
     map.innerHTML = `
-      <title id="rpm-title">Interactive conceptual network map of the research program</title>
-      <desc id="rpm-desc">A network-style map showing methods, research domains, and open questions arranged into three implicit neighborhoods without labeling those neighborhoods directly. Computational statistics is the central node.</desc>
+      <title id="rpm-title">Research architecture for computational statistics and anticipatory human security</title>
+      <desc id="rpm-desc">A conceptual network centered on computational statistics, with three research pillars, statistical methods, high-stakes human-security application domains, and open research questions.</desc>
       <g class="rpm-halo-layer">${HALOS.map(haloMarkup).join("")}</g>
       <g class="rpm-edge-layer">${EDGES.map(edgeMarkup).join("")}</g>
-      <g class="rpm-node-layer">${nodeIds.map(id => nodeMarkup(id, LAYOUT[id])).join("")}</g>`;
+      <g class="rpm-node-layer">${Object.keys(LAYOUT).map(id => nodeMarkup(id, LAYOUT[id])).join("")}</g>`;
   }
 
   renderNetwork();
@@ -450,25 +477,25 @@
   const projects = document.getElementById("rpm-detail-projects");
 
   let locked = null;
-  let mode = "network";
+  let mode = "program";
 
   function nodeVisible(id) {
     const kind = DATA[id]?.kind;
     if (kind === "question") return mode === "questions";
-    if (kind === "domain") return mode === "network";
+    if (kind === "domain") return mode === "program";
     return true;
   }
 
   function edgeVisible(edge) {
     const type = edge.className.baseVal || edge.getAttribute("class") || "";
     if (type.includes("rpm-edge-question")) return mode === "questions";
-    if (type.includes("rpm-edge-domain") || type.includes("rpm-edge-domain-link")) return mode === "network";
+    if (type.includes("rpm-edge-domain") || type.includes("rpm-edge-domain-link")) return mode === "program";
     return true;
   }
 
   function renderDetail(id) {
     const d = DATA[id] || DATA.center;
-    kicker.textContent = d.kind === "core" ? "Research core" : d.kind === "method" ? "Method" : d.kind === "domain" ? "Research domain" : "Open question";
+    kicker.textContent = d.kind === "core" ? "Research identity" : d.kind === "pillar" ? "Research pillar" : d.kind === "method" ? "Method" : d.kind === "domain" ? "Application domain" : "Open question";
     title.textContent = d.title;
     summary.textContent = d.summary;
     plain.innerHTML = d.plain.map(x => `<li>${x}</li>`).join("");
@@ -502,13 +529,9 @@
     return set;
   }
 
-  function groupsFor(id) {
-    return new Set(LAYOUT[id]?.groups || []);
-  }
-
   function relatedClusters(ids) {
     const set = new Set();
-    ids.forEach(id => groupsFor(id).forEach(g => set.add(g)));
+    ids.forEach(id => (LAYOUT[id]?.groups || []).forEach(g => set.add(g)));
     return set;
   }
 
@@ -554,33 +577,20 @@
       node.setAttribute("tabindex", visible ? "0" : "-1");
       node.setAttribute("aria-hidden", visible ? "false" : "true");
     });
-
     edges.forEach(edge => edge.classList.toggle("rpm-hidden", !edgeVisible(edge)));
-    halos.forEach(halo => halo.classList.remove("rpm-hidden"));
   }
 
   const MOBILE_GROUPS = [
-    {
-      title: "Structure, ecology & violence",
-      summary: "Research-oriented work on latent structure, political violence, human ecology, and mass violence.",
-      ids: ["unsupervised", "clustering", "dimension", "multilevel", "violence", "humanecology", "massviolence"]
-    },
-    {
-      title: "Institutions, AI & diplomacy",
-      summary: "Applied institutional work on governance, AI policy, non-proliferation, and evidence from multilateral systems.",
-      ids: ["networks", "nlp", "messy", "institutions", "aigov", "ainonproliferation"]
-    },
-    {
-      title: "Conflict, operations & human security",
-      summary: "Operationally oriented work on counterterrorism, conflict dynamics, autonomous systems, humanitarian crises, and human security.",
-      ids: ["counterextremism", "conflict", "longitudinal", "spatial", "bayesian", "autonomous", "humanitarian", "humansecurity"]
-    }
+    { title: "Latent Structure & Catastrophic Transition", summary: "Discover hidden organization and detect consequential structural change.", ids: ["unsupervised", "clustering", "dimension", "networks", "longitudinal"] },
+    { title: "Inference Under Degraded Information", summary: "Make defensible claims from incomplete, sparse, biased, or heterogeneous evidence.", ids: ["missing", "bayesian", "multilevel", "validation", "nlp"] },
+    { title: "Anticipatory Systems & Evidence Translation", summary: "Turn structural signals and uncertainty into interpretable early-warning evidence.", ids: ["forecasting", "spatial", "longitudinal", "networks", "nlp", "validation"] },
+    { title: "Human-Security Applications", summary: "High-stakes domains that test and motivate the statistical program.", ids: ["political", "massviolence", "counterextremism", "humanecology", "humanitarian", "humansecurity", "climate", "ainonproliferation", "autonomous"] }
   ];
 
   function renderMobile() {
     if (!mobile) return;
     if (mode === "questions") {
-      const ids = ["q-latent", "q-labels", "q-diffusion", "q-proliferation", "q-early", "q-change", "q-missing"];
+      const ids = ["q-latent", "q-transition", "q-degraded", "q-robust", "q-early", "q-translation"];
       mobile.innerHTML = ids.map((id, i) => {
         const d = DATA[id];
         return `<div class="rpm-mobile-item${i === 0 ? " is-open" : ""}">
@@ -648,5 +658,5 @@
     });
   }
 
-  setMode("network");
+  setMode("program");
 })();

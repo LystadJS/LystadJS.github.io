@@ -1,5 +1,6 @@
 (() => {
   "use strict";
+
   const payload = window.JSLResearchProgramData;
   if (!payload) return;
   const { REPOS, DATA, LAYOUT, HALOS, EDGES, MOBILE_GROUPS } = payload;
@@ -8,73 +9,68 @@
   const map = document.getElementById("rpm-map");
   if (!section || !map) return;
 
-  section.querySelector(".rpm-controls")?.remove();
   section.classList.add("rpm-anticipatory-identity");
 
-  const heading = section.querySelector(".section-header h2");
-  const intro = section.querySelector(".section-header p");
-  if (heading) heading.textContent = "Computational Statistics for Anticipatory Human Security.";
-  if (intro) intro.innerHTML = "Discover hidden structure. Quantify uncertainty. Detect consequential change before the outcome is obvious.";
-
   const detailLabels = [...section.querySelectorAll(".rpm-detail-label")];
-  if (detailLabels[1]) detailLabels[1].textContent = "Methods / concepts";
-  if (detailLabels[2]) detailLabels[2].textContent = "Selected work";
+  const kicker = document.getElementById("rpm-detail-kicker");
+  const title = document.getElementById("rpm-detail-title");
+  const summary = document.getElementById("rpm-detail-summary");
+  const plain = document.getElementById("rpm-detail-questions");
+  const methods = document.getElementById("rpm-detail-methods");
+  const projects = document.getElementById("rpm-detail-projects");
+  const mobile = section.querySelector(".rpm-mobile");
 
-  const detailFoot = section.querySelector(".rpm-detail-foot");
-  if (detailFoot) detailFoot.textContent = "Pillars carry the research questions. Squares are Research/CV projects. Method tags open repositories; work items open the project or publication.";
-
-  const legend = section.querySelector(".rpm-footer-legend");
-  if (legend) legend.innerHTML = `<span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-pillar">◆</span>Pillar</span><span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-method">●</span>Method</span><span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-domain">○</span>Domain</span><span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-project">□</span>Project / study</span>`;
-
-  const footerState = section.querySelector(".rpm-footer-state");
-  if (footerState) footerState.textContent = "Statistician first · applications second";
+  const conceptRepoCache = new Map();
+  const projectRepoByTitle = new Map(
+    Object.values(DATA)
+      .filter(item => item.kind === "project" && item.url)
+      .map(item => [item.title, item.url])
+  );
 
   function conceptRepo(label) {
+    if (conceptRepoCache.has(label)) return conceptRepoCache.get(label);
     const x = String(label || "").toLowerCase();
-    if (/unsupervised/.test(x)) return REPOS.unsupervised;
-    if (/(cluster|hdbscan|hierarchical|mixture|fuzzy|density)/.test(x)) return REPOS.clustering;
-    if (/(dimension|pca|umap|mds|embedding)/.test(x)) return REPOS.dimension;
-    if (/(network|centrality|community|bipartite|diffusion)/.test(x)) return REPOS.networks;
-    if (/(longitudinal|panel|trajectory|alignment|multilevel|mixed|partial pooling|nested)/.test(x)) return REPOS.longitudinal;
-    if (/(missing|imputation|missingness)/.test(x)) return REPOS.missing;
-    if (/(spatial|distance|geographic|population-weighted)/.test(x)) return REPOS.spatial;
-    if (/(text|nlp|extraction|attribution|classification)/.test(x)) return REPOS.unTranscript;
-    if (/(human ecology|climate|environment)/.test(x)) return REPOS.ecology;
-    if (/humanitarian/.test(x)) return REPOS.humanitarian;
-    if (/human security/.test(x)) return REPOS.humansecurity;
-    if (/(counterterror|terrorism)/.test(x)) return REPOS.terrorism;
-    return REPOS.computing;
-  }
-
-  function projectRepo(label) {
-    const match = Object.values(DATA).find(item => item.kind === "project" && item.title === label);
-    return match?.url || null;
+    let url = REPOS.computing;
+    if (/unsupervised/.test(x)) url = REPOS.unsupervised;
+    else if (/(cluster|hdbscan|hierarchical|mixture|fuzzy|density)/.test(x)) url = REPOS.clustering;
+    else if (/(dimension|pca|umap|mds|embedding)/.test(x)) url = REPOS.dimension;
+    else if (/(network|centrality|community|bipartite|diffusion)/.test(x)) url = REPOS.networks;
+    else if (/(longitudinal|panel|trajectory|alignment|multilevel|mixed|partial pooling|nested)/.test(x)) url = REPOS.longitudinal;
+    else if (/(missing|imputation|missingness)/.test(x)) url = REPOS.missing;
+    else if (/(spatial|distance|geographic|population-weighted)/.test(x)) url = REPOS.spatial;
+    else if (/(text|nlp|extraction|attribution|classification)/.test(x)) url = REPOS.unTranscript;
+    else if (/(human ecology|climate|environment)/.test(x)) url = REPOS.ecology;
+    else if (/humanitarian/.test(x)) url = REPOS.humanitarian;
+    else if (/human security/.test(x)) url = REPOS.humansecurity;
+    else if (/(counterterror|terrorism)/.test(x)) url = REPOS.terrorism;
+    conceptRepoCache.set(label, url);
+    return url;
   }
 
   function nodeRepo(id) {
     if (DATA[id]?.kind === "project") return DATA[id].url || null;
     return ({
-      unsupervised:REPOS.unsupervised,
-      clustering:REPOS.clustering,
-      dimension:REPOS.dimension,
-      networks:REPOS.networks,
-      longitudinal:REPOS.longitudinal,
-      missing:REPOS.missing,
-      bayesian:REPOS.computing,
-      multilevel:REPOS.longitudinal,
-      validation:REPOS.computing,
-      nlp:REPOS.unTranscript,
-      spatial:REPOS.spatial,
-      forecasting:REPOS.computing,
-      political:REPOS.political,
-      massviolence:REPOS.political,
-      counterextremism:REPOS.terrorism,
-      humanecology:REPOS.ecology,
-      humanitarian:REPOS.humanitarian,
-      humansecurity:REPOS.humansecurity,
-      climate:REPOS.ecology,
-      ainonproliferation:REPOS.technology,
-      autonomous:REPOS.technology
+      unsupervised: REPOS.unsupervised,
+      clustering: REPOS.clustering,
+      dimension: REPOS.dimension,
+      networks: REPOS.networks,
+      longitudinal: REPOS.longitudinal,
+      missing: REPOS.missing,
+      bayesian: REPOS.computing,
+      multilevel: REPOS.longitudinal,
+      validation: REPOS.computing,
+      nlp: REPOS.unTranscript,
+      spatial: REPOS.spatial,
+      forecasting: REPOS.computing,
+      political: REPOS.political,
+      massviolence: REPOS.political,
+      counterextremism: REPOS.terrorism,
+      humanecology: REPOS.ecology,
+      humanitarian: REPOS.humanitarian,
+      humansecurity: REPOS.humansecurity,
+      climate: REPOS.ecology,
+      ainonproliferation: REPOS.technology,
+      autonomous: REPOS.technology
     })[id] || null;
   }
 
@@ -82,79 +78,204 @@
   const edgeMarkup = e => `<line class="rpm-edge rpm-edge-${e.type}" data-a="${e.a}" data-b="${e.b}" x1="${LAYOUT[e.a].x}" y1="${LAYOUT[e.a].y}" x2="${LAYOUT[e.b].x}" y2="${LAYOUT[e.b].y}" />`;
 
   function shapeMarkup(node, kind) {
-    if (kind === "pillar") return `<polygon class="rpm-shape" points="0,${-node.r} ${node.r*.86},0 0,${node.r} ${-node.r*.86},0" />`;
-    if (kind === "project") return `<rect class="rpm-shape" x="${-node.r}" y="${-node.r}" width="${node.r*2}" height="${node.r*2}" />`;
+    if (kind === "pillar") return `<polygon class="rpm-shape" points="0,${-node.r} ${node.r * .86},0 0,${node.r} ${-node.r * .86},0" />`;
+    if (kind === "project") return `<rect class="rpm-shape" x="${-node.r}" y="${-node.r}" width="${node.r * 2}" height="${node.r * 2}" />`;
     return `<circle class="rpm-shape" r="${node.r}" />`;
   }
 
   function labelMarkup(node, id) {
     if (DATA[id].kind === "project") return "";
-    if (id === "center") return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-8">Computational</tspan><tspan x="0" y="14">Statistics</tspan><tspan class="rpm-network-center-sub" x="0" y="34">ANTICIPATORY HUMAN SECURITY</tspan></text>`;
+    if (id === "center") {
+      return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-8">Computational</tspan><tspan x="0" y="14">Statistics</tspan><tspan class="rpm-network-center-sub" x="0" y="34">ANTICIPATORY HUMAN SECURITY</tspan></text>`;
+    }
     const start = node.r + 15;
-    const lines = node.lines.map((line,i) => `<tspan x="0" y="${start+i*13}">${line}</tspan>`).join("");
-    const primary = node.primary ? `<tspan class="rpm-network-node-sub" x="0" y="${start+node.lines.length*13+2}">SIGNATURE METHOD</tspan>` : "";
+    const lines = node.lines.map((line, i) => `<tspan x="0" y="${start + i * 13}">${line}</tspan>`).join("");
+    const primary = node.primary ? `<tspan class="rpm-network-node-sub" x="0" y="${start + node.lines.length * 13 + 2}">SIGNATURE METHOD</tspan>` : "";
     return `<text class="rpm-network-node-label" text-anchor="middle" aria-hidden="true">${lines}${primary}</text>`;
   }
 
-  function nodeMarkup(id,node) {
+  function nodeMarkup(id, node) {
     const d = DATA[id];
-    return `<g class="rpm-node rpm-network-node rpm-kind-${d.kind}${node.primary?" rpm-primary":""}${id==="center"?" is-active":""}" role="button" tabindex="0" aria-hidden="false" data-id="${id}" transform="translate(${node.x} ${node.y})">${d.kind==="project"?`<title>${d.title}</title>`:""}${shapeMarkup(node,d.kind)}${labelMarkup(node,id)}</g>`;
+    return `<g class="rpm-node rpm-network-node rpm-kind-${d.kind}${node.primary ? " rpm-primary" : ""}${id === "center" ? " is-active" : ""}" role="button" tabindex="0" aria-hidden="false" data-id="${id}" transform="translate(${node.x} ${node.y})">${d.kind === "project" ? `<title>${d.title}</title>` : ""}${shapeMarkup(node, d.kind)}${labelMarkup(node, id)}</g>`;
   }
 
-  map.setAttribute("viewBox","0 0 980 650");
-  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Computational statistics connected to three research pillars, methods, application domains, and specific research and applied projects listed on the Research page and CV.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id,node])=>nodeMarkup(id,node)).join("")}</g>`;
+  map.setAttribute("viewBox", "0 0 980 650");
+  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Computational statistics connected to three research pillars, methods, application domains, and specific research and applied projects listed on the Research page and CV.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
 
-  const nodes=[...map.querySelectorAll(".rpm-node")], edges=[...map.querySelectorAll(".rpm-edge")], halos=[...map.querySelectorAll(".rpm-cluster-halo")];
-  const mobile=section.querySelector(".rpm-mobile"), kicker=document.getElementById("rpm-detail-kicker"), title=document.getElementById("rpm-detail-title"), summary=document.getElementById("rpm-detail-summary"), plain=document.getElementById("rpm-detail-questions"), methods=document.getElementById("rpm-detail-methods"), projects=document.getElementById("rpm-detail-projects");
-  let locked=null;
+  const nodeById = new Map([...map.querySelectorAll(".rpm-node")].map(node => [node.dataset.id, node]));
+  const edgeElements = [...map.querySelectorAll(".rpm-edge")];
+  const haloByCluster = new Map([...map.querySelectorAll(".rpm-cluster-halo")].map(halo => [halo.dataset.cluster, halo]));
 
+  const neighborsById = new Map();
+  const incidentEdgesById = new Map();
+  Object.keys(DATA).forEach(id => {
+    neighborsById.set(id, new Set([id]));
+    incidentEdgesById.set(id, new Set());
+  });
+  EDGES.forEach((edge, index) => {
+    const el = edgeElements[index];
+    neighborsById.get(edge.a)?.add(edge.b);
+    neighborsById.get(edge.b)?.add(edge.a);
+    incidentEdgesById.get(edge.a)?.add(el);
+    incidentEdgesById.get(edge.b)?.add(el);
+  });
+
+  const clustersById = new Map(
+    Object.entries(LAYOUT).map(([id, node]) => [id, new Set(node.groups || [])])
+  );
+
+  const detailCache = new Map();
+  Object.entries(DATA).forEach(([id, d]) => {
+    const linked = d.work
+      .map(label => ({ label, href: projectRepoByTitle.get(label) }))
+      .filter(item => item.href);
+    detailCache.set(id, {
+      label: d.kind === "pillar" ? "Core questions" : "In plain English",
+      kicker: d.kind === "core" ? "Research identity" : d.kind === "pillar" ? "Research pillar" : d.kind === "method" ? "Method" : d.kind === "domain" ? "Application domain" : "Project / study",
+      title: d.title,
+      summary: d.summary,
+      bullets: d.bullets.map(x => `<li>${x}</li>`).join(""),
+      methods: d.methods.map(x => `<a class="rpm-chip" href="${conceptRepo(x)}" target="_blank" rel="noopener noreferrer">${x}</a>`).join(""),
+      work: linked.map(x => `<li><a class="rpm-work-link" href="${x.href}" target="_blank" rel="noopener noreferrer">${x.label}</a></li>`).join("")
+    });
+  });
+
+  let lastDetailId = null;
   function renderDetail(id) {
-    const d=DATA[id]||DATA.center;
-    if (detailLabels[0]) detailLabels[0].textContent=d.kind==="pillar"?"Core questions":"In plain English";
-    kicker.textContent=d.kind==="core"?"Research identity":d.kind==="pillar"?"Research pillar":d.kind==="method"?"Method":d.kind==="domain"?"Application domain":"Project / study";
-    title.textContent=d.title;
-    summary.textContent=d.summary;
-    plain.innerHTML=d.bullets.map(x=>`<li>${x}</li>`).join("");
-    methods.innerHTML=d.methods.map(x=>`<a class="rpm-chip" href="${conceptRepo(x)}" target="_blank" rel="noopener noreferrer">${x}</a>`).join("");
-
-    const linked=d.work.map(label=>({label,href:projectRepo(label)})).filter(x=>x.href);
-    const block=projects.closest(".rpm-detail-block");
-    if(linked.length){
-      block.hidden=false;
-      projects.innerHTML=linked.map(x=>`<li><a class="rpm-work-link" href="${x.href}" target="_blank" rel="noopener noreferrer">${x.label}</a></li>`).join("");
+    if (lastDetailId === id) return;
+    lastDetailId = id;
+    const d = detailCache.get(id) || detailCache.get("center");
+    if (detailLabels[0]) detailLabels[0].textContent = d.label;
+    kicker.textContent = d.kicker;
+    title.textContent = d.title;
+    summary.textContent = d.summary;
+    plain.innerHTML = d.bullets;
+    methods.innerHTML = d.methods;
+    const block = projects.closest(".rpm-detail-block");
+    if (d.work) {
+      block.hidden = false;
+      projects.innerHTML = d.work;
     } else {
-      block.hidden=true;
-      projects.innerHTML="";
+      block.hidden = true;
+      projects.innerHTML = "";
     }
   }
 
-  function clear(){nodes.forEach(n=>n.classList.remove("is-active","is-related","is-muted"));edges.forEach(e=>e.classList.remove("is-active","is-muted"));halos.forEach(h=>h.classList.remove("is-related","is-muted"));}
-  function overview(){clear();nodes.find(n=>n.dataset.id==="center")?.classList.add("is-active");renderDetail("center");locked=null;}
-  function neighbors(id){const set=new Set([id]);edges.forEach(e=>{if(e.dataset.a===id)set.add(e.dataset.b);if(e.dataset.b===id)set.add(e.dataset.a);});return set;}
-  function clusters(ids){const set=new Set();ids.forEach(id=>(LAYOUT[id]?.groups||[]).forEach(g=>set.add(g)));return set;}
-  function highlight(id,temp=false){const rel=neighbors(id), cls=clusters(rel);nodes.forEach(n=>{const x=n.dataset.id;n.classList.toggle("is-active",x===id);n.classList.toggle("is-related",x!==id&&rel.has(x));n.classList.toggle("is-muted",!rel.has(x));});edges.forEach(e=>{const active=e.dataset.a===id||e.dataset.b===id;e.classList.toggle("is-active",active);e.classList.toggle("is-muted",!active);});halos.forEach(h=>{const yes=cls.has(h.dataset.cluster);h.classList.toggle("is-related",yes);h.classList.toggle("is-muted",cls.size>0&&!yes);});renderDetail(id);if(!temp)locked=id;}
-  function restore(){locked?highlight(locked,true):overview();}
+  let locked = null;
+  let activeId = null;
+  let relatedNodeIds = new Set();
+  let activeEdges = new Set();
+  let relatedClusters = new Set();
+  let frame = 0;
+  let queued = null;
 
-  nodes.forEach(node=>{
-    const id=node.dataset.id;
-    node.addEventListener("mouseenter",()=>highlight(id,true));
-    node.addEventListener("mouseleave",restore);
-    node.addEventListener("focus",()=>highlight(id,true));
-    node.addEventListener("blur",restore);
-    node.addEventListener("click",()=>{
-      const d=DATA[id];
-      if(d.kind==="project"&&d.url){window.open(d.url,"_blank","noopener,noreferrer");return;}
-      if(id==="center"||locked===id)overview();else highlight(id);
-    });
-    node.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();node.click();}});
-  });
-
-  function renderMobile(){
-    if(!mobile)return;
-    mobile.innerHTML=MOBILE_GROUPS.map((g,i)=>`<div class="rpm-mobile-item${i===0?" is-open":""}"><button class="rpm-mobile-trigger" type="button" aria-expanded="${i===0?"true":"false"}"><span class="rpm-mobile-name">${g.title}</span><span class="rpm-mobile-symbol">${i===0?"−":"+"}</span></button><div class="rpm-mobile-content"><p>${g.summary}</p>${g.ids.map(id=>{const href=DATA[id].url||nodeRepo(id);return href?`<a href="${href}" target="_blank" rel="noopener noreferrer">${DATA[id].title}</a>`:`<span>${DATA[id].title}</span>`;}).join("")}</div></div>`).join("");
+  function clearInteractiveState() {
+    if (activeId) nodeById.get(activeId)?.classList.remove("is-active");
+    relatedNodeIds.forEach(id => nodeById.get(id)?.classList.remove("is-related"));
+    activeEdges.forEach(edge => edge.classList.remove("is-active"));
+    relatedClusters.forEach(cluster => haloByCluster.get(cluster)?.classList.remove("is-related"));
+    activeId = null;
+    relatedNodeIds = new Set();
+    activeEdges = new Set();
+    relatedClusters = new Set();
+    map.classList.remove("is-filtered");
   }
 
-  mobile?.addEventListener("click",e=>{const b=e.target.closest(".rpm-mobile-trigger");if(!b)return;const item=b.closest(".rpm-mobile-item"),symbol=b.querySelector(".rpm-mobile-symbol"),open=!item.classList.contains("is-open");item.classList.toggle("is-open",open);b.setAttribute("aria-expanded",open?"true":"false");symbol.textContent=open?"−":"+";});
+  function overview() {
+    clearInteractiveState();
+    activeId = "center";
+    nodeById.get("center")?.classList.add("is-active");
+    renderDetail("center");
+    locked = null;
+  }
+
+  function applyHighlight(id, transient = false) {
+    if (activeId === id && map.classList.contains("is-filtered")) {
+      renderDetail(id);
+      if (!transient) locked = id;
+      return;
+    }
+
+    clearInteractiveState();
+    map.classList.add("is-filtered");
+    activeId = id;
+    nodeById.get(id)?.classList.add("is-active");
+
+    const neighbors = neighborsById.get(id) || new Set([id]);
+    relatedNodeIds = new Set([...neighbors].filter(nodeId => nodeId !== id));
+    relatedNodeIds.forEach(nodeId => nodeById.get(nodeId)?.classList.add("is-related"));
+
+    activeEdges = new Set(incidentEdgesById.get(id) || []);
+    activeEdges.forEach(edge => edge.classList.add("is-active"));
+
+    relatedClusters = new Set();
+    neighbors.forEach(nodeId => {
+      clustersById.get(nodeId)?.forEach(cluster => relatedClusters.add(cluster));
+    });
+    relatedClusters.forEach(cluster => haloByCluster.get(cluster)?.classList.add("is-related"));
+
+    renderDetail(id);
+    if (!transient) locked = id;
+  }
+
+  function scheduleHighlight(id, transient = true) {
+    queued = { id, transient };
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const next = queued;
+      queued = null;
+      if (next) applyHighlight(next.id, next.transient);
+    });
+  }
+
+  function restore() {
+    if (frame) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      queued = null;
+    }
+    if (locked) applyHighlight(locked, true);
+    else overview();
+  }
+
+  nodeById.forEach((node, id) => {
+    node.addEventListener("mouseenter", () => scheduleHighlight(id, true), { passive: true });
+    node.addEventListener("mouseleave", restore, { passive: true });
+    node.addEventListener("focus", () => scheduleHighlight(id, true));
+    node.addEventListener("blur", restore);
+    node.addEventListener("click", () => {
+      const d = DATA[id];
+      if (d.kind === "project" && d.url) {
+        window.open(d.url, "_blank", "noopener,noreferrer");
+        return;
+      }
+      if (id === "center" || locked === id) overview();
+      else applyHighlight(id, false);
+    });
+    node.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        node.click();
+      }
+    });
+  });
+
+  function renderMobile() {
+    if (!mobile) return;
+    mobile.innerHTML = MOBILE_GROUPS.map((g, i) => `<div class="rpm-mobile-item${i === 0 ? " is-open" : ""}"><button class="rpm-mobile-trigger" type="button" aria-expanded="${i === 0 ? "true" : "false"}"><span class="rpm-mobile-name">${g.title}</span><span class="rpm-mobile-symbol">${i === 0 ? "−" : "+"}</span></button><div class="rpm-mobile-content"><p>${g.summary}</p>${g.ids.map(id => { const href = DATA[id].url || nodeRepo(id); return href ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${DATA[id].title}</a>` : `<span>${DATA[id].title}</span>`; }).join("")}</div></div>`).join("");
+  }
+
+  mobile?.addEventListener("click", event => {
+    const button = event.target.closest(".rpm-mobile-trigger");
+    if (!button) return;
+    const item = button.closest(".rpm-mobile-item");
+    const symbol = button.querySelector(".rpm-mobile-symbol");
+    const open = !item.classList.contains("is-open");
+    item.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    symbol.textContent = open ? "−" : "+";
+  });
 
   renderMobile();
   overview();

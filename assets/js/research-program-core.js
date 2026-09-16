@@ -12,6 +12,9 @@
   section.classList.add("rpm-anticipatory-identity");
 
   const detailLabels = [...section.querySelectorAll(".rpm-detail-label")];
+  if (detailLabels[1]) detailLabels[1].textContent = "Methods & concepts";
+  if (detailLabels[2]) detailLabels[2].textContent = "Selected work";
+
   const kicker = document.getElementById("rpm-detail-kicker");
   const title = document.getElementById("rpm-detail-title");
   const summary = document.getElementById("rpm-detail-summary");
@@ -84,16 +87,22 @@
     return `<circle class="rpm-shape" r="${node.r}" />`;
   }
 
+  const LABEL_METRICS = {
+    pillar: { offset: 14, lineHeight: 12.5 },
+    method: { offset: 14, lineHeight: 12.5 },
+    domain: { offset: 14, lineHeight: 12.5 }
+  };
+
   function labelMarkup(node, id) {
     const d = DATA[id];
     if (d.kind === "project" || d.kind === "specific_method") return "";
     if (id === "center") {
       return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-6">Computational</tspan><tspan x="0" y="13">Statistics</tspan></text>`;
     }
-    const start = node.r + 15;
-    const lines = node.lines.map((line, i) => `<tspan x="0" y="${start + i * 13}">${line}</tspan>`).join("");
-    const primary = node.primary ? `<tspan class="rpm-network-node-sub" x="0" y="${start + node.lines.length * 13 + 2}">SIGNATURE METHOD</tspan>` : "";
-    return `<text class="rpm-network-node-label" text-anchor="middle" aria-hidden="true">${lines}${primary}</text>`;
+    const metrics = LABEL_METRICS[d.kind] || LABEL_METRICS.method;
+    const start = node.r + metrics.offset;
+    const lines = node.lines.map((line, i) => `<tspan x="0" y="${start + i * metrics.lineHeight}">${line}</tspan>`).join("");
+    return `<text class="rpm-network-node-label" text-anchor="middle" aria-hidden="true">${lines}</text>`;
   }
 
   function nodeMarkup(id, node) {
@@ -103,7 +112,7 @@
   }
 
   map.setAttribute("viewBox", "0 0 980 650");
-  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">Statistical research organized as pillars, method frameworks, specific methods, application domains, and specific research projects.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
+  map.innerHTML = `<title id="rpm-title">Research program network</title><desc id="rpm-desc">A five-level research network linking computational statistics to research pillars, method frameworks, specific methods, application domains, and projects.</desc><g>${HALOS.map(haloMarkup).join("")}</g><g>${EDGES.map(edgeMarkup).join("")}</g><g>${Object.entries(LAYOUT).map(([id, node]) => nodeMarkup(id, node)).join("")}</g>`;
 
   const nodeById = new Map([...map.querySelectorAll(".rpm-node")].map(node => [node.dataset.id, node]));
   const edgeElements = [...map.querySelectorAll(".rpm-edge")];
@@ -132,10 +141,18 @@
     const linked = d.work
       .map(label => ({ label, href: projectRepoByTitle.get(label) }))
       .filter(item => item.href);
+
+    const detailLabel =
+      d.kind === "core" ? "Program logic" :
+      d.kind === "pillar" ? "Research questions" :
+      d.kind === "method" || d.kind === "specific_method" ? "Analytical role" :
+      d.kind === "domain" ? "Research focus" :
+      "Project context";
+
     detailCache.set(id, {
-      label: d.kind === "pillar" ? "Core questions" : "In plain English",
+      label: detailLabel,
       kicker:
-        d.kind === "core" ? "Research identity" :
+        d.kind === "core" ? "Research core" :
         d.kind === "pillar" ? "Research pillar" :
         d.kind === "method" ? "Method framework" :
         d.kind === "specific_method" ? "Specific method" :

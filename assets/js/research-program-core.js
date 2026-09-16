@@ -86,10 +86,7 @@
 
   function labelMarkup(node, id) {
     const d = DATA[id];
-    if (d.kind === "project") return "";
-    if (d.kind === "specific_method") {
-      return `<text class="rpm-specific-method-label" text-anchor="middle" dominant-baseline="middle" y=".5" aria-hidden="true">${node.short || d.title}</text>`;
-    }
+    if (d.kind === "project" || d.kind === "specific_method") return "";
     if (id === "center") {
       return `<text class="rpm-network-center-label" text-anchor="middle" aria-hidden="true"><tspan x="0" y="-6">Computational</tspan><tspan x="0" y="13">Statistics</tspan></text>`;
     }

@@ -58,7 +58,7 @@ body[data-page="index"] .hero-identity h1 {
 }
 
 body[data-page="index"] .hero-identity h1 {
-  max-width: 920px;
+  max-width: none;
   margin: .45rem 0 1rem;
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: .88;
@@ -85,6 +85,11 @@ body[data-page="index"] .hero-note {
   text-align: left;
 }
 
+body[data-page="index"] .hero-lede {
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.42;
+}
+
 body[data-page="index"] .hero-details > .hero-actions {
   display: none;
 }
@@ -94,13 +99,15 @@ body[data-page="index"] .hero-note {
   margin-top: 1rem;
 }
 
-/* Only create the right-side Practice region after the panel is present. */
+/* Only create the right-side Practice region after the panel is present.
+   The panel is deliberately narrow so the primary hero copy retains most
+   of the horizontal space. */
 body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
-  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr) minmax(255px, .58fr);
+  grid-template-columns: clamp(150px, 15vw, 195px) minmax(0, 1fr) minmax(205px, .40fr);
   grid-template-areas:
     "headshot identity practice"
     "details  details  practice";
-  column-gap: clamp(1.6rem, 3vw, 2.5rem);
+  column-gap: clamp(1.15rem, 2vw, 1.75rem);
 }
 
 body[data-page="index"] .hero-practice-index {
@@ -109,52 +116,44 @@ body[data-page="index"] .hero-practice-index {
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-left: 1.35rem;
+  padding-left: 1.1rem;
   border-left: 1px solid var(--line-bright);
 }
 
-body[data-page="index"] .hero-practice-kicker {
-  margin: 0 0 .55rem;
-  color: var(--crimson-bright);
-  font-family: var(--mono);
-  font-size: .62rem;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-
-body[data-page="index"] .hero-practice-index h2 {
-  margin: 0 0 .75rem;
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
-  line-height: .98;
-  font-weight: 600;
-  letter-spacing: -.025em;
-}
-
+/* The former Practice heading/copy consumed space without adding navigation.
+   Hide them even if an older cached main.js briefly inserts them. */
+body[data-page="index"] .hero-practice-kicker,
+body[data-page="index"] .hero-practice-index > h2,
 body[data-page="index"] .hero-practice-copy {
-  margin: 0 0 .9rem;
-  color: var(--muted);
-  font-size: .78rem;
-  line-height: 1.5;
+  display: none;
 }
 
 body[data-page="index"] .hero-practice-links {
-  border-top: 1px solid var(--line);
+  flex: 1 1 auto;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  border-top: 0;
 }
 
 body[data-page="index"] .hero-practice-links a {
-  display: block;
-  padding: .72rem 0 .68rem;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: .85rem 0;
   border-bottom: 1px solid var(--line);
   text-decoration: none;
   transition: padding-left 150ms ease, border-color 150ms ease, background 150ms ease;
 }
 
+body[data-page="index"] .hero-practice-links a:first-child {
+  border-top: 1px solid var(--line);
+}
+
 body[data-page="index"] .hero-practice-links a:hover,
 body[data-page="index"] .hero-practice-links a:focus-visible {
-  padding-left: .45rem;
+  padding-left: .4rem;
   border-bottom-color: rgba(191,49,82,.42);
   background: linear-gradient(90deg, rgba(141,23,50,.055), transparent 72%);
   outline: none;
@@ -304,7 +303,30 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   }
 
   body[data-page="index"] .hero-practice-index {
-    max-width: 680px;
+    max-width: none;
+    min-height: 210px;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line-bright);
+  }
+
+  body[data-page="index"] .hero-practice-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+    min-height: 0;
+  }
+
+  body[data-page="index"] .hero-practice-links a {
+    padding: 1rem .8rem;
+    border-right: 1px solid var(--line);
+  }
+
+  body[data-page="index"] .hero-practice-links a:first-child {
+    border-top: 0;
+  }
+
+  body[data-page="index"] .hero-practice-links a:last-child {
+    border-right: 0;
   }
 
   body[data-page="index"] .hero-contact-rail {
@@ -357,7 +379,17 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   }
 
   body[data-page="index"] .hero-practice-index {
-    padding-left: 1rem;
+    min-height: 0;
+  }
+
+  body[data-page="index"] .hero-practice-links {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+
+  body[data-page="index"] .hero-practice-links a {
+    border-right: 0;
+    padding: .85rem 0;
   }
 
   body[data-page="index"] .hero-contact-rail {

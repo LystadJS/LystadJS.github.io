@@ -91,15 +91,19 @@
           <nav class="hero-practice-links" aria-label="Portfolio destinations">
             <a href="research.html">
               <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
-                <line class="mini-edge" x1="8" y1="10" x2="34" y2="25"></line>
-                <line class="mini-edge" x1="8" y1="40" x2="34" y2="25"></line>
-                <line class="mini-edge" x1="34" y1="25" x2="60" y2="10"></line>
-                <line class="mini-edge" x1="34" y1="25" x2="60" y2="40"></line>
-                <rect class="mini-method" x="3" y="5" width="10" height="10" rx="1"></rect>
-                <rect class="mini-method" x="3" y="35" width="10" height="10" rx="1"></rect>
-                <polygon class="mini-project" points="34,20 39,25 34,30 29,25"></polygon>
-                <circle class="mini-app" cx="60" cy="10" r="5"></circle>
-                <circle class="mini-app" cx="60" cy="40" r="5"></circle>
+                <!-- Research paper / evidence packet -->
+                <rect class="mini-method" x="3" y="5" width="25" height="40" rx="1.5"></rect>
+                <line class="mini-edge" x1="8" y1="13" x2="23" y2="13"></line>
+                <line class="mini-edge" x1="8" y1="20" x2="23" y2="20"></line>
+                <line class="mini-edge" x1="8" y1="27" x2="20" y2="27"></line>
+                <line class="mini-edge" x1="8" y1="34" x2="17" y2="34"></line>
+                <!-- Translation from research into applied work -->
+                <line class="mini-edge" x1="28" y1="25" x2="39" y2="25"></line>
+                <polygon class="mini-project" points="43,20 48,25 43,30 38,25"></polygon>
+                <line class="mini-edge" x1="48" y1="25" x2="58" y2="15"></line>
+                <line class="mini-edge" x1="48" y1="25" x2="58" y2="35"></line>
+                <circle class="mini-app" cx="61" cy="12" r="4.5"></circle>
+                <circle class="mini-app" cx="61" cy="38" r="4.5"></circle>
               </svg>
               <span class="hero-practice-card-copy">
                 <strong>Research &amp; Applied Work</strong>
@@ -110,16 +114,24 @@
 
             <a href="code.html">
               <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
-                <line class="mini-edge" x1="8" y1="25" x2="27" y2="10"></line>
-                <line class="mini-edge" x1="8" y1="25" x2="27" y2="40"></line>
-                <line class="mini-edge" x1="27" y1="10" x2="46" y2="25"></line>
-                <line class="mini-edge" x1="27" y1="40" x2="46" y2="25"></line>
-                <line class="mini-edge" x1="46" y1="25" x2="61" y2="25"></line>
-                <rect class="mini-gold" x="3" y="20" width="10" height="10" rx="1"></rect>
-                <rect class="mini-method" x="22" y="5" width="10" height="10" rx="1"></rect>
-                <rect class="mini-method" x="22" y="35" width="10" height="10" rx="1"></rect>
-                <polygon class="mini-project" points="46,20 51,25 46,30 41,25"></polygon>
-                <rect class="mini-method" x="56" y="20" width="10" height="10" rx="1"></rect>
+                <!-- Terminal / source code -->
+                <rect class="mini-method" x="2" y="8" width="22" height="34" rx="2"></rect>
+                <line class="mini-edge" x1="6" y1="14" x2="20" y2="14"></line>
+                <line class="mini-edge" x1="7" y1="23" x2="11" y2="27"></line>
+                <line class="mini-edge" x1="11" y1="27" x2="7" y2="31"></line>
+                <line class="mini-edge" x1="13" y1="32" x2="19" y2="32"></line>
+                <!-- Package / reusable tool -->
+                <line class="mini-edge" x1="24" y1="25" x2="31" y2="25"></line>
+                <rect class="mini-gold" x="31" y="15" width="16" height="20" rx="1.5"></rect>
+                <line class="mini-edge" x1="34" y1="20" x2="44" y2="20"></line>
+                <line class="mini-edge" x1="34" y1="25" x2="41" y2="25"></line>
+                <line class="mini-edge" x1="34" y1="30" x2="43" y2="30"></line>
+                <!-- Validated output -->
+                <line class="mini-edge" x1="47" y1="25" x2="52" y2="25"></line>
+                <rect class="mini-app" x="52" y="10" width="14" height="30" rx="2"></rect>
+                <line class="mini-edge" x1="55" y1="17" x2="63" y2="17"></line>
+                <line class="mini-edge" x1="55" y1="23" x2="61" y2="23"></line>
+                <polyline class="mini-edge" points="55,31 58,34 63,28" fill="none"></polyline>
               </svg>
               <span class="hero-practice-card-copy">
                 <strong>Code &amp; Development</strong>
@@ -130,14 +142,20 @@
 
             <a href="cv.html">
               <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
-                <line class="mini-edge" x1="11" y1="7" x2="11" y2="43"></line>
-                <line class="mini-edge" x1="11" y1="15" x2="32" y2="15"></line>
-                <line class="mini-edge" x1="11" y1="28" x2="46" y2="28"></line>
-                <line class="mini-edge" x1="11" y1="41" x2="59" y2="41"></line>
-                <circle class="mini-gold" cx="11" cy="7" r="4"></circle>
-                <circle class="mini-method" cx="32" cy="15" r="4"></circle>
-                <circle class="mini-app" cx="46" cy="28" r="4"></circle>
-                <polygon class="mini-project" points="59,37 63,41 59,45 55,41"></polygon>
+                <!-- CV / career timeline -->
+                <line class="mini-edge" x1="10" y1="6" x2="10" y2="44"></line>
+                <circle class="mini-gold" cx="10" cy="9" r="3.5"></circle>
+                <circle class="mini-method" cx="10" cy="25" r="3.5"></circle>
+                <circle class="mini-app" cx="10" cy="41" r="3.5"></circle>
+                <!-- Education entry -->
+                <line class="mini-edge" x1="16" y1="8" x2="55" y2="8"></line>
+                <line class="mini-edge" x1="16" y1="13" x2="42" y2="13"></line>
+                <!-- Experience entry -->
+                <line class="mini-edge" x1="16" y1="24" x2="63" y2="24"></line>
+                <line class="mini-edge" x1="16" y1="29" x2="49" y2="29"></line>
+                <!-- Research / skills entry -->
+                <line class="mini-edge" x1="16" y1="40" x2="57" y2="40"></line>
+                <line class="mini-edge" x1="16" y1="45" x2="36" y2="45"></line>
               </svg>
               <span class="hero-practice-card-copy">
                 <strong>Curriculum Vitae</strong>
@@ -145,6 +163,7 @@
               </span>
               <span class="hero-practice-arrow" aria-hidden="true">→</span>
             </a>
+
           </nav>`;
         heroProfile.appendChild(practice);
       }

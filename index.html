@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="assets/css/research-program-review.css">
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
+  <link rel="stylesheet" href="assets/css/homepage-research.css">
   <style>
     .rpm-map-wrap{contain:layout paint;}
     .rpm-map.is-filtered .rpm-network-node:not(.is-active):not(.is-related){opacity:.075!important;}
@@ -27,6 +28,7 @@
   <script defer src="assets/js/research-program-data.js"></script>
   <script defer src="assets/js/research-program-specific-methods.js"></script>
   <script defer src="assets/js/research-program-language.js"></script>
+  <script defer src="assets/js/research-program-text-overrides.js"></script>
   <script defer src="assets/js/research-program-core.js"></script>
   <script defer src="assets/js/main.js"></script>
 </head>
@@ -93,8 +95,8 @@
       <div class="section-header">
         <div class="section-index">01 / Research Program</div>
         <div>
-          <h2>Computational Statistics for Anticipatory Human Security.</h2>
-          <p>Discover latent structure. Quantify uncertainty. Detect consequential change before outcomes are obvious.</p>
+          <h2>Statistical Methods for High-Consequence Systems.</h2>
+          <p>Discover latent structure. Model dynamic change. Estimate future risk and uncertainty.</p>
         </div>
       </div>
 
@@ -108,14 +110,17 @@
 
         <div class="rpm-workspace">
           <div class="rpm-map-wrap">
-            <svg class="rpm-map" id="rpm-map" viewBox="0 0 980 650" role="img" aria-labelledby="rpm-title rpm-desc"></svg>
+            <svg class="rpm-map" id="rpm-map" viewBox="0 0 980 650" role="img" aria-labelledby="rpm-title rpm-desc">
+              <title id="rpm-title">Statistical methods for high-consequence systems</title>
+              <desc id="rpm-desc">Interactive map linking statistical methods, research questions, application domains, and selected projects. Human Security is an umbrella for the applied program and is not represented as a network node.</desc>
+            </svg>
           </div>
 
           <aside class="rpm-detail" aria-live="polite">
             <div class="rpm-detail-head">
               <p class="rpm-detail-kicker" id="rpm-detail-kicker">Research core</p>
-              <h3 id="rpm-detail-title">Computational Statistics</h3>
-              <p class="rpm-detail-summary" id="rpm-detail-summary">Computational methods for latent structure, uncertainty, and consequential change.</p>
+              <h3 id="rpm-detail-title">Statistical Methods for High-Consequence Systems</h3>
+              <p class="rpm-detail-summary" id="rpm-detail-summary">Statistical methods for latent structure, dynamic change, future risk, and uncertainty in consequential systems.</p>
             </div>
 
             <div class="rpm-detail-block">
@@ -133,7 +138,7 @@
               <ul class="rpm-detail-list" id="rpm-detail-projects"></ul>
             </div>
 
-            <div class="rpm-detail-foot">Diamonds mark pillars. Large circles mark method frameworks; small circles mark specific methods. Large squares mark domains; small squares mark projects.</div>
+            <div class="rpm-detail-foot">Diamonds mark research questions. Large circles mark method frameworks; small circles mark specific methods. Large squares mark domains; small squares mark projects.</div>
           </aside>
 
           <div class="rpm-mobile" aria-label="Research program mobile view"></div>
@@ -141,20 +146,170 @@
 
         <div class="rpm-footer">
           <div class="rpm-footer-legend" aria-label="Map legend">
-            <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-pillar">◆</span>Pillar</span>
+            <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-pillar">◆</span>Research question</span>
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-method">●</span>Method framework</span>
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-specific">•</span>Specific method</span>
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-domain">■</span>Domain</span>
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-project">▪</span>Project / study</span>
           </div>
-          <span class="rpm-footer-state">Statistical methods · human-security applications</span>
+          <span class="rpm-footer-state">Statistical methods · high-consequence applications</span>
         </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="human-security">
+      <div class="home-umbrella">
+        <div>
+          <div class="section-index">02 / Application Umbrella</div>
+          <h2>Human Security.</h2>
+          <div class="home-umbrella-rule" aria-hidden="true"></div>
+        </div>
+        <div class="home-umbrella-copy">
+          <p>My applied research is organized around a common concern: understanding risks that can produce substantial consequences for individuals, institutions, and societies.</p>
+          <p>Human Security therefore sits above the application taxonomy rather than inside the network itself. The applied program is organized into three intersecting domains.</p>
+        </div>
+      </div>
+
+      <div class="home-domain-grid">
+        <article class="home-domain-card">
+          <p class="home-domain-index">01 / Application Domain</p>
+          <h3>Catastrophic &amp;<br>Emerging Risks</h3>
+          <p>Emerging technologies, systemic threats, low-frequency/high-impact events, and the institutions that respond to them. Technology and AI governance sit within this domain.</p>
+          <div class="home-tags">
+            <span class="home-tag">AI governance</span>
+            <span class="home-tag">Technology diffusion</span>
+            <span class="home-tag">Systemic risk</span>
+            <span class="home-tag">Early warning</span>
+          </div>
+        </article>
+
+        <article class="home-domain-card">
+          <p class="home-domain-index">02 / Application Domain</p>
+          <h3>Counterterrorism &amp;<br>Counterextremism</h3>
+          <p>Terrorist and extremist networks, organizational behavior, adaptation, mobilization, violence, and intervention-relevant structure.</p>
+          <div class="home-tags">
+            <span class="home-tag">Networks</span>
+            <span class="home-tag">Diffusion</span>
+            <span class="home-tag">Temporal change</span>
+            <span class="home-tag">Risk analysis</span>
+          </div>
+        </article>
+
+        <article class="home-domain-card">
+          <p class="home-domain-index">03 / Application Domain</p>
+          <h3>Humanitarian<br>Crisis Response</h3>
+          <p>Civilian harm, disasters, displacement, food insecurity, humanitarian access, and quantitative support for crisis anticipation and response.</p>
+          <div class="home-tags">
+            <span class="home-tag">Civilian harm</span>
+            <span class="home-tag">Disasters</span>
+            <span class="home-tag">Forecasting</span>
+            <span class="home-tag">Response</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="selected-work">
+      <div class="section-header">
+        <div class="section-index">03 / Selected Work</div>
+        <div>
+          <h2>Research across methods and applications.</h2>
+          <p>Selected work is organized by research contribution rather than chronology. The tags show how each project fits the broader statistical program.</p>
+        </div>
+      </div>
+
+      <div class="home-project-grid">
+        <a class="home-project-card" href="https://github.com/LystadJS/project-ai-governance-non-proliferation" target="_blank" rel="noopener noreferrer">
+          <span class="home-project-arrow" aria-hidden="true">↗</span>
+          <p class="home-project-type">Applied Emerging-Technology Research</p>
+          <h3>Artificial Intelligence Non-Proliferation at the United Nations</h3>
+          <p>Analysis of AI diffusion, governance, and institutional pathways across the UN and multilateral ecosystem.</p>
+          <div class="home-tags">
+            <span class="home-tag">Statistical learning</span>
+            <span class="home-tag">Forecasting</span>
+            <span class="home-tag">Networks</span>
+            <span class="home-tag">Emerging risks</span>
+          </div>
+        </a>
+
+        <a class="home-project-card" href="https://github.com/LystadJS/counterterrorism_ethnosectarian_islamic_state" target="_blank" rel="noopener noreferrer">
+          <span class="home-project-arrow" aria-hidden="true">↗</span>
+          <p class="home-project-type">Academic Research</p>
+          <h3>The Caliphate’s Target Map</h3>
+          <p>Research on ethnosectarian composition and insurgent violence in Iraq, using quantitative and relational approaches.</p>
+          <div class="home-tags">
+            <span class="home-tag">Statistical learning</span>
+            <span class="home-tag">Networks</span>
+            <span class="home-tag">Counterterrorism</span>
+          </div>
+        </a>
+
+        <a class="home-project-card" href="research.html#paper-estimating-lethality">
+          <span class="home-project-arrow" aria-hidden="true">→</span>
+          <p class="home-project-type">Academic Research</p>
+          <h3>Estimating Lethality Under Missing Casualty Data</h3>
+          <p>Analysis of Islamic State-linked terrorist attacks under incomplete casualty records, with missingness treated as part of the inferential problem.</p>
+          <div class="home-tags">
+            <span class="home-tag">Missing data</span>
+            <span class="home-tag">PCA</span>
+            <span class="home-tag">Risk analysis</span>
+            <span class="home-tag">Counterterrorism</span>
+          </div>
+        </a>
+
+        <a class="home-project-card" href="research.html#project-himalayan-flood">
+          <span class="home-project-arrow" aria-hidden="true">→</span>
+          <p class="home-project-type">Applied Humanitarian Analysis</p>
+          <h3>Himalayan Flood Response</h3>
+          <p>Quantitative analysis of humanitarian access and response effectiveness along the Nepalese-Chinese border.</p>
+          <div class="home-tags">
+            <span class="home-tag">Forecasting</span>
+            <span class="home-tag">Dynamic modeling</span>
+            <span class="home-tag">Humanitarian response</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="methods">
+      <div class="section-header">
+        <div class="section-index">04 / Methods &amp; Software</div>
+        <div>
+          <h2>Four methodological areas.</h2>
+          <p>The categories describe how I approach problems; application domains describe where those methods are used.</p>
+        </div>
+      </div>
+
+      <div class="home-method-grid">
+        <a class="home-method-card" href="https://github.com/LystadJS/Unsupervised-Machine-Learning" target="_blank" rel="noopener noreferrer">
+          <p class="home-method-kicker">Method 01</p>
+          <h3>Statistical Learning &amp; Unsupervised Learning</h3>
+          <p>Clustering, dimensionality reduction, mixture models, latent structure, and anomaly detection.</p>
+        </a>
+
+        <a class="home-method-card" href="research.html">
+          <p class="home-method-kicker">Method 02</p>
+          <h3>Statistical Forecasting &amp; Risk Analysis</h3>
+          <p>Probabilistic forecasting, early warning, event-history models, Bayesian updating, and uncertainty.</p>
+        </a>
+
+        <a class="home-method-card" href="https://github.com/LystadJS/method-network-analysis" target="_blank" rel="noopener noreferrer">
+          <p class="home-method-kicker">Method 03</p>
+          <h3>Network &amp; Diffusion Analysis</h3>
+          <p>Communities, centrality, diffusion, influence, relational structure, and temporal networks.</p>
+        </a>
+
+        <a class="home-method-card" href="https://github.com/LystadJS/method-longitudinal-multilevel" target="_blank" rel="noopener noreferrer">
+          <p class="home-method-kicker">Method 04</p>
+          <h3>Longitudinal &amp; Dynamic Modeling</h3>
+          <p>Multilevel, panel, trajectory, repeated-measures, and evolving-system models.</p>
+        </a>
       </div>
     </section>
 
     <section class="section reveal">
       <div class="contact-panel">
-        <p class="eyebrow">Correspondence</p>
+        <p class="eyebrow">05 / Correspondence</p>
         <h2>Research, methods, policy concerns, or collaboration.</h2>
         <p>I am currently preparing for PhD applications in computational statistics and welcome substantive conversations around overlapping questions.</p>
         <div class="hero-actions">

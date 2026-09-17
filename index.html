@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
   <link rel="stylesheet" href="assets/css/homepage-research.css">
+  <link rel="stylesheet" href="assets/css/homepage-anticipatory.css">
   <style>
     .rpm-map-wrap{contain:layout paint;}
     .rpm-map.is-filtered .rpm-network-node:not(.is-active):not(.is-related){opacity:.075!important;}
@@ -31,6 +32,7 @@
   <script defer src="assets/js/research-program-text-overrides.js"></script>
   <script defer src="assets/js/research-program-core.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/homepage-anticipatory.js"></script>
 </head>
 <body data-page="index">
 
@@ -157,161 +159,189 @@
       </div>
     </section>
 
-    <section class="section reveal" id="human-security">
-      <div class="home-umbrella">
-        <div>
-          <div class="section-index">02 / Application Umbrella</div>
-          <h2>Human Security.</h2>
-          <div class="home-umbrella-rule" aria-hidden="true"></div>
+    <!-- Anticipatory research direction. All styles and interactions are local to this block. -->
+    <div class="anticipatory-home" id="anticipatory-science">
+      <section class="as-section as-program" aria-labelledby="as-program-title">
+        <div class="as-section-head">
+          <p class="as-index">02 / Research Direction</p>
+          <div>
+            <p class="as-overline">Anticipatory statistical science</p>
+            <h2 id="as-program-title">Recognize danger.<br><em>Change the trajectory.</em></h2>
+            <p class="as-lede">I am building a research program around a central question: how can we anticipate catastrophic events early enough to prevent them, and respond more effectively when they have already begun?</p>
+          </div>
         </div>
-        <div class="home-umbrella-copy">
-          <p>My applied research is organized around a common concern: understanding risks that can produce substantial consequences for individuals, institutions, and societies.</p>
-          <p>Human Security therefore sits above the application taxonomy rather than inside the network itself. The applied program is organized into three intersecting domains.</p>
+
+        <div class="as-thesis">
+          <p>My focus is the statistical work between a weak signal and a useful decision: recovering hidden structure, forecasting dangerous transitions, and evaluating when, where, and how intervention could reduce harm.</p>
+          <span class="as-thesis-note">A research direction. <br>Not a claim of perfect foresight.</span>
         </div>
-      </div>
 
-      <div class="home-domain-grid">
-        <article class="home-domain-card">
-          <p class="home-domain-index">01 / Application Domain</p>
-          <h3>Catastrophic &amp;<br>Emerging Risks</h3>
-          <p>Emerging technologies, systemic threats, low-frequency/high-impact events, and the institutions that respond to them. Technology and AI governance sit within this domain.</p>
-          <div class="home-tags">
-            <span class="home-tag">AI governance</span>
-            <span class="home-tag">Technology diffusion</span>
-            <span class="home-tag">Systemic risk</span>
-            <span class="home-tag">Early warning</span>
+        <ol class="as-stages" aria-label="Four connected research problems">
+          <li>
+            <span class="as-stage-number">I</span><p class="as-stage-label">Detect</p>
+            <h3>What state are we in?</h3>
+            <p>Recover hidden structure and emerging warning signals from incomplete, noisy observations.</p>
+            <span class="as-methods">Latent structure · measurement · unsupervised learning</span>
+          </li>
+          <li>
+            <span class="as-stage-number">II</span><p class="as-stage-label">Forecast</p>
+            <h3>Where is it heading?</h3>
+            <p>Estimate the probability, timing, location, and pathways of dangerous change.</p>
+            <span class="as-methods">Longitudinal models · event histories · dynamic networks</span>
+          </li>
+          <li>
+            <span class="as-stage-number">III</span><p class="as-stage-label">Intervene</p>
+            <h3>Can the path change?</h3>
+            <p>Identify actionable windows and assess which interventions could alter the outcome.</p>
+            <span class="as-methods">Causal inference · decision theory · intervention evaluation</span>
+          </li>
+          <li>
+            <span class="as-stage-number">IV</span><p class="as-stage-label">Adapt</p>
+            <h3>What do we know now?</h3>
+            <p>Update inference and response as new evidence arrives, including after a crisis begins.</p>
+            <span class="as-methods">Sequential inference · updating · response evaluation</span>
+          </li>
+        </ol>
+
+        <figure class="as-trajectory">
+          <div class="as-figure-bar"><span>The scientific problem</span><span>Schematic / not a fitted model</span></div>
+          <div class="as-trajectory-layout">
+            <div class="as-figure-copy">
+              <h3>From warning <br>to a window <br><em>for action.</em></h3>
+              <p>The aim is not simply to forecast a bad outcome. It is to establish whether there is still an opportunity to change it.</p>
+            </div>
+            <div class="as-chart-wrap">
+              <svg class="as-risk-chart" viewBox="0 0 740 340" role="img" aria-labelledby="as-risk-title as-risk-desc">
+                <title id="as-risk-title">An illustrative trajectory and a possible opportunity for intervention</title>
+                <desc id="as-risk-desc">An observed risk indicator rises over time. Beyond the last observation, one hypothetical trajectory rises toward severe harm, while another falls after a possible intervention. Shading represents illustrative uncertainty, not estimated confidence intervals. No causal effect is established by this diagram.</desc>
+                <defs>
+                  <linearGradient id="as-risk-fill" x1="0" x2="1"><stop offset="0" stop-color="#bf3152" stop-opacity=".03"/><stop offset="1" stop-color="#bf3152" stop-opacity=".19"/></linearGradient>
+                  <linearGradient id="as-action-fill" x1="0" x2="1"><stop offset="0" stop-color="#91a8bb" stop-opacity=".02"/><stop offset="1" stop-color="#91a8bb" stop-opacity=".12"/></linearGradient>
+                </defs>
+                <text class="as-axis-label" x="48" y="25">RELATIVE RISK</text>
+                <path class="as-grid-line" d="M48 76H704M48 145H704M48 214H704"/>
+                <rect class="as-window" x="382" y="43" width="88" height="235"/>
+                <text class="as-window-label" x="426" y="32" text-anchor="middle">ACTION WINDOW?</text>
+                <path class="as-axis" d="M48 46V278H704"/>
+                <path class="as-observed" d="M48 240C87 244 102 230 128 233S175 225 205 229S253 213 283 214S335 194 362 181"/>
+                <path fill="url(#as-risk-fill)" d="M362 181C422 137 490 70 562 45S659 32 696 27L696 123C630 124 590 142 535 161S426 184 362 181Z"/>
+                <path fill="url(#as-action-fill)" d="M426 148C491 155 539 187 590 193S657 196 696 194L696 250C627 254 556 245 513 222S448 185 426 148Z"/>
+                <path class="as-future as-future-risk" d="M362 181C422 153 468 117 524 90S628 62 696 61"/>
+                <path class="as-future as-future-action" d="M426 148C467 163 484 186 534 210S635 225 696 224"/>
+                <path class="as-now-line" d="M362 50V278"/>
+                <g class="as-observation-points"><circle cx="48" cy="240" r="3"/><circle cx="128" cy="233" r="3"/><circle cx="205" cy="229" r="3"/><circle cx="283" cy="214" r="3"/><circle cx="362" cy="181" r="5"/></g>
+                <circle class="as-action-point" cx="426" cy="148" r="5"/>
+                <text class="as-path-label as-path-label-risk" x="695" y="145" text-anchor="end">DANGER INTENSIFIES</text>
+                <text class="as-path-label as-path-label-action" x="695" y="271" text-anchor="end">POSSIBLE ALTERED PATH</text>
+                <text class="as-axis-label" x="48" y="305">OBSERVED</text>
+                <text class="as-axis-label" x="362" y="305" text-anchor="middle">NOW</text>
+                <text class="as-axis-label" x="704" y="305" text-anchor="end">POSSIBLE FUTURES →</text>
+              </svg>
+              <div class="as-chart-legend"><span><i class="as-key as-key-observed"></i>Observed indicator</span><span><i class="as-key as-key-risk"></i>Hypothetical trajectories</span><span><i class="as-key as-key-band"></i>Illustrative uncertainty</span></div>
+            </div>
           </div>
-        </article>
+          <figcaption>Illustration only. The alternative path represents a question for causal evaluation, not evidence that an intervention works.</figcaption>
+        </figure>
+      </section>
 
-        <article class="home-domain-card">
-          <p class="home-domain-index">02 / Application Domain</p>
-          <h3>Counterterrorism &amp;<br>Counterextremism</h3>
-          <p>Terrorist and extremist networks, organizational behavior, adaptation, mobilization, violence, and intervention-relevant structure.</p>
-          <div class="home-tags">
-            <span class="home-tag">Networks</span>
-            <span class="home-tag">Diffusion</span>
-            <span class="home-tag">Temporal change</span>
-            <span class="home-tag">Risk analysis</span>
-          </div>
-        </article>
-
-        <article class="home-domain-card">
-          <p class="home-domain-index">03 / Application Domain</p>
-          <h3>Humanitarian<br>Crisis Response</h3>
-          <p>Civilian harm, disasters, displacement, food insecurity, humanitarian access, and quantitative support for crisis anticipation and response.</p>
-          <div class="home-tags">
-            <span class="home-tag">Civilian harm</span>
-            <span class="home-tag">Disasters</span>
-            <span class="home-tag">Forecasting</span>
-            <span class="home-tag">Response</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section reveal" id="selected-work">
-      <div class="section-header">
-        <div class="section-index">03 / Selected Work</div>
-        <div>
-          <h2>Research across methods and applications.</h2>
-          <p>Selected work is organized by research contribution rather than chronology. The tags show how each project fits the broader statistical program.</p>
+      <section class="as-section" id="anticipatory-questions" aria-labelledby="as-questions-title">
+        <div class="as-section-head">
+          <p class="as-index">03 / Open Questions</p>
+          <div><h2 id="as-questions-title">The questions<br><em>behind the program.</em></h2><p class="as-section-intro">A connected set of statistical problems, rather than a catalogue of application areas. Expand a question to see the methodological focus.</p></div>
         </div>
-      </div>
-
-      <div class="home-project-grid">
-        <a class="home-project-card" href="https://github.com/LystadJS/project-ai-governance-non-proliferation" target="_blank" rel="noopener noreferrer">
-          <span class="home-project-arrow" aria-hidden="true">↗</span>
-          <p class="home-project-type">Applied Emerging-Technology Research</p>
-          <h3>Artificial Intelligence Non-Proliferation at the United Nations</h3>
-          <p>Analysis of AI diffusion, governance, and institutional pathways across the UN and multilateral ecosystem.</p>
-          <div class="home-tags">
-            <span class="home-tag">Statistical learning</span>
-            <span class="home-tag">Forecasting</span>
-            <span class="home-tag">Networks</span>
-            <span class="home-tag">Emerging risks</span>
-          </div>
-        </a>
-
-        <a class="home-project-card" href="https://github.com/LystadJS/counterterrorism_ethnosectarian_islamic_state" target="_blank" rel="noopener noreferrer">
-          <span class="home-project-arrow" aria-hidden="true">↗</span>
-          <p class="home-project-type">Academic Research</p>
-          <h3>The Caliphate’s Target Map</h3>
-          <p>Research on ethnosectarian composition and insurgent violence in Iraq, using quantitative and relational approaches.</p>
-          <div class="home-tags">
-            <span class="home-tag">Statistical learning</span>
-            <span class="home-tag">Networks</span>
-            <span class="home-tag">Counterterrorism</span>
-          </div>
-        </a>
-
-        <a class="home-project-card" href="research.html#paper-estimating-lethality">
-          <span class="home-project-arrow" aria-hidden="true">→</span>
-          <p class="home-project-type">Academic Research</p>
-          <h3>Estimating Lethality Under Missing Casualty Data</h3>
-          <p>Analysis of Islamic State-linked terrorist attacks under incomplete casualty records, with missingness treated as part of the inferential problem.</p>
-          <div class="home-tags">
-            <span class="home-tag">Missing data</span>
-            <span class="home-tag">PCA</span>
-            <span class="home-tag">Risk analysis</span>
-            <span class="home-tag">Counterterrorism</span>
-          </div>
-        </a>
-
-        <a class="home-project-card" href="research.html#project-himalayan-flood">
-          <span class="home-project-arrow" aria-hidden="true">→</span>
-          <p class="home-project-type">Applied Humanitarian Analysis</p>
-          <h3>Himalayan Flood Response</h3>
-          <p>Quantitative analysis of humanitarian access and response effectiveness along the Nepalese-Chinese border.</p>
-          <div class="home-tags">
-            <span class="home-tag">Forecasting</span>
-            <span class="home-tag">Dynamic modeling</span>
-            <span class="home-tag">Humanitarian response</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section reveal" id="methods">
-      <div class="section-header">
-        <div class="section-index">04 / Methods &amp; Software</div>
-        <div>
-          <h2>Four methodological areas.</h2>
-          <p>The categories describe how I approach problems; application domains describe where those methods are used.</p>
+        <div class="as-questions">
+          <details><summary><span class="as-question-number">01</span><span>Can we detect danger before a crisis has a label?</span></summary><p>Study how latent-variable models and unsupervised learning can identify candidate warning signals, then test whether those signals anticipate meaningful outcomes.</p></details>
+          <details><summary><span class="as-question-number">02</span><span>When is apparent structural change real?</span></summary><p>Separate changes in the underlying system from sampling variation, measurement error, and movement introduced by the representation itself.</p></details>
+          <details><summary><span class="as-question-number">03</span><span>Which local failures can become wider cascades?</span></summary><p>Investigate how network structure, dependencies, and changing relationships shape potential pathways from localized disruption to broader harm.</p></details>
+          <details><summary><span class="as-question-number">04</span><span>How much warning is enough to act?</span></summary><p>Connect forecast horizons to feasible response times, balancing missed events, false alarms, uncertainty, and the cost of intervention.</p></details>
+          <details><summary><span class="as-question-number">05</span><span>Which intervention changes the outcome?</span></summary><p>Use causal designs and explicit assumptions to compare possible actions, distinguish intervention effects from selection, and identify where evidence is insufficient.</p></details>
+          <details><summary><span class="as-question-number">06</span><span>How should decisions change once a crisis begins?</span></summary><p>Develop ways to update estimates and evaluate responses as conditions shift and incomplete or delayed evidence becomes available.</p></details>
         </div>
-      </div>
+      </section>
 
-      <div class="home-method-grid">
-        <a class="home-method-card" href="https://github.com/LystadJS/Unsupervised-Machine-Learning" target="_blank" rel="noopener noreferrer">
-          <p class="home-method-kicker">Method 01</p>
-          <h3>Statistical Learning &amp; Unsupervised Learning</h3>
-          <p>Clustering, dimensionality reduction, mixture models, latent structure, and anomaly detection.</p>
-        </a>
+      <section class="as-section" id="anticipatory-cycle" aria-labelledby="as-cycle-title">
+        <div class="as-section-head">
+          <p class="as-index">04 / Analysis Cycle</p>
+          <div><h2 id="as-cycle-title">Anticipation is a loop.<br><em>Not a one-off prediction.</em></h2><p class="as-section-intro">Select a stage to inspect the task and the question that keeps the inference accountable.</p></div>
+        </div>
+        <div class="as-cycle">
+          <ol class="as-cycle-controls" aria-label="Explore the analysis cycle">
+            <li><button type="button" data-as-stage="observe" aria-controls="as-cycle-observe" disabled><span>01</span>Observe</button></li>
+            <li><button type="button" data-as-stage="infer" aria-controls="as-cycle-infer" disabled><span>02</span>Infer state</button></li>
+            <li><button type="button" data-as-stage="forecast" aria-controls="as-cycle-forecast" disabled><span>03</span>Forecast</button></li>
+            <li><button type="button" data-as-stage="compare" aria-controls="as-cycle-compare" disabled><span>04</span>Compare actions</button></li>
+            <li><button type="button" data-as-stage="update" aria-controls="as-cycle-update" disabled><span>05</span>Update</button></li>
+          </ol>
+          <p class="as-cycle-return"><span aria-hidden="true">↶</span> New evidence returns to observation. Decisions and outcomes inform the next cycle.</p>
+          <div class="as-cycle-panels">
+            <article id="as-cycle-observe" class="as-cycle-panel"><div><p class="as-overline">01 / Observe</p><h3>Establish what is actually observed.</h3><p>Assemble indicators, document their provenance, and examine missingness, delay, and changes in measurement.</p></div><aside><span>Inferential check</span><p>Are we measuring a change in the system—or a change in how it is recorded?</p></aside></article>
+            <article id="as-cycle-infer" class="as-cycle-panel"><div><p class="as-overline">02 / Infer state</p><h3>Recover structure without treating it as ground truth.</h3><p>Estimate latent states, groups, and relationships, carrying uncertainty from the observations into the representation.</p></div><aside><span>Inferential check</span><p>Does the inferred structure survive alternative measurements, representations, and assumptions?</p></aside></article>
+            <article id="as-cycle-forecast" class="as-cycle-panel"><div><p class="as-overline">03 / Forecast</p><h3>Describe possible futures, with uncertainty.</h3><p>Estimate timing, location, and pathways of risk over a defined horizon; evaluate calibration and warning time on held-out periods.</p></div><aside><span>Inferential check</span><p>Would this warning have been available early enough to matter, using only evidence known at that time?</p></aside></article>
+            <article id="as-cycle-compare" class="as-cycle-panel"><div><p class="as-overline">04 / Compare actions</p><h3>Ask what an action could actually change.</h3><p>Compare feasible interventions using causal evidence, explicit assumptions, and the costs of action and inaction.</p></div><aside><span>Inferential check</span><p>What identifies the intervention effect, and could the action shift harm elsewhere?</p></aside></article>
+            <article id="as-cycle-update" class="as-cycle-panel"><div><p class="as-overline">05 / Update</p><h3>Revise the model as the situation changes.</h3><p>Incorporate new observations, check for drift, and evaluate whether the response is changing outcomes as intended.</p></div><aside><span>Inferential check</span><p>Has the system—or our intervention—changed the relationships on which the forecast depended?</p></aside></article>
+          </div>
+        </div>
+        <div class="as-distinction">
+          <h3>Prediction <span>≠</span> prevention.</h3>
+          <div><p>A forecast asks <strong>what is likely to happen.</strong> Causal evaluation asks <strong>what would change under an intervention.</strong></p><p>My aim is to connect these questions without treating predictive accuracy as proof of preventive effectiveness.</p></div>
+        </div>
+      </section>
 
-        <a class="home-method-card" href="research.html">
-          <p class="home-method-kicker">Method 02</p>
-          <h3>Statistical Forecasting &amp; Risk Analysis</h3>
-          <p>Probabilistic forecasting, early warning, event-history models, Bayesian updating, and uncertainty.</p>
-        </a>
+      <section class="as-section" id="anticipatory-failure-modes" aria-labelledby="as-failure-title">
+        <div class="as-section-head">
+          <p class="as-index">05 / Failure Modes</p>
+          <div><h2 id="as-failure-title">What would make<br><em>the warning wrong?</em></h2><p class="as-section-intro">The research standard: make uncertainty, failure, and the consequences of error part of the analysis.</p></div>
+        </div>
+        <div class="as-checks">
+          <article><span class="as-check-code">01 / Measurement</span><h3>The signal is not the phenomenon.</h3><p>Test whether missing data, reporting changes, or imperfect proxies create the apparent warning.</p></article>
+          <article><span class="as-check-code">02 / Model</span><h3>The pattern depends on the assumptions.</h3><p>Check sensitivity, misspecification, leakage, and performance outside the data used to build the model.</p></article>
+          <article><span class="as-check-code">03 / Shift</span><h3>The system no longer behaves the same way.</h3><p>Examine changing relationships, new conditions, and actors adapting to observation or intervention.</p></article>
+          <article><span class="as-check-code">04 / Action</span><h3>A correct warning can still lead to the wrong response.</h3><p>Evaluate feasibility, causal effects, unintended consequences, and who bears the cost of mistakes.</p></article>
+        </div>
+        <p class="as-error-note"><span>Evaluate both sides of error.</span> Missed catastrophes and false alarms both matter. So do the distribution of harm and the time available to respond.</p>
+      </section>
 
-        <a class="home-method-card" href="https://github.com/LystadJS/method-network-analysis" target="_blank" rel="noopener noreferrer">
-          <p class="home-method-kicker">Method 03</p>
-          <h3>Network &amp; Diffusion Analysis</h3>
-          <p>Communities, centrality, diffusion, influence, relational structure, and temporal networks.</p>
-        </a>
-
-        <a class="home-method-card" href="https://github.com/LystadJS/method-longitudinal-multilevel" target="_blank" rel="noopener noreferrer">
-          <p class="home-method-kicker">Method 04</p>
-          <h3>Longitudinal &amp; Dynamic Modeling</h3>
-          <p>Multilevel, panel, trajectory, repeated-measures, and evolving-system models.</p>
-        </a>
-      </div>
-    </section>
+      <section class="as-section as-method-section" id="anticipatory-methods" aria-labelledby="as-method-title">
+        <div class="as-section-head">
+          <p class="as-index">06 / Current Methods Problem</p>
+          <div><h2 id="as-method-title">When a map moves,<br><em>did the system change?</em></h2></div>
+        </div>
+        <div class="as-method-layout">
+          <div class="as-method-copy">
+            <p class="as-status">Methodological building block · In development</p>
+            <p>My current methods work examines how to compare repeated low-dimensional maps, distinguish coordinate changes from structural change, and carry uncertainty into that comparison.</p>
+            <p>For anticipatory analysis, this is a prior question: before interpreting movement as a warning, establish whether it reflects the system or the way the map was constructed.</p>
+            <div class="as-links"><a href="research.html">Research context <span aria-hidden="true">→</span></a><a href="code.html">Code &amp; development <span aria-hidden="true">→</span></a></div>
+          </div>
+          <figure class="as-alignment">
+            <div class="as-figure-bar"><span>Representation → comparison</span><span>Schematic</span></div>
+            <svg viewBox="0 0 580 270" role="img" aria-labelledby="as-align-title as-align-desc">
+              <title id="as-align-title">Comparing two representations after alignment</title>
+              <desc id="as-align-desc">Two small point configurations show a similar pattern with different orientations and one displaced point. An aligned overlay brings corresponding points together and highlights a remaining displacement to investigate. This is an illustration, not a result from the software.</desc>
+              <path class="as-grid-line" d="M25 182H167M34 73V190M202 182H344M211 73V190M379 182H555M388 73V190"/>
+              <text class="as-axis-label" x="98" y="43" text-anchor="middle">MAP AT t₁</text>
+              <text class="as-axis-label" x="274" y="43" text-anchor="middle">MAP AT t₂</text>
+              <text class="as-axis-label" x="468" y="43" text-anchor="middle">ALIGNED COMPARISON</text>
+              <g class="as-map-cloud as-cloud-one"><circle cx="61" cy="135" r="4"/><circle cx="81" cy="102" r="4"/><circle cx="102" cy="132" r="4"/><circle cx="82" cy="151" r="4"/><circle cx="115" cy="161" r="4"/><circle cx="139" cy="111" r="4"/></g>
+              <g class="as-map-cloud as-cloud-two" transform="rotate(-15 274 130)"><circle cx="237" cy="135" r="4"/><circle cx="257" cy="102" r="4"/><circle cx="278" cy="132" r="4"/><circle cx="258" cy="151" r="4"/><circle cx="291" cy="161" r="4"/><circle cx="342" cy="86" r="4"/></g>
+              <text class="as-diagram-arrow" x="183" y="136" text-anchor="middle">→</text><text class="as-diagram-arrow" x="362" y="136" text-anchor="middle">→</text>
+              <g class="as-map-cloud as-cloud-one"><circle cx="425" cy="135" r="4"/><circle cx="445" cy="102" r="4"/><circle cx="466" cy="132" r="4"/><circle cx="446" cy="151" r="4"/><circle cx="479" cy="161" r="4"/><circle cx="503" cy="111" r="4"/></g>
+              <g class="as-map-cloud as-cloud-overlay"><circle cx="425" cy="135" r="7"/><circle cx="445" cy="102" r="7"/><circle cx="466" cy="132" r="7"/><circle cx="446" cy="151" r="7"/><circle cx="479" cy="161" r="7"/><circle cx="530" cy="86" r="5"/></g>
+              <path class="as-residual" d="M508 107L525 90"/><ellipse class="as-uncertainty-ring" cx="530" cy="86" rx="16" ry="12"/>
+              <text class="as-axis-label" x="98" y="215" text-anchor="middle">STRUCTURE</text><text class="as-axis-label" x="274" y="215" text-anchor="middle">ORIENTATION</text><text class="as-axis-label" x="468" y="215" text-anchor="middle">RESIDUAL CHANGE?</text>
+              <text class="as-small-chart-note" x="290" y="252" text-anchor="middle">Align representations. Investigate change. Quantify uncertainty.</text>
+            </svg>
+            <figcaption>Illustration only; not a validation result or an early-warning model.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
 
     <section class="section reveal">
       <div class="contact-panel">
-        <p class="eyebrow">05 / Correspondence</p>
-        <h2>Research, methods, policy concerns, or collaboration.</h2>
-        <p>I am currently preparing for PhD applications in computational statistics and welcome substantive conversations around overlapping questions.</p>
+        <p class="eyebrow">07 / Correspondence</p>
+        <h2>Methods, anticipation, and collaboration.</h2>
+        <p>I welcome conversations about latent structure, dynamic systems, and statistical methods for anticipating and responding to severe risks.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="cv.html">CV</a>
           <a class="button button-secondary" href="mailto:jl17842@nyu.edu">NYU Email</a>

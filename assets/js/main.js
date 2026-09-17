@@ -1,4 +1,3 @@
-
 (() => {
   /* Consolidate the former Projects page into Research. */
   document.querySelectorAll('a[href*="projects.html"]').forEach(link => {
@@ -23,11 +22,6 @@
     const heading = link.querySelector("h3");
     if (heading && heading.textContent.trim() === "Projects") {
       heading.textContent = "Applied Research";
-    }
-
-    const kicker = link.querySelector(".card-kicker");
-    if (kicker && kicker.textContent.trim() === "Applied") {
-      kicker.textContent = "Applied";
     }
 
     const arrow = link.querySelector(".arrow");
@@ -72,8 +66,7 @@
     const heroProfile = document.querySelector(".hero-profile");
 
     if (heroProfile) {
-      /* Group the existing portrait, identity, and lede into the larger left side
-         of a Research-page-style hero layout. */
+      /* Keep the existing portrait, identity, and lede as the primary hero. */
       let heroMain = heroProfile.querySelector(".hero-main");
       if (!heroMain) {
         heroMain = document.createElement("div");
@@ -89,30 +82,68 @@
         });
       }
 
-      /* Distilled replacement for the former full-width 02 / Practice section. */
+      /* Three primary destinations, designed to echo the homepage research network. */
       if (!heroProfile.querySelector(".hero-practice-index")) {
         const practice = document.createElement("aside");
         practice.className = "hero-practice-index";
-        practice.setAttribute("aria-label", "Practice areas");
+        practice.setAttribute("aria-label", "Primary portfolio destinations");
         practice.innerHTML = `
-          <p class="hero-practice-kicker">02 / Practice</p>
-          <h2>One methodology.<br>Three bodies of work.</h2>
-          <p class="hero-practice-copy">Scholarship, applied analysis, and technical development are separated so each can be evaluated on its own terms.</p>
-          <nav class="hero-practice-links" aria-label="Practice links">
-            <a href="research.html#academic-research">
-              <span>Academic</span>
-              <strong>Research</strong>
-              <small>Studies · publications · methods</small>
+          <nav class="hero-practice-links" aria-label="Portfolio destinations">
+            <a href="research.html">
+              <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
+                <line class="mini-edge" x1="8" y1="10" x2="34" y2="25"></line>
+                <line class="mini-edge" x1="8" y1="40" x2="34" y2="25"></line>
+                <line class="mini-edge" x1="34" y1="25" x2="60" y2="10"></line>
+                <line class="mini-edge" x1="34" y1="25" x2="60" y2="40"></line>
+                <rect class="mini-method" x="3" y="5" width="10" height="10" rx="1"></rect>
+                <rect class="mini-method" x="3" y="35" width="10" height="10" rx="1"></rect>
+                <polygon class="mini-project" points="34,20 39,25 34,30 29,25"></polygon>
+                <circle class="mini-app" cx="60" cy="10" r="5"></circle>
+                <circle class="mini-app" cx="60" cy="40" r="5"></circle>
+              </svg>
+              <span class="hero-practice-card-copy">
+                <strong>Research &amp; Applied Work</strong>
+                <small>Methods · projects · human-security applications</small>
+              </span>
+              <span class="hero-practice-arrow" aria-hidden="true">→</span>
             </a>
-            <a href="research.html#applied-research">
-              <span>Applied</span>
-              <strong>Research</strong>
-              <small>Decision support · humanitarian analysis</small>
-            </a>
+
             <a href="code.html">
-              <span>Technical</span>
-              <strong>Code &amp; Development</strong>
-              <small>Software · reproducibility · tools</small>
+              <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
+                <line class="mini-edge" x1="8" y1="25" x2="27" y2="10"></line>
+                <line class="mini-edge" x1="8" y1="25" x2="27" y2="40"></line>
+                <line class="mini-edge" x1="27" y1="10" x2="46" y2="25"></line>
+                <line class="mini-edge" x1="27" y1="40" x2="46" y2="25"></line>
+                <line class="mini-edge" x1="46" y1="25" x2="61" y2="25"></line>
+                <rect class="mini-gold" x="3" y="20" width="10" height="10" rx="1"></rect>
+                <rect class="mini-method" x="22" y="5" width="10" height="10" rx="1"></rect>
+                <rect class="mini-method" x="22" y="35" width="10" height="10" rx="1"></rect>
+                <polygon class="mini-project" points="46,20 51,25 46,30 41,25"></polygon>
+                <rect class="mini-method" x="56" y="20" width="10" height="10" rx="1"></rect>
+              </svg>
+              <span class="hero-practice-card-copy">
+                <strong>Code &amp; Development</strong>
+                <small>R · software · reproducible analytical tools</small>
+              </span>
+              <span class="hero-practice-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="cv.html">
+              <svg class="hero-practice-icon" viewBox="0 0 68 50" aria-hidden="true">
+                <line class="mini-edge" x1="11" y1="7" x2="11" y2="43"></line>
+                <line class="mini-edge" x1="11" y1="15" x2="32" y2="15"></line>
+                <line class="mini-edge" x1="11" y1="28" x2="46" y2="28"></line>
+                <line class="mini-edge" x1="11" y1="41" x2="59" y2="41"></line>
+                <circle class="mini-gold" cx="11" cy="7" r="4"></circle>
+                <circle class="mini-method" cx="32" cy="15" r="4"></circle>
+                <circle class="mini-app" cx="46" cy="28" r="4"></circle>
+                <polygon class="mini-project" points="59,37 63,41 59,45 55,41"></polygon>
+              </svg>
+              <span class="hero-practice-card-copy">
+                <strong>Curriculum Vitae</strong>
+                <small>Education · research · experience · skills</small>
+              </span>
+              <span class="hero-practice-arrow" aria-hidden="true">→</span>
             </a>
           </nav>`;
         heroProfile.appendChild(practice);
@@ -203,8 +234,7 @@
       }
     }
 
-    /* Remove the former large 02 / Practice section after its compact hero
-       replacement has been installed. */
+    /* Remove any former full-width 02 / Practice section if present. */
     document.querySelectorAll(".section").forEach(section => {
       const index = section.querySelector(".section-index");
       if (index && index.textContent.trim() === "02 / Practice") {

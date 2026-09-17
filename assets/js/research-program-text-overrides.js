@@ -191,4 +191,32 @@
       summary: "Selected academic, applied, and decision-support projects linked to the methods and domains above."
     });
   }
+
+  // Homepage contact rail: add GitHub Gists immediately after GitHub.
+  window.addEventListener("DOMContentLoaded", () => {
+    const rail = document.querySelector(".hero-contact-rail");
+    if (!rail || rail.querySelector('[data-brand="gists"]')) return;
+
+    const githubLink = rail.querySelector('[data-brand="github"]');
+    if (!githubLink) return;
+
+    const gistLink = document.createElement("a");
+    gistLink.className = "hero-contact-link";
+    gistLink.href = "https://gist.github.com/LystadJS";
+    gistLink.dataset.brand = "gists";
+    gistLink.dataset.label = "GitHub Gists";
+    gistLink.setAttribute("aria-label", "GitHub Gists");
+    gistLink.title = "GitHub Gists";
+    gistLink.target = "_blank";
+    gistLink.rel = "noopener noreferrer";
+    gistLink.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="5" cy="7" r="1.2"></circle>
+        <circle cx="5" cy="12" r="1.2"></circle>
+        <circle cx="5" cy="17" r="1.2"></circle>
+        <path d="M9 7h10M9 12h10M9 17h7"></path>
+      </svg>`;
+
+    githubLink.insertAdjacentElement("afterend", gistLink);
+  });
 })();

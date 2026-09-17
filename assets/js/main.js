@@ -210,7 +210,10 @@
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="14" rx="1.5"></rect>
                 <path d="m4 7 8 6 8-6"></path>
-                <path d="M7.5 3.4h9"></path>
+                <!-- NYU torch badge -->
+                <rect x="14.1" y="13.1" width="8.7" height="8.7" rx="1.6" style="fill:#57068c;stroke:#0d0b10;stroke-width:.9"></rect>
+                <path d="M18.45 14.55c-.75.62-1.25 1.2-1.18 1.88.08.73.67 1.19 1.36 1.17.72-.03 1.25-.52 1.28-1.18.03-.63-.38-1.15-1.02-1.63.08.54-.18.92-.45 1.16-.03-.55-.18-.95.01-1.4Z" style="fill:#fff;stroke:none"></path>
+                <path d="M17.15 18.05h2.75M18.52 18.05v2.2M17.7 20.25h1.64" style="fill:none;stroke:#fff;stroke-width:.72;stroke-linecap:round"></path>
               </svg>`
           },
           {
@@ -222,7 +225,6 @@
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="14" rx="1.5"></rect>
                 <path d="m4 7 8 6 8-6"></path>
-                <circle cx="18.4" cy="17.2" r="2.1"></circle>
               </svg>`
           }
         ];

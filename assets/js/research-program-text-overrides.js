@@ -97,9 +97,9 @@
       bullets: ["Study diffusion, governance, early warning, and systemic risk before outcomes fully materialize."]
     },
     autonomous: {
-      title: "Technology & AI Governance",
-      summary: "Governance, diffusion, and risk surrounding advanced AI, autonomous systems, and enabling technologies.",
-      bullets: ["Technology governance is treated as a subdomain of catastrophic and emerging risk."]
+      title: "Emerging Technology and AI",
+      summary: "Emerging technologies, advanced AI, autonomous systems, and their diffusion, governance, and associated risks.",
+      bullets: ["Emerging technology and AI are treated as a subdomain of catastrophic and emerging risk."]
     },
     humansecurity: {
       title: "Systemic & Societal Risk",
@@ -123,7 +123,7 @@
     },
     proj_autonomous: {
       summary: "Proliferation and governance risks from increasingly accessible autonomous systems and enabling technologies.",
-      bullets: ["Applied research · Technology & AI governance"]
+      bullets: ["Applied research · Emerging technology and AI"]
     },
     proj_food: {
       summary: "Conflict-driven food insecurity, humanitarian access, civilian protection, and early warning.",
@@ -159,7 +159,7 @@
     counterextremism: ["Counterterrorism", "& Counterextremism"],
     humanitarian: ["Humanitarian", "Crisis Response"],
     ainonproliferation: ["Catastrophic &", "Emerging Risks"],
-    autonomous: ["Technology & AI", "Governance"],
+    autonomous: ["Emerging Technology", "and AI"],
     humansecurity: ["Systemic &", "Societal Risk"],
     climate: ["Climate &", "Environmental Risk"],
     massviolence: ["Civilian Harm", "& Mass Violence"]

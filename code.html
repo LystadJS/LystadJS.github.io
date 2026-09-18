@@ -15,6 +15,7 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
     <link href="assets/css/style.css" rel="stylesheet"/>
+    <link href="assets/css/driftmapr.css" rel="stylesheet"/>
   </head>
 <body data-page="code">
   <a class="skip-link" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
             <p>Statistical computing, software, and reproducible workflows built to support rigorous analysis, methodological development, and data-intensive research.</p>
               </div>
                 <aside class="page-index-card reveal">
-                  <div><span>In development</span><strong><i>driftmapR</i> R Library</strong></div>
+                  <div><span>In development</span><strong><a href="#driftmapr"><i>driftmapR</i> R Library <span aria-hidden="true">↓</span></a></strong></div>
                   <div><span>Code Environment</span><strong>R · Python · SQL · Stan</strong></div>
                   <div><span>Updated</span><strong>September 2026</strong></div>
                 </aside>
@@ -274,30 +275,64 @@
   </div>
 </section>
 
-<section class="code-page-section reveal">
-  <div class="code-section-label">02 | Highlights</div>
+<section class="code-page-section driftmapr-section" id="driftmapr" aria-labelledby="driftmapr-title">
+  <div class="code-section-label">02 | driftmapR</div>
   <div class="code-section-body">
-    <div class="code-section-heading">
-      <h2>Featured public repositories</h2>
-      <p>A curated selection of repositories demonstrating applied computational statistics, reproducible analytical workflows, and software development for research and decision support. Each project emphasizes not only implementation, but also methodological judgment, transparency, and the practical use of code under real-world data constraints.</p>
+    <header class="dm-header">
+      <p class="dm-status">R package · In development</p>
+      <h2 id="driftmapr-title"><i>driftmapR</i></h2>
+      <p class="dm-lede">Comparing repeated representations. Investigating change.</p>
+      <p class="dm-intro">driftmapR is my R-package development project for comparing repeated low-dimensional maps. The work examines how to distinguish coordinate changes from structural change and carry uncertainty into that comparison.</p>
+    </header>
+
+    <div class="dm-problem">
+      <h3>When a map moves,<br><em>did the system change?</em></h3>
+      <div>
+        <p>A map can rotate or shift without the underlying system changing. Alignment addresses that ambiguity; it does not, on its own, establish substantive change.</p>
+        <p>For anticipatory analysis, this is a prior question: before interpreting movement as a warning, establish whether it reflects the system or the way the map was constructed.</p>
+      </div>
     </div>
 
-    <div class="work-grid">
-      <article class="work-card">
-        <p class="card-kicker">01 | <i>R</i>&amp; Python </p>
-        <h3></h3>
-        <p></p>
-        <div class="meta"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Applied Project</span></div>
-        <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
-      </article>
-
-      <article class="work-card">
-        <p class="card-kicker">02 | <i>R</i> Package</p>
-        <h3><i>driftmapR</i></h3>
-        <p>U.</p>
-        <div class="meta"><span class="tag">R</span><span class="tag">Development</span></div>
-        <div class="work-links"><span class="placeholder-link">Add repository URL</span></div>
-      </article>
+    <figure class="dm-alignment">
+      <div class="dm-figure-bar"><span>Representation → comparison</span><span>Illustrative geometry</span></div>
+      <svg class="dm-diagram-wide" viewBox="0 0 580 270" role="img" aria-labelledby="driftmapr-align-title driftmapr-align-desc">
+              <title id="driftmapr-align-title">Comparing two representations after alignment</title>
+              <desc id="driftmapr-align-desc">Two small point configurations show a similar pattern with different orientations and one displaced point. An aligned overlay brings corresponding points together and highlights a remaining displacement to investigate. This is an illustration, not a result from the software.</desc>
+              <path class="as-grid-line" d="M25 182H167M34 73V190M202 182H344M211 73V190M379 182H555M388 73V190"/>
+              <text class="as-axis-label" x="98" y="43" text-anchor="middle">MAP AT t₁</text>
+              <text class="as-axis-label" x="274" y="43" text-anchor="middle">MAP AT t₂</text>
+              <text class="as-axis-label" x="468" y="43" text-anchor="middle">ALIGNED COMPARISON</text>
+              <g class="as-map-cloud as-cloud-one"><circle cx="61" cy="135" r="4"/><circle cx="81" cy="102" r="4"/><circle cx="102" cy="132" r="4"/><circle cx="82" cy="151" r="4"/><circle cx="115" cy="161" r="4"/><circle cx="139" cy="111" r="4"/></g>
+              <g class="as-map-cloud as-cloud-two" transform="rotate(-15 274 130)"><circle cx="237" cy="135" r="4"/><circle cx="257" cy="102" r="4"/><circle cx="278" cy="132" r="4"/><circle cx="258" cy="151" r="4"/><circle cx="291" cy="161" r="4"/><circle cx="342" cy="86" r="4"/></g>
+              <text class="as-diagram-arrow" x="183" y="136" text-anchor="middle">→</text><text class="as-diagram-arrow" x="362" y="136" text-anchor="middle">→</text>
+              <g class="as-map-cloud as-cloud-one"><circle cx="425" cy="135" r="4"/><circle cx="445" cy="102" r="4"/><circle cx="466" cy="132" r="4"/><circle cx="446" cy="151" r="4"/><circle cx="479" cy="161" r="4"/><circle cx="503" cy="111" r="4"/></g>
+              <g class="as-map-cloud as-cloud-overlay"><circle cx="425" cy="135" r="7"/><circle cx="445" cy="102" r="7"/><circle cx="466" cy="132" r="7"/><circle cx="446" cy="151" r="7"/><circle cx="479" cy="161" r="7"/><circle cx="530" cy="86" r="5"/></g>
+              <path class="as-residual" d="M508 107L525 90"/><ellipse class="as-uncertainty-ring" cx="530" cy="86" rx="16" ry="12"/>
+              <text class="as-axis-label" x="98" y="215" text-anchor="middle">STRUCTURE</text><text class="as-axis-label" x="274" y="215" text-anchor="middle">ORIENTATION</text><text class="as-axis-label" x="468" y="215" text-anchor="middle">RESIDUAL CHANGE?</text>
+              <text class="as-small-chart-note" x="290" y="252" text-anchor="middle">Align representations. Investigate change. Quantify uncertainty.</text>
+            </svg>
+      <div class="dm-diagram-mobile">
+        <svg viewBox="8 22 176 210" role="img" aria-label="MAP AT t₁: structure">
+  <text class="as-axis-label" x="96" y="43" text-anchor="middle">MAP AT t₁</text>
+  <g class="as-map-cloud as-cloud-one"><circle cx="61" cy="135" r="4"></circle><circle cx="81" cy="102" r="4"></circle><circle cx="102" cy="132" r="4"></circle><circle cx="82" cy="151" r="4"></circle><circle cx="115" cy="161" r="4"></circle><circle cx="139" cy="111" r="4"></circle></g>
+  <text class="as-axis-label" x="96" y="215" text-anchor="middle">STRUCTURE</text>
+</svg>
+<svg viewBox="190 22 168 210" role="img" aria-label="MAP AT t₂: orientation">
+  <text class="as-axis-label" x="274" y="43" text-anchor="middle">MAP AT t₂</text>
+  <g class="as-map-cloud as-cloud-two" transform="rotate(-15 274 130)"><circle cx="237" cy="135" r="4"></circle><circle cx="257" cy="102" r="4"></circle><circle cx="278" cy="132" r="4"></circle><circle cx="258" cy="151" r="4"></circle><circle cx="291" cy="161" r="4"></circle><circle cx="342" cy="86" r="4"></circle></g>
+  <text class="as-axis-label" x="274" y="215" text-anchor="middle">ORIENTATION</text>
+</svg>
+<svg viewBox="374 22 186 210" role="img" aria-label="ALIGNED COMPARISON: residual change?">
+  <text class="as-axis-label" x="467" y="43" text-anchor="middle">ALIGNED COMPARISON</text>
+  <g class="as-map-cloud as-cloud-one"><circle cx="425" cy="135" r="4"></circle><circle cx="445" cy="102" r="4"></circle><circle cx="466" cy="132" r="4"></circle><circle cx="446" cy="151" r="4"></circle><circle cx="479" cy="161" r="4"></circle><circle cx="503" cy="111" r="4"></circle></g><g class="as-map-cloud as-cloud-overlay"><circle cx="425" cy="135" r="7"></circle><circle cx="445" cy="102" r="7"></circle><circle cx="466" cy="132" r="7"></circle><circle cx="446" cy="151" r="7"></circle><circle cx="479" cy="161" r="7"></circle><circle cx="530" cy="86" r="5"></circle></g><path class="as-residual" d="M508 107L525 90"></path><ellipse class="as-uncertainty-ring" cx="530" cy="86" rx="16" ry="12"></ellipse>
+  <text class="as-axis-label" x="467" y="215" text-anchor="middle">RESIDUAL CHANGE?</text>
+</svg>
+      </div>
+      <figcaption>Illustration only—not output from driftmapR, a validation result, or an early-warning model. The remaining displacement is a question to investigate, not proof of substantive change.</figcaption>
+    </figure>
+    <div class="dm-links">
+      <a href="research.html">Research context <span aria-hidden="true">→</span></a>
+      <a href="index.html#anticipatory-science">Anticipatory research <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

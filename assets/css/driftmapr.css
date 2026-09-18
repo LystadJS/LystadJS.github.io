@@ -1,0 +1,69 @@
+/* Code & Development only: the driftmapR methods section moved from the homepage. */
+body[data-page="code"] .driftmapr-section {
+  --dm-copy: #b6aab5;
+  --dm-muted: #a79aa8;
+  --dm-rule: rgba(145,132,147,.22);
+  display: grid;
+  grid-template-columns: 130px minmax(0,1fr);
+  gap: 2.2rem;
+  padding: 3.7rem 0;
+  border-bottom: 1px solid var(--line, #312632);
+  scroll-margin-top: 105px;
+}
+.driftmapr-section *, .driftmapr-section *::before, .driftmapr-section *::after { box-sizing: border-box; }
+.driftmapr-section .code-section-body { min-width: 0; }
+.driftmapr-section .code-section-label { padding-top: .2rem; color: var(--crimson-bright, #bf3152); font: .61rem/1.7 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.driftmapr-section .code-section-label::before { content: "§ "; color: #725b50; }
+.driftmapr-section .dm-header { max-width: 840px; margin-bottom: 2rem; }
+.driftmapr-section .dm-status { margin: 0 0 .65rem; color: #c5b48f; font: .62rem/1.7 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.driftmapr-section .dm-header h2 { margin: 0; color: var(--paper, #eee5d9); font: 600 clamp(2.8rem,4.4vw,4.2rem)/1.05 var(--serif); letter-spacing: -.035em; }
+.driftmapr-section .dm-lede { margin: .75rem 0 0; color: #d3c6d0; font: 500 clamp(1.2rem,1.8vw,1.5rem)/1.4 var(--serif); }
+.driftmapr-section .dm-intro { max-width: 790px; margin: .85rem 0 0; color: var(--dm-copy); font-size: .88rem; line-height: 1.75; }
+.driftmapr-section .dm-problem { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 2rem; padding-top: 1.8rem; margin-bottom: 1.8rem; border-top: 1px solid var(--dm-rule); }
+.driftmapr-section .dm-problem h3 { margin: 0; color: var(--paper, #eee5d9); font: 500 clamp(1.65rem,2.6vw,2.3rem)/1.1 var(--serif); letter-spacing: -.02em; }
+.driftmapr-section .dm-problem h3 em { color: #b8a3bb; font-weight: inherit; }
+.driftmapr-section .dm-problem p { margin: 0 0 .85rem; color: var(--dm-copy); font-size: .84rem; line-height: 1.75; }
+.driftmapr-section .dm-problem p:last-child { margin-bottom: 0; }
+.driftmapr-section .dm-alignment { margin: 0; overflow: hidden; border: 1px solid var(--line, #312632); background: radial-gradient(ellipse at 15% 20%, rgba(101,69,126,.07), transparent 55%), #0c0a0e; }
+.driftmapr-section .dm-figure-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; padding: .85rem 1.1rem; border-bottom: 1px solid var(--dm-rule); color: var(--dm-muted); font: .59rem/1.5 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.driftmapr-section .dm-figure-bar span:first-child { color: #c9bbc8; }
+.driftmapr-section .dm-alignment svg { display: block; width: 100%; height: auto; padding: .8rem .4rem; }
+.driftmapr-section .dm-diagram-wide { max-width: 900px; margin: 0 auto; }
+.driftmapr-section .dm-diagram-mobile { display: none; }
+.driftmapr-section .as-grid-line { fill: none; stroke: rgba(145,132,147,.16); stroke-width: 1; }
+.driftmapr-section .as-axis-label { fill: #b8aab8; font: 11px var(--mono); letter-spacing: .045em; }
+.driftmapr-section .as-map-cloud { stroke-width: 1.5; }
+.driftmapr-section .as-cloud-one { fill: #a4b9c9; stroke: #a4b9c9; }
+.driftmapr-section .as-cloud-two { fill: #0e0b11; stroke: #c893a5; }
+.driftmapr-section .as-cloud-overlay { fill: none; stroke: #c893a5; }
+.driftmapr-section .as-diagram-arrow { fill: #aa8fa7; font: 20px var(--mono); }
+.driftmapr-section .as-residual { fill: none; stroke: #d1bb90; stroke-width: 1.5; }
+.driftmapr-section .as-uncertainty-ring { fill: rgba(183,161,118,.065); stroke: #b7a176; stroke-width: 1; stroke-dasharray: 2 3; }
+.driftmapr-section .as-small-chart-note { fill: #b0a0b2; font: 11px var(--mono); }
+.driftmapr-section figcaption { padding: .85rem 1.1rem; border-top: 1px solid var(--dm-rule); color: var(--dm-muted); font-size: .73rem; line-height: 1.65; }
+.driftmapr-section .dm-links { display: flex; flex-wrap: wrap; gap: .9rem 1.4rem; margin-top: 1.25rem; }
+.driftmapr-section .dm-links a { display: inline-flex; align-items: center; justify-content: space-between; min-height: 44px; gap: 1rem; padding: .4rem 0; border-bottom: 1px solid #805169; color: #ded0dc; font: .66rem/1.5 var(--mono); }
+.driftmapr-section .dm-links a:hover { color: #fff; border-bottom-color: #bf3152; }
+.driftmapr-section a:focus-visible,
+body[data-page="code"] .page-index-card a[href="#driftmapr"]:focus-visible { outline: 2px solid #b9a5c9; outline-offset: 5px; }
+body[data-page="code"] .page-index-card a[href="#driftmapr"] { text-decoration: underline; text-decoration-color: #805169; text-underline-offset: .25em; }
+@media (max-width: 980px) {
+  .driftmapr-section .dm-problem { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 700px) {
+  body[data-page="code"] .driftmapr-section { grid-template-columns: 1fr; gap: 1.1rem; padding: 3rem 0; }
+  .driftmapr-section .dm-header { margin-bottom: 1.5rem; }
+  .driftmapr-section .dm-figure-bar { padding: .75rem .85rem; }
+}
+@media (max-width: 520px) {
+  .driftmapr-section .dm-alignment .dm-diagram-wide { display: none; }
+  .driftmapr-section .dm-diagram-mobile { display: grid; gap: 0; padding: 0 1rem; }
+  .driftmapr-section .dm-diagram-mobile svg { max-width: 240px; margin: 0 auto; padding: .5rem 0; }
+  .driftmapr-section .dm-diagram-mobile svg + svg { border-top: 1px solid var(--dm-rule); }
+  .driftmapr-section .dm-diagram-mobile .as-axis-label { font-size: 10px; }
+  .driftmapr-section figcaption { padding: .8rem .85rem; }
+}
+@media print {
+  body[data-page="code"] .driftmapr-section { display: block; --dm-copy: #333; --dm-muted: #444; }
+  .driftmapr-section .dm-alignment { break-inside: avoid; }
+}

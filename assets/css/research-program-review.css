@@ -27,3 +27,99 @@ body[data-page="index"] .hero-details{display:block;grid-template-columns:none;c
   width: 100%;
   gap: .72rem 1rem;
 }
+
+
+/* Full-width research-program network with contextual floating details. */
+.rpm-workspace {
+  position: relative;
+  display: block;
+  height: 640px;
+  min-height: 640px;
+}
+.rpm-map-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  border-right: 0;
+  border-bottom: 0;
+  overflow: hidden;
+}
+.rpm-detail.rpm-popover {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  width: min(390px, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  overflow: auto;
+  border: 1px solid rgba(121,99,120,.82);
+  background:
+    linear-gradient(145deg, rgba(101,69,126,.08), rgba(141,23,50,.035)),
+    rgba(13,10,15,.97);
+  box-shadow: 0 18px 50px rgba(0,0,0,.42);
+  backdrop-filter: blur(8px);
+}
+.rpm-detail.rpm-popover[hidden] {
+  display: none !important;
+}
+.rpm-section[data-rpm-side="right"] .rpm-popover {
+  right: 1rem;
+  left: auto;
+}
+.rpm-section[data-rpm-side="left"] .rpm-popover {
+  left: 1rem;
+  right: auto;
+}
+.rpm-popover-close {
+  position: absolute;
+  z-index: 2;
+  top: .48rem;
+  right: .58rem;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #958997;
+  font: 400 1.12rem/1 var(--mono);
+  cursor: pointer;
+}
+.rpm-popover-close:hover,
+.rpm-popover-close:focus-visible {
+  color: var(--paper);
+  outline: none;
+}
+.rpm-popover .rpm-detail-head {
+  padding-right: 2.8rem;
+}
+.rpm-detail-link {
+  display: inline-block;
+  margin-top: .7rem;
+  color: #bdaebe;
+  font-family: var(--mono);
+  font-size: .52rem;
+  letter-spacing: .045em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(191,49,82,.28);
+}
+.rpm-detail-link:hover,
+.rpm-detail-link:focus-visible {
+  color: var(--paper);
+  border-bottom-color: rgba(191,49,82,.72);
+  outline: none;
+}
+.rpm-map:not(.is-filtered) .rpm-network-node {
+  opacity: 1 !important;
+}
+@media (max-width: 720px) {
+  .rpm-workspace {
+    height: auto;
+    min-height: 0;
+  }
+  .rpm-map-wrap {
+    display: none;
+  }
+  .rpm-mobile {
+    display: block;
+  }
+}

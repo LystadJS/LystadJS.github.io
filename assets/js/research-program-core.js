@@ -21,6 +21,9 @@
   const plain = document.getElementById("rpm-detail-questions");
   const methods = document.getElementById("rpm-detail-methods");
   const projects = document.getElementById("rpm-detail-projects");
+  const popover = document.getElementById("rpm-popover");
+  const popoverClose = section.querySelector(".rpm-popover-close");
+  const detailLink = document.getElementById("rpm-detail-link");
   const mobile = section.querySelector(".rpm-mobile");
 
   const conceptRepoCache = new Map();
@@ -185,9 +188,21 @@
       block.hidden = true;
       projects.innerHTML = "";
     }
+
+    const directUrl = DATA[id]?.url || null;
+    if (detailLink && directUrl) {
+      detailLink.hidden = false;
+      detailLink.href = directUrl;
+      detailLink.textContent = DATA[id]?.kind === "project" ? "Open project ↗" : "Open repository ↗";
+    } else if (detailLink) {
+      detailLink.hidden = true;
+      detailLink.removeAttribute("href");
+    }
   }
 
   let locked = null;
+  let hovered = null;
+  let focused = null;
   let activeId = null;
   let relatedNodeIds = new Set();
   let activeEdges = new Set();
@@ -207,21 +222,17 @@
     map.classList.remove("is-filtered");
   }
 
-  function overview() {
+  function hidePopover() {
+    if (popover) popover.hidden = true;
+    delete section.dataset.rpmSide;
+  }
+
+  function neutral() {
     clearInteractiveState();
-    activeId = "center";
-    nodeById.get("center")?.classList.add("is-active");
-    renderDetail("center");
-    locked = null;
+    hidePopover();
   }
 
   function applyHighlight(id, transient = false) {
-    if (activeId === id && map.classList.contains("is-filtered")) {
-      renderDetail(id);
-      if (!transient) locked = id;
-      return;
-    }
-
     clearInteractiveState();
     map.classList.add("is-filtered");
     activeId = id;
@@ -241,50 +252,99 @@
     relatedClusters.forEach(cluster => haloByCluster.get(cluster)?.classList.add("is-related"));
 
     renderDetail(id);
+    if (popover) popover.hidden = false;
+
+    const x = LAYOUT[id]?.x ?? 490;
+    section.dataset.rpmSide = x < 490 ? "right" : "left";
     if (!transient) locked = id;
   }
 
-  function scheduleHighlight(id, transient = true) {
-    queued = { id, transient };
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
-      frame = 0;
-      const next = queued;
-      queued = null;
-      if (next) applyHighlight(next.id, next.transient);
+  function activeTarget() {
+    return hovered || focused || locked;
+  }
+
+  function renderState() {
+    const id = activeTarget();
+    if (id) applyHighlight(id, Boolean(hovered || focused));
+    else neutral();
+
+    nodeById.forEach((node, nodeId) => {
+      node.setAttribute("aria-pressed", String(nodeId === locked));
+      node.setAttribute("aria-expanded", String(Boolean(id && nodeId === id)));
     });
   }
 
-  function restore() {
-    if (frame) {
-      cancelAnimationFrame(frame);
+  function scheduleRender() {
+    if (frame) cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
       frame = 0;
-      queued = null;
-    }
-    if (locked) applyHighlight(locked, true);
-    else overview();
+      renderState();
+    });
+  }
+
+  function toggleLock(id) {
+    locked = locked === id ? null : id;
+    hovered = null;
+    focused = null;
+    renderState();
   }
 
   nodeById.forEach((node, id) => {
-    node.addEventListener("mouseenter", () => scheduleHighlight(id, true), { passive: true });
-    node.addEventListener("mouseleave", restore, { passive: true });
-    node.addEventListener("focus", () => scheduleHighlight(id, true));
-    node.addEventListener("blur", restore);
-    node.addEventListener("click", () => {
-      const d = DATA[id];
-      if (d.kind === "project" && d.url) {
-        window.open(d.url, "_blank", "noopener,noreferrer");
-        return;
-      }
-      if (id === "center" || locked === id) overview();
-      else applyHighlight(id, false);
+    node.setAttribute("aria-controls", "rpm-popover");
+    node.setAttribute("aria-pressed", "false");
+    node.setAttribute("aria-expanded", "false");
+
+    node.addEventListener("pointerenter", event => {
+      if (event.pointerType === "touch") return;
+      hovered = id;
+      scheduleRender();
+    }, { passive: true });
+
+    node.addEventListener("pointerleave", () => {
+      if (hovered === id) hovered = null;
+      scheduleRender();
+    }, { passive: true });
+
+    node.addEventListener("focus", () => {
+      focused = id;
+      scheduleRender();
     });
+
+    node.addEventListener("blur", event => {
+      if (popover?.contains(event.relatedTarget)) return;
+      if (focused === id) focused = null;
+      scheduleRender();
+    });
+
+    node.addEventListener("click", () => toggleLock(id));
+
     node.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        node.click();
+        toggleLock(id);
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        locked = null;
+        hovered = null;
+        focused = null;
+        renderState();
       }
     });
+  });
+
+  popoverClose?.addEventListener("click", () => {
+    locked = null;
+    hovered = null;
+    focused = null;
+    renderState();
+  });
+
+  section.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    locked = null;
+    hovered = null;
+    focused = null;
+    renderState();
   });
 
   function renderMobile() {
@@ -304,5 +364,5 @@
   });
 
   renderMobile();
-  overview();
+  neutral();
 })();

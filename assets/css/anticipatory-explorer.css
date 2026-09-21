@@ -309,3 +309,44 @@
   #anticipatory-direction .ae-layer { opacity: 1; }
   #anticipatory-direction .ae-interaction-hint { display: none !important; }
 }
+
+/* Minimal marginal label restored by design request. */
+#anticipatory-direction .ae-time-label {
+  fill: #8e828f;
+  font: 10px var(--mono, monospace);
+  letter-spacing: .045em;
+}
+@media (max-width: 700px) {
+  #anticipatory-direction .ae-time-label { font-size: 15px; }
+}
+
+/* Compact legend retained beneath the unified diagram. */
+#anticipatory-direction .ae-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem 1rem;
+  padding: .25rem .95rem .8rem;
+  color: #9f93a2;
+  font: 400 .56rem/1.55 var(--mono, monospace);
+}
+#anticipatory-direction .ae-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
+}
+#anticipatory-direction .ae-key {
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  border-top: 2px solid #d7ccd4;
+}
+#anticipatory-direction .ae-key-risk {
+  border-top: 2px dashed var(--ae-forecast);
+}
+#anticipatory-direction .ae-key-band {
+  width: 18px;
+  height: 8px;
+  border-top: 0;
+  border: 1px solid rgba(190,163,207,.32);
+  background: rgba(190,163,207,.12);
+}

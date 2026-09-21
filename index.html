@@ -33,7 +33,6 @@
   <script defer src="assets/js/research-program-text-overrides.js"></script>
   <script defer src="assets/js/research-program-core.js?v=popover-1"></script>
   <script defer src="assets/js/main.js"></script>
-  <script defer src="assets/js/homepage-anticipatory.js"></script>
   <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
 </head>
 <body data-page="index">
@@ -322,52 +321,9 @@
   </div>
 </section>
 
-      <section class="as-section" id="anticipatory-questions" aria-labelledby="as-questions-title">
-        <div class="as-section-head">
-          <p class="as-index">03 / Open Questions</p>
-          <div><h2 id="as-questions-title">The questions<br><em>behind the program.</em></h2><p class="as-section-intro">A connected set of statistical problems, rather than a catalogue of application areas. Expand a question to see the methodological focus.</p></div>
-        </div>
-        <div class="as-questions">
-          <details><summary><span class="as-question-number">01</span><span>Can we detect danger before a crisis has a label?</span></summary><p>Study how latent-variable models and unsupervised learning can identify candidate warning signals, then test whether those signals anticipate meaningful outcomes.</p></details>
-          <details><summary><span class="as-question-number">02</span><span>When is apparent structural change real?</span></summary><p>Separate changes in the underlying system from sampling variation, measurement error, and movement introduced by the representation itself.</p></details>
-          <details><summary><span class="as-question-number">03</span><span>Which local failures can become wider cascades?</span></summary><p>Investigate how network structure, dependencies, and changing relationships shape potential pathways from localized disruption to broader harm.</p></details>
-          <details><summary><span class="as-question-number">04</span><span>How much warning is enough to act?</span></summary><p>Connect forecast horizons to feasible response times, balancing missed events, false alarms, uncertainty, and the cost of intervention.</p></details>
-          <details><summary><span class="as-question-number">05</span><span>Which intervention changes the outcome?</span></summary><p>Use causal designs and explicit assumptions to compare possible actions, distinguish intervention effects from selection, and identify where evidence is insufficient.</p></details>
-          <details><summary><span class="as-question-number">06</span><span>How should decisions change once a crisis begins?</span></summary><p>Develop ways to update estimates and evaluate responses as conditions shift and incomplete or delayed evidence becomes available.</p></details>
-        </div>
-      </section>
-
-      <section class="as-section" id="anticipatory-cycle" aria-labelledby="as-cycle-title">
-        <div class="as-section-head">
-          <p class="as-index">04 / Analysis Cycle</p>
-          <div><h2 id="as-cycle-title">Anticipation is a loop.<br><em>Not a one-off prediction.</em></h2><p class="as-section-intro">Select a stage to inspect the task and the question that keeps the inference accountable.</p></div>
-        </div>
-        <div class="as-cycle">
-          <ol class="as-cycle-controls" aria-label="Explore the analysis cycle">
-            <li><button type="button" data-as-stage="observe" aria-controls="as-cycle-observe" disabled><span>01</span>Observe</button></li>
-            <li><button type="button" data-as-stage="infer" aria-controls="as-cycle-infer" disabled><span>02</span>Infer state</button></li>
-            <li><button type="button" data-as-stage="forecast" aria-controls="as-cycle-forecast" disabled><span>03</span>Forecast</button></li>
-            <li><button type="button" data-as-stage="compare" aria-controls="as-cycle-compare" disabled><span>04</span>Compare actions</button></li>
-            <li><button type="button" data-as-stage="update" aria-controls="as-cycle-update" disabled><span>05</span>Update</button></li>
-          </ol>
-          <p class="as-cycle-return"><span aria-hidden="true">↶</span> New evidence returns to observation. Decisions and outcomes inform the next cycle.</p>
-          <div class="as-cycle-panels">
-            <article id="as-cycle-observe" class="as-cycle-panel"><div><p class="as-overline">01 / Observe</p><h3>Establish what is actually observed.</h3><p>Assemble indicators, document their provenance, and examine missingness, delay, and changes in measurement.</p></div><aside><span>Inferential check</span><p>Are we measuring a change in the system—or a change in how it is recorded?</p></aside></article>
-            <article id="as-cycle-infer" class="as-cycle-panel"><div><p class="as-overline">02 / Infer state</p><h3>Recover structure without treating it as ground truth.</h3><p>Estimate latent states, groups, and relationships, carrying uncertainty from the observations into the representation.</p></div><aside><span>Inferential check</span><p>Does the inferred structure survive alternative measurements, representations, and assumptions?</p></aside></article>
-            <article id="as-cycle-forecast" class="as-cycle-panel"><div><p class="as-overline">03 / Forecast</p><h3>Describe possible futures, with uncertainty.</h3><p>Estimate timing, location, and pathways of risk over a defined horizon; evaluate calibration and warning time on held-out periods.</p></div><aside><span>Inferential check</span><p>Would this warning have been available early enough to matter, using only evidence known at that time?</p></aside></article>
-            <article id="as-cycle-compare" class="as-cycle-panel"><div><p class="as-overline">04 / Compare actions</p><h3>Ask what an action could actually change.</h3><p>Compare feasible interventions using causal evidence, explicit assumptions, and the costs of action and inaction.</p></div><aside><span>Inferential check</span><p>What identifies the intervention effect, and could the action shift harm elsewhere?</p></aside></article>
-            <article id="as-cycle-update" class="as-cycle-panel"><div><p class="as-overline">05 / Update</p><h3>Revise the model as the situation changes.</h3><p>Incorporate new observations, check for drift, and evaluate whether the response is changing outcomes as intended.</p></div><aside><span>Inferential check</span><p>Has the system—or our intervention—changed the relationships on which the forecast depended?</p></aside></article>
-          </div>
-        </div>
-        <div class="as-distinction">
-          <h3>Prediction <span>≠</span> prevention.</h3>
-          <div><p>A forecast asks <strong>what is likely to happen.</strong> Causal evaluation asks <strong>what would change under an intervention.</strong></p><p>My aim is to connect these questions without treating predictive accuracy as proof of preventive effectiveness.</p></div>
-        </div>
-      </section>
-
       <section class="as-section" id="anticipatory-failure-modes" aria-labelledby="as-failure-title">
         <div class="as-section-head">
-          <p class="as-index">05 / Failure Modes</p>
+          <p class="as-index">03 / Failure Modes</p>
           <div><h2 id="as-failure-title">What would make<br><em>the warning wrong?</em></h2><p class="as-section-intro">The research standard: make uncertainty, failure, and the consequences of error part of the analysis.</p></div>
         </div>
         <div class="as-checks">
@@ -383,7 +339,7 @@
 
     <section class="section reveal">
       <div class="contact-panel">
-        <p class="eyebrow">06 / Correspondence</p>
+        <p class="eyebrow">04 / Correspondence</p>
         <h2>Methods, anticipation, and collaboration.</h2>
         <p>I welcome conversations about latent structure, dynamic systems, and statistical methods for anticipating and responding to severe risks.</p>
         <div class="hero-actions">

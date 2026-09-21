@@ -186,11 +186,11 @@ body[data-page="index"] .anticipatory-home {
 }
 
 
-/* Final short-homepage rhythm: Research Direction -> Correspondence. */
+/* Final short-homepage rhythm: Research Direction -> Research Program -> Correspondence. */
 #anticipatory-direction {
   padding-bottom: clamp(2.55rem, 3.8vw, 3.45rem);
 }
-body[data-page="index"] .anticipatory-home + .section {
+body[data-page="index"] #correspondence {
   padding-top: clamp(2.65rem, 4vw, 3.75rem);
   padding-bottom: clamp(3.8rem, 5.6vw, 5rem);
 }
@@ -198,7 +198,7 @@ body[data-page="index"] .anticipatory-home + .section {
   #anticipatory-direction {
     padding-bottom: 2.35rem;
   }
-  body[data-page="index"] .anticipatory-home + .section {
+  body[data-page="index"] #correspondence {
     padding-top: 2.65rem;
     padding-bottom: 3.5rem;
   }

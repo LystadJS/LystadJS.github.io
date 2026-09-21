@@ -1,43 +1,61 @@
-/* One persistent SVG. Hover/focus previews; click/Enter/Space pins. No data or network calls. */
+/* Full-width Section 02. Hover/focus previews; click/tap pins a floating popover. */
 (() => {
   "use strict";
   const root = document.getElementById("anticipatory-direction");
   if (!root || root.classList.contains("is-enhanced")) return;
+
   const order = ["detect", "forecast", "intervene", "adapt"];
   const hotspots = Array.from(root.querySelectorAll(".ae-hotspot[data-ae-stage]"));
   const regions = Array.from(root.querySelectorAll(".ae-layer[data-ae-region]"));
   const panels = Array.from(root.querySelectorAll(".ae-panel[data-ae-panel]"));
-  const status = root.querySelector("#ae-info-status");
-  const diagram = root.querySelector(".ae-diagram");
-  // Keep all static explanations readable if the document is incomplete.
-  if (!status || !diagram || hotspots.length !== 4 || regions.length !== 4 || panels.length !== 4 ||
+  const popover = root.querySelector("#ae-popover");
+  const close = root.querySelector(".ae-popover-close");
+
+  if (!popover || !close || hotspots.length !== 4 || regions.length !== 4 || panels.length !== 4 ||
       order.some(key => hotspots.filter(n => n.dataset.aeStage === key).length !== 1 ||
         regions.filter(n => n.dataset.aeRegion === key).length !== 1 ||
         panels.filter(n => n.dataset.aePanel === key).length !== 1)) return;
 
-  const labels = { detect: "Detect", forecast: "Forecast", intervene: "Intervene", adapt: "Adapt" };
-  let pinned = order.includes(root.dataset.pinnedStage) ? root.dataset.pinnedStage : "detect";
+  let pinned = null;
   let hovered = null;
   let focused = null;
+
   const render = () => {
     const active = hovered || focused || pinned;
-    root.dataset.activeStage = active;
-    root.dataset.pinnedStage = pinned;
-    panels.forEach(panel => { panel.hidden = panel.dataset.aePanel !== active; });
-    hotspots.forEach(node => {
-      // aria-pressed describes the pinned choice, not a temporary hover preview.
-      node.setAttribute("aria-pressed", String(node.dataset.aeStage === pinned));
+
+    if (active) root.dataset.activeStage = active;
+    else delete root.dataset.activeStage;
+
+    if (pinned) root.dataset.pinnedStage = pinned;
+    else delete root.dataset.pinnedStage;
+
+    popover.hidden = !active;
+    panels.forEach(panel => {
+      panel.hidden = !active || panel.dataset.aePanel !== active;
     });
-    const text = active === pinned ? `Pinned · ${labels[pinned]}` : `Preview · ${labels[active]} · click to pin`;
-    if (status.textContent !== text) status.textContent = text;
+
+    hotspots.forEach(node => {
+      const isPinned = node.dataset.aeStage === pinned;
+      node.setAttribute("aria-pressed", String(isPinned));
+      node.setAttribute("aria-expanded", String(Boolean(active && node.dataset.aeStage === active)));
+    });
   };
-  const pin = stage => {
-    pinned = stage;
+
+  const clearAll = () => {
+    pinned = null;
     hovered = null;
     focused = null;
     render();
   };
-  const previewTarget = (node, stage) => {
+
+  const togglePin = stage => {
+    pinned = pinned === stage ? null : stage;
+    hovered = null;
+    focused = null;
+    render();
+  };
+
+  const bindPreview = (node, stage) => {
     node.addEventListener("pointerenter", event => {
       if (event.pointerType === "touch") return;
       hovered = stage;
@@ -47,27 +65,36 @@
       if (hovered === stage) hovered = null;
       render();
     });
-    node.addEventListener("click", () => pin(stage));
+    node.addEventListener("click", () => togglePin(stage));
   };
+
   hotspots.forEach((node, index) => {
     const stage = node.dataset.aeStage;
     node.setAttribute("role", "button");
     node.setAttribute("tabindex", "0");
-    node.setAttribute("aria-controls", "ae-info");
-    previewTarget(node, stage);
-    node.addEventListener("focus", () => { focused = stage; render(); });
-    node.addEventListener("blur", () => { if (focused === stage) focused = null; render(); });
+    node.setAttribute("aria-controls", "ae-popover");
+    node.setAttribute("aria-expanded", "false");
+
+    bindPreview(node, stage);
+
+    node.addEventListener("focus", () => {
+      focused = stage;
+      render();
+    });
+    node.addEventListener("blur", event => {
+      if (popover.contains(event.relatedTarget)) return;
+      if (focused === stage) focused = null;
+      render();
+    });
     node.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        pin(stage);
+        togglePin(stage);
         return;
       }
       if (event.key === "Escape") {
         event.preventDefault();
-        hovered = null;
-        focused = null;
-        render();
+        clearAll();
         return;
       }
       let next;
@@ -76,13 +103,27 @@
       else if (event.key === "Home") next = 0;
       else if (event.key === "End") next = hotspots.length - 1;
       else return;
+
       event.preventDefault();
       hovered = null;
       hotspots[next].focus({ preventScroll: true });
     });
   });
-  regions.forEach(node => previewTarget(node, node.dataset.aeRegion));
-  diagram.addEventListener("pointerleave", () => { hovered = null; render(); });
+
+  regions.forEach(node => bindPreview(node, node.dataset.aeRegion));
+
+  close.addEventListener("click", clearAll);
+  close.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      clearAll();
+    }
+  });
+
+  root.addEventListener("keydown", event => {
+    if (event.key === "Escape") clearAll();
+  });
+
   render();
   root.classList.add("is-enhanced");
 })();

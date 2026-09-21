@@ -186,31 +186,20 @@ body[data-page="index"] .anticipatory-home {
 }
 
 
-/* Short-homepage rhythm after removal of former Sections 03 and 04. */
+/* Final short-homepage rhythm: Research Direction -> Correspondence. */
 #anticipatory-direction {
-  padding-bottom: clamp(2.8rem, 4.2vw, 3.9rem);
-}
-#anticipatory-failure-modes {
-  padding-top: clamp(3rem, 4.6vw, 4.1rem);
-  padding-bottom: clamp(3.4rem, 5vw, 4.6rem);
-}
-#anticipatory-failure-modes .as-section-head {
-  margin-bottom: clamp(1.6rem, 2.6vw, 2rem);
+  padding-bottom: clamp(2.55rem, 3.8vw, 3.45rem);
 }
 body[data-page="index"] .anticipatory-home + .section {
-  padding-top: clamp(3.4rem, 5vw, 4.8rem);
-  padding-bottom: clamp(4rem, 6vw, 5.6rem);
+  padding-top: clamp(2.65rem, 4vw, 3.75rem);
+  padding-bottom: clamp(3.8rem, 5.6vw, 5rem);
 }
 @media (max-width: 700px) {
   #anticipatory-direction {
-    padding-bottom: 2.6rem;
-  }
-  #anticipatory-failure-modes {
-    padding-top: 2.7rem;
-    padding-bottom: 3.1rem;
+    padding-bottom: 2.35rem;
   }
   body[data-page="index"] .anticipatory-home + .section {
-    padding-top: 3rem;
-    padding-bottom: 3.8rem;
+    padding-top: 2.65rem;
+    padding-bottom: 3.5rem;
   }
 }

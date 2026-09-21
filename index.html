@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
   <link rel="stylesheet" href="assets/css/homepage-research.css">
   <link rel="stylesheet" href="assets/css/homepage-anticipatory.css">
+  <link rel="stylesheet" href="assets/css/anticipatory-explorer.css">
   <style>
     .rpm-map-wrap{contain:layout paint;}
     .rpm-map.is-filtered .rpm-network-node:not(.is-active):not(.is-related){opacity:.075!important;}
@@ -33,6 +34,7 @@
   <script defer src="assets/js/research-program-core.js"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/homepage-anticipatory.js"></script>
+  <script defer src="assets/js/anticipatory-explorer.js"></script>
 </head>
 <body data-page="index">
 
@@ -161,87 +163,104 @@
 
     <!-- Anticipatory research direction. All styles and interactions are local to this block. -->
     <div class="anticipatory-home" id="anticipatory-science">
-      <section class="as-section as-program" aria-labelledby="as-program-title">
-        <div class="as-section-head">
-          <p class="as-index">02 / Research Direction</p>
-          <div>
-            <p class="as-overline">Anticipatory statistical science</p>
-            <h2 id="as-program-title">Recognize danger.<br><em>Change the trajectory.</em></h2>
-            <p class="as-lede">I am building a research program around a central question: how can we anticipate catastrophic events early enough to prevent them, and respond more effectively when they have already begun?</p>
+      <section class="as-section as-program" id="anticipatory-direction" aria-labelledby="as-program-title" data-stage="detect" data-effect="benefit">
+        <div class="ae-header">
+          <p class="ae-section-index">02 / Research Direction</p>
+          <div><p class="ae-overline">Anticipatory statistical science</p><h2 id="as-program-title">Recognize danger.<br><em>Change the trajectory.</em></h2><p class="ae-intro">I study how statistical methods can reveal emerging danger, anticipate where and when catastrophe may unfold, and evaluate ways to prevent it—or limit harm once a crisis begins.</p></div>
+        </div>
+
+        <div class="ae-explorer">
+          <div class="ae-explorer-bar"><span>From a warning signal to an informed response</span><span class="ae-interaction-hint">Select a research problem ↓</span></div>
+          <div class="ae-tabs" aria-label="Explore four connected research problems">
+            <button type="button" id="ae-tab-detect" data-ae-stage="detect" aria-controls="ae-panel-detect"><span class="ae-tab-number">01</span><span><strong>Detect</strong><small>Signals → states</small></span><span class="ae-tab-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" id="ae-tab-forecast" data-ae-stage="forecast" aria-controls="ae-panel-forecast"><span class="ae-tab-number">02</span><span><strong>Forecast</strong><small>States → trajectories</small></span><span class="ae-tab-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" id="ae-tab-intervene" data-ae-stage="intervene" aria-controls="ae-panel-intervene"><span class="ae-tab-number">03</span><span><strong>Intervene</strong><small>Trajectories → choices</small></span><span class="ae-tab-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" id="ae-tab-adapt" data-ae-stage="adapt" aria-controls="ae-panel-adapt"><span class="ae-tab-number">04</span><span><strong>Adapt</strong><small>New evidence → response</small></span><span class="ae-tab-arrow" aria-hidden="true">↗</span></button>
           </div>
-        </div>
-
-        <div class="as-thesis">
-          <p>My focus is the statistical work between a weak signal and a useful decision: recovering hidden structure, forecasting dangerous transitions, and evaluating when, where, and how intervention could reduce harm.</p>
-          <span class="as-thesis-note">A research direction. <br>Not a claim of perfect foresight.</span>
-        </div>
-
-        <ol class="as-stages" aria-label="Four connected research problems">
-          <li>
-            <span class="as-stage-number">I</span><p class="as-stage-label">Detect</p>
-            <h3>What state are we in?</h3>
-            <p>Recover hidden structure and emerging warning signals from incomplete, noisy observations.</p>
-            <span class="as-methods">Latent structure · measurement · unsupervised learning</span>
-          </li>
-          <li>
-            <span class="as-stage-number">II</span><p class="as-stage-label">Forecast</p>
-            <h3>Where is it heading?</h3>
-            <p>Estimate the probability, timing, location, and pathways of dangerous change.</p>
-            <span class="as-methods">Longitudinal models · event histories · dynamic networks</span>
-          </li>
-          <li>
-            <span class="as-stage-number">III</span><p class="as-stage-label">Intervene</p>
-            <h3>Can the path change?</h3>
-            <p>Identify actionable windows and assess which interventions could alter the outcome.</p>
-            <span class="as-methods">Causal inference · decision theory · intervention evaluation</span>
-          </li>
-          <li>
-            <span class="as-stage-number">IV</span><p class="as-stage-label">Adapt</p>
-            <h3>What do we know now?</h3>
-            <p>Update inference and response as new evidence arrives, including after a crisis begins.</p>
-            <span class="as-methods">Sequential inference · updating · response evaluation</span>
-          </li>
-        </ol>
-
-        <figure class="as-trajectory">
-          <div class="as-figure-bar"><span>The scientific problem</span><span>Schematic / not a fitted model</span></div>
-          <div class="as-trajectory-layout">
-            <div class="as-figure-copy">
-              <h3>From warning <br>to a window <br><em>for action.</em></h3>
-              <p>The aim is not simply to forecast a bad outcome. It is to establish whether there is still an opportunity to change it.</p>
+          <div class="ae-workspace">
+            <div class="ae-reading">
+              <article class="ae-panel" id="ae-panel-detect" aria-labelledby="ae-heading-detect">
+                <p class="ae-panel-label">01 / Detect</p>
+                <h3 id="ae-heading-detect">Is the system changing?</h3>
+                <p class="ae-description">The first task is to find a credible signal in incomplete observations. I am interested in changes in latent structure, relationships, and behavior that may precede a dangerous transition.</p>
+                <dl class="ae-deliverables"><div><dt>Evidence in</dt><dd>Noisy indicators, missing records, and changing networks.</dd></div><div><dt>Research output</dt><dd>A candidate change signal, its location in the system, and the uncertainty around it.</dd></div></dl>
+                <details class="ae-depth"><summary>Methods &amp; validity checks</summary><p class="ae-methods">Latent-variable models · unsupervised learning · change detection</p><p>Test whether the signal survives missingness, alternative representations, and reporting changes. An unusual pattern is not, by itself, evidence of danger.</p></details>
+              </article>
+              <article class="ae-panel" id="ae-panel-forecast" aria-labelledby="ae-heading-forecast">
+                <p class="ae-panel-label">02 / Forecast</p>
+                <h3 id="ae-heading-forecast">Where—and when—could risk intensify?</h3>
+                <p class="ae-description">A useful forecast needs more than a predicted outcome. My aim is to estimate the probability, timing, and pathways of dangerous change, with enough lead time for a feasible response.</p>
+                <dl class="ae-deliverables"><div><dt>Evidence in</dt><dd>Estimated states, temporal histories, and dependencies between people, places, or institutions.</dd></div><div><dt>Research output</dt><dd>Risk over a defined horizon: where to look, when to prepare, and how uncertain the outlook remains.</dd></div></dl>
+                <details class="ae-depth"><summary>Methods &amp; validity checks</summary><p class="ae-methods">Longitudinal models · event-history models · dynamic networks</p><p>Evaluate calibration, missed events, false alarms, and usable warning time on held-out future periods. Use only information available at each forecast date.</p></details>
+              </article>
+              <article class="ae-panel" id="ae-panel-intervene" aria-labelledby="ae-heading-intervene">
+                <p class="ae-panel-label">03 / Intervene</p>
+                <h3 id="ae-heading-intervene">What could change the outcome?</h3>
+                <p class="ae-description">Knowing where risk is highest does not tell us where an action will help most. I want to connect forecasts to causal evidence about feasible interventions, their timing, and their consequences.</p>
+                <dl class="ae-deliverables"><div><dt>Evidence in</dt><dd>Candidate actions, response constraints, and experimental or observational evidence.</dd></div><div><dt>Research output</dt><dd>A comparison of when, where, and how action might reduce harm—including possible side effects.</dd></div></dl>
+                <details class="ae-depth"><summary>Methods &amp; validity checks</summary><p class="ae-methods">Causal inference · decision theory · intervention evaluation</p><p>State what identifies an intervention effect and what assumptions it requires. Compare benefit, no effect, and unintended harm rather than assuming action always helps.</p></details>
+              </article>
+              <article class="ae-panel" id="ae-panel-adapt" aria-labelledby="ae-heading-adapt">
+                <p class="ae-panel-label">04 / Adapt</p>
+                <h3 id="ae-heading-adapt">What changes once events begin?</h3>
+                <p class="ae-description">When prevention is no longer possible, the goal shifts to limiting harm. I am interested in updating estimates as evidence arrives and evaluating whether the response is working as conditions change.</p>
+                <dl class="ae-deliverables"><div><dt>Evidence in</dt><dd>Incoming observations, reporting delays, and outcomes following a response.</dd></div><div><dt>Research output</dt><dd>An updated outlook and an evidence-based reason to maintain, revise, or stop a response.</dd></div></dl>
+                <details class="ae-depth"><summary>Methods &amp; validity checks</summary><p class="ae-methods">Sequential inference · Bayesian updating · response evaluation</p><p>Separate new information from changed measurement or selection. A better outcome after action does not, on its own, establish that the action caused it.</p></details>
+              </article>
             </div>
-            <div class="as-chart-wrap">
-              <svg class="as-risk-chart" viewBox="0 0 740 340" role="img" aria-labelledby="as-risk-title as-risk-desc">
-                <title id="as-risk-title">An illustrative trajectory and a possible opportunity for intervention</title>
-                <desc id="as-risk-desc">An observed risk indicator rises over time. Beyond the last observation, one hypothetical trajectory rises toward severe harm, while another falls after a possible intervention. Shading represents illustrative uncertainty, not estimated confidence intervals. No causal effect is established by this diagram.</desc>
-                <defs>
-                  <linearGradient id="as-risk-fill" x1="0" x2="1"><stop offset="0" stop-color="#bf3152" stop-opacity=".03"/><stop offset="1" stop-color="#bf3152" stop-opacity=".19"/></linearGradient>
-                  <linearGradient id="as-action-fill" x1="0" x2="1"><stop offset="0" stop-color="#91a8bb" stop-opacity=".02"/><stop offset="1" stop-color="#91a8bb" stop-opacity=".12"/></linearGradient>
-                </defs>
-                <text class="as-axis-label" x="48" y="25">RELATIVE RISK</text>
-                <path class="as-grid-line" d="M48 76H704M48 145H704M48 214H704"/>
-                <rect class="as-window" x="382" y="43" width="88" height="235"/>
-                <text class="as-window-label" x="426" y="32" text-anchor="middle">ACTION WINDOW?</text>
-                <path class="as-axis" d="M48 46V278H704"/>
-                <path class="as-observed" d="M48 240C87 244 102 230 128 233S175 225 205 229S253 213 283 214S335 194 362 181"/>
-                <path fill="url(#as-risk-fill)" d="M362 181C422 137 490 70 562 45S659 32 696 27L696 123C630 124 590 142 535 161S426 184 362 181Z"/>
-                <path fill="url(#as-action-fill)" d="M426 148C491 155 539 187 590 193S657 196 696 194L696 250C627 254 556 245 513 222S448 185 426 148Z"/>
-                <path class="as-future as-future-risk" d="M362 181C422 153 468 117 524 90S628 62 696 61"/>
-                <path class="as-future as-future-action" d="M426 148C467 163 484 186 534 210S635 225 696 224"/>
-                <path class="as-now-line" d="M362 50V278"/>
-                <g class="as-observation-points"><circle cx="48" cy="240" r="3"/><circle cx="128" cy="233" r="3"/><circle cx="205" cy="229" r="3"/><circle cx="283" cy="214" r="3"/><circle cx="362" cy="181" r="5"/></g>
-                <circle class="as-action-point" cx="426" cy="148" r="5"/>
-                <text class="as-path-label as-path-label-risk" x="695" y="145" text-anchor="end">DANGER INTENSIFIES</text>
-                <text class="as-path-label as-path-label-action" x="695" y="271" text-anchor="end">POSSIBLE ALTERED PATH</text>
-                <text class="as-axis-label" x="48" y="305">OBSERVED</text>
-                <text class="as-axis-label" x="362" y="305" text-anchor="middle">NOW</text>
-                <text class="as-axis-label" x="704" y="305" text-anchor="end">POSSIBLE FUTURES →</text>
+            <figure class="ae-visual">
+              <div class="ae-visual-head"><span id="ae-visual-label">01 / Finding the signal</span><span>Conceptual illustration</span></div>
+              <svg class="ae-chart" viewBox="0 0 520 330" role="img" aria-labelledby="ae-chart-title ae-chart-desc">
+                <title id="ae-chart-title">Detection: observations and a candidate underlying change</title>
+                <desc id="ae-chart-desc">Irregular observations surround a smooth candidate signal. The final observations suggest a change to investigate, not an established warning of catastrophe. All geometry is illustrative.</desc>
+                <defs><linearGradient id="ae-band-fill" x1="0" x2="1"><stop offset="0" stop-color="#b194c6" stop-opacity=".05"/><stop offset="1" stop-color="#b194c6" stop-opacity=".22"/></linearGradient></defs>
+                <text class="ae-axis-title" x="35" y="25">SYSTEM INDICATOR</text>
+                <path class="ae-grid" d="M35 78H487M35 139H487M35 200H487"/>
+                <path class="ae-axis" d="M35 47V270H487"/>
+                <text class="ae-axis-label" x="35" y="305">EARLIER</text><text class="ae-axis-label" x="487" y="305" text-anchor="end">TIME →</text>
+                <g data-ae-view="detect">
+                  <path class="ae-noisy" d="M38 234L67 220L94 238L120 206L151 219L177 204L205 222L233 186L260 198L286 168L315 185L343 151L371 166L399 120L427 134L458 90L486 109"/>
+                  <path class="ae-signal" d="M38 231C115 226 163 219 226 205S328 180 373 150S446 121 486 98"/>
+                  <g class="ae-observations"><circle cx="38" cy="234" r="4"/><circle cx="94" cy="238" r="4"/><circle cx="151" cy="219" r="4"/><circle cx="205" cy="222" r="4"/><circle cx="260" cy="198" r="4"/><circle cx="315" cy="185" r="4"/><circle cx="371" cy="166" r="4"/><circle cx="427" cy="134" r="4"/><circle cx="486" cy="109" r="4"/></g>
+                  <path class="ae-callout" d="M393 61H454V82"/><text class="ae-chart-note" x="389" y="62" text-anchor="end">CHANGE TO TEST</text>
+                  <ellipse class="ae-signal-ring" cx="458" cy="112" rx="37" ry="43"/>
+                </g>
+                <g data-ae-view="forecast">
+                  <path class="ae-history" d="M38 233C99 242 103 214 148 218S207 200 235 185"/>
+                  <path class="ae-band" d="M235 185C313 118 374 54 486 47L486 167C389 174 309 197 235 185Z"/>
+                  <path class="ae-projection" d="M235 185C319 162 358 100 486 94"/>
+                  <path class="ae-now" d="M235 50V271"/><circle class="ae-last" cx="235" cy="185" r="5"/>
+                  <text class="ae-chart-note" x="250" y="63">POSSIBLE FUTURES</text><text class="ae-axis-label" x="235" y="289" text-anchor="middle">NOW</text>
+                </g>
+                <g data-ae-view="intervene">
+                  <rect class="ae-window" x="274" y="49" width="58" height="219"/>
+                  <path class="ae-history" d="M38 233C99 242 103 214 148 218S207 200 235 185"/>
+                  <path class="ae-baseline" d="M235 185C319 162 358 100 486 94"/>
+                  <path class="ae-effect ae-benefit" d="M300 155C354 171 376 228 486 225"/>
+                  <path class="ae-effect ae-none" d="M235 185C319 162 358 100 486 94"/>
+                  <path class="ae-effect ae-harm" d="M300 155C353 67 383 52 486 47"/>
+                  <circle class="ae-action-marker" cx="300" cy="155" r="5"/><text class="ae-chart-note" x="302" y="39" text-anchor="middle">ACTION?</text>
+                </g>
+                <g data-ae-view="adapt">
+                  <path class="ae-history" d="M38 233C99 242 103 214 148 218S207 200 235 185"/>
+                  <path class="ae-earlier" d="M235 185C319 162 358 100 486 94"/>
+                  <path class="ae-new-evidence" d="M235 185L258 189L282 174L309 180L333 168"/>
+                  <g class="ae-new-points"><circle cx="258" cy="189" r="4"/><circle cx="282" cy="174" r="4"/><circle cx="309" cy="180" r="4"/><circle cx="333" cy="168" r="5"/></g>
+                  <path class="ae-update-band" d="M333 168C394 138 432 140 486 139L486 224C425 220 392 202 333 168Z"/>
+                  <path class="ae-updated" d="M333 168C393 178 426 182 486 182"/>
+                  <path class="ae-now" d="M333 65V271"/><text class="ae-chart-note" x="342" y="63">REVISED OUTLOOK</text>
+                </g>
               </svg>
-              <div class="as-chart-legend"><span><i class="as-key as-key-observed"></i>Observed indicator</span><span><i class="as-key as-key-risk"></i>Hypothetical trajectories</span><span><i class="as-key as-key-band"></i>Illustrative uncertainty</span></div>
-            </div>
+              <div class="ae-legend" aria-hidden="true">
+                <span><i class="ae-key-observed"></i><span data-ae-legend="first">Observed indicators</span></span>
+                <span><i class="ae-key-model"></i><span data-ae-legend="second">Candidate latent signal</span></span>
+              </div>
+              <div class="ae-scenarios" role="group" aria-label="Compare hypothetical intervention effects" hidden><span>Assume an effect:</span><div><button type="button" data-ae-effect="benefit" aria-pressed="true">Benefit</button><button type="button" data-ae-effect="none" aria-pressed="false">No effect</button><button type="button" data-ae-effect="harm" aria-pressed="false">Harm</button></div></div>
+              <figcaption id="ae-visual-caption">Separate a possible underlying change from variation in how the system is observed.</figcaption>
+            </figure>
           </div>
-          <figcaption>Illustration only. The alternative path represents a question for causal evaluation, not evidence that an intervention works.</figcaption>
-        </figure>
+          <div class="ae-footer"><p><span class="ae-footer-label">The aim</span>Earlier warning. Better-supported intervention. Faster learning during response.</p><p class="ae-schematic-note">Research direction, not a deployed warning system. Diagrams are schematic—not data, forecast probabilities, or estimated causal effects.</p></div>
+        </div>
       </section>
 
       <section class="as-section" id="anticipatory-questions" aria-labelledby="as-questions-title">

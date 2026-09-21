@@ -11,3 +11,19 @@ body[data-page="index"] .hero-details{display:block;grid-template-columns:none;c
 .rpm-kind-project .rpm-shape{fill:rgba(255,255,255,.018);stroke:rgba(190,177,190,.56);stroke-width:1;}
 .rpm-network-center-label{font-size:15.25px;letter-spacing:0;}
 .rpm-symbol-specific{color:#9d929e;}
+
+/* Clean-map override: retain content and legend, remove accessory instrument chrome. */
+.rpm-instrument::before,
+.rpm-instrument::after {
+  display: none;
+}
+.rpm-footer {
+  grid-template-columns: 1fr;
+  min-height: 44px;
+  padding: .62rem 1rem;
+  background: rgba(9,8,11,.92);
+}
+.rpm-footer-legend {
+  width: 100%;
+  gap: .72rem 1rem;
+}

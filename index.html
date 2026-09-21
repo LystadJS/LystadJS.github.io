@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
   <link rel="stylesheet" href="assets/css/homepage-research.css">
   <link rel="stylesheet" href="assets/css/homepage-anticipatory.css">
-  <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=unified-1">
+  <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=unified-2">
   <style>
     .rpm-map-wrap{contain:layout paint;}
     .rpm-map.is-filtered .rpm-network-node:not(.is-active):not(.is-related){opacity:.075!important;}
@@ -34,7 +34,7 @@
   <script defer src="assets/js/research-program-core.js"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/homepage-anticipatory.js"></script>
-  <script defer src="assets/js/anticipatory-explorer.js?v=unified-1"></script>
+  <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
 </head>
 <body data-page="index">
 
@@ -154,7 +154,7 @@
 
     <!-- Anticipatory research direction. All styles and interactions are local to this block. -->
     <div class="anticipatory-home" id="anticipatory-science">
-      <section class="as-section as-program" id="anticipatory-direction" aria-labelledby="as-program-title" data-active-stage="detect" data-pinned-stage="detect">
+      <section class="as-section as-program" id="anticipatory-direction" aria-labelledby="as-program-title">
   <div class="ae-header">
     <p class="ae-section-index">02 / Research Direction</p>
     <div>
@@ -264,14 +264,8 @@
         <span><i class="ae-key ae-key-band"></i>Illustrative uncertainty</span>
       </div>
 
-    </figure>
-
-    <aside class="ae-info" id="ae-info" aria-label="Selected research problem">
-      <div class="ae-info-head">
-        <p class="ae-info-kicker">ANTICIPATORY ANALYSIS</p>
-        <p class="ae-info-status" id="ae-info-status" role="status" aria-live="polite" aria-atomic="true">Research overview</p>
-      </div>
-
+      <aside class="ae-popover" id="ae-popover" aria-label="Research problem details" aria-live="polite" hidden>
+        <button class="ae-popover-close" type="button" aria-label="Close research details">×</button>
       <article class="ae-panel" data-ae-panel="detect">
         <p class="ae-panel-tag">Detect</p>
         <h3>Is the system changing?</h3>
@@ -283,7 +277,6 @@
           <div><dt>Inferential risk</dt><dd>Proxy error, reporting shifts, or unstable representations can create false warnings.</dd></div>
         </dl>
       </article>
-
       <article class="ae-panel" data-ae-panel="forecast">
         <p class="ae-panel-tag">Forecast</p>
         <h3>Where—and when—could risk intensify?</h3>
@@ -295,7 +288,6 @@
           <div><dt>Inferential risk</dt><dd>Late warnings, poor calibration, or information leakage can make a forecast useless or misleading.</dd></div>
         </dl>
       </article>
-
       <article class="ae-panel" data-ae-panel="intervene">
         <p class="ae-panel-tag">Intervene</p>
         <h3>What could change the outcome?</h3>
@@ -307,7 +299,6 @@
           <div><dt>Inferential risk</dt><dd>Prediction does not identify causal leverage. An intervention can fail, displace harm, or worsen it.</dd></div>
         </dl>
       </article>
-
       <article class="ae-panel" data-ae-panel="adapt">
         <p class="ae-panel-tag">Adapt</p>
         <h3>What changes once events begin?</h3>
@@ -319,7 +310,10 @@
           <div><dt>Inferential risk</dt><dd>Changes in measurement, selection, or exposure can mimic improvement or deterioration.</dd></div>
         </dl>
       </article>
-    </aside>
+      </aside>
+
+    </figure>
+
   </div>
 
   <div class="ae-footer-note">

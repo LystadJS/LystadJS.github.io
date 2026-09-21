@@ -79,12 +79,12 @@
   letter-spacing: .05em;
   text-transform: uppercase;
 }
-#anticipatory-direction .ae-svg-wrap { padding: .8rem .9rem .3rem; }
+#anticipatory-direction .ae-svg-wrap { padding: .8rem .9rem .7rem; }
 #anticipatory-direction .ae-diagram { display: block; width: 100%; height: auto; overflow: visible; }
 #anticipatory-direction .ae-grid {
   fill: none;
-  stroke: rgba(84,68,88,.46);
-  stroke-width: .8;
+  stroke: rgba(84,68,88,.28);
+  stroke-width: .7;
 }
 #anticipatory-direction .ae-axis,
 #anticipatory-direction .ae-flowline,
@@ -94,12 +94,9 @@
   stroke: #5d505f;
   stroke-width: .9;
 }
-#anticipatory-direction .ae-axis-title,
-#anticipatory-direction .ae-axis-label,
-#anticipatory-direction .ae-chart-note,
-#anticipatory-direction .ae-stage-sub {
+#anticipatory-direction .ae-chart-note {
   fill: #ab9db0;
-  font: 12px var(--mono, monospace);
+  font: 11px var(--mono, monospace);
   letter-spacing: .035em;
 }
 #anticipatory-direction .ae-chart-note { fill: var(--ae-active); }
@@ -109,7 +106,7 @@
   stroke-width: 2.05;
   opacity: .62;
 }
-#anticipatory-direction[data-active-stage="detect"] .ae-history { opacity: .16; }
+#anticipatory-direction[data-active-stage="detect"] .ae-history { opacity: 0; }
 #anticipatory-direction .ae-signal {
   fill: none;
   stroke: var(--ae-detect);
@@ -120,10 +117,10 @@
 #anticipatory-direction .ae-scatter-cloud circle {
   fill: #e7dde2;
   stroke: #0e0b11;
-  stroke-width: .9;
-  opacity: .78;
+  stroke-width: .75;
+  opacity: .70;
 }
-#anticipatory-direction[data-active-stage="detect"] .ae-scatter-cloud circle { opacity: .96; }
+#anticipatory-direction[data-active-stage="detect"] .ae-scatter-cloud circle { opacity: .94; }
 #anticipatory-direction .ae-update-points circle {
   fill: #e7dde2;
   stroke: #0e0b11;
@@ -182,21 +179,6 @@
 #anticipatory-direction[data-active-stage="forecast"] .ae-hotspot-forecast .ae-stage-label,
 #anticipatory-direction[data-active-stage="intervene"] .ae-hotspot-intervene .ae-stage-label,
 #anticipatory-direction[data-active-stage="adapt"] .ae-hotspot-adapt .ae-stage-label { fill: var(--ae-ink); }
-#anticipatory-direction .ae-legend {
-  display: flex; flex-wrap: wrap; gap: .5rem 1.1rem;
-  padding: .15rem 1.1rem .85rem; color: var(--ae-copy);
-  font: 400 .58rem/1.6 var(--mono, monospace);
-}
-#anticipatory-direction .ae-legend span { display: inline-flex; align-items: center; gap: .45rem; }
-#anticipatory-direction .ae-key { display: inline-block; width: 18px; height: 0; border-top: 2px solid #e5d9df; }
-#anticipatory-direction .ae-key-risk { border-top: 2px dashed #b8a3c4; }
-#anticipatory-direction .ae-key-band {
-  width: 18px; height: 8px; border-top: 0; border: 1px solid rgba(185,165,201,.28); background: rgba(185,165,201,.16);
-}
-#anticipatory-direction figcaption {
-  margin: 0; padding: .8rem 1.1rem 1rem; border-top: 1px solid var(--ae-line);
-  color: var(--ae-copy); font-size: .77rem; line-height: 1.7;
-}
 #anticipatory-direction .ae-info-status { color: var(--ae-active); }
 #anticipatory-direction .ae-panel { padding: 1rem 1.1rem 1.15rem; }
 #anticipatory-direction .ae-panel-tag {
@@ -268,8 +250,7 @@
   #anticipatory-direction .ae-info-head { padding: .8rem .95rem; }
   #anticipatory-direction .ae-svg-wrap { padding: .7rem .55rem .15rem; }
   #anticipatory-direction .ae-panel,
-  #anticipatory-direction figcaption { padding-left: .95rem; padding-right: .95rem; }
-  #anticipatory-direction .ae-facts > div {
+    #anticipatory-direction .ae-facts > div {
     grid-template-columns: 1fr;
     gap: .3rem;
   }
@@ -305,9 +286,8 @@
 #anticipatory-direction.is-enhanced .ae-interaction-hint { display: inline; }
 @media (max-width: 980px) { #anticipatory-direction.is-enhanced .ae-info { min-height: 0; } }
 @media (max-width: 700px) {
-  #anticipatory-direction .ae-axis-title, #anticipatory-direction .ae-axis-label, #anticipatory-direction .ae-chart-note { font-size: 18px; }
-  #anticipatory-direction .ae-stage-label { font-size: 22px; }
-  #anticipatory-direction .ae-stage-sub { display: none; }
+  #anticipatory-direction .ae-chart-note { font-size: 16px; }
+  #anticipatory-direction .ae-stage-label { font-size: 20px; }
   #anticipatory-direction .ae-svg-wrap { padding-left: .15rem; padding-right: .15rem; }
 }
 @media print {

@@ -350,3 +350,113 @@
   border: 1px solid rgba(190,163,207,.32);
   background: rgba(190,163,207,.12);
 }
+
+
+/* Full-width Section 02 with contextual floating details. */
+#anticipatory-direction .ae-layout {
+  display: block;
+}
+#anticipatory-direction .ae-figure {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+#anticipatory-direction .ae-svg-wrap {
+  width: 100%;
+}
+#anticipatory-direction .ae-popover {
+  position: absolute;
+  z-index: 8;
+  top: 1.1rem;
+  width: min(390px, calc(100% - 2.2rem));
+  max-height: calc(100% - 2.2rem);
+  overflow: auto;
+  border: 1px solid rgba(121, 99, 120, .82);
+  background:
+    linear-gradient(145deg, rgba(101,69,126,.08), rgba(141,23,50,.035)),
+    rgba(13,10,15,.97);
+  box-shadow: 0 18px 50px rgba(0,0,0,.42);
+  backdrop-filter: blur(8px);
+}
+#anticipatory-direction[data-active-stage="detect"] .ae-popover {
+  right: 1.1rem;
+  left: auto;
+}
+#anticipatory-direction[data-active-stage="forecast"] .ae-popover,
+#anticipatory-direction[data-active-stage="intervene"] .ae-popover,
+#anticipatory-direction[data-active-stage="adapt"] .ae-popover {
+  left: 1.1rem;
+  right: auto;
+}
+#anticipatory-direction .ae-popover[hidden] {
+  display: none !important;
+}
+#anticipatory-direction .ae-popover-close {
+  position: absolute;
+  top: .52rem;
+  right: .62rem;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #9f93a2;
+  font: 400 1.15rem/1 var(--mono, monospace);
+  cursor: pointer;
+}
+#anticipatory-direction .ae-popover-close:hover,
+#anticipatory-direction .ae-popover-close:focus-visible {
+  color: var(--ae-ink);
+}
+#anticipatory-direction .ae-popover .ae-panel {
+  padding: 1.05rem 1.15rem 1.1rem;
+}
+#anticipatory-direction .ae-popover .ae-panel-tag {
+  padding-right: 2.25rem;
+}
+#anticipatory-direction .ae-popover .ae-panel h3 {
+  max-width: 18ch;
+  font-size: clamp(1.45rem, 1.9vw, 1.82rem);
+}
+#anticipatory-direction .ae-popover .ae-facts > div {
+  grid-template-columns: 104px minmax(0,1fr);
+  gap: .7rem;
+  padding: .62rem 0;
+}
+#anticipatory-direction .ae-popover .ae-facts dd {
+  font-size: .76rem;
+  line-height: 1.6;
+}
+#anticipatory-direction .ae-popover .ae-facts dt {
+  font-size: .56rem;
+}
+#anticipatory-direction:not([data-active-stage]) .ae-layer {
+  opacity: .8;
+}
+#anticipatory-direction:not([data-active-stage]) .ae-history {
+  opacity: .62;
+}
+#anticipatory-direction:not([data-active-stage]) .ae-stage-label {
+  filter: none;
+}
+@media (max-width: 760px) {
+  #anticipatory-direction .ae-popover,
+  #anticipatory-direction[data-active-stage="detect"] .ae-popover,
+  #anticipatory-direction[data-active-stage="forecast"] .ae-popover,
+  #anticipatory-direction[data-active-stage="intervene"] .ae-popover,
+  #anticipatory-direction[data-active-stage="adapt"] .ae-popover {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-height: none;
+    margin: 0 .55rem .75rem;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  #anticipatory-direction .ae-popover .ae-facts > div {
+    grid-template-columns: 92px minmax(0,1fr);
+  }
+}

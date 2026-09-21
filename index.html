@@ -105,13 +105,6 @@
       </div>
 
       <div class="rpm-instrument">
-        <div class="rpm-topbar">
-          <div class="rpm-system-label">
-            <span>Research Program</span>
-            <span class="rpm-system-state"><span class="rpm-state-dot" aria-hidden="true"></span>Interactive map</span>
-          </div>
-        </div>
-
         <div class="rpm-workspace">
           <div class="rpm-map-wrap">
             <svg class="rpm-map" id="rpm-map" viewBox="0 0 980 650" role="img" aria-labelledby="rpm-title rpm-desc">
@@ -142,7 +135,6 @@
               <ul class="rpm-detail-list" id="rpm-detail-projects"></ul>
             </div>
 
-            <div class="rpm-detail-foot">Diamonds mark research questions. Large circles mark method frameworks; small circles mark specific methods. Large squares mark domains; small squares mark projects.</div>
           </aside>
 
           <div class="rpm-mobile" aria-label="Research program mobile view"></div>
@@ -156,7 +148,6 @@
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-domain">■</span>Domain</span>
             <span class="rpm-legend-item"><span class="rpm-legend-symbol rpm-symbol-project">▪</span>Project / study</span>
           </div>
-          <span class="rpm-footer-state">Statistical methods · high-consequence applications</span>
         </div>
       </div>
     </section>
@@ -192,6 +183,7 @@
 
           <path class="ae-grid" d="M46 90H715M46 165H715M46 240H715"/>
           <path class="ae-axis" d="M46 55V320H715"/>
+          <text class="ae-time-label" x="715" y="338" text-anchor="end">TIME →</text>
           <path class="ae-history" d="M52 286C91 289 103 270 132 273S183 264 219 265S271 248 307 247S360 222 389 208"/>
           <g class="ae-layer ae-layer-detect" data-ae-region="detect">
             <path class="ae-region-hit" d="M52 286C118 282 168 271 223 256S320 229 368 214S402 201 423 190"/>
@@ -264,6 +256,12 @@
             <text class="ae-stage-label" x="640" y="405" text-anchor="middle">ADAPT</text>
           </g>
         </svg>
+      </div>
+
+      <div class="ae-legend" aria-label="Diagram legend">
+        <span><i class="ae-key ae-key-history"></i>Observed data</span>
+        <span><i class="ae-key ae-key-risk"></i>Modeled / hypothetical path</span>
+        <span><i class="ae-key ae-key-band"></i>Illustrative uncertainty</span>
       </div>
 
     </figure>

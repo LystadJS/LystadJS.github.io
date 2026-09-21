@@ -460,3 +460,44 @@
     grid-template-columns: 92px minmax(0,1fr);
   }
 }
+
+
+/* Compact research-question bridge. */
+#anticipatory-direction .ae-research-bridge {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(59,47,63,.78);
+}
+#anticipatory-direction .ae-research-bridge > div {
+  min-width: 0;
+}
+#anticipatory-direction .ae-research-bridge span {
+  display: block;
+  margin-bottom: .38rem;
+  color: var(--ae-muted);
+  font: 400 .58rem/1.5 var(--mono, monospace);
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+#anticipatory-direction .ae-research-bridge p {
+  margin: 0;
+  color: #cec2cc;
+  font-size: .82rem;
+  line-height: 1.65;
+}
+#anticipatory-direction .ae-research-bridge > div:first-child p {
+  color: #ddd1d8;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+@media (max-width: 760px) {
+  #anticipatory-direction .ae-research-bridge {
+    grid-template-columns: 1fr;
+    gap: .9rem;
+    margin-top: 1rem;
+  }
+}

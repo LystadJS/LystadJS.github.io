@@ -82,13 +82,17 @@
 #anticipatory-direction .ae-svg-wrap { padding: .8rem .9rem .3rem; }
 #anticipatory-direction .ae-diagram { display: block; width: 100%; height: auto; overflow: visible; }
 #anticipatory-direction .ae-grid {
-  fill: none; stroke: #29222e; stroke-width: 1;
+  fill: none;
+  stroke: rgba(84,68,88,.46);
+  stroke-width: .8;
 }
 #anticipatory-direction .ae-axis,
 #anticipatory-direction .ae-flowline,
 #anticipatory-direction .ae-callout,
 #anticipatory-direction .ae-now-line {
-  fill: none; stroke: #66566c; stroke-width: 1;
+  fill: none;
+  stroke: #5d505f;
+  stroke-width: .9;
 }
 #anticipatory-direction .ae-axis-title,
 #anticipatory-direction .ae-axis-label,
@@ -100,17 +104,30 @@
 }
 #anticipatory-direction .ae-chart-note { fill: var(--ae-active); }
 #anticipatory-direction .ae-history {
-  fill: none; stroke: #e5d9df; stroke-width: 2.3;
+  fill: none;
+  stroke: #e5d9df;
+  stroke-width: 2.05;
+  opacity: .62;
 }
-#anticipatory-direction .ae-noisy {
-  fill: none; stroke: #79717d; stroke-width: 1.45;
-}
+#anticipatory-direction[data-active-stage="detect"] .ae-history { opacity: .16; }
 #anticipatory-direction .ae-signal {
-  fill: none; stroke: var(--ae-detect); stroke-width: 2.35; stroke-dasharray: 6 5;
+  fill: none;
+  stroke: var(--ae-detect);
+  stroke-width: 2.15;
+  stroke-dasharray: 7 5;
+  stroke-opacity: .9;
 }
-#anticipatory-direction .ae-points circle,
+#anticipatory-direction .ae-scatter-cloud circle {
+  fill: #e7dde2;
+  stroke: #0e0b11;
+  stroke-width: .9;
+  opacity: .78;
+}
+#anticipatory-direction[data-active-stage="detect"] .ae-scatter-cloud circle { opacity: .96; }
 #anticipatory-direction .ae-update-points circle {
-  fill: #e7dde2; stroke: #0e0b11; stroke-width: 1.2;
+  fill: #e7dde2;
+  stroke: #0e0b11;
+  stroke-width: 1.2;
 }
 #anticipatory-direction .ae-detect-ring {
   fill: rgba(159,184,203,.05); stroke: var(--ae-detect); stroke-opacity: .45; stroke-dasharray: 4 5;
@@ -120,12 +137,12 @@
 #anticipatory-direction .ae-earlier-path {
   fill: none; stroke-width: 2.2;
 }
-#anticipatory-direction .ae-risk-path { stroke: var(--ae-forecast); stroke-dasharray: 7 5; }
+#anticipatory-direction .ae-risk-path { stroke: var(--ae-forecast); stroke-dasharray: 8 6; stroke-linecap: round; }
 #anticipatory-direction .ae-base-path,
 #anticipatory-direction .ae-earlier-path { stroke: #b8a3c4; stroke-dasharray: 7 5; }
-#anticipatory-direction .ae-alt-path { fill: none; stroke: var(--ae-intervene); stroke-width: 2.5; }
+#anticipatory-direction .ae-alt-path { fill: none; stroke: var(--ae-intervene); stroke-width: 2.35; stroke-linecap: round; }
 #anticipatory-direction .ae-update-line { fill: none; stroke: var(--ae-adapt); stroke-width: 1.9; }
-#anticipatory-direction .ae-updated-path { fill: none; stroke: var(--ae-adapt); stroke-width: 2.45; stroke-dasharray: 7 4; }
+#anticipatory-direction .ae-updated-path { fill: none; stroke: var(--ae-adapt); stroke-width: 2.35; stroke-dasharray: 8 5; stroke-linecap: round; }
 #anticipatory-direction .ae-now-point { fill: #e5d9df; stroke: #0e0b11; stroke-width: 1.6; }
 #anticipatory-direction .ae-window {
   fill: rgba(201,181,137,.065); stroke: var(--ae-adapt); stroke-opacity: .45; stroke-dasharray: 4 5;
@@ -134,7 +151,7 @@
   fill: #0e0b11; stroke: var(--ae-adapt); stroke-width: 2;
 }
 #anticipatory-direction .ae-layer {
-  opacity: .64;
+  opacity: .48;
   transition: opacity .18s ease, transform .18s ease;
 }
 #anticipatory-direction[data-active-stage="detect"] .ae-layer-detect,

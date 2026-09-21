@@ -407,3 +407,24 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
     height: 15px;
   }
 }
+
+
+/* Portrait/name balance refinement: larger portrait without reflow. */
+@media (min-width: 981px) {
+  body[data-page="index"] .hero-profile,
+  body[data-page="index"] .hero-profile:has(> .hero-practice-index) {
+    padding-right: 58px;
+    column-gap: clamp(1.75rem, 3.15vw, 2.65rem);
+  }
+
+  body[data-page="index"] .hero-headshot {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.06);
+    transform-origin: center left;
+  }
+
+  body[data-page="index"] .hero-identity {
+    transform: translateX(.55rem);
+  }
+}

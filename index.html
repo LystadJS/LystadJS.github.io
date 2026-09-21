@@ -169,7 +169,7 @@
     <div>
       <p class="ae-overline">Anticipatory statistical science</p>
       <h2 id="as-program-title">Recognize danger.<br><em>Change the trajectory.</em></h2>
-      <p class="ae-intro">I study how statistical methods can reveal emerging danger, anticipate where and when catastrophe may unfold, and evaluate ways to prevent it—or limit harm once a crisis begins.</p>
+      <p class="ae-intro">I develop statistical methods to detect emerging danger, forecast where and when systems may fail, and evaluate interventions that could prevent catastrophe or reduce harm once a crisis begins.</p>
     </div>
   </div>
 
@@ -183,7 +183,7 @@
       <div class="ae-svg-wrap">
         <svg class="ae-diagram" viewBox="0 0 760 450" role="group" aria-labelledby="ae-diagram-title ae-diagram-desc">
           <title id="ae-diagram-title">Integrated anticipatory research diagram</title>
-          <desc id="ae-diagram-desc">A single interactive diagram shows four stages: detect, forecast, intervene, and adapt. Observed indicators feed a candidate signal, then a forecast cone, then an action window with alternative paths, and finally updated evidence and a revised outlook. Hovering or clicking a stage highlights that part of the diagram and updates the information panel.</desc>
+          <desc id="ae-diagram-desc">The diagram links four stages: detect, forecast, intervene, and adapt. Observations feed a candidate signal, then a forecast, an intervention window, and an updated outlook. Hovering previews a stage; clicking keeps it selected.</desc>
           <defs>
             <linearGradient id="ae-risk-band" x1="0" x2="1">
               <stop offset="0" stop-color="#b194c6" stop-opacity="0.05"/>
@@ -225,7 +225,7 @@
 
           <g class="ae-layer ae-layer-intervene" data-ae-region="intervene">
             <rect class="ae-window" x="474" y="72" width="74" height="235"/>
-            <text class="ae-chart-note" x="511" y="60" text-anchor="middle">ACTION WINDOW?</text>
+            <text class="ae-chart-note" x="511" y="60" text-anchor="middle">POSSIBLE ACTION WINDOW</text>
             <circle class="ae-action-point" cx="511" cy="151" r="5"/>
             <path class="ae-region-hit" d="M511 151C559 192 585 230 641 239S686 246 715 244"/>
             <path class="ae-alt-path" d="M511 151C559 192 585 230 641 239S686 246 715 244"/>
@@ -275,7 +275,7 @@
         <span><i class="ae-key ae-key-band"></i>Illustrative uncertainty</span>
       </div>
 
-      <figcaption>Schematic only—not observations, forecast probabilities, or evidence of an intervention effect. The alternative path and shaded bands are illustrative.</figcaption>
+      <figcaption>Schematic only. It does not show observed data, forecast probabilities, or estimated intervention effects. The paths and uncertainty bands are illustrative.</figcaption>
     </figure>
 
     <aside class="ae-info" id="ae-info" aria-label="Selected research problem">
@@ -288,11 +288,11 @@
         <p class="ae-panel-tag">Detect</p>
         <h3>Is the system changing?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Separate a candidate warning signal from noisy or incomplete observation.</dd></div>
-          <div><dt>Evidence in</dt><dd>Weak indicators, missing records, changing measurements, and irregular reporting.</dd></div>
-          <div><dt>Output</dt><dd>A candidate shift in latent state or structure that merits further investigation.</dd></div>
+          <div><dt>Statistical task</dt><dd>Distinguish real change from noise, missing data, and measurement error.</dd></div>
+          <div><dt>Inputs</dt><dd>Weak indicators, missing records, shifting measures, and irregular reporting.</dd></div>
+          <div><dt>Output</dt><dd>A candidate change in latent state or structure, with uncertainty.</dd></div>
           <div><dt>Methods</dt><dd>Latent-variable models · unsupervised learning · measurement models</dd></div>
-          <div><dt>Inferential risk</dt><dd>A false warning caused by proxy error, reporting change, or unstable representation.</dd></div>
+          <div><dt>Inferential risk</dt><dd>Proxy error, reporting shifts, or unstable representations can create false warnings.</dd></div>
         </dl>
       </article>
 
@@ -300,11 +300,11 @@
         <p class="ae-panel-tag">Forecast</p>
         <h3>Where—and when—could risk intensify?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Project plausible trajectories and ask whether enough warning remains to matter.</dd></div>
-          <div><dt>Evidence in</dt><dd>Estimated states, temporal histories, network dependencies, and event timing.</dd></div>
-          <div><dt>Output</dt><dd>A horizon-specific outlook: where to look, when to prepare, and how uncertain the outlook is.</dd></div>
+          <div><dt>Statistical task</dt><dd>Estimate where risk may rise, when it may rise, and whether the warning arrives early enough to act.</dd></div>
+          <div><dt>Inputs</dt><dd>Estimated states, temporal histories, network dependencies, and event timing.</dd></div>
+          <div><dt>Output</dt><dd>A horizon-specific forecast of location, timing, pathways, and uncertainty.</dd></div>
           <div><dt>Methods</dt><dd>Longitudinal models · event histories · dynamic networks</dd></div>
-          <div><dt>Inferential risk</dt><dd>A model that predicts too late, overstates confidence, or relies on information unavailable at the time.</dd></div>
+          <div><dt>Inferential risk</dt><dd>Late warnings, poor calibration, or information leakage can make a forecast useless or misleading.</dd></div>
         </dl>
       </article>
 
@@ -312,11 +312,11 @@
         <p class="ae-panel-tag">Intervene</p>
         <h3>What could change the outcome?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Move from prediction to comparison of feasible actions and their likely effects.</dd></div>
-          <div><dt>Evidence in</dt><dd>Candidate actions, response constraints, and observational or experimental evidence.</dd></div>
-          <div><dt>Output</dt><dd>A decision-relevant comparison of when, where, and how intervention might reduce harm.</dd></div>
+          <div><dt>Statistical task</dt><dd>Compare feasible actions and estimate which ones could change the trajectory.</dd></div>
+          <div><dt>Inputs</dt><dd>Candidate actions, operational constraints, and observational or experimental evidence.</dd></div>
+          <div><dt>Output</dt><dd>An estimate of where, when, and how intervention could reduce harm, including possible side effects.</dd></div>
           <div><dt>Methods</dt><dd>Causal inference · decision theory · intervention evaluation</dd></div>
-          <div><dt>Inferential risk</dt><dd>Assuming action helps without showing causal leverage—or overlooking unintended harm.</dd></div>
+          <div><dt>Inferential risk</dt><dd>Prediction does not identify causal leverage. An intervention can fail, displace harm, or worsen it.</dd></div>
         </dl>
       </article>
 
@@ -324,18 +324,18 @@
         <p class="ae-panel-tag">Adapt</p>
         <h3>What changes once events begin?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Update estimates as evidence arrives and evaluate whether the response should change.</dd></div>
-          <div><dt>Evidence in</dt><dd>New observations, delayed reporting, and outcomes following an intervention or response.</dd></div>
-          <div><dt>Output</dt><dd>An updated outlook and an evidence-based reason to maintain, revise, or stop a response.</dd></div>
+          <div><dt>Statistical task</dt><dd>Update the model as evidence arrives and test whether the response should change.</dd></div>
+          <div><dt>Inputs</dt><dd>New observations, reporting delays, and outcomes after intervention.</dd></div>
+          <div><dt>Output</dt><dd>A revised forecast and a reason to continue, change, or stop the response.</dd></div>
           <div><dt>Methods</dt><dd>Sequential inference · Bayesian updating · response evaluation</dd></div>
-          <div><dt>Inferential risk</dt><dd>Mistaking changed measurement or selection effects for genuine improvement or deterioration.</dd></div>
+          <div><dt>Inferential risk</dt><dd>Changes in measurement, selection, or exposure can mimic improvement or deterioration.</dd></div>
         </dl>
       </article>
     </aside>
   </div>
 
   <div class="ae-footer-note">
-    <p><span>Prediction ≠ prevention.</span> Forecasting identifies risk. Prevention additionally requires identifying where intervention can still change the trajectory.</p>
+    <p><span>Prediction ≠ prevention.</span> Forecasting identifies risk. Prevention requires evidence about where action can still change the outcome.</p>
   </div>
 </section>
 

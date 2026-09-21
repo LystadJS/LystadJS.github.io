@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/research-program.css">
-  <link rel="stylesheet" href="assets/css/research-program-review.css">
+  <link rel="stylesheet" href="assets/css/research-program-review.css?v=popover-1">
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
   <link rel="stylesheet" href="assets/css/homepage-research.css">
@@ -31,7 +31,7 @@
   <script defer src="assets/js/research-program-specific-methods.js"></script>
   <script defer src="assets/js/research-program-language.js"></script>
   <script defer src="assets/js/research-program-text-overrides.js"></script>
-  <script defer src="assets/js/research-program-core.js"></script>
+  <script defer src="assets/js/research-program-core.js?v=popover-1"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/homepage-anticipatory.js"></script>
   <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
@@ -109,33 +109,34 @@
           <div class="rpm-map-wrap">
             <svg class="rpm-map" id="rpm-map" viewBox="0 0 980 650" role="img" aria-labelledby="rpm-title rpm-desc">
               <title id="rpm-title">Statistical methods for high-consequence systems</title>
-              <desc id="rpm-desc">Interactive map linking statistical methods, research questions, application domains, and selected projects. Human Security is an umbrella for the applied program and is not represented as a network node.</desc>
+              <desc id="rpm-desc">Interactive map linking statistical methods, research questions, application domains, and selected projects. Hover or focus previews details; click or tap pins them.</desc>
             </svg>
+
+            <aside class="rpm-detail rpm-popover" id="rpm-popover" aria-label="Research program details" aria-live="polite" hidden>
+              <button class="rpm-popover-close" type="button" aria-label="Close research details">×</button>
+              <div class="rpm-detail-head">
+                <p class="rpm-detail-kicker" id="rpm-detail-kicker">Research core</p>
+                <h3 id="rpm-detail-title">Statistical Methods for High-Consequence Systems</h3>
+                <p class="rpm-detail-summary" id="rpm-detail-summary">Statistical methods for latent structure, dynamic change, future risk, and uncertainty in consequential systems.</p>
+                <a class="rpm-detail-link" id="rpm-detail-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open project ↗</a>
+              </div>
+
+              <div class="rpm-detail-block">
+                <p class="rpm-detail-label">Program logic</p>
+                <ul class="rpm-detail-list" id="rpm-detail-questions"></ul>
+              </div>
+
+              <div class="rpm-detail-block">
+                <p class="rpm-detail-label">Methods &amp; concepts</p>
+                <div class="rpm-chips" id="rpm-detail-methods"></div>
+              </div>
+
+              <div class="rpm-detail-block">
+                <p class="rpm-detail-label">Selected work</p>
+                <ul class="rpm-detail-list" id="rpm-detail-projects"></ul>
+              </div>
+            </aside>
           </div>
-
-          <aside class="rpm-detail" aria-live="polite">
-            <div class="rpm-detail-head">
-              <p class="rpm-detail-kicker" id="rpm-detail-kicker">Research core</p>
-              <h3 id="rpm-detail-title">Statistical Methods for High-Consequence Systems</h3>
-              <p class="rpm-detail-summary" id="rpm-detail-summary">Statistical methods for latent structure, dynamic change, future risk, and uncertainty in consequential systems.</p>
-            </div>
-
-            <div class="rpm-detail-block">
-              <p class="rpm-detail-label">Program logic</p>
-              <ul class="rpm-detail-list" id="rpm-detail-questions"></ul>
-            </div>
-
-            <div class="rpm-detail-block">
-              <p class="rpm-detail-label">Methods &amp; concepts</p>
-              <div class="rpm-chips" id="rpm-detail-methods"></div>
-            </div>
-
-            <div class="rpm-detail-block">
-              <p class="rpm-detail-label">Selected work</p>
-              <ul class="rpm-detail-list" id="rpm-detail-projects"></ul>
-            </div>
-
-          </aside>
 
           <div class="rpm-mobile" aria-label="Research program mobile view"></div>
         </div>

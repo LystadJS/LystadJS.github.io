@@ -123,3 +123,23 @@ body[data-page="index"] .hero-details{display:block;grid-template-columns:none;c
     display: block;
   }
 }
+
+
+/* PhD-facing homepage hero copy. */
+body[data-page="index"] .hero-lede {
+  max-width: 1040px;
+  font-size: clamp(1.16rem, 1.7vw, 1.5rem);
+  line-height: 1.44;
+  text-wrap: pretty;
+}
+body[data-page="index"] .hero-note {
+  max-width: 920px;
+  margin: 1rem 0 0;
+}
+@media (max-width: 720px) {
+  body[data-page="index"] .hero-lede {
+    max-width: none;
+    font-size: clamp(1.08rem, 4.5vw, 1.28rem);
+    line-height: 1.48;
+  }
+}

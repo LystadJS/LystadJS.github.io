@@ -99,7 +99,10 @@
   font: 11px var(--mono, monospace);
   letter-spacing: .035em;
 }
-#anticipatory-direction .ae-chart-note { fill: var(--ae-active); }
+#anticipatory-direction .ae-layer-detect .ae-chart-note { fill: var(--ae-detect); }
+#anticipatory-direction .ae-layer-forecast .ae-chart-note { fill: var(--ae-forecast); }
+#anticipatory-direction .ae-layer-intervene .ae-chart-note { fill: var(--ae-intervene); }
+#anticipatory-direction .ae-layer-adapt .ae-chart-note { fill: var(--ae-adapt); }
 #anticipatory-direction .ae-history {
   fill: none;
   stroke: #e5d9df;
@@ -142,10 +145,15 @@
 #anticipatory-direction .ae-updated-path { fill: none; stroke: var(--ae-adapt); stroke-width: 2.35; stroke-dasharray: 8 5; stroke-linecap: round; }
 #anticipatory-direction .ae-now-point { fill: #e5d9df; stroke: #0e0b11; stroke-width: 1.6; }
 #anticipatory-direction .ae-window {
-  fill: rgba(201,181,137,.065); stroke: var(--ae-adapt); stroke-opacity: .45; stroke-dasharray: 4 5;
+  fill: rgba(220,150,170,.055);
+  stroke: var(--ae-intervene);
+  stroke-opacity: .46;
+  stroke-dasharray: 4 5;
 }
 #anticipatory-direction .ae-action-point {
-  fill: #0e0b11; stroke: var(--ae-adapt); stroke-width: 2;
+  fill: #0e0b11;
+  stroke: var(--ae-intervene);
+  stroke-width: 2;
 }
 #anticipatory-direction .ae-layer {
   opacity: .48;
@@ -161,14 +169,13 @@
   transition: transform .18s ease, stroke .18s ease, fill .18s ease;
 }
 #anticipatory-direction .ae-stage-label {
-  fill: #d7ccd4;
   font: 500 14px var(--mono, monospace);
   letter-spacing: .065em;
 }
-#anticipatory-direction .ae-hotspot[data-ae-stage="detect"] .ae-stage-sub { fill: var(--ae-detect); }
-#anticipatory-direction .ae-hotspot[data-ae-stage="forecast"] .ae-stage-sub { fill: var(--ae-forecast); }
-#anticipatory-direction .ae-hotspot[data-ae-stage="intervene"] .ae-stage-sub { fill: var(--ae-intervene); }
-#anticipatory-direction .ae-hotspot[data-ae-stage="adapt"] .ae-stage-sub { fill: var(--ae-adapt); }
+#anticipatory-direction .ae-hotspot-detect .ae-stage-label { fill: var(--ae-detect); }
+#anticipatory-direction .ae-hotspot-forecast .ae-stage-label { fill: var(--ae-forecast); }
+#anticipatory-direction .ae-hotspot-intervene .ae-stage-label { fill: var(--ae-intervene); }
+#anticipatory-direction .ae-hotspot-adapt .ae-stage-label { fill: var(--ae-adapt); }
 #anticipatory-direction[data-active-stage="detect"] .ae-hotspot-detect .ae-stage-dot,
 #anticipatory-direction[data-active-stage="forecast"] .ae-hotspot-forecast .ae-stage-dot,
 #anticipatory-direction[data-active-stage="intervene"] .ae-hotspot-intervene .ae-stage-dot,
@@ -178,7 +185,10 @@
 #anticipatory-direction[data-active-stage="detect"] .ae-hotspot-detect .ae-stage-label,
 #anticipatory-direction[data-active-stage="forecast"] .ae-hotspot-forecast .ae-stage-label,
 #anticipatory-direction[data-active-stage="intervene"] .ae-hotspot-intervene .ae-stage-label,
-#anticipatory-direction[data-active-stage="adapt"] .ae-hotspot-adapt .ae-stage-label { fill: var(--ae-ink); }
+#anticipatory-direction[data-active-stage="adapt"] .ae-hotspot-adapt .ae-stage-label {
+  font-weight: 600;
+  filter: brightness(1.14);
+}
 #anticipatory-direction .ae-info-status { color: var(--ae-active); }
 #anticipatory-direction .ae-panel { padding: 1rem 1.1rem 1.15rem; }
 #anticipatory-direction .ae-panel-tag {
@@ -279,6 +289,10 @@
 #anticipatory-direction .ae-hotspot-forecast { --ae-hotspot-color: var(--ae-forecast); }
 #anticipatory-direction .ae-hotspot-intervene { --ae-hotspot-color: var(--ae-intervene); }
 #anticipatory-direction .ae-hotspot-adapt { --ae-hotspot-color: var(--ae-adapt); }
+#anticipatory-direction .ae-hotspot-detect .ae-stage-dot { stroke: var(--ae-detect); }
+#anticipatory-direction .ae-hotspot-forecast .ae-stage-dot { stroke: var(--ae-forecast); }
+#anticipatory-direction .ae-hotspot-intervene .ae-stage-dot { stroke: var(--ae-intervene); }
+#anticipatory-direction .ae-hotspot-adapt .ae-stage-dot { stroke: var(--ae-adapt); }
 #anticipatory-direction .ae-hotspot[aria-pressed="true"] .ae-stage-dot { fill: var(--ae-hotspot-color); }
 #anticipatory-direction .ae-hotspot:focus-visible { outline: none; }
 #anticipatory-direction .ae-hotspot:focus-visible .ae-stage-hit { stroke: #d1b4e2; stroke-width: 2; }

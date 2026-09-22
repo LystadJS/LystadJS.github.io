@@ -143,3 +143,13 @@ body[data-page="index"] .hero-note {
     line-height: 1.48;
   }
 }
+
+
+/* Project output/status/evidence metadata. */
+.rpm-project-meta{display:grid;gap:0;margin:.9rem 0 0;padding:.65rem 0 0;border-top:1px solid rgba(74,53,71,.66);}
+.rpm-project-meta[hidden]{display:none!important;}
+.rpm-project-meta>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:.65rem;padding:.3rem 0;}
+.rpm-project-meta dt{color:#8f8290;font-family:var(--mono);font-size:.47rem;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;}
+.rpm-project-meta dd{margin:0;color:#c6bac5;font-size:.69rem;line-height:1.45;}
+.rpm-project-meta a{color:#c9bbc8;text-decoration:none;border-bottom:1px solid rgba(191,49,82,.26);}
+.rpm-project-meta a:hover,.rpm-project-meta a:focus-visible{color:var(--paper);border-bottom-color:rgba(191,49,82,.66);outline:none;}

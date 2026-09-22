@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal profile of John S. Lystad: military service, mountains, books, travel, technical tinkering, and life beyond research.">
+  <meta name="description" content="About John S. Lystad: military service, mountains, travel, books, and life beyond research.">
   <meta name="theme-color" content="#070709">
   <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="The person behind the work: military service, mountains, books, travel, technical tinkering, and life beyond research.">
+  <meta property="og:description" content="The life around the work: military service, mountains, travel, books, and personal interests.">
   <meta property="og:type" content="website">
   <title>About | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -16,369 +16,510 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body[data-page="about"] {
+      --about-muted: #a89da7;
+      --about-faint: #766d77;
       --about-oxblood: #8d1732;
-      --about-oxblood-bright: #bf3152;
-      --about-aurora: #79c7a3;
       --about-blossom: #d6a2b6;
-      --about-panel: #0e0c11;
-      --about-soft: #aaa0aa;
+      --about-aurora: #79c7a3;
     }
 
-    body[data-page="about"] main { overflow: hidden; }
-
-    body[data-page="about"] .about-page-hero {
-      position: relative;
+    body[data-page="about"] main {
       overflow: hidden;
     }
 
-    body[data-page="about"] .about-page-hero::before,
-    body[data-page="about"] .about-page-hero::after {
-      content: "";
-      position: absolute;
-      width: 34rem;
-      height: 34rem;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: .11;
-      pointer-events: none;
+    body[data-page="about"] .about-shell {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
     }
 
-    body[data-page="about"] .about-page-hero::before {
-      right: -9rem;
-      top: -16rem;
-      background: var(--about-aurora);
-    }
-
-    body[data-page="about"] .about-page-hero::after {
-      left: 25%;
-      bottom: -23rem;
-      background: var(--about-blossom);
-    }
-
-    body[data-page="about"] .about-hero-copy {
-      max-width: 780px;
-    }
-
-    body[data-page="about"] .about-hero-copy .lead {
-      max-width: 720px;
-      color: #d2c7cf;
-      font-family: var(--serif);
-      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
-      line-height: 1.42;
-    }
-
-    body[data-page="about"] .about-hero-copy p:not(.kicker):not(.lead) {
-      max-width: 720px;
-      color: #a99ea7;
-    }
-
-    body[data-page="about"] .about-index-card strong {
-      font-weight: 500;
-      line-height: 1.35;
-    }
-
-    body[data-page="about"] .about-index-card .accent-aurora { color: var(--about-aurora); }
-    body[data-page="about"] .about-index-card .accent-blossom { color: var(--about-blossom); }
-
-    body[data-page="about"] .service-band {
-      display: grid;
-      grid-template-columns: minmax(180px, .45fr) minmax(0, 1.55fr);
-      gap: 2.5rem;
-      align-items: start;
-      margin: 2.4rem 0 0;
-      padding: 1.4rem 0 1.5rem;
-      border-top: 1px solid var(--line);
+    body[data-page="about"] .about-hero {
+      padding: clamp(4.5rem, 8vw, 7.5rem) 0 clamp(4rem, 7vw, 6.5rem);
       border-bottom: 1px solid var(--line);
     }
 
-    body[data-page="about"] .service-band h2 {
-      margin: .3rem 0 0;
-      font-family: var(--serif);
-      font-size: clamp(1.9rem, 3vw, 2.65rem);
-      line-height: 1;
-      font-weight: 600;
-    }
-
-    body[data-page="about"] .service-copy {
-      margin: 0;
-      max-width: 78ch;
-      color: #b0a5ae;
-      font-size: .9rem;
-      line-height: 1.7;
-    }
-
-    body[data-page="about"] .service-copy + .service-copy {
-      margin-top: .9rem;
-    }
-
-    body[data-page="about"] .personal-section {
-      padding: 3.45rem 0;
-      border-top: 1px solid var(--line);
-    }
-
-    body[data-page="about"] .personal-section:first-child { border-top: 0; }
-
-    body[data-page="about"] .personal-heading {
+    body[data-page="about"] .about-hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr);
-      gap: 3rem;
-      align-items: end;
-      margin-bottom: 1.35rem;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      gap: clamp(3rem, 7vw, 6.5rem);
+      align-items: center;
     }
 
-    body[data-page="about"] .personal-heading h2 {
-      margin: .28rem 0 0;
+    body[data-page="about"] .about-kicker,
+    body[data-page="about"] .essay-index,
+    body[data-page="about"] .photo-label,
+    body[data-page="about"] .service-fact dt,
+    body[data-page="about"] .shelf-label {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    body[data-page="about"] .about-kicker,
+    body[data-page="about"] .essay-index {
+      margin: 0;
+      color: var(--crimson-bright);
+      font-size: .58rem;
+    }
+
+    body[data-page="about"] .about-hero h1 {
+      max-width: 760px;
+      margin: .55rem 0 1.1rem;
       font-family: var(--serif);
-      font-size: clamp(2.45rem, 4.4vw, 3.9rem);
-      line-height: .92;
+      font-size: clamp(3.3rem, 7vw, 6.4rem);
+      line-height: .88;
+      font-weight: 600;
+      letter-spacing: -.045em;
+    }
+
+    body[data-page="about"] .about-hero .lead {
+      max-width: 720px;
+      margin: 0;
+      color: #d3c8d0;
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+      line-height: 1.42;
+    }
+
+    body[data-page="about"] .about-hero .intro {
+      max-width: 720px;
+      margin: 1rem 0 0;
+      color: var(--about-muted);
+      font-size: .92rem;
+      line-height: 1.72;
+    }
+
+    body[data-page="about"] .photo-placeholder {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 49.7%, rgba(255,255,255,.045) 50%, transparent 50.3%),
+        linear-gradient(45deg, transparent 49.7%, rgba(255,255,255,.045) 50%, transparent 50.3%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
+        #0d0b0f;
+    }
+
+    body[data-page="about"] .photo-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(255,255,255,.035);
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .photo-placeholder.portrait {
+      aspect-ratio: 4 / 5;
+      max-width: 360px;
+      justify-self: end;
+    }
+
+    body[data-page="about"] .photo-placeholder.landscape {
+      aspect-ratio: 16 / 10;
+    }
+
+    body[data-page="about"] .photo-placeholder.wide {
+      aspect-ratio: 16 / 7;
+    }
+
+    body[data-page="about"] .photo-label {
+      position: relative;
+      z-index: 1;
+      padding: .55rem .7rem;
+      color: #7c727d;
+      background: rgba(7,7,9,.78);
+      font-size: .5rem;
+      text-align: center;
+    }
+
+    body[data-page="about"] .essay-section {
+      padding: clamp(4rem, 7vw, 6.5rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .essay-heading {
+      display: grid;
+      grid-template-columns: minmax(180px, .38fr) minmax(0, 1.62fr);
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    body[data-page="about"] .essay-heading h2 {
+      margin: .4rem 0 0;
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      line-height: .94;
       font-weight: 600;
       letter-spacing: -.035em;
     }
 
-    body[data-page="about"] .personal-heading > p {
+    body[data-page="about"] .essay-deck {
+      max-width: 760px;
       margin: 0;
-      color: var(--about-soft);
-      font-size: .85rem;
-      line-height: 1.6;
+      color: #b5aab3;
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      line-height: 1.5;
     }
 
-    body[data-page="about"] .visual-shell {
-      position: relative;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 20% 0%, rgba(141,23,50,.06), transparent 28rem),
-        linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,0)),
-        var(--about-panel);
-      box-shadow: 0 28px 70px rgba(0,0,0,.25);
-      overflow: hidden;
+    body[data-page="about"] .military-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+      gap: clamp(2.5rem, 6vw, 5.5rem);
+      align-items: start;
     }
 
-    body[data-page="about"] .visual-topbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .72rem 1rem;
-      border-bottom: 1px solid var(--line);
-      color: #756b77;
+    body[data-page="about"] .service-copy {
+      max-width: 72ch;
+      margin: 0;
+      color: var(--about-muted);
+      font-size: .92rem;
+      line-height: 1.76;
+    }
+
+    body[data-page="about"] .service-copy + .service-copy {
+      margin-top: 1rem;
+    }
+
+    body[data-page="about"] .service-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 1.5rem;
+      margin: 2rem 0 0;
+    }
+
+    body[data-page="about"] .service-fact {
+      padding: .85rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .service-fact dt {
+      margin: 0 0 .28rem;
+      color: var(--about-faint);
+      font-size: .49rem;
+    }
+
+    body[data-page="about"] .service-fact dd {
+      margin: 0;
+      color: #d4c9d1;
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    body[data-page="about"] .military-photo figcaption,
+    body[data-page="about"] .life-photo figcaption {
+      margin-top: .55rem;
+      color: #736a74;
       font-family: var(--mono);
-      font-size: .52rem;
-      letter-spacing: .09em;
+      font-size: .5rem;
+      letter-spacing: .055em;
       text-transform: uppercase;
     }
 
-    body[data-page="about"] .ridge-wrap {
+    body[data-page="about"] .ridge-figure {
+      margin: 0;
+    }
+
+    body[data-page="about"] .ridge-stage {
       position: relative;
-      min-height: 470px;
-      background:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size: 44px 44px;
+      overflow-x: auto;
+      padding: .7rem 0 .2rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(214,162,182,.22) transparent;
     }
 
     body[data-page="about"] .ridge-svg {
       display: block;
       width: 100%;
-      min-width: 980px;
-      height: 330px;
+      min-width: 900px;
+      height: auto;
+      overflow: visible;
     }
 
-    body[data-page="about"] .ridge-path {
-      fill: rgba(112,80,138,.05);
-      stroke: #6d586f;
-      stroke-width: 1.4;
+    body[data-page="about"] .ridge-fill {
+      fill: rgba(112,80,138,.035);
     }
 
     body[data-page="about"] .ridge-line {
       fill: none;
-      stroke: rgba(214,162,182,.42);
+      stroke: #6f6471;
+      stroke-width: 1.2;
+    }
+
+    body[data-page="about"] .ridge-baseline {
+      stroke: rgba(255,255,255,.08);
       stroke-width: 1;
     }
 
     body[data-page="about"] .ridge-point {
       cursor: pointer;
-      transition: transform 160ms ease;
-      transform-box: fill-box;
-      transform-origin: center;
+      outline: none;
     }
 
     body[data-page="about"] .ridge-point circle {
-      fill: #161118;
+      fill: #0b090d;
       stroke: var(--about-blossom);
-      stroke-width: 1.5;
-      transition: fill 160ms ease, filter 160ms ease;
+      stroke-width: 1.2;
+      transition: fill 150ms ease, transform 150ms ease;
+      transform-box: fill-box;
+      transform-origin: center;
     }
-
-    body[data-page="about"] .ridge-point:hover,
-    body[data-page="about"] .ridge-point:focus { transform: translateY(-4px); outline: none; }
 
     body[data-page="about"] .ridge-point:hover circle,
     body[data-page="about"] .ridge-point:focus circle,
     body[data-page="about"] .ridge-point.is-active circle {
       fill: var(--about-oxblood);
-      filter: drop-shadow(0 0 7px rgba(191,49,82,.7));
+      transform: scale(1.2);
     }
 
     body[data-page="about"] .ridge-point text {
-      fill: #b7abb5;
+      fill: #9f949e;
       font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .03em;
+      font-size: 8.5px;
+      letter-spacing: .035em;
     }
 
-    body[data-page="about"] .ridge-inspector {
+    body[data-page="about"] .ridge-caption {
       display: grid;
-      grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
+      grid-template-columns: minmax(160px, .45fr) minmax(0, 1.55fr);
       gap: 1.5rem;
-      padding: 1.2rem 1.4rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
       border-top: 1px solid var(--line);
-      background: rgba(8,7,10,.78);
     }
 
-    body[data-page="about"] .inspector-kicker {
-      color: var(--about-oxblood-bright);
-      font-family: var(--mono);
-      font-size: .52rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    body[data-page="about"] .inspector-title {
-      margin: .2rem 0 0;
+    body[data-page="about"] .ridge-caption strong {
+      color: #d7ccd4;
       font-family: var(--serif);
-      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      font-size: 1.25rem;
       font-weight: 600;
-      line-height: 1;
     }
 
-    body[data-page="about"] .inspector-copy {
-      margin: .15rem 0 0;
-      color: #aa9faa;
-      font-size: .85rem;
-      line-height: 1.6;
+    body[data-page="about"] .ridge-caption p {
+      margin: 0;
+      color: #928792;
+      font-size: .8rem;
+      line-height: 1.55;
     }
 
-    body[data-page="about"] .reading-library-shell {
-      border: 1px solid var(--line);
-      background: var(--about-panel);
-      overflow: hidden;
+    body[data-page="about"] .travel-note {
+      max-width: 780px;
+      margin: 2.2rem 0 0 auto;
+      color: var(--about-muted);
+      font-size: .88rem;
+      line-height: 1.7;
     }
 
-    body[data-page="about"] .reading-shelf {
-      padding: 1rem 1rem 0;
-      border-top: 1px solid rgba(49,38,50,.42);
+    body[data-page="about"] .life-photo-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 1.2rem;
+      margin-top: 2.2rem;
+      align-items: start;
     }
 
-    body[data-page="about"] .reading-shelf:first-child { border-top: 0; }
+    body[data-page="about"] .life-photo {
+      margin: 0;
+    }
 
-    body[data-page="about"] .reading-shelf-label {
+    body[data-page="about"] .shelf-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: end;
+    }
+
+    body[data-page="about"] .shelf-group + .shelf-group {
+      margin-top: 1.35rem;
+    }
+
+    body[data-page="about"] .shelf-label {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: .6rem;
-      color: #8f838f;
-      font-family: var(--mono);
-      font-size: .54rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      margin-bottom: .55rem;
+      color: #7d737e;
+      font-size: .5rem;
     }
 
-    body[data-page="about"] .reading-shelf-stage {
-      min-height: 250px;
+    body[data-page="about"] .compact-shelf {
       display: flex;
       align-items: flex-end;
-      gap: 8px;
-      padding: 20px 16px 18px;
-      overflow-x: auto;
-      background: radial-gradient(circle at 50% 100%, rgba(141,23,50,.055), transparent 55%);
+      gap: 6px;
+      min-height: 135px;
+      padding: .45rem .1rem .7rem;
+      border-bottom: 7px solid #191319;
     }
 
-    body[data-page="about"] .reading-book {
-      --book-h: 205px;
-      --book-w: 48px;
+    body[data-page="about"] .book-spine {
+      --h: 112px;
+      --w: 38px;
+      flex: 0 0 var(--w);
+      height: var(--h);
       position: relative;
-      flex: 0 0 var(--book-w);
-      height: var(--book-h);
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.09);
       border-bottom: 0;
-      color: #eadfe1;
+      color: #e8dde2;
       cursor: pointer;
-      transition: transform 150ms ease, filter 150ms ease;
-      box-shadow: inset -1px 0 rgba(0,0,0,.35), 0 7px 18px rgba(0,0,0,.28);
+      transition: transform 140ms ease, filter 140ms ease;
+      box-shadow: inset -1px 0 rgba(0,0,0,.28);
     }
 
-    body[data-page="about"] .reading-book:hover,
-    body[data-page="about"] .reading-book:focus-visible,
-    body[data-page="about"] .reading-book.is-active {
-      transform: translateY(-9px);
+    body[data-page="about"] .book-spine:hover,
+    body[data-page="about"] .book-spine:focus-visible,
+    body[data-page="about"] .book-spine.is-active {
+      transform: translateY(-6px);
       filter: brightness(1.08);
       outline: none;
     }
 
-    body[data-page="about"] .reading-book-title {
+    body[data-page="about"] .book-spine .book-title {
       position: absolute;
-      inset: 20px 0 24px;
+      inset: 9px 0 9px;
       display: grid;
       place-items: center;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       font-family: var(--serif);
-      font-size: .88rem;
-      line-height: 1;
+      font-size: .73rem;
+      line-height: .95;
       font-weight: 600;
+      text-align: center;
     }
 
-    body[data-page="about"] .reading-book-mark {
-      position: absolute;
-      bottom: 5px;
-      left: 50%;
-      transform: translateX(-50%);
+    body[data-page="about"] .book-spine.oxblood { background: linear-gradient(180deg,#5f1427,#310d18); }
+    body[data-page="about"] .book-spine.plum { background: linear-gradient(180deg,#4d355f,#261d31); }
+    body[data-page="about"] .book-spine.slate { background: linear-gradient(180deg,#46515b,#22282f); }
+    body[data-page="about"] .book-spine.parchment { color:#251d20;background:linear-gradient(180deg,#c8baa6,#9f8d79); }
+    body[data-page="about"] .book-spine.wine { background: linear-gradient(180deg,#6e2739,#36131d); }
+    body[data-page="about"] .book-spine.blue { background: linear-gradient(180deg,#38495a,#1b2630); }
+    body[data-page="about"] .book-spine.olive { background: linear-gradient(180deg,#4f5241,#26291f); }
+
+    body[data-page="about"] .book-note {
+      min-height: 150px;
+      padding-left: 1.4rem;
+      border-left: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .book-note small {
+      display: block;
+      margin-bottom: .45rem;
+      color: var(--crimson-bright);
       font-family: var(--mono);
-      font-size: .4rem;
-      color: rgba(255,255,255,.62);
+      font-size: .5rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
     }
 
-    body[data-page="about"] .tone-oxblood { background: linear-gradient(180deg,#61152a,#310c18); }
-    body[data-page="about"] .tone-plum { background: linear-gradient(180deg,#503760,#251c30); }
-    body[data-page="about"] .tone-slate { background: linear-gradient(180deg,#47525c,#20272e); }
-    body[data-page="about"] .tone-charcoal { background: linear-gradient(180deg,#312c31,#151217); }
-    body[data-page="about"] .tone-parchment { color:#251d20;background:linear-gradient(180deg,#cbbda9,#9f8d79); }
-    body[data-page="about"] .tone-wine { background: linear-gradient(180deg,#6c2739,#35131d); }
-    body[data-page="about"] .tone-blue { background: linear-gradient(180deg,#394b5c,#1a2630); }
-    body[data-page="about"] .tone-olive { background: linear-gradient(180deg,#505343,#25281f); }
-    body[data-page="about"] .book-tall { --book-h: 225px; }
-    body[data-page="about"] .book-short { --book-h: 180px; }
-    body[data-page="about"] .book-wide { --book-w: 60px; }
-    body[data-page="about"] .book-narrow { --book-w: 41px; }
-
-    body[data-page="about"] .off-clock-panel {
-      max-width: 880px;
-      padding: 1.35rem 1.5rem;
-      border-left: 2px solid rgba(141,23,50,.72);
-      background: linear-gradient(90deg, rgba(141,23,50,.055), transparent 58%);
-    }
-
-    body[data-page="about"] .off-clock-panel p {
+    body[data-page="about"] .book-note h3 {
       margin: 0;
-      color: #b6abb4;
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    body[data-page="about"] .book-note p {
+      margin: .7rem 0 0;
+      color: #938893;
+      font-size: .8rem;
+      line-height: 1.55;
+    }
+
+    body[data-page="about"] .up-next {
+      margin: 1.2rem 0 0;
+      color: #7d737e;
+      font-family: var(--mono);
+      font-size: .53rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .off-clock-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    body[data-page="about"] .off-clock-copy {
+      max-width: 720px;
+      margin: 0;
+      color: #b0a5ae;
       font-size: .92rem;
-      line-height: 1.72;
+      line-height: 1.78;
+    }
+
+    body[data-page="about"] .off-clock-copy + .off-clock-copy {
+      margin-top: 1rem;
+    }
+
+    body[data-page="about"] .closing-line {
+      margin-top: 1.8rem;
+      color: #d0c5cd;
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      line-height: 1.45;
     }
 
     @media (max-width: 900px) {
-      body[data-page="about"] .service-band,
-      body[data-page="about"] .personal-heading,
-      body[data-page="about"] .ridge-inspector {
+      body[data-page="about"] .about-hero-grid,
+      body[data-page="about"] .military-layout,
+      body[data-page="about"] .shelf-wrap,
+      body[data-page="about"] .off-clock-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+      }
+
+      body[data-page="about"] .photo-placeholder.portrait {
+        justify-self: start;
+        width: min(340px, 82vw);
+      }
+
+      body[data-page="about"] .essay-heading {
+        grid-template-columns: 1fr;
+        gap: .8rem;
+      }
+
+      body[data-page="about"] .military-photo {
+        max-width: 680px;
+      }
+
+      body[data-page="about"] .book-note {
+        min-height: 0;
+        padding: 1.2rem 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
       }
     }
 
-    @media (max-width: 700px) {
-      body[data-page="about"] .personal-section { padding: 3rem 0; }
-      body[data-page="about"] .ridge-wrap { overflow-x: auto; }
-      body[data-page="about"] .service-band { margin-top: 1.8rem; }
-    }
+    @media (max-width: 640px) {
+      body[data-page="about"] .about-shell {
+        width: min(100% - 2rem, 1180px);
+      }
 
+      body[data-page="about"] .about-hero {
+        padding-top: 3.4rem;
+      }
+
+      body[data-page="about"] .service-facts,
+      body[data-page="about"] .life-photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body[data-page="about"] .ridge-caption {
+        grid-template-columns: 1fr;
+        gap: .45rem;
+      }
+
+      body[data-page="about"] .compact-shelf {
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 <body data-page="about">
@@ -405,146 +546,206 @@
 </header>
 
 <main id="content">
-  <section class="page-hero about-page-hero">
-    <div class="site-shell page-hero-grid">
-      <div class="about-hero-copy reveal">
-        <p class="kicker">About / Personal Profile</p>
-        <h1>Personal Profile</h1>
-        <p class="lead">The formal pages of this site cover my research, projects, code, and professional record. This page is the less formal counterpart: the places, habits, and interests that shape the person behind the work.</p>
-        <p>
-          Outside research, I spend as much time as I can hiking, traveling, reading, and building small technical projects. I am especially drawn to mountains, national parks, unfamiliar places, and books that change how I understand a problem—or simply build a world worth getting lost in.
+  <section class="about-hero">
+    <div class="about-shell about-hero-grid">
+      <div class="reveal">
+        <p class="about-kicker">About</p>
+        <h1>The life around the work.</h1>
+        <p class="lead">
+          The rest of this site explains what I study and build. This page is about the experiences, places, and interests that shaped the person doing it.
+        </p>
+        <p class="intro">
+          I have spent much of my adult life moving between universities, military service, unfamiliar countries, mountains, and technical projects. Outside research, I am usually reading, hiking, building something unnecessary on a computer, or planning somewhere else to go. My family roots are in Norway and Italy; I have crossed nearly every U.S. state and national park, along with travel through Japan, Morocco, France, Algeria, and Spain.
         </p>
       </div>
 
-      <aside class="page-index-card about-index-card reveal">
-        <div><span>Military Service</span><strong>U.S. Army · Infantry · Airborne</strong></div>
-        <div><span>Roots</span><strong>Norway · Italy</strong></div>
-        <div><span>Travel</span><strong>Nearly every U.S. state and national park, plus Japan, Morocco, France, Algeria, and Spain</strong></div>
-        <div><span>Favorite sights</span><strong><span class="accent-aurora">Aurora borealis</span> · <span class="accent-blossom">Cherry blossoms</span></strong></div>
-      </aside>
+      <figure class="photo-placeholder portrait reveal" data-photo-slot="portrait">
+        <span class="photo-label">Photo 01 / Portrait</span>
+      </figure>
     </div>
   </section>
 
-  <div class="site-shell">
+  <div class="about-shell">
 
-    <section class="service-band reveal" aria-labelledby="military-service-title">
-      <div>
-        <span class="eyebrow">Military Service</span>
-        <h2 id="military-service-title">U.S. Army</h2>
-      </div>
-      <div>
-        <p class="service-copy">
-          Before beginning graduate study, I served in the U.S. Army as a paratrooper and squad leader in an airborne infantry unit. I was responsible for leading soldiers, maintaining accountability and readiness, and communicating clearly in environments where incomplete information, physical stress, and changing conditions were routine.
+    <section class="essay-section reveal" aria-labelledby="military-title">
+      <header class="essay-heading">
+        <div>
+          <p class="essay-index">01 / Military Service</p>
+          <h2 id="military-title">U.S. Army</h2>
+        </div>
+        <p class="essay-deck">
+          Before graduate school, I served as a paratrooper and squad leader in an airborne infantry unit. It remains one of the most formative parts of my background.
         </p>
-        <p class="service-copy">
-          Much of that experience took place in Alaska and included Arctic and extreme-cold-weather training and operations. Military service remains an important part of how I approach technical and analytical work: define the problem clearly, distinguish what is known from what is assumed, communicate decisions in plain language, and build solutions that remain useful outside ideal conditions. The CV contains the formal chronology; here, the important point is that the Army was a formative part of my professional and personal development.
-        </p>
+      </header>
+
+      <div class="military-layout">
+        <div>
+          <p class="service-copy">
+            I was responsible for leading soldiers, maintaining accountability and readiness, and communicating clearly in environments where incomplete information, physical stress, and changing conditions were routine. Much of that experience took place in Alaska and included Arctic and extreme-cold-weather training and operations.
+          </p>
+          <p class="service-copy">
+            Military service changed the way I approach difficult problems. I learned to distinguish what is known from what is assumed, communicate decisions in plain language, and prefer solutions that remain useful outside ideal conditions. The CV contains the formal chronology; here, the more important point is that the Army shaped how I think about leadership, uncertainty, and responsibility.
+          </p>
+
+          <dl class="service-facts">
+            <div class="service-fact">
+              <dt>Role</dt>
+              <dd>Paratrooper · Squad Leader</dd>
+            </div>
+            <div class="service-fact">
+              <dt>Branch</dt>
+              <dd>U.S. Army Infantry</dd>
+            </div>
+            <div class="service-fact">
+              <dt>Environment</dt>
+              <dd>Alaska · Arctic · Extreme Cold</dd>
+            </div>
+            <div class="service-fact">
+              <dt>Formation</dt>
+              <dd>Airborne Infantry</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="military-photo">
+          <div class="photo-placeholder landscape" data-photo-slot="military-alaska">
+            <span class="photo-label">Photo 02 / Army · Alaska</span>
+          </div>
+          <figcaption>Suggested replacement: field, training, or Alaska photograph.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="personal-section reveal" aria-labelledby="outside-model-title">
-      <header class="personal-heading">
+    <section class="essay-section reveal" aria-labelledby="outside-title">
+      <header class="essay-heading">
         <div>
-          <span class="eyebrow">Terrain / Movement / Scale</span>
-          <h2 id="outside-model-title">Outside the Model</h2>
+          <p class="essay-index">02 / Outside the Model</p>
+          <h2 id="outside-title">Mountains &amp; movement</h2>
         </div>
-        <p>
+        <p class="essay-deck">
           Hiking and mountaineering are my main counterweight to screen-bound work: long approaches, exposed ridgelines, cold weather, unusual geology, and the perspective that comes from seeing a place at human scale.
         </p>
       </header>
 
-      <div class="visual-shell">
-        <div class="visual-topbar">
-          <span>Selected field log / not to scale</span>
-          <span>Hover or select a point</span>
-        </div>
+      <figure class="ridge-figure">
+        <div class="ridge-stage">
+          <svg class="ridge-svg" viewBox="0 0 1100 300" role="img" aria-labelledby="ridge-title ridge-desc">
+            <title id="ridge-title">Selected mountain and hiking experiences</title>
+            <desc id="ridge-desc">A stylized ridgeline marking selected hikes and climbs in the United States, Morocco, Alaska, and Japan.</desc>
+            <path class="ridge-fill" d="M0,267 L0,231 L90,214 L142,166 L197,226 L255,133 L315,216 L375,158 L427,210 L497,86 L565,220 L631,151 L680,201 L748,113 L816,218 L880,144 L929,202 L993,124 L1042,202 L1100,169 L1100,267 Z"></path>
+            <path class="ridge-line" d="M0,231 L90,214 L142,166 L197,226 L255,133 L315,216 L375,158 L427,210 L497,86 L565,220 L631,151 L680,201 L748,113 L816,218 L880,144 L929,202 L993,124 L1042,202 L1100,169"></path>
+            <line class="ridge-baseline" x1="0" y1="267" x2="1100" y2="267"></line>
 
-        <div class="ridge-wrap">
-          <svg class="ridge-svg" viewBox="0 0 1100 330" role="img" aria-label="Stylized mountain profile with selected hikes and climbs">
-            <path class="ridge-path" d="M0,300 L0,252 L75,228 L123,180 L172,236 L230,142 L288,222 L343,155 L391,214 L456,96 L524,226 L584,158 L631,201 L692,118 L758,222 L823,148 L867,205 L925,128 L975,204 L1030,166 L1100,214 L1100,300 Z"></path>
-            <path class="ridge-line" d="M0,252 L75,228 L123,180 L172,236 L230,142 L288,222 L343,155 L391,214 L456,96 L524,226 L584,158 L631,201 L692,118 L758,222 L823,148 L867,205 L925,128 L975,204 L1030,166 L1100,214"></path>
-
-            <g class="ridge-point" tabindex="0" role="button" data-title="Richland Balsam" data-meta="Blue Ridge Mountains · United States" data-copy="One of the Appalachian stops in a growing field log that now stretches from the Blue Ridge to Alaska, North Africa, and Japan." transform="translate(123 180)">
-              <circle r="6"></circle><text x="-42" y="-13">RICHLAND BALSAM</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Richland Balsam" data-meta="Blue Ridge Mountains · United States" data-copy="One Appalachian point in a field log that now stretches from the Blue Ridge to Alaska, North Africa, and Japan." transform="translate(142 166)">
+              <circle r="5"></circle><text x="-41" y="-13">RICHLAND BALSAM</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Point Imperial" data-meta="Grand Canyon · United States" data-copy="A reminder that elevation is only part of mountain scale: depth, distance, exposure, and geology can dominate the experience." transform="translate(230 142)">
-              <circle r="6"></circle><text x="-31" y="-13">POINT IMPERIAL</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Point Imperial" data-meta="Grand Canyon · United States" data-copy="A landscape where depth and geological scale matter more than the summit itself." transform="translate(255 133)">
+              <circle r="5"></circle><text x="-31" y="-13">POINT IMPERIAL</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Toubkal" data-meta="Atlas Mountains · Morocco" data-copy="A high-altitude route through the Atlas Mountains and one of the trips that fixed mountains and travel together in my imagination." transform="translate(456 96)">
-              <circle r="6"></circle><text x="-27" y="-13">TOUBKAL</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Toubkal" data-meta="Atlas Mountains · Morocco" data-copy="A high-altitude route through the Atlas Mountains and one of the trips that permanently linked travel and mountains for me." transform="translate(497 86)">
+              <circle r="5"></circle><text x="-27" y="-13">TOUBKAL</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Chugach Mountains" data-meta="Alaska · United States" data-copy="East Twin, Rainbow, Gold Star, Alyeska and other Alaskan routes made the Chugach one of the landscapes I return to mentally most often." transform="translate(584 158)">
-              <circle r="6"></circle><text x="-35" y="-13">CHUGACH</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Chugach Mountains" data-meta="Alaska · United States" data-copy="East Twin, Rainbow, Gold Star, Alyeska, and other routes made the Chugach one of the landscapes I return to most often." transform="translate(631 151)">
+              <circle r="5"></circle><text x="-35" y="-13">CHUGACH</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Healy" data-meta="Denali region · Alaska" data-copy="A northern landscape where scale, weather, and distance do most of the talking." transform="translate(692 118)">
-              <circle r="6"></circle><text x="-28" y="-13">MT. HEALY</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Healy" data-meta="Denali region · Alaska" data-copy="A northern landscape where scale, weather, and distance do most of the talking." transform="translate(748 113)">
+              <circle r="5"></circle><text x="-27" y="-13">MT. HEALY</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Harding Icefield" data-meta="Kenai Fjords · Alaska" data-copy="Ice, rock, and enormous spatial scale—one of the places that makes ordinary measures of distance feel inadequate." transform="translate(823 148)">
-              <circle r="6"></circle><text x="-40" y="-13">HARDING ICEFIELD</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Harding Icefield" data-meta="Kenai Fjords · Alaska" data-copy="Ice, rock, and enormous spatial scale—one of the places that makes ordinary measures of distance feel inadequate." transform="translate(880 144)">
+              <circle r="5"></circle><text x="-41" y="-13">HARDING ICEFIELD</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Fuji" data-meta="Japan" data-copy="A mountain inseparable from the wider experience of Japan: volcanic terrain, ritual, visual order, and a landscape with a long cultural memory." transform="translate(925 128)">
-              <circle r="6"></circle><text x="-22" y="-13">FUJI</text>
-            </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Inari" data-meta="Kyoto · Japan" data-copy="A quieter kind of ascent—part mountain, part shrine route, part movement through a place built from repetition and memory." transform="translate(1030 166)">
-              <circle r="6"></circle><text x="-25" y="-13">INARI</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Fuji" data-meta="Japan" data-copy="A mountain inseparable from the wider experience of Japan: volcanic terrain, ritual, and a landscape with a long cultural memory." transform="translate(993 124)">
+              <circle r="5"></circle><text x="-22" y="-13">FUJI</text>
             </g>
           </svg>
-
-          <div class="ridge-inspector">
-            <div>
-              <span class="inspector-kicker" id="ridge-meta">Selected field log</span>
-              <h3 class="inspector-title" id="ridge-title">Mountains as counterweight</h3>
-            </div>
-            <p class="inspector-copy" id="ridge-copy">
-              The mountain log is not a résumé of summits. It is a record of the environments I seek out when I need distance from ordinary routines: high places, long trails, cold weather, and terrain that refuses to fit inside a screen.
-            </p>
-          </div>
         </div>
+
+        <figcaption class="ridge-caption">
+          <strong id="peak-name">Mountains as counterweight</strong>
+          <p id="peak-note">The profile is intentionally selective rather than exhaustive. Select a marked point for a short field note.</p>
+        </figcaption>
+      </figure>
+
+      <p class="travel-note">
+        Travel sits naturally beside the mountains for me. I have visited nearly every U.S. state and national park, as well as Japan, Morocco, France, Algeria, and Spain. The two most beautiful things I have seen are still the aurora borealis and cherry blossoms—one enormous and almost unreal, the other brief enough to make its beauty feel conditional.
+      </p>
+
+      <div class="life-photo-grid">
+        <figure class="life-photo">
+          <div class="photo-placeholder wide" data-photo-slot="mountain">
+            <span class="photo-label">Photo 03 / Mountain · Trail</span>
+          </div>
+          <figcaption>Suggested replacement: Alaska, Toubkal, Fuji, or another meaningful route.</figcaption>
+        </figure>
+        <figure class="life-photo">
+          <div class="photo-placeholder landscape" data-photo-slot="travel">
+            <span class="photo-label">Photo 04 / Japan · Cherry Blossoms</span>
+          </div>
+          <figcaption>Suggested replacement: Japan, aurora, or another place-based photograph.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="personal-section reveal" aria-labelledby="reading-title">
-      <header class="personal-heading">
+    <section class="essay-section reveal" aria-labelledby="shelf-title">
+      <header class="essay-heading">
         <div>
-          <span class="eyebrow">Current Inputs / Personal Library</span>
-          <h2 id="reading-title">The Shelf</h2>
+          <p class="essay-index">03 / Reading</p>
+          <h2 id="shelf-title">The shelf</h2>
         </div>
-        <p>
-          Technical books share space with history, biography, fiction, and light novels. I read to learn methods, but also because a good book can alter the scale of a problem—or simply build a world worth disappearing into for a while.
+        <p class="essay-deck">
+          Technical books share space with history, biography, fiction, and light novels. The mix is more representative of what I actually read than a list of “recommended books.”
         </p>
       </header>
 
-      <div class="reading-library-shell">
-        <div class="visual-topbar">
-          <span>JSL / Personal library</span>
-          <span id="reading-library-count">0 volumes</span>
-        </div>
-        <div id="reading-bookshelf"></div>
-        <div class="ridge-inspector">
-          <div>
-            <span class="inspector-kicker" id="reading-inspector-status">Reading now</span>
-            <h3 class="inspector-title" id="reading-inspector-title">Select a volume</h3>
+      <div class="shelf-wrap">
+        <div>
+          <div class="shelf-group">
+            <div class="shelf-label"><span>Currently reading</span><span>05 volumes</span></div>
+            <div class="compact-shelf" id="current-shelf"></div>
           </div>
-          <p class="inspector-copy" id="reading-inspector-copy">Book details will appear here.</p>
+          <div class="shelf-group">
+            <div class="shelf-label"><span>Recently read</span><span>03 volumes</span></div>
+            <div class="compact-shelf" id="recent-shelf"></div>
+          </div>
+          <p class="up-next">Up next — Deep Learning, Bishop &amp; Bishop</p>
         </div>
+
+        <aside class="book-note" aria-live="polite">
+          <small id="book-status">Reading now</small>
+          <h3 id="book-title">Select a book</h3>
+          <p id="book-copy">A short note about the selected book will appear here.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="personal-section reveal" aria-labelledby="off-clock-title">
-      <header class="personal-heading">
+    <section class="essay-section reveal" aria-labelledby="off-clock-title">
+      <header class="essay-heading">
         <div>
-          <span class="eyebrow">Interests / Downtime</span>
-          <h2 id="off-clock-title">Off the Clock</h2>
+          <p class="essay-index">04 / Off the Clock</p>
+          <h2 id="off-clock-title">The rest of it</h2>
         </div>
-        <p>
-          The rest does not need a dashboard. These are simply the things I tend to reach for when work is finished.
+        <p class="essay-deck">
+          Not every interest needs an interface. These are simply the things I tend to reach for when work is finished.
         </p>
       </header>
 
-      <div class="off-clock-panel">
-        <p>
-          I listen mostly to punk, metal, rock, and anime music; watch a lot of horror; and gravitate toward anime and games with strong atmosphere—especially <em>Eighty-Six</em>, <em>Chainsaw Man</em>, and <em>Dark Souls</em>. I also enjoy technical tinkering and have a longstanding curiosity about folklore, cryptids, demonology, and paranormal history, which I hope to turn into a casual podcast. Most of my actual downtime is simpler: reading, getting outside, and spending time with my longtime partner and cats.
-        </p>
+      <div class="off-clock-grid">
+        <div>
+          <p class="off-clock-copy">
+            I listen mostly to punk, metal, and rock; watch a lot of horror; and gravitate toward anime and games with strong atmosphere—especially <em>Eighty-Six</em>, <em>Chainsaw Man</em>, and <em>Dark Souls</em>. I also have a longstanding interest in folklore, cryptids, demonology, and paranormal history, which I hope to turn into a casual podcast.
+          </p>
+          <p class="off-clock-copy">
+            Most of my actual downtime is simpler: reading, getting outside, tinkering with something technical, and spending time at home with my longtime partner and cats.
+          </p>
+          <p class="closing-line">The work matters. So does having a life large enough that the work is only part of it.</p>
+        </div>
+
+        <figure class="life-photo">
+          <div class="photo-placeholder landscape" data-photo-slot="personal">
+            <span class="photo-label">Photo 05 / Personal · Home · Cats</span>
+          </div>
+          <figcaption>Suggested replacement: candid personal photograph rather than a formal portrait.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -570,175 +771,128 @@
 <script src="assets/js/main.js"></script>
 <script>
 (() => {
-  const setInspector = (selector, titleId, copyId, activeClass) => {
-    document.querySelectorAll(selector).forEach((node) => {
-      const activate = () => {
-        document.querySelectorAll(selector + "." + activeClass).forEach((el) => el.classList.remove(activeClass));
-        node.classList.add(activeClass);
-        const title = document.getElementById(titleId);
-        const copy = document.getElementById(copyId);
-        if (title) title.textContent = node.dataset.title || "";
-        if (copy) copy.textContent = node.dataset.copy || "";
-        if (titleId === "ridge-title") {
-          const meta = document.getElementById("ridge-meta");
-          if (meta) meta.textContent = node.dataset.meta || "Selected field log";
-        }
-      };
-      node.addEventListener("click", activate);
-      node.addEventListener("mouseenter", activate);
-      node.addEventListener("focus", activate);
-      node.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          activate();
-        }
-      });
+  const ridgePoints = [...document.querySelectorAll(".ridge-point")];
+  const peakName = document.getElementById("peak-name");
+  const peakNote = document.getElementById("peak-note");
+
+  function activatePeak(point) {
+    ridgePoints.forEach((node) => node.classList.remove("is-active"));
+    point.classList.add("is-active");
+    if (peakName) peakName.textContent = point.dataset.title || "";
+    if (peakNote) {
+      const meta = point.dataset.meta ? point.dataset.meta + " — " : "";
+      peakNote.textContent = meta + (point.dataset.copy || "");
+    }
+  }
+
+  ridgePoints.forEach((point) => {
+    point.addEventListener("click", () => activatePeak(point));
+    point.addEventListener("focus", () => activatePeak(point));
+    point.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activatePeak(point);
+      }
     });
-  };
+  });
 
-  setInspector(".ridge-point", "ridge-title", "ridge-copy", "is-active");
-
-  const readingLibrary = [
+  const books = [
     {
       title: "An Introduction to Statistical Learning",
-      author: "James · Witten · Hastie · Tibshirani",
+      short: "ISL",
       status: "current",
-      note: "A core reference for statistical learning: practical enough to use, broad enough to return to, and one of the books I keep close while moving between methods.",
-      tone: "oxblood", size: "tall", width: "wide"
+      tone: "oxblood",
+      note: "A core reference for statistical learning: broad enough to revisit constantly and practical enough to keep open while working."
     },
     {
       title: "R for Data Science",
-      author: "Grolemund · Çetinkaya-Rundel · Wickham",
+      short: "R4DS",
       status: "current",
-      note: "A working reference for the everyday craft of turning raw data into something inspectable, reproducible, and useful.",
-      tone: "plum", size: "medium", width: "wide"
+      tone: "plum",
+      note: "A working reference for the everyday craft of turning raw data into something inspectable, reproducible, and useful."
     },
     {
       title: "Text Mining with R",
-      author: "Silge · Robinson",
+      short: "Text Mining",
       status: "current",
-      note: "A bridge between the tidyverse habits I use constantly and the text-as-data problems that increasingly show up in my work.",
-      tone: "slate", size: "short", width: "wide"
+      tone: "slate",
+      note: "A bridge between tidyverse habits and the text-as-data problems that increasingly show up in my work."
     },
     {
       title: "Speech and Language Processing",
-      author: "Jurafsky · Martin",
+      short: "SLP",
       status: "current",
-      note: "The larger technical map for NLP, speech, language models, representations, and the machinery behind computational language work.",
-      tone: "charcoal", size: "tall", width: "wide"
+      tone: "wine",
+      note: "The larger technical map for NLP, speech, language models, representation, and computational language."
     },
     {
       title: "Eighty-Six",
-      author: "Asato Asato",
+      short: "Eighty-Six",
       status: "current",
-      note: "One of my favorite fictional worlds and my favorite anime. I return to it for the combination of war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them.",
-      tone: "parchment", size: "medium", width: "narrow"
+      tone: "parchment",
+      note: "One of my favorite fictional worlds: war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them."
     },
     {
       title: "Regression and Other Stories",
-      author: "Gelman · Hill · Vehtari",
+      short: "Regression",
       status: "recent",
-      note: "A practical book about regression, but equally useful as a book about statistical judgment: how to build, check, interpret, and explain models without pretending the model is the world.",
-      tone: "wine", size: "medium", width: "wide"
+      tone: "wine",
+      note: "A practical book about regression, but just as useful as a book about statistical judgment and model checking."
     },
     {
       title: "American Caesar",
-      author: "William Manchester",
+      short: "American Caesar",
       status: "recent",
-      note: "Biography and military history through a character large enough to make the institutional, strategic, and personal stories collide.",
-      tone: "olive", size: "tall", width: "wide"
+      tone: "olive",
+      note: "Biography and military history through a character large enough to make institutional, strategic, and personal stories collide."
     },
     {
       title: "The Coldest Winter",
-      author: "David Halberstam",
+      short: "Coldest Winter",
       status: "recent",
-      note: "A Korean War history I value for the way it moves between battlefield experience, command decisions, politics, and the accumulated consequences of bad assumptions.",
-      tone: "blue", size: "medium", width: "wide"
-    },
-    {
-      title: "Deep Learning",
-      author: "Bishop · Bishop",
-      status: "next",
-      note: "Next in the technical queue: a deeper pass through neural networks, representation learning, and modern machine-learning foundations.",
-      tone: "oxblood", size: "tall", width: "wide"
+      tone: "blue",
+      note: "A Korean War history that moves effectively between battlefield experience, command decisions, politics, and the cost of bad assumptions."
     }
   ];
 
-  const shelfConfig = [
-    { key: "current", label: "Currently Reading" },
-    { key: "recent", label: "Recently Read" },
-    { key: "next", label: "Up Next" }
-  ];
+  const statusText = { current: "Reading now", recent: "Recently read" };
+  const currentShelf = document.getElementById("current-shelf");
+  const recentShelf = document.getElementById("recent-shelf");
+  const bookStatus = document.getElementById("book-status");
+  const bookTitle = document.getElementById("book-title");
+  const bookCopy = document.getElementById("book-copy");
 
-  const statusLabel = {
-    current: "Reading now",
-    recent: "Recently read",
-    next: "Up next"
-  };
-
-  const bookshelf = document.getElementById("reading-bookshelf");
-  if (bookshelf) {
-    const titleNode = document.getElementById("reading-inspector-title");
-    const statusNode = document.getElementById("reading-inspector-status");
-    const copyNode = document.getElementById("reading-inspector-copy");
-
-    const inspectBook = (book, button) => {
-      document.querySelectorAll(".reading-book.is-active").forEach((el) => el.classList.remove("is-active"));
-      if (button) button.classList.add("is-active");
-      statusNode.textContent = statusLabel[book.status] + " · " + book.author;
-      titleNode.textContent = book.title;
-      copyNode.textContent = book.note;
-    };
-
-    shelfConfig.forEach((shelfInfo) => {
-      const books = readingLibrary.filter((book) => book.status === shelfInfo.key);
-      const shelf = document.createElement("section");
-      shelf.className = "reading-shelf";
-
-      const label = document.createElement("div");
-      label.className = "reading-shelf-label";
-
-      const labelText = document.createElement("span");
-      labelText.textContent = shelfInfo.label;
-
-      const count = document.createElement("span");
-      count.textContent = String(books.length).padStart(2, "0") + " volume" + (books.length === 1 ? "" : "s");
-
-      label.append(labelText, count);
-
-      const stage = document.createElement("div");
-      stage.className = "reading-shelf-stage";
-
-      books.forEach((book, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "reading-book tone-" + book.tone + " book-" + book.size + " book-" + book.width;
-        button.setAttribute("aria-label", book.title + " by " + book.author);
-
-        const title = document.createElement("span");
-        title.className = "reading-book-title";
-        title.textContent = book.title;
-
-        const mark = document.createElement("span");
-        mark.className = "reading-book-mark";
-        mark.textContent = String(index + 1).padStart(2, "0");
-
-        button.append(title, mark);
-        button.addEventListener("click", () => inspectBook(book, button));
-        button.addEventListener("mouseenter", () => inspectBook(book, button));
-        button.addEventListener("focus", () => inspectBook(book, button));
-        stage.appendChild(button);
-      });
-
-      shelf.append(label, stage);
-      bookshelf.appendChild(shelf);
-    });
-
-    const countNode = document.getElementById("reading-library-count");
-    if (countNode) countNode.textContent = String(readingLibrary.length).padStart(2, "0") + " volumes";
-    const firstButton = document.querySelector(".reading-book");
-    if (firstButton) inspectBook(readingLibrary[0], firstButton);
+  function inspectBook(book, button) {
+    document.querySelectorAll(".book-spine.is-active").forEach((node) => node.classList.remove("is-active"));
+    if (button) button.classList.add("is-active");
+    if (bookStatus) bookStatus.textContent = statusText[book.status] || "";
+    if (bookTitle) bookTitle.textContent = book.title;
+    if (bookCopy) bookCopy.textContent = book.note;
   }
+
+  books.forEach((book, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "book-spine " + book.tone;
+    button.style.setProperty("--h", (104 + (index % 4) * 7) + "px");
+    button.style.setProperty("--w", (34 + (index % 3) * 4) + "px");
+    button.setAttribute("aria-label", book.title);
+
+    const title = document.createElement("span");
+    title.className = "book-title";
+    title.textContent = book.short;
+    button.appendChild(title);
+
+    button.addEventListener("click", () => inspectBook(book, button));
+    button.addEventListener("focus", () => inspectBook(book, button));
+
+    const target = book.status === "current" ? currentShelf : recentShelf;
+    if (target) target.appendChild(button);
+  });
+
+  const firstBook = books[0];
+  const firstButton = document.querySelector(".book-spine");
+  if (firstBook && firstButton) inspectBook(firstBook, firstButton);
 })();
 </script>
 

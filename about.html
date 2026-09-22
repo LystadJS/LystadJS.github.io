@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal profile of John S. Lystad: military service, mountains, travel, books, technical tinkering, and life beyond research.">
+  <meta name="description" content="Personal profile of John S. Lystad: military service, mountains, books, travel, technical tinkering, and life beyond research.">
   <meta name="theme-color" content="#070709">
   <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="The person behind the work: military service, mountains, travel, books, technical tinkering, and life beyond research.">
+  <meta property="og:description" content="The person behind the work: military service, mountains, books, travel, technical tinkering, and life beyond research.">
   <meta property="og:type" content="website">
   <title>About | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -18,12 +18,9 @@
     body[data-page="about"] {
       --about-oxblood: #8d1732;
       --about-oxblood-bright: #bf3152;
-      --about-purple: #70508a;
       --about-aurora: #79c7a3;
       --about-blossom: #d6a2b6;
-      --about-ink: #0a090c;
       --about-panel: #0e0c11;
-      --about-panel-2: #121016;
       --about-soft: #aaa0aa;
     }
 
@@ -82,8 +79,7 @@
       margin-top: 1.25rem;
     }
 
-    body[data-page="about"] .profile-tag,
-    body[data-page="about"] .micro-tag {
+    body[data-page="about"] .profile-tag {
       border: 1px solid var(--line);
       background: rgba(255,255,255,.012);
       color: #a99ea7;
@@ -262,10 +258,7 @@
       letter-spacing: .03em;
     }
 
-    body[data-page="about"] .ridge-inspector,
-    body[data-page="about"] .atlas-inspector,
-    body[data-page="about"] .curiosity-inspector,
-    body[data-page="about"] .media-inspector {
+    body[data-page="about"] .ridge-inspector {
       display: grid;
       grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
       gap: 1.5rem;
@@ -295,130 +288,6 @@
       color: #aa9faa;
       font-size: .85rem;
       line-height: 1.6;
-    }
-
-    body[data-page="about"] .atlas-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(260px, .65fr);
-      min-height: 500px;
-    }
-
-    body[data-page="about"] .atlas-map {
-      position: relative;
-      min-height: 500px;
-      border-right: 1px solid var(--line);
-      background:
-        radial-gradient(ellipse at 46% 48%, rgba(112,80,138,.08), transparent 46%),
-        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
-      background-size: auto, 46px 46px, 46px 46px;
-    }
-
-    body[data-page="about"] .world-outline {
-      position: absolute;
-      inset: 8% 6%;
-      opacity: .28;
-    }
-
-    body[data-page="about"] .atlas-node {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      padding: 0;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      background: #0a080c;
-      color: #9d8aa3;
-      cursor: pointer;
-      box-shadow: 0 0 0 4px rgba(157,138,163,.07);
-      transition: transform 150ms ease, box-shadow 150ms ease;
-    }
-
-    body[data-page="about"] .atlas-node::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 16px;
-      top: -4px;
-      white-space: nowrap;
-      color: #938793;
-      font-family: var(--mono);
-      font-size: .48rem;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    body[data-page="about"] .atlas-node.root { color: var(--about-blossom); }
-    body[data-page="about"] .atlas-node.travel { color: var(--about-aurora); }
-    body[data-page="about"] .atlas-node:hover,
-    body[data-page="about"] .atlas-node:focus,
-    body[data-page="about"] .atlas-node.is-active {
-      transform: scale(1.35);
-      box-shadow: 0 0 0 6px rgba(121,199,163,.09), 0 0 16px currentColor;
-      outline: none;
-    }
-
-    body[data-page="about"] .atlas-side {
-      display: grid;
-      align-content: start;
-      gap: 1rem;
-      padding: 1.3rem;
-    }
-
-    body[data-page="about"] .atlas-stat {
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    body[data-page="about"] .atlas-stat span {
-      display: block;
-      color: #746a76;
-      font-family: var(--mono);
-      font-size: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-    }
-
-    body[data-page="about"] .atlas-stat strong {
-      display: block;
-      margin-top: .25rem;
-      color: #d8cdd5;
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    body[data-page="about"] .beauty-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: .65rem;
-      margin-top: .3rem;
-    }
-
-    body[data-page="about"] .beauty-card {
-      min-height: 110px;
-      display: grid;
-      place-items: end start;
-      padding: .8rem;
-      border: 1px solid var(--line);
-      font-family: var(--mono);
-      font-size: .52rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    body[data-page="about"] .beauty-card.aurora {
-      background:
-        radial-gradient(circle at 68% 16%, rgba(121,199,163,.32), transparent 36%),
-        linear-gradient(145deg, #0e1118, #0d0c10);
-      color: #a3d6bf;
-    }
-
-    body[data-page="about"] .beauty-card.blossom {
-      background:
-        radial-gradient(circle at 72% 24%, rgba(214,162,182,.28), transparent 34%),
-        linear-gradient(145deg, #160f14, #0d0c10);
-      color: #dfb6c5;
     }
 
     body[data-page="about"] .reading-library-shell {
@@ -514,340 +383,6 @@
     body[data-page="about"] .book-wide { --book-w: 60px; }
     body[data-page="about"] .book-narrow { --book-w: 41px; }
 
-    body[data-page="about"] .curiosity-board {
-      position: relative;
-      min-height: 540px;
-      background:
-        radial-gradient(circle at center, rgba(112,80,138,.08), transparent 36%),
-        radial-gradient(circle at 15% 20%, rgba(141,23,50,.07), transparent 24%),
-        #09080b;
-    }
-
-    body[data-page="about"] .curiosity-board::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.18) 0 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,.08) 0 1px, transparent 1px);
-      background-size: 90px 90px, 51px 51px;
-      background-position: 0 0, 23px 17px;
-      opacity: .35;
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .curiosity-line {
-      position: absolute;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(112,80,138,.32), transparent);
-      transform-origin: left center;
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .curiosity-core,
-    body[data-page="about"] .curiosity-node {
-      position: absolute;
-      border: 1px solid rgba(112,80,138,.45);
-      border-radius: 50%;
-      background: #0e0b11;
-      color: #b8acb7;
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      cursor: pointer;
-      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-    }
-
-    body[data-page="about"] .curiosity-core {
-      left: 50%;
-      top: 50%;
-      width: 126px;
-      height: 126px;
-      transform: translate(-50%,-50%);
-      color: #d6cad3;
-      border-color: rgba(191,49,82,.5);
-      font-size: .62rem;
-    }
-
-    body[data-page="about"] .curiosity-node {
-      width: 92px;
-      height: 92px;
-      font-size: .48rem;
-    }
-
-    body[data-page="about"] .curiosity-node:hover,
-    body[data-page="about"] .curiosity-node:focus,
-    body[data-page="about"] .curiosity-node.is-active {
-      transform: scale(1.08);
-      border-color: var(--about-oxblood-bright);
-      box-shadow: 0 0 24px rgba(141,23,50,.17);
-      outline: none;
-    }
-
-    body[data-page="about"] .media-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: .75rem;
-      padding: .85rem;
-    }
-
-    body[data-page="about"] .media-channel {
-      min-height: 240px;
-      position: relative;
-      display: grid;
-      align-content: end;
-      padding: 1rem;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, transparent 0 30%, rgba(7,6,9,.9) 100%),
-        radial-gradient(circle at 50% 18%, rgba(112,80,138,.16), transparent 40%),
-        #111016;
-      cursor: pointer;
-      color: inherit;
-      text-align: left;
-      transition: transform 150ms ease, border-color 150ms ease;
-    }
-
-    body[data-page="about"] .media-channel:hover,
-    body[data-page="about"] .media-channel:focus,
-    body[data-page="about"] .media-channel.is-active {
-      transform: translateY(-4px);
-      border-color: rgba(191,49,82,.42);
-      outline: none;
-    }
-
-    body[data-page="about"] .media-visual {
-      position: absolute;
-      inset: 18px 18px auto;
-      height: 92px;
-      display: flex;
-      align-items: end;
-      gap: 5px;
-      opacity: .68;
-    }
-
-    body[data-page="about"] .media-bar {
-      flex: 1;
-      min-width: 3px;
-      background: linear-gradient(180deg, var(--about-blossom), var(--about-oxblood));
-      animation: mediaPulse 2.4s ease-in-out infinite alternate;
-      animation-delay: calc(var(--i) * -160ms);
-    }
-
-    body[data-page="about"] .media-channel small {
-      color: #716772;
-      font-family: var(--mono);
-      font-size: .48rem;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-    }
-
-    body[data-page="about"] .media-channel h3 {
-      margin: .32rem 0 .35rem;
-      font-family: var(--serif);
-      font-size: 1.7rem;
-      font-weight: 600;
-    }
-
-    body[data-page="about"] .media-channel p {
-      margin: 0;
-      color: #9d929d;
-      font-size: .76rem;
-      line-height: 1.5;
-    }
-
-    @keyframes mediaPulse {
-      from { transform: scaleY(.55); opacity: .45; }
-      to { transform: scaleY(1); opacity: .9; }
-    }
-
-    body[data-page="about"] .workbench-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    body[data-page="about"] .bench-card {
-      position: relative;
-      min-height: 190px;
-      padding: 1.1rem;
-      background: #0d0b10;
-      overflow: hidden;
-    }
-
-    body[data-page="about"] .bench-card:nth-child(1),
-    body[data-page="about"] .bench-card:nth-child(4) { grid-column: span 5; }
-
-    body[data-page="about"] .bench-card:nth-child(2),
-    body[data-page="about"] .bench-card:nth-child(3) { grid-column: span 7; }
-
-    body[data-page="about"] .bench-card::after {
-      content: "";
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      right: -34px;
-      bottom: -34px;
-      border: 1px solid rgba(112,80,138,.22);
-      border-radius: 50%;
-      box-shadow: 0 0 0 18px rgba(112,80,138,.025), 0 0 0 36px rgba(112,80,138,.015);
-    }
-
-    body[data-page="about"] .bench-index {
-      color: var(--about-oxblood-bright);
-      font-family: var(--mono);
-      font-size: .5rem;
-      letter-spacing: .1em;
-    }
-
-    body[data-page="about"] .bench-card h3 {
-      margin: .45rem 0;
-      font-family: var(--serif);
-      font-size: 1.75rem;
-      font-weight: 600;
-    }
-
-    body[data-page="about"] .bench-card p {
-      max-width: 46ch;
-      margin: 0;
-      color: #998e99;
-      font-size: .8rem;
-      line-height: 1.55;
-    }
-
-    body[data-page="about"] .bench-code {
-      margin-top: 1rem;
-      color: #776d79;
-      font-family: var(--mono);
-      font-size: .52rem;
-      line-height: 1.7;
-    }
-
-    body[data-page="about"] .anchors-shell {
-      min-height: 590px;
-      position: relative;
-      background:
-        radial-gradient(circle at center, rgba(214,162,182,.08), transparent 22%),
-        radial-gradient(circle at 25% 80%, rgba(121,199,163,.06), transparent 26%),
-        #09080b;
-    }
-
-    body[data-page="about"] .orbit {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      border: 1px solid rgba(112,80,138,.18);
-      border-radius: 50%;
-      transform: translate(-50%,-50%);
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .orbit.one { width: 310px; height: 310px; }
-    body[data-page="about"] .orbit.two { width: 470px; height: 470px; }
-
-    body[data-page="about"] .anchor-core {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 150px;
-      height: 150px;
-      display: grid;
-      place-items: center;
-      transform: translate(-50%,-50%);
-      border: 1px solid rgba(214,162,182,.36);
-      border-radius: 50%;
-      background: rgba(16,12,16,.94);
-      color: #d8cbd4;
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      text-align: center;
-      box-shadow: 0 0 40px rgba(214,162,182,.07);
-    }
-
-    body[data-page="about"] .anchor-node {
-      position: absolute;
-      width: 134px;
-      min-height: 82px;
-      padding: .75rem;
-      border: 1px solid var(--line);
-      background: rgba(15,12,16,.94);
-      color: #c6bac3;
-      cursor: pointer;
-      text-align: left;
-      transition: transform 150ms ease, border-color 150ms ease;
-    }
-
-    body[data-page="about"] .anchor-node:hover,
-    body[data-page="about"] .anchor-node:focus {
-      transform: translateY(-4px);
-      border-color: rgba(214,162,182,.42);
-      outline: none;
-    }
-
-    body[data-page="about"] .anchor-node strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 1.02rem;
-      font-weight: 600;
-    }
-
-    body[data-page="about"] .anchor-node span {
-      display: block;
-      margin-top: .25rem;
-      color: #817681;
-      font-size: .66rem;
-      line-height: 1.35;
-    }
-
-    body[data-page="about"] .field-notes {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .85rem;
-    }
-
-    body[data-page="about"] .field-note {
-      min-height: 220px;
-      display: grid;
-      align-content: space-between;
-      padding: 1.2rem;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.018), transparent 44%),
-        #0e0c11;
-    }
-
-    body[data-page="about"] .field-note .note-mark {
-      color: var(--about-oxblood-bright);
-      font-family: var(--mono);
-      font-size: .5rem;
-      letter-spacing: .1em;
-    }
-
-    body[data-page="about"] .field-note p {
-      margin: 1rem 0 0;
-      color: #c9bec6;
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      line-height: 1.35;
-    }
-
-    body[data-page="about"] .field-note small {
-      color: #756b76;
-      font-family: var(--mono);
-      font-size: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    body[data-page="about"] .podcast-note {
-      border-color: rgba(112,80,138,.4);
-      background:
-        radial-gradient(circle at 80% 10%, rgba(112,80,138,.15), transparent 32%),
-        #0e0c11;
-    }
-
     body[data-page="about"] .off-clock-panel {
       max-width: 880px;
       padding: 1.35rem 1.5rem;
@@ -863,52 +398,20 @@
     }
 
     @media (max-width: 900px) {
-      body[data-page="about"] .service-band {
-        grid-template-columns: 1fr;
-        gap: .8rem;
-      }
-
+      body[data-page="about"] .service-band,
       body[data-page="about"] .personal-heading,
-      body[data-page="about"] .ridge-inspector,
-      body[data-page="about"] .atlas-inspector,
-      body[data-page="about"] .curiosity-inspector,
-      body[data-page="about"] .media-inspector {
+      body[data-page="about"] .ridge-inspector {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
-
-      body[data-page="about"] .atlas-grid { grid-template-columns: 1fr; }
-      body[data-page="about"] .atlas-map { border-right: 0; border-bottom: 1px solid var(--line); }
-      body[data-page="about"] .media-grid { grid-template-columns: repeat(2, 1fr); }
-      body[data-page="about"] .field-notes { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 700px) {
-      body[data-page="about"] .personal-section { padding: 3.2rem 0; }
+      body[data-page="about"] .personal-section { padding: 3rem 0; }
       body[data-page="about"] .ridge-wrap { overflow-x: auto; }
-      body[data-page="about"] .media-grid { grid-template-columns: 1fr; }
-      body[data-page="about"] .bench-card { grid-column: 1 / -1 !important; }
-      body[data-page="about"] .anchors-shell {
-        min-height: auto;
-        display: grid;
-        gap: .7rem;
-        padding: 1rem;
-      }
-      body[data-page="about"] .orbit,
-      body[data-page="about"] .anchor-core {
-        display: none;
-      }
-      body[data-page="about"] .anchor-node {
-        position: static !important;
-        width: auto;
-        min-height: auto;
-      }
+      body[data-page="about"] .service-band { margin-top: 1.8rem; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      body[data-page="about"] .media-bar { animation: none; }
-      body[data-page="about"] * { scroll-behavior: auto !important; }
-    }
   </style>
 </head>
 <body data-page="about">
@@ -946,7 +449,7 @@
         </p>
         <div class="profile-tags" aria-label="Personal interests">
           <span class="profile-tag">Mountains</span>
-          <span class="profile-tag">Travel</span>
+          <span class="profile-tag">Travel &amp; National Parks</span>
           <span class="profile-tag">Books</span>
           <span class="profile-tag">Technical Tinkering</span>
           <span class="profile-tag">Film · Music · Games</span>
@@ -1040,79 +543,6 @@
               The mountain log is not a résumé of summits. It is a record of the environments I seek out when I need distance from ordinary routines: high places, long trails, cold weather, and terrain that refuses to fit inside a screen.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="personal-section reveal" aria-labelledby="atlas-title">
-      <header class="personal-heading">
-        <div>
-          <span class="eyebrow">Places / Roots / Perspective</span>
-          <h2 id="atlas-title">Atlas of Movement</h2>
-        </div>
-        <p>
-          I have visited nearly every U.S. state and national park, along with Japan, Morocco, France, Algeria, and Spain. Travel is less a checklist than a way of learning places through landscapes, food, architecture, language, and ordinary daily life.
-        </p>
-      </header>
-
-      <div class="visual-shell">
-        <div class="visual-topbar">
-          <span>Personal atlas</span>
-          <span>Blossom = roots · Aurora = travel</span>
-        </div>
-
-        <div class="atlas-grid">
-          <div class="atlas-map" aria-label="Stylized map of family roots and places traveled">
-            <svg class="world-outline" viewBox="0 0 1000 520" aria-hidden="true">
-              <path d="M63 132 C128 79 211 67 286 103 C336 127 346 165 315 190 C279 219 262 252 227 274 C180 303 127 284 93 252 C56 217 31 174 63 132Z" fill="none" stroke="#74697a" stroke-width="2"/>
-              <path d="M274 294 C315 276 355 296 367 335 C380 379 347 441 309 475 C282 443 262 386 258 341 C256 319 260 306 274 294Z" fill="none" stroke="#74697a" stroke-width="2"/>
-              <path d="M463 108 C529 71 610 73 658 105 C697 130 704 166 680 184 C647 208 598 196 567 214 C533 235 529 270 495 283 C460 297 418 278 407 241 C395 201 413 137 463 108Z" fill="none" stroke="#74697a" stroke-width="2"/>
-              <path d="M491 282 C548 268 610 295 629 341 C649 391 617 455 562 476 C519 453 484 400 472 351 C464 319 472 295 491 282Z" fill="none" stroke="#74697a" stroke-width="2"/>
-              <path d="M659 115 C743 77 842 91 898 131 C934 157 950 197 923 220 C890 249 846 230 811 243 C771 258 751 297 711 296 C668 295 633 258 634 214 C635 171 636 130 659 115Z" fill="none" stroke="#74697a" stroke-width="2"/>
-              <path d="M826 363 C872 340 923 356 946 393 C930 431 884 452 843 438 C814 418 807 386 826 363Z" fill="none" stroke="#74697a" stroke-width="2"/>
-            </svg>
-
-            <button class="atlas-node travel" style="left:17%;top:35%" data-label="United States" data-title="United States" data-copy="Nearly every state and national park: deserts, coastlines, forests, canyons, tundra, and enough road miles to make the country feel less like a shape on a map and more like a collection of distinct landscapes."></button>
-            <button class="atlas-node root" style="left:49.5%;top:22%" data-label="Norway" data-title="Norway" data-copy="One half of my family roots, and a northern reference point that helps explain why cold landscapes, mountains, and the aurora carry more than aesthetic weight for me."></button>
-            <button class="atlas-node root" style="left:52.5%;top:37%" data-label="Italy" data-title="Italy" data-copy="The other half of my family roots: a different cultural inheritance, but an equally durable part of how I think about family, place, food, and continuity."></button>
-            <button class="atlas-node travel" style="left:47%;top:38%" data-label="Spain" data-title="Spain" data-copy="Part of a wider European travel history that has made cities, architecture, food, and public life as interesting to me as wilderness." ></button>
-            <button class="atlas-node travel" style="left:50%;top:33%" data-label="France" data-title="France" data-copy="One of several places that reinforced how much atmosphere matters to memory: streets, buildings, food, language, and the ordinary texture of another place."></button>
-            <button class="atlas-node travel" style="left:48%;top:50%" data-label="Morocco" data-title="Morocco" data-copy="Atlas Mountains, North African cities, and the kind of travel where landscape and culture become impossible to separate." ></button>
-            <button class="atlas-node travel" style="left:51%;top:49%" data-label="Algeria" data-title="Algeria" data-copy="Another North African reference point in a travel history increasingly shaped by contrast—between terrain, built environments, languages, and different social rhythms." ></button>
-            <button class="atlas-node travel" style="left:86%;top:38%" data-label="Japan" data-title="Japan" data-copy="Mountains, shrines, cities, trains, summer heat, volcanic landscapes, and cherry blossoms—the country contains several of the visual and cultural contrasts I find most compelling." ></button>
-          </div>
-
-          <aside class="atlas-side">
-            <div class="atlas-stat">
-              <span>United States</span>
-              <strong>Nearly every state and national park</strong>
-            </div>
-            <div class="atlas-stat">
-              <span>International travel</span>
-              <strong>Japan · Morocco · France · Algeria · Spain</strong>
-            </div>
-            <div class="atlas-stat">
-              <span>Family roots</span>
-              <strong>Norway · Italy</strong>
-            </div>
-            <div class="atlas-stat">
-              <span>Two images I keep returning to</span>
-              <div class="beauty-pair">
-                <div class="beauty-card aurora">Aurora borealis</div>
-                <div class="beauty-card blossom">Cherry blossoms</div>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <div class="atlas-inspector">
-          <div>
-            <span class="inspector-kicker">Selected place</span>
-            <h3 class="inspector-title" id="atlas-inspector-title">A map as autobiography</h3>
-          </div>
-          <p class="inspector-copy" id="atlas-inspector-copy">
-            Some people remember periods of life by jobs or addresses. I often remember them by terrain: which mountains were nearby, which road crossed the horizon, what the trees looked like, and what kind of sky was overhead.
-          </p>
         </div>
       </div>
     </section>
@@ -1211,7 +641,6 @@
   };
 
   setInspector(".ridge-point", "ridge-title", "ridge-copy", "is-active");
-  setInspector(".atlas-node", "atlas-inspector-title", "atlas-inspector-copy", "is-active");
 
   const readingLibrary = [
     {

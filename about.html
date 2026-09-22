@@ -18,7 +18,6 @@
     body[data-page="about"] {
       --about-muted: #918493;
       --about-faint: #766d77;
-      --about-blossom: #d6a2b6;
     }
 
     body[data-page="about"] main {
@@ -172,6 +171,10 @@
       gap: 1rem;
       align-items: start;
       margin-bottom: clamp(1.8rem, 3vw, 2.35rem);
+    }
+
+    body[data-page="about"] .essay-heading-copy {
+      min-width: 0;
     }
 
     body[data-page="about"] .essay-heading h2 {
@@ -364,7 +367,6 @@
     }
 
     body[data-page="about"] .travel-note {
-      max-width: 780px;
       max-width: 760px;
       margin: 1.8rem 0 0 auto;
       color: var(--muted);
@@ -525,10 +527,6 @@
         gap: .5rem;
       }
 
-      body[data-page="about"] .essay-index {
-        order: -1;
-      }
-
       body[data-page="about"] .military-photo {
         max-width: 680px;
       }
@@ -613,13 +611,13 @@
 
     <section class="essay-section reveal" aria-labelledby="military-title">
       <header class="essay-heading">
-        <div>
-          <p class="section-index essay-index">01 / Military Service</p>
+        <p class="section-index essay-index">01 / Military Service</p>
+        <div class="essay-heading-copy">
           <h2 id="military-title">U.S. Army</h2>
+          <p class="essay-deck">
+            Before graduate school, I served as a paratrooper and squad leader in an airborne infantry unit. It remains one of the most formative parts of my background.
+          </p>
         </div>
-        <p class="essay-deck">
-          Before graduate school, I served as a paratrooper and squad leader in an airborne infantry unit. It remains one of the most formative parts of my background.
-        </p>
       </header>
 
       <div class="military-layout">
@@ -662,13 +660,13 @@
 
     <section class="essay-section reveal" aria-labelledby="outside-title">
       <header class="essay-heading">
-        <div>
-          <p class="section-index essay-index">02 / Outside the Model</p>
+        <p class="section-index essay-index">02 / Outside the Model</p>
+        <div class="essay-heading-copy">
           <h2 id="outside-title">Mountains &amp; movement</h2>
+          <p class="essay-deck">
+            Hiking and mountaineering are my main counterweight to screen-bound work: long approaches, exposed ridgelines, cold weather, unusual geology, and the perspective that comes from seeing a place at human scale.
+          </p>
         </div>
-        <p class="essay-deck">
-          Hiking and mountaineering are my main counterweight to screen-bound work: long approaches, exposed ridgelines, cold weather, unusual geology, and the perspective that comes from seeing a place at human scale.
-        </p>
       </header>
 
       <figure class="ridge-figure">
@@ -756,13 +754,13 @@
 
     <section class="essay-section reveal" aria-labelledby="shelf-title">
       <header class="essay-heading">
-        <div>
-          <p class="section-index essay-index">03 / Reading</p>
+        <p class="section-index essay-index">03 / Reading</p>
+        <div class="essay-heading-copy">
           <h2 id="shelf-title">The shelf</h2>
+          <p class="essay-deck">
+            A small selection of current and recent reading: statistics beside military history, biography, fiction, and light novels.
+          </p>
         </div>
-        <p class="essay-deck">
-          A small selection of current and recent reading: statistics beside military history, biography, fiction, and light novels.
-        </p>
       </header>
 
       <div class="shelf-wrap">
@@ -793,13 +791,13 @@
 
     <section class="essay-section reveal" aria-labelledby="off-clock-title">
       <header class="essay-heading">
-        <div>
-          <p class="section-index essay-index">04 / Off the Clock</p>
+        <p class="section-index essay-index">04 / Off the Clock</p>
+        <div class="essay-heading-copy">
           <h2 id="off-clock-title">The rest of it</h2>
+          <p class="essay-deck">
+            Most of my downtime is less complicated than the work.
+          </p>
         </div>
-        <p class="essay-deck">
-          Most of my downtime is less complicated than the work.
-        </p>
       </header>
 
       <div class="off-clock-grid">

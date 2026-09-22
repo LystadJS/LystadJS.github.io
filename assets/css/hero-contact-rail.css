@@ -420,7 +420,7 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
   body[data-page="index"] .hero-headshot {
     position: relative;
     z-index: 2;
-    transform: scale(1.06);
+    transform: scale(1.08);
     transform-origin: center left;
   }
 
@@ -428,3 +428,7 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
     transform: translateX(.55rem);
   }
 }
+
+
+/* Portrait proportion refinement. */
+body[data-page="index"] .headshot-frame{aspect-ratio:3 / 4;}

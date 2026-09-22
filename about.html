@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal profile of John S. Lystad: mountains, travel, books, technical tinkering, and life beyond research.">
+  <meta name="description" content="Personal profile of John S. Lystad: military service, mountains, travel, books, technical tinkering, and life beyond research.">
   <meta name="theme-color" content="#070709">
   <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="The person behind the work: mountains, travel, books, technical tinkering, and life beyond research.">
+  <meta property="og:description" content="The person behind the work: military service, mountains, travel, books, technical tinkering, and life beyond research.">
   <meta property="og:type" content="website">
   <title>About | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -104,6 +104,49 @@
 
     body[data-page="about"] .about-index-card .accent-aurora { color: var(--about-aurora); }
     body[data-page="about"] .about-index-card .accent-blossom { color: var(--about-blossom); }
+
+    body[data-page="about"] .service-band {
+      display: grid;
+      grid-template-columns: minmax(180px, .45fr) minmax(0, 1.55fr);
+      gap: 2.5rem;
+      align-items: start;
+      margin: 2.4rem 0 0;
+      padding: 1.4rem 0 1.5rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .service-band h2 {
+      margin: .3rem 0 0;
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3vw, 2.65rem);
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    body[data-page="about"] .service-copy {
+      margin: 0;
+      color: #b0a5ae;
+      font-size: .88rem;
+      line-height: 1.65;
+    }
+
+    body[data-page="about"] .service-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: .85rem;
+    }
+
+    body[data-page="about"] .service-meta span {
+      padding: .26rem .48rem;
+      border: 1px solid var(--line);
+      color: #8f838f;
+      font-family: var(--mono);
+      font-size: .49rem;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
 
     body[data-page="about"] .personal-section {
       padding: 3.45rem 0;
@@ -820,6 +863,11 @@
     }
 
     @media (max-width: 900px) {
+      body[data-page="about"] .service-band {
+        grid-template-columns: 1fr;
+        gap: .8rem;
+      }
+
       body[data-page="about"] .personal-heading,
       body[data-page="about"] .ridge-inspector,
       body[data-page="about"] .atlas-inspector,
@@ -906,6 +954,7 @@
       </div>
 
       <aside class="page-index-card about-index-card reveal">
+        <div><span>Military Service</span><strong>U.S. Army · Infantry · Airborne</strong></div>
         <div><span>Roots</span><strong>Norway · Italy</strong></div>
         <div><span>Travel</span><strong>Nearly every U.S. state and national park, plus Japan, Morocco, France, Algeria, and Spain</strong></div>
         <div><span>Favorite sights</span><strong><span class="accent-aurora">Aurora borealis</span> · <span class="accent-blossom">Cherry blossoms</span></strong></div>
@@ -914,6 +963,25 @@
   </section>
 
   <div class="site-shell">
+
+    <section class="service-band reveal" aria-labelledby="military-service-title">
+      <div>
+        <span class="eyebrow">Military Service</span>
+        <h2 id="military-service-title">U.S. Army</h2>
+      </div>
+      <div>
+        <p class="service-copy">
+          My background includes service in U.S. Army infantry roles, with experience in airborne operations, communications, small-unit leadership, and arctic and mountain environments. Military service has shaped how I approach difficult problems: value clear communication, work within real constraints, and prefer analysis that remains useful when conditions become uncertain and imperfect.
+        </p>
+        <div class="service-meta" aria-label="Military experience areas">
+          <span>Infantry</span>
+          <span>Airborne</span>
+          <span>Small-Unit Leadership</span>
+          <span>Communications</span>
+          <span>Arctic &amp; Mountain Training</span>
+        </div>
+      </div>
+    </section>
 
     <section class="personal-section reveal" aria-labelledby="outside-model-title">
       <header class="personal-heading">

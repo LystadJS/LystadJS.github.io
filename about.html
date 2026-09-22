@@ -251,6 +251,51 @@
       text-transform: uppercase;
     }
 
+    body[data-page="about"] .military-media {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    body[data-page="about"] .military-photo {
+      margin: 0;
+    }
+
+    body[data-page="about"] .military-photo-frame {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid var(--line-bright);
+      background: #0b090c;
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.30),
+        inset 0 0 0 5px #0b090c,
+        inset 0 0 0 6px rgba(184,149,117,.10);
+    }
+
+    body[data-page="about"] .military-photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      z-index: 2;
+      border: 1px solid rgba(221,204,183,.10);
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .military-photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    body[data-page="about"] .military-photo-frame.portrait {
+      aspect-ratio: 4 / 5;
+    }
+
+    body[data-page="about"] .military-photo-frame.group {
+      aspect-ratio: 4 / 3;
+    }
+
     body[data-page="about"] .ridge-figure {
       margin: 0;
     }
@@ -649,12 +694,27 @@
           </dl>
         </div>
 
-        <figure class="military-photo">
-          <div class="photo-placeholder landscape" data-photo-slot="military-alaska">
-            <span class="photo-label">Photo 02 / Army · Alaska</span>
-          </div>
-          <figcaption>Suggested replacement: field, training, or Alaska photograph.</figcaption>
-        </figure>
+        <div class="military-media">
+          <figure class="military-photo">
+            <div class="military-photo-frame portrait">
+              <img
+                src="assets/images/about/jsl-army-arctic-field-portrait.svg"
+                alt="John S. Lystad during Arctic field training in Alaska"
+                loading="lazy">
+            </div>
+            <figcaption>Alaska · Arctic field training</figcaption>
+          </figure>
+
+          <figure class="military-photo">
+            <div class="military-photo-frame group">
+              <img
+                src="assets/images/about/jsl-army-arctic-airborne-group.svg"
+                alt="Airborne infantry group during Arctic field training in Alaska"
+                loading="lazy">
+            </div>
+            <figcaption>Arctic field training · Alaska</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal profile of John S. Lystad: mountains, travel, books, technical tinkering, culture, curiosities, and the people and places that matter most.">
+  <meta name="description" content="Personal profile of John S. Lystad: mountains, travel, books, technical tinkering, and life beyond research.">
   <meta name="theme-color" content="#070709">
   <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="The person behind the work: mountains, travel, books, technical tinkering, culture, curiosities, and personal anchors.">
+  <meta property="og:description" content="The person behind the work: mountains, travel, books, technical tinkering, and life beyond research.">
   <meta property="og:type" content="website">
   <title>About | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -106,7 +106,7 @@
     body[data-page="about"] .about-index-card .accent-blossom { color: var(--about-blossom); }
 
     body[data-page="about"] .personal-section {
-      padding: 4.2rem 0;
+      padding: 3.45rem 0;
       border-top: 1px solid var(--line);
     }
 
@@ -123,7 +123,7 @@
     body[data-page="about"] .personal-heading h2 {
       margin: .28rem 0 0;
       font-family: var(--serif);
-      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      font-size: clamp(2.45rem, 4.4vw, 3.9rem);
       line-height: .92;
       font-weight: 600;
       letter-spacing: -.035em;
@@ -805,6 +805,20 @@
         #0e0c11;
     }
 
+    body[data-page="about"] .off-clock-panel {
+      max-width: 880px;
+      padding: 1.35rem 1.5rem;
+      border-left: 2px solid rgba(141,23,50,.72);
+      background: linear-gradient(90deg, rgba(141,23,50,.055), transparent 58%);
+    }
+
+    body[data-page="about"] .off-clock-panel p {
+      margin: 0;
+      color: #b6abb4;
+      font-size: .92rem;
+      line-height: 1.72;
+    }
+
     @media (max-width: 900px) {
       body[data-page="about"] .personal-heading,
       body[data-page="about"] .ridge-inspector,
@@ -877,30 +891,24 @@
     <div class="site-shell page-hero-grid">
       <div class="about-hero-copy reveal">
         <p class="kicker">About / Personal Profile</p>
-        <h1>Outside the Work</h1>
-        <p class="lead">The formal pages of this site cover what I study, build, and publish. This page is about the things that shaped the person doing it.</p>
+        <h1>Personal Profile</h1>
+        <p class="lead">The formal pages of this site cover my research, projects, code, and professional record. This page is the less formal counterpart: the places, habits, and interests that shape the person behind the work.</p>
         <p>
-          I am drawn to difficult terrain, difficult questions, and things with atmosphere: mountains, books, strange folklore, well-built systems, loud music, horror, and places that make the world feel larger. I have spent much of my life moving between disciplines, jobs, countries, landscapes, and subcultures. The result is a collection of interests that does not fit neatly on a CV—and probably should not.
+          Outside research, I spend as much time as I can hiking, traveling, reading, and building small technical projects. I am especially drawn to mountains, national parks, unfamiliar places, and books that change how I understand a problem—or simply build a world worth getting lost in.
         </p>
         <div class="profile-tags" aria-label="Personal interests">
           <span class="profile-tag">Mountains</span>
           <span class="profile-tag">Travel</span>
           <span class="profile-tag">Books</span>
-          <span class="profile-tag">Cats</span>
-          <span class="profile-tag">Anime</span>
-          <span class="profile-tag">Punk / Metal / Rock</span>
-          <span class="profile-tag">Horror</span>
-          <span class="profile-tag">Dark Souls</span>
           <span class="profile-tag">Technical Tinkering</span>
-          <span class="profile-tag">Folklore &amp; the Strange</span>
+          <span class="profile-tag">Film · Music · Games</span>
         </div>
       </div>
 
       <aside class="page-index-card about-index-card reveal">
         <div><span>Roots</span><strong>Norway · Italy</strong></div>
-        <div><span>Range</span><strong>Nearly every U.S. state and national park, plus travel across Europe, North Africa, and Japan</strong></div>
-        <div><span>Most Beautiful</span><strong><span class="accent-aurora">Aurora borealis</span> · <span class="accent-blossom">Cherry blossoms</span></strong></div>
-        <div><span>Constant</span><strong>Curiosity, movement, cats, and a home shared with the person I love</strong></div>
+        <div><span>Travel</span><strong>Nearly every U.S. state and national park, plus Japan, Morocco, France, Algeria, and Spain</strong></div>
+        <div><span>Favorite sights</span><strong><span class="accent-aurora">Aurora borealis</span> · <span class="accent-blossom">Cherry blossoms</span></strong></div>
       </aside>
     </div>
   </section>
@@ -914,7 +922,7 @@
           <h2 id="outside-model-title">Outside the Model</h2>
         </div>
         <p>
-          Mountains are the cleanest counterweight I know to screen-bound work. I hike and climb for the terrain itself: long approaches, cold air, exposed ridgelines, strange geology, and the perspective that comes from seeing a place at human scale.
+          Hiking and mountaineering are my main counterweight to screen-bound work: long approaches, exposed ridgelines, cold weather, unusual geology, and the perspective that comes from seeing a place at human scale.
         </p>
       </header>
 
@@ -975,7 +983,7 @@
           <h2 id="atlas-title">Atlas of Movement</h2>
         </div>
         <p>
-          I have visited nearly every U.S. state and national park, as well as Japan, Morocco, France, Algeria, and Spain. Travel is less a checklist than a way of collecting landscapes, habits, food, architecture, languages, and different ideas about how a life can be organized.
+          I have visited nearly every U.S. state and national park, along with Japan, Morocco, France, Algeria, and Spain. Travel is less a checklist than a way of learning places through landscapes, food, architecture, language, and ordinary daily life.
         </p>
       </header>
 
@@ -1068,221 +1076,21 @@
       </div>
     </section>
 
-    <section class="personal-section reveal" aria-labelledby="curiosities-title">
+    <section class="personal-section reveal" aria-labelledby="off-clock-title">
       <header class="personal-heading">
         <div>
-          <span class="eyebrow">Folklore / Belief / The Unexplained</span>
-          <h2 id="curiosities-title">Cabinet of Curiosities</h2>
+          <span class="eyebrow">Interests / Downtime</span>
+          <h2 id="off-clock-title">Off the Clock</h2>
         </div>
         <p>
-          I have a longstanding fascination with cryptids, demonology, supernatural traditions, paranormal claims, and the folklore built around things people cannot easily explain. I am interested less in proving the strange than in the boundary between evidence, belief, fear, culture, and storytelling.
+          The rest does not need a dashboard. These are simply the things I tend to reach for when work is finished.
         </p>
       </header>
 
-      <div class="visual-shell">
-        <div class="visual-topbar">
-          <span>Curiosity graph</span>
-          <span>Not a belief system · an intellectual side road</span>
-        </div>
-
-        <div class="curiosity-board">
-          <span class="curiosity-line" style="left:50%;top:50%;width:27%;transform:rotate(-41deg)"></span>
-          <span class="curiosity-line" style="left:50%;top:50%;width:31%;transform:rotate(20deg)"></span>
-          <span class="curiosity-line" style="left:50%;top:50%;width:30%;transform:rotate(150deg)"></span>
-          <span class="curiosity-line" style="left:50%;top:50%;width:28%;transform:rotate(204deg)"></span>
-          <span class="curiosity-line" style="left:50%;top:50%;width:31%;transform:rotate(90deg)"></span>
-          <span class="curiosity-line" style="left:50%;top:50%;width:29%;transform:rotate(270deg)"></span>
-
-          <button class="curiosity-core" data-title="Why the strange?" data-copy="Because strange stories are compact laboratories for uncertainty. They expose how people decide what counts as evidence, how narratives spread, how fear acquires symbols, and how culture preserves explanations long after their original context changes.">Curiosities</button>
-          <button class="curiosity-node" style="left:19%;top:16%" data-title="Cryptids" data-copy="Creatures at the border of zoology, folklore, misidentification, hoax, and local identity. The interesting question is often not 'is it real?' but 'why did this particular creature become believable here?'">Cryptids</button>
-          <button class="curiosity-node" style="right:18%;top:14%" data-title="Demonology" data-copy="A historical and comparative interest in how cultures classify evil, possession, taboo, temptation, and supernatural agency—and how those systems change across time and religious traditions.">Demonology</button>
-          <button class="curiosity-node" style="right:10%;top:54%" data-title="Paranormal claims" data-copy="Ghosts, hauntings, anomalous experiences, and the recurring tension between subjective certainty and objective evidence.">Paranormal</button>
-          <button class="curiosity-node" style="left:14%;top:58%" data-title="Folklore" data-copy="The connective tissue: stories that encode local history, danger, identity, moral rules, and explanations for the unfamiliar.">Folklore</button>
-          <button class="curiosity-node" style="left:43%;bottom:6%" data-title="The supernatural" data-copy="A broad interest in the symbolic vocabulary people use for experiences they interpret as lying beyond ordinary explanation.">Supernatural</button>
-          <button class="curiosity-node" style="left:43%;top:6%" data-title="Future podcast" data-copy="A planned side project about cryptids, demons, folklore, hauntings, and other things that are more interesting after midnight—curious, narrative-driven, and skeptical without being joyless.">Podcast</button>
-        </div>
-
-        <div class="curiosity-inspector">
-          <div>
-            <span class="inspector-kicker">Selected curiosity</span>
-            <h3 class="inspector-title" id="curiosity-title">Why the strange?</h3>
-          </div>
-          <p class="inspector-copy" id="curiosity-copy">
-            Strange stories are compact laboratories for uncertainty: evidence, belief, fear, memory, local identity, and narrative all collide in one place.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="personal-section reveal" aria-labelledby="signal-title">
-      <header class="personal-heading">
-        <div>
-          <span class="eyebrow">Sound / Stories / Atmosphere</span>
-          <h2 id="signal-title">Signal Feed</h2>
-        </div>
+      <div class="off-clock-panel">
         <p>
-          My tastes tend toward things with intensity and atmosphere: punk, metal, rock, anime music, horror, difficult games, and stories where the world is beautiful precisely because something is wrong with it.
+          I listen mostly to punk, metal, rock, and anime music; watch a lot of horror; and gravitate toward anime and games with strong atmosphere—especially <em>Eighty-Six</em>, <em>Chainsaw Man</em>, and <em>Dark Souls</em>. I also enjoy technical tinkering and have a longstanding curiosity about folklore, cryptids, demonology, and paranormal history, which I hope to turn into a casual podcast. Most of my actual downtime is simpler: reading, getting outside, and spending time with my longtime partner and cats.
         </p>
-      </header>
-
-      <div class="visual-shell">
-        <div class="media-grid">
-          <button class="media-channel" data-title="Music" data-copy="Mostly punk, metal, rock, and anime music. I tend to like energy, distortion, strong melodic hooks, and music that can move between aggression and melancholy without becoming polished smooth.">
-            <div class="media-visual" aria-hidden="true">
-              <span class="media-bar" style="height:42%;--i:1"></span><span class="media-bar" style="height:88%;--i:2"></span><span class="media-bar" style="height:60%;--i:3"></span><span class="media-bar" style="height:100%;--i:4"></span><span class="media-bar" style="height:54%;--i:5"></span><span class="media-bar" style="height:76%;--i:6"></span><span class="media-bar" style="height:45%;--i:7"></span>
-            </div>
-            <small>Channel 01</small>
-            <h3>Music</h3>
-            <p>Punk · Metal · Rock · Anime music</p>
-          </button>
-
-          <button class="media-channel" data-title="Anime" data-copy="Eighty-Six and Chainsaw Man are my favorites. I like stories that pair strong visual identity with violence, loss, absurdity, loyalty, and characters trying to stay human inside systems that are not.">
-            <div class="media-visual" aria-hidden="true">
-              <span class="media-bar" style="height:82%;--i:3"></span><span class="media-bar" style="height:38%;--i:7"></span><span class="media-bar" style="height:95%;--i:1"></span><span class="media-bar" style="height:62%;--i:6"></span><span class="media-bar" style="height:72%;--i:4"></span><span class="media-bar" style="height:48%;--i:2"></span><span class="media-bar" style="height:88%;--i:5"></span>
-            </div>
-            <small>Channel 02</small>
-            <h3>Anime</h3>
-            <p>Eighty-Six · Chainsaw Man</p>
-          </button>
-
-          <button class="media-channel" data-title="Horror" data-copy="I love horror movies because they make atmosphere do real work. The best ones can turn a hallway, a sound, an empty frame, or a familiar religious symbol into something threatening without needing to explain everything away.">
-            <div class="media-visual" aria-hidden="true">
-              <span class="media-bar" style="height:34%;--i:4"></span><span class="media-bar" style="height:50%;--i:2"></span><span class="media-bar" style="height:74%;--i:6"></span><span class="media-bar" style="height:98%;--i:1"></span><span class="media-bar" style="height:67%;--i:7"></span><span class="media-bar" style="height:42%;--i:3"></span><span class="media-bar" style="height:84%;--i:5"></span>
-            </div>
-            <small>Channel 03</small>
-            <h3>Horror</h3>
-            <p>Atmosphere · Dread · The supernatural</p>
-          </button>
-
-          <button class="media-channel" data-title="Dark Souls" data-copy="Dark Souls is almost a perfect overlap of things I like: difficult systems, ruined worlds, indirect storytelling, religious imagery, grotesque monsters, stubborn persistence, and beauty hidden inside decay.">
-            <div class="media-visual" aria-hidden="true">
-              <span class="media-bar" style="height:100%;--i:5"></span><span class="media-bar" style="height:72%;--i:1"></span><span class="media-bar" style="height:45%;--i:6"></span><span class="media-bar" style="height:86%;--i:3"></span><span class="media-bar" style="height:57%;--i:7"></span><span class="media-bar" style="height:92%;--i:2"></span><span class="media-bar" style="height:63%;--i:4"></span>
-            </div>
-            <small>Channel 04</small>
-            <h3>Games</h3>
-            <p>Dark Souls · Ruins · Persistence</p>
-          </button>
-        </div>
-
-        <div class="media-inspector">
-          <div>
-            <span class="inspector-kicker">Selected signal</span>
-            <h3 class="inspector-title" id="media-title">Atmosphere over genre</h3>
-          </div>
-          <p class="inspector-copy" id="media-copy">
-            The common thread is not really a genre. It is intensity, atmosphere, worldbuilding, and the feeling that the setting itself has something to say.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="personal-section reveal" aria-labelledby="workbench-title">
-      <header class="personal-heading">
-        <div>
-          <span class="eyebrow">Build / Break / Rebuild</span>
-          <h2 id="workbench-title">Workbench</h2>
-        </div>
-        <p>
-          Technical tinkering is the hobby that most easily disguises itself as work. I like taking systems apart, changing how they behave, automating repetitive tasks, building small tools, and spending unreasonable amounts of time making interfaces feel exactly right.
-        </p>
-      </header>
-
-      <div class="workbench-grid">
-        <article class="bench-card">
-          <span class="bench-index">01 / AUTOMATE</span>
-          <h3>Make repetition disappear.</h3>
-          <p>If I have to do the same digital task more than a few times, I start wondering whether a script should be doing it instead.</p>
-          <div class="bench-code">repeat → inspect → script → validate → forget it was ever manual</div>
-        </article>
-        <article class="bench-card">
-          <span class="bench-index">02 / CONFIGURE</span>
-          <h3>The environment matters.</h3>
-          <p>Themes, shortcuts, layouts, fonts, editor settings, terminals, and workflows are not decoration to me. Good tooling reduces friction; bad tooling quietly taxes attention all day.</p>
-          <div class="bench-code">editor + terminal + git + reproducible defaults</div>
-        </article>
-        <article class="bench-card">
-          <span class="bench-index">03 / VISUALIZE</span>
-          <h3>Make structure visible.</h3>
-          <p>I enjoy the design problem behind a useful visualization: deciding what should disappear, what should dominate, and what the viewer should understand before reading a caption.</p>
-          <div class="bench-code">data → geometry → hierarchy → interpretation</div>
-        </article>
-        <article class="bench-card">
-          <span class="bench-index">04 / BUILD</span>
-          <h3>Small systems, end to end.</h3>
-          <p>Web pages, R workflows, data pipelines, small utilities, and side projects are satisfying because they turn an abstract idea into something concrete enough to use, test, and improve.</p>
-          <div class="bench-code">idea → prototype → failure → revision → tool</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="personal-section reveal" aria-labelledby="anchors-title">
-      <header class="personal-heading">
-        <div>
-          <span class="eyebrow">Home / Attachment / Beauty</span>
-          <h2 id="anchors-title">Anchors</h2>
-        </div>
-        <p>
-          Movement matters to me, but so do the things that make movement meaningful: the people I come home to, the animals that occupy the furniture, family roots, and a few images of the world that still stop me in my tracks.
-        </p>
-      </header>
-
-      <div class="visual-shell anchors-shell">
-        <div class="orbit one"></div>
-        <div class="orbit two"></div>
-        <div class="anchor-core">What keeps<br>me grounded</div>
-
-        <button class="anchor-node" style="left:8%;top:14%">
-          <strong>My partner</strong>
-          <span>My long-term girlfriend is from China and is a major part of my life. Home increasingly means a person and a shared future more than a point on a map.</span>
-        </button>
-        <button class="anchor-node" style="right:9%;top:15%">
-          <strong>Cats</strong>
-          <span>I love cats. This is probably the least complicated fact on the page.</span>
-        </button>
-        <button class="anchor-node" style="left:10%;bottom:13%">
-          <strong>Norway + Italy</strong>
-          <span>Two family roots, two very different cultural inheritances, both part of how I think about continuity and home.</span>
-        </button>
-        <button class="anchor-node" style="right:10%;bottom:12%">
-          <strong>Aurora</strong>
-          <span>The aurora borealis is one of the two most beautiful things I have ever seen: scale, motion, cold, and light that does not look entirely real.</span>
-        </button>
-        <button class="anchor-node" style="left:50%;top:5%;transform:translateX(-50%)">
-          <strong>Cherry blossoms</strong>
-          <span>The other: brief, excessive, fragile, and almost impossible not to stop for.</span>
-        </button>
-      </div>
-    </section>
-
-    <section class="personal-section reveal" aria-labelledby="notes-title">
-      <header class="personal-heading">
-        <div>
-          <span class="eyebrow">Fragments / Things Worth Keeping</span>
-          <h2 id="notes-title">Field Notes</h2>
-        </div>
-        <p>
-          Not everything needs a framework. Some things are useful because they remain unfinished: a place to return to, a sentence that still works, or a strange question worth following simply because it is interesting.
-        </p>
-      </header>
-
-      <div class="field-notes">
-        <article class="field-note">
-          <span class="note-mark">FIELD NOTE / 01</span>
-          <p>I like systems that can be explained, landscapes that cannot, and questions that resist easy answers.</p>
-          <small>Working principle</small>
-        </article>
-
-        <article class="field-note">
-          <span class="note-mark">FIELD NOTE / 02</span>
-          <p>The best trips leave you with fewer blank spaces on the map and more places you need to see again.</p>
-          <small>Travel log</small>
-        </article>
-
-        <article class="field-note podcast-note">
-          <span class="note-mark">IN DEVELOPMENT / PODCAST</span>
-          <p>Cryptids, demons, folklore, hauntings, and other things that become more interesting after midnight.</p>
-          <small>Future side project</small>
-        </article>
       </div>
     </section>
 
@@ -1336,8 +1144,6 @@
 
   setInspector(".ridge-point", "ridge-title", "ridge-copy", "is-active");
   setInspector(".atlas-node", "atlas-inspector-title", "atlas-inspector-copy", "is-active");
-  setInspector(".curiosity-board button", "curiosity-title", "curiosity-copy", "is-active");
-  setInspector(".media-channel", "media-title", "media-copy", "is-active");
 
   const readingLibrary = [
     {

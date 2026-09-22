@@ -15,9 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/research-program.css">
-  <link rel="stylesheet" href="assets/css/research-program-review.css?v=popover-1">
+  <link rel="stylesheet" href="assets/css/research-program-review.css?v=metadata-1">
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
-  <link rel="stylesheet" href="assets/css/hero-contact-rail.css">
+  <link rel="stylesheet" href="assets/css/hero-contact-rail.css?v=portrait-3">
   <link rel="stylesheet" href="assets/css/homepage-research.css">
   <link rel="stylesheet" href="assets/css/homepage-anticipatory.css">
   <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=unified-2">
@@ -27,11 +27,11 @@
     .rpm-map.is-filtered .rpm-edge:not(.is-active){opacity:.012!important;}
     .rpm-map.is-filtered .rpm-cluster-halo:not(.is-related){opacity:.15;}
   </style>
-  <script defer src="assets/js/research-program-data.js"></script>
+  <script defer src="assets/js/research-program-data.js?v=metadata-1"></script>
   <script defer src="assets/js/research-program-specific-methods.js"></script>
   <script defer src="assets/js/research-program-language.js"></script>
   <script defer src="assets/js/research-program-text-overrides.js"></script>
-  <script defer src="assets/js/research-program-core.js?v=popover-1"></script>
+  <script defer src="assets/js/research-program-core.js?v=metadata-1"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
 </head>
@@ -300,7 +300,12 @@
                 <p class="rpm-detail-kicker" id="rpm-detail-kicker">Research core</p>
                 <h3 id="rpm-detail-title">Statistical Methods for High-Consequence Systems</h3>
                 <p class="rpm-detail-summary" id="rpm-detail-summary">Statistical methods for latent structure, dynamic change, future risk, and uncertainty in consequential systems.</p>
-                <a class="rpm-detail-link" id="rpm-detail-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open project ↗</a>
+                <dl class="rpm-project-meta" id="rpm-project-meta" hidden>
+                  <div><dt>Output</dt><dd id="rpm-project-output"></dd></div>
+                  <div><dt>Status</dt><dd id="rpm-project-status"></dd></div>
+                  <div><dt>Evidence</dt><dd><a id="rpm-project-evidence" href="#" target="_blank" rel="noopener noreferrer"></a></dd></div>
+                </dl>
+                <a class="rpm-detail-link" id="rpm-detail-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open repository ↗</a>
               </div>
 
               <div class="rpm-detail-block">

@@ -72,27 +72,6 @@
       color: #a99ea7;
     }
 
-    body[data-page="about"] .profile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .45rem;
-      margin-top: 1.25rem;
-    }
-
-    body[data-page="about"] .profile-tag {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.012);
-      color: #a99ea7;
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    body[data-page="about"] .profile-tag {
-      padding: .36rem .58rem;
-      font-size: .54rem;
-    }
-
     body[data-page="about"] .about-index-card strong {
       font-weight: 500;
       line-height: 1.35;
@@ -122,26 +101,14 @@
 
     body[data-page="about"] .service-copy {
       margin: 0;
+      max-width: 78ch;
       color: #b0a5ae;
-      font-size: .88rem;
-      line-height: 1.65;
+      font-size: .9rem;
+      line-height: 1.7;
     }
 
-    body[data-page="about"] .service-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .45rem;
-      margin-top: .85rem;
-    }
-
-    body[data-page="about"] .service-meta span {
-      padding: .26rem .48rem;
-      border: 1px solid var(--line);
-      color: #8f838f;
-      font-family: var(--mono);
-      font-size: .49rem;
-      letter-spacing: .075em;
-      text-transform: uppercase;
+    body[data-page="about"] .service-copy + .service-copy {
+      margin-top: .9rem;
     }
 
     body[data-page="about"] .personal-section {
@@ -447,13 +414,6 @@
         <p>
           Outside research, I spend as much time as I can hiking, traveling, reading, and building small technical projects. I am especially drawn to mountains, national parks, unfamiliar places, and books that change how I understand a problem—or simply build a world worth getting lost in.
         </p>
-        <div class="profile-tags" aria-label="Personal interests">
-          <span class="profile-tag">Mountains</span>
-          <span class="profile-tag">Travel &amp; National Parks</span>
-          <span class="profile-tag">Books</span>
-          <span class="profile-tag">Technical Tinkering</span>
-          <span class="profile-tag">Film · Music · Games</span>
-        </div>
       </div>
 
       <aside class="page-index-card about-index-card reveal">
@@ -474,15 +434,11 @@
       </div>
       <div>
         <p class="service-copy">
-          My background includes service in U.S. Army infantry roles, with experience in airborne operations, communications, small-unit leadership, and arctic and mountain environments. Military service has shaped how I approach difficult problems: value clear communication, work within real constraints, and prefer analysis that remains useful when conditions become uncertain and imperfect.
+          Before beginning graduate study, I served in the U.S. Army as a paratrooper and squad leader in an airborne infantry unit. I was responsible for leading soldiers, maintaining accountability and readiness, and communicating clearly in environments where incomplete information, physical stress, and changing conditions were routine.
         </p>
-        <div class="service-meta" aria-label="Military experience areas">
-          <span>Infantry</span>
-          <span>Airborne</span>
-          <span>Small-Unit Leadership</span>
-          <span>Communications</span>
-          <span>Arctic &amp; Mountain Training</span>
-        </div>
+        <p class="service-copy">
+          Much of that experience took place in Alaska and included Arctic and extreme-cold-weather training and operations. Military service remains an important part of how I approach technical and analytical work: define the problem clearly, distinguish what is known from what is assumed, communicate decisions in plain language, and build solutions that remain useful outside ideal conditions. The CV contains the formal chronology; here, the important point is that the Army was a formative part of my professional and personal development.
+        </p>
       </div>
     </section>
 

@@ -56,7 +56,7 @@
 
   /* Homepage-only hero enhancements. */
   if (page === "index") {
-    if (!document.querySelector('link[href="assets/css/hero-contact-rail.css"]')) {
+    if (!document.querySelector('link[href^="assets/css/hero-contact-rail.css"]')) {
       const stylesheet = document.createElement("link");
       stylesheet.rel = "stylesheet";
       stylesheet.href = "assets/css/hero-contact-rail.css";
@@ -255,13 +255,6 @@
       }
     }
 
-    /* Remove any former full-width 02 / Practice section if present. */
-    document.querySelectorAll(".section").forEach(section => {
-      const index = section.querySelector(".section-index");
-      if (index && index.textContent.trim() === "02 / Practice") {
-        section.remove();
-      }
-    });
   }
 
   const year = document.querySelector("[data-current-year]");

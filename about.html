@@ -16,31 +16,24 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body[data-page="about"] {
-      --about-muted: #a89da7;
+      --about-muted: #918493;
       --about-faint: #766d77;
-      --about-oxblood: #8d1732;
       --about-blossom: #d6a2b6;
-      --about-aurora: #79c7a3;
     }
 
     body[data-page="about"] main {
       overflow: hidden;
     }
 
-    body[data-page="about"] .about-shell {
-      width: min(1180px, calc(100% - 3rem));
-      margin: 0 auto;
-    }
-
     body[data-page="about"] .about-hero {
-      padding: clamp(4.5rem, 8vw, 7.5rem) 0 clamp(4rem, 7vw, 6.5rem);
+      padding: clamp(4.1rem, 7vw, 6.1rem) 0 clamp(3.1rem, 5vw, 4.2rem);
       border-bottom: 1px solid var(--line);
     }
 
     body[data-page="about"] .about-hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
-      gap: clamp(3rem, 7vw, 6.5rem);
+      grid-template-columns: minmax(0, 1.45fr) minmax(245px, .55fr);
+      gap: clamp(2.5rem, 5vw, 4.5rem);
       align-items: center;
     }
 
@@ -58,44 +51,55 @@
     body[data-page="about"] .essay-index {
       margin: 0;
       color: var(--crimson-bright);
-      font-size: .58rem;
+      font-size: .7rem;
+      letter-spacing: .13em;
     }
 
     body[data-page="about"] .about-hero h1 {
-      max-width: 760px;
-      margin: .55rem 0 1.1rem;
+      max-width: 820px;
+      margin: .5rem 0 1.2rem;
       font-family: var(--serif);
-      font-size: clamp(3.3rem, 7vw, 6.4rem);
-      line-height: .88;
+      font-size: clamp(4rem, 7.8vw, 7.3rem);
+      line-height: .82;
       font-weight: 600;
-      letter-spacing: -.045em;
+      letter-spacing: -.055em;
     }
 
     body[data-page="about"] .about-hero .lead {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0;
-      color: #d3c8d0;
+      color: #cfc4cb;
       font-family: var(--serif);
-      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-      line-height: 1.42;
+      font-size: clamp(1.28rem, 2vw, 1.72rem);
+      line-height: 1.35;
     }
 
     body[data-page="about"] .about-hero .intro {
-      max-width: 720px;
+      max-width: 760px;
       margin: 1rem 0 0;
-      color: var(--about-muted);
-      font-size: .92rem;
-      line-height: 1.72;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.65;
     }
 
     body[data-page="about"] .about-hero .mission {
-      max-width: 720px;
-      margin: 1.35rem 0 0;
-      padding-left: 1rem;
-      border-left: 1px solid rgba(141,23,50,.72);
-      color: #c4b8c1;
-      font-size: .9rem;
-      line-height: 1.72;
+      max-width: 760px;
+      margin: 1.15rem 0 0;
+      padding-top: .95rem;
+      border-top: 1px solid rgba(74,53,71,.46);
+      color: #b5aab3;
+      font-size: .84rem;
+      line-height: 1.62;
+    }
+
+    body[data-page="about"] .about-hero .mission::before {
+      content: "WHY A PHD";
+      display: block;
+      margin-bottom: .45rem;
+      color: var(--crimson-bright);
+      font-family: var(--mono);
+      font-size: .54rem;
+      letter-spacing: .12em;
     }
 
     body[data-page="about"] .photo-placeholder {
@@ -104,20 +108,33 @@
       place-items: center;
       min-width: 0;
       overflow: hidden;
-      border: 1px solid var(--line);
+      isolation: isolate;
+      border: 1px solid var(--line-bright);
       background:
-        linear-gradient(135deg, transparent 49.7%, rgba(255,255,255,.045) 50%, transparent 50.3%),
-        linear-gradient(45deg, transparent 49.7%, rgba(255,255,255,.045) 50%, transparent 50.3%),
-        linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
-        #0d0b0f;
+        radial-gradient(circle at 50% 38%, rgba(141,23,50,.10), transparent 52%),
+        linear-gradient(145deg, rgba(101,69,126,.08), rgba(10,8,12,.96));
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.30),
+        inset 0 0 0 5px #0b090c,
+        inset 0 0 0 6px rgba(184,149,117,.10);
     }
 
     body[data-page="about"] .photo-placeholder::before {
       content: "";
       position: absolute;
-      inset: 10px;
-      border: 1px solid rgba(255,255,255,.035);
+      inset: 8px;
+      z-index: 2;
+      border: 1px solid rgba(221,204,183,.10);
       pointer-events: none;
+    }
+
+    body[data-page="about"] .photo-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 46%, rgba(7,7,9,.34) 100%);
     }
 
     body[data-page="about"] .photo-placeholder.portrait {
@@ -136,49 +153,50 @@
 
     body[data-page="about"] .photo-label {
       position: relative;
-      z-index: 1;
-      padding: .55rem .7rem;
-      color: #7c727d;
-      background: rgba(7,7,9,.78);
-      font-size: .5rem;
+      z-index: 3;
+      padding: .5rem .65rem;
+      color: #746a75;
+      background: rgba(7,7,9,.74);
+      font-size: .48rem;
       text-align: center;
     }
 
     body[data-page="about"] .essay-section {
-      padding: clamp(4rem, 7vw, 6.5rem) 0;
+      padding: clamp(3.6rem, 6vw, 5rem) 0 clamp(4.4rem, 7vw, 6rem);
       border-bottom: 1px solid var(--line);
     }
 
     body[data-page="about"] .essay-heading {
       display: grid;
-      grid-template-columns: minmax(180px, .38fr) minmax(0, 1.62fr);
-      gap: clamp(2rem, 5vw, 4.5rem);
+      grid-template-columns: 84px minmax(0, 1fr);
+      gap: 1rem;
       align-items: start;
-      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: clamp(1.8rem, 3vw, 2.35rem);
     }
 
     body[data-page="about"] .essay-heading h2 {
-      margin: .4rem 0 0;
+      margin: 0;
+      max-width: 850px;
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 5vw, 4.4rem);
-      line-height: .94;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: .95;
       font-weight: 600;
-      letter-spacing: -.035em;
+      letter-spacing: -.04em;
     }
 
     body[data-page="about"] .essay-deck {
-      max-width: 760px;
-      margin: 0;
-      color: #b5aab3;
-      font-family: var(--serif);
-      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
-      line-height: 1.5;
+      max-width: 850px;
+      margin: .62rem 0 0;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: .82rem;
+      line-height: 1.58;
     }
 
     body[data-page="about"] .military-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
-      gap: clamp(2.5rem, 6vw, 5.5rem);
+      grid-template-columns: minmax(0, 1.2fr) minmax(285px, .8fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
       align-items: start;
     }
 
@@ -186,8 +204,8 @@
       max-width: 72ch;
       margin: 0;
       color: var(--about-muted);
-      font-size: .92rem;
-      line-height: 1.76;
+      font-size: .84rem;
+      line-height: 1.68;
     }
 
     body[data-page="about"] .service-copy + .service-copy {
@@ -197,13 +215,13 @@
     body[data-page="about"] .service-facts {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 1.5rem;
-      margin: 2rem 0 0;
+      gap: 0 1.25rem;
+      margin: 1.55rem 0 0;
     }
 
     body[data-page="about"] .service-fact {
-      padding: .85rem 0;
-      border-top: 1px solid var(--line);
+      padding: .7rem 0;
+      border-top: 1px solid rgba(74,53,71,.62);
     }
 
     body[data-page="about"] .service-fact dt {
@@ -214,19 +232,19 @@
 
     body[data-page="about"] .service-fact dd {
       margin: 0;
-      color: #d4c9d1;
+      color: #cfc4cb;
       font-family: var(--serif);
-      font-size: 1.08rem;
+      font-size: 1rem;
       line-height: 1.25;
     }
 
     body[data-page="about"] .military-photo figcaption,
     body[data-page="about"] .life-photo figcaption {
       margin-top: .55rem;
-      color: #736a74;
+      color: #6f6470;
       font-family: var(--mono);
-      font-size: .5rem;
-      letter-spacing: .055em;
+      font-size: .46rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
@@ -237,7 +255,7 @@
     body[data-page="about"] .ridge-stage {
       position: relative;
       overflow-x: auto;
-      padding: .7rem 0 .2rem;
+      padding: .45rem 0 .1rem;
       scrollbar-width: thin;
       scrollbar-color: rgba(214,162,182,.22) transparent;
     }
@@ -251,13 +269,13 @@
     }
 
     body[data-page="about"] .ridge-fill {
-      fill: rgba(112,80,138,.035);
+      fill: rgba(101,69,126,.045);
     }
 
     body[data-page="about"] .ridge-line {
       fill: none;
-      stroke: #6f6471;
-      stroke-width: 1.2;
+      stroke: #6d6570;
+      stroke-width: 1;
     }
 
     body[data-page="about"] .ridge-baseline {
@@ -266,21 +284,21 @@
     }
 
     body[data-page="about"] .ridge-gridline {
-      stroke: rgba(255,255,255,.045);
+      stroke: rgba(255,255,255,.035);
       stroke-width: 1;
     }
 
     body[data-page="about"] .ridge-axis-label,
     body[data-page="about"] .ridge-date,
     body[data-page="about"] .ridge-elevation {
-      fill: #786f79;
+      fill: #716673;
       font-family: var(--mono);
       font-size: 8px;
       letter-spacing: .035em;
     }
 
     body[data-page="about"] .ridge-elevation {
-      fill: #b2a6af;
+      fill: #a99daa;
       font-size: 8.5px;
     }
 
@@ -301,7 +319,7 @@
 
     body[data-page="about"] .ridge-point circle {
       fill: #0b090d;
-      stroke: var(--about-blossom);
+      stroke: rgba(191,49,82,.74);
       stroke-width: 1.2;
       transition: fill 150ms ease, transform 150ms ease;
       transform-box: fill-box;
@@ -311,7 +329,7 @@
     body[data-page="about"] .ridge-point:hover circle,
     body[data-page="about"] .ridge-point:focus circle,
     body[data-page="about"] .ridge-point.is-active circle {
-      fill: var(--about-oxblood);
+      fill: var(--crimson);
       transform: scale(1.2);
     }
 
@@ -326,38 +344,39 @@
       display: grid;
       grid-template-columns: minmax(160px, .45fr) minmax(0, 1.55fr);
       gap: 1.5rem;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
+      margin-top: .7rem;
+      padding-top: .85rem;
+      border-top: 1px solid rgba(74,53,71,.62);
     }
 
     body[data-page="about"] .ridge-caption strong {
       color: #d7ccd4;
       font-family: var(--serif);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
     }
 
     body[data-page="about"] .ridge-caption p {
       margin: 0;
-      color: #928792;
-      font-size: .8rem;
-      line-height: 1.55;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.5;
     }
 
     body[data-page="about"] .travel-note {
       max-width: 780px;
-      margin: 2.2rem 0 0 auto;
-      color: var(--about-muted);
-      font-size: .88rem;
-      line-height: 1.7;
+      max-width: 760px;
+      margin: 1.8rem 0 0 auto;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.62;
     }
 
     body[data-page="about"] .life-photo-grid {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
-      gap: 1.2rem;
-      margin-top: 2.2rem;
+      gap: 1rem;
+      margin-top: 1.8rem;
       align-items: start;
     }
 
@@ -367,36 +386,36 @@
 
     body[data-page="about"] .shelf-wrap {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
-      gap: clamp(2rem, 5vw, 4rem);
-      align-items: end;
+      grid-template-columns: minmax(0, 1.45fr) minmax(245px, .55fr);
+      gap: clamp(1.75rem, 4vw, 3rem);
+      align-items: start;
     }
 
     body[data-page="about"] .shelf-group + .shelf-group {
-      margin-top: 1.35rem;
+      margin-top: .9rem;
     }
 
     body[data-page="about"] .shelf-label {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: .55rem;
-      color: #7d737e;
-      font-size: .5rem;
+      margin-bottom: .42rem;
+      color: #786d79;
+      font-size: .49rem;
     }
 
     body[data-page="about"] .compact-shelf {
       display: flex;
       align-items: flex-end;
       gap: 6px;
-      min-height: 135px;
-      padding: .45rem .1rem .7rem;
-      border-bottom: 7px solid #191319;
+      min-height: 112px;
+      padding: .3rem .1rem .55rem;
+      border-bottom: 5px solid #171218;
     }
 
     body[data-page="about"] .book-spine {
-      --h: 112px;
-      --w: 38px;
+      --h: 96px;
+      --w: 36px;
       flex: 0 0 var(--w);
       height: var(--h);
       position: relative;
@@ -440,8 +459,8 @@
 
     body[data-page="about"] .book-note {
       min-height: 150px;
-      padding-left: 1.4rem;
-      border-left: 1px solid var(--line);
+      padding-left: 1.25rem;
+      border-left: 1px solid rgba(74,53,71,.62);
     }
 
     body[data-page="about"] .book-note small {
@@ -464,24 +483,24 @@
 
     body[data-page="about"] .book-note p {
       margin: .7rem 0 0;
-      color: #938893;
-      font-size: .8rem;
-      line-height: 1.55;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.5;
     }
 
     body[data-page="about"] .off-clock-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
-      gap: clamp(2.5rem, 6vw, 5rem);
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
       align-items: start;
     }
 
     body[data-page="about"] .off-clock-copy {
       max-width: 720px;
       margin: 0;
-      color: #b0a5ae;
-      font-size: .92rem;
-      line-height: 1.78;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.68;
     }
 
     body[data-page="about"] .off-clock-copy + .off-clock-copy {
@@ -498,12 +517,16 @@
 
       body[data-page="about"] .photo-placeholder.portrait {
         justify-self: start;
-        width: min(340px, 82vw);
+        width: min(330px, 82vw);
       }
 
       body[data-page="about"] .essay-heading {
         grid-template-columns: 1fr;
-        gap: .8rem;
+        gap: .5rem;
+      }
+
+      body[data-page="about"] .essay-index {
+        order: -1;
       }
 
       body[data-page="about"] .military-photo {
@@ -512,19 +535,16 @@
 
       body[data-page="about"] .book-note {
         min-height: 0;
-        padding: 1.2rem 0 0;
+        padding: 1rem 0 0;
         border-left: 0;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(74,53,71,.62);
       }
     }
 
     @media (max-width: 640px) {
-      body[data-page="about"] .about-shell {
-        width: min(100% - 2rem, 1180px);
-      }
-
       body[data-page="about"] .about-hero {
-        padding-top: 3.4rem;
+        padding-top: 3.5rem;
+        padding-bottom: 3rem;
       }
 
       body[data-page="about"] .service-facts,
@@ -568,7 +588,7 @@
 
 <main id="content">
   <section class="about-hero">
-    <div class="about-shell about-hero-grid">
+    <div class="site-shell about-hero-grid">
       <div class="reveal">
         <p class="about-kicker">About</p>
         <h1>The life around the work.</h1>
@@ -589,12 +609,12 @@
     </div>
   </section>
 
-  <div class="about-shell">
+  <div class="site-shell">
 
     <section class="essay-section reveal" aria-labelledby="military-title">
       <header class="essay-heading">
         <div>
-          <p class="essay-index">01 / Military Service</p>
+          <p class="section-index essay-index">01 / Military Service</p>
           <h2 id="military-title">U.S. Army</h2>
         </div>
         <p class="essay-deck">
@@ -643,7 +663,7 @@
     <section class="essay-section reveal" aria-labelledby="outside-title">
       <header class="essay-heading">
         <div>
-          <p class="essay-index">02 / Outside the Model</p>
+          <p class="section-index essay-index">02 / Outside the Model</p>
           <h2 id="outside-title">Mountains &amp; movement</h2>
         </div>
         <p class="essay-deck">
@@ -737,7 +757,7 @@
     <section class="essay-section reveal" aria-labelledby="shelf-title">
       <header class="essay-heading">
         <div>
-          <p class="essay-index">03 / Reading</p>
+          <p class="section-index essay-index">03 / Reading</p>
           <h2 id="shelf-title">The shelf</h2>
         </div>
         <p class="essay-deck">
@@ -774,7 +794,7 @@
     <section class="essay-section reveal" aria-labelledby="off-clock-title">
       <header class="essay-heading">
         <div>
-          <p class="essay-index">04 / Off the Clock</p>
+          <p class="section-index essay-index">04 / Off the Clock</p>
           <h2 id="off-clock-title">The rest of it</h2>
         </div>
         <p class="essay-deck">
@@ -942,8 +962,8 @@
     const button = document.createElement("button");
     button.type = "button";
     button.className = "book-spine " + book.tone;
-    button.style.setProperty("--h", (104 + (index % 4) * 7) + "px");
-    button.style.setProperty("--w", (34 + (index % 3) * 4) + "px");
+    button.style.setProperty("--h", (88 + (index % 4) * 6) + "px");
+    button.style.setProperty("--w", (32 + (index % 3) * 4) + "px");
     button.setAttribute("aria-label", book.title);
 
     const title = document.createElement("span");

@@ -24,6 +24,10 @@
   const popover = document.getElementById("rpm-popover");
   const popoverClose = section.querySelector(".rpm-popover-close");
   const detailLink = document.getElementById("rpm-detail-link");
+  const projectMeta = document.getElementById("rpm-project-meta");
+  const projectOutput = document.getElementById("rpm-project-output");
+  const projectStatus = document.getElementById("rpm-project-status");
+  const projectEvidence = document.getElementById("rpm-project-evidence");
   const mobile = section.querySelector(".rpm-mobile");
 
   const conceptRepoCache = new Map();
@@ -189,11 +193,24 @@
       projects.innerHTML = "";
     }
 
-    const directUrl = DATA[id]?.url || null;
-    if (detailLink && directUrl) {
+    const item = DATA[id] || DATA.center;
+    const isProject = item.kind === "project";
+
+    if (projectMeta) projectMeta.hidden = !isProject;
+    if (isProject) {
+      if (projectOutput) projectOutput.textContent = item.output || "Research project";
+      if (projectStatus) projectStatus.textContent = item.status || "Documented";
+      if (projectEvidence) {
+        projectEvidence.textContent = item.evidenceLabel || "View evidence";
+        projectEvidence.href = item.url || "#";
+      }
+    }
+
+    const directUrl = item.url || null;
+    if (detailLink && directUrl && !isProject) {
       detailLink.hidden = false;
       detailLink.href = directUrl;
-      detailLink.textContent = DATA[id]?.kind === "project" ? "Open project ↗" : "Open repository ↗";
+      detailLink.textContent = "Open repository ↗";
     } else if (detailLink) {
       detailLink.hidden = true;
       detailLink.removeAttribute("href");

@@ -459,15 +459,6 @@
       line-height: 1.55;
     }
 
-    body[data-page="about"] .up-next {
-      margin: 1.2rem 0 0;
-      color: #7d737e;
-      font-family: var(--mono);
-      font-size: .53rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
     body[data-page="about"] .off-clock-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
@@ -744,14 +735,23 @@
       <div class="shelf-wrap">
         <div>
           <div class="shelf-group">
-            <div class="shelf-label"><span>Selected shelf</span><span>06 volumes</span></div>
-            <div class="compact-shelf" id="selected-shelf"></div>
+            <div class="shelf-label"><span>Currently reading</span><span>05 volumes</span></div>
+            <div class="compact-shelf" id="current-shelf"></div>
           </div>
-          <p class="up-next">Up next — Deep Learning, Bishop &amp; Bishop</p>
+
+          <div class="shelf-group">
+            <div class="shelf-label"><span>Recently read</span><span>03 volumes</span></div>
+            <div class="compact-shelf" id="recent-shelf"></div>
+          </div>
+
+          <div class="shelf-group">
+            <div class="shelf-label"><span>Up next</span><span>01 volume</span></div>
+            <div class="compact-shelf" id="next-shelf"></div>
+          </div>
         </div>
 
         <aside class="book-note" aria-live="polite">
-          <small id="book-status">Selected reading</small>
+          <small id="book-status">Reading now</small>
           <h3 id="book-title">Select a book</h3>
           <p id="book-copy">A short note about the selected book will appear here.</p>
         </aside>
@@ -837,50 +837,82 @@
 
   const books = [
     {
-      title: "Eighty-Six",
-      short: "Eighty-Six",
-      status: "Fiction · Current",
-      tone: "parchment",
-      note: "One of my favorite fictional worlds: war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them."
-    },
-    {
       title: "An Introduction to Statistical Learning",
       short: "ISL",
-      status: "Statistics · Current",
+      status: "current",
       tone: "oxblood",
       note: "A core reference for statistical learning: broad enough to revisit constantly and practical enough to keep open while working."
     },
     {
+      title: "R for Data Science",
+      short: "R4DS",
+      status: "current",
+      tone: "plum",
+      note: "A working reference for the everyday craft of turning raw data into something inspectable, reproducible, and useful."
+    },
+    {
+      title: "Text Mining with R",
+      short: "Text Mining",
+      status: "current",
+      tone: "slate",
+      note: "A bridge between tidyverse habits and the text-as-data problems that increasingly show up in my work."
+    },
+    {
+      title: "Speech and Language Processing",
+      short: "SLP",
+      status: "current",
+      tone: "wine",
+      note: "The larger technical map for NLP, speech, language models, representation, and computational language."
+    },
+    {
+      title: "Eighty-Six",
+      short: "Eighty-Six",
+      status: "current",
+      tone: "parchment",
+      note: "One of my favorite fictional worlds: war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them."
+    },
+    {
+      title: "Regression and Other Stories",
+      short: "Regression",
+      status: "recent",
+      tone: "wine",
+      note: "A practical book about regression, but just as useful as a book about statistical judgment and model checking."
+    },
+    {
       title: "American Caesar",
       short: "American Caesar",
-      status: "Biography · Recent",
+      status: "recent",
       tone: "olive",
       note: "Biography and military history through a character large enough to make institutional, strategic, and personal stories collide."
     },
     {
       title: "The Coldest Winter",
       short: "Coldest Winter",
-      status: "History · Recent",
+      status: "recent",
       tone: "blue",
       note: "A Korean War history that moves effectively between battlefield experience, command decisions, politics, and the cost of bad assumptions."
     },
     {
-      title: "Regression and Other Stories",
-      short: "Regression",
-      status: "Statistics · Recent",
-      tone: "wine",
-      note: "A practical book about regression, but just as useful as a book about statistical judgment and model checking."
-    },
-    {
-      title: "Speech and Language Processing",
-      short: "SLP",
-      status: "NLP · Current",
-      tone: "plum",
-      note: "The larger technical map for NLP, speech, language models, representation, and computational language."
+      title: "Deep Learning",
+      short: "Deep Learning",
+      status: "next",
+      tone: "oxblood",
+      note: "Next in the queue: a deeper pass through neural networks, representation learning, and modern machine-learning foundations."
     }
   ];
 
-  const selectedShelf = document.getElementById("selected-shelf");
+  const statusText = {
+    current: "Reading now",
+    recent: "Recently read",
+    next: "Up next"
+  };
+
+  const shelfTargets = {
+    current: document.getElementById("current-shelf"),
+    recent: document.getElementById("recent-shelf"),
+    next: document.getElementById("next-shelf")
+  };
+
   const bookStatus = document.getElementById("book-status");
   const bookTitle = document.getElementById("book-title");
   const bookCopy = document.getElementById("book-copy");
@@ -888,7 +920,7 @@
   function inspectBook(book, button) {
     document.querySelectorAll(".book-spine.is-active").forEach((node) => node.classList.remove("is-active"));
     if (button) button.classList.add("is-active");
-    if (bookStatus) bookStatus.textContent = book.status;
+    if (bookStatus) bookStatus.textContent = statusText[book.status] || "";
     if (bookTitle) bookTitle.textContent = book.title;
     if (bookCopy) bookCopy.textContent = book.note;
   }
@@ -909,7 +941,8 @@
     button.addEventListener("click", () => inspectBook(book, button));
     button.addEventListener("focus", () => inspectBook(book, button));
 
-    if (selectedShelf) selectedShelf.appendChild(button);
+    const target = shelfTargets[book.status];
+    if (target) target.appendChild(button);
   });
 
   const firstBook = books[0];

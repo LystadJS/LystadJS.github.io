@@ -255,6 +255,35 @@
       stroke-width: 1;
     }
 
+    body[data-page="about"] .ridge-gridline {
+      stroke: rgba(255,255,255,.045);
+      stroke-width: 1;
+    }
+
+    body[data-page="about"] .ridge-axis-label,
+    body[data-page="about"] .ridge-date,
+    body[data-page="about"] .ridge-elevation {
+      fill: #786f79;
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .035em;
+    }
+
+    body[data-page="about"] .ridge-elevation {
+      fill: #b2a6af;
+      font-size: 8.5px;
+    }
+
+    body[data-page="about"] .ridge-sequence-note {
+      margin: .7rem 0 0;
+      color: #726973;
+      font-family: var(--mono);
+      font-size: .5rem;
+      line-height: 1.55;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
     body[data-page="about"] .ridge-point {
       cursor: pointer;
       outline: none;
@@ -458,14 +487,6 @@
       margin-top: 1rem;
     }
 
-    body[data-page="about"] .closing-line {
-      margin-top: 1.8rem;
-      color: #d0c5cd;
-      font-family: var(--serif);
-      font-size: 1.18rem;
-      line-height: 1.45;
-    }
-
     @media (max-width: 900px) {
       body[data-page="about"] .about-hero-grid,
       body[data-page="about"] .military-layout,
@@ -531,14 +552,13 @@
       <span class="brand-sigil" aria-hidden="true"><span>JSL</span></span>
       <span class="brand-text">
         <span class="brand-name">John S. Lystad</span>
-        <span class="brand-role">Statistics · Computational Methods · Social Science</span>
+        <span class="brand-role">Computational Statistics · Social Science · International Policy</span>
       </span>
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
     <nav class="site-nav" aria-label="Main navigation">
       <a href="about.html" data-page="about">About</a>
       <a href="research.html" data-page="research">Research</a>
-      <a href="projects.html" data-page="projects">Projects</a>
       <a href="code.html" data-page="code">Code &amp; Development</a>
       <a href="cv.html" data-page="cv">CV</a>
     </nav>
@@ -552,10 +572,10 @@
         <p class="about-kicker">About</p>
         <h1>The life around the work.</h1>
         <p class="lead">
-          The rest of this site explains what I study and build. This page is about the experiences, places, and interests that shaped the person doing it.
+          I have spent much of my adult life moving between universities, military service, mountains, unfamiliar countries, and technical projects.
         </p>
         <p class="intro">
-          I have spent much of my adult life moving between universities, military service, unfamiliar countries, mountains, and technical projects. Outside research, I am usually reading, hiking, building something unnecessary on a computer, or planning somewhere else to go. My family roots are in Norway and Italy; I have crossed nearly every U.S. state and national park, along with travel through Japan, Morocco, France, Algeria, and Spain.
+          Outside research, I am usually reading, hiking, building something unnecessary on a computer, or planning somewhere else to go. My family roots are in Norway and Italy. Travel has taken me across most of the United States and through Japan, Morocco, France, Algeria, and Spain; the two sights I still return to are the aurora borealis and cherry blossoms.
         </p>
       </div>
 
@@ -584,7 +604,7 @@
             I was responsible for leading soldiers, maintaining accountability and readiness, and communicating clearly in environments where incomplete information, physical stress, and changing conditions were routine. Much of that experience took place in Alaska and included Arctic and extreme-cold-weather training and operations.
           </p>
           <p class="service-copy">
-            Military service changed the way I approach difficult problems. I learned to distinguish what is known from what is assumed, communicate decisions in plain language, and prefer solutions that remain useful outside ideal conditions. The CV contains the formal chronology; here, the more important point is that the Army shaped how I think about leadership, uncertainty, and responsibility.
+            It left me with a lasting preference for clear communication, explicit assumptions, and plans that still work when conditions are less orderly than expected. More broadly, it shaped how I think about leadership, uncertainty, and responsibility.
           </p>
 
           <dl class="service-facts">
@@ -629,45 +649,69 @@
 
       <figure class="ridge-figure">
         <div class="ridge-stage">
-          <svg class="ridge-svg" viewBox="0 0 1100 300" role="img" aria-labelledby="ridge-title ridge-desc">
-            <title id="ridge-title">Selected mountain and hiking experiences</title>
-            <desc id="ridge-desc">A stylized ridgeline marking selected hikes and climbs in the United States, Morocco, Alaska, and Japan.</desc>
-            <path class="ridge-fill" d="M0,267 L0,231 L90,214 L142,166 L197,226 L255,133 L315,216 L375,158 L427,210 L497,86 L565,220 L631,151 L680,201 L748,113 L816,218 L880,144 L929,202 L993,124 L1042,202 L1100,169 L1100,267 Z"></path>
-            <path class="ridge-line" d="M0,231 L90,214 L142,166 L197,226 L255,133 L315,216 L375,158 L427,210 L497,86 L565,220 L631,151 L680,201 L748,113 L816,218 L880,144 L929,202 L993,124 L1042,202 L1100,169"></path>
-            <line class="ridge-baseline" x1="0" y1="267" x2="1100" y2="267"></line>
+          <svg class="ridge-svg" viewBox="0 0 1100 320" role="img" aria-labelledby="ridge-title ridge-desc">
+            <title id="ridge-title">Selected chronological elevation log</title>
+            <desc id="ridge-desc">Selected hikes and climbs arranged chronologically from 2018 through 2026. Vertical position represents published elevation above sea level. The connecting line shows sequence, not continuous terrain.</desc>
 
-            <g class="ridge-point" tabindex="0" role="button" data-title="Richland Balsam" data-meta="Blue Ridge Mountains · United States" data-copy="One Appalachian point in a field log that now stretches from the Blue Ridge to Alaska, North Africa, and Japan." transform="translate(142 166)">
-              <circle r="5"></circle><text x="-41" y="-13">RICHLAND BALSAM</text>
+            <line class="ridge-gridline" x1="55" y1="255" x2="1070" y2="255"></line>
+            <line class="ridge-gridline" x1="55" y1="195" x2="1070" y2="195"></line>
+            <line class="ridge-gridline" x1="55" y1="135" x2="1070" y2="135"></line>
+            <line class="ridge-gridline" x1="55" y1="75" x2="1070" y2="75"></line>
+
+            <text class="ridge-axis-label" x="8" y="258">0 FT</text>
+            <text class="ridge-axis-label" x="8" y="198">4K</text>
+            <text class="ridge-axis-label" x="8" y="138">8K</text>
+            <text class="ridge-axis-label" x="8" y="78">12K</text>
+
+            <path class="ridge-fill" d="M75,255 L75,123 L172.5,49.9 L270,166.9 L367.5,201.9 L465,169.3 L562.5,192.8 L660,195.9 L757.5,202.1 L855,69.2 L952.5,243.5 L1050,164.2 L1050,255 Z"></path>
+            <path class="ridge-line" d="M75,123 L172.5,49.9 L270,166.9 L367.5,201.9 L465,169.3 L562.5,192.8 L660,195.9 L757.5,202.1 L855,69.2 L952.5,243.5 L1050,164.2"></path>
+            <line class="ridge-baseline" x1="55" y1="255" x2="1070" y2="255"></line>
+
+            <g class="ridge-point" tabindex="0" role="button" data-title="Point Imperial" data-meta="Grand Canyon · April 2018 · 8,803 ft" data-copy="The highest point on the Grand Canyon rim and the first stop in this selected chronology." transform="translate(75 123)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">8,803</text><text class="ridge-date" x="-20" y="151">APR 2018</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Point Imperial" data-meta="Grand Canyon · United States" data-copy="A landscape where depth and geological scale matter more than the summit itself." transform="translate(255 133)">
-              <circle r="5"></circle><text x="-31" y="-13">POINT IMPERIAL</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Toubkal" data-meta="Atlas Mountains, Morocco · May 2019 · 13,671 ft / 4,167 m" data-copy="North Africa’s highest peak and one of the trips that permanently linked travel and mountains for me." transform="translate(172.5 49.9)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-22" y="-13">13,671</text><text class="ridge-date" x="-20" y="224">MAY 2019</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Toubkal" data-meta="Atlas Mountains · Morocco" data-copy="A high-altitude route through the Atlas Mountains and one of the trips that permanently linked travel and mountains for me." transform="translate(497 86)">
-              <circle r="5"></circle><text x="-27" y="-13">TOUBKAL</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="East Twin Peak" data-meta="Chugach Mountains, Alaska · February 2023 · 5,873 ft" data-copy="One of the Chugach peaks that made Alaska the dominant landscape in this part of the chronology." transform="translate(270 166.9)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">5,873</text><text class="ridge-date" x="-20" y="107">FEB 2023</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Chugach Mountains" data-meta="Alaska · United States" data-copy="East Twin, Rainbow, Gold Star, Alyeska, and other routes made the Chugach one of the landscapes I return to most often." transform="translate(631 151)">
-              <circle r="5"></circle><text x="-35" y="-13">CHUGACH</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Rainbow Peak" data-meta="Chugach Mountains, Alaska · April 2024 · 3,543 ft" data-copy="A lower summit by elevation, but a steep Chugach route with strong relief above Turnagain Arm." transform="translate(367.5 201.9)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">3,543</text><text class="ridge-date" x="-20" y="72">APR 2024</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Healy" data-meta="Denali region · Alaska" data-copy="A northern landscape where scale, weather, and distance do most of the talking." transform="translate(748 113)">
-              <circle r="5"></circle><text x="-27" y="-13">MT. HEALY</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Healy" data-meta="Denali region, Alaska · May 2024 · 5,716 ft" data-copy="A steep Alaska Range ridge immediately outside the developed core of Denali National Park." transform="translate(465 169.3)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">5,716</text><text class="ridge-date" x="-20" y="105">MAY 2024</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Harding Icefield" data-meta="Kenai Fjords · Alaska" data-copy="Ice, rock, and enormous spatial scale—one of the places that makes ordinary measures of distance feel inadequate." transform="translate(880 144)">
-              <circle r="5"></circle><text x="-41" y="-13">HARDING ICEFIELD</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Gold Star Peak" data-meta="Chugach State Park, Alaska · June 2024 · 4,148 ft" data-copy="A Chugach summit named in honor of Gold Star families and one of several Alaska ascents in summer 2024." transform="translate(562.5 192.8)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">4,148</text><text class="ridge-date" x="-20" y="82">JUN 2024</text>
             </g>
-            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Fuji" data-meta="Japan" data-copy="A mountain inseparable from the wider experience of Japan: volcanic terrain, ritual, and a landscape with a long cultural memory." transform="translate(993 124)">
-              <circle r="5"></circle><text x="-22" y="-13">FUJI</text>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Alyeska" data-meta="Girdwood, Alaska · June 2024 · 3,939 ft" data-copy="Alyeska rises directly above Girdwood and Turnagain Arm, linking alpine terrain with the coastal Chugach landscape." transform="translate(660 195.9)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">3,939</text><text class="ridge-date" x="-20" y="79">JUN 2024</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Harding Icefield Trail" data-meta="Kenai Fjords, Alaska · June 2024 · 3,527 ft at trail end" data-copy="The trail climbs from the Exit Glacier valley floor to the edge of the Harding Icefield; the value shown is the published elevation at the trail end." transform="translate(757.5 202.1)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">3,527</text><text class="ridge-date" x="-20" y="73">JUN 2024</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Fuji" data-meta="Japan · July 2024 · 12,388 ft / 3,776 m" data-copy="Japan’s highest peak and one of the most visually and culturally distinctive mountain experiences in the log." transform="translate(855 69.2)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-22" y="-13">12,388</text><text class="ridge-date" x="-20" y="206">JUL 2024</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Inari" data-meta="Kyoto, Japan · July 2024 · 764 ft / 233 m" data-copy="A different kind of ascent: a sacred mountain route through Fushimi Inari’s shrine precinct and thousands of torii gates." transform="translate(952.5 243.5)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-14" y="-13">764</text><text class="ridge-date" x="-20" y="32">JUL 2024</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Richland Balsam Overlook" data-meta="Blue Ridge Parkway · June 2026 · 6,053 ft" data-copy="The highest point on the Blue Ridge Parkway motor road and the most recent entry in this selected chronology." transform="translate(1050 164.2)">
+              <circle r="5"></circle><text class="ridge-elevation" x="-18" y="-13">6,053</text><text class="ridge-date" x="-22" y="110">JUN 2026</text>
             </g>
           </svg>
         </div>
 
         <figcaption class="ridge-caption">
-          <strong id="peak-name">Mountains as counterweight</strong>
-          <p id="peak-note">The profile is intentionally selective rather than exhaustive. Select a marked point for a short field note.</p>
+          <strong id="peak-name">Selected elevation log</strong>
+          <p id="peak-note">Chronological from 2018 to 2026. Vertical position represents published elevation above sea level; the connecting line indicates sequence, not continuous terrain. Select a point for a short field note.</p>
         </figcaption>
+        <p class="ridge-sequence-note">Viewpoints and trail endpoints are labeled as such; elevations are not presented as summit claims where they are not summits.</p>
       </figure>
 
       <p class="travel-note">
-        Travel sits naturally beside the mountains for me. I have visited nearly every U.S. state and national park, as well as Japan, Morocco, France, Algeria, and Spain. The two most beautiful things I have seen are still the aurora borealis and cherry blossoms—one enormous and almost unreal, the other brief enough to make its beauty feel conditional.
+        Travel sits naturally beside the mountains for me. I have crossed most of the United States and visited nearly every national park, along with travel through Japan, Morocco, France, Algeria, and Spain. The places blur together before the images do: the aurora borealis still feels almost unreal, while cherry blossoms are memorable partly because they disappear so quickly.
       </p>
 
       <div class="life-photo-grid">
@@ -693,25 +737,21 @@
           <h2 id="shelf-title">The shelf</h2>
         </div>
         <p class="essay-deck">
-          Technical books share space with history, biography, fiction, and light novels. The mix is more representative of what I actually read than a list of “recommended books.”
+          A small selection of current and recent reading: statistics beside military history, biography, fiction, and light novels.
         </p>
       </header>
 
       <div class="shelf-wrap">
         <div>
           <div class="shelf-group">
-            <div class="shelf-label"><span>Currently reading</span><span>05 volumes</span></div>
-            <div class="compact-shelf" id="current-shelf"></div>
-          </div>
-          <div class="shelf-group">
-            <div class="shelf-label"><span>Recently read</span><span>03 volumes</span></div>
-            <div class="compact-shelf" id="recent-shelf"></div>
+            <div class="shelf-label"><span>Selected shelf</span><span>06 volumes</span></div>
+            <div class="compact-shelf" id="selected-shelf"></div>
           </div>
           <p class="up-next">Up next — Deep Learning, Bishop &amp; Bishop</p>
         </div>
 
         <aside class="book-note" aria-live="polite">
-          <small id="book-status">Reading now</small>
+          <small id="book-status">Selected reading</small>
           <h3 id="book-title">Select a book</h3>
           <p id="book-copy">A short note about the selected book will appear here.</p>
         </aside>
@@ -725,19 +765,18 @@
           <h2 id="off-clock-title">The rest of it</h2>
         </div>
         <p class="essay-deck">
-          Not every interest needs an interface. These are simply the things I tend to reach for when work is finished.
+          Most of my downtime is less complicated than the work.
         </p>
       </header>
 
       <div class="off-clock-grid">
         <div>
           <p class="off-clock-copy">
-            I listen mostly to punk, metal, and rock; watch a lot of horror; and gravitate toward anime and games with strong atmosphere—especially <em>Eighty-Six</em>, <em>Chainsaw Man</em>, and <em>Dark Souls</em>. I also have a longstanding interest in folklore, cryptids, demonology, and paranormal history, which I hope to turn into a casual podcast.
+            I listen mostly to punk, metal, and rock, watch more horror than anything else, and have a particular weakness for <em>Eighty-Six</em>, <em>Chainsaw Man</em>, and <em>Dark Souls</em>. I also maintain a long-running interest in folklore, cryptids, demonology, and paranormal history, which I hope to turn into a casual podcast.
           </p>
           <p class="off-clock-copy">
-            Most of my actual downtime is simpler: reading, getting outside, tinkering with something technical, and spending time at home with my longtime partner and cats.
+            Most of the rest is simpler: books, technical side projects, travel, my longtime partner, and cats.
           </p>
-          <p class="closing-line">The work matters. So does having a life large enough that the work is only part of it.</p>
         </div>
 
         <figure class="life-photo">
@@ -756,7 +795,7 @@
   <div class="footer-inner">
     <div>
       <div class="footer-title">John S. Lystad</div>
-      <div class="footer-copy">Computational statistics, social science, quantitative research, and international affairs analysis.<br>© <span data-current-year></span> John S. Lystad.</div>
+      <div class="footer-copy">Computational statistics, social science, research, and quantitative decision support.<br>© <span data-current-year></span> John S. Lystad.</div>
     </div>
     <div class="footer-links">
       <a href="cv.html">Curriculum Vitae</a>
@@ -798,66 +837,50 @@
 
   const books = [
     {
-      title: "An Introduction to Statistical Learning",
-      short: "ISL",
-      status: "current",
-      tone: "oxblood",
-      note: "A core reference for statistical learning: broad enough to revisit constantly and practical enough to keep open while working."
-    },
-    {
-      title: "R for Data Science",
-      short: "R4DS",
-      status: "current",
-      tone: "plum",
-      note: "A working reference for the everyday craft of turning raw data into something inspectable, reproducible, and useful."
-    },
-    {
-      title: "Text Mining with R",
-      short: "Text Mining",
-      status: "current",
-      tone: "slate",
-      note: "A bridge between tidyverse habits and the text-as-data problems that increasingly show up in my work."
-    },
-    {
-      title: "Speech and Language Processing",
-      short: "SLP",
-      status: "current",
-      tone: "wine",
-      note: "The larger technical map for NLP, speech, language models, representation, and computational language."
-    },
-    {
       title: "Eighty-Six",
       short: "Eighty-Six",
-      status: "current",
+      status: "Fiction · Current",
       tone: "parchment",
       note: "One of my favorite fictional worlds: war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them."
     },
     {
-      title: "Regression and Other Stories",
-      short: "Regression",
-      status: "recent",
-      tone: "wine",
-      note: "A practical book about regression, but just as useful as a book about statistical judgment and model checking."
+      title: "An Introduction to Statistical Learning",
+      short: "ISL",
+      status: "Statistics · Current",
+      tone: "oxblood",
+      note: "A core reference for statistical learning: broad enough to revisit constantly and practical enough to keep open while working."
     },
     {
       title: "American Caesar",
       short: "American Caesar",
-      status: "recent",
+      status: "Biography · Recent",
       tone: "olive",
       note: "Biography and military history through a character large enough to make institutional, strategic, and personal stories collide."
     },
     {
       title: "The Coldest Winter",
       short: "Coldest Winter",
-      status: "recent",
+      status: "History · Recent",
       tone: "blue",
       note: "A Korean War history that moves effectively between battlefield experience, command decisions, politics, and the cost of bad assumptions."
+    },
+    {
+      title: "Regression and Other Stories",
+      short: "Regression",
+      status: "Statistics · Recent",
+      tone: "wine",
+      note: "A practical book about regression, but just as useful as a book about statistical judgment and model checking."
+    },
+    {
+      title: "Speech and Language Processing",
+      short: "SLP",
+      status: "NLP · Current",
+      tone: "plum",
+      note: "The larger technical map for NLP, speech, language models, representation, and computational language."
     }
   ];
 
-  const statusText = { current: "Reading now", recent: "Recently read" };
-  const currentShelf = document.getElementById("current-shelf");
-  const recentShelf = document.getElementById("recent-shelf");
+  const selectedShelf = document.getElementById("selected-shelf");
   const bookStatus = document.getElementById("book-status");
   const bookTitle = document.getElementById("book-title");
   const bookCopy = document.getElementById("book-copy");
@@ -865,7 +888,7 @@
   function inspectBook(book, button) {
     document.querySelectorAll(".book-spine.is-active").forEach((node) => node.classList.remove("is-active"));
     if (button) button.classList.add("is-active");
-    if (bookStatus) bookStatus.textContent = statusText[book.status] || "";
+    if (bookStatus) bookStatus.textContent = book.status;
     if (bookTitle) bookTitle.textContent = book.title;
     if (bookCopy) bookCopy.textContent = book.note;
   }
@@ -886,8 +909,7 @@
     button.addEventListener("click", () => inspectBook(book, button));
     button.addEventListener("focus", () => inspectBook(book, button));
 
-    const target = book.status === "current" ? currentShelf : recentShelf;
-    if (target) target.appendChild(button);
+    if (selectedShelf) selectedShelf.appendChild(button);
   });
 
   const firstBook = books[0];

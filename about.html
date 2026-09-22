@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="About John S. Lystad: Computational statistics, social science, quantitative research, and international affairs analysis.">
+  <meta name="description" content="Personal profile of John S. Lystad: mountains, travel, books, technical tinkering, culture, curiosities, and the people and places that matter most.">
   <meta name="theme-color" content="#070709">
   <meta property="og:title" content="About | John S. Lystad">
-  <meta property="og:description" content="About John S. Lystad: Computational statistics, social science, quantitative research, and international affairs analysis.">
+  <meta property="og:description" content="The person behind the work: mountains, travel, books, technical tinkering, culture, curiosities, and personal anchors.">
   <meta property="og:type" content="website">
   <title>About | John S. Lystad</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -15,390 +15,837 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* About-only Reading Shelf. Kept local so the shared stylesheet remains unchanged. */
-    body[data-page="about"] .reading-shelf-section {
-      padding: 3.7rem 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    body[data-page="about"] {
+      --about-oxblood: #8d1732;
+      --about-oxblood-bright: #bf3152;
+      --about-purple: #70508a;
+      --about-aurora: #79c7a3;
+      --about-blossom: #d6a2b6;
+      --about-ink: #0a090c;
+      --about-panel: #0e0c11;
+      --about-panel-2: #121016;
+      --about-soft: #aaa0aa;
     }
 
-    body[data-page="about"] .reading-shelf-heading {
+    body[data-page="about"] main { overflow: hidden; }
+
+    body[data-page="about"] .about-page-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    body[data-page="about"] .about-page-hero::before,
+    body[data-page="about"] .about-page-hero::after {
+      content: "";
+      position: absolute;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .11;
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .about-page-hero::before {
+      right: -9rem;
+      top: -16rem;
+      background: var(--about-aurora);
+    }
+
+    body[data-page="about"] .about-page-hero::after {
+      left: 25%;
+      bottom: -23rem;
+      background: var(--about-blossom);
+    }
+
+    body[data-page="about"] .about-hero-copy {
+      max-width: 780px;
+    }
+
+    body[data-page="about"] .about-hero-copy .lead {
+      max-width: 720px;
+      color: #d2c7cf;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+      line-height: 1.42;
+    }
+
+    body[data-page="about"] .about-hero-copy p:not(.kicker):not(.lead) {
+      max-width: 720px;
+      color: #a99ea7;
+    }
+
+    body[data-page="about"] .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: 1.25rem;
+    }
+
+    body[data-page="about"] .profile-tag,
+    body[data-page="about"] .micro-tag {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.012);
+      color: #a99ea7;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    body[data-page="about"] .profile-tag {
+      padding: .36rem .58rem;
+      font-size: .54rem;
+    }
+
+    body[data-page="about"] .about-index-card strong {
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    body[data-page="about"] .about-index-card .accent-aurora { color: var(--about-aurora); }
+    body[data-page="about"] .about-index-card .accent-blossom { color: var(--about-blossom); }
+
+    body[data-page="about"] .personal-section {
+      padding: 4.2rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .personal-section:first-child { border-top: 0; }
+
+    body[data-page="about"] .personal-heading {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr);
       gap: 3rem;
       align-items: end;
-      padding-bottom: 1.4rem;
-      border-bottom: 1px solid var(--line);
+      margin-bottom: 1.35rem;
     }
 
-    body[data-page="about"] .reading-shelf-heading h2 {
-      margin: .25rem 0 0;
+    body[data-page="about"] .personal-heading h2 {
+      margin: .28rem 0 0;
       font-family: var(--serif);
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      line-height: .95;
+      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      line-height: .92;
       font-weight: 600;
       letter-spacing: -.035em;
     }
 
-    body[data-page="about"] .reading-shelf-heading > p {
+    body[data-page="about"] .personal-heading > p {
       margin: 0;
-      color: #a99ca8;
-      font-size: .82rem;
-      line-height: 1.55;
+      color: var(--about-soft);
+      font-size: .85rem;
+      line-height: 1.6;
     }
 
-    body[data-page="about"] .reading-library-shell {
-      margin-top: 1.5rem;
+    body[data-page="about"] .visual-shell {
+      position: relative;
       border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 20% 0%, rgba(141,23,50,.07), transparent 24rem),
-        linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0)),
-        #09080b;
-      box-shadow: 0 30px 80px rgba(0,0,0,.34);
+        radial-gradient(circle at 20% 0%, rgba(141,23,50,.06), transparent 28rem),
+        linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,0)),
+        var(--about-panel);
+      box-shadow: 0 28px 70px rgba(0,0,0,.25);
+      overflow: hidden;
     }
 
-    body[data-page="about"] .reading-library-topbar {
+    body[data-page="about"] .visual-topbar {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      padding: .8rem 1rem;
+      padding: .72rem 1rem;
       border-bottom: 1px solid var(--line);
-      color: #827784;
+      color: #756b77;
       font-family: var(--mono);
-      font-size: .58rem;
+      font-size: .52rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .ridge-wrap {
+      position: relative;
+      min-height: 470px;
+      background:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    body[data-page="about"] .ridge-svg {
+      display: block;
+      width: 100%;
+      min-width: 980px;
+      height: 330px;
+    }
+
+    body[data-page="about"] .ridge-path {
+      fill: rgba(112,80,138,.05);
+      stroke: #6d586f;
+      stroke-width: 1.4;
+    }
+
+    body[data-page="about"] .ridge-line {
+      fill: none;
+      stroke: rgba(214,162,182,.42);
+      stroke-width: 1;
+    }
+
+    body[data-page="about"] .ridge-point {
+      cursor: pointer;
+      transition: transform 160ms ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    body[data-page="about"] .ridge-point circle {
+      fill: #161118;
+      stroke: var(--about-blossom);
+      stroke-width: 1.5;
+      transition: fill 160ms ease, filter 160ms ease;
+    }
+
+    body[data-page="about"] .ridge-point:hover,
+    body[data-page="about"] .ridge-point:focus { transform: translateY(-4px); outline: none; }
+
+    body[data-page="about"] .ridge-point:hover circle,
+    body[data-page="about"] .ridge-point:focus circle,
+    body[data-page="about"] .ridge-point.is-active circle {
+      fill: var(--about-oxblood);
+      filter: drop-shadow(0 0 7px rgba(191,49,82,.7));
+    }
+
+    body[data-page="about"] .ridge-point text {
+      fill: #b7abb5;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .03em;
+    }
+
+    body[data-page="about"] .ridge-inspector,
+    body[data-page="about"] .atlas-inspector,
+    body[data-page="about"] .curiosity-inspector,
+    body[data-page="about"] .media-inspector {
+      display: grid;
+      grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
+      gap: 1.5rem;
+      padding: 1.2rem 1.4rem;
+      border-top: 1px solid var(--line);
+      background: rgba(8,7,10,.78);
+    }
+
+    body[data-page="about"] .inspector-kicker {
+      color: var(--about-oxblood-bright);
+      font-family: var(--mono);
+      font-size: .52rem;
       letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-    body[data-page="about"] .reading-shelf {
-      position: relative;
-      padding: 1rem 1rem 0;
+    body[data-page="about"] .inspector-title {
+      margin: .2rem 0 0;
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1;
     }
 
-    body[data-page="about"] .reading-shelf + .reading-shelf {
+    body[data-page="about"] .inspector-copy {
+      margin: .15rem 0 0;
+      color: #aa9faa;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    body[data-page="about"] .atlas-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(260px, .65fr);
+      min-height: 500px;
+    }
+
+    body[data-page="about"] .atlas-map {
+      position: relative;
+      min-height: 500px;
+      border-right: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 46% 48%, rgba(112,80,138,.08), transparent 46%),
+        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+      background-size: auto, 46px 46px, 46px 46px;
+    }
+
+    body[data-page="about"] .world-outline {
+      position: absolute;
+      inset: 8% 6%;
+      opacity: .28;
+    }
+
+    body[data-page="about"] .atlas-node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: #0a080c;
+      color: #9d8aa3;
+      cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(157,138,163,.07);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    body[data-page="about"] .atlas-node::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 16px;
+      top: -4px;
+      white-space: nowrap;
+      color: #938793;
+      font-family: var(--mono);
+      font-size: .48rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .atlas-node.root { color: var(--about-blossom); }
+    body[data-page="about"] .atlas-node.travel { color: var(--about-aurora); }
+    body[data-page="about"] .atlas-node:hover,
+    body[data-page="about"] .atlas-node:focus,
+    body[data-page="about"] .atlas-node.is-active {
+      transform: scale(1.35);
+      box-shadow: 0 0 0 6px rgba(121,199,163,.09), 0 0 16px currentColor;
+      outline: none;
+    }
+
+    body[data-page="about"] .atlas-side {
+      display: grid;
+      align-content: start;
+      gap: 1rem;
+      padding: 1.3rem;
+    }
+
+    body[data-page="about"] .atlas-stat {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .atlas-stat span {
+      display: block;
+      color: #746a76;
+      font-family: var(--mono);
+      font-size: .5rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    body[data-page="about"] .atlas-stat strong {
+      display: block;
+      margin-top: .25rem;
+      color: #d8cdd5;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    body[data-page="about"] .beauty-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-top: .3rem;
+    }
+
+    body[data-page="about"] .beauty-card {
+      min-height: 110px;
+      display: grid;
+      place-items: end start;
+      padding: .8rem;
+      border: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: .52rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .beauty-card.aurora {
+      background:
+        radial-gradient(circle at 68% 16%, rgba(121,199,163,.32), transparent 36%),
+        linear-gradient(145deg, #0e1118, #0d0c10);
+      color: #a3d6bf;
+    }
+
+    body[data-page="about"] .beauty-card.blossom {
+      background:
+        radial-gradient(circle at 72% 24%, rgba(214,162,182,.28), transparent 34%),
+        linear-gradient(145deg, #160f14, #0d0c10);
+      color: #dfb6c5;
+    }
+
+    body[data-page="about"] .reading-library-shell {
+      border: 1px solid var(--line);
+      background: var(--about-panel);
+      overflow: hidden;
+    }
+
+    body[data-page="about"] .reading-shelf {
+      padding: 1rem 1rem 0;
       border-top: 1px solid rgba(49,38,50,.42);
     }
+
+    body[data-page="about"] .reading-shelf:first-child { border-top: 0; }
 
     body[data-page="about"] .reading-shelf-label {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 1rem;
-      margin-bottom: .65rem;
-    }
-
-    body[data-page="about"] .reading-shelf-label strong {
-      color: #d9cdd5;
+      margin-bottom: .6rem;
+      color: #8f838f;
       font-family: var(--mono);
-      font-size: .68rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    body[data-page="about"] .reading-shelf-label span {
-      color: #6f6570;
-      font-family: var(--mono);
-      font-size: .52rem;
+      font-size: .54rem;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
     body[data-page="about"] .reading-shelf-stage {
-      position: relative;
-      min-height: 265px;
+      min-height: 250px;
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      padding: 22px 18px 18px;
+      padding: 20px 16px 18px;
       overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(146,112,172,.28) transparent;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.008), transparent 40%),
-        radial-gradient(circle at 50% 100%, rgba(141,23,50,.055), transparent 55%);
-    }
-
-    body[data-page="about"] .reading-shelf-stage::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 13px;
-      border-top: 1px solid #57434b;
-      border-bottom: 1px solid #161115;
-      background: linear-gradient(180deg, rgba(139,100,82,.14), rgba(38,27,33,.9) 45%, #120f12);
-      box-shadow: 0 8px 16px rgba(0,0,0,.45), inset 0 1px 0 rgba(238,229,217,.045);
-      pointer-events: none;
+      background: radial-gradient(circle at 50% 100%, rgba(141,23,50,.055), transparent 55%);
     }
 
     body[data-page="about"] .reading-book {
-      --book-h: 210px;
+      --book-h: 205px;
       --book-w: 48px;
       position: relative;
       flex: 0 0 var(--book-w);
       height: var(--book-h);
-      margin: 0;
-      padding: 8px 5px 10px;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.1);
       border-bottom: 0;
-      color: #e4d9d2;
+      color: #eadfe1;
       cursor: pointer;
-      appearance: none;
-      transform-origin: bottom center;
-      transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
-      overflow: hidden;
-      box-shadow:
-        inset 1px 0 rgba(255,255,255,.035),
-        inset -1px 0 rgba(0,0,0,.38),
-        0 7px 18px rgba(0,0,0,.28);
+      transition: transform 150ms ease, filter 150ms ease;
+      box-shadow: inset -1px 0 rgba(0,0,0,.35), 0 7px 18px rgba(0,0,0,.28);
     }
-
-    body[data-page="about"] .reading-book::before,
-    body[data-page="about"] .reading-book::after {
-      content: "";
-      position: absolute;
-      left: 4px;
-      right: 4px;
-      height: 1px;
-      background: rgba(238,229,217,.13);
-    }
-
-    body[data-page="about"] .reading-book::before { top: 13px; }
-    body[data-page="about"] .reading-book::after { bottom: 17px; }
 
     body[data-page="about"] .reading-book:hover,
     body[data-page="about"] .reading-book:focus-visible,
     body[data-page="about"] .reading-book.is-active {
       transform: translateY(-9px);
-      z-index: 2;
       filter: brightness(1.08);
       outline: none;
-      box-shadow:
-        0 0 0 1px rgba(191,49,82,.28),
-        0 0 17px rgba(141,23,50,.18),
-        0 14px 24px rgba(0,0,0,.40);
-    }
-
-    body[data-page="about"] .reading-book.is-active {
-      border-color: rgba(191,49,82,.38);
     }
 
     body[data-page="about"] .reading-book-title {
       position: absolute;
-      inset: 26px 0 30px;
+      inset: 20px 0 24px;
       display: grid;
       place-items: center;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       font-family: var(--serif);
-      font-size: .92rem;
-      font-weight: 600;
+      font-size: .88rem;
       line-height: 1;
-      letter-spacing: .015em;
-      text-align: center;
+      font-weight: 600;
     }
 
     body[data-page="about"] .reading-book-mark {
       position: absolute;
-      left: 50%;
       bottom: 5px;
+      left: 50%;
       transform: translateX(-50%);
       font-family: var(--mono);
-      font-size: .42rem;
-      letter-spacing: .04em;
-      color: rgba(238,229,217,.64);
+      font-size: .4rem;
+      color: rgba(255,255,255,.62);
     }
 
-    body[data-page="about"] .reading-tone-oxblood {
+    body[data-page="about"] .tone-oxblood { background: linear-gradient(180deg,#61152a,#310c18); }
+    body[data-page="about"] .tone-plum { background: linear-gradient(180deg,#503760,#251c30); }
+    body[data-page="about"] .tone-slate { background: linear-gradient(180deg,#47525c,#20272e); }
+    body[data-page="about"] .tone-charcoal { background: linear-gradient(180deg,#312c31,#151217); }
+    body[data-page="about"] .tone-parchment { color:#251d20;background:linear-gradient(180deg,#cbbda9,#9f8d79); }
+    body[data-page="about"] .tone-wine { background: linear-gradient(180deg,#6c2739,#35131d); }
+    body[data-page="about"] .tone-blue { background: linear-gradient(180deg,#394b5c,#1a2630); }
+    body[data-page="about"] .tone-olive { background: linear-gradient(180deg,#505343,#25281f); }
+    body[data-page="about"] .book-tall { --book-h: 225px; }
+    body[data-page="about"] .book-short { --book-h: 180px; }
+    body[data-page="about"] .book-wide { --book-w: 60px; }
+    body[data-page="about"] .book-narrow { --book-w: 41px; }
+
+    body[data-page="about"] .curiosity-board {
+      position: relative;
+      min-height: 540px;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.045), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #5f1427, #320d18);
+        radial-gradient(circle at center, rgba(112,80,138,.08), transparent 36%),
+        radial-gradient(circle at 15% 20%, rgba(141,23,50,.07), transparent 24%),
+        #09080b;
     }
 
-    body[data-page="about"] .reading-tone-plum {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.045), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #4d355f, #261d31);
+    body[data-page="about"] .curiosity-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.18) 0 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.08) 0 1px, transparent 1px);
+      background-size: 90px 90px, 51px 51px;
+      background-position: 0 0, 23px 17px;
+      opacity: .35;
+      pointer-events: none;
     }
 
-    body[data-page="about"] .reading-tone-slate {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.045), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #46515b, #22282f);
+    body[data-page="about"] .curiosity-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(112,80,138,.32), transparent);
+      transform-origin: left center;
+      pointer-events: none;
     }
 
-    body[data-page="about"] .reading-tone-charcoal {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.035), transparent 24%, rgba(0,0,0,.30)),
-        linear-gradient(180deg, #2d292e, #151217);
-    }
-
-    body[data-page="about"] .reading-tone-parchment {
-      color: #211a1d;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.18), transparent 24%, rgba(70,40,40,.12)),
-        linear-gradient(180deg, #c8baa6, #9f8d79);
-    }
-
-    body[data-page="about"] .reading-tone-wine {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.045), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #6e2739, #36131d);
-    }
-
-    body[data-page="about"] .reading-tone-blue {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.045), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #38495a, #1b2630);
-    }
-
-    body[data-page="about"] .reading-tone-olive {
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.04), transparent 24%, rgba(0,0,0,.22)),
-        linear-gradient(180deg, #4f5241, #26291f);
-    }
-
-    body[data-page="about"] .reading-size-tall { --book-h: 230px; }
-    body[data-page="about"] .reading-size-medium { --book-h: 205px; }
-    body[data-page="about"] .reading-size-short { --book-h: 182px; }
-    body[data-page="about"] .reading-width-wide { --book-w: 60px; }
-    body[data-page="about"] .reading-width-medium { --book-w: 50px; }
-    body[data-page="about"] .reading-width-narrow { --book-w: 41px; }
-    body[data-page="about"] .reading-lean-left { transform: rotate(-2.4deg); }
-    body[data-page="about"] .reading-lean-right { transform: rotate(2deg); }
-
-    body[data-page="about"] .reading-lean-left:hover,
-    body[data-page="about"] .reading-lean-left:focus-visible,
-    body[data-page="about"] .reading-lean-left.is-active {
-      transform: translateY(-9px) rotate(-2.4deg);
-    }
-
-    body[data-page="about"] .reading-lean-right:hover,
-    body[data-page="about"] .reading-lean-right:focus-visible,
-    body[data-page="about"] .reading-lean-right.is-active {
-      transform: translateY(-9px) rotate(2deg);
-    }
-
-    body[data-page="about"] .reading-shelf-recent .reading-book {
-      filter: saturate(.78) brightness(.86);
-    }
-
-    body[data-page="about"] .reading-shelf-recent .reading-book:hover,
-    body[data-page="about"] .reading-shelf-recent .reading-book:focus-visible,
-    body[data-page="about"] .reading-shelf-recent .reading-book.is-active {
-      filter: saturate(.9) brightness(1);
-    }
-
-    body[data-page="about"] .reading-shelf-next .reading-book {
-      filter: saturate(.72) brightness(.76);
-      border-style: dashed;
-    }
-
-    body[data-page="about"] .reading-shelf-next .reading-book:hover,
-    body[data-page="about"] .reading-shelf-next .reading-book:focus-visible,
-    body[data-page="about"] .reading-shelf-next .reading-book.is-active {
-      filter: saturate(.9) brightness(.96);
-    }
-
-    body[data-page="about"] .reading-inspector {
-      display: grid;
-      grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
-      gap: 2rem;
-      padding: 1.5rem;
-      border-top: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(141,23,50,.05), rgba(101,69,126,.035)),
-        rgba(14,11,15,.92);
-    }
-
-    body[data-page="about"] .reading-inspector-kicker {
-      color: var(--crimson-bright);
+    body[data-page="about"] .curiosity-core,
+    body[data-page="about"] .curiosity-node {
+      position: absolute;
+      border: 1px solid rgba(112,80,138,.45);
+      border-radius: 50%;
+      background: #0e0b11;
+      color: #b8acb7;
       font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .1em;
       text-transform: uppercase;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
     }
 
-    body[data-page="about"] .reading-inspector h3 {
-      margin: .32rem 0 .25rem;
+    body[data-page="about"] .curiosity-core {
+      left: 50%;
+      top: 50%;
+      width: 126px;
+      height: 126px;
+      transform: translate(-50%,-50%);
+      color: #d6cad3;
+      border-color: rgba(191,49,82,.5);
+      font-size: .62rem;
+    }
+
+    body[data-page="about"] .curiosity-node {
+      width: 92px;
+      height: 92px;
+      font-size: .48rem;
+    }
+
+    body[data-page="about"] .curiosity-node:hover,
+    body[data-page="about"] .curiosity-node:focus,
+    body[data-page="about"] .curiosity-node.is-active {
+      transform: scale(1.08);
+      border-color: var(--about-oxblood-bright);
+      box-shadow: 0 0 24px rgba(141,23,50,.17);
+      outline: none;
+    }
+
+    body[data-page="about"] .media-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .75rem;
+      padding: .85rem;
+    }
+
+    body[data-page="about"] .media-channel {
+      min-height: 240px;
+      position: relative;
+      display: grid;
+      align-content: end;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, transparent 0 30%, rgba(7,6,9,.9) 100%),
+        radial-gradient(circle at 50% 18%, rgba(112,80,138,.16), transparent 40%),
+        #111016;
+      cursor: pointer;
+      color: inherit;
+      text-align: left;
+      transition: transform 150ms ease, border-color 150ms ease;
+    }
+
+    body[data-page="about"] .media-channel:hover,
+    body[data-page="about"] .media-channel:focus,
+    body[data-page="about"] .media-channel.is-active {
+      transform: translateY(-4px);
+      border-color: rgba(191,49,82,.42);
+      outline: none;
+    }
+
+    body[data-page="about"] .media-visual {
+      position: absolute;
+      inset: 18px 18px auto;
+      height: 92px;
+      display: flex;
+      align-items: end;
+      gap: 5px;
+      opacity: .68;
+    }
+
+    body[data-page="about"] .media-bar {
+      flex: 1;
+      min-width: 3px;
+      background: linear-gradient(180deg, var(--about-blossom), var(--about-oxblood));
+      animation: mediaPulse 2.4s ease-in-out infinite alternate;
+      animation-delay: calc(var(--i) * -160ms);
+    }
+
+    body[data-page="about"] .media-channel small {
+      color: #716772;
+      font-family: var(--mono);
+      font-size: .48rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    body[data-page="about"] .media-channel h3 {
+      margin: .32rem 0 .35rem;
       font-family: var(--serif);
-      font-size: clamp(1.9rem, 3.4vw, 3rem);
-      line-height: .98;
+      font-size: 1.7rem;
       font-weight: 600;
     }
 
-    body[data-page="about"] .reading-inspector-author {
+    body[data-page="about"] .media-channel p {
       margin: 0;
-      color: #9e919d;
-      font-family: var(--mono);
-      font-size: .65rem;
+      color: #9d929d;
+      font-size: .76rem;
+      line-height: 1.5;
     }
 
-    body[data-page="about"] .reading-inspector-copy {
-      margin: .2rem 0 0;
-      color: #afa2ad;
-      font-size: .88rem;
+    @keyframes mediaPulse {
+      from { transform: scaleY(.55); opacity: .45; }
+      to { transform: scaleY(1); opacity: .9; }
+    }
+
+    body[data-page="about"] .workbench-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    body[data-page="about"] .bench-card {
+      position: relative;
+      min-height: 190px;
+      padding: 1.1rem;
+      background: #0d0b10;
+      overflow: hidden;
+    }
+
+    body[data-page="about"] .bench-card:nth-child(1),
+    body[data-page="about"] .bench-card:nth-child(4) { grid-column: span 5; }
+
+    body[data-page="about"] .bench-card:nth-child(2),
+    body[data-page="about"] .bench-card:nth-child(3) { grid-column: span 7; }
+
+    body[data-page="about"] .bench-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -34px;
+      bottom: -34px;
+      border: 1px solid rgba(112,80,138,.22);
+      border-radius: 50%;
+      box-shadow: 0 0 0 18px rgba(112,80,138,.025), 0 0 0 36px rgba(112,80,138,.015);
+    }
+
+    body[data-page="about"] .bench-index {
+      color: var(--about-oxblood-bright);
+      font-family: var(--mono);
+      font-size: .5rem;
+      letter-spacing: .1em;
+    }
+
+    body[data-page="about"] .bench-card h3 {
+      margin: .45rem 0;
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    body[data-page="about"] .bench-card p {
+      max-width: 46ch;
+      margin: 0;
+      color: #998e99;
+      font-size: .8rem;
       line-height: 1.55;
     }
 
-    body[data-page="about"] .reading-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .42rem;
+    body[data-page="about"] .bench-code {
       margin-top: 1rem;
-    }
-
-    body[data-page="about"] .reading-tag {
-      padding: .26rem .5rem;
-      border: 1px solid var(--line);
-      color: #948894;
-      background: rgba(255,255,255,.01);
-      font-family: var(--mono);
-      font-size: .52rem;
-    }
-
-    body[data-page="about"] .reading-library-footer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: .8rem 1.5rem;
-      padding: .8rem 1rem;
-      border-top: 1px solid var(--line);
       color: #776d79;
       font-family: var(--mono);
       font-size: .52rem;
-      letter-spacing: .07em;
-      text-transform: uppercase;
+      line-height: 1.7;
     }
 
-    @media (max-width: 760px) {
-      body[data-page="about"] .reading-shelf-heading,
-      body[data-page="about"] .reading-inspector {
+    body[data-page="about"] .anchors-shell {
+      min-height: 590px;
+      position: relative;
+      background:
+        radial-gradient(circle at center, rgba(214,162,182,.08), transparent 22%),
+        radial-gradient(circle at 25% 80%, rgba(121,199,163,.06), transparent 26%),
+        #09080b;
+    }
+
+    body[data-page="about"] .orbit {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: 1px solid rgba(112,80,138,.18);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .orbit.one { width: 310px; height: 310px; }
+    body[data-page="about"] .orbit.two { width: 470px; height: 470px; }
+
+    body[data-page="about"] .anchor-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%,-50%);
+      border: 1px solid rgba(214,162,182,.36);
+      border-radius: 50%;
+      background: rgba(16,12,16,.94);
+      color: #d8cbd4;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(214,162,182,.07);
+    }
+
+    body[data-page="about"] .anchor-node {
+      position: absolute;
+      width: 134px;
+      min-height: 82px;
+      padding: .75rem;
+      border: 1px solid var(--line);
+      background: rgba(15,12,16,.94);
+      color: #c6bac3;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 150ms ease, border-color 150ms ease;
+    }
+
+    body[data-page="about"] .anchor-node:hover,
+    body[data-page="about"] .anchor-node:focus {
+      transform: translateY(-4px);
+      border-color: rgba(214,162,182,.42);
+      outline: none;
+    }
+
+    body[data-page="about"] .anchor-node strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    body[data-page="about"] .anchor-node span {
+      display: block;
+      margin-top: .25rem;
+      color: #817681;
+      font-size: .66rem;
+      line-height: 1.35;
+    }
+
+    body[data-page="about"] .field-notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    body[data-page="about"] .field-note {
+      min-height: 220px;
+      display: grid;
+      align-content: space-between;
+      padding: 1.2rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.018), transparent 44%),
+        #0e0c11;
+    }
+
+    body[data-page="about"] .field-note .note-mark {
+      color: var(--about-oxblood-bright);
+      font-family: var(--mono);
+      font-size: .5rem;
+      letter-spacing: .1em;
+    }
+
+    body[data-page="about"] .field-note p {
+      margin: 1rem 0 0;
+      color: #c9bec6;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.35;
+    }
+
+    body[data-page="about"] .field-note small {
+      color: #756b76;
+      font-family: var(--mono);
+      font-size: .5rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    body[data-page="about"] .podcast-note {
+      border-color: rgba(112,80,138,.4);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(112,80,138,.15), transparent 32%),
+        #0e0c11;
+    }
+
+    @media (max-width: 900px) {
+      body[data-page="about"] .personal-heading,
+      body[data-page="about"] .ridge-inspector,
+      body[data-page="about"] .atlas-inspector,
+      body[data-page="about"] .curiosity-inspector,
+      body[data-page="about"] .media-inspector {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
 
-      body[data-page="about"] .reading-shelf-stage {
-        min-height: 240px;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      body[data-page="about"] .reading-book { --book-w: 45px; }
-      body[data-page="about"] .reading-width-wide { --book-w: 55px; }
-      body[data-page="about"] .reading-width-narrow { --book-w: 39px; }
+      body[data-page="about"] .atlas-grid { grid-template-columns: 1fr; }
+      body[data-page="about"] .atlas-map { border-right: 0; border-bottom: 1px solid var(--line); }
+      body[data-page="about"] .media-grid { grid-template-columns: repeat(2, 1fr); }
+      body[data-page="about"] .field-notes { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 560px) {
-      body[data-page="about"] .reading-shelf-section { padding: 3rem 0; }
-
-      body[data-page="about"] .reading-library-topbar,
-      body[data-page="about"] .reading-library-footer {
-        align-items: flex-start;
-        flex-direction: column;
+    @media (max-width: 700px) {
+      body[data-page="about"] .personal-section { padding: 3.2rem 0; }
+      body[data-page="about"] .ridge-wrap { overflow-x: auto; }
+      body[data-page="about"] .media-grid { grid-template-columns: 1fr; }
+      body[data-page="about"] .bench-card { grid-column: 1 / -1 !important; }
+      body[data-page="about"] .anchors-shell {
+        min-height: auto;
+        display: grid;
+        gap: .7rem;
+        padding: 1rem;
       }
+      body[data-page="about"] .orbit,
+      body[data-page="about"] .anchor-core {
+        display: none;
+      }
+      body[data-page="about"] .anchor-node {
+        position: static !important;
+        width: auto;
+        min-height: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body[data-page="about"] .media-bar { animation: none; }
+      body[data-page="about"] * { scroll-behavior: auto !important; }
     }
   </style>
 </head>
@@ -428,172 +875,417 @@
 <main id="content">
   <section class="page-hero about-page-hero">
     <div class="site-shell page-hero-grid">
-      <div class="reveal">
-        <p class="kicker">| 01 | About</p>
-        <h1>Personal Profile</h1>
-        <p>My work sits at the intersection of computational statistics and social science to study complex human systems and support high-stakes decision-making.</p>
+      <div class="about-hero-copy reveal">
+        <p class="kicker">About / Personal Profile</p>
+        <h1>Outside the Work</h1>
+        <p class="lead">The formal pages of this site cover what I study, build, and publish. This page is about the things that shaped the person doing it.</p>
+        <p>
+          I am drawn to difficult terrain, difficult questions, and things with atmosphere: mountains, books, strange folklore, well-built systems, loud music, horror, and places that make the world feel larger. I have spent much of my life moving between disciplines, jobs, countries, landscapes, and subcultures. The result is a collection of interests that does not fit neatly on a CV—and probably should not.
+        </p>
+        <div class="profile-tags" aria-label="Personal interests">
+          <span class="profile-tag">Mountains</span>
+          <span class="profile-tag">Travel</span>
+          <span class="profile-tag">Books</span>
+          <span class="profile-tag">Cats</span>
+          <span class="profile-tag">Anime</span>
+          <span class="profile-tag">Punk / Metal / Rock</span>
+          <span class="profile-tag">Horror</span>
+          <span class="profile-tag">Dark Souls</span>
+          <span class="profile-tag">Technical Tinkering</span>
+          <span class="profile-tag">Folklore &amp; the Strange</span>
+        </div>
       </div>
-      <aside class="page-index-card reveal">
-        <div><span>Next Objective</span><strong>Pursuing doctoral studies in Statistics &amp; Data</strong></div>
-        <div><span>Current Assignment</span><strong>U.S. Mission to the United Nations | U.S. Department of State</strong></div>
-        <div><span>Updated</span><strong>September 2026</strong></div>
+
+      <aside class="page-index-card about-index-card reveal">
+        <div><span>Roots</span><strong>Norway · Italy</strong></div>
+        <div><span>Range</span><strong>Nearly every U.S. state and national park, plus travel across Europe, North Africa, and Japan</strong></div>
+        <div><span>Most Beautiful</span><strong><span class="accent-aurora">Aurora borealis</span> · <span class="accent-blossom">Cherry blossoms</span></strong></div>
+        <div><span>Constant</span><strong>Curiosity, movement, cats, and a home shared with the person I love</strong></div>
       </aside>
     </div>
   </section>
 
-  <div class="site-shell about-layout">
-    <section class="about-section about-intro-section">
-      <div class="about-section-body">
-        <div class="prose-grid">
-        <article class="prose reveal">
-          <p class="lead">
-            My work centers on a practical statistical problem: how to extract reliable information from imperfect data when decisions have real consequences.  I am particularly interested in computational methods for settings where information is incomplete, important factors are unobserved, relationships are complex, and measurement is imperfect.  These conditions are not exceptions to real-world analysis; they are often the conditions under which consequential decisions must be made.
-          </p>
-          <p>
-            My academic interests lie at the intersection of computational statistics, quantitative social science, and the study of human systems.  I am especially interested in methodological problems involving uncertainty, latent structure, complex interactions, and heterogeneous data, as well as their application to human security, political violence and radicalization, humanitarian crises, climate risk, and emerging technologies.  Across these domains, I am drawn to questions where conventional data and methods provide only part of the answer.
-          </p>
-          <p>
-            Professionally, I apply statistical and computational methods in support of the U.S. Mission to the United Nations.  My work connects quantitative evidence with policy-relevant analysis, using data to better understand complex international issues and support diplomacy and decision-making.  This experience has reinforced my interest in methods that are not only statistically rigorous, but also interpretable, reproducible, and useful under real operational constraints.
-          </p>
-          <p>
-            The common thread across my work is methodological: extracting defensible information from difficult data, distinguishing what the evidence supports from what remains uncertain, and communicating those findings clearly enough to inform consequential decisions.  I am ultimately interested in statistics as both a way to understand complex human systems and a practical tool for making better decisions when information is limited, uncertainty is unavoidable, and the stakes are high.
-          </p>
-        </article>
+  <div class="site-shell">
 
-        <aside class="reveal">
-          <dl class="fact-stack">
-            <div class="fact-row"><dt>Disciplines</dt><dd>Statistics · Computational Methods · Social Science</dd></div>
-            <div class="fact-row"><dt>Methods</dt><dd>Messy &amp; Missing Data Methods · Causal Inference · Unsupervised Learning · Multilevel Modeling · Data Visualization</dd></div>
-            <div class="fact-row"><dt>Areas of Concentration</dt><dd>Human Security · Political Violence · Radicalization · Humanitarian Crises · Climate Risk · Emerging Technology</dd></div>
-            <div class="fact-row"><dt>Email</dt><dd><a href="mailto:jl17842@nyu.edu">jl17842@nyu.edu</a><br><a href="mailto:lystadjs@gmail.com">LystadJS@gmail.com</a></dd></div>
-            <div class="fact-row"><dt>GitHub</dt><dd><a href="https://github.com/LystadJS">github.com/LystadJS</a></dd></div>
-            <div class="fact-row"><dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/LystadJS">linkedin.com/in/LystadJS</a></dd></div>
-            <div class="fact-row"><dt>CV</dt><dd><a href="https://lystadjs.github.io/cv.html">CV</a></dd></div>
-          </dl>
-        </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="toolkit-section">
-      <div class="section-heading">
-        <span class="eyebrow">Methods &amp; Practice</span>
-        <h2>Analytical Toolkit</h2>
-      </div>
-    
-      <div class="toolkit-grid">
-    
-        <div class="toolkit-card">
-          <h3>Statistical Modeling</h3>
-          <p>
-            Regression · Generalized Linear Models · Logistic Models ·
-            Multilevel Models · Longitudinal Analysis · Model Diagnostics
-          </p>
-        </div>
-    
-        <div class="toolkit-card">
-          <h3>Unsupervised &amp; Structure Discovery</h3>
-          <p>
-            Clustering · PCA · MDS/PCoA · UMAP · Dimension Reduction ·
-            Latent Structure · Embedding Alignment
-          </p>
-        </div>
-    
-        <div class="toolkit-card">
-          <h3>Causality, Missingness &amp; Uncertainty</h3>
-          <p>
-            Causal Inference · Missing-Data Methods · Bootstrap Inference ·
-            Sensitivity Analysis · Uncertainty Quantification · Robustness Analysis
-          </p>
-        </div>
-    
-        <div class="toolkit-card">
-          <h3>Networks &amp; Complex Systems</h3>
-          <p>
-            Network Analysis · Community Structure · Centrality ·
-            Bipartite Networks · Diffusion Analysis · Relational Data
-          </p>
-        </div>
-    
-        <div class="toolkit-card">
-          <h3>Computational &amp; Reproducible Analysis</h3>
-          <p>
-            Statistical Computing · Simulation · Reproducible Workflows ·
-            Data Engineering · Automated Analysis · Validation &amp; QA/QC
-          </p>
-        </div>
-    
-        <div class="toolkit-card">
-          <h3>Visualization &amp; Decision Support</h3>
-          <p>
-            Statistical Visualization · Exploratory Data Analysis ·
-            High-Dimensional Visualization · Uncertainty Visualization ·
-            Analytical Communication · Decision-Support Graphics
-          </p>
-        </div>
-    
-      </div>
-    
-      <div class="toolkit-stack">
-        <span>Primary Environment</span>
-        <p>R · Python · SQL · Stan</p>
-      </div>
-    </section>
-
-    <section class="reading-shelf-section reveal" aria-labelledby="reading-shelf-title">
-      <header class="reading-shelf-heading">
+    <section class="personal-section reveal" aria-labelledby="outside-model-title">
+      <header class="personal-heading">
         <div>
-          <span class="eyebrow">Personal Library · Current Inputs</span>
-          <h2 id="reading-shelf-title">Reading Shelf</h2>
+          <span class="eyebrow">Terrain / Movement / Scale</span>
+          <h2 id="outside-model-title">Outside the Model</h2>
         </div>
         <p>
-          What I am reading now, what I have recently finished, and what is waiting next.
-          Select a spine to inspect the book and its place in the queue.
+          Mountains are the cleanest counterweight I know to screen-bound work. I hike and climb for the terrain itself: long approaches, cold air, exposed ridgelines, strange geology, and the perspective that comes from seeing a place at human scale.
+        </p>
+      </header>
+
+      <div class="visual-shell">
+        <div class="visual-topbar">
+          <span>Selected field log / not to scale</span>
+          <span>Hover or select a point</span>
+        </div>
+
+        <div class="ridge-wrap">
+          <svg class="ridge-svg" viewBox="0 0 1100 330" role="img" aria-label="Stylized mountain profile with selected hikes and climbs">
+            <path class="ridge-path" d="M0,300 L0,252 L75,228 L123,180 L172,236 L230,142 L288,222 L343,155 L391,214 L456,96 L524,226 L584,158 L631,201 L692,118 L758,222 L823,148 L867,205 L925,128 L975,204 L1030,166 L1100,214 L1100,300 Z"></path>
+            <path class="ridge-line" d="M0,252 L75,228 L123,180 L172,236 L230,142 L288,222 L343,155 L391,214 L456,96 L524,226 L584,158 L631,201 L692,118 L758,222 L823,148 L867,205 L925,128 L975,204 L1030,166 L1100,214"></path>
+
+            <g class="ridge-point" tabindex="0" role="button" data-title="Richland Balsam" data-meta="Blue Ridge Mountains · United States" data-copy="One of the Appalachian stops in a growing field log that now stretches from the Blue Ridge to Alaska, North Africa, and Japan." transform="translate(123 180)">
+              <circle r="6"></circle><text x="-42" y="-13">RICHLAND BALSAM</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Point Imperial" data-meta="Grand Canyon · United States" data-copy="A reminder that elevation is only part of mountain scale: depth, distance, exposure, and geology can dominate the experience." transform="translate(230 142)">
+              <circle r="6"></circle><text x="-31" y="-13">POINT IMPERIAL</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Toubkal" data-meta="Atlas Mountains · Morocco" data-copy="A high-altitude route through the Atlas Mountains and one of the trips that fixed mountains and travel together in my imagination." transform="translate(456 96)">
+              <circle r="6"></circle><text x="-27" y="-13">TOUBKAL</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Chugach Mountains" data-meta="Alaska · United States" data-copy="East Twin, Rainbow, Gold Star, Alyeska and other Alaskan routes made the Chugach one of the landscapes I return to mentally most often." transform="translate(584 158)">
+              <circle r="6"></circle><text x="-35" y="-13">CHUGACH</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Healy" data-meta="Denali region · Alaska" data-copy="A northern landscape where scale, weather, and distance do most of the talking." transform="translate(692 118)">
+              <circle r="6"></circle><text x="-28" y="-13">MT. HEALY</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Harding Icefield" data-meta="Kenai Fjords · Alaska" data-copy="Ice, rock, and enormous spatial scale—one of the places that makes ordinary measures of distance feel inadequate." transform="translate(823 148)">
+              <circle r="6"></circle><text x="-40" y="-13">HARDING ICEFIELD</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Fuji" data-meta="Japan" data-copy="A mountain inseparable from the wider experience of Japan: volcanic terrain, ritual, visual order, and a landscape with a long cultural memory." transform="translate(925 128)">
+              <circle r="6"></circle><text x="-22" y="-13">FUJI</text>
+            </g>
+            <g class="ridge-point" tabindex="0" role="button" data-title="Mount Inari" data-meta="Kyoto · Japan" data-copy="A quieter kind of ascent—part mountain, part shrine route, part movement through a place built from repetition and memory." transform="translate(1030 166)">
+              <circle r="6"></circle><text x="-25" y="-13">INARI</text>
+            </g>
+          </svg>
+
+          <div class="ridge-inspector">
+            <div>
+              <span class="inspector-kicker" id="ridge-meta">Selected field log</span>
+              <h3 class="inspector-title" id="ridge-title">Mountains as counterweight</h3>
+            </div>
+            <p class="inspector-copy" id="ridge-copy">
+              The mountain log is not a résumé of summits. It is a record of the environments I seek out when I need distance from ordinary routines: high places, long trails, cold weather, and terrain that refuses to fit inside a screen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="personal-section reveal" aria-labelledby="atlas-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Places / Roots / Perspective</span>
+          <h2 id="atlas-title">Atlas of Movement</h2>
+        </div>
+        <p>
+          I have visited nearly every U.S. state and national park, as well as Japan, Morocco, France, Algeria, and Spain. Travel is less a checklist than a way of collecting landscapes, habits, food, architecture, languages, and different ideas about how a life can be organized.
+        </p>
+      </header>
+
+      <div class="visual-shell">
+        <div class="visual-topbar">
+          <span>Personal atlas</span>
+          <span>Blossom = roots · Aurora = travel</span>
+        </div>
+
+        <div class="atlas-grid">
+          <div class="atlas-map" aria-label="Stylized map of family roots and places traveled">
+            <svg class="world-outline" viewBox="0 0 1000 520" aria-hidden="true">
+              <path d="M63 132 C128 79 211 67 286 103 C336 127 346 165 315 190 C279 219 262 252 227 274 C180 303 127 284 93 252 C56 217 31 174 63 132Z" fill="none" stroke="#74697a" stroke-width="2"/>
+              <path d="M274 294 C315 276 355 296 367 335 C380 379 347 441 309 475 C282 443 262 386 258 341 C256 319 260 306 274 294Z" fill="none" stroke="#74697a" stroke-width="2"/>
+              <path d="M463 108 C529 71 610 73 658 105 C697 130 704 166 680 184 C647 208 598 196 567 214 C533 235 529 270 495 283 C460 297 418 278 407 241 C395 201 413 137 463 108Z" fill="none" stroke="#74697a" stroke-width="2"/>
+              <path d="M491 282 C548 268 610 295 629 341 C649 391 617 455 562 476 C519 453 484 400 472 351 C464 319 472 295 491 282Z" fill="none" stroke="#74697a" stroke-width="2"/>
+              <path d="M659 115 C743 77 842 91 898 131 C934 157 950 197 923 220 C890 249 846 230 811 243 C771 258 751 297 711 296 C668 295 633 258 634 214 C635 171 636 130 659 115Z" fill="none" stroke="#74697a" stroke-width="2"/>
+              <path d="M826 363 C872 340 923 356 946 393 C930 431 884 452 843 438 C814 418 807 386 826 363Z" fill="none" stroke="#74697a" stroke-width="2"/>
+            </svg>
+
+            <button class="atlas-node travel" style="left:17%;top:35%" data-label="United States" data-title="United States" data-copy="Nearly every state and national park: deserts, coastlines, forests, canyons, tundra, and enough road miles to make the country feel less like a shape on a map and more like a collection of distinct landscapes."></button>
+            <button class="atlas-node root" style="left:49.5%;top:22%" data-label="Norway" data-title="Norway" data-copy="One half of my family roots, and a northern reference point that helps explain why cold landscapes, mountains, and the aurora carry more than aesthetic weight for me."></button>
+            <button class="atlas-node root" style="left:52.5%;top:37%" data-label="Italy" data-title="Italy" data-copy="The other half of my family roots: a different cultural inheritance, but an equally durable part of how I think about family, place, food, and continuity."></button>
+            <button class="atlas-node travel" style="left:47%;top:38%" data-label="Spain" data-title="Spain" data-copy="Part of a wider European travel history that has made cities, architecture, food, and public life as interesting to me as wilderness." ></button>
+            <button class="atlas-node travel" style="left:50%;top:33%" data-label="France" data-title="France" data-copy="One of several places that reinforced how much atmosphere matters to memory: streets, buildings, food, language, and the ordinary texture of another place."></button>
+            <button class="atlas-node travel" style="left:48%;top:50%" data-label="Morocco" data-title="Morocco" data-copy="Atlas Mountains, North African cities, and the kind of travel where landscape and culture become impossible to separate." ></button>
+            <button class="atlas-node travel" style="left:51%;top:49%" data-label="Algeria" data-title="Algeria" data-copy="Another North African reference point in a travel history increasingly shaped by contrast—between terrain, built environments, languages, and different social rhythms." ></button>
+            <button class="atlas-node travel" style="left:86%;top:38%" data-label="Japan" data-title="Japan" data-copy="Mountains, shrines, cities, trains, summer heat, volcanic landscapes, and cherry blossoms—the country contains several of the visual and cultural contrasts I find most compelling." ></button>
+          </div>
+
+          <aside class="atlas-side">
+            <div class="atlas-stat">
+              <span>United States</span>
+              <strong>Nearly every state and national park</strong>
+            </div>
+            <div class="atlas-stat">
+              <span>International travel</span>
+              <strong>Japan · Morocco · France · Algeria · Spain</strong>
+            </div>
+            <div class="atlas-stat">
+              <span>Family roots</span>
+              <strong>Norway · Italy</strong>
+            </div>
+            <div class="atlas-stat">
+              <span>Two images I keep returning to</span>
+              <div class="beauty-pair">
+                <div class="beauty-card aurora">Aurora borealis</div>
+                <div class="beauty-card blossom">Cherry blossoms</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="atlas-inspector">
+          <div>
+            <span class="inspector-kicker">Selected place</span>
+            <h3 class="inspector-title" id="atlas-inspector-title">A map as autobiography</h3>
+          </div>
+          <p class="inspector-copy" id="atlas-inspector-copy">
+            Some people remember periods of life by jobs or addresses. I often remember them by terrain: which mountains were nearby, which road crossed the horizon, what the trees looked like, and what kind of sky was overhead.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="personal-section reveal" aria-labelledby="reading-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Current Inputs / Personal Library</span>
+          <h2 id="reading-title">The Shelf</h2>
+        </div>
+        <p>
+          Technical books share space with history, biography, fiction, and light novels. I read to learn methods, but also because a good book can alter the scale of a problem—or simply build a world worth disappearing into for a while.
         </p>
       </header>
 
       <div class="reading-library-shell">
-        <div class="reading-library-topbar">
-          <span>JSL / Personal Library</span>
+        <div class="visual-topbar">
+          <span>JSL / Personal library</span>
           <span id="reading-library-count">0 volumes</span>
         </div>
-
         <div id="reading-bookshelf"></div>
-
-        <aside class="reading-inspector" aria-live="polite">
+        <div class="ridge-inspector">
           <div>
-            <div class="reading-inspector-kicker" id="reading-inspector-status">Reading now</div>
-            <h3 id="reading-inspector-title">Select a volume</h3>
-            <p class="reading-inspector-author" id="reading-inspector-author">—</p>
+            <span class="inspector-kicker" id="reading-inspector-status">Reading now</span>
+            <h3 class="inspector-title" id="reading-inspector-title">Select a volume</h3>
           </div>
-          <div>
-            <p class="reading-inspector-copy" id="reading-inspector-note">Book details will appear here.</p>
-            <div class="reading-tags" id="reading-inspector-tags"></div>
-          </div>
-        </aside>
-
-        <div class="reading-library-footer">
-          <span id="reading-current-count">0 currently reading</span>
-          <span id="reading-recent-count">0 recently read</span>
-          <span id="reading-next-count">0 up next</span>
+          <p class="inspector-copy" id="reading-inspector-copy">Book details will appear here.</p>
         </div>
       </div>
     </section>
 
-    <section class="section reveal">
-      <div class="contact-panel">
-        <p class="eyebrow">Correspondence</p>
-        <h2>Research, methods, policy concerns, or collaboration.</h2>
-        <p>I am currently preparing for PhD applications in computational statistics and welcome substantive conversations around overlapping questions.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="cv.html">CV</a>
-          <a class="button button-secondary" href="mailto:jl17842@nyu.edu">NYU Email</a>
-          <a class="button button-secondary" href="mailto:lystadjs@gmail.com">Personal Email</a>
-          <a class="button button-secondary" href="https://github.com/LystadJS">GitHub</a>
-          <a class="button button-secondary" href="https://linkedin.com/LystadJS">LinkedIn</a>
+    <section class="personal-section reveal" aria-labelledby="curiosities-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Folklore / Belief / The Unexplained</span>
+          <h2 id="curiosities-title">Cabinet of Curiosities</h2>
+        </div>
+        <p>
+          I have a longstanding fascination with cryptids, demonology, supernatural traditions, paranormal claims, and the folklore built around things people cannot easily explain. I am interested less in proving the strange than in the boundary between evidence, belief, fear, culture, and storytelling.
+        </p>
+      </header>
+
+      <div class="visual-shell">
+        <div class="visual-topbar">
+          <span>Curiosity graph</span>
+          <span>Not a belief system · an intellectual side road</span>
+        </div>
+
+        <div class="curiosity-board">
+          <span class="curiosity-line" style="left:50%;top:50%;width:27%;transform:rotate(-41deg)"></span>
+          <span class="curiosity-line" style="left:50%;top:50%;width:31%;transform:rotate(20deg)"></span>
+          <span class="curiosity-line" style="left:50%;top:50%;width:30%;transform:rotate(150deg)"></span>
+          <span class="curiosity-line" style="left:50%;top:50%;width:28%;transform:rotate(204deg)"></span>
+          <span class="curiosity-line" style="left:50%;top:50%;width:31%;transform:rotate(90deg)"></span>
+          <span class="curiosity-line" style="left:50%;top:50%;width:29%;transform:rotate(270deg)"></span>
+
+          <button class="curiosity-core" data-title="Why the strange?" data-copy="Because strange stories are compact laboratories for uncertainty. They expose how people decide what counts as evidence, how narratives spread, how fear acquires symbols, and how culture preserves explanations long after their original context changes.">Curiosities</button>
+          <button class="curiosity-node" style="left:19%;top:16%" data-title="Cryptids" data-copy="Creatures at the border of zoology, folklore, misidentification, hoax, and local identity. The interesting question is often not 'is it real?' but 'why did this particular creature become believable here?'">Cryptids</button>
+          <button class="curiosity-node" style="right:18%;top:14%" data-title="Demonology" data-copy="A historical and comparative interest in how cultures classify evil, possession, taboo, temptation, and supernatural agency—and how those systems change across time and religious traditions.">Demonology</button>
+          <button class="curiosity-node" style="right:10%;top:54%" data-title="Paranormal claims" data-copy="Ghosts, hauntings, anomalous experiences, and the recurring tension between subjective certainty and objective evidence.">Paranormal</button>
+          <button class="curiosity-node" style="left:14%;top:58%" data-title="Folklore" data-copy="The connective tissue: stories that encode local history, danger, identity, moral rules, and explanations for the unfamiliar.">Folklore</button>
+          <button class="curiosity-node" style="left:43%;bottom:6%" data-title="The supernatural" data-copy="A broad interest in the symbolic vocabulary people use for experiences they interpret as lying beyond ordinary explanation.">Supernatural</button>
+          <button class="curiosity-node" style="left:43%;top:6%" data-title="Future podcast" data-copy="A planned side project about cryptids, demons, folklore, hauntings, and other things that are more interesting after midnight—curious, narrative-driven, and skeptical without being joyless.">Podcast</button>
+        </div>
+
+        <div class="curiosity-inspector">
+          <div>
+            <span class="inspector-kicker">Selected curiosity</span>
+            <h3 class="inspector-title" id="curiosity-title">Why the strange?</h3>
+          </div>
+          <p class="inspector-copy" id="curiosity-copy">
+            Strange stories are compact laboratories for uncertainty: evidence, belief, fear, memory, local identity, and narrative all collide in one place.
+          </p>
         </div>
       </div>
     </section>
+
+    <section class="personal-section reveal" aria-labelledby="signal-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Sound / Stories / Atmosphere</span>
+          <h2 id="signal-title">Signal Feed</h2>
+        </div>
+        <p>
+          My tastes tend toward things with intensity and atmosphere: punk, metal, rock, anime music, horror, difficult games, and stories where the world is beautiful precisely because something is wrong with it.
+        </p>
+      </header>
+
+      <div class="visual-shell">
+        <div class="media-grid">
+          <button class="media-channel" data-title="Music" data-copy="Mostly punk, metal, rock, and anime music. I tend to like energy, distortion, strong melodic hooks, and music that can move between aggression and melancholy without becoming polished smooth.">
+            <div class="media-visual" aria-hidden="true">
+              <span class="media-bar" style="height:42%;--i:1"></span><span class="media-bar" style="height:88%;--i:2"></span><span class="media-bar" style="height:60%;--i:3"></span><span class="media-bar" style="height:100%;--i:4"></span><span class="media-bar" style="height:54%;--i:5"></span><span class="media-bar" style="height:76%;--i:6"></span><span class="media-bar" style="height:45%;--i:7"></span>
+            </div>
+            <small>Channel 01</small>
+            <h3>Music</h3>
+            <p>Punk · Metal · Rock · Anime music</p>
+          </button>
+
+          <button class="media-channel" data-title="Anime" data-copy="Eighty-Six and Chainsaw Man are my favorites. I like stories that pair strong visual identity with violence, loss, absurdity, loyalty, and characters trying to stay human inside systems that are not.">
+            <div class="media-visual" aria-hidden="true">
+              <span class="media-bar" style="height:82%;--i:3"></span><span class="media-bar" style="height:38%;--i:7"></span><span class="media-bar" style="height:95%;--i:1"></span><span class="media-bar" style="height:62%;--i:6"></span><span class="media-bar" style="height:72%;--i:4"></span><span class="media-bar" style="height:48%;--i:2"></span><span class="media-bar" style="height:88%;--i:5"></span>
+            </div>
+            <small>Channel 02</small>
+            <h3>Anime</h3>
+            <p>Eighty-Six · Chainsaw Man</p>
+          </button>
+
+          <button class="media-channel" data-title="Horror" data-copy="I love horror movies because they make atmosphere do real work. The best ones can turn a hallway, a sound, an empty frame, or a familiar religious symbol into something threatening without needing to explain everything away.">
+            <div class="media-visual" aria-hidden="true">
+              <span class="media-bar" style="height:34%;--i:4"></span><span class="media-bar" style="height:50%;--i:2"></span><span class="media-bar" style="height:74%;--i:6"></span><span class="media-bar" style="height:98%;--i:1"></span><span class="media-bar" style="height:67%;--i:7"></span><span class="media-bar" style="height:42%;--i:3"></span><span class="media-bar" style="height:84%;--i:5"></span>
+            </div>
+            <small>Channel 03</small>
+            <h3>Horror</h3>
+            <p>Atmosphere · Dread · The supernatural</p>
+          </button>
+
+          <button class="media-channel" data-title="Dark Souls" data-copy="Dark Souls is almost a perfect overlap of things I like: difficult systems, ruined worlds, indirect storytelling, religious imagery, grotesque monsters, stubborn persistence, and beauty hidden inside decay.">
+            <div class="media-visual" aria-hidden="true">
+              <span class="media-bar" style="height:100%;--i:5"></span><span class="media-bar" style="height:72%;--i:1"></span><span class="media-bar" style="height:45%;--i:6"></span><span class="media-bar" style="height:86%;--i:3"></span><span class="media-bar" style="height:57%;--i:7"></span><span class="media-bar" style="height:92%;--i:2"></span><span class="media-bar" style="height:63%;--i:4"></span>
+            </div>
+            <small>Channel 04</small>
+            <h3>Games</h3>
+            <p>Dark Souls · Ruins · Persistence</p>
+          </button>
+        </div>
+
+        <div class="media-inspector">
+          <div>
+            <span class="inspector-kicker">Selected signal</span>
+            <h3 class="inspector-title" id="media-title">Atmosphere over genre</h3>
+          </div>
+          <p class="inspector-copy" id="media-copy">
+            The common thread is not really a genre. It is intensity, atmosphere, worldbuilding, and the feeling that the setting itself has something to say.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="personal-section reveal" aria-labelledby="workbench-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Build / Break / Rebuild</span>
+          <h2 id="workbench-title">Workbench</h2>
+        </div>
+        <p>
+          Technical tinkering is the hobby that most easily disguises itself as work. I like taking systems apart, changing how they behave, automating repetitive tasks, building small tools, and spending unreasonable amounts of time making interfaces feel exactly right.
+        </p>
+      </header>
+
+      <div class="workbench-grid">
+        <article class="bench-card">
+          <span class="bench-index">01 / AUTOMATE</span>
+          <h3>Make repetition disappear.</h3>
+          <p>If I have to do the same digital task more than a few times, I start wondering whether a script should be doing it instead.</p>
+          <div class="bench-code">repeat → inspect → script → validate → forget it was ever manual</div>
+        </article>
+        <article class="bench-card">
+          <span class="bench-index">02 / CONFIGURE</span>
+          <h3>The environment matters.</h3>
+          <p>Themes, shortcuts, layouts, fonts, editor settings, terminals, and workflows are not decoration to me. Good tooling reduces friction; bad tooling quietly taxes attention all day.</p>
+          <div class="bench-code">editor + terminal + git + reproducible defaults</div>
+        </article>
+        <article class="bench-card">
+          <span class="bench-index">03 / VISUALIZE</span>
+          <h3>Make structure visible.</h3>
+          <p>I enjoy the design problem behind a useful visualization: deciding what should disappear, what should dominate, and what the viewer should understand before reading a caption.</p>
+          <div class="bench-code">data → geometry → hierarchy → interpretation</div>
+        </article>
+        <article class="bench-card">
+          <span class="bench-index">04 / BUILD</span>
+          <h3>Small systems, end to end.</h3>
+          <p>Web pages, R workflows, data pipelines, small utilities, and side projects are satisfying because they turn an abstract idea into something concrete enough to use, test, and improve.</p>
+          <div class="bench-code">idea → prototype → failure → revision → tool</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="personal-section reveal" aria-labelledby="anchors-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Home / Attachment / Beauty</span>
+          <h2 id="anchors-title">Anchors</h2>
+        </div>
+        <p>
+          Movement matters to me, but so do the things that make movement meaningful: the people I come home to, the animals that occupy the furniture, family roots, and a few images of the world that still stop me in my tracks.
+        </p>
+      </header>
+
+      <div class="visual-shell anchors-shell">
+        <div class="orbit one"></div>
+        <div class="orbit two"></div>
+        <div class="anchor-core">What keeps<br>me grounded</div>
+
+        <button class="anchor-node" style="left:8%;top:14%">
+          <strong>My partner</strong>
+          <span>My long-term girlfriend is from China and is a major part of my life. Home increasingly means a person and a shared future more than a point on a map.</span>
+        </button>
+        <button class="anchor-node" style="right:9%;top:15%">
+          <strong>Cats</strong>
+          <span>I love cats. This is probably the least complicated fact on the page.</span>
+        </button>
+        <button class="anchor-node" style="left:10%;bottom:13%">
+          <strong>Norway + Italy</strong>
+          <span>Two family roots, two very different cultural inheritances, both part of how I think about continuity and home.</span>
+        </button>
+        <button class="anchor-node" style="right:10%;bottom:12%">
+          <strong>Aurora</strong>
+          <span>The aurora borealis is one of the two most beautiful things I have ever seen: scale, motion, cold, and light that does not look entirely real.</span>
+        </button>
+        <button class="anchor-node" style="left:50%;top:5%;transform:translateX(-50%)">
+          <strong>Cherry blossoms</strong>
+          <span>The other: brief, excessive, fragile, and almost impossible not to stop for.</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="personal-section reveal" aria-labelledby="notes-title">
+      <header class="personal-heading">
+        <div>
+          <span class="eyebrow">Fragments / Things Worth Keeping</span>
+          <h2 id="notes-title">Field Notes</h2>
+        </div>
+        <p>
+          Not everything needs a framework. Some things are useful because they remain unfinished: a place to return to, a sentence that still works, or a strange question worth following simply because it is interesting.
+        </p>
+      </header>
+
+      <div class="field-notes">
+        <article class="field-note">
+          <span class="note-mark">FIELD NOTE / 01</span>
+          <p>I like systems that can be explained, landscapes that cannot, and questions that resist easy answers.</p>
+          <small>Working principle</small>
+        </article>
+
+        <article class="field-note">
+          <span class="note-mark">FIELD NOTE / 02</span>
+          <p>The best trips leave you with fewer blank spaces on the map and more places you need to see again.</p>
+          <small>Travel log</small>
+        </article>
+
+        <article class="field-note podcast-note">
+          <span class="note-mark">IN DEVELOPMENT / PODCAST</span>
+          <p>Cryptids, demons, folklore, hauntings, and other things that become more interesting after midnight.</p>
+          <small>Future side project</small>
+        </article>
+      </div>
+    </section>
+
   </div>
 </main>
 
@@ -608,181 +1300,152 @@
       <a href="mailto:jl17842@nyu.edu">NYU Email</a>
       <a href="mailto:lystadjs@gmail.com">Personal Email</a>
       <a href="https://github.com/LystadJS">GitHub</a>
-      <a href="https://linkedin.com/LystadJS">LinkedIn</a>
+      <a href="https://linkedin.com/in/LystadJS">LinkedIn</a>
     </div>
   </div>
 </footer>
+
 <script src="assets/js/main.js"></script>
 <script>
-  (() => {
-    const bookshelf = document.getElementById("reading-bookshelf");
-    if (!bookshelf) return;
+(() => {
+  const setInspector = (selector, titleId, copyId, activeClass) => {
+    document.querySelectorAll(selector).forEach((node) => {
+      const activate = () => {
+        document.querySelectorAll(selector + "." + activeClass).forEach((el) => el.classList.remove(activeClass));
+        node.classList.add(activeClass);
+        const title = document.getElementById(titleId);
+        const copy = document.getElementById(copyId);
+        if (title) title.textContent = node.dataset.title || "";
+        if (copy) copy.textContent = node.dataset.copy || "";
+        if (titleId === "ridge-title") {
+          const meta = document.getElementById("ridge-meta");
+          if (meta) meta.textContent = node.dataset.meta || "Selected field log";
+        }
+      };
+      node.addEventListener("click", activate);
+      node.addEventListener("mouseenter", activate);
+      node.addEventListener("focus", activate);
+      node.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activate();
+        }
+      });
+    });
+  };
 
-    const readingLibrary = [
-      {
-        title: "An Introduction to Statistical Learning",
-        author: "James · Witten · Hastie · Tibshirani",
-        status: "current",
-        topics: ["Statistical Learning", "Machine Learning"],
-        note: "Core reference for statistical learning methods, model assessment, regularization, tree-based methods, and unsupervised learning.",
-        tone: "oxblood",
-        size: "tall",
-        width: "wide",
-        lean: ""
-      },
-      {
-        title: "R for Data Science",
-        author: "Grolemund · Çetinkaya-Rundel · Wickham",
-        status: "current",
-        topics: ["R", "Data Science"],
-        note: "Working reference for data import, transformation, visualization, workflow, and reproducible analysis in R.",
-        tone: "plum",
-        size: "medium",
-        width: "medium",
-        lean: ""
-      },
-      {
-        title: "Text Mining with R",
-        author: "Silge · Robinson",
-        status: "current",
-        topics: ["Text Mining", "NLP", "R"],
-        note: "Text-as-data methods using tidy workflows, including tokenization, sentiment analysis, topic models, and document comparison.",
-        tone: "slate",
-        size: "short",
-        width: "medium",
-        lean: "left"
-      },
-      {
-        title: "Speech and Language Processing",
-        author: "Jurafsky · Martin",
-        status: "current",
-        topics: ["NLP", "Language Models", "Speech"],
-        note: "A broad technical reference for modern natural-language processing, speech, representation, and language-model methods.",
-        tone: "charcoal",
-        size: "tall",
-        width: "wide",
-        lean: ""
-      },
-      {
-        title: "Eighty Six",
-        author: "Asato Asato",
-        status: "current",
-        topics: ["Fiction", "Light Novel"],
-        note: "Current nontechnical reading.",
-        tone: "parchment",
-        size: "medium",
-        width: "narrow",
-        lean: "right"
-      },
-      {
-        title: "Regression and Other Stories",
-        author: "Gelman · Hill · Vehtari",
-        status: "recent",
-        topics: ["Regression", "Statistics"],
-        note: "Recently completed. A practical treatment of regression modeling, interpretation, workflow, and statistical judgment.",
-        tone: "wine",
-        size: "medium",
-        width: "wide",
-        lean: ""
-      },
-      {
-        title: "Bayesian Inference",
-        author: "",
-        status: "recent",
-        topics: ["Bayesian Statistics"],
-        note: "Recently completed. Author and edition can be added once you decide how much bibliographic detail you want the shelf to display.",
-        tone: "plum",
-        size: "short",
-        width: "medium",
-        lean: "left"
-      },
-      {
-        title: "American Caesar",
-        author: "William Manchester",
-        status: "recent",
-        topics: ["Biography", "Military History"],
-        note: "Recently completed biography and military-history reading.",
-        tone: "olive",
-        size: "tall",
-        width: "medium",
-        lean: ""
-      },
-      {
-        title: "The Coldest Winter",
-        author: "David Halberstam",
-        status: "recent",
-        topics: ["Military History", "Korean War"],
-        note: "Recently completed history of the Korean War.",
-        tone: "blue",
-        size: "medium",
-        width: "wide",
-        lean: "right"
-      },
-      {
-        title: "Deep Learning",
-        author: "Bishop · Bishop",
-        status: "next",
-        topics: ["Deep Learning", "Machine Learning"],
-        note: "Next in the queue: deeper foundations in neural networks, representation learning, and modern machine-learning methods.",
-        tone: "oxblood",
-        size: "tall",
-        width: "wide",
-        lean: ""
-      }
-    ];
+  setInspector(".ridge-point", "ridge-title", "ridge-copy", "is-active");
+  setInspector(".atlas-node", "atlas-inspector-title", "atlas-inspector-copy", "is-active");
+  setInspector(".curiosity-board button", "curiosity-title", "curiosity-copy", "is-active");
+  setInspector(".media-channel", "media-title", "media-copy", "is-active");
 
-    const shelfConfig = [
-      { key: "current", label: "Currently Reading", meta: "Active Shelf" },
-      { key: "recent", label: "Recently Read", meta: "Archive" },
-      { key: "next", label: "Up Next", meta: "Queue" }
-    ];
+  const readingLibrary = [
+    {
+      title: "An Introduction to Statistical Learning",
+      author: "James · Witten · Hastie · Tibshirani",
+      status: "current",
+      note: "A core reference for statistical learning: practical enough to use, broad enough to return to, and one of the books I keep close while moving between methods.",
+      tone: "oxblood", size: "tall", width: "wide"
+    },
+    {
+      title: "R for Data Science",
+      author: "Grolemund · Çetinkaya-Rundel · Wickham",
+      status: "current",
+      note: "A working reference for the everyday craft of turning raw data into something inspectable, reproducible, and useful.",
+      tone: "plum", size: "medium", width: "wide"
+    },
+    {
+      title: "Text Mining with R",
+      author: "Silge · Robinson",
+      status: "current",
+      note: "A bridge between the tidyverse habits I use constantly and the text-as-data problems that increasingly show up in my work.",
+      tone: "slate", size: "short", width: "wide"
+    },
+    {
+      title: "Speech and Language Processing",
+      author: "Jurafsky · Martin",
+      status: "current",
+      note: "The larger technical map for NLP, speech, language models, representations, and the machinery behind computational language work.",
+      tone: "charcoal", size: "tall", width: "wide"
+    },
+    {
+      title: "Eighty-Six",
+      author: "Asato Asato",
+      status: "current",
+      note: "One of my favorite fictional worlds and my favorite anime. I return to it for the combination of war, exclusion, loyalty, political systems, loss, and people trying to remain human inside machinery designed to erase them.",
+      tone: "parchment", size: "medium", width: "narrow"
+    },
+    {
+      title: "Regression and Other Stories",
+      author: "Gelman · Hill · Vehtari",
+      status: "recent",
+      note: "A practical book about regression, but equally useful as a book about statistical judgment: how to build, check, interpret, and explain models without pretending the model is the world.",
+      tone: "wine", size: "medium", width: "wide"
+    },
+    {
+      title: "American Caesar",
+      author: "William Manchester",
+      status: "recent",
+      note: "Biography and military history through a character large enough to make the institutional, strategic, and personal stories collide.",
+      tone: "olive", size: "tall", width: "wide"
+    },
+    {
+      title: "The Coldest Winter",
+      author: "David Halberstam",
+      status: "recent",
+      note: "A Korean War history I value for the way it moves between battlefield experience, command decisions, politics, and the accumulated consequences of bad assumptions.",
+      tone: "blue", size: "medium", width: "wide"
+    },
+    {
+      title: "Deep Learning",
+      author: "Bishop · Bishop",
+      status: "next",
+      note: "Next in the technical queue: a deeper pass through neural networks, representation learning, and modern machine-learning foundations.",
+      tone: "oxblood", size: "tall", width: "wide"
+    }
+  ];
 
-    const statusLabel = {
-      current: "Reading now",
-      recent: "Recently read",
-      next: "Up next"
-    };
+  const shelfConfig = [
+    { key: "current", label: "Currently Reading" },
+    { key: "recent", label: "Recently Read" },
+    { key: "next", label: "Up Next" }
+  ];
 
-    const countNode = document.getElementById("reading-library-count");
+  const statusLabel = {
+    current: "Reading now",
+    recent: "Recently read",
+    next: "Up next"
+  };
+
+  const bookshelf = document.getElementById("reading-bookshelf");
+  if (bookshelf) {
     const titleNode = document.getElementById("reading-inspector-title");
-    const authorNode = document.getElementById("reading-inspector-author");
     const statusNode = document.getElementById("reading-inspector-status");
-    const noteNode = document.getElementById("reading-inspector-note");
-    const tagsNode = document.getElementById("reading-inspector-tags");
+    const copyNode = document.getElementById("reading-inspector-copy");
 
-    function inspectBook(book, button) {
+    const inspectBook = (book, button) => {
       document.querySelectorAll(".reading-book.is-active").forEach((el) => el.classList.remove("is-active"));
       if (button) button.classList.add("is-active");
-
-      statusNode.textContent = statusLabel[book.status];
+      statusNode.textContent = statusLabel[book.status] + " · " + book.author;
       titleNode.textContent = book.title;
-      authorNode.textContent = book.author || "Author details to be added";
-      noteNode.textContent = book.note;
-
-      tagsNode.replaceChildren();
-      book.topics.forEach((topic) => {
-        const tag = document.createElement("span");
-        tag.className = "reading-tag";
-        tag.textContent = topic;
-        tagsNode.appendChild(tag);
-      });
-    }
+      copyNode.textContent = book.note;
+    };
 
     shelfConfig.forEach((shelfInfo) => {
       const books = readingLibrary.filter((book) => book.status === shelfInfo.key);
       const shelf = document.createElement("section");
-      shelf.className = `reading-shelf reading-shelf-${shelfInfo.key}`;
+      shelf.className = "reading-shelf";
 
       const label = document.createElement("div");
       label.className = "reading-shelf-label";
 
-      const labelText = document.createElement("strong");
+      const labelText = document.createElement("span");
       labelText.textContent = shelfInfo.label;
 
-      const labelMeta = document.createElement("span");
-      labelMeta.textContent = `${shelfInfo.meta} · ${String(books.length).padStart(2, "0")} volume${books.length === 1 ? "" : "s"}`;
+      const count = document.createElement("span");
+      count.textContent = String(books.length).padStart(2, "0") + " volume" + (books.length === 1 ? "" : "s");
 
-      label.append(labelText, labelMeta);
+      label.append(labelText, count);
 
       const stage = document.createElement("div");
       stage.className = "reading-shelf-stage";
@@ -790,18 +1453,8 @@
       books.forEach((book, index) => {
         const button = document.createElement("button");
         button.type = "button";
-        button.className = [
-          "reading-book",
-          `reading-tone-${book.tone}`,
-          `reading-size-${book.size}`,
-          `reading-width-${book.width}`,
-          book.lean ? `reading-lean-${book.lean}` : ""
-        ].filter(Boolean).join(" ");
-
-        button.setAttribute(
-          "aria-label",
-          `${book.title}${book.author ? ` by ${book.author.replaceAll(" · ", ", ")}` : ""}. ${statusLabel[book.status]}.`
-        );
+        button.className = "reading-book tone-" + book.tone + " book-" + book.size + " book-" + book.width;
+        button.setAttribute("aria-label", book.title + " by " + book.author);
 
         const title = document.createElement("span");
         title.className = "reading-book-title";
@@ -812,9 +1465,9 @@
         mark.textContent = String(index + 1).padStart(2, "0");
 
         button.append(title, mark);
+        button.addEventListener("click", () => inspectBook(book, button));
         button.addEventListener("mouseenter", () => inspectBook(book, button));
         button.addEventListener("focus", () => inspectBook(book, button));
-        button.addEventListener("click", () => inspectBook(book, button));
         stage.appendChild(button);
       });
 
@@ -822,18 +1475,12 @@
       bookshelf.appendChild(shelf);
     });
 
-    const currentCount = readingLibrary.filter((book) => book.status === "current").length;
-    const recentCount = readingLibrary.filter((book) => book.status === "recent").length;
-    const nextCount = readingLibrary.filter((book) => book.status === "next").length;
-
-    countNode.textContent = `${String(readingLibrary.length).padStart(2, "0")} volumes`;
-    document.getElementById("reading-current-count").textContent = `${currentCount} currently reading`;
-    document.getElementById("reading-recent-count").textContent = `${recentCount} recently read`;
-    document.getElementById("reading-next-count").textContent = `${nextCount} up next`;
-
-    const firstBookButton = document.querySelector(".reading-book");
-    if (readingLibrary.length && firstBookButton) inspectBook(readingLibrary[0], firstBookButton);
-  })();
+    const countNode = document.getElementById("reading-library-count");
+    if (countNode) countNode.textContent = String(readingLibrary.length).padStart(2, "0") + " volumes";
+    const firstButton = document.querySelector(".reading-book");
+    if (firstButton) inspectBook(readingLibrary[0], firstButton);
+  }
+})();
 </script>
 
 </body>

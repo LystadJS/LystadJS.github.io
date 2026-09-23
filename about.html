@@ -260,25 +260,15 @@
       letter-spacing: .08em;
     }
 
-    body[data-page="about"] .career-timeline-scroll {
-      overflow: visible;
-      padding: 0;
-    }
-
-    body[data-page="about"] .career-timeline-stage {
-      width: 100%;
-      min-width: 0;
-    }
-
     body[data-page="about"] .timeline-row + .timeline-row {
-      margin-top: .95rem;
+      margin-top: 1rem;
     }
 
     body[data-page="about"] .timeline-canvas {
       --line-y: 112px;
       position: relative;
       width: 94%;
-      height: 222px;
+      height: 238px;
       margin-left: 6%;
       overflow: visible;
     }
@@ -317,6 +307,23 @@
       border-color: #995f75;
     }
 
+    body[data-page="about"] .timeline-prelude {
+      position: absolute;
+      z-index: 1;
+      top: var(--line-y);
+      right: 100%;
+      width: 5.55%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(159,145,156,0) 0%,
+        rgba(159,145,156,.18) 28%,
+        rgba(159,145,156,.42) 66%,
+        rgba(159,145,156,.58) 100%
+      );
+      pointer-events: none;
+    }
+
     body[data-page="about"] .rank-event,
     body[data-page="about"] .unit-event,
     body[data-page="about"] .training-event {
@@ -326,8 +333,8 @@
 
     body[data-page="about"] .rank-event {
       z-index: 3;
-      top: calc(var(--line-y) - 23px);
-      width: 104px;
+      top: calc(var(--line-y) - 5px);
+      width: 110px;
       text-align: center;
       transform: translateX(-50%);
     }
@@ -342,19 +349,12 @@
       text-align: right;
     }
 
-    body[data-page="about"] .rank-event-date {
-      display: block;
-      margin-bottom: .42rem;
-      color: #857986;
-      font-size: .43rem;
-      white-space: nowrap;
-    }
-
     body[data-page="about"] .rank-event-marker {
       display: block;
-      width: 9px;
-      height: 9px;
-      margin: 0 auto .58rem;
+      box-sizing: border-box;
+      width: 10px;
+      height: 10px;
+      margin: 0 auto;
       border: 1px solid #8c808a;
       border-radius: 50%;
       background: #0b090d;
@@ -370,7 +370,8 @@
     }
 
     body[data-page="about"] .rank-event.expected .rank-event-marker {
-      border: 1px dashed #a06f82;
+      border-style: dashed;
+      border-color: #a06f82;
       background: #171017;
     }
 
@@ -378,8 +379,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 48px;
-      margin-top: .08rem;
+      height: 52px;
+      margin-top: 5px;
     }
 
     body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap { justify-content: flex-start; }
@@ -388,8 +389,8 @@
     body[data-page="about"] .rank-insignia,
     body[data-page="about"] .rank-insignia-svg {
       display: block;
-      max-width: 46px;
-      max-height: 46px;
+      max-width: 52px;
+      max-height: 52px;
       object-fit: contain;
       background: transparent !important;
       border: 0 !important;
@@ -397,8 +398,8 @@
     }
 
     body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
-      width: 17px;
-      height: 44px;
+      width: 19px;
+      height: 50px;
       max-width: none;
       max-height: none;
     }
@@ -412,11 +413,20 @@
 
     body[data-page="about"] .rank-event-name {
       display: block;
-      margin-top: .16rem;
+      margin-top: .14rem;
       color: #d6cad2;
       font-family: var(--serif);
-      font-size: .82rem;
+      font-size: .84rem;
       line-height: 1.04;
+    }
+
+    body[data-page="about"] .rank-event-date {
+      display: block;
+      margin-top: .28rem;
+      color: #857986;
+      font-size: .4rem;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     body[data-page="about"] .rank-event.expected .rank-event-name,
@@ -426,7 +436,7 @@
 
     body[data-page="about"] .rank-event-status {
       display: inline-block;
-      margin-top: .34rem;
+      margin-top: .3rem;
       padding: .15rem .28rem;
       border: 1px solid rgba(154,114,131,.42);
       color: #ad8b9a;
@@ -436,9 +446,9 @@
 
     body[data-page="about"] .unit-event {
       z-index: 2;
-      top: calc(var(--line-y) - 56px);
-      width: 46px;
-      height: 46px;
+      top: calc(var(--line-y) - 62px);
+      width: 52px;
+      height: 52px;
       transform: translateX(-50%);
     }
 
@@ -446,24 +456,15 @@
       transform: translateX(0);
     }
 
-    body[data-page="about"] .unit-event.edge-end {
-      transform: translateX(-100%);
-    }
-
     body[data-page="about"] .unit-event img {
       display: block;
-      width: 46px;
-      height: 46px;
+      width: 52px;
+      height: 52px;
       margin: 0;
       object-fit: contain;
       background: transparent !important;
       border: 0 !important;
       filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
-    }
-
-    body[data-page="about"] .unit-event.prelude-unit {
-      width: 46px;
-      height: 46px;
     }
 
     body[data-page="about"] .training-event {
@@ -550,6 +551,10 @@
       filter: drop-shadow(0 6px 12px rgba(0,0,0,.32));
     }
 
+    body[data-page="about"] .training-popover img.nwtc-logo {
+      filter: url(#nwtc-remove-white) drop-shadow(0 6px 12px rgba(0,0,0,.32));
+    }
+
     body[data-page="about"] .training-popover img.eib-icon {
       width: 96px;
       height: auto;
@@ -588,6 +593,14 @@
       color: #675f67;
       font-size: .34rem;
       line-height: 1.2;
+    }
+
+    body[data-page="about"] .timeline-filter-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
     }
 
     body[data-page="about"] .military-photo figcaption,
@@ -1042,8 +1055,23 @@
             </div>
           </dl>
 
-          <div class="career-timeline" aria-labelledby="rank-timeline-title">
-            <div class="career-timeline-scroll" aria-label="U.S. Army service chronology">
+          <div class="career-timeline" aria-label="U.S. Army service chronology">
+            <svg class="timeline-filter-defs" aria-hidden="true" focusable="false">
+              <defs>
+                <filter id="nwtc-remove-white" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="1 0 0 0 0
+                            0 1 0 0 0
+                            0 0 1 0 0
+                            -0.2126 -0.7152 -0.0722 0 1"></feColorMatrix>
+                  <feComponentTransfer>
+                    <feFuncA type="gamma" amplitude="1" exponent=".28" offset="0"></feFuncA>
+                  </feComponentTransfer>
+                </filter>
+              </defs>
+            </svg>
+            <div class="career-timeline-scroll">
               <div class="career-timeline-stage">
 
                 <div class="timeline-row">
@@ -1055,11 +1083,11 @@
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
                     </div>
 
-                    <div class="unit-event prelude-unit" style="--x:-1.8%;">
+                    <div class="unit-event" style="--x:-1.8%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seal_of_the_United_States_Army_Reserve.svg" alt="United States Army Reserve John Parker seal" loading="lazy">
                     </div>
 
-                    <div class="unit-event label-right" style="--x:54.5454545%;">
+                    <div class="unit-event" style="--x:54.5454545%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
                     </div>
 
@@ -1076,7 +1104,7 @@
 
                     <button class="training-event" type="button" style="--x:59.0909091%;" aria-label="December 2022 — Cold Weather Indoctrination Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
+                        <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Cold Weather Indoctrination Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1097,23 +1125,23 @@
                     </button>
 
                     <div class="rank-event edge-start" style="--x:0%;">
-                      <time class="rank-event-date" datetime="2021-11">Nov 2021</time>
                       <span class="rank-event-marker" aria-hidden="true"></span>
                       <span class="rank-insignia-wrap">
                         <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-02_%28Army_greens%29.svg" alt="Private Second Class rank insignia" loading="lazy">
                       </span>
                       <span class="rank-event-abbr">PV2</span>
-                      <strong class="rank-event-name">Private Second Class</strong>
+                      <strong class="rank-event-name">Private</strong>
+                      <time class="rank-event-date" datetime="2021-11">Nov 2021</time>
                     </div>
 
                     <div class="rank-event" style="--x:27.2727273%;">
-                      <time class="rank-event-date" datetime="2022-05">May 2022</time>
                       <span class="rank-event-marker" aria-hidden="true"></span>
                       <span class="rank-insignia-wrap">
                         <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-04b_%28Army_greens%29.svg" alt="Specialist rank insignia" loading="lazy">
                       </span>
                       <span class="rank-event-abbr">SPC</span>
                       <strong class="rank-event-name">Specialist</strong>
+                      <time class="rank-event-date" datetime="2022-05">May 2022</time>
                     </div>
                   </div>
                 </div>
@@ -1125,7 +1153,7 @@
 
                     <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
+                        <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Cold Weather Leaders Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1136,7 +1164,7 @@
 
                     <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="July 2024 — Basic Military Mountaineering Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
+                        <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Basic Military Mountaineering Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1157,13 +1185,13 @@
                     </button>
 
                     <div class="rank-event current" style="--x:72.7272727%;">
-                      <time class="rank-event-date" datetime="2025-01">Jan 2025</time>
                       <span class="rank-event-marker" aria-hidden="true"></span>
                       <span class="rank-insignia-wrap">
                         <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-05_%28Army_greens%29.svg" alt="Sergeant rank insignia" loading="lazy">
                       </span>
                       <span class="rank-event-abbr">SGT</span>
                       <strong class="rank-event-name">Sergeant</strong>
+                      <time class="rank-event-date" datetime="2025-01">Jan 2025</time>
                     </div>
                   </div>
                 </div>
@@ -1177,7 +1205,6 @@
                     </div>
 
                     <div class="rank-event edge-end expected" style="--x:100%;">
-                      <time class="rank-event-date" datetime="2027-05">May 2027</time>
                       <span class="rank-event-marker" aria-hidden="true"></span>
                       <span class="rank-insignia-wrap">
                         <svg class="rank-insignia-svg rank-insignia-officer" viewBox="0 0 18 48" role="img" aria-label="Second Lieutenant gold bar rank insignia">
@@ -1187,6 +1214,7 @@
                       </span>
                       <span class="rank-event-abbr">2LT</span>
                       <strong class="rank-event-name">Second Lieutenant</strong>
+                      <time class="rank-event-date" datetime="2027-05">May 2027</time>
                       <span class="rank-event-status">Expected</span>
                     </div>
                   </div>

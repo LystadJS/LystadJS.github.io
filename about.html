@@ -335,17 +335,12 @@
       margin-top: .95rem;
     }
 
-    body[data-page="about"] .timeline-row-label {
-      margin: 0 0 .28rem;
-      color: #6f6570;
-      font-size: .4rem;
-    }
-
     body[data-page="about"] .timeline-canvas {
       --line-y: 112px;
       position: relative;
-      width: 100%;
+      width: 94%;
       height: 222px;
+      margin-left: 6%;
       overflow: visible;
     }
 
@@ -539,12 +534,16 @@
       line-height: 1.2;
     }
 
-    body[data-page="about"] .unit-event.label-left .unit-event-label {
-      transform: translateX(-28%);
-    }
-
     body[data-page="about"] .unit-event.label-right .unit-event-label {
       transform: translateX(28%);
+    }
+
+    body[data-page="about"] .unit-event.prelude-unit {
+      width: 86px;
+    }
+
+    body[data-page="about"] .unit-event.prelude-unit .unit-event-label {
+      transform: translateX(-18%);
     }
 
     body[data-page="about"] .timeline-prelude {
@@ -552,7 +551,7 @@
       z-index: 1;
       top: var(--line-y);
       right: 100%;
-      width: 1.8%;
+      width: 5.55%;
       height: 1px;
       background: linear-gradient(
         90deg,
@@ -1149,22 +1148,10 @@
           </dl>
 
           <div class="career-timeline" aria-labelledby="rank-timeline-title">
-            <div class="career-timeline-head">
-              <p class="career-timeline-kicker" id="rank-timeline-title">Service chronology</p>
-              <p class="career-timeline-note">Three equal 22-month rows preserve a constant month-to-distance scale while keeping the chronology inside the military text column. Unit patches sit above the line; rank insignia sit below it.</p>
-            </div>
-
-            <div class="career-legend" aria-hidden="true">
-              <span><i class="legend-line"></i> completed</span>
-              <span><i class="legend-line-future"></i> commission path</span>
-              <span><i class="legend-dot"></i> school / qualification</span>
-            </div>
-
             <div class="career-timeline-scroll" aria-label="U.S. Army service chronology">
               <div class="career-timeline-stage">
 
                 <div class="timeline-row">
-                  <p class="timeline-row-label">Nov 2021 → Sep 2023 · 22 months</p>
                   <div class="timeline-canvas">
                     <span class="timeline-prelude" aria-hidden="true"></span>
                     <div class="timeline-line" style="--from:0%;--to:100%;" aria-hidden="true"></div>
@@ -1174,19 +1161,19 @@
                       <span class="unit-event-label">198th Infantry Brigade</span>
                     </div>
 
-                    <div class="unit-event label-left" style="--x:50%;">
-                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Reserve_Command_SSI.svg" alt="U.S. Army Reserve Command shoulder sleeve insignia" loading="lazy">
+                    <div class="unit-event prelude-unit" style="--x:-1.8%;">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Reserve_Command_DUI.gif" alt="U.S. Army Reserve Command distinctive unit insignia" loading="lazy">
                       <span class="unit-event-label">U.S. Army Reserve</span>
                     </div>
 
                     <div class="unit-event label-right" style="--x:54.5454545%;">
-                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="11th Airborne Division shoulder sleeve insignia" loading="lazy">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
                       <span class="unit-event-label">2nd Brigade · 11th Airborne Division</span>
                     </div>
 
                     <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="September 2022 — U.S. Army Airborne School">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Airborne_and_Ranger_Training_Brigade_SSI.png" alt="">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/United_States_Army_Infantry_School_Shoulder_Sleeve_Insignia.svg" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">U.S. Army Airborne School</strong>
                           <span class="training-popover-school">Airborne &amp; Ranger Training Brigade</span>
@@ -1197,7 +1184,7 @@
 
                     <button class="training-event" type="button" style="--x:59.0909091%;" aria-label="December 2022 — Cold Weather Indoctrination Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Cold Weather Indoctrination Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1240,14 +1227,13 @@
                 </div>
 
                 <div class="timeline-row">
-                  <p class="timeline-row-label">Sep 2023 → Jul 2025 · 22 months</p>
                   <div class="timeline-canvas">
                     <div class="timeline-line" style="--from:0%;--to:72.7272727%;" aria-hidden="true"></div>
                     <div class="timeline-line projected" style="--from:72.7272727%;--to:100%;" aria-hidden="true"></div>
 
                     <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Cold Weather Leaders Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1258,7 +1244,7 @@
 
                     <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="July 2024 — Basic Military Mountaineering Course">
                       <span class="training-popover" aria-hidden="true">
-                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
                           <strong class="training-popover-title">Basic Military Mountaineering Course</strong>
                           <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
@@ -1291,7 +1277,6 @@
                 </div>
 
                 <div class="timeline-row">
-                  <p class="timeline-row-label">Jul 2025 → May 2027 · 22 months</p>
                   <div class="timeline-canvas">
                     <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 

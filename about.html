@@ -198,9 +198,13 @@
 
     body[data-page="about"] .military-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(285px, .8fr);
-      gap: clamp(2rem, 4vw, 3.5rem);
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .72fr);
+      gap: clamp(1.9rem, 3.2vw, 2.9rem);
       align-items: start;
+    }
+
+    body[data-page="about"] .military-primary {
+      min-width: 0;
     }
 
     body[data-page="about"] .service-copy {
@@ -242,17 +246,14 @@
     }
 
     body[data-page="about"] .career-timeline {
-      margin-top: clamp(2.2rem, 4vw, 3.2rem);
-      padding-top: 1.2rem;
+      margin-top: 1.85rem;
+      padding-top: 1rem;
       border-top: 1px solid rgba(74,53,71,.62);
     }
 
     body[data-page="about"] .career-timeline-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 1.25rem;
-      align-items: end;
-      margin-bottom: .85rem;
+      display: block;
+      margin-bottom: .7rem;
     }
 
     body[data-page="about"] .career-timeline-kicker,
@@ -266,50 +267,50 @@
     body[data-page="about"] .timeline-row-label {
       font-family: var(--mono);
       text-transform: uppercase;
-      letter-spacing: .085em;
+      letter-spacing: .08em;
     }
 
     body[data-page="about"] .career-timeline-kicker {
       margin: 0;
       color: #b9adb6;
-      font-size: .56rem;
+      font-size: .54rem;
     }
 
     body[data-page="about"] .career-timeline-note {
-      max-width: 620px;
-      margin: 0;
+      max-width: 58ch;
+      margin: .35rem 0 0;
       color: #746a75;
-      font-size: .48rem;
+      font-size: .43rem;
       line-height: 1.55;
-      text-align: right;
+      text-align: left;
     }
 
     body[data-page="about"] .career-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: .4rem 1.15rem;
-      margin: 0 0 1rem;
+      gap: .35rem .85rem;
+      margin: 0 0 .85rem;
       color: #665e67;
-      font-size: .43rem;
-      line-height: 1.5;
+      font-size: .39rem;
+      line-height: 1.45;
     }
 
     body[data-page="about"] .career-legend span {
       display: inline-flex;
       align-items: center;
-      gap: .35rem;
+      gap: .3rem;
     }
 
     body[data-page="about"] .legend-line,
     body[data-page="about"] .legend-line-future {
-      width: 22px;
+      width: 18px;
       height: 0;
       border-top: 1px solid #817681;
     }
 
     body[data-page="about"] .legend-line-future {
       border-top-style: dashed;
-      border-top-color: #8f6072;
+      border-top-color: #9a6678;
     }
 
     body[data-page="about"] .legend-dot {
@@ -321,51 +322,45 @@
     }
 
     body[data-page="about"] .career-timeline-scroll {
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 0 0 .25rem;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(214,162,182,.22) transparent;
+      overflow: visible;
+      padding: 0;
     }
 
     body[data-page="about"] .career-timeline-stage {
-      min-width: 980px;
+      width: 100%;
+      min-width: 0;
     }
 
     body[data-page="about"] .timeline-row + .timeline-row {
-      margin-top: 1.25rem;
+      margin-top: .95rem;
     }
 
     body[data-page="about"] .timeline-row-label {
-      margin: 0 0 .35rem;
+      margin: 0 0 .28rem;
       color: #6f6570;
-      font-size: .44rem;
+      font-size: .4rem;
     }
 
     body[data-page="about"] .timeline-canvas {
-      --line-y: 166px;
+      --line-y: 112px;
       position: relative;
       width: 100%;
-      height: 335px;
-    }
-
-    body[data-page="about"] .timeline-row--future .timeline-canvas {
-      width: 73.6842105%;
-      height: 290px;
+      height: 222px;
+      overflow: visible;
     }
 
     body[data-page="about"] .timeline-line {
       position: absolute;
       z-index: 1;
       top: var(--line-y);
-      left: 0;
-      width: 100%;
-      border-top: 1px solid rgba(159,145,156,.55);
+      left: var(--from, 0%);
+      width: calc(var(--to, 100%) - var(--from, 0%));
+      border-top: 1px solid rgba(159,145,156,.58);
     }
 
-    body[data-page="about"] .timeline-row--future .timeline-line {
+    body[data-page="about"] .timeline-line.projected {
       border-top-style: dashed;
-      border-top-color: rgba(174,102,128,.64);
+      border-top-color: rgba(184,103,132,.72);
     }
 
     body[data-page="about"] .timeline-line::before,
@@ -383,9 +378,9 @@
     body[data-page="about"] .timeline-line::before { left: -1px; }
     body[data-page="about"] .timeline-line::after { right: -1px; }
 
-    body[data-page="about"] .timeline-row--future .timeline-line::before,
-    body[data-page="about"] .timeline-row--future .timeline-line::after {
-      border-color: #8f6072;
+    body[data-page="about"] .timeline-line.projected::before,
+    body[data-page="about"] .timeline-line.projected::after {
+      border-color: #995f75;
     }
 
     body[data-page="about"] .rank-event,
@@ -397,8 +392,8 @@
 
     body[data-page="about"] .rank-event {
       z-index: 3;
-      top: calc(var(--line-y) - 29px);
-      width: 122px;
+      top: calc(var(--line-y) - 23px);
+      width: 104px;
       text-align: center;
       transform: translateX(-50%);
     }
@@ -415,30 +410,25 @@
 
     body[data-page="about"] .rank-event-date {
       display: block;
-      margin-bottom: .48rem;
+      margin-bottom: .42rem;
       color: #857986;
-      font-size: .48rem;
+      font-size: .43rem;
       white-space: nowrap;
     }
 
     body[data-page="about"] .rank-event-marker {
       display: block;
-      width: 10px;
-      height: 10px;
-      margin: 0 auto .72rem;
+      width: 9px;
+      height: 9px;
+      margin: 0 auto .58rem;
       border: 1px solid #8c808a;
       border-radius: 50%;
       background: #0b090d;
-      box-shadow: 0 0 0 4px #0b090d;
+      box-shadow: 0 0 0 3px #0b090d;
     }
 
-    body[data-page="about"] .rank-event.edge-start .rank-event-marker {
-      margin-left: 0;
-    }
-
-    body[data-page="about"] .rank-event.edge-end .rank-event-marker {
-      margin-right: 0;
-    }
+    body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 0; }
+    body[data-page="about"] .rank-event.edge-end .rank-event-marker { margin-right: 0; }
 
     body[data-page="about"] .rank-event.current .rank-event-marker {
       border-color: var(--crimson-bright);
@@ -454,95 +444,106 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 62px;
-      margin-top: .12rem;
+      height: 48px;
+      margin-top: .08rem;
     }
 
-    body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap {
-      justify-content: flex-start;
-    }
+    body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap { justify-content: flex-start; }
+    body[data-page="about"] .rank-event.edge-end .rank-insignia-wrap { justify-content: flex-end; }
 
-    body[data-page="about"] .rank-event.edge-end .rank-insignia-wrap {
-      justify-content: flex-end;
-    }
-
-    body[data-page="about"] .rank-insignia {
+    body[data-page="about"] .rank-insignia,
+    body[data-page="about"] .rank-insignia-svg {
       display: block;
-      max-width: 58px;
-      max-height: 58px;
+      max-width: 46px;
+      max-height: 46px;
       object-fit: contain;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,.28));
+      background: transparent !important;
+      border: 0 !important;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,.25));
     }
 
-    body[data-page="about"] .rank-insignia.rank-insignia-officer {
-      max-width: 32px;
-      max-height: 56px;
+    body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
+      width: 17px;
+      height: 44px;
+      max-width: none;
+      max-height: none;
     }
 
     body[data-page="about"] .rank-event-abbr {
       display: block;
-      margin-top: .42rem;
+      margin-top: .32rem;
       color: #b9adb6;
-      font-size: .46rem;
+      font-size: .42rem;
     }
 
     body[data-page="about"] .rank-event-name {
       display: block;
-      margin-top: .18rem;
+      margin-top: .16rem;
       color: #d6cad2;
       font-family: var(--serif);
-      font-size: .94rem;
-      line-height: 1.05;
+      font-size: .82rem;
+      line-height: 1.04;
     }
 
     body[data-page="about"] .rank-event.expected .rank-event-name,
     body[data-page="about"] .rank-event.expected .rank-event-abbr {
-      color: #9d8490;
+      color: #a38995;
     }
 
     body[data-page="about"] .rank-event-status {
       display: inline-block;
-      margin-top: .42rem;
-      padding: .18rem .34rem;
+      margin-top: .34rem;
+      padding: .15rem .28rem;
       border: 1px solid rgba(154,114,131,.42);
       color: #ad8b9a;
-      font-size: .4rem;
+      font-size: .36rem;
       line-height: 1;
     }
 
     body[data-page="about"] .unit-event {
       z-index: 2;
-      top: calc(8px + (var(--lane, 0) * 61px));
-      width: 126px;
+      top: calc(2px + (var(--lane, 0) * 48px));
+      width: 92px;
       text-align: center;
       transform: translateX(-50%);
     }
 
-    body[data-page="about"] .unit-event img {
-      display: block;
-      width: 42px;
-      height: 42px;
-      margin: 0 auto .32rem;
-      object-fit: contain;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,.24));
+    body[data-page="about"] .unit-event.edge-start {
+      transform: translateX(0);
+      text-align: left;
     }
 
-    body[data-page="about"] .unit-event.unit-wide img {
-      width: 48px;
+    body[data-page="about"] .unit-event.edge-end {
+      transform: translateX(-100%);
+      text-align: right;
     }
+
+    body[data-page="about"] .unit-event img {
+      display: block;
+      width: 36px;
+      height: 36px;
+      margin: 0 auto .25rem;
+      object-fit: contain;
+      background: transparent !important;
+      border: 0 !important;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
+    }
+
+    body[data-page="about"] .unit-event.edge-start img { margin-left: 0; }
+    body[data-page="about"] .unit-event.edge-end img { margin-right: 0; }
 
     body[data-page="about"] .unit-event-label {
       display: block;
       color: #817681;
-      font-size: .4rem;
-      line-height: 1.25;
+      font-size: .36rem;
+      line-height: 1.2;
     }
 
     body[data-page="about"] .training-event {
-      z-index: 5;
-      top: calc(var(--line-y) - 8px);
-      width: 16px;
-      height: 16px;
+      z-index: 6;
+      top: calc(var(--line-y) - 7px);
+      width: 14px;
+      height: 14px;
       padding: 0;
       border: 0;
       border-radius: 50%;
@@ -554,10 +555,10 @@
     body[data-page="about"] .training-event::before {
       content: "";
       display: block;
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       margin: 2px;
-      border: 1px solid rgba(210,96,126,.78);
+      border: 1px solid rgba(210,96,126,.8);
       border-radius: 50%;
       background: #0b090d;
       box-shadow: 0 0 0 3px rgba(11,9,13,.92);
@@ -574,20 +575,26 @@
 
     body[data-page="about"] .training-event:focus-visible {
       outline: 1px solid #b77e92;
-      outline-offset: 5px;
+      outline-offset: 4px;
     }
 
     body[data-page="about"] .training-popover {
       position: absolute;
       left: 50%;
-      bottom: 24px;
-      width: 190px;
+      bottom: 20px;
+      width: 158px;
       opacity: 0;
       visibility: hidden;
-      transform: translate(-50%, 7px);
+      transform: translate(-50%, 6px);
       transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
       pointer-events: none;
       text-align: center;
+    }
+
+    body[data-page="about"] .training-event.popover-left .training-popover {
+      left: auto;
+      right: -5px;
+      transform: translate(0, 6px);
     }
 
     body[data-page="about"] .training-event:hover .training-popover,
@@ -598,65 +605,62 @@
       transform: translate(-50%, 0);
     }
 
+    body[data-page="about"] .training-event.popover-left:hover .training-popover,
+    body[data-page="about"] .training-event.popover-left:focus-visible .training-popover,
+    body[data-page="about"] .training-event.popover-left.is-open .training-popover {
+      transform: translate(0, 0);
+    }
+
     body[data-page="about"] .training-popover img {
       display: block;
       width: auto;
-      height: 62px;
-      max-width: 105px;
-      margin: 0 auto .38rem;
+      height: 48px;
+      max-width: 82px;
+      margin: 0 auto .3rem;
       object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,.38));
+      background: transparent !important;
+      border: 0 !important;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.32));
     }
 
     body[data-page="about"] .training-popover img.eib-icon {
-      width: 128px;
+      width: 96px;
       height: auto;
-      max-width: 128px;
-      margin-bottom: .55rem;
+      max-width: 96px;
+      margin-bottom: .42rem;
     }
 
     body[data-page="about"] .training-popover-box {
-      padding: .48rem .55rem .5rem;
+      display: block;
+      padding: .42rem .48rem .44rem;
       border: 1px solid rgba(91,70,86,.72);
-      background: rgba(8,7,10,.93);
-      box-shadow: 0 10px 26px rgba(0,0,0,.24);
+      background: rgba(8,7,10,.91);
+      box-shadow: 0 8px 20px rgba(0,0,0,.22);
+      backdrop-filter: blur(5px);
     }
 
     body[data-page="about"] .training-popover-title {
       display: block;
       color: #ddd1d8;
       font-family: var(--serif);
-      font-size: .82rem;
-      line-height: 1.08;
+      font-size: .73rem;
+      line-height: 1.07;
     }
 
     body[data-page="about"] .training-popover-school {
       display: block;
-      margin-top: .22rem;
+      margin-top: .18rem;
       color: #8e818b;
-      font-size: .55rem;
-      line-height: 1.3;
+      font-size: .49rem;
+      line-height: 1.25;
     }
 
     body[data-page="about"] .training-popover-meta {
       display: block;
-      margin-top: .34rem;
+      margin-top: .28rem;
       color: #675f67;
-      font-size: .38rem;
-      line-height: 1.25;
-    }
-
-    body[data-page="about"] .future-carry {
-      position: absolute;
-      top: calc(var(--line-y) - 28px);
-      left: 0;
-      z-index: 3;
-      color: #766b75;
-      font-family: var(--mono);
-      font-size: .43rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      font-size: .34rem;
+      line-height: 1.2;
     }
 
     body[data-page="about"] .military-photo figcaption,
@@ -1022,10 +1026,6 @@
         text-align: left;
       }
 
-      body[data-page="about"] .career-timeline-stage {
-        min-width: 940px;
-      }
-
       body[data-page="about"] .ridge-caption {
         grid-template-columns: 1fr;
         gap: .45rem;
@@ -1097,7 +1097,7 @@
       </header>
 
       <div class="military-layout">
-        <div>
+        <div class="military-primary">
           <p class="service-copy">
             As a non-commissioned officer, I was responsible for leading soldiers, maintaining accountability and readiness, and communicating clearly in environments where incomplete information, physical stress, and changing conditions were routine. Much of that experience took place in Alaska and included Arctic and extreme-cold-weather training and operations.
           </p>
@@ -1124,7 +1124,176 @@
             </div>
           </dl>
 
+          <div class="career-timeline" aria-labelledby="rank-timeline-title">
+            <div class="career-timeline-head">
+              <p class="career-timeline-kicker" id="rank-timeline-title">Service chronology</p>
+              <p class="career-timeline-note">Three equal 22-month rows preserve a constant month-to-distance scale while keeping the chronology inside the military text column. Unit patches sit above the line; rank insignia sit below it.</p>
+            </div>
 
+            <div class="career-legend" aria-hidden="true">
+              <span><i class="legend-line"></i> completed</span>
+              <span><i class="legend-line-future"></i> commission path</span>
+              <span><i class="legend-dot"></i> school / qualification</span>
+            </div>
+
+            <div class="career-timeline-scroll" aria-label="U.S. Army service chronology">
+              <div class="career-timeline-stage">
+
+                <div class="timeline-row">
+                  <p class="timeline-row-label">Nov 2021 → Sep 2023 · 22 months</p>
+                  <div class="timeline-canvas">
+                    <div class="timeline-line" style="--from:0%;--to:100%;" aria-hidden="true"></div>
+
+                    <div class="unit-event" style="--x:22.7272727%;--lane:0;">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
+                      <span class="unit-event-label">198th Infantry Brigade</span>
+                    </div>
+
+                    <div class="unit-event" style="--x:50%;--lane:1;">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Reserve_Command_SSI.svg" alt="U.S. Army Reserve Command shoulder sleeve insignia" loading="lazy">
+                      <span class="unit-event-label">U.S. Army Reserve</span>
+                    </div>
+
+                    <div class="unit-event" style="--x:54.5454545%;--lane:0;">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="11th Airborne Division shoulder sleeve insignia" loading="lazy">
+                      <span class="unit-event-label">2nd Brigade · 11th Airborne Division</span>
+                    </div>
+
+                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="September 2022 — U.S. Army Airborne School">
+                      <span class="training-popover" aria-hidden="true">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Airborne_and_Ranger_Training_Brigade_SSI.png" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">U.S. Army Airborne School</strong>
+                          <span class="training-popover-school">Airborne &amp; Ranger Training Brigade</span>
+                          <span class="training-popover-meta">Sep 2022</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <button class="training-event" type="button" style="--x:59.0909091%;" aria-label="December 2022 — Cold Weather Indoctrination Course">
+                      <span class="training-popover" aria-hidden="true">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">Cold Weather Indoctrination Course</strong>
+                          <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
+                          <span class="training-popover-meta">Dec 2022</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <button class="training-event popover-left" type="button" style="--x:95.4545455%;" aria-label="August 2023 — Infantry Mortar Leader Course">
+                      <span class="training-popover" aria-hidden="true">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/United_States_Army_Infantry_School_Shoulder_Sleeve_Insignia.svg" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">Infantry Mortar Leader Course</strong>
+                          <span class="training-popover-school">U.S. Army Infantry School</span>
+                          <span class="training-popover-meta">Aug 2023</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <div class="rank-event edge-start" style="--x:0%;">
+                      <time class="rank-event-date" datetime="2021-11">Nov 2021</time>
+                      <span class="rank-event-marker" aria-hidden="true"></span>
+                      <span class="rank-insignia-wrap">
+                        <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-02_%28Army_greens%29.svg" alt="Private Second Class rank insignia" loading="lazy">
+                      </span>
+                      <span class="rank-event-abbr">PV2</span>
+                      <strong class="rank-event-name">Private Second Class</strong>
+                    </div>
+
+                    <div class="rank-event" style="--x:27.2727273%;">
+                      <time class="rank-event-date" datetime="2022-05">May 2022</time>
+                      <span class="rank-event-marker" aria-hidden="true"></span>
+                      <span class="rank-insignia-wrap">
+                        <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-04b_%28Army_greens%29.svg" alt="Specialist rank insignia" loading="lazy">
+                      </span>
+                      <span class="rank-event-abbr">SPC</span>
+                      <strong class="rank-event-name">Specialist</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-row">
+                  <p class="timeline-row-label">Sep 2023 → Jul 2025 · 22 months</p>
+                  <div class="timeline-canvas">
+                    <div class="timeline-line" style="--from:0%;--to:72.7272727%;" aria-hidden="true"></div>
+                    <div class="timeline-line projected" style="--from:72.7272727%;--to:100%;" aria-hidden="true"></div>
+
+                    <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course">
+                      <span class="training-popover" aria-hidden="true">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">Cold Weather Leaders Course</strong>
+                          <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
+                          <span class="training-popover-meta">Feb 2024</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="July 2024 — Basic Military Mountaineering Course">
+                      <span class="training-popover" aria-hidden="true">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">Basic Military Mountaineering Course</strong>
+                          <span class="training-popover-school">Northern Warfare Training Center · 11th Airborne Division</span>
+                          <span class="training-popover-meta">Jul 2024</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <button class="training-event" type="button" style="--x:50%;" aria-label="August 2024 — Expert Infantryman Badge">
+                      <span class="training-popover" aria-hidden="true">
+                        <img class="eib-icon" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Expert_Infantry_Badge.svg" alt="">
+                        <span class="training-popover-box">
+                          <strong class="training-popover-title">Expert Infantryman Badge</strong>
+                          <span class="training-popover-school">Infantry proficiency qualification</span>
+                          <span class="training-popover-meta">Aug 2024</span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <div class="rank-event current" style="--x:72.7272727%;">
+                      <time class="rank-event-date" datetime="2025-01">Jan 2025</time>
+                      <span class="rank-event-marker" aria-hidden="true"></span>
+                      <span class="rank-insignia-wrap">
+                        <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-05_%28Army_greens%29.svg" alt="Sergeant rank insignia" loading="lazy">
+                      </span>
+                      <span class="rank-event-abbr">SGT</span>
+                      <strong class="rank-event-name">Sergeant</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-row">
+                  <p class="timeline-row-label">Jul 2025 → May 2027 · 22 months</p>
+                  <div class="timeline-canvas">
+                    <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
+
+                    <div class="unit-event edge-start" style="--x:0%;--lane:0;">
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
+                      <span class="unit-event-label">U.S. Army Cadet Command</span>
+                    </div>
+
+                    <div class="rank-event edge-end expected" style="--x:100%;">
+                      <time class="rank-event-date" datetime="2027-05">May 2027</time>
+                      <span class="rank-event-marker" aria-hidden="true"></span>
+                      <span class="rank-insignia-wrap">
+                        <svg class="rank-insignia-svg rank-insignia-officer" viewBox="0 0 18 48" role="img" aria-label="Second Lieutenant gold bar rank insignia">
+                          <rect x="2.25" y="1.5" width="13.5" height="45" rx="1.6" fill="#c7a347" stroke="#7e672b" stroke-width="1.5"></rect>
+                          <rect x="4.25" y="3.8" width="9.5" height="40.4" rx="1.1" fill="#ddb95a" opacity=".86"></rect>
+                        </svg>
+                      </span>
+                      <span class="rank-event-abbr">2LT</span>
+                      <strong class="rank-event-name">Second Lieutenant</strong>
+                      <span class="rank-event-status">Expected</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="military-media">
@@ -1147,171 +1316,6 @@
             </div>
             <figcaption>Arctic field training · Alaska</figcaption>
           </figure>
-        </div>
-      </div>
-
-      <div class="career-timeline" aria-labelledby="rank-timeline-title">
-        <div class="career-timeline-head">
-          <p class="career-timeline-kicker" id="rank-timeline-title">Service chronology</p>
-          <p class="career-timeline-note">Horizontal spacing is proportional to elapsed months. Solid line = completed service history; dashed line = projected officer progression.</p>
-        </div>
-
-        <div class="career-legend" aria-hidden="true">
-          <span><i class="legend-line"></i> completed</span>
-          <span><i class="legend-line-future"></i> projected</span>
-          <span><i class="legend-dot"></i> school / qualification</span>
-          <span>unit insignia sit above the chronology</span>
-        </div>
-
-        <div class="career-timeline-scroll" tabindex="0" aria-label="Scrollable U.S. Army service chronology">
-          <div class="career-timeline-stage">
-
-            <div class="timeline-row timeline-row--completed">
-              <p class="timeline-row-label">Nov 2021 → Jan 2025 · 38 months</p>
-              <div class="timeline-canvas">
-                <div class="timeline-line" aria-hidden="true"></div>
-
-                <!-- Unit affiliations: dates are encoded by proportional x-position; labels intentionally omit dates. -->
-                <div class="unit-event" style="--x:13.1578947%;--lane:0;">
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_Infantry_Brigade_%28unit_insignia%29.png" alt="198th Infantry Brigade distinctive unit insignia" loading="lazy">
-                  <span class="unit-event-label">198th Infantry Brigade</span>
-                </div>
-
-                <div class="unit-event" style="--x:28.9473684%;--lane:1;">
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seal_of_the_United_States_Army_Reserve.svg" alt="United States Army Reserve emblem" loading="lazy">
-                  <span class="unit-event-label">U.S. Army Reserve</span>
-                </div>
-
-                <div class="unit-event unit-wide" style="--x:31.5789474%;--lane:0;">
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_2nd_Brigade_Combat_Team-11th_Airborne_Division_Beret_Fash.png" alt="2nd Brigade Combat Team, 11th Airborne Division beret flash" loading="lazy">
-                  <span class="unit-event-label">2nd Brigade · 11th Airborne Division</span>
-                </div>
-
-                <!-- Schools / qualifications. Click persists a popover; hover and keyboard focus also reveal it. -->
-                <button class="training-event" type="button" style="--x:26.3157895%;" aria-label="September 2022 — U.S. Army Airborne School">
-                  <span class="training-popover" aria-hidden="true">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Airborne_and_Ranger_Training_Brigade_Beret_Flash.svg" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">U.S. Army Airborne School</strong>
-                      <span class="training-popover-school">Airborne &amp; Ranger Training Brigade</span>
-                      <span class="training-popover-meta">Sep 2022</span>
-                    </span>
-                  </span>
-                </button>
-
-                <button class="training-event" type="button" style="--x:34.2105263%;" aria-label="December 2022 — Cold Weather Indoctrination Course">
-                  <span class="training-popover" aria-hidden="true">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">Cold Weather Indoctrination Course</strong>
-                      <span class="training-popover-school">Northern Warfare Training Center</span>
-                      <span class="training-popover-meta">Dec 2022</span>
-                    </span>
-                  </span>
-                </button>
-
-                <button class="training-event" type="button" style="--x:55.2631579%;" aria-label="August 2023 — Infantry Mortar Leader Course">
-                  <span class="training-popover" aria-hidden="true">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Infantry_School_DUI.png" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">Infantry Mortar Leader Course</strong>
-                      <span class="training-popover-school">U.S. Army Infantry School</span>
-                      <span class="training-popover-meta">Aug 2023</span>
-                    </span>
-                  </span>
-                </button>
-
-                <button class="training-event" type="button" style="--x:71.0526316%;" aria-label="February 2024 — Cold Weather Leaders Course">
-                  <span class="training-popover" aria-hidden="true">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">Cold Weather Leaders Course</strong>
-                      <span class="training-popover-school">Northern Warfare Training Center</span>
-                      <span class="training-popover-meta">Feb 2024</span>
-                    </span>
-                  </span>
-                </button>
-
-                <button class="training-event" type="button" style="--x:84.2105263%;" aria-label="July 2024 — Basic Military Mountaineering Course">
-                  <span class="training-popover" aria-hidden="true">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">Basic Military Mountaineering Course</strong>
-                      <span class="training-popover-school">Northern Warfare Training Center</span>
-                      <span class="training-popover-meta">Jul 2024</span>
-                    </span>
-                  </span>
-                </button>
-
-                <button class="training-event" type="button" style="--x:86.8421053%;" aria-label="August 2024 — Expert Infantryman Badge">
-                  <span class="training-popover" aria-hidden="true">
-                    <img class="eib-icon" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Expert_Infantry_Badge.svg" alt="">
-                    <span class="training-popover-box">
-                      <strong class="training-popover-title">Expert Infantryman Badge</strong>
-                      <span class="training-popover-school">Infantry proficiency qualification</span>
-                      <span class="training-popover-meta">Aug 2024</span>
-                    </span>
-                  </span>
-                </button>
-
-                <!-- Rank milestones. Rank insignia sit directly below the line. -->
-                <div class="rank-event edge-start" style="--x:0%;">
-                  <time class="rank-event-date" datetime="2021-11">Nov 2021</time>
-                  <span class="rank-event-marker" aria-hidden="true"></span>
-                  <span class="rank-insignia-wrap">
-                    <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-02_%28Army_greens%29.svg" alt="Private Second Class rank insignia" loading="lazy">
-                  </span>
-                  <span class="rank-event-abbr">PV2</span>
-                  <strong class="rank-event-name">Private Second Class</strong>
-                </div>
-
-                <div class="rank-event" style="--x:15.7894737%;">
-                  <time class="rank-event-date" datetime="2022-05">May 2022</time>
-                  <span class="rank-event-marker" aria-hidden="true"></span>
-                  <span class="rank-insignia-wrap">
-                    <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-04b_%28Army_greens%29.svg" alt="Specialist rank insignia" loading="lazy">
-                  </span>
-                  <span class="rank-event-abbr">SPC</span>
-                  <strong class="rank-event-name">Specialist</strong>
-                </div>
-
-                <div class="rank-event edge-end current" style="--x:100%;">
-                  <time class="rank-event-date" datetime="2025-01">Jan 2025</time>
-                  <span class="rank-event-marker" aria-hidden="true"></span>
-                  <span class="rank-insignia-wrap">
-                    <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-05_%28Army_greens%29.svg" alt="Sergeant rank insignia" loading="lazy">
-                  </span>
-                  <span class="rank-event-abbr">SGT</span>
-                  <strong class="rank-event-name">Sergeant</strong>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-row timeline-row--future">
-              <p class="timeline-row-label">Jan 2025 → May 2027 · 28 months · continued at identical month scale</p>
-              <div class="timeline-canvas">
-                <div class="timeline-line" aria-hidden="true"></div>
-                <span class="future-carry">SGT · Jan 2025</span>
-
-                <div class="unit-event" style="--x:21.4285714%;--lane:0;">
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_ARMY_SROTC_DUI.png" alt="U.S. Army Cadet Command distinctive unit insignia" loading="lazy">
-                  <span class="unit-event-label">U.S. Army Cadet Command</span>
-                </div>
-
-                <div class="rank-event edge-end expected" style="--x:100%;">
-                  <time class="rank-event-date" datetime="2027-05">May 2027</time>
-                  <span class="rank-event-marker" aria-hidden="true"></span>
-                  <span class="rank-insignia-wrap">
-                    <img class="rank-insignia rank-insignia-officer" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-O1_insignia.svg" alt="Second Lieutenant rank insignia" loading="lazy">
-                  </span>
-                  <span class="rank-event-abbr">2LT</span>
-                  <strong class="rank-event-name">Second Lieutenant</strong>
-                  <span class="rank-event-status">Expected</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>

@@ -13,7 +13,6 @@ body[data-page="code"] .driftmapr-section {
 .driftmapr-section *, .driftmapr-section *::before, .driftmapr-section *::after { box-sizing: border-box; }
 .driftmapr-section .code-section-body { min-width: 0; }
 .driftmapr-section .code-section-label { padding-top: .2rem; color: var(--crimson-bright, #bf3152); font: .61rem/1.7 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-.driftmapr-section .code-section-label::before { content: "§ "; color: #725b50; }
 .driftmapr-section .dm-header { max-width: 840px; margin-bottom: 2rem; }
 .driftmapr-section .dm-status { margin: 0 0 .65rem; color: #c5b48f; font: .62rem/1.7 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
 .driftmapr-section .dm-header h2 { margin: 0; color: var(--paper, #eee5d9); font: 600 clamp(2.8rem,4.4vw,4.2rem)/1.05 var(--serif); letter-spacing: -.035em; }

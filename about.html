@@ -502,8 +502,8 @@
 
     body[data-page="about"] .unit-event {
       z-index: 2;
-      top: calc(2px + (var(--lane, 0) * 48px));
-      width: 92px;
+      top: 2px;
+      width: 82px;
       text-align: center;
       transform: translateX(-50%);
     }
@@ -520,8 +520,8 @@
 
     body[data-page="about"] .unit-event img {
       display: block;
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
       margin: 0 auto .25rem;
       object-fit: contain;
       background: transparent !important;
@@ -537,6 +537,30 @@
       color: #817681;
       font-size: .36rem;
       line-height: 1.2;
+    }
+
+    body[data-page="about"] .unit-event.label-left .unit-event-label {
+      transform: translateX(-28%);
+    }
+
+    body[data-page="about"] .unit-event.label-right .unit-event-label {
+      transform: translateX(28%);
+    }
+
+    body[data-page="about"] .timeline-prelude {
+      position: absolute;
+      z-index: 1;
+      top: var(--line-y);
+      right: 100%;
+      width: 1.8%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(159,145,156,0) 0%,
+        rgba(159,145,156,.16) 38%,
+        rgba(159,145,156,.58) 100%
+      );
+      pointer-events: none;
     }
 
     body[data-page="about"] .training-event {
@@ -1142,19 +1166,20 @@
                 <div class="timeline-row">
                   <p class="timeline-row-label">Nov 2021 → Sep 2023 · 22 months</p>
                   <div class="timeline-canvas">
+                    <span class="timeline-prelude" aria-hidden="true"></span>
                     <div class="timeline-line" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
-                    <div class="unit-event" style="--x:22.7272727%;--lane:0;">
+                    <div class="unit-event" style="--x:22.7272727%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
                       <span class="unit-event-label">198th Infantry Brigade</span>
                     </div>
 
-                    <div class="unit-event" style="--x:50%;--lane:1;">
+                    <div class="unit-event label-left" style="--x:50%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Reserve_Command_SSI.svg" alt="U.S. Army Reserve Command shoulder sleeve insignia" loading="lazy">
                       <span class="unit-event-label">U.S. Army Reserve</span>
                     </div>
 
-                    <div class="unit-event" style="--x:54.5454545%;--lane:0;">
+                    <div class="unit-event label-right" style="--x:54.5454545%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division.patch.svg" alt="11th Airborne Division shoulder sleeve insignia" loading="lazy">
                       <span class="unit-event-label">2nd Brigade · 11th Airborne Division</span>
                     </div>
@@ -1270,7 +1295,7 @@
                   <div class="timeline-canvas">
                     <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
-                    <div class="unit-event edge-start" style="--x:0%;--lane:0;">
+                    <div class="unit-event edge-start" style="--x:0%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
                       <span class="unit-event-label">U.S. Army Cadet Command</span>
                     </div>

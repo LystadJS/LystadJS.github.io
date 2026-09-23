@@ -241,6 +241,138 @@
       line-height: 1.25;
     }
 
+    body[data-page="about"] .rank-timeline {
+      margin-top: 1.65rem;
+      padding-top: 1.05rem;
+      border-top: 1px solid rgba(74,53,71,.62);
+    }
+
+    body[data-page="about"] .rank-timeline-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    body[data-page="about"] .rank-timeline-kicker,
+    body[data-page="about"] .rank-timeline-note,
+    body[data-page="about"] .rank-date,
+    body[data-page="about"] .rank-status {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    body[data-page="about"] .rank-timeline-kicker {
+      margin: 0;
+      color: #b9adb6;
+      font-size: .54rem;
+    }
+
+    body[data-page="about"] .rank-timeline-note {
+      margin: 0;
+      color: #685f69;
+      font-size: .46rem;
+      text-align: right;
+    }
+
+    body[data-page="about"] .rank-track {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 1.15rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body[data-page="about"] .rank-step {
+      position: relative;
+      min-width: 0;
+      padding-right: .85rem;
+    }
+
+    body[data-page="about"] .rank-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 1.62rem;
+      left: .55rem;
+      right: -.08rem;
+      border-top: 1px solid rgba(164,145,157,.42);
+    }
+
+    body[data-page="about"] .rank-step.rank-step-current::after {
+      border-top-style: dashed;
+      border-top-color: rgba(177,104,130,.52);
+    }
+
+    body[data-page="about"] .rank-date {
+      display: block;
+      margin-bottom: .62rem;
+      color: #746a75;
+      font-size: .48rem;
+      white-space: nowrap;
+    }
+
+    body[data-page="about"] .rank-marker {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin-bottom: .7rem;
+      border: 1px solid #8d7e89;
+      border-radius: 50%;
+      background: #0b090d;
+      box-shadow: 0 0 0 4px #0b090d;
+    }
+
+    body[data-page="about"] .rank-step-current .rank-marker {
+      border-color: var(--crimson-bright);
+      background: var(--crimson);
+    }
+
+    body[data-page="about"] .rank-step-expected .rank-marker {
+      border: 1px dashed #9a7283;
+      background: #161017;
+    }
+
+    body[data-page="about"] .rank-abbr {
+      display: block;
+      color: #d5cad1;
+      font-family: var(--serif);
+      font-size: 1.42rem;
+      font-weight: 600;
+      line-height: .95;
+      letter-spacing: -.025em;
+    }
+
+    body[data-page="about"] .rank-name {
+      display: block;
+      margin-top: .25rem;
+      color: #766d77;
+      font-size: .58rem;
+      line-height: 1.35;
+    }
+
+    body[data-page="about"] .rank-step-current .rank-abbr {
+      color: #eadde4;
+    }
+
+    body[data-page="about"] .rank-step-expected .rank-abbr,
+    body[data-page="about"] .rank-step-expected .rank-name {
+      color: #9d8490;
+    }
+
+    body[data-page="about"] .rank-status {
+      display: inline-block;
+      margin-top: .42rem;
+      padding: .18rem .34rem;
+      border: 1px solid rgba(154,114,131,.42);
+      color: #a98796;
+      font-size: .42rem;
+      line-height: 1;
+    }
+
     body[data-page="about"] .military-photo figcaption,
     body[data-page="about"] .life-photo figcaption {
       margin-top: .55rem;
@@ -595,6 +727,55 @@
         grid-template-columns: 1fr;
       }
 
+      body[data-page="about"] .rank-timeline-head {
+        display: block;
+      }
+
+      body[data-page="about"] .rank-timeline-note {
+        margin-top: .3rem;
+        text-align: left;
+      }
+
+      body[data-page="about"] .rank-track {
+        display: block;
+        margin-top: 1rem;
+      }
+
+      body[data-page="about"] .rank-step {
+        min-height: 4.45rem;
+        padding: 0 0 1.2rem 1.55rem;
+      }
+
+      body[data-page="about"] .rank-step:not(:last-child)::after {
+        top: .62rem;
+        bottom: -.08rem;
+        left: .27rem;
+        right: auto;
+        width: 0;
+        border-top: 0;
+        border-left: 1px solid rgba(164,145,157,.42);
+      }
+
+      body[data-page="about"] .rank-step.rank-step-current::after {
+        border-left-style: dashed;
+        border-left-color: rgba(177,104,130,.52);
+      }
+
+      body[data-page="about"] .rank-marker {
+        position: absolute;
+        top: .22rem;
+        left: 0;
+        margin: 0;
+      }
+
+      body[data-page="about"] .rank-date {
+        margin-bottom: .28rem;
+      }
+
+      body[data-page="about"] .rank-caption {
+        max-width: 24rem;
+      }
+
       body[data-page="about"] .ridge-caption {
         grid-template-columns: 1fr;
         gap: .45rem;
@@ -692,6 +873,41 @@
               <dd>1-501st Parachute Infantry Regiment, 2nd Brigade Combat Team, 11th Airborne Division</dd>
             </div>
           </dl>
+
+          <div class="rank-timeline" aria-labelledby="rank-timeline-title">
+            <div class="rank-timeline-head">
+              <p class="rank-timeline-kicker" id="rank-timeline-title">Rank progression</p>
+              <p class="rank-timeline-note">Enlisted progression → projected commission</p>
+            </div>
+
+            <ol class="rank-track" aria-label="U.S. Army rank timeline">
+              <li class="rank-step">
+                <time class="rank-date" datetime="2021-11">Nov 2021</time>
+                <span class="rank-marker" aria-hidden="true"></span>
+                <strong class="rank-abbr">PV2</strong>
+                <span class="rank-name">Private Second Class</span>
+              </li>
+              <li class="rank-step">
+                <time class="rank-date" datetime="2022-05">May 2022</time>
+                <span class="rank-marker" aria-hidden="true"></span>
+                <strong class="rank-abbr">SPC</strong>
+                <span class="rank-name">Specialist</span>
+              </li>
+              <li class="rank-step rank-step-current">
+                <time class="rank-date" datetime="2025-01">Jan 2025</time>
+                <span class="rank-marker" aria-hidden="true"></span>
+                <strong class="rank-abbr">SGT</strong>
+                <span class="rank-name">Sergeant</span>
+              </li>
+              <li class="rank-step rank-step-expected">
+                <time class="rank-date" datetime="2027-05">May 2027</time>
+                <span class="rank-marker" aria-hidden="true"></span>
+                <strong class="rank-abbr">2LT</strong>
+                <span class="rank-name">Second Lieutenant</span>
+                <span class="rank-status">Expected</span>
+              </li>
+            </ol>
+          </div>
         </div>
 
         <div class="military-media">

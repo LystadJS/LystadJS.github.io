@@ -467,6 +467,23 @@
       filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
     }
 
+    body[data-page="about"] .unit-event-name {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 5px);
+      width: 112px;
+      transform: translateX(-50%);
+      color: #8f838d;
+      font-family: var(--mono);
+      font-size: .35rem;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: .055em;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: normal;
+    }
+
     body[data-page="about"] .training-event {
       z-index: 6;
       top: calc(var(--line-y) - 7px);
@@ -1080,14 +1097,17 @@
                     <div class="timeline-line" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
                     <div class="unit-event" style="--x:22.7272727%;">
+                      <span class="unit-event-name">198th Infantry Brigade</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
                     </div>
 
                     <div class="unit-event" style="--x:-1.8%;">
+                      <span class="unit-event-name">U.S. Army Reserve</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seal_of_the_United_States_Army_Reserve.svg" alt="United States Army Reserve John Parker seal" loading="lazy">
                     </div>
 
                     <div class="unit-event" style="--x:54.5454545%;">
+                      <span class="unit-event-name">11th Airborne Division</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
                     </div>
 
@@ -1201,6 +1221,7 @@
                     <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
                     <div class="unit-event edge-start" style="--x:0%;">
+                      <span class="unit-event-name">U.S. Army Cadet Command</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
                     </div>
 

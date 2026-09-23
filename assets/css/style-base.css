@@ -1381,11 +1381,21 @@ main { overflow: clip; }
   font-weight: 600;
 }
 
-/* Extra dark-academia restraint: warm metal, parchment, and archive details
-   rather than neon/cyberpunk effects. */
-.section-index::before {
-  content: "§ ";
-  color: #765d50;
+/* Shared section marker — one restrained geometric cue across the site. */
+.section-index::before,
+.cv-section-label::before,
+body[data-page="research"] .research-section-label::before,
+body[data-page="projects"] .projects-section-label::before,
+body[data-page="code"] .code-section-label::before,
+body[data-page="index"] .ae-section-index::before,
+body[data-page="index"] .correspondence-section .eyebrow::before {
+  content: "◇";
+  display: inline-block;
+  margin-right: .52rem;
+  color: #8d5364;
+  font-size: .82em;
+  line-height: 1;
+  transform: translateY(-.02em);
 }
 
 @media (max-width: 760px) {
@@ -2222,11 +2232,6 @@ body[data-page="cv"] main {
   font-size: .61rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-}
-
-.cv-section-label::before {
-  content: "§ ";
-  color: #725b50;
 }
 
 .cv-lead {
@@ -3568,11 +3573,6 @@ body[data-page="about"] .about-section-label {
   text-transform: uppercase;
 }
 
-body[data-page="about"] .about-section-label::before {
-  content: "§ ";
-  color: #725b50;
-}
-
 body[data-page="about"] .about-section-body {
   min-width: 0;
 }
@@ -3751,11 +3751,6 @@ body[data-page="research"] .research-section-label {
   text-transform: uppercase;
 }
 
-body[data-page="research"] .research-section-label::before {
-  content: "§ ";
-  color: #725b50;
-}
-
 body[data-page="research"] .research-section-body {
   min-width: 0;
 }
@@ -3916,7 +3911,6 @@ body[data-page="projects"] .projects-layout { padding: clamp(4rem, 7vw, 6rem) 0 
 body[data-page="projects"] .projects-section { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 2.2rem; padding: 3.7rem 0; border-bottom: 1px solid var(--line); }
 body[data-page="projects"] .projects-section:first-child { padding-top: 0; }
 body[data-page="projects"] .projects-section-label { padding-top: .2rem; color: var(--crimson-bright); font-family: var(--mono); font-size: .61rem; letter-spacing: .1em; text-transform: uppercase; }
-body[data-page="projects"] .projects-section-label::before { content: "§ "; color: #725b50; }
 body[data-page="projects"] .projects-section-body { min-width: 0; }
 body[data-page="projects"] .projects-section-heading { display: grid; gap: .38rem; margin-bottom: 1.4rem; }
 body[data-page="projects"] .projects-section-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.25rem,4vw,3.15rem); line-height: .98; font-weight: 600; letter-spacing: -.03em; }
@@ -3949,7 +3943,6 @@ body[data-page="code"] .code-page-layout { padding: clamp(4rem, 7vw, 6rem) 0 cla
 body[data-page="code"] .code-page-section { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 2.2rem; padding: 3.7rem 0; border-bottom: 1px solid var(--line); }
 body[data-page="code"] .code-page-section:first-child { padding-top: 0; }
 body[data-page="code"] .code-section-label { padding-top: .2rem; color: var(--crimson-bright); font-family: var(--mono); font-size: .61rem; letter-spacing: .1em; text-transform: uppercase; }
-body[data-page="code"] .code-section-label::before { content: "§ "; color: #725b50; }
 body[data-page="code"] .code-section-body { min-width: 0; }
 body[data-page="code"] .code-section-heading { display: grid; gap: .38rem; margin-bottom: 1.4rem; }
 body[data-page="code"] .code-section-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.25rem,4vw,3.15rem); line-height: .98; font-weight: 600; letter-spacing: -.03em; }

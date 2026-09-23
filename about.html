@@ -390,6 +390,13 @@
     body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap { justify-content: flex-start; }
     body[data-page="about"] .rank-event.edge-end .rank-insignia-wrap { justify-content: flex-end; }
 
+    body[data-page="about"] .rank-event.edge-start .rank-event-abbr,
+    body[data-page="about"] .rank-event.edge-start .rank-event-name,
+    body[data-page="about"] .rank-event.edge-start .rank-event-date {
+      width: 52px;
+      text-align: center;
+    }
+
     body[data-page="about"] .rank-insignia,
     body[data-page="about"] .rank-insignia-svg {
       display: block;
@@ -486,6 +493,19 @@
       text-align: center;
       text-transform: uppercase;
       white-space: normal;
+    }
+
+    body[data-page="about"] .unit-event.commissioning-transition::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 55px;
+      width: 14px;
+      height: 1px;
+      background: rgba(184,103,132,.8);
+      transform: rotate(50deg);
+      transform-origin: left center;
+      pointer-events: none;
     }
 
     body[data-page="about"] .training-event {
@@ -1224,7 +1244,7 @@
                   <div class="timeline-canvas">
                     <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
-                    <div class="unit-event edge-start" style="--x:0%;">
+                    <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
                       <span class="unit-event-name">U.S. Army Cadet Command</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
                     </div>

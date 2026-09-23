@@ -283,32 +283,31 @@
       top: var(--line-y);
       left: var(--from, 0%);
       width: calc(var(--to, 100%) - var(--from, 0%));
-      border-top: 1px solid rgba(159,145,156,.58);
+      height: 1px;
+      background: rgba(159,145,156,.58);
     }
 
     body[data-page="about"] .timeline-line.projected {
-      border-top-style: dashed;
-      border-top-color: rgba(184,103,132,.72);
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(184,103,132,.72) 0 4px,
+        transparent 4px 8px
+      );
     }
 
-    body[data-page="about"] .timeline-line::before,
-    body[data-page="about"] .timeline-line::after {
-      content: "";
-      position: absolute;
-      top: -3px;
-      width: 6px;
-      height: 6px;
-      border: 1px solid #6e646f;
-      border-radius: 50%;
-      background: #0b090d;
+    body[data-page="about"] .timeline-line.fade-start {
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 100%);
     }
 
-    body[data-page="about"] .timeline-line::before { left: -1px; }
-    body[data-page="about"] .timeline-line::after { right: -1px; }
+    body[data-page="about"] .timeline-line.fade-end {
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
+    }
 
-    body[data-page="about"] .timeline-line.projected::before,
-    body[data-page="about"] .timeline-line.projected::after {
-      border-color: #995f75;
+    body[data-page="about"] .timeline-line.fade-both {
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
 
     body[data-page="about"] .timeline-prelude {
@@ -1118,7 +1117,7 @@
                 <div class="timeline-row">
                   <div class="timeline-canvas">
                     <span class="timeline-prelude" aria-hidden="true"></span>
-                    <div class="timeline-line" style="--from:0%;--to:100%;" aria-hidden="true"></div>
+                    <div class="timeline-line fade-end" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
                     <div class="unit-event" style="--x:22.7272727%;">
                       <span class="unit-event-name">198th Infantry Brigade</span>
@@ -1192,8 +1191,7 @@
 
                 <div class="timeline-row">
                   <div class="timeline-canvas">
-                    <div class="timeline-line" style="--from:0%;--to:72.7272727%;" aria-hidden="true"></div>
-                    <div class="timeline-line projected" style="--from:72.7272727%;--to:100%;" aria-hidden="true"></div>
+                    <div class="timeline-line fade-both" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
                     <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course">
                       <span class="training-popover" aria-hidden="true">
@@ -1242,8 +1240,8 @@
 
                 <div class="timeline-row">
                   <div class="timeline-canvas">
-                    <div class="timeline-line current-service-segment" style="--from:0%;--to:67.1151%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
-                    <div class="timeline-line projected future-service-segment" style="--from:67.1151%;--to:100%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
+                    <div class="timeline-line fade-both current-service-segment" style="--from:0%;--to:67.1151%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
+                    <div class="timeline-line projected fade-both future-service-segment" style="--from:67.1151%;--to:100%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
 
                     <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
                       <span class="unit-event-name">U.S. Army Cadet Command</span>

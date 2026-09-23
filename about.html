@@ -498,9 +498,9 @@
     body[data-page="about"] .unit-event.commissioning-transition::after {
       content: "";
       position: absolute;
-      left: 22px;
+      left: 21px;
       top: 55px;
-      width: 14px;
+      width: 18px;
       height: 1px;
       background: rgba(184,103,132,.8);
       transform: rotate(50deg);
@@ -1242,7 +1242,8 @@
 
                 <div class="timeline-row">
                   <div class="timeline-canvas">
-                    <div class="timeline-line projected" style="--from:0%;--to:100%;" aria-hidden="true"></div>
+                    <div class="timeline-line current-service-segment" style="--from:0%;--to:67.1151%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
+                    <div class="timeline-line projected future-service-segment" style="--from:67.1151%;--to:100%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
 
                     <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
                       <span class="unit-event-name">U.S. Army Cadet Command</span>
@@ -1501,6 +1502,26 @@
       }
     });
   });
+
+  const currentServiceSegment = document.querySelector(".current-service-segment");
+  const futureServiceSegment = document.querySelector(".future-service-segment");
+
+  if (currentServiceSegment && futureServiceSegment) {
+    const parseDate = (value) => {
+      const [year, month, day] = value.split("-").map(Number);
+      return Date.UTC(year, month - 1, day);
+    };
+
+    const start = parseDate(currentServiceSegment.dataset.start);
+    const end = parseDate(currentServiceSegment.dataset.end);
+    const today = new Date();
+    const now = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
+    const boundary = pct.toFixed(4) + "%";
+
+    currentServiceSegment.style.setProperty("--to", boundary);
+    futureServiceSegment.style.setProperty("--from", boundary);
+  }
 
   const trainingEvents = [...document.querySelectorAll(".training-event")];
 

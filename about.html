@@ -267,7 +267,7 @@
     body[data-page="about"] .timeline-canvas {
       --line-y: 112px;
       position: relative;
-      width: 94%;
+      width: 88%;
       height: 208px;
       margin-left: 6%;
       overflow: visible;
@@ -310,12 +310,17 @@
       mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
 
+    body[data-page="about"] .timeline-line.private-anchored {
+      left: 26px;
+      width: calc(100% - 26px);
+    }
+
     body[data-page="about"] .timeline-prelude {
       position: absolute;
       z-index: 1;
       top: var(--line-y);
-      right: 100%;
-      width: 5.55%;
+      left: -5.55%;
+      width: calc(5.55% + 26px);
       height: 1px;
       background: linear-gradient(
         90deg,
@@ -364,7 +369,7 @@
       box-shadow: 0 0 0 3px #0b090d;
     }
 
-    body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 0; }
+    body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 21px; }
     body[data-page="about"] .rank-event.edge-end .rank-event-marker { margin-right: 0; }
 
     body[data-page="about"] .rank-event.current .rank-event-marker {
@@ -505,6 +510,36 @@
       transform: rotate(50deg);
       transform-origin: left center;
       pointer-events: none;
+    }
+
+    body[data-page="about"] .future-service-continuation {
+      position: absolute;
+      z-index: 1;
+      top: var(--line-y);
+      left: calc(100% + 5px);
+      width: 30px;
+      height: 1px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(184,103,132,.72) 0 4px,
+        transparent 4px 8px
+      );
+      -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.72) 0%, #000 58%, #000 100%);
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.72) 0%, #000 58%, #000 100%);
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .future-service-continuation::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid rgba(184,103,132,.8);
+      border-right: 1px solid rgba(184,103,132,.8);
+      transform: rotate(45deg);
+      transform-origin: center;
     }
 
     body[data-page="about"] .training-event {
@@ -1117,7 +1152,7 @@
                 <div class="timeline-row">
                   <div class="timeline-canvas">
                     <span class="timeline-prelude" aria-hidden="true"></span>
-                    <div class="timeline-line fade-end" style="--from:0%;--to:100%;" aria-hidden="true"></div>
+                    <div class="timeline-line private-anchored fade-end" style="--from:0%;--to:100%;" aria-hidden="true"></div>
 
                     <div class="unit-event" style="--x:22.7272727%;">
                       <span class="unit-event-name">198th Infantry Brigade</span>
@@ -1261,6 +1296,8 @@
                       <time class="rank-event-date" datetime="2027-05">May 2027</time>
                       <span class="rank-event-status">Expected</span>
                     </div>
+
+                    <span class="future-service-continuation" aria-hidden="true"></span>
                   </div>
                 </div>
 

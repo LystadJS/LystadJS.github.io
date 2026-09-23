@@ -251,74 +251,13 @@
       border-top: 1px solid rgba(74,53,71,.62);
     }
 
-    body[data-page="about"] .career-timeline-head {
-      display: block;
-      margin-bottom: .7rem;
-    }
-
-    body[data-page="about"] .career-timeline-kicker,
-    body[data-page="about"] .career-timeline-note,
-    body[data-page="about"] .career-legend,
     body[data-page="about"] .rank-event-date,
     body[data-page="about"] .rank-event-abbr,
     body[data-page="about"] .rank-event-status,
-    body[data-page="about"] .unit-event-label,
-    body[data-page="about"] .training-popover-meta,
-    body[data-page="about"] .timeline-row-label {
+    body[data-page="about"] .training-popover-meta {
       font-family: var(--mono);
       text-transform: uppercase;
       letter-spacing: .08em;
-    }
-
-    body[data-page="about"] .career-timeline-kicker {
-      margin: 0;
-      color: #b9adb6;
-      font-size: .54rem;
-    }
-
-    body[data-page="about"] .career-timeline-note {
-      max-width: 58ch;
-      margin: .35rem 0 0;
-      color: #746a75;
-      font-size: .43rem;
-      line-height: 1.55;
-      text-align: left;
-    }
-
-    body[data-page="about"] .career-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .35rem .85rem;
-      margin: 0 0 .85rem;
-      color: #665e67;
-      font-size: .39rem;
-      line-height: 1.45;
-    }
-
-    body[data-page="about"] .career-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-    }
-
-    body[data-page="about"] .legend-line,
-    body[data-page="about"] .legend-line-future {
-      width: 18px;
-      height: 0;
-      border-top: 1px solid #817681;
-    }
-
-    body[data-page="about"] .legend-line-future {
-      border-top-style: dashed;
-      border-top-color: #9a6678;
-    }
-
-    body[data-page="about"] .legend-dot {
-      width: 7px;
-      height: 7px;
-      border: 1px solid var(--crimson-bright);
-      border-radius: 50%;
-      background: #0b090d;
     }
 
     body[data-page="about"] .career-timeline-scroll {
@@ -497,69 +436,34 @@
 
     body[data-page="about"] .unit-event {
       z-index: 2;
-      top: 2px;
-      width: 82px;
-      text-align: center;
+      top: calc(var(--line-y) - 56px);
+      width: 46px;
+      height: 46px;
       transform: translateX(-50%);
     }
 
     body[data-page="about"] .unit-event.edge-start {
       transform: translateX(0);
-      text-align: left;
     }
 
     body[data-page="about"] .unit-event.edge-end {
       transform: translateX(-100%);
-      text-align: right;
     }
 
     body[data-page="about"] .unit-event img {
       display: block;
-      width: 30px;
-      height: 30px;
-      margin: 0 auto .25rem;
+      width: 46px;
+      height: 46px;
+      margin: 0;
       object-fit: contain;
       background: transparent !important;
       border: 0 !important;
       filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
     }
 
-    body[data-page="about"] .unit-event.edge-start img { margin-left: 0; }
-    body[data-page="about"] .unit-event.edge-end img { margin-right: 0; }
-
-    body[data-page="about"] .unit-event-label {
-      display: block;
-      color: #817681;
-      font-size: .36rem;
-      line-height: 1.2;
-    }
-
-    body[data-page="about"] .unit-event.label-right .unit-event-label {
-      transform: translateX(28%);
-    }
-
     body[data-page="about"] .unit-event.prelude-unit {
-      width: 86px;
-    }
-
-    body[data-page="about"] .unit-event.prelude-unit .unit-event-label {
-      transform: translateX(-18%);
-    }
-
-    body[data-page="about"] .timeline-prelude {
-      position: absolute;
-      z-index: 1;
-      top: var(--line-y);
-      right: 100%;
-      width: 5.55%;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(159,145,156,0) 0%,
-        rgba(159,145,156,.16) 38%,
-        rgba(159,145,156,.58) 100%
-      );
-      pointer-events: none;
+      width: 46px;
+      height: 46px;
     }
 
     body[data-page="about"] .training-event {
@@ -1040,15 +944,6 @@
         grid-template-columns: 1fr;
       }
 
-      body[data-page="about"] .career-timeline-head {
-        display: block;
-      }
-
-      body[data-page="about"] .career-timeline-note {
-        margin-top: .35rem;
-        text-align: left;
-      }
-
       body[data-page="about"] .ridge-caption {
         grid-template-columns: 1fr;
         gap: .45rem;
@@ -1158,17 +1053,14 @@
 
                     <div class="unit-event" style="--x:22.7272727%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
-                      <span class="unit-event-label">198th Infantry Brigade</span>
                     </div>
 
                     <div class="unit-event prelude-unit" style="--x:-1.8%;">
-                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US_Army_Reserve_Command_DUI.gif" alt="U.S. Army Reserve Command distinctive unit insignia" loading="lazy">
-                      <span class="unit-event-label">U.S. Army Reserve</span>
+                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seal_of_the_United_States_Army_Reserve.svg" alt="United States Army Reserve John Parker seal" loading="lazy">
                     </div>
 
                     <div class="unit-event label-right" style="--x:54.5454545%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
-                      <span class="unit-event-label">2nd Brigade · 11th Airborne Division</span>
                     </div>
 
                     <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="September 2022 — U.S. Army Airborne School">
@@ -1282,7 +1174,6 @@
 
                     <div class="unit-event edge-start" style="--x:0%;">
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
-                      <span class="unit-event-label">U.S. Army Cadet Command</span>
                     </div>
 
                     <div class="rank-event edge-end expected" style="--x:100%;">

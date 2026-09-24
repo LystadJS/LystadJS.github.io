@@ -367,8 +367,8 @@
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .78;
-      stroke: rgba(222,207,216,.22);
+      opacity: .50;
+      stroke: rgba(222,207,216,.18);
       stroke-width: .35;
       vector-effect: non-scaling-stroke;
       pointer-events: auto;
@@ -377,8 +377,8 @@
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .92;
-      filter: brightness(1.08);
+      opacity: .70;
+      filter: brightness(1.06);
       outline: none;
     }
 

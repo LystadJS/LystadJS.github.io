@@ -390,7 +390,7 @@
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .26;
+      opacity: .38;
       stroke: rgba(190,176,185,.10);
       stroke-width: .35;
       vector-effect: non-scaling-stroke;
@@ -400,7 +400,7 @@
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .42;
+      opacity: .56;
       filter: brightness(1.08);
       outline: none;
     }
@@ -431,7 +431,7 @@
       max-height: 2.04em;
       transform: translateY(-50%);
       overflow: hidden;
-      color: #e1d6dd;
+      color: #918592;
       font-family: var(--mono);
       font-size: clamp(.5rem, .72vw, .58rem);
       font-weight: 600;
@@ -464,6 +464,11 @@
       text-align: right;
     }
 
+    body[data-page="about"] .rank-event.edge-end.expected {
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
     body[data-page="about"] .rank-event-marker {
       display: block;
       box-sizing: border-box;
@@ -478,6 +483,7 @@
 
     body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: calc(var(--timeline-icon-half) - var(--timeline-marker-half)); }
     body[data-page="about"] .rank-event.edge-end .rank-event-marker { margin-right: 0; }
+    body[data-page="about"] .rank-event.edge-end.expected .rank-event-marker { margin-inline: auto; }
 
     body[data-page="about"] .rank-event.expected .rank-event-marker {
       border-style: dashed;
@@ -514,11 +520,23 @@
 
     body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap { justify-content: flex-start; }
     body[data-page="about"] .rank-event.edge-end .rank-insignia-wrap { justify-content: flex-end; }
+    body[data-page="about"] .rank-event.edge-end.expected .rank-insignia-wrap { justify-content: center; }
 
     body[data-page="about"] .rank-event.edge-start .rank-event-abbr,
     body[data-page="about"] .rank-event.edge-start .rank-event-name,
     body[data-page="about"] .rank-event.edge-start .rank-event-date {
       width: var(--timeline-icon-size);
+      text-align: center;
+    }
+
+    body[data-page="about"] .rank-event.edge-end.expected .rank-event-abbr,
+    body[data-page="about"] .rank-event.edge-end.expected .rank-event-name,
+    body[data-page="about"] .rank-event.edge-end.expected .rank-event-date {
+      width: 100%;
+      text-align: center;
+    }
+
+    body[data-page="about"] .rank-event.edge-end.expected .rank-event-status {
       text-align: center;
     }
 

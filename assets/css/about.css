@@ -182,13 +182,13 @@
     }
 
     body[data-page="about"] .service-meta {
-      margin: .72rem 0 0;
-      color: #9d919b;
+      margin: .76rem 0 0;
+      color: #a79ba5;
       font-family: var(--mono);
-      font-size: .62rem;
+      font-size: .68rem;
       font-weight: 500;
-      line-height: 1.35;
-      letter-spacing: .055em;
+      line-height: 1.32;
+      letter-spacing: .05em;
       text-transform: uppercase;
     }
 
@@ -207,8 +207,8 @@
       max-width: 72ch;
       margin: 0;
       color: var(--about-muted);
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 1.06rem;
+      line-height: 1.48;
     }
 
     body[data-page="about"] .service-copy + .service-copy {
@@ -228,17 +228,17 @@
     }
 
     body[data-page="about"] .service-fact dt {
-      margin: 0 0 .3rem;
+      margin: 0 0 .32rem;
       color: var(--about-faint);
-      font-size: .68rem;
+      font-size: .74rem;
     }
 
     body[data-page="about"] .service-fact dd {
       margin: 0;
       color: #cfc4cb;
       font-family: var(--serif);
-      font-size: 1.16rem;
-      line-height: 1.1;
+      font-size: 1.24rem;
+      line-height: 1.08;
     }
 
     body[data-page="about"] .career-timeline {
@@ -248,13 +248,13 @@
     }
 
     body[data-page="about"] .timeline-kicker {
-      margin: 0 0 .15rem;
-      color: #756b74;
+      margin: 0 0 .18rem;
+      color: #80757f;
       font-family: var(--mono);
-      font-size: .58rem;
+      font-size: .64rem;
       font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: .075em;
+      line-height: 1.18;
+      letter-spacing: .07em;
       text-transform: uppercase;
     }
 
@@ -273,16 +273,16 @@
     }
 
     body[data-page="about"] .timeline-canvas {
-      --line-y: 124px;
+      --line-y: 134px;
       position: relative;
       width: 84%;
-      height: 214px;
+      height: 232px;
       margin-left: 6%;
       overflow: visible;
     }
 
     body[data-page="about"] .timeline-row:last-child .timeline-canvas {
-      height: 232px;
+      height: 250px;
     }
 
     body[data-page="about"] .timeline-line {
@@ -314,8 +314,8 @@
     }
 
     body[data-page="about"] .timeline-line.private-anchored {
-      left: 30px;
-      width: calc(100% - 30px);
+      left: 33px;
+      width: calc(100% - 33px);
     }
 
     body[data-page="about"] .timeline-prelude {
@@ -323,7 +323,7 @@
       z-index: 1;
       top: var(--line-y);
       left: -5.55%;
-      width: calc(5.55% + 30px);
+      width: calc(5.55% + 33px);
       height: 1px;
       background: linear-gradient(
         90deg,
@@ -345,9 +345,9 @@
 
     body[data-page="about"] .year-tick {
       z-index: 2;
-      top: calc(var(--line-y) - 6px);
+      top: calc(var(--line-y) - 7px);
       width: 1px;
-      height: 13px;
+      height: 15px;
       background: rgba(174,160,171,.24);
       transform: translateX(-50%);
       pointer-events: none;
@@ -356,14 +356,14 @@
     body[data-page="about"] .year-tick-label {
       position: absolute;
       left: 50%;
-      bottom: calc(100% + 3px);
+      bottom: calc(100% + 4px);
       transform: translateX(-50%);
-      color: #69616a;
+      color: #746b74;
       font-family: var(--mono);
-      font-size: .48rem;
+      font-size: .56rem;
       line-height: 1;
-      letter-spacing: .05em;
-      padding: .1rem .2rem;
+      letter-spacing: .045em;
+      padding: .11rem .22rem;
       border-radius: 2px;
       background: rgba(11,9,13,.58);
     }
@@ -371,10 +371,10 @@
     body[data-page="about"] .service-sankey {
       position: absolute;
       z-index: 2;
-      top: calc(var(--line-y) + 11px);
+      top: calc(var(--line-y) + 12px);
       left: 0;
       width: 100%;
-      height: 60px;
+      height: 66px;
       overflow: visible;
       pointer-events: none;
     }
@@ -384,8 +384,8 @@
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .50;
-      stroke: rgba(222,207,216,.18);
+      opacity: .38;
+      stroke: rgba(205,190,199,.12);
       stroke-width: .35;
       vector-effect: non-scaling-stroke;
       pointer-events: auto;
@@ -394,43 +394,43 @@
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .70;
-      filter: brightness(1.06);
+      opacity: .56;
+      filter: brightness(1.08);
       outline: none;
     }
 
     body[data-page="about"] .service-flow--infantry {
-      fill: rgb(101,69,126);
+      fill: rgb(72,48,88);
     }
 
     body[data-page="about"] .service-flow--leader {
-      fill: rgb(141,23,50);
+      fill: rgb(96,18,38);
     }
 
     body[data-page="about"] .service-flow--comms {
-      fill: rgb(73,96,120);
+      fill: rgb(50,67,84);
     }
 
     body[data-page="about"] .service-flow--officer {
-      fill: rgb(184,149,117);
+      fill: rgb(126,101,79);
     }
 
     body[data-page="about"] .service-flow-label {
       position: absolute;
       z-index: 4;
-      left: calc(var(--label-x) + 7px);
-      top: calc(var(--line-y) + 11px + var(--label-y));
-      width: clamp(116px, 11.5vw, 148px);
+      left: calc(var(--label-x) + 8px);
+      top: calc(var(--line-y) + 12px + var(--label-y));
+      width: clamp(124px, 12vw, 158px);
       min-height: 2.04em;
       max-height: 2.04em;
       transform: translateY(-50%);
       overflow: hidden;
-      color: #d6cad2;
+      color: #ddd2da;
       font-family: var(--mono);
-      font-size: clamp(.42rem, .62vw, .50rem);
+      font-size: clamp(.46rem, .68vw, .54rem);
       font-weight: 600;
       line-height: 1.02;
-      letter-spacing: .012em;
+      letter-spacing: .01em;
       text-align: left;
       white-space: normal;
       hyphens: none;
@@ -442,8 +442,8 @@
 
     body[data-page="about"] .rank-event {
       z-index: 3;
-      top: calc(var(--line-y) - 6px);
-      width: 124px;
+      top: calc(var(--line-y) - 6.5px);
+      width: 134px;
       text-align: center;
       transform: translateX(-50%);
     }
@@ -461,8 +461,8 @@
     body[data-page="about"] .rank-event-marker {
       display: block;
       box-sizing: border-box;
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       margin: 0 auto;
       border: 1px solid #8c808a;
       border-radius: 50%;
@@ -470,7 +470,7 @@
       box-shadow: 0 0 0 4px #0b090d;
     }
 
-    body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 24px; }
+    body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 26.5px; }
     body[data-page="about"] .rank-event.edge-end .rank-event-marker { margin-right: 0; }
 
     body[data-page="about"] .rank-event.expected .rank-event-marker {
@@ -482,11 +482,11 @@
     body[data-page="about"] .current-day-marker {
       position: absolute;
       z-index: 5;
-      top: calc(var(--line-y) - 6px);
+      top: calc(var(--line-y) - 6.5px);
       left: var(--today, 67.1151%);
       box-sizing: border-box;
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       border: 1px solid var(--crimson-bright);
       border-radius: 50%;
       background: var(--crimson);
@@ -502,8 +502,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 60px;
-      margin-top: 6px;
+      height: 66px;
+      margin-top: 7px;
     }
 
     body[data-page="about"] .rank-event.edge-start .rank-insignia-wrap { justify-content: flex-start; }
@@ -512,15 +512,15 @@
     body[data-page="about"] .rank-event.edge-start .rank-event-abbr,
     body[data-page="about"] .rank-event.edge-start .rank-event-name,
     body[data-page="about"] .rank-event.edge-start .rank-event-date {
-      width: 60px;
+      width: 66px;
       text-align: center;
     }
 
     body[data-page="about"] .rank-insignia,
     body[data-page="about"] .rank-insignia-svg {
       display: block;
-      max-width: 60px;
-      max-height: 60px;
+      max-width: 66px;
+      max-height: 66px;
       object-fit: contain;
       background: transparent !important;
       border: 0 !important;
@@ -528,17 +528,17 @@
     }
 
     body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
-      width: 22px;
-      height: 58px;
+      width: 24px;
+      height: 64px;
       max-width: none;
       max-height: none;
     }
 
     body[data-page="about"] .rank-event-abbr {
       display: block;
-      margin-top: .32rem;
-      color: #b9adb6;
-      font-size: .62rem;
+      margin-top: .34rem;
+      color: #c0b4bd;
+      font-size: .68rem;
       line-height: 1;
       white-space: nowrap;
     }
@@ -546,9 +546,9 @@
     body[data-page="about"] .rank-event-name,
     body[data-page="about"] .unit-event-name {
       display: block;
-      color: #d6cad2;
+      color: #ddd2d9;
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1.18rem;
       font-weight: 600;
       line-height: .98;
     }
@@ -560,8 +560,8 @@
     body[data-page="about"] .rank-event-date,
     body[data-page="about"] .unit-event-date {
       display: block;
-      color: #857986;
-      font-size: .59rem;
+      color: #918592;
+      font-size: .64rem;
       line-height: 1.05;
       white-space: nowrap;
     }
@@ -581,15 +581,15 @@
       padding: .15rem .28rem;
       border: 1px solid rgba(154,114,131,.42);
       color: #ad8b9a;
-      font-size: .52rem;
+      font-size: .57rem;
       line-height: 1;
     }
 
     body[data-page="about"] .unit-event {
       z-index: 2;
-      top: calc(var(--line-y) - 70px);
-      width: 60px;
-      height: 60px;
+      top: calc(var(--line-y) - 76px);
+      width: 66px;
+      height: 66px;
       transform: translateX(-50%);
     }
 
@@ -601,7 +601,7 @@
       content: "";
       position: absolute;
       left: 50%;
-      top: 60px;
+      top: 66px;
       width: 1px;
       height: 10px;
       background: linear-gradient(
@@ -620,8 +620,8 @@
 
     body[data-page="about"] .unit-event img {
       display: block;
-      width: 60px;
-      height: 60px;
+      width: 66px;
+      height: 66px;
       margin: 0;
       object-fit: contain;
       background: transparent !important;
@@ -633,7 +633,7 @@
       position: absolute;
       left: 50%;
       bottom: calc(100% + 5px);
-      width: 174px;
+      width: 188px;
       transform: translateX(-50%);
       text-align: center;
     }
@@ -651,9 +651,9 @@
     body[data-page="about"] .unit-event.commissioning-transition::after {
       content: "";
       position: absolute;
-      left: 24px;
-      top: 63px;
-      width: 21px;
+      left: 27px;
+      top: 69px;
+      width: 23px;
       height: 1px;
       background: rgba(184,103,132,.8);
       transform: rotate(50deg);
@@ -665,8 +665,8 @@
       position: absolute;
       z-index: 1;
       top: var(--line-y);
-      left: calc(100% + 6px);
-      width: 34px;
+      left: calc(100% + 7px);
+      width: 37px;
       height: 1px;
       background: repeating-linear-gradient(
         90deg,
@@ -683,8 +683,8 @@
       position: absolute;
       right: -1px;
       top: -3.5px;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-top: 1px solid rgba(184,103,132,.8);
       border-right: 1px solid rgba(184,103,132,.8);
       transform: rotate(45deg);
@@ -693,9 +693,9 @@
 
     body[data-page="about"] .training-event {
       z-index: 6;
-      top: calc(var(--line-y) - 8px);
-      width: 16px;
-      height: 16px;
+      top: calc(var(--line-y) - 9px);
+      width: 18px;
+      height: 18px;
       padding: 0;
       border: 0;
       border-radius: 50%;
@@ -707,9 +707,9 @@
     body[data-page="about"] .training-event::before {
       content: "";
       display: block;
-      width: 12px;
-      height: 12px;
-      margin: 2px;
+      width: 13px;
+      height: 13px;
+      margin: 2.5px;
       border: 1px solid rgba(210,96,126,.8);
       border-radius: 50%;
       background: #0b090d;
@@ -719,10 +719,10 @@
 
     body[data-page="about"] .qualification-icon {
       position: absolute;
-      top: 21px;
+      top: 24px;
       left: 50%;
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       color: #807581;
       transform: translateX(-50%);
       opacity: .84;
@@ -764,8 +764,8 @@
     body[data-page="about"] .training-popover {
       position: absolute;
       left: 50%;
-      bottom: 23px;
-      width: 176px;
+      bottom: 26px;
+      width: 190px;
       opacity: 0;
       visibility: hidden;
       transform: translate(-50%, 6px);
@@ -797,8 +797,8 @@
     body[data-page="about"] .training-popover img {
       display: block;
       width: auto;
-      height: 54px;
-      max-width: 92px;
+      height: 58px;
+      max-width: 100px;
       margin: 0 auto .3rem;
       object-fit: contain;
       background: transparent !important;
@@ -811,9 +811,9 @@
     }
 
     body[data-page="about"] .training-popover img.eib-icon {
-      width: 108px;
+      width: 116px;
       height: auto;
-      max-width: 108px;
+      max-width: 116px;
       margin-bottom: .42rem;
     }
 
@@ -828,25 +828,25 @@
 
     body[data-page="about"] .training-popover-title {
       display: block;
-      color: #ddd1d8;
+      color: #e2d7de;
       font-family: var(--serif);
-      font-size: 1.02rem;
+      font-size: 1.1rem;
       line-height: 1.02;
     }
 
     body[data-page="about"] .training-popover-school {
       display: block;
-      margin-top: .18rem;
-      color: #8e818b;
-      font-size: .70rem;
-      line-height: 1.12;
+      margin-top: .2rem;
+      color: #988b95;
+      font-size: .76rem;
+      line-height: 1.1;
     }
 
     body[data-page="about"] .training-popover-meta {
       display: block;
-      margin-top: .28rem;
-      color: #675f67;
-      font-size: .56rem;
+      margin-top: .3rem;
+      color: #766d75;
+      font-size: .62rem;
       line-height: 1.08;
     }
 
@@ -867,6 +867,10 @@
       letter-spacing: .075em;
       text-transform: uppercase;
     }
+    body[data-page="about"] .military-photo figcaption {
+      font-size: .60rem;
+    }
+
 
     body[data-page="about"] .military-media {
       display: grid;
@@ -1177,8 +1181,8 @@
       }
 
       body[data-page="about"] .service-flow-label {
-        width: clamp(104px, 18vw, 132px);
-        font-size: clamp(.38rem, .86vw, .46rem);
+        width: clamp(112px, 19vw, 142px);
+        font-size: clamp(.42rem, .92vw, .50rem);
       }
 
       body[data-page="about"] .about-hero-grid,

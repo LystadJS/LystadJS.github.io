@@ -181,9 +181,15 @@
       line-height: 1.58;
     }
 
-    body[data-page="about"] section[aria-labelledby="military-title"] .essay-deck {
-      font-size: .96rem;
-      line-height: 1.45;
+    body[data-page="about"] .service-meta {
+      margin: .72rem 0 0;
+      color: #9d919b;
+      font-family: var(--mono);
+      font-size: .62rem;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: .055em;
+      text-transform: uppercase;
     }
 
     body[data-page="about"] .military-layout {
@@ -206,14 +212,14 @@
     }
 
     body[data-page="about"] .service-copy + .service-copy {
-      margin-top: 1rem;
+      margin-top: .82rem;
     }
 
     body[data-page="about"] .service-facts {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0 1.25rem;
-      margin: 1.55rem 0 0;
+      margin: 1.35rem 0 0;
     }
 
     body[data-page="about"] .service-fact {
@@ -236,9 +242,20 @@
     }
 
     body[data-page="about"] .career-timeline {
-      margin-top: 1rem;
-      padding-top: .45rem;
+      margin-top: 1.1rem;
+      padding-top: .58rem;
       border-top: 1px solid rgba(74,53,71,.62);
+    }
+
+    body[data-page="about"] .timeline-kicker {
+      margin: 0 0 .15rem;
+      color: #756b74;
+      font-family: var(--mono);
+      font-size: .58rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: .075em;
+      text-transform: uppercase;
     }
 
     body[data-page="about"] .rank-event-date,

@@ -245,7 +245,6 @@
     body[data-page="about"] .rank-event-abbr,
     body[data-page="about"] .rank-event-status,
     body[data-page="about"] .unit-event-date,
-    body[data-page="about"] .unit-event-abbr,
     body[data-page="about"] .training-popover-meta {
       font-family: var(--mono);
       text-transform: uppercase;
@@ -362,14 +361,14 @@
       box-sizing: border-box;
       border: 1px solid rgba(205,188,198,.10);
       border-radius: 4px;
-      opacity: .44;
+      opacity: .52;
       cursor: default;
       transition: opacity 120ms ease;
     }
 
     body[data-page="about"] .service-phase:hover,
     body[data-page="about"] .service-phase:focus-visible {
-      opacity: .64;
+      opacity: .72;
     }
 
     body[data-page="about"] .service-phase:focus-visible {
@@ -513,17 +512,13 @@
       max-height: none;
     }
 
-    body[data-page="about"] .rank-event-abbr,
-    body[data-page="about"] .unit-event-abbr {
+    body[data-page="about"] .rank-event-abbr {
       display: block;
+      margin-top: .32rem;
       color: #b9adb6;
       font-size: .56rem;
       line-height: 1;
       white-space: nowrap;
-    }
-
-    body[data-page="about"] .rank-event-abbr {
-      margin-top: .32rem;
     }
 
     body[data-page="about"] .rank-event-name,

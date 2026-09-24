@@ -351,53 +351,58 @@
       background: rgba(11,9,13,.58);
     }
 
-    body[data-page="about"] .service-phase {
+    body[data-page="about"] .service-sankey {
       position: absolute;
       z-index: 2;
-      top: calc(var(--line-y) + 10px + var(--phase-top, 0px));
-      left: var(--from);
-      width: calc(var(--to) - var(--from));
-      height: var(--phase-height, 52px);
-      box-sizing: border-box;
-      border: 1px solid rgba(205,188,198,.14);
-      border-radius: 0;
-      opacity: .66;
-      cursor: default;
-      transition: opacity 120ms ease;
-      background-clip: padding-box;
+      top: calc(var(--line-y) + 10px);
+      left: 0;
+      width: 100%;
+      height: 52px;
+      overflow: visible;
+      pointer-events: none;
     }
 
-    body[data-page="about"] .service-phase:hover,
-    body[data-page="about"] .service-phase:focus-visible {
-      opacity: .82;
+    body[data-page="about"] .service-sankey--current {
+      width: var(--today, 67.1151%);
     }
 
-    body[data-page="about"] .service-phase:focus-visible {
-      outline: 1px solid rgba(184,103,132,.72);
-      outline-offset: 2px;
+    body[data-page="about"] .service-flow {
+      opacity: .68;
+      stroke: rgba(222,207,216,.22);
+      stroke-width: .35;
+      vector-effect: non-scaling-stroke;
+      pointer-events: auto;
+      transition: opacity 120ms ease, filter 120ms ease;
     }
 
-    body[data-page="about"] .service-phase--infantry {
-      background: rgba(101,69,126,.42);
+    body[data-page="about"] .service-flow:hover,
+    body[data-page="about"] .service-flow:focus-visible {
+      opacity: .86;
+      filter: brightness(1.08);
+      outline: none;
     }
 
-    body[data-page="about"] .service-phase--leader {
-      background: rgba(141,23,50,.40);
+    body[data-page="about"] .service-flow--infantry {
+      fill: rgb(101,69,126);
     }
 
-    body[data-page="about"] .service-phase--comms {
-      background: rgba(73,96,120,.40);
+    body[data-page="about"] .service-flow--leader {
+      fill: rgb(141,23,50);
     }
 
-    body[data-page="about"] .service-phase--officer {
-      background: rgba(184,149,117,.38);
+    body[data-page="about"] .service-flow--comms {
+      fill: rgb(73,96,120);
     }
 
-    body[data-page="about"] .service-phase::before {
-      content: attr(data-side-label);
+    body[data-page="about"] .service-flow--officer {
+      fill: rgb(184,149,117);
+    }
+
+    body[data-page="about"] .service-flow-label {
       position: absolute;
-      left: calc(100% + 7px);
-      top: 50%;
+      z-index: 4;
+      left: calc(var(--label-x) + 7px);
+      top: calc(var(--line-y) + 10px + var(--label-y));
       width: clamp(108px, 11vw, 136px);
       max-height: 2.04em;
       transform: translateY(-50%);
@@ -414,35 +419,6 @@
       word-break: normal;
       text-shadow: 0 1px 2px rgba(0,0,0,.55);
       pointer-events: none;
-    }
-
-    body[data-page="about"] .service-phase::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      bottom: calc(100% + 2px);
-      z-index: 8;
-      padding: .28rem .38rem;
-      border: 1px solid rgba(91,70,86,.72);
-      background: rgba(8,7,10,.94);
-      color: #b8adb5;
-      font-family: var(--mono);
-      font-size: .54rem;
-      line-height: 1.08;
-      letter-spacing: .025em;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(3px);
-      transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .service-phase:hover::after,
-    body[data-page="about"] .service-phase:focus-visible::after {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
     }
 
     body[data-page="about"] .rank-event {
@@ -1177,6 +1153,15 @@
     }
 
     @media (max-width: 900px) {
+      body[data-page="about"] .timeline-canvas {
+        width: 78%;
+      }
+
+      body[data-page="about"] .service-flow-label {
+        width: clamp(92px, 17vw, 120px);
+        font-size: clamp(.34rem, .8vw, .4rem);
+      }
+
       body[data-page="about"] .about-hero-grid,
       body[data-page="about"] .military-layout,
       body[data-page="about"] .shelf-wrap,

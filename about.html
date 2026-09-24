@@ -259,6 +259,8 @@
     body[data-page="about"] .rank-event-date,
     body[data-page="about"] .rank-event-abbr,
     body[data-page="about"] .rank-event-status,
+    body[data-page="about"] .unit-event-date,
+    body[data-page="about"] .unit-event-abbr,
     body[data-page="about"] .training-popover-meta {
       font-family: var(--mono);
       text-transform: uppercase;
@@ -376,7 +378,6 @@
       border: 1px solid rgba(205,188,198,.10);
       border-radius: 4px;
       opacity: .34;
-      outline: none;
       cursor: default;
       transition: opacity 120ms ease;
     }
@@ -384,6 +385,11 @@
     body[data-page="about"] .service-phase:hover,
     body[data-page="about"] .service-phase:focus-visible {
       opacity: .56;
+    }
+
+    body[data-page="about"] .service-phase:focus-visible {
+      outline: 1px solid rgba(184,103,132,.72);
+      outline-offset: 2px;
     }
 
     body[data-page="about"] .service-phase--infantry {
@@ -522,29 +528,44 @@
       max-height: none;
     }
 
-    body[data-page="about"] .rank-event-abbr {
+    body[data-page="about"] .rank-event-abbr,
+    body[data-page="about"] .unit-event-abbr {
       display: block;
-      margin-top: .32rem;
       color: #b9adb6;
       font-size: .56rem;
+      line-height: 1;
+      white-space: nowrap;
     }
 
-    body[data-page="about"] .rank-event-name {
+    body[data-page="about"] .rank-event-abbr {
+      margin-top: .32rem;
+    }
+
+    body[data-page="about"] .rank-event-name,
+    body[data-page="about"] .unit-event-name {
       display: block;
-      margin-top: .14rem;
       color: #d6cad2;
       font-family: var(--serif);
       font-size: 1rem;
+      font-weight: 600;
       line-height: .98;
     }
 
-    body[data-page="about"] .rank-event-date {
+    body[data-page="about"] .rank-event-name {
+      margin-top: .14rem;
+    }
+
+    body[data-page="about"] .rank-event-date,
+    body[data-page="about"] .unit-event-date {
       display: block;
-      margin-top: .28rem;
       color: #857986;
       font-size: .53rem;
       line-height: 1.05;
       white-space: nowrap;
+    }
+
+    body[data-page="about"] .rank-event-date {
+      margin-top: .28rem;
     }
 
     body[data-page="about"] .rank-event.expected .rank-event-name,
@@ -594,38 +615,14 @@
       text-align: center;
     }
 
-    body[data-page="about"] .unit-event-abbr {
-      display: block;
-      color: #b9adb6;
-      font-family: var(--mono);
-      font-size: .56rem;
-      line-height: 1;
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-
     body[data-page="about"] .unit-event-name {
-      display: block;
       margin-top: .12rem;
-      color: #d6cad2;
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: .98;
       letter-spacing: 0;
       white-space: normal;
     }
 
     body[data-page="about"] .unit-event-date {
-      display: block;
       margin-top: .22rem;
-      color: #857986;
-      font-family: var(--mono);
-      font-size: .53rem;
-      line-height: 1.05;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
     }
 
     body[data-page="about"] .unit-event.commissioning-transition::after {
@@ -1306,10 +1303,8 @@
                 </filter>
               </defs>
             </svg>
-            <div>
-              <div>
 
-                <div class="timeline-row">
+            <div class="timeline-row">
                   <div class="timeline-canvas">
                     <span class="timeline-prelude" aria-hidden="true"></span>
                     <div class="timeline-line private-anchored fade-end" style="--from:0%;--to:100%;" aria-hidden="true"></div>
@@ -1338,7 +1333,7 @@
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
                     </div>
 
-                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="September 2022 — U.S. Army Airborne School">
+                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="September 2022 — U.S. Army Airborne School" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/United_States_Army_Infantry_School_Shoulder_Sleeve_Insignia.svg" alt="">
                         <span class="training-popover-box">
@@ -1350,7 +1345,7 @@
                       <span class="qualification-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c1.8-4.5 5-6.5 9-6.5S19.2 4.5 21 9H3Z"></path><path d="M6 9l6 7 6-7M12 9v7"></path><path d="M9.5 19.5h5"></path></svg></span>
                     </button>
 
-                    <button class="training-event" type="button" style="--x:59.0909091%;" aria-label="December 2022 — Cold Weather Indoctrination Course">
+                    <button class="training-event" type="button" style="--x:59.0909091%;" aria-label="December 2022 — Cold Weather Indoctrination Course" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
@@ -1362,7 +1357,7 @@
                       <span class="qualification-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1.8v20.4M3.17 6.9l17.66 10.2M3.17 17.1 20.83 6.9"></path><path d="m12 5.1-2-2m2 2 2-2m-2 15.8-2 2m2-2 2 2M6 8.55l-2.75-.7M6 8.55l-.75-2.7m12.75 9.6 2.75.7M18 15.45l.75 2.7M6 15.45l-2.75.7M6 15.45l-.75 2.7M18 8.55l2.75-.7M18 8.55l.75-2.7"></path><path d="m9.2 7.25-.7-2.35m6.3 2.35.7-2.35m-6.3 11.85-.7 2.35m6.3-2.35.7 2.35"></path><circle cx="12" cy="12" r="1.15"></circle></svg></span>
                     </button>
 
-                    <button class="training-event popover-left" type="button" style="--x:95.4545455%;" aria-label="August 2023 — Infantry Mortar Leader Course">
+                    <button class="training-event popover-left" type="button" style="--x:95.4545455%;" aria-label="August 2023 — Infantry Mortar Leader Course" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/United_States_Army_Infantry_School_Shoulder_Sleeve_Insignia.svg" alt="">
                         <span class="training-popover-box">
@@ -1407,7 +1402,7 @@
                     <span class="service-phase service-phase--leader" tabindex="0" style="--from:0%;--to:100%;--phase-top:18.5px;--phase-height:15px;" data-label="Infantry Squad Leader · Mar 2023–Jul 2025" aria-label="Infantry Squad Leader, March 2023 to July 2025"></span>
                     <span class="service-phase service-phase--comms" tabindex="0" style="--from:31.8181818%;--to:100%;--phase-top:37px;--phase-height:15px;" data-label="Company Communications Chief · Apr 2024–Jul 2025" aria-label="Infantry Company Communications Chief, April 2024 to July 2025"></span>
 
-                    <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course">
+                    <button class="training-event" type="button" style="--x:22.7272727%;" aria-label="February 2024 — Cold Weather Leaders Course" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
@@ -1419,7 +1414,7 @@
                       <span class="qualification-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1.8v20.4M3.17 6.9l17.66 10.2M3.17 17.1 20.83 6.9"></path><path d="m12 5.1-2-2m2 2 2-2m-2 15.8-2 2m2-2 2 2M6 8.55l-2.75-.7M6 8.55l-.75-2.7m12.75 9.6 2.75.7M18 15.45l.75 2.7M6 15.45l-2.75.7M6 15.45l-.75 2.7M18 8.55l2.75-.7M18 8.55l.75-2.7"></path><path d="m9.2 7.25-.7-2.35m6.3 2.35.7-2.35m-6.3 11.85-.7 2.35m6.3-2.35.7 2.35"></path><circle cx="12" cy="12" r="1.15"></circle></svg></span>
                     </button>
 
-                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="July 2024 — Basic Military Mountaineering Course">
+                    <button class="training-event" type="button" style="--x:45.4545455%;" aria-label="July 2024 — Basic Military Mountaineering Course" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img class="nwtc-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NWTC_Logo.gif" alt="">
                         <span class="training-popover-box">
@@ -1431,7 +1426,7 @@
                       <span class="qualification-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 20 7-12 3.3 5.4L15.5 9l6 11H2.5Z"></path><path d="m7.8 11 1.7 1.5 1.6-1.5M14 11.5l1.5 1.3 1.4-1.3"></path><path d="M18.3 4.2 8.6 19.1"></path><path d="M15.4 5.7c1.5-1.35 3.2-1.8 4.7-1.35"></path><path d="m8 18.15 1.9 1.25"></path></svg></span>
                     </button>
 
-                    <button class="training-event" type="button" style="--x:50%;" aria-label="August 2024 — Expert Infantryman Badge">
+                    <button class="training-event" type="button" style="--x:50%;" aria-label="August 2024 — Expert Infantryman Badge" aria-expanded="false">
                       <span class="training-popover" aria-hidden="true">
                         <img class="eib-icon" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Expert_Infantry_Badge.svg" alt="">
                         <span class="training-popover-box">
@@ -1457,8 +1452,8 @@
 
                 <div class="timeline-row">
                   <div class="timeline-canvas current-service-row" style="--today:67.1151%;" data-start="2025-07-01" data-end="2027-05-01">
-                    <div class="timeline-line fade-both current-service-segment" style="--from:0%;--to:var(--today);" aria-hidden="true"></div>
-                    <div class="timeline-line projected fade-both future-service-segment" style="--from:var(--today);--to:100%;" aria-hidden="true"></div>
+                    <div class="timeline-line fade-both" style="--from:0%;--to:var(--today);" aria-hidden="true"></div>
+                    <div class="timeline-line projected fade-both" style="--from:var(--today);--to:100%;" aria-hidden="true"></div>
                     <span class="current-day-marker" aria-hidden="true"></span>
 
                     <span class="year-tick" style="--x:27.2727273%;" aria-hidden="true"><span class="year-tick-label">2026</span></span>
@@ -1493,8 +1488,6 @@
                   </div>
                 </div>
 
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1746,22 +1739,24 @@
   const trainingEvents = [...document.querySelectorAll(".training-event")];
 
   function closeTrainingEvents(except = null) {
-    trainingEvents.forEach((event) => {
-      if (event !== except) {
-        event.classList.remove("is-open");
-        const popover = event.querySelector(".training-popover");
+    trainingEvents.forEach((trainingEvent) => {
+      if (trainingEvent !== except) {
+        trainingEvent.classList.remove("is-open");
+        trainingEvent.setAttribute("aria-expanded", "false");
+        const popover = trainingEvent.querySelector(".training-popover");
         if (popover) popover.setAttribute("aria-hidden", "true");
       }
     });
   }
 
-  trainingEvents.forEach((event) => {
-    event.addEventListener("click", (clickEvent) => {
+  trainingEvents.forEach((trainingEvent) => {
+    trainingEvent.addEventListener("click", (clickEvent) => {
       clickEvent.stopPropagation();
-      const willOpen = !event.classList.contains("is-open");
-      closeTrainingEvents(event);
-      event.classList.toggle("is-open", willOpen);
-      const popover = event.querySelector(".training-popover");
+      const willOpen = !trainingEvent.classList.contains("is-open");
+      closeTrainingEvents(trainingEvent);
+      trainingEvent.classList.toggle("is-open", willOpen);
+      trainingEvent.setAttribute("aria-expanded", String(willOpen));
+      const popover = trainingEvent.querySelector(".training-popover");
       if (popover) popover.setAttribute("aria-hidden", willOpen ? "false" : "true");
     });
   });

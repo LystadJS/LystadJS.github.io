@@ -41,14 +41,15 @@
 
   const trainingEvents = [...document.querySelectorAll(".training-event")];
 
+  function setTrainingEventState(trainingEvent, isOpen) {
+    trainingEvent.classList.toggle("is-open", isOpen);
+    trainingEvent.setAttribute("aria-expanded", String(isOpen));
+    trainingEvent.querySelector(".training-popover")?.setAttribute("aria-hidden", String(!isOpen));
+  }
+
   function closeTrainingEvents(except = null) {
     trainingEvents.forEach((trainingEvent) => {
-      if (trainingEvent !== except) {
-        trainingEvent.classList.remove("is-open");
-        trainingEvent.setAttribute("aria-expanded", "false");
-        const popover = trainingEvent.querySelector(".training-popover");
-        if (popover) popover.setAttribute("aria-hidden", "true");
-      }
+      if (trainingEvent !== except) setTrainingEventState(trainingEvent, false);
     });
   }
 
@@ -57,17 +58,16 @@
       clickEvent.stopPropagation();
       const willOpen = !trainingEvent.classList.contains("is-open");
       closeTrainingEvents(trainingEvent);
-      trainingEvent.classList.toggle("is-open", willOpen);
-      trainingEvent.setAttribute("aria-expanded", String(willOpen));
-      const popover = trainingEvent.querySelector(".training-popover");
-      if (popover) popover.setAttribute("aria-hidden", willOpen ? "false" : "true");
+      setTrainingEventState(trainingEvent, willOpen);
     });
   });
 
-  document.addEventListener("click", () => closeTrainingEvents());
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeTrainingEvents();
-  });
+  if (trainingEvents.length) {
+    document.addEventListener("click", () => closeTrainingEvents());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeTrainingEvents();
+    });
+  }
 
   const books = [
     {
@@ -151,9 +151,14 @@
   const bookTitle = document.getElementById("book-title");
   const bookCopy = document.getElementById("book-copy");
 
+  let activeBookButton = null;
+
   function inspectBook(book, button) {
-    document.querySelectorAll(".book-spine.is-active").forEach((node) => node.classList.remove("is-active"));
-    if (button) button.classList.add("is-active");
+    if (activeBookButton && activeBookButton !== button) activeBookButton.classList.remove("is-active");
+    if (button) {
+      button.classList.add("is-active");
+      activeBookButton = button;
+    }
     if (bookStatus) bookStatus.textContent = statusText[book.status] || "";
     if (bookTitle) bookTitle.textContent = book.title;
     if (bookCopy) bookCopy.textContent = book.note;

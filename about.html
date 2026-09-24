@@ -295,11 +295,6 @@
       );
     }
 
-    body[data-page="about"] .timeline-line.fade-start {
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 100%);
-    }
-
     body[data-page="about"] .timeline-line.fade-end {
       -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
       mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
@@ -382,7 +377,7 @@
       position: absolute;
       z-index: 5;
       top: calc(var(--line-y) - 5px);
-      left: 67.1151%;
+      left: var(--today, 67.1151%);
       box-sizing: border-box;
       width: 10px;
       height: 10px;
@@ -1157,8 +1152,8 @@
                 </filter>
               </defs>
             </svg>
-            <div class="career-timeline-scroll">
-              <div class="career-timeline-stage">
+            <div>
+              <div>
 
                 <div class="timeline-row">
                   <div class="timeline-canvas">
@@ -1168,11 +1163,6 @@
                     <div class="unit-event" style="--x:22.7272727%;">
                       <span class="unit-event-name">198th Infantry Brigade</span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
-                    </div>
-
-                    <div class="unit-event" style="--x:-1.8%;">
-                      <span class="unit-event-name">U.S. Army Reserve</span>
-                      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seal_of_the_United_States_Army_Reserve.svg" alt="United States Army Reserve John Parker seal" loading="lazy">
                     </div>
 
                     <div class="unit-event" style="--x:54.5454545%;">
@@ -1285,9 +1275,9 @@
                 </div>
 
                 <div class="timeline-row">
-                  <div class="timeline-canvas">
-                    <div class="timeline-line fade-both current-service-segment" style="--from:0%;--to:67.1151%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
-                    <div class="timeline-line projected fade-both future-service-segment" style="--from:67.1151%;--to:100%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
+                  <div class="timeline-canvas current-service-row" style="--today:67.1151%;" data-start="2025-07-01" data-end="2027-05-01">
+                    <div class="timeline-line fade-both current-service-segment" style="--from:0%;--to:var(--today);" aria-hidden="true"></div>
+                    <div class="timeline-line projected fade-both future-service-segment" style="--from:var(--today);--to:100%;" aria-hidden="true"></div>
                     <span class="current-day-marker" aria-hidden="true"></span>
 
                     <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
@@ -1550,26 +1540,17 @@
     });
   });
 
-  const currentServiceSegment = document.querySelector(".current-service-segment");
-  const futureServiceSegment = document.querySelector(".future-service-segment");
-  const currentDayMarker = document.querySelector(".current-day-marker");
+  const currentServiceRow = document.querySelector(".current-service-row");
 
-  if (currentServiceSegment && futureServiceSegment) {
-    const parseDate = (value) => {
-      const [year, month, day] = value.split("-").map(Number);
-      return Date.UTC(year, month - 1, day);
-    };
-
-    const start = parseDate(currentServiceSegment.dataset.start);
-    const end = parseDate(currentServiceSegment.dataset.end);
+  if (currentServiceRow) {
+    const toUtcDay = (value) => Date.parse(value + "T00:00:00Z");
+    const start = toUtcDay(currentServiceRow.dataset.start);
+    const end = toUtcDay(currentServiceRow.dataset.end);
     const today = new Date();
     const now = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
     const pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
-    const boundary = pct.toFixed(4) + "%";
 
-    currentServiceSegment.style.setProperty("--to", boundary);
-    futureServiceSegment.style.setProperty("--from", boundary);
-    if (currentDayMarker) currentDayMarker.style.left = boundary;
+    currentServiceRow.style.setProperty("--today", pct.toFixed(4) + "%");
   }
 
   const trainingEvents = [...document.querySelectorAll(".training-event")];

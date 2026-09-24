@@ -258,7 +258,7 @@
     body[data-page="about"] .timeline-canvas {
       --line-y: 108px;
       position: relative;
-      width: 88%;
+      width: 84%;
       height: 186px;
       margin-left: 6%;
       overflow: visible;
@@ -359,16 +359,17 @@
       width: calc(var(--to) - var(--from));
       height: var(--phase-height, 52px);
       box-sizing: border-box;
-      border: 1px solid rgba(205,188,198,.10);
-      border-radius: 4px;
-      opacity: .52;
+      border: 1px solid rgba(205,188,198,.14);
+      border-radius: 0;
+      opacity: .66;
       cursor: default;
       transition: opacity 120ms ease;
+      background-clip: padding-box;
     }
 
     body[data-page="about"] .service-phase:hover,
     body[data-page="about"] .service-phase:focus-visible {
-      opacity: .72;
+      opacity: .82;
     }
 
     body[data-page="about"] .service-phase:focus-visible {
@@ -393,23 +394,21 @@
     }
 
     body[data-page="about"] .service-phase::before {
-      content: attr(data-short);
+      content: attr(data-side-label);
       position: absolute;
+      left: calc(100% + 10px);
       top: 50%;
-      left: 50%;
-      max-width: calc(100% - 10px);
-      transform: translate(-50%, -50%);
-      overflow: hidden;
-      color: #eee4ea;
+      width: 172px;
+      transform: translateY(-50%);
+      color: #d6cad2;
       font-family: var(--mono);
-      font-size: .45rem;
+      font-size: .46rem;
       font-weight: 600;
-      line-height: 1;
-      letter-spacing: .015em;
-      text-align: center;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      text-shadow: 0 1px 2px rgba(0,0,0,.68);
+      line-height: 1.08;
+      letter-spacing: .02em;
+      text-align: left;
+      white-space: normal;
+      text-shadow: 0 1px 2px rgba(0,0,0,.55);
       pointer-events: none;
     }
 

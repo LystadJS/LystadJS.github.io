@@ -367,7 +367,7 @@
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .68;
+      opacity: .78;
       stroke: rgba(222,207,216,.22);
       stroke-width: .35;
       vector-effect: non-scaling-stroke;
@@ -377,7 +377,7 @@
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .86;
+      opacity: .92;
       filter: brightness(1.08);
       outline: none;
     }
@@ -403,7 +403,8 @@
       z-index: 4;
       left: calc(var(--label-x) + 7px);
       top: calc(var(--line-y) + 10px + var(--label-y));
-      width: clamp(108px, 11vw, 136px);
+      width: clamp(104px, 10.5vw, 132px);
+      min-height: 2.04em;
       max-height: 2.04em;
       transform: translateY(-50%);
       overflow: hidden;
@@ -415,6 +416,7 @@
       letter-spacing: .012em;
       text-align: left;
       white-space: normal;
+      hyphens: none;
       overflow-wrap: normal;
       word-break: normal;
       text-shadow: 0 1px 2px rgba(0,0,0,.55);

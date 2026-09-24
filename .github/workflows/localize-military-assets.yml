@@ -1,0 +1,66 @@
+name: Localize military assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/localize-military-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Download military graphics
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="assets/images/about/military"
+          mkdir -p "$dir"
+
+          curl -fL --retry 3 -o "$dir/198th-infantry-brigade.svg"             "https://upload.wikimedia.org/wikipedia/commons/7/7d/198th_bct.svg"
+
+          curl -fL --retry 3 -o "$dir/11th-airborne-division.png"             "https://upload.wikimedia.org/wikipedia/commons/c/cd/11th_Airborne_Division_Insignia_2022.png"
+
+          curl -fL --retry 3 -o "$dir/infantry-school.svg"             "https://upload.wikimedia.org/wikipedia/commons/9/90/United_States_Army_Infantry_School_Shoulder_Sleeve_Insignia.svg"
+
+          curl -fL --retry 3 -o "$dir/nwtc-logo.gif"             "https://upload.wikimedia.org/wikipedia/commons/e/ef/NWTC_Logo.gif"
+
+          curl -fL --retry 3 -o "$dir/rank-pv2.svg"             "https://upload.wikimedia.org/wikipedia/commons/1/10/Army-USA-OR-02_%28Army_greens%29.svg"
+
+          curl -fL --retry 3 -o "$dir/rank-spc.svg"             "https://upload.wikimedia.org/wikipedia/commons/9/95/Army-USA-OR-04b_%28Army_greens%29.svg"
+
+          curl -fL --retry 3 -o "$dir/rank-sgt.svg"             "https://upload.wikimedia.org/wikipedia/commons/0/03/Army-USA-OR-05_%28Army_greens%29.svg"
+
+          curl -fL --retry 3 -o "$dir/expert-infantry-badge.svg"             "https://upload.wikimedia.org/wikipedia/commons/e/ec/Expert_Infantry_Badge.svg"
+
+          curl -fL --retry 3 -o "$dir/usacc.svg"             "https://upload.wikimedia.org/wikipedia/commons/6/63/US-ARMY-ROTC.svg"
+
+          test -s "$dir/198th-infantry-brigade.svg"
+          test -s "$dir/11th-airborne-division.png"
+          test -s "$dir/infantry-school.svg"
+          test -s "$dir/nwtc-logo.gif"
+          test -s "$dir/rank-pv2.svg"
+          test -s "$dir/rank-spc.svg"
+          test -s "$dir/rank-sgt.svg"
+          test -s "$dir/expert-infantry-badge.svg"
+          test -s "$dir/usacc.svg"
+
+      - name: Commit localized graphics
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/about/military
+          if git diff --cached --quiet; then
+            echo "No asset changes to commit."
+            exit 0
+          fi
+          git commit -m "Localize military graphics"
+          git push

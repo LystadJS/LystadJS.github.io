@@ -585,21 +585,47 @@
       filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
     }
 
-    body[data-page="about"] .unit-event-name {
+    body[data-page="about"] .unit-event-label {
       position: absolute;
       left: 50%;
       bottom: calc(100% + 5px);
-      width: 150px;
+      width: 156px;
       transform: translateX(-50%);
-      color: #b0a4ad;
-      font-family: var(--mono);
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: .92;
-      letter-spacing: .012em;
       text-align: center;
-      text-transform: none;
+    }
+
+    body[data-page="about"] .unit-event-abbr {
+      display: block;
+      color: #b9adb6;
+      font-family: var(--mono);
+      font-size: .56rem;
+      line-height: 1;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+
+    body[data-page="about"] .unit-event-name {
+      display: block;
+      margin-top: .12rem;
+      color: #d6cad2;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: .98;
+      letter-spacing: 0;
       white-space: normal;
+    }
+
+    body[data-page="about"] .unit-event-date {
+      display: block;
+      margin-top: .22rem;
+      color: #857986;
+      font-family: var(--mono);
+      font-size: .53rem;
+      line-height: 1.05;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     body[data-page="about"] .unit-event.commissioning-transition::after {
@@ -1295,12 +1321,20 @@
                     <span class="service-phase service-phase--leader" tabindex="0" style="--from:72.7272727%;--to:100%;--phase-top:28px;--phase-height:24px;" data-label="Infantry Squad Leader · Mar 2023–Jul 2025" aria-label="Infantry Squad Leader, March 2023 to July 2025"></span>
 
                     <div class="unit-event" style="--x:22.7272727%;">
-                      <span class="unit-event-name">198th Infantry Brigade</span>
+                      <span class="unit-event-label">
+                        <span class="unit-event-abbr">1-19</span>
+                        <strong class="unit-event-name">198th Infantry Brigade</strong>
+                        <time class="unit-event-date" datetime="2022-04">Apr 2022</time>
+                      </span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/198th_bct.svg" alt="198th Infantry Brigade shoulder sleeve insignia" loading="lazy">
                     </div>
 
                     <div class="unit-event" style="--x:54.5454545%;">
-                      <span class="unit-event-name">11th Airborne Division</span>
+                      <span class="unit-event-label">
+                        <span class="unit-event-abbr">1-501 PIR</span>
+                        <strong class="unit-event-name">11th Airborne Division</strong>
+                        <time class="unit-event-date" datetime="2022-11">Nov 2022</time>
+                      </span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/11th_Airborne_Division_Insignia_2022.png" alt="11th Airborne Division shoulder sleeve insignia with Arctic and Airborne tabs" loading="lazy">
                     </div>
 
@@ -1433,7 +1467,11 @@
                     <span class="service-phase service-phase--officer" tabindex="0" style="--from:0%;--to:var(--today);--phase-top:0px;--phase-height:52px;" data-label="Officer Commissioning Candidate · Jul 2025–Present" aria-label="Officer Commissioning Candidate, July 2025 to present"></span>
 
                     <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
-                      <span class="unit-event-name">U.S. Army Cadet Command</span>
+                      <span class="unit-event-label">
+                        <span class="unit-event-abbr">USACC</span>
+                        <strong class="unit-event-name">U.S. Army Cadet Command</strong>
+                        <time class="unit-event-date" datetime="2025-07">Jul 2025</time>
+                      </span>
                       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/US-ARMY-ROTC.svg" alt="U.S. Army Cadet Command shoulder sleeve insignia" loading="lazy">
                     </div>
 

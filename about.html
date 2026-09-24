@@ -246,8 +246,8 @@
     }
 
     body[data-page="about"] .career-timeline {
-      margin-top: 1.55rem;
-      padding-top: .8rem;
+      margin-top: 1.4rem;
+      padding-top: .65rem;
       border-top: 1px solid rgba(74,53,71,.62);
     }
 
@@ -261,20 +261,20 @@
     }
 
     body[data-page="about"] .timeline-row + .timeline-row {
-      margin-top: .15rem;
+      margin-top: .05rem;
     }
 
     body[data-page="about"] .timeline-canvas {
       --line-y: 112px;
       position: relative;
       width: 88%;
-      height: 208px;
+      height: 198px;
       margin-left: 6%;
       overflow: visible;
     }
 
     body[data-page="about"] .timeline-row:last-child .timeline-canvas {
-      height: 226px;
+      height: 216px;
     }
 
     body[data-page="about"] .timeline-line {
@@ -372,15 +372,26 @@
     body[data-page="about"] .rank-event.edge-start .rank-event-marker { margin-left: 21px; }
     body[data-page="about"] .rank-event.edge-end .rank-event-marker { margin-right: 0; }
 
-    body[data-page="about"] .rank-event.current .rank-event-marker {
-      border-color: var(--crimson-bright);
-      background: var(--crimson);
-    }
-
     body[data-page="about"] .rank-event.expected .rank-event-marker {
       border-style: dashed;
       border-color: #a06f82;
       background: #171017;
+    }
+
+    body[data-page="about"] .current-day-marker {
+      position: absolute;
+      z-index: 5;
+      top: calc(var(--line-y) - 5px);
+      left: 67.1151%;
+      box-sizing: border-box;
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--crimson-bright);
+      border-radius: 50%;
+      background: var(--crimson);
+      box-shadow: 0 0 0 3px #0b090d;
+      transform: translateX(-50%);
+      pointer-events: none;
     }
 
     body[data-page="about"] .rank-insignia-wrap {
@@ -1261,7 +1272,7 @@
                       </span>
                     </button>
 
-                    <div class="rank-event current" style="--x:72.7272727%;">
+                    <div class="rank-event" style="--x:72.7272727%;">
                       <span class="rank-event-marker" aria-hidden="true"></span>
                       <span class="rank-insignia-wrap">
                         <img class="rank-insignia" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Army-USA-OR-05_%28Army_greens%29.svg" alt="Sergeant rank insignia" loading="lazy">
@@ -1277,6 +1288,7 @@
                   <div class="timeline-canvas">
                     <div class="timeline-line fade-both current-service-segment" style="--from:0%;--to:67.1151%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
                     <div class="timeline-line projected fade-both future-service-segment" style="--from:67.1151%;--to:100%;" data-start="2025-07-01" data-end="2027-05-01" aria-hidden="true"></div>
+                    <span class="current-day-marker" aria-hidden="true"></span>
 
                     <div class="unit-event edge-start commissioning-transition" style="--x:0%;">
                       <span class="unit-event-name">U.S. Army Cadet Command</span>
@@ -1540,6 +1552,7 @@
 
   const currentServiceSegment = document.querySelector(".current-service-segment");
   const futureServiceSegment = document.querySelector(".future-service-segment");
+  const currentDayMarker = document.querySelector(".current-day-marker");
 
   if (currentServiceSegment && futureServiceSegment) {
     const parseDate = (value) => {
@@ -1556,6 +1569,7 @@
 
     currentServiceSegment.style.setProperty("--to", boundary);
     futureServiceSegment.style.setProperty("--from", boundary);
+    if (currentDayMarker) currentDayMarker.style.left = boundary;
   }
 
   const trainingEvents = [...document.querySelectorAll(".training-event")];

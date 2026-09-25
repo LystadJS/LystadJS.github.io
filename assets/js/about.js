@@ -2,10 +2,11 @@
 
 (() => {
   const mountainStage = document.getElementById("mountain-ascent-stage");
+  const mountainScroll = document.getElementById("mountain-ascent-scroll");
   const mountainSvg = document.getElementById("mountain-ascent-svg");
   const mountainPopover = document.getElementById("mountain-popover");
 
-  if (mountainStage && mountainSvg && mountainPopover) {
+  if (mountainStage && mountainScroll && mountainSvg && mountainPopover) {
     const mountainData = [
       {
         name: "Mount Inari",
@@ -187,7 +188,7 @@
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     // One horizontal compression factor is applied to every DEM cross-section.
     // Lowering it reduces overlap while preserving comparative elevation guidance.
-    const horizontalScale = 0.20;
+    const horizontalScale = 0.18;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -543,23 +544,34 @@
       goalMeta.textContent = "GOAL · 20,310 FT";
     }
 
+    function updateWaypointHitTargets() {
+      const renderedWidth = mountainSvg.getBoundingClientRect().width || profileWidth;
+      const renderedScale = Math.max(renderedWidth / profileWidth, .001);
+      const minimumRadius = 22 / renderedScale;
+
+      mountainSvg.querySelectorAll(".mountain-waypoint").forEach((group) => {
+        const hit = group.querySelector(".mountain-waypoint-hit");
+        if (!hit) return;
+        const baseRadius = group.classList.contains("is-goal") ? 30 : 26;
+        hit.setAttribute("r", Math.max(baseRadius, minimumRadius).toFixed(2));
+      });
+    }
+
     function positionMountainPopover(point) {
       const svgRect = mountainSvg.getBoundingClientRect();
       const stageRect = mountainStage.getBoundingClientRect();
       const scaleX = svgRect.width / profileWidth;
       const scaleY = svgRect.height / profileHeight;
-      const scrollLeft = mountainStage.scrollLeft;
-      const scrollTop = mountainStage.scrollTop;
       const pointLeft =
-        (point.x * scaleX) + (svgRect.left - stageRect.left) + scrollLeft;
+        (point.x * scaleX) + (svgRect.left - stageRect.left);
       const pointTop =
-        (point.y * scaleY) + (svgRect.top - stageRect.top) + scrollTop;
+        (point.y * scaleY) + (svgRect.top - stageRect.top);
       const popoverWidth = mountainPopover.offsetWidth || 270;
       const popoverHeight = mountainPopover.offsetHeight || 300;
-      const viewportLeft = scrollLeft + 8;
-      const viewportRight = scrollLeft + mountainStage.clientWidth - 8;
-      const viewportTop = scrollTop + 8;
-      const viewportBottom = scrollTop + mountainStage.clientHeight - 8;
+      const viewportLeft = 8;
+      const viewportRight = mountainStage.clientWidth - 8;
+      const viewportTop = 8;
+      const viewportBottom = mountainStage.clientHeight - 8;
 
       let left = pointLeft + 16;
       let top = pointTop - Math.min(48, popoverHeight * .2);
@@ -619,6 +631,7 @@
     }
 
     buildMountainProfile();
+    updateWaypointHitTargets();
 
     mountainStage.addEventListener("pointerleave", (event) => {
       if (!event.relatedTarget || !mountainStage.contains(event.relatedTarget)) closeMountainPopover();
@@ -650,8 +663,11 @@
       }
     }
 
-    window.addEventListener("resize", repositionOpenMountainPopover);
-    mountainStage.addEventListener("scroll", repositionOpenMountainPopover, {
+    window.addEventListener("resize", () => {
+      updateWaypointHitTargets();
+      repositionOpenMountainPopover();
+    });
+    mountainScroll.addEventListener("scroll", repositionOpenMountainPopover, {
       passive: true
     });
   }

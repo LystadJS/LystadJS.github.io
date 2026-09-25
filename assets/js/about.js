@@ -18,6 +18,17 @@
         image: ""
       },
       {
+        name: "Lion Head",
+        relief: "lion-head",
+        flank: "left",
+        location: "Matanuska Valley, Alaska",
+        date: "Date TBD",
+        elevationFt: 3185,
+        type: "Summit",
+        note: "A compact, glacier-scoured rock massif above the Matanuska River and glacier, with a steep cliff face and distinctive head-like summit block.",
+        image: ""
+      },
+      {
         name: "Ōwakudani",
         flank: "right",
         location: "Hakone, Japan",
@@ -39,7 +50,7 @@
       },
       {
         name: "Rainbow Peak",
-        relief: "chugach",
+        relief: "rainbow",
         flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Apr 2024",
@@ -50,7 +61,7 @@
       },
       {
         name: "Mount Alyeska",
-        relief: "coastal",
+        relief: "alyeska",
         flank: "left",
         location: "Girdwood, Alaska",
         date: "Jun 2024",
@@ -60,8 +71,30 @@
         image: ""
       },
       {
+        name: "Rendezvous Peak",
+        relief: "rendezvous",
+        flank: "right",
+        location: "Chugach Mountains, Alaska",
+        date: "Date TBD",
+        elevationFt: 4050,
+        type: "Summit",
+        note: "A compact Arctic Valley summit with a steep triangular face and a longer descending shoulder toward the surrounding Chugach ridges.",
+        image: ""
+      },
+      {
+        name: "Mount Gordon Lyon",
+        relief: "gordon-lyon",
+        flank: "left",
+        location: "Chugach Mountains, Alaska",
+        date: "Date TBD",
+        elevationFt: 4100,
+        type: "Summit",
+        note: "A broad tundra-covered Chugach summit above Arctic Valley, characterized by rounded shoulders and a comparatively subdued summit crest.",
+        image: ""
+      },
+      {
         name: "Gold Star Peak",
-        relief: "knife",
+        relief: "gold-star",
         flank: "right",
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
@@ -72,7 +105,7 @@
       },
       {
         name: "Mount Healy",
-        relief: "alaska-range",
+        relief: "healy",
         flank: "left",
         location: "Denali region, Alaska",
         date: "May 2024",
@@ -83,7 +116,7 @@
       },
       {
         name: "East Twin Peak",
-        relief: "twin",
+        relief: "east-twin",
         flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
@@ -125,7 +158,7 @@
       },
       {
         name: "Mount Toubkal",
-        relief: "atlas",
+        relief: "toubkal",
         flank: "right",
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
@@ -323,40 +356,62 @@
         if (!point.relief) return;
 
         const reliefSpecs = {
-          "chugach": {
-            w: 92, h: 48,
-            ridge: [[-1,1],[-.78,.78],[-.58,.70],[-.36,.42],[-.18,.56],[0,0],[.17,.44],[.36,.29],[.58,.67],[.78,.72],[1,1]]
+          "rainbow": {
+            // Rainbow Peak: steep Turnagain Arm face, narrow summit, broken shoulders.
+            w: 102, h: 54,
+            ridge: [[-1,1],[-.84,.86],[-.70,.70],[-.56,.56],[-.43,.38],[-.29,.49],[-.17,.24],[-.06,.08],[0,0],[.09,.18],[.22,.32],[.37,.27],[.52,.52],[.68,.63],[.84,.83],[1,1]]
           },
-          "coastal": {
-            w: 102, h: 42,
-            ridge: [[-1,1],[-.76,.83],[-.53,.72],[-.31,.44],[-.12,.50],[0,0],[.18,.38],[.40,.59],[.64,.69],[.83,.86],[1,1]]
+          "alyeska": {
+            // Mount Alyeska: blocky high point left of center with a serrated ridge tapering right.
+            w: 118, h: 54,
+            ridge: [[-1,1],[-.86,.78],[-.73,.58],[-.61,.30],[-.50,.09],[-.39,0],[-.28,.12],[-.18,.08],[-.05,.24],[.09,.20],[.22,.34],[.38,.44],[.54,.58],[.70,.69],[.86,.86],[1,1]]
           },
-          "knife": {
-            w: 82, h: 54,
-            ridge: [[-1,1],[-.72,.80],[-.48,.64],[-.26,.46],[-.08,.14],[0,0],[.09,.22],[.24,.51],[.50,.61],[.76,.83],[1,1]]
+          "gold-star": {
+            // Gold Star Peak: compact rocky summit with a sharp final crown and uneven crest.
+            w: 92, h: 58,
+            ridge: [[-1,1],[-.82,.83],[-.64,.72],[-.50,.56],[-.36,.60],[-.23,.34],[-.12,.18],[-.03,.04],[.05,0],[.14,.15],[.27,.24],[.40,.46],[.57,.56],[.75,.77],[.90,.90],[1,1]]
           },
-          "alaska-range": {
-            w: 112, h: 50,
-            ridge: [[-1,1],[-.82,.84],[-.62,.66],[-.46,.72],[-.27,.39],[-.11,.46],[0,0],[.14,.35],[.31,.29],[.50,.61],[.70,.54],[.86,.82],[1,1]]
+          "healy": {
+            // Mount Healy: broad Alaska Range ridge with rounded tundra shoulders and a low irregular crest.
+            w: 126, h: 48,
+            ridge: [[-1,1],[-.86,.86],[-.71,.70],[-.56,.54],[-.42,.42],[-.28,.31],[-.15,.20],[-.03,.13],[.09,.08],[.20,0],[.32,.10],[.46,.23],[.61,.37],[.75,.55],[.89,.78],[1,1]]
           },
-          "twin": {
-            w: 112, h: 54,
-            ridge: [[-1,1],[-.78,.82],[-.57,.62],[-.35,.23],[-.18,.47],[0,.16],[.20,0],[.37,.43],[.58,.58],[.79,.82],[1,1]]
+          "east-twin": {
+            // East Twin Peak: broad rocky summit massif with two subtle high points and a steep upper face.
+            w: 122, h: 62,
+            ridge: [[-1,1],[-.84,.83],[-.69,.68],[-.55,.50],[-.42,.34],[-.31,.20],[-.20,.09],[-.09,.14],[0,.03],[.08,0],[.17,.10],[.29,.06],[.41,.24],[.55,.43],[.70,.61],[.86,.82],[1,1]]
           },
           "fuji": {
-            w: 132, h: 62,
-            ridge: [[-1,1],[-.82,.87],[-.64,.72],[-.47,.55],[-.30,.34],[-.16,.15],[0,0],[.16,.15],[.30,.34],[.47,.55],[.64,.72],[.82,.87],[1,1]]
+            // Fuji: long near-symmetrical volcanic cone with a slightly flattened crater rim.
+            w: 144, h: 68,
+            ridge: [[-1,1],[-.88,.91],[-.76,.82],[-.64,.71],[-.52,.59],[-.40,.46],[-.29,.34],[-.19,.22],[-.10,.11],[-.04,.04],[.02,.03],[.08,.06],[.16,.13],[.27,.27],[.40,.43],[.54,.59],[.69,.74],[.84,.88],[1,1]]
           },
-          "atlas": {
-            w: 126, h: 58,
-            ridge: [[-1,1],[-.80,.82],[-.61,.70],[-.43,.49],[-.27,.58],[-.10,.21],[0,0],[.15,.30],[.31,.24],[.48,.53],[.67,.61],[.84,.84],[1,1]]
+          "toubkal": {
+            // Toubkal: rugged High Atlas crown with an asymmetric, multi-crag summit ridge.
+            w: 136, h: 64,
+            ridge: [[-1,1],[-.85,.84],[-.71,.68],[-.58,.54],[-.45,.46],[-.34,.30],[-.24,.20],[-.14,.08],[-.05,.12],[.03,0],[.12,.09],[.23,.05],[.34,.19],[.45,.26],[.57,.48],[.71,.61],[.86,.82],[1,1]]
+          },
+          "rendezvous": {
+            // Rendezvous Peak: steep pyramidal left face and long descending right shoulder.
+            w: 112, h: 60,
+            ridge: [[-1,1],[-.82,.88],[-.67,.73],[-.53,.55],[-.41,.36],[-.31,.18],[-.21,.06],[-.10,0],[.02,.10],[.16,.24],[.31,.38],[.47,.51],[.63,.64],[.78,.78],[.91,.91],[1,1]]
+          },
+          "gordon-lyon": {
+            // Mount Gordon Lyon: broad, rounded Arctic Valley ridge with a modest summit bump.
+            w: 126, h: 44,
+            ridge: [[-1,1],[-.86,.86],[-.72,.71],[-.58,.57],[-.44,.42],[-.31,.30],[-.18,.20],[-.07,.13],[.03,.09],[.12,0],[.23,.07],[.36,.17],[.51,.30],[.66,.47],[.81,.69],[.92,.86],[1,1]]
+          },
+          "lion-head": {
+            // Lion Head: steep glacier-scoured cliff, blocky summit cap, and a long lower shoulder.
+            w: 116, h: 62,
+            ridge: [[-1,1],[-.84,.82],[-.69,.62],[-.56,.38],[-.46,.17],[-.34,.08],[-.22,.04],[-.10,0],[.02,.06],[.13,.13],[.24,.30],[.38,.38],[.53,.48],[.67,.61],[.80,.72],[.91,.88],[1,1]]
           }
-        };
+        }
 
         const spec = reliefSpecs[point.relief];
         if (!spec) return;
 
-        const baseY = point.y + Math.min(34, spec.h * .62);
+        const baseY = point.y + Math.min(38, spec.h * .68);
         const coords = spec.ridge.map(([rx, ry]) => ({
           x: point.x + rx * spec.w / 2,
           y: point.y - spec.h * (1 - ry) + 7

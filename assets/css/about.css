@@ -434,8 +434,10 @@
       width: clamp(132px, 12.5vw, 168px);
       min-height: 2.04em;
       max-height: 2.04em;
-      transform: translateY(-50%);
+      transform: translate(-3px, -50%);
       overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
       color: #918592;
       font-family: var(--mono);
       font-size: clamp(.5rem, .72vw, .58rem);
@@ -449,6 +451,23 @@
       word-break: normal;
       text-shadow: 0 1px 2px rgba(0,0,0,.55);
       pointer-events: none;
+      transition:
+        opacity 150ms ease-out,
+        transform 150ms ease-out,
+        visibility 150ms linear;
+    }
+
+    body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:hover) > .service-flow-label--infantry,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:focus-visible) > .service-flow-label--infantry,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--leader:hover) > .service-flow-label--leader,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--leader:focus-visible) > .service-flow-label--leader,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--comms:hover) > .service-flow-label--comms,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--comms:focus-visible) > .service-flow-label--comms,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:hover) > .service-flow-label--officer,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(0, -50%);
     }
 
     body[data-page="about"] .rank-event {

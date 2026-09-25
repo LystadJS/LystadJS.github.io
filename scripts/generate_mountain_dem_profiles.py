@@ -86,10 +86,10 @@ PEAKS = {
     },
     "east-twin": {
         "name": "East Twin Peak",
-        "lat": 61.445556,
-        "lon": -149.144444,
+        "lat": 61.444800,
+        "lon": -149.144300,
         "radius_km": 3.0,
-        "summit_search_m": 450,
+        "summit_search_m": 800,
         "published_elevation_ft": 5873,
         "coordinate_source": "USGS-GNIS-style summit reference",
     },

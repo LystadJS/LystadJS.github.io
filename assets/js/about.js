@@ -186,8 +186,8 @@
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     // One horizontal compression factor is applied to every DEM cross-section.
-    // No per-mountain width tuning is used.
-    const horizontalScale = 0.4;
+    // Lowering it reduces overlap while preserving comparative elevation guidance.
+    const horizontalScale = 0.28;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -223,6 +223,40 @@
         const midX = (previous.x + current.x) / 2;
         path += ` C ${midX} ${previous.y}, ${midX} ${current.y}, ${current.x} ${current.y}`;
       }
+      return path;
+    }
+
+    function smoothRidgePath(points) {
+      if (!points.length) return "";
+      if (points.length === 1) {
+        return `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
+      }
+      if (points.length === 2) {
+        return (
+          `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)} ` +
+          `L ${points[1].x.toFixed(2)} ${points[1].y.toFixed(2)}`
+        );
+      }
+
+      let path = `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
+
+      for (let i = 1; i < points.length; i += 1) {
+        const previous = points[i - 1];
+        const current = points[i];
+        const beforePrevious = points[i - 2] || previous;
+        const next = points[i + 1] || current;
+
+        const cp1x = previous.x + (current.x - beforePrevious.x) / 6;
+        const cp1y = previous.y + (current.y - beforePrevious.y) / 6;
+        const cp2x = current.x - (next.x - previous.x) / 6;
+        const cp2y = current.y - (next.y - previous.y) / 6;
+
+        path +=
+          ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)},` +
+          ` ${cp2x.toFixed(2)} ${cp2y.toFixed(2)},` +
+          ` ${current.x.toFixed(2)} ${current.y.toFixed(2)}`;
+      }
+
       return path;
     }
 
@@ -267,11 +301,7 @@
 
       if (coords.length < 2) return null;
 
-      const ridgeD = coords
-        .map((point, index) =>
-          `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`
-        )
-        .join(" ");
+      const ridgeD = smoothRidgePath(coords);
 
       const first = coords[0];
       const last = coords[coords.length - 1];
@@ -279,7 +309,7 @@
         `${ridgeD} L ${last.x.toFixed(2)} ${horizonY.toFixed(2)} ` +
         `L ${first.x.toFixed(2)} ${horizonY.toFixed(2)} Z`;
 
-      return { ridgeD, fillD, width };
+      return { ridgeD, fillD };
     }
 
     function buildMountainProfile() {
@@ -381,9 +411,7 @@
         if (!geometry) return;
 
         const group = svgNode("g", {
-          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`,
-          "data-dem-azimuth": profile.azimuth_deg,
-          "data-dem-radius-km": profile.radius_km
+          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
         });
 
         svgNode("path", {

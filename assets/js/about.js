@@ -185,10 +185,9 @@
     const plot = { left: 72, top: 44, bottom: 400 };
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
-    const horizontalScale = 0.5;
-    const maxDenaliWidth = 1120;
-    const maxSecondaryWidth = 720;
-    const minSecondaryWidth = 88;
+    // One horizontal compression factor is applied to every DEM cross-section.
+    // No per-mountain width tuning is used.
+    const horizontalScale = 0.4;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -227,11 +226,7 @@
       return path;
     }
 
-    function clamp(value, minimum, maximum) {
-      return Math.max(minimum, Math.min(maximum, value));
-    }
-
-    function buildDemGeometry(profile, summitX, summitY, horizonY, options = {}) {
+    function buildDemGeometry(profile, summitX, summitY, horizonY) {
       if (!profile?.samples?.length || !profile.dem_summit) return null;
 
       const summitElevation = Number(profile.dem_summit.elevation_m);
@@ -251,14 +246,11 @@
         return null;
       }
 
-      // A single horizontal compression is applied to every DEM section.
-      // Vertical shape remains the raw DEM elevation profile; width is only
-      // bounded to keep the combined comparison legible inside the SVG.
+      // Vertical and horizontal geometry both come from metric DEM values.
+      // horizontalScale is global, so relative cross-section proportions are
+      // not hand-tuned mountain by mountain.
       const pixelsPerMeter = displayHeight / reliefMeters;
-      const naturalWidth = radiusKm * 2000 * pixelsPerMeter * horizontalScale;
-      const minimumWidth = options.minimumWidth || 0;
-      const maximumWidth = options.maximumWidth || profileWidth;
-      const width = clamp(naturalWidth, minimumWidth, maximumWidth);
+      const width = radiusKm * 2000 * pixelsPerMeter * horizontalScale;
 
       const coords = profile.samples
         .map((sample) => ({
@@ -334,8 +326,7 @@
         demProfiles.denali,
         summitX,
         summitY,
-        sharedReliefHorizonY,
-        { maximumWidth: maxDenaliWidth }
+        sharedReliefHorizonY
       );
 
       if (denaliGeometry) {
@@ -385,11 +376,7 @@
           profile,
           point.x,
           point.y,
-          sharedReliefHorizonY,
-          {
-            minimumWidth: minSecondaryWidth,
-            maximumWidth: maxSecondaryWidth
-          }
+          sharedReliefHorizonY
         );
         if (!geometry) return;
 

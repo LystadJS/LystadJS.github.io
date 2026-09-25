@@ -357,77 +357,86 @@
 
         const reliefSpecs = {
           "rainbow": {
-            // Rainbow Peak: steep Turnagain Arm face, narrow summit, broken shoulders.
-            w: 102, h: 54,
+            w: 102, h: 54, summitIndex: 8,
             ridge: [[-1,1],[-.84,.86],[-.70,.70],[-.56,.56],[-.43,.38],[-.29,.49],[-.17,.24],[-.06,.08],[0,0],[.09,.18],[.22,.32],[.37,.27],[.52,.52],[.68,.63],[.84,.83],[1,1]]
           },
           "alyeska": {
-            // Mount Alyeska: blocky high point left of center with a serrated ridge tapering right.
-            w: 118, h: 54,
+            w: 118, h: 54, summitIndex: 5,
             ridge: [[-1,1],[-.86,.78],[-.73,.58],[-.61,.30],[-.50,.09],[-.39,0],[-.28,.12],[-.18,.08],[-.05,.24],[.09,.20],[.22,.34],[.38,.44],[.54,.58],[.70,.69],[.86,.86],[1,1]]
           },
           "gold-star": {
-            // Gold Star Peak: compact rocky summit with a sharp final crown and uneven crest.
-            w: 92, h: 58,
+            w: 92, h: 58, summitIndex: 8,
             ridge: [[-1,1],[-.82,.83],[-.64,.72],[-.50,.56],[-.36,.60],[-.23,.34],[-.12,.18],[-.03,.04],[.05,0],[.14,.15],[.27,.24],[.40,.46],[.57,.56],[.75,.77],[.90,.90],[1,1]]
           },
           "healy": {
-            // Mount Healy: broad Alaska Range ridge with rounded tundra shoulders and a low irregular crest.
-            w: 126, h: 48,
+            w: 126, h: 48, summitIndex: 9,
             ridge: [[-1,1],[-.86,.86],[-.71,.70],[-.56,.54],[-.42,.42],[-.28,.31],[-.15,.20],[-.03,.13],[.09,.08],[.20,0],[.32,.10],[.46,.23],[.61,.37],[.75,.55],[.89,.78],[1,1]]
           },
           "east-twin": {
-            // East Twin Peak: broad rocky summit massif with two subtle high points and a steep upper face.
-            w: 122, h: 62,
+            w: 122, h: 62, summitIndex: 9,
             ridge: [[-1,1],[-.84,.83],[-.69,.68],[-.55,.50],[-.42,.34],[-.31,.20],[-.20,.09],[-.09,.14],[0,.03],[.08,0],[.17,.10],[.29,.06],[.41,.24],[.55,.43],[.70,.61],[.86,.82],[1,1]]
           },
           "fuji": {
-            // Fuji: long near-symmetrical volcanic cone with a slightly flattened crater rim.
-            w: 144, h: 68,
-            ridge: [[-1,1],[-.88,.91],[-.76,.82],[-.64,.71],[-.52,.59],[-.40,.46],[-.29,.34],[-.19,.22],[-.10,.11],[-.04,.04],[.02,.03],[.08,.06],[.16,.13],[.27,.27],[.40,.43],[.54,.59],[.69,.74],[.84,.88],[1,1]]
+            w: 144, h: 68, summitIndex: 10,
+            ridge: [[-1,1],[-.88,.91],[-.76,.82],[-.64,.71],[-.52,.59],[-.40,.46],[-.29,.34],[-.19,.22],[-.10,.11],[-.04,.04],[.02,0],[.08,.06],[.16,.13],[.27,.27],[.40,.43],[.54,.59],[.69,.74],[.84,.88],[1,1]]
           },
           "toubkal": {
-            // Toubkal: rugged High Atlas crown with an asymmetric, multi-crag summit ridge.
-            w: 136, h: 64,
+            w: 136, h: 64, summitIndex: 9,
             ridge: [[-1,1],[-.85,.84],[-.71,.68],[-.58,.54],[-.45,.46],[-.34,.30],[-.24,.20],[-.14,.08],[-.05,.12],[.03,0],[.12,.09],[.23,.05],[.34,.19],[.45,.26],[.57,.48],[.71,.61],[.86,.82],[1,1]]
           },
           "rendezvous": {
-            // Rendezvous Peak: steep pyramidal left face and long descending right shoulder.
-            w: 112, h: 60,
+            w: 112, h: 60, summitIndex: 7,
             ridge: [[-1,1],[-.82,.88],[-.67,.73],[-.53,.55],[-.41,.36],[-.31,.18],[-.21,.06],[-.10,0],[.02,.10],[.16,.24],[.31,.38],[.47,.51],[.63,.64],[.78,.78],[.91,.91],[1,1]]
           },
           "gordon-lyon": {
-            // Mount Gordon Lyon: broad, rounded Arctic Valley ridge with a modest summit bump.
-            w: 126, h: 44,
+            w: 126, h: 44, summitIndex: 9,
             ridge: [[-1,1],[-.86,.86],[-.72,.71],[-.58,.57],[-.44,.42],[-.31,.30],[-.18,.20],[-.07,.13],[.03,.09],[.12,0],[.23,.07],[.36,.17],[.51,.30],[.66,.47],[.81,.69],[.92,.86],[1,1]]
           },
           "lion-head": {
-            // Lion Head: steep glacier-scoured cliff, blocky summit cap, and a long lower shoulder.
-            w: 116, h: 62,
+            w: 116, h: 62, summitIndex: 7,
             ridge: [[-1,1],[-.84,.82],[-.69,.62],[-.56,.38],[-.46,.17],[-.34,.08],[-.22,.04],[-.10,0],[.02,.06],[.13,.13],[.24,.30],[.38,.38],[.53,.48],[.67,.61],[.80,.72],[.91,.88],[1,1]]
           }
-        }
+        };
 
         const spec = reliefSpecs[point.relief];
         if (!spec) return;
 
-        const baseY = point.y + Math.min(38, spec.h * .68);
+        const summitProfile = spec.ridge[spec.summitIndex];
+        const summitRx = summitProfile[0];
+        const summitRy = summitProfile[1];
+
+        // The waypoint is the true summit anchor. The mountain mass extends
+        // downward and outward from that point rather than being centered on it.
         const coords = spec.ridge.map(([rx, ry]) => ({
-          x: point.x + rx * spec.w / 2,
-          y: point.y - spec.h * (1 - ry) + 7
+          x: point.x + (rx - summitRx) * spec.w / 2,
+          y: point.y + (ry - summitRy) * spec.h
         }));
 
         const d = coords
           .map((p, index) => `${index === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
           .join(" ");
 
-        const group = svgNode("g", {
-          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
-        });
+        const leftBase = coords[0];
+        const rightBase = coords[coords.length - 1];
+        const baseY = Math.max(
+          leftBase.y,
+          rightBase.y,
+          point.y + Math.min(52, spec.h * .92)
+        );
+
+        // Paint secondary reliefs before Denali so the main massif occludes
+        // them wherever they overlap and they read as distant background peaks.
+        const group = document.createElementNS(SVG_NS, "g");
+        group.setAttribute(
+          "class",
+          `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
+        );
+        const denaliSilhouette = mountainSvg.querySelector(".mountain-silhouette");
+        mountainSvg.insertBefore(group, denaliSilhouette || null);
 
         svgNode("path", {
           class: "mountain-peak-relief-fill",
-          d: `${d} L ${(point.x + spec.w / 2).toFixed(1)} ${baseY.toFixed(1)} L ${(point.x - spec.w / 2).toFixed(1)} ${baseY.toFixed(1)} Z`
+          d: `${d} L ${rightBase.x.toFixed(1)} ${baseY.toFixed(1)} L ${leftBase.x.toFixed(1)} ${baseY.toFixed(1)} Z`
         }, group);
 
         svgNode("path", {
@@ -435,11 +444,13 @@
           d
         }, group);
 
-        // One faint interior fall-line gives the small silhouette dimensionality
-        // without competing with the main Denali massif or route lines.
+        const foldEndX = point.x + (rightBase.x - point.x) * .22;
         svgNode("path", {
           class: "mountain-peak-relief-fold",
-          d: `M ${point.x.toFixed(1)} ${(point.y - spec.h + 7).toFixed(1)} C ${(point.x - spec.w * .06).toFixed(1)} ${(point.y - spec.h * .55).toFixed(1)}, ${(point.x + spec.w * .10).toFixed(1)} ${(point.y - spec.h * .20).toFixed(1)}, ${(point.x + spec.w * .16).toFixed(1)} ${baseY.toFixed(1)}`
+          d: `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}
+              C ${(point.x - spec.w * .04).toFixed(1)} ${(point.y + spec.h * .22).toFixed(1)},
+                ${(point.x + spec.w * .08).toFixed(1)} ${(point.y + spec.h * .46).toFixed(1)},
+                ${foldEndX.toFixed(1)} ${baseY.toFixed(1)}`
         }, group);
       }
 

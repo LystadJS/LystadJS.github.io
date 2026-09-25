@@ -1038,12 +1038,14 @@
       stroke: none;
     }
 
-    body[data-page="about"] .mountain-shadow-ridge {
+    body[data-page="about"] .mountain-dem-ridge {
       fill: none;
-      stroke: rgba(139,113,132,.24);
-      stroke-width: 1.15;
+      stroke: rgba(164,140,158,.30);
+      stroke-width: 1.05;
       stroke-linecap: round;
+      stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
+      pointer-events: none;
     }
 
     body[data-page="about"] .mountain-peak-relief {
@@ -1058,25 +1060,11 @@
 
     body[data-page="about"] .mountain-peak-relief-ridge {
       fill: none;
-      stroke: rgba(163,137,156,.34);
+      stroke: rgba(163,137,156,.38);
       stroke-width: .9;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
-    }
-
-    body[data-page="about"] .mountain-peak-relief-fold {
-      fill: none;
-      stroke: rgba(207,192,202,.12);
-      stroke-width: .7;
-      stroke-linecap: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    body[data-page="about"] .mountain-snow {
-      fill: rgba(227,219,224,.11);
-      stroke: rgba(227,219,224,.08);
-      stroke-width: .7;
     }
 
     body[data-page="about"] .mountain-route {

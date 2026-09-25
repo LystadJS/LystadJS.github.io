@@ -227,6 +227,7 @@
 
       const summitX = 620;
       const summitY = elevationY(denaliElevation);
+      const sharedReliefHorizonY = plot.bottom - 18;
 
       const defs = svgNode("defs", { class: "mountain-generated" });
       const gradient = svgNode("linearGradient", {
@@ -357,44 +358,44 @@
 
         const reliefSpecs = {
           "rainbow": {
-            w: 102, h: 54, summitIndex: 8,
-            ridge: [[-1,1],[-.84,.86],[-.70,.70],[-.56,.56],[-.43,.38],[-.29,.49],[-.17,.24],[-.06,.08],[0,0],[.09,.18],[.22,.32],[.37,.27],[.52,.52],[.68,.63],[.84,.83],[1,1]]
+            w: 138, h: 60, summitIndex: 8,
+            ridge: [[-1.00,1.00],[-.89,.92],[-.78,.83],[-.67,.71],[-.56,.58],[-.45,.44],[-.33,.29],[-.18,.13],[0,0],[.12,.08],[.24,.18],[.36,.33],[.50,.41],[.64,.56],[.79,.74],[.91,.88],[1.00,1.00]]
           },
           "alyeska": {
-            w: 118, h: 54, summitIndex: 5,
-            ridge: [[-1,1],[-.86,.78],[-.73,.58],[-.61,.30],[-.50,.09],[-.39,0],[-.28,.12],[-.18,.08],[-.05,.24],[.09,.20],[.22,.34],[.38,.44],[.54,.58],[.70,.69],[.86,.86],[1,1]]
+            w: 168, h: 64, summitIndex: 6,
+            ridge: [[-1.00,1.00],[-.90,.90],[-.80,.76],[-.70,.56],[-.60,.33],[-.49,.12],[-.38,0],[-.27,.06],[-.14,.11],[0,.19],[.15,.28],[.31,.40],[.48,.55],[.66,.69],[.83,.84],[1.00,1.00]]
           },
           "gold-star": {
-            w: 92, h: 58, summitIndex: 8,
-            ridge: [[-1,1],[-.82,.83],[-.64,.72],[-.50,.56],[-.36,.60],[-.23,.34],[-.12,.18],[-.03,.04],[.05,0],[.14,.15],[.27,.24],[.40,.46],[.57,.56],[.75,.77],[.90,.90],[1,1]]
+            w: 126, h: 64, summitIndex: 8,
+            ridge: [[-1.00,1.00],[-.88,.90],[-.75,.80],[-.62,.67],[-.49,.54],[-.36,.38],[-.23,.23],[-.10,.09],[0,0],[.10,.07],[.21,.19],[.33,.35],[.46,.48],[.61,.63],[.77,.80],[.90,.91],[1.00,1.00]]
           },
           "healy": {
-            w: 126, h: 48, summitIndex: 9,
-            ridge: [[-1,1],[-.86,.86],[-.71,.70],[-.56,.54],[-.42,.42],[-.28,.31],[-.15,.20],[-.03,.13],[.09,.08],[.20,0],[.32,.10],[.46,.23],[.61,.37],[.75,.55],[.89,.78],[1,1]]
+            w: 190, h: 54, summitIndex: 9,
+            ridge: [[-1.00,1.00],[-.90,.93],[-.79,.85],[-.68,.75],[-.57,.64],[-.46,.53],[-.35,.43],[-.24,.33],[-.12,.23],[0,0],[.12,.08],[.24,.18],[.37,.28],[.51,.40],[.65,.53],[.79,.69],[.91,.84],[1.00,1.00]]
           },
           "east-twin": {
-            w: 122, h: 62, summitIndex: 9,
-            ridge: [[-1,1],[-.84,.83],[-.69,.68],[-.55,.50],[-.42,.34],[-.31,.20],[-.20,.09],[-.09,.14],[0,.03],[.08,0],[.17,.10],[.29,.06],[.41,.24],[.55,.43],[.70,.61],[.86,.82],[1,1]]
+            w: 178, h: 74, summitIndex: 9,
+            ridge: [[-1.00,1.00],[-.89,.91],[-.78,.80],[-.67,.66],[-.56,.51],[-.45,.36],[-.33,.22],[-.22,.12],[-.11,.05],[0,0],[.10,.03],[.20,.00],[.31,.08],[.43,.20],[.56,.36],[.69,.55],[.82,.76],[.92,.90],[1.00,1.00]]
           },
           "fuji": {
-            w: 144, h: 68, summitIndex: 10,
-            ridge: [[-1,1],[-.88,.91],[-.76,.82],[-.64,.71],[-.52,.59],[-.40,.46],[-.29,.34],[-.19,.22],[-.10,.11],[-.04,.04],[.02,0],[.08,.06],[.16,.13],[.27,.27],[.40,.43],[.54,.59],[.69,.74],[.84,.88],[1,1]]
+            w: 248, h: 94, summitIndex: 10,
+            ridge: [[-1.00,1.00],[-.90,.93],[-.80,.84],[-.70,.73],[-.60,.61],[-.49,.49],[-.38,.37],[-.28,.26],[-.18,.16],[-.08,.07],[0,0],[.08,.06],[.18,.15],[.29,.26],[.40,.38],[.52,.51],[.64,.64],[.76,.77],[.88,.90],[1.00,1.00]]
           },
           "toubkal": {
-            w: 136, h: 64, summitIndex: 9,
-            ridge: [[-1,1],[-.85,.84],[-.71,.68],[-.58,.54],[-.45,.46],[-.34,.30],[-.24,.20],[-.14,.08],[-.05,.12],[.03,0],[.12,.09],[.23,.05],[.34,.19],[.45,.26],[.57,.48],[.71,.61],[.86,.82],[1,1]]
+            w: 194, h: 80, summitIndex: 9,
+            ridge: [[-1.00,1.00],[-.90,.91],[-.80,.82],[-.70,.70],[-.60,.58],[-.49,.47],[-.38,.35],[-.27,.23],[-.15,.10],[0,0],[.10,.04],[.20,.01],[.31,.10],[.43,.18],[.56,.31],[.69,.48],[.82,.68],[.92,.86],[1.00,1.00]]
           },
           "rendezvous": {
-            w: 112, h: 60, summitIndex: 7,
-            ridge: [[-1,1],[-.82,.88],[-.67,.73],[-.53,.55],[-.41,.36],[-.31,.18],[-.21,.06],[-.10,0],[.02,.10],[.16,.24],[.31,.38],[.47,.51],[.63,.64],[.78,.78],[.91,.91],[1,1]]
+            w: 156, h: 70, summitIndex: 7,
+            ridge: [[-1.00,1.00],[-.89,.92],[-.78,.82],[-.67,.68],[-.56,.51],[-.44,.32],[-.31,.14],[-.16,0],[0,.08],[.15,.18],[.31,.31],[.48,.46],[.65,.62],[.81,.80],[.92,.92],[1.00,1.00]]
           },
           "gordon-lyon": {
-            w: 126, h: 44, summitIndex: 9,
-            ridge: [[-1,1],[-.86,.86],[-.72,.71],[-.58,.57],[-.44,.42],[-.31,.30],[-.18,.20],[-.07,.13],[.03,.09],[.12,0],[.23,.07],[.36,.17],[.51,.30],[.66,.47],[.81,.69],[.92,.86],[1,1]]
+            w: 192, h: 50, summitIndex: 9,
+            ridge: [[-1.00,1.00],[-.90,.94],[-.80,.86],[-.69,.77],[-.58,.66],[-.47,.55],[-.36,.43],[-.24,.31],[-.12,.18],[0,0],[.13,.07],[.27,.16],[.42,.28],[.57,.42],[.71,.58],[.84,.76],[.93,.90],[1.00,1.00]]
           },
           "lion-head": {
-            w: 116, h: 62, summitIndex: 7,
-            ridge: [[-1,1],[-.84,.82],[-.69,.62],[-.56,.38],[-.46,.17],[-.34,.08],[-.22,.04],[-.10,0],[.02,.06],[.13,.13],[.24,.30],[.38,.38],[.53,.48],[.67,.61],[.80,.72],[.91,.88],[1,1]]
+            w: 158, h: 78, summitIndex: 8,
+            ridge: [[-1.00,1.00],[-.89,.92],[-.79,.82],[-.69,.68],[-.58,.51],[-.47,.34],[-.35,.18],[-.19,.06],[0,0],[.13,.04],[.26,.13],[.40,.25],[.55,.39],[.70,.56],[.83,.74],[.92,.88],[1.00,1.00]]
           }
         };
 
@@ -405,8 +406,6 @@
         const summitRx = summitProfile[0];
         const summitRy = summitProfile[1];
 
-        // The waypoint is the true summit anchor. The mountain mass extends
-        // downward and outward from that point rather than being centered on it.
         const coords = spec.ridge.map(([rx, ry]) => ({
           x: point.x + (rx - summitRx) * spec.w / 2,
           y: point.y + (ry - summitRy) * spec.h
@@ -418,25 +417,17 @@
 
         const leftBase = coords[0];
         const rightBase = coords[coords.length - 1];
-        const baseY = Math.max(
-          leftBase.y,
-          rightBase.y,
-          point.y + Math.min(52, spec.h * .92)
-        );
+        const horizonY = sharedReliefHorizonY;
 
-        // Paint secondary reliefs before Denali so the main massif occludes
-        // them wherever they overlap and they read as distant background peaks.
-        const group = document.createElementNS(SVG_NS, "g");
-        group.setAttribute(
-          "class",
-          `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
-        );
-        const denaliSilhouette = mountainSvg.querySelector(".mountain-silhouette");
-        mountainSvg.insertBefore(group, denaliSilhouette || null);
+        // Appending after Denali puts the secondary reliefs in front of the
+        // principal massif while keeping routes and waypoints above both.
+        const group = svgNode("g", {
+          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
+        });
 
         svgNode("path", {
           class: "mountain-peak-relief-fill",
-          d: `${d} L ${rightBase.x.toFixed(1)} ${baseY.toFixed(1)} L ${leftBase.x.toFixed(1)} ${baseY.toFixed(1)} Z`
+          d: `${d} L ${rightBase.x.toFixed(1)} ${horizonY.toFixed(1)} L ${leftBase.x.toFixed(1)} ${horizonY.toFixed(1)} Z`
         }, group);
 
         svgNode("path", {
@@ -444,13 +435,13 @@
           d
         }, group);
 
-        const foldEndX = point.x + (rightBase.x - point.x) * .22;
+        const foldEndX = point.x + (rightBase.x - point.x) * .20;
         svgNode("path", {
           class: "mountain-peak-relief-fold",
           d: `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}
-              C ${(point.x - spec.w * .04).toFixed(1)} ${(point.y + spec.h * .22).toFixed(1)},
-                ${(point.x + spec.w * .08).toFixed(1)} ${(point.y + spec.h * .46).toFixed(1)},
-                ${foldEndX.toFixed(1)} ${baseY.toFixed(1)}`
+              C ${(point.x - spec.w * .05).toFixed(1)} ${(point.y + spec.h * .22).toFixed(1)},
+                ${(point.x + spec.w * .07).toFixed(1)} ${(point.y + spec.h * .46).toFixed(1)},
+                ${foldEndX.toFixed(1)} ${horizonY.toFixed(1)}`
         }, group);
       }
 

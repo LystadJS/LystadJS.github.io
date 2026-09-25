@@ -179,9 +179,12 @@ jobs:
                       const stage=document.getElementById("mountain-ascent-stage");
                       const scroller=document.getElementById("mountain-ascent-scroll");
                       const points=[...document.querySelectorAll(".mountain-waypoint")];
+                      document.documentElement.style.scrollBehavior="auto";
+                      document.body.style.scrollBehavior="auto";
                       const targetTop =
                         stage.getBoundingClientRect().top + window.scrollY - 120;
                       window.scrollTo(0, Math.max(0, targetTop));
+                      void document.documentElement.offsetHeight;
                       scroller.scrollLeft=Math.max(0,(scroller.scrollWidth-scroller.clientWidth)*0.70);
                       const sr=scroller.getBoundingClientRect();
                       const visible=points.filter(point => {

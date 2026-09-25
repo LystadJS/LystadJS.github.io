@@ -552,8 +552,11 @@
       const popoverHeight = mountainPopover.offsetHeight || 300;
       const viewportLeft = 8;
       const viewportRight = mountainStage.clientWidth - 8;
-      const viewportTop = 8;
-      const viewportBottom = mountainStage.clientHeight - 8;
+      const viewportTop = Math.max(8, 8 - stageRect.top);
+      const viewportBottom = Math.min(
+        mountainStage.clientHeight - 8,
+        window.innerHeight - stageRect.top - 8
+      );
 
       let left = pointLeft + 16;
       let top = pointTop - Math.min(48, popoverHeight * .2);

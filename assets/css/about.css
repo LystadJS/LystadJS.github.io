@@ -1073,22 +1073,6 @@
       vector-effect: non-scaling-stroke;
     }
 
-    body[data-page="about"] .mountain-peak-relief--fuji {
-      opacity: .32;
-    }
-
-    body[data-page="about"] .mountain-peak-relief--toubkal,
-    body[data-page="about"] .mountain-peak-relief--east-twin,
-    body[data-page="about"] .mountain-peak-relief--rendezvous,
-    body[data-page="about"] .mountain-peak-relief--lion-head {
-      opacity: .30;
-    }
-
-    body[data-page="about"] .mountain-peak-relief--gordon-lyon,
-    body[data-page="about"] .mountain-peak-relief--healy {
-      opacity: .25;
-    }
-
     body[data-page="about"] .mountain-snow {
       fill: rgba(227,219,224,.11);
       stroke: rgba(227,219,224,.08);

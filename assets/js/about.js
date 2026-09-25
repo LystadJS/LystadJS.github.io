@@ -187,7 +187,7 @@
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     // One horizontal compression factor is applied to every DEM cross-section.
     // Lowering it reduces overlap while preserving comparative elevation guidance.
-    const horizontalScale = 0.28;
+    const horizontalScale = 0.20;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -379,13 +379,20 @@
         .sort((a, b) => a.elevationFt - b.elevationFt);
 
       function flankPosition(point, index, count) {
-        const ratio = Math.max(0, Math.min(1, point.elevationFt / denaliElevation));
-        const distance = 46 + 405 * Math.pow(1 - ratio, .76);
-        const sequenceNudge = count > 1 ? ((index / (count - 1)) - .5) * 28 : 0;
+        // Horizontal placement is compositional. Rank-based spacing prevents
+        // similarly elevated peaks from collapsing onto the same x-position,
+        // while vertical position remains strictly elevation-derived.
+        const progress = count > 1 ? index / (count - 1) : 0;
+        const easedProgress = Math.pow(progress, .95);
+        const outerDistance = 450;
+        const innerDistance = 190;
+        const distance =
+          outerDistance - (outerDistance - innerDistance) * easedProgress;
         const direction = point.flank === "left" ? -1 : 1;
+
         return {
           ...point,
-          x: summitX + direction * (distance + sequenceNudge),
+          x: summitX + direction * distance,
           y: elevationY(point.elevationFt)
         };
       }
@@ -494,7 +501,7 @@
 
         svgNode("circle", {
           class: "mountain-waypoint-hit",
-          r: point.goal ? 24 : 18
+          r: point.goal ? 30 : 26
         }, group);
         svgNode("circle", {
           class: "mountain-waypoint-ring",
@@ -541,18 +548,30 @@
       const stageRect = mountainStage.getBoundingClientRect();
       const scaleX = svgRect.width / profileWidth;
       const scaleY = svgRect.height / profileHeight;
-      const pointLeft = (point.x * scaleX) + (svgRect.left - stageRect.left);
-      const pointTop = (point.y * scaleY) + (svgRect.top - stageRect.top);
+      const scrollLeft = mountainStage.scrollLeft;
+      const scrollTop = mountainStage.scrollTop;
+      const pointLeft =
+        (point.x * scaleX) + (svgRect.left - stageRect.left) + scrollLeft;
+      const pointTop =
+        (point.y * scaleY) + (svgRect.top - stageRect.top) + scrollTop;
       const popoverWidth = mountainPopover.offsetWidth || 270;
       const popoverHeight = mountainPopover.offsetHeight || 300;
+      const viewportLeft = scrollLeft + 8;
+      const viewportRight = scrollLeft + mountainStage.clientWidth - 8;
+      const viewportTop = scrollTop + 8;
+      const viewportBottom = scrollTop + mountainStage.clientHeight - 8;
 
       let left = pointLeft + 16;
       let top = pointTop - Math.min(48, popoverHeight * .2);
 
-      if (left + popoverWidth > stageRect.width - 8) left = pointLeft - popoverWidth - 16;
-      if (left < 8) left = 8;
-      if (top + popoverHeight > stageRect.height - 8) top = stageRect.height - popoverHeight - 8;
-      if (top < 8) top = 8;
+      if (left + popoverWidth > viewportRight) {
+        left = pointLeft - popoverWidth - 16;
+      }
+      if (left < viewportLeft) left = viewportLeft;
+      if (top + popoverHeight > viewportBottom) {
+        top = viewportBottom - popoverHeight;
+      }
+      if (top < viewportTop) top = viewportTop;
 
       mountainPopover.style.left = `${left}px`;
       mountainPopover.style.top = `${top}px`;
@@ -616,15 +635,24 @@
       closeMountainPopover();
     });
 
-    window.addEventListener("resize", () => {
+    function repositionOpenMountainPopover() {
       if (!mountainPopover.classList.contains("is-open") || !activeMountainPoint) return;
       const pointName = mountainPopover.dataset.activeName;
       const point = mountainData.find((item) => item.name === pointName);
       const transform = activeMountainPoint.getAttribute("transform") || "";
       const match = transform.match(/translate\(([-\d.]+)\s+([-\d.]+)\)/);
       if (point && match) {
-        positionMountainPopover({ ...point, x: Number(match[1]), y: Number(match[2]) });
+        positionMountainPopover({
+          ...point,
+          x: Number(match[1]),
+          y: Number(match[2])
+        });
       }
+    }
+
+    window.addEventListener("resize", repositionOpenMountainPopover);
+    mountainStage.addEventListener("scroll", repositionOpenMountainPopover, {
+      passive: true
     });
   }
 

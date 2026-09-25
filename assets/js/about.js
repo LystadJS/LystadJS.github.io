@@ -7,188 +7,117 @@
   const mountainPopover = document.getElementById("mountain-popover");
 
   if (mountainStage && mountainScroll && mountainSvg && mountainPopover) {
+    // Curated silhouette lineup. Minor route/highpoint entries and the shortest
+    // profiles are intentionally omitted so each remaining mountain can read as
+    // a recognizable individual form rather than a compressed elevation mark.
     const mountainData = [
-      {
-        name: "Mount Inari",
-        flank: "left",
-        location: "Kyoto, Japan",
-        date: "Jul 2024",
-        elevationFt: 764,
-        type: "Mountain route",
-        note: "A sacred mountain route through Fushimi Inari's shrine precinct and thousands of torii gates.",
-        image: ""
-      },
-      {
-        name: "Lion Head",
-        relief: "lion-head",
-        flank: "left",
-        location: "Matanuska Valley, Alaska",
-        date: "Date TBD",
-        elevationFt: 3185,
-        type: "Summit",
-        note: "A compact, glacier-scoured rock massif above the Matanuska River and glacier, with a steep cliff face and distinctive head-like summit block.",
-        image: ""
-      },
-      {
-        name: "Ōwakudani",
-        flank: "right",
-        location: "Hakone, Japan",
-        date: "Jul 2024",
-        elevationFt: 3425,
-        type: "Volcanic highpoint",
-        note: "Owakudani Station and the volcanic valley sit at roughly 1,044 meters above sea level.",
-        image: ""
-      },
-      {
-        name: "Harding Icefield Trail",
-        flank: "left",
-        location: "Kenai Fjords National Park, Alaska",
-        date: "Jun 2024",
-        elevationFt: 3527,
-        type: "Trail endpoint",
-        note: "The published trail-end elevation at the edge of the Harding Icefield; shown as a route highpoint rather than a summit.",
-        image: ""
-      },
-      {
-        name: "Rainbow Peak",
-        relief: "rainbow",
-        flank: "right",
-        location: "Chugach Mountains, Alaska",
-        date: "Apr 2024",
-        elevationFt: 3543,
-        type: "Summit",
-        note: "A steep Chugach ascent above Turnagain Arm where relief matters more than the absolute summit elevation.",
-        image: ""
-      },
-      {
-        name: "Mount Alyeska",
-        relief: "alyeska",
-        flank: "left",
-        location: "Girdwood, Alaska",
-        date: "Jun 2024",
-        elevationFt: 3939,
-        type: "Mountain",
-        note: "A coastal Chugach ascent rising directly above Girdwood and Turnagain Arm.",
-        image: ""
-      },
       {
         name: "Rendezvous Peak",
         relief: "rendezvous",
-        flank: "right",
+        x: 155,
+        displayWidth: 220,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4050,
         type: "Summit",
-        note: "A compact Arctic Valley summit with a steep triangular face and a longer descending shoulder toward the surrounding Chugach ridges.",
+        note: "A compact Arctic Valley summit with a steep pyramidal face and a long descending shoulder.",
         image: ""
       },
       {
         name: "Mount Gordon Lyon",
         relief: "gordon-lyon",
-        flank: "left",
+        x: 405,
+        displayWidth: 255,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4100,
         type: "Summit",
-        note: "A broad tundra-covered Chugach summit above Arctic Valley, characterized by rounded shoulders and a comparatively subdued summit crest.",
+        note: "A broad tundra-covered Chugach summit above Arctic Valley with rounded shoulders.",
         image: ""
       },
       {
         name: "Gold Star Peak",
         relief: "gold-star",
-        flank: "right",
+        x: 650,
+        displayWidth: 220,
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
         elevationFt: 4148,
         type: "Summit",
-        note: "A Chugach summit named in honor of Gold Star families.",
+        note: "A compact rocky Chugach summit with a sharp upper crown.",
         image: ""
       },
       {
         name: "Mount Healy",
         relief: "healy",
-        flank: "left",
+        x: 915,
+        displayWidth: 320,
         location: "Denali region, Alaska",
         date: "May 2024",
         elevationFt: 5716,
         type: "Mountain",
-        note: "A steep Alaska Range ridge immediately outside the developed core of Denali National Park.",
+        note: "A long Alaska Range ridge immediately outside the developed core of Denali National Park.",
         image: ""
       },
       {
         name: "East Twin Peak",
         relief: "east-twin",
-        flank: "right",
+        x: 1195,
+        displayWidth: 320,
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
         elevationFt: 5873,
         type: "Summit",
-        note: "A winter Chugach ascent and one of the climbs that made Alaska the dominant landscape in this collection.",
-        image: ""
-      },
-      {
-        name: "Richland Balsam",
-        flank: "left",
-        location: "Blue Ridge Parkway, North Carolina",
-        date: "Jun 2026",
-        elevationFt: 6053,
-        type: "Highpoint",
-        note: "The highest point on the Blue Ridge Parkway motor road.",
-        image: ""
-      },
-      {
-        name: "Point Imperial",
-        flank: "right",
-        location: "Grand Canyon, Arizona",
-        date: "Apr 2018",
-        elevationFt: 8803,
-        type: "Viewpoint",
-        note: "The highest point on the Grand Canyon's North Rim; included as a high-elevation waypoint rather than a summit claim.",
+        note: "A craggy Chugach summit block with a visibly broken upper ridge.",
         image: ""
       },
       {
         name: "Mount Fuji",
         relief: "fuji",
-        flank: "left",
+        signature: "fuji",
+        x: 1490,
+        displayWidth: 570,
         location: "Japan",
         date: "Jul 2024",
         elevationFt: 12388,
         type: "Summit",
-        note: "Japan's highest peak and one of the major summit milestones on the profile.",
+        note: "Japan's highest peak, rendered here with its broad, nearly symmetrical volcanic cone.",
         image: ""
       },
       {
         name: "Mount Toubkal",
         relief: "toubkal",
-        flank: "right",
+        x: 1810,
+        displayWidth: 430,
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
         elevationFt: 13671,
         type: "Summit",
-        note: "The highest peak in North Africa and the highest completed summit on this profile.",
+        note: "The highest peak in North Africa, shown as a rugged asymmetric High Atlas massif.",
         image: ""
       },
       {
         name: "Denali",
+        relief: "denali",
+        signature: "denali",
+        x: 2110,
+        displayWidth: 720,
         location: "Alaska, USA",
         date: "Goal",
         elevationFt: 20310,
         type: "Long-term objective",
-        note: "The summit goal anchoring the visualization.",
+        note: "The long-term objective anchoring the composition, rendered as a broad asymmetric massif rather than a narrow summit spike.",
         image: "",
         goal: true
       }
     ];
 
     const SVG_NS = "http://www.w3.org/2000/svg";
-    const profileWidth = 1200;
-    const profileHeight = 470;
-    const plot = { left: 72, top: 44, bottom: 400 };
+    const profileWidth = 2400;
+    const profileHeight = 780;
+    const plot = { left: 80, right: 2320, top: 70, bottom: 650 };
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
-    // Global base compression keeps the mountain range compact; the generated
-    // characteristic-view metadata applies modest per-profile width emphasis.
-    const horizontalScale = 0.18;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -200,6 +129,29 @@
     const popoverElevation = document.getElementById("mountain-popover-elevation");
     const popoverNote = document.getElementById("mountain-popover-note");
     const popoverClose = document.getElementById("mountain-popover-close");
+
+    // Reference-shaped signature profiles. These are deliberately silhouette-first:
+    // Fuji follows the broad Lake Shoji-style cone; Denali follows the broad Wonder
+    // Lake massif with an asymmetric summit and long shoulders. The waypoint remains
+    // the exact published summit elevation; the profile shape is presentation geometry.
+    const signatureProfiles = {
+      fuji: [
+        [-1.00,1.00],[-.93,.95],[-.86,.89],[-.78,.81],[-.70,.72],
+        [-.62,.63],[-.54,.54],[-.46,.45],[-.38,.36],[-.30,.28],
+        [-.22,.20],[-.15,.13],[-.09,.075],[-.04,.035],[0,0],
+        [.04,.035],[.09,.075],[.15,.13],[.22,.20],[.30,.28],
+        [.38,.36],[.46,.45],[.54,.54],[.62,.63],[.70,.72],
+        [.78,.81],[.86,.89],[.93,.95],[1.00,1.00]
+      ],
+      denali: [
+        [-1.00,1.00],[-.94,.92],[-.88,.84],[-.82,.76],[-.76,.69],
+        [-.70,.62],[-.64,.55],[-.58,.49],[-.52,.43],[-.46,.38],
+        [-.40,.34],[-.34,.30],[-.28,.25],[-.22,.21],[-.17,.18],
+        [-.12,.20],[-.07,.14],[-.02,.095],[.035,.00],[.09,.035],
+        [.15,.065],[.22,.11],[.30,.17],[.38,.24],[.47,.32],
+        [.57,.42],[.67,.53],[.77,.65],[.87,.79],[.94,.90],[1.00,1.00]
+      ]
+    };
 
     function svgNode(tag, attrs = {}, parent = mountainSvg) {
       const node = document.createElementNS(SVG_NS, tag);
@@ -213,20 +165,6 @@
       return plot.bottom - ratio * (plot.bottom - plot.top);
     }
 
-    function smoothPath(points) {
-      if (!points.length) return "";
-      if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
-
-      let path = `M ${points[0].x} ${points[0].y}`;
-      for (let i = 1; i < points.length; i += 1) {
-        const previous = points[i - 1];
-        const current = points[i];
-        const midX = (previous.x + current.x) / 2;
-        path += ` C ${midX} ${previous.y}, ${midX} ${current.y}, ${current.x} ${current.y}`;
-      }
-      return path;
-    }
-
     function ridgePath(points) {
       if (!points.length) return "";
       return points
@@ -236,7 +174,31 @@
         .join(" ");
     }
 
-    function buildDemGeometry(profile, summitX, summitY, horizonY) {
+    function selectProfileSamples(samples) {
+      if (samples.length <= 12) return samples;
+
+      const selected = [samples[0]];
+      const summitIndex = Math.floor(samples.length / 2);
+
+      for (let i = 1; i < samples.length - 1; i += 1) {
+        const previous = Number(samples[i - 1].elevation_m);
+        const current = Number(samples[i].elevation_m);
+        const next = Number(samples[i + 1].elevation_m);
+        const slopeIn = current - previous;
+        const slopeOut = next - current;
+        const turningPoint = slopeIn === 0 || slopeOut === 0 || slopeIn * slopeOut < 0;
+        const summitNeighborhood = Math.abs(i - summitIndex) <= 2;
+
+        if (turningPoint || summitNeighborhood || i % 4 === 0) {
+          selected.push(samples[i]);
+        }
+      }
+
+      selected.push(samples[samples.length - 1]);
+      return selected;
+    }
+
+    function buildDemGeometry(profile, summitX, summitY, horizonY, displayWidth) {
       if (!profile?.samples?.length || !profile.dem_summit) return null;
 
       const summitElevation = Number(profile.dem_summit.elevation_m);
@@ -256,15 +218,9 @@
         return null;
       }
 
-      // Vertical geometry remains DEM/elevation-derived. Horizontal emphasis
-      // is curated per mountain so its characteristic shoulders, saddles, crown,
-      // cone, or ridge remain visually recognizable at this chart scale.
       const pixelsPerMeter = displayHeight / reliefMeters;
-      const widthFactor = Number(profile.display_width_factor) || 1;
-      const width =
-        radiusKm * 2000 * pixelsPerMeter * horizontalScale * widthFactor;
-
-      const coords = profile.samples
+      const samples = selectProfileSamples(profile.samples);
+      const coords = samples
         .map((sample) => ({
           distanceKm: Number(sample.distance_km),
           elevationM: Number(sample.elevation_m)
@@ -273,14 +229,32 @@
           Number.isFinite(sample.distanceKm) && Number.isFinite(sample.elevationM)
         )
         .map((sample) => ({
-          x: summitX + (sample.distanceKm / radiusKm) * width / 2,
+          x: summitX + (sample.distanceKm / radiusKm) * displayWidth / 2,
           y: summitY + (summitElevation - sample.elevationM) * pixelsPerMeter
         }));
 
       if (coords.length < 2) return null;
 
       const ridgeD = ridgePath(coords);
+      const first = coords[0];
+      const last = coords[coords.length - 1];
+      const fillD =
+        `${ridgeD} L ${last.x.toFixed(2)} ${horizonY.toFixed(2)} ` +
+        `L ${first.x.toFixed(2)} ${horizonY.toFixed(2)} Z`;
 
+      return { ridgeD, fillD };
+    }
+
+    function buildSignatureGeometry(points, summitX, summitY, horizonY, displayWidth) {
+      if (!points?.length) return null;
+
+      const displayHeight = horizonY - summitY;
+      const coords = points.map(([x, y]) => ({
+        x: summitX + x * displayWidth / 2,
+        y: summitY + y * displayHeight
+      }));
+
+      const ridgeD = ridgePath(coords);
       const first = coords[0];
       const last = coords[coords.length - 1];
       const fillD =
@@ -293,13 +267,7 @@
     function buildMountainProfile() {
       mountainSvg.querySelectorAll(".mountain-generated").forEach((node) => node.remove());
 
-      const summitX = 620;
-      const summitY = elevationY(denaliElevation);
-      const sharedReliefHorizonY = plot.bottom - 18;
-
-      if (!Object.keys(demProfiles).length) {
-        console.warn("Mountain DEM profiles were not loaded; relief rendering is unavailable.");
-      }
+      const horizonY = plot.bottom;
 
       const defs = svgNode("defs", { class: "mountain-generated" });
       const gradient = svgNode("linearGradient", {
@@ -309,162 +277,69 @@
         x2: "0%",
         y2: "100%"
       }, defs);
-      svgNode("stop", { offset: "0%", "stop-color": "#483744", "stop-opacity": ".62" }, gradient);
-      svgNode("stop", { offset: "42%", "stop-color": "#2a2029", "stop-opacity": ".82" }, gradient);
-      svgNode("stop", { offset: "100%", "stop-color": "#100d11", "stop-opacity": ".98" }, gradient);
+      svgNode("stop", { offset: "0%", "stop-color": "#594452", "stop-opacity": ".78" }, gradient);
+      svgNode("stop", { offset: "48%", "stop-color": "#2c222b", "stop-opacity": ".90" }, gradient);
+      svgNode("stop", { offset: "100%", "stop-color": "#0e0b10", "stop-opacity": ".98" }, gradient);
 
       [0, 5000, 10000, 15000, 20000].forEach((elevation) => {
         const y = elevationY(elevation);
         svgNode("line", {
           class: "mountain-generated mountain-guide",
-          x1: plot.left - 10,
+          x1: plot.left,
           y1: y,
-          x2: profileWidth - 42,
+          x2: plot.right,
           y2: y
         });
         const label = svgNode("text", {
           class: "mountain-generated mountain-guide-label",
-          x: 12,
-          y: y + 4
+          x: 18,
+          y: y + 5
         });
         label.textContent = elevation === 0 ? "0 FT" : `${elevation / 1000}K`;
       });
 
-      const denaliGeometry = buildDemGeometry(
-        demProfiles.denali,
-        summitX,
-        summitY,
-        sharedReliefHorizonY
-      );
+      const plotted = mountainData.map((point) => ({
+        ...point,
+        y: elevationY(point.elevationFt)
+      }));
 
-      if (denaliGeometry) {
-        svgNode("path", {
-          class: "mountain-generated mountain-silhouette",
-          d: denaliGeometry.fillD
+      // Broad signature mountains are painted first; smaller profiles then sit
+      // cleanly in their own dedicated slots without being swallowed by them.
+      [...plotted]
+        .sort((a, b) => b.displayWidth - a.displayWidth)
+        .forEach((point) => {
+          const profile = demProfiles[point.relief];
+          const signature = point.signature ? signatureProfiles[point.signature] : null;
+          const geometry = signature
+            ? buildSignatureGeometry(signature, point.x, point.y, horizonY, point.displayWidth)
+            : buildDemGeometry(profile, point.x, point.y, horizonY, point.displayWidth);
+
+          if (!geometry) return;
+
+          const classes = [
+            "mountain-generated",
+            "mountain-peak-relief",
+            `mountain-peak-relief--${point.relief}`
+          ];
+          if (point.signature) classes.push("mountain-peak-relief--signature");
+          if (point.goal) classes.push("mountain-peak-relief--goal");
+
+          const group = svgNode("g", { class: classes.join(" ") });
+          const profileTitle = svgNode("title", {}, group);
+          profileTitle.textContent = point.signature
+            ? `${point.name}: reference-shaped signature silhouette`
+            : `${point.name}: ${profile?.characteristic_view || "characteristic DEM profile"}`;
+
+          svgNode("path", {
+            class: "mountain-peak-relief-fill",
+            d: geometry.fillD
+          }, group);
+
+          svgNode("path", {
+            class: "mountain-peak-relief-ridge",
+            d: geometry.ridgeD
+          }, group);
         });
-        svgNode("path", {
-          class: "mountain-generated mountain-dem-ridge mountain-dem-ridge--denali",
-          d: denaliGeometry.ridgeD
-        });
-      }
-
-      const completed = mountainData.filter((point) => !point.goal);
-      const leftCompleted = completed
-        .filter((point) => point.flank === "left")
-        .sort((a, b) => a.elevationFt - b.elevationFt);
-      const rightCompleted = completed
-        .filter((point) => point.flank === "right")
-        .sort((a, b) => a.elevationFt - b.elevationFt);
-
-      function flankPosition(point, index, count) {
-        // Horizontal placement is compositional. Rank-based spacing prevents
-        // similarly elevated peaks from collapsing onto the same x-position,
-        // while vertical position remains strictly elevation-derived.
-        const progress = count > 1 ? index / (count - 1) : 0;
-        const easedProgress = Math.pow(progress, .95);
-        const outerDistance = 450;
-        const innerDistance = 190;
-        const distance =
-          outerDistance - (outerDistance - innerDistance) * easedProgress;
-        const direction = point.flank === "left" ? -1 : 1;
-
-        return {
-          ...point,
-          x: summitX + direction * distance,
-          y: elevationY(point.elevationFt)
-        };
-      }
-
-      const leftPlotted = leftCompleted.map((point, index) =>
-        flankPosition(point, index, leftCompleted.length)
-      );
-      const rightPlotted = rightCompleted.map((point, index) =>
-        flankPosition(point, index, rightCompleted.length)
-      );
-
-      function drawPeakRelief(point) {
-        if (!point.relief) return;
-        const profile = demProfiles[point.relief];
-        if (!profile) return;
-
-        const geometry = buildDemGeometry(
-          profile,
-          point.x,
-          point.y,
-          sharedReliefHorizonY
-        );
-        if (!geometry) return;
-
-        const group = svgNode("g", {
-          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
-        });
-        const profileTitle = svgNode("title", {}, group);
-        profileTitle.textContent =
-          `${point.name}: ${profile.characteristic_view || "curated characteristic profile"}`;
-
-        svgNode("path", {
-          class: "mountain-peak-relief-fill",
-          d: geometry.fillD
-        }, group);
-
-        svgNode("path", {
-          class: "mountain-peak-relief-ridge",
-          d: geometry.ridgeD
-        }, group);
-      }
-
-      const summit = {
-        ...mountainData.find((point) => point.goal),
-        x: summitX,
-        y: summitY
-      };
-      const plotted = [...leftPlotted, ...rightPlotted, summit];
-
-      // Paint tallest completed mountains first and lower profiles last.
-      // This preserves every distinctive foreground silhouette instead of allowing
-      // Fuji, Toubkal, or Healy to bury the smaller peaks behind one large fill.
-      [...leftPlotted, ...rightPlotted]
-        .filter((point) => point.relief)
-        .sort((a, b) => b.elevationFt - a.elevationFt)
-        .forEach(drawPeakRelief);
-
-      const leftRoute = [
-        { x: 120, y: plot.bottom + 7 },
-        ...leftPlotted
-      ];
-      const rightRoute = [
-        { x: 1080, y: plot.bottom + 7 },
-        ...rightPlotted
-      ];
-
-      [leftRoute, rightRoute].forEach((route) => {
-        svgNode("path", {
-          class: "mountain-generated mountain-route",
-          d: smoothPath(route)
-        });
-        svgNode("path", {
-          class: "mountain-generated mountain-route-progress",
-          d: smoothPath(route)
-        });
-      });
-
-      const leftHigh = leftPlotted[leftPlotted.length - 1];
-      const rightHigh = rightPlotted[rightPlotted.length - 1];
-      [
-        `M ${leftHigh.x} ${leftHigh.y}
-           C ${leftHigh.x + 42} ${leftHigh.y - 12},
-             ${summit.x - 52} ${summit.y + 42},
-             ${summit.x} ${summit.y}`,
-        `M ${rightHigh.x} ${rightHigh.y}
-           C ${rightHigh.x - 42} ${rightHigh.y - 12},
-             ${summit.x + 52} ${summit.y + 42},
-             ${summit.x} ${summit.y}`
-      ].forEach((d) => {
-        svgNode("path", {
-          class: "mountain-generated mountain-route-goal",
-          d
-        });
-      });
 
       plotted.forEach((point) => {
         const group = svgNode("g", {
@@ -478,21 +353,21 @@
         if (point.goal) {
           svgNode("circle", {
             class: "mountain-goal-halo",
-            r: 17
+            r: 18
           }, group);
         }
 
         svgNode("circle", {
           class: "mountain-waypoint-hit",
-          r: point.goal ? 30 : 26
+          r: point.goal ? 32 : 28
         }, group);
         svgNode("circle", {
           class: "mountain-waypoint-ring",
-          r: point.goal ? 8 : 6
+          r: point.goal ? 8.5 : 6.5
         }, group);
         svgNode("circle", {
           class: "mountain-waypoint-core",
-          r: point.goal ? 3.4 : 2.5
+          r: point.goal ? 3.7 : 2.7
         }, group);
 
         group.addEventListener("pointerenter", () => openMountainPopover(point, group));
@@ -507,23 +382,25 @@
             openMountainPopover(point, group);
           }
         });
-      });
 
-      const goalName = svgNode("text", {
-        class: "mountain-generated mountain-goal-name",
-        x: summit.x + 31,
-        y: summit.y + 3,
-        "text-anchor": "start"
-      });
-      goalName.textContent = "Denali";
+        const label = svgNode("text", {
+          class: `mountain-generated mountain-profile-label${point.goal ? " is-goal" : ""}`,
+          x: point.x,
+          y: horizonY + 32,
+          "text-anchor": "middle"
+        });
+        label.textContent = point.name;
 
-      const goalMeta = svgNode("text", {
-        class: "mountain-generated mountain-goal-meta",
-        x: summit.x + 31,
-        y: summit.y + 19,
-        "text-anchor": "start"
+        const meta = svgNode("text", {
+          class: `mountain-generated mountain-profile-meta${point.goal ? " is-goal" : ""}`,
+          x: point.x,
+          y: horizonY + 53,
+          "text-anchor": "middle"
+        });
+        meta.textContent = point.goal
+          ? `GOAL · ${point.elevationFt.toLocaleString()} FT`
+          : `${point.elevationFt.toLocaleString()} FT`;
       });
-      goalMeta.textContent = "GOAL · 20,310 FT";
     }
 
     function updateWaypointHitTargets() {
@@ -534,7 +411,7 @@
       mountainSvg.querySelectorAll(".mountain-waypoint").forEach((group) => {
         const hit = group.querySelector(".mountain-waypoint-hit");
         if (!hit) return;
-        const baseRadius = group.classList.contains("is-goal") ? 30 : 26;
+        const baseRadius = group.classList.contains("is-goal") ? 32 : 28;
         hit.setAttribute("r", Math.max(baseRadius, minimumRadius).toFixed(2));
       });
     }

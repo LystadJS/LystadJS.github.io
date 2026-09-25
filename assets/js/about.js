@@ -39,6 +39,7 @@
       },
       {
         name: "Rainbow Peak",
+        relief: "chugach",
         flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Apr 2024",
@@ -49,6 +50,7 @@
       },
       {
         name: "Mount Alyeska",
+        relief: "coastal",
         flank: "left",
         location: "Girdwood, Alaska",
         date: "Jun 2024",
@@ -59,6 +61,7 @@
       },
       {
         name: "Gold Star Peak",
+        relief: "knife",
         flank: "right",
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
@@ -69,6 +72,7 @@
       },
       {
         name: "Mount Healy",
+        relief: "alaska-range",
         flank: "left",
         location: "Denali region, Alaska",
         date: "May 2024",
@@ -79,6 +83,7 @@
       },
       {
         name: "East Twin Peak",
+        relief: "twin",
         flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
@@ -109,6 +114,7 @@
       },
       {
         name: "Mount Fuji",
+        relief: "fuji",
         flank: "left",
         location: "Japan",
         date: "Jul 2024",
@@ -119,6 +125,7 @@
       },
       {
         name: "Mount Toubkal",
+        relief: "atlas",
         flank: "right",
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
@@ -311,12 +318,89 @@
 
       const leftPlotted = leftCompleted.map((point,index) => flankPosition(point,index,leftCompleted.length));
       const rightPlotted = rightCompleted.map((point,index) => flankPosition(point,index,rightCompleted.length));
+
+      function drawPeakRelief(point) {
+        if (!point.relief) return;
+
+        const reliefSpecs = {
+          "chugach": {
+            w: 92, h: 48,
+            ridge: [[-1,1],[-.78,.78],[-.58,.70],[-.36,.42],[-.18,.56],[0,0],[.17,.44],[.36,.29],[.58,.67],[.78,.72],[1,1]]
+          },
+          "coastal": {
+            w: 102, h: 42,
+            ridge: [[-1,1],[-.76,.83],[-.53,.72],[-.31,.44],[-.12,.50],[0,0],[.18,.38],[.40,.59],[.64,.69],[.83,.86],[1,1]]
+          },
+          "knife": {
+            w: 82, h: 54,
+            ridge: [[-1,1],[-.72,.80],[-.48,.64],[-.26,.46],[-.08,.14],[0,0],[.09,.22],[.24,.51],[.50,.61],[.76,.83],[1,1]]
+          },
+          "alaska-range": {
+            w: 112, h: 50,
+            ridge: [[-1,1],[-.82,.84],[-.62,.66],[-.46,.72],[-.27,.39],[-.11,.46],[0,0],[.14,.35],[.31,.29],[.50,.61],[.70,.54],[.86,.82],[1,1]]
+          },
+          "twin": {
+            w: 112, h: 54,
+            ridge: [[-1,1],[-.78,.82],[-.57,.62],[-.35,.23],[-.18,.47],[0,.16],[.20,0],[.37,.43],[.58,.58],[.79,.82],[1,1]]
+          },
+          "fuji": {
+            w: 132, h: 62,
+            ridge: [[-1,1],[-.82,.87],[-.64,.72],[-.47,.55],[-.30,.34],[-.16,.15],[0,0],[.16,.15],[.30,.34],[.47,.55],[.64,.72],[.82,.87],[1,1]]
+          },
+          "atlas": {
+            w: 126, h: 58,
+            ridge: [[-1,1],[-.80,.82],[-.61,.70],[-.43,.49],[-.27,.58],[-.10,.21],[0,0],[.15,.30],[.31,.24],[.48,.53],[.67,.61],[.84,.84],[1,1]]
+          }
+        };
+
+        const spec = reliefSpecs[point.relief];
+        if (!spec) return;
+
+        const baseY = point.y + Math.min(34, spec.h * .62);
+        const coords = spec.ridge.map(([rx, ry]) => ({
+          x: point.x + rx * spec.w / 2,
+          y: point.y - spec.h * (1 - ry) + 7
+        }));
+
+        const d = coords
+          .map((p, index) => `${index === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
+          .join(" ");
+
+        const group = svgNode("g", {
+          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
+        });
+
+        svgNode("path", {
+          class: "mountain-peak-relief-fill",
+          d: `${d} L ${(point.x + spec.w / 2).toFixed(1)} ${baseY.toFixed(1)} L ${(point.x - spec.w / 2).toFixed(1)} ${baseY.toFixed(1)} Z`
+        }, group);
+
+        svgNode("path", {
+          class: "mountain-peak-relief-ridge",
+          d
+        }, group);
+
+        // One faint interior fall-line gives the small silhouette dimensionality
+        // without competing with the main Denali massif or route lines.
+        svgNode("path", {
+          class: "mountain-peak-relief-fold",
+          d: `M ${point.x.toFixed(1)} ${(point.y - spec.h + 7).toFixed(1)} C ${(point.x - spec.w * .06).toFixed(1)} ${(point.y - spec.h * .55).toFixed(1)}, ${(point.x + spec.w * .10).toFixed(1)} ${(point.y - spec.h * .20).toFixed(1)}, ${(point.x + spec.w * .16).toFixed(1)} ${baseY.toFixed(1)}`
+        }, group);
+      }
+
       const summit = {
         ...mountainData.find((point) => point.goal),
         x: summitX,
         y: summitY
       };
       const plotted = [...leftPlotted, ...rightPlotted, summit];
+
+      // Local relief silhouettes sit behind the route and waypoint layers.
+      // They mark only significant named mountains; route endpoints and viewpoints
+      // remain visually quiet.
+      [...leftPlotted, ...rightPlotted]
+        .filter((point) => point.relief)
+        .forEach(drawPeakRelief);
 
       const leftRoute = [
         { x: 120, y: plot.bottom + 7 },

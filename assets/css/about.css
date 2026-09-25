@@ -390,35 +390,40 @@
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .38;
-      stroke: rgba(190,176,185,.10);
+      opacity: .33;
+      stroke: rgba(190,176,185,.08);
       stroke-width: .35;
+      stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
+      shape-rendering: geometricPrecision;
       pointer-events: auto;
-      transition: opacity 120ms ease, filter 120ms ease;
+      transition: opacity 180ms ease-out, filter 180ms ease-out;
     }
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .56;
+      opacity: .50;
       filter: brightness(1.08);
       outline: none;
     }
 
     body[data-page="about"] .service-flow--infantry {
-      fill: rgb(58,39,70);
+      /* Darkened Infantry Blue. */
+      fill: rgb(49,95,125);
     }
 
     body[data-page="about"] .service-flow--leader {
-      fill: rgb(76,15,31);
+      /* Subdued NCO brass/gold. */
+      fill: rgb(101,82,43);
     }
 
     body[data-page="about"] .service-flow--comms {
-      fill: rgb(39,52,66);
+      /* Darkened Signal Corps orange. */
+      fill: rgb(124,58,18);
     }
 
     body[data-page="about"] .service-flow--officer {
-      fill: rgb(96,77,60);
+      fill: rgb(82,66,51);
     }
 
     body[data-page="about"] .service-flow-label {

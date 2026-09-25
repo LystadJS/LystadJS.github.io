@@ -229,9 +229,9 @@ def local_summit(
     lon: float,
     radius_m: float,
 ) -> Tuple[float, float, float]:
-    """Refine the summit to the highest DEM sample in a 9x9 local grid."""
+    """Refine the summit to the highest DEM sample in a 17x17 local grid."""
     best = (lat, lon, sampler.elevation(lat, lon))
-    steps = 4
+    steps = 8
     for iy in range(-steps, steps + 1):
         for ix in range(-steps, steps + 1):
             north_m = (iy / steps) * radius_m
@@ -350,7 +350,7 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
         center_index = PROFILE_SAMPLES // 2
         samples[center_index]["elevation_m"] = round(summit_elevation, 2)
         max_profile_elevation = max(item["elevation_m"] for item in samples)
-        if max_profile_elevation <= summit_elevation + 5.0:
+        if max_profile_elevation <= summit_elevation + 1.0:
             break
         radius_km = max(minimum_radius, radius_km * 0.82)
 
@@ -377,7 +377,7 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
         "sample_count": PROFILE_SAMPLES,
         "min_elevation_m": round(min_profile_elevation, 2),
         "max_elevation_m": round(max_profile_elevation, 2),
-        "center_is_profile_max": summit_elevation >= max_profile_elevation - 5.0,
+        "center_is_profile_max": summit_elevation >= max_profile_elevation - 1.0,
         "samples": samples,
     }
 
@@ -408,7 +408,7 @@ def main() -> None:
             "encoding": "R*256 + G + B/256 - 32768 metres",
         },
         "method": {
-            "summit_refinement": "9x9 DEM grid around published WGS84 summit reference",
+            "summit_refinement": "17x17 DEM grid around published WGS84 summit reference",
             "orientation_selection": (
                 "5-degree search maximizing two-sided relief with a penalty for "
                 "crossing terrain higher than the named summit"

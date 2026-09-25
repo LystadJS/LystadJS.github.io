@@ -184,6 +184,11 @@
     const profileHeight = 470;
     const plot = { left: 72, top: 44, bottom: 400 };
     const denaliElevation = 20310;
+    const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
+    const horizontalScale = 0.5;
+    const maxDenaliWidth = 1120;
+    const maxSecondaryWidth = 720;
+    const minSecondaryWidth = 88;
     let activeMountainPoint = null;
 
     const popoverImage = document.getElementById("mountain-popover-image");
@@ -222,12 +227,79 @@
       return path;
     }
 
+    function clamp(value, minimum, maximum) {
+      return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    function buildDemGeometry(profile, summitX, summitY, horizonY, options = {}) {
+      if (!profile?.samples?.length || !profile.dem_summit) return null;
+
+      const summitElevation = Number(profile.dem_summit.elevation_m);
+      const minimumElevation = Number(profile.min_elevation_m);
+      const radiusKm = Number(profile.radius_km);
+      const reliefMeters = summitElevation - minimumElevation;
+      const displayHeight = horizonY - summitY;
+
+      if (
+        !Number.isFinite(summitElevation) ||
+        !Number.isFinite(minimumElevation) ||
+        !Number.isFinite(radiusKm) ||
+        reliefMeters <= 0 ||
+        displayHeight <= 0 ||
+        radiusKm <= 0
+      ) {
+        return null;
+      }
+
+      // A single horizontal compression is applied to every DEM section.
+      // Vertical shape remains the raw DEM elevation profile; width is only
+      // bounded to keep the combined comparison legible inside the SVG.
+      const pixelsPerMeter = displayHeight / reliefMeters;
+      const naturalWidth = radiusKm * 2000 * pixelsPerMeter * horizontalScale;
+      const minimumWidth = options.minimumWidth || 0;
+      const maximumWidth = options.maximumWidth || profileWidth;
+      const width = clamp(naturalWidth, minimumWidth, maximumWidth);
+
+      const coords = profile.samples
+        .map((sample) => ({
+          distanceKm: Number(sample.distance_km),
+          elevationM: Number(sample.elevation_m)
+        }))
+        .filter((sample) =>
+          Number.isFinite(sample.distanceKm) && Number.isFinite(sample.elevationM)
+        )
+        .map((sample) => ({
+          x: summitX + (sample.distanceKm / radiusKm) * width / 2,
+          y: summitY + (summitElevation - sample.elevationM) * pixelsPerMeter
+        }));
+
+      if (coords.length < 2) return null;
+
+      const ridgeD = coords
+        .map((point, index) =>
+          `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`
+        )
+        .join(" ");
+
+      const first = coords[0];
+      const last = coords[coords.length - 1];
+      const fillD =
+        `${ridgeD} L ${last.x.toFixed(2)} ${horizonY.toFixed(2)} ` +
+        `L ${first.x.toFixed(2)} ${horizonY.toFixed(2)} Z`;
+
+      return { ridgeD, fillD, width };
+    }
+
     function buildMountainProfile() {
       mountainSvg.querySelectorAll(".mountain-generated").forEach((node) => node.remove());
 
       const summitX = 620;
       const summitY = elevationY(denaliElevation);
       const sharedReliefHorizonY = plot.bottom - 18;
+
+      if (!Object.keys(demProfiles).length) {
+        console.warn("Mountain DEM profiles were not loaded; relief rendering is unavailable.");
+      }
 
       const defs = svgNode("defs", { class: "mountain-generated" });
       const gradient = svgNode("linearGradient", {
@@ -258,77 +330,24 @@
         label.textContent = elevation === 0 ? "0 FT" : `${elevation / 1000}K`;
       });
 
-      // A broad, asymmetric Denali-inspired massif: long lower shoulders,
-      // a steep upper mountain, and a dominant central summit.
-      const silhouettePoints = [
-        { x: 34, y: 423 },
-        { x: 92, y: 414 },
-        { x: 138, y: 388 },
-        { x: 183, y: 371 },
-        { x: 226, y: 336 },
-        { x: 266, y: 320 },
-        { x: 305, y: 286 },
-        { x: 344, y: 273 },
-        { x: 382, y: 236 },
-        { x: 419, y: 226 },
-        { x: 454, y: 188 },
-        { x: 486, y: 177 },
-        { x: 516, y: 139 },
-        { x: 544, y: 126 },
-        { x: 568, y: 91 },
-        { x: 592, y: 101 },
-        { x: summitX, y: summitY },
-        { x: 641, y: 66 },
-        { x: 660, y: 58 },
-        { x: 682, y: 92 },
-        { x: 713, y: 105 },
-        { x: 741, y: 145 },
-        { x: 777, y: 159 },
-        { x: 812, y: 203 },
-        { x: 855, y: 218 },
-        { x: 900, y: 259 },
-        { x: 951, y: 278 },
-        { x: 1005, y: 319 },
-        { x: 1062, y: 341 },
-        { x: 1121, y: 384 },
-        { x: 1175, y: 423 }
-      ];
+      const denaliGeometry = buildDemGeometry(
+        demProfiles.denali,
+        summitX,
+        summitY,
+        sharedReliefHorizonY,
+        { maximumWidth: maxDenaliWidth }
+      );
 
-      const silhouetteD = silhouettePoints
-        .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
-        .join(" ");
-
-      svgNode("path", {
-        class: "mountain-generated mountain-silhouette",
-        d: `${silhouetteD} L 1175 ${plot.bottom + 28} L 34 ${plot.bottom + 28} Z`
-      });
-
-      // Interior ridges give the massif more relief without pretending to be a
-      // literal topographic trace of Denali.
-      [
-        "M 205 358 C 286 323, 346 286, 405 229 C 461 177, 520 142, 568 91",
-        "M 363 313 C 430 278, 484 229, 525 176 C 558 133, 589 95, 620 44",
-        "M 620 44 C 666 91, 700 126, 741 145 C 797 171, 842 219, 900 259",
-        "M 660 58 C 704 99, 749 143, 805 196 C 876 263, 955 306, 1062 341"
-      ].forEach((d) => {
+      if (denaliGeometry) {
         svgNode("path", {
-          class: "mountain-generated mountain-shadow-ridge",
-          d
+          class: "mountain-generated mountain-silhouette",
+          d: denaliGeometry.fillD
         });
-      });
-
-      // Stylized upper snowfields and glacier bands.
-      [
-        `M 538 139 L 568 91 L 592 101 L 620 44 L 641 66 L 660 58 L 680 91
-            L 654 83 L 640 96 L 622 78 L 607 108 L 589 101 L 575 126 Z`,
-        "M 430 224 C 470 203, 504 181, 536 149 L 522 183 C 493 201, 465 224, 441 246 Z",
-        "M 703 113 C 747 145, 784 177, 816 207 L 784 194 C 755 173, 730 149, 706 132 Z"
-      ].forEach((d) => {
         svgNode("path", {
-          class: "mountain-generated mountain-snow",
-          d
+          class: "mountain-generated mountain-dem-ridge mountain-dem-ridge--denali",
+          d: denaliGeometry.ridgeD
         });
-      });
+      }
 
       const completed = mountainData.filter((point) => !point.goal);
       const leftCompleted = completed
@@ -350,102 +369,44 @@
         };
       }
 
-      const leftPlotted = leftCompleted.map((point,index) => flankPosition(point,index,leftCompleted.length));
-      const rightPlotted = rightCompleted.map((point,index) => flankPosition(point,index,rightCompleted.length));
-
-      const reliefSpecs = {
-          "rainbow": {
-            w: 138, h: 60, summitIndex: 8,
-            ridge: [[-1.00,1.00],[-.89,.92],[-.78,.83],[-.67,.71],[-.56,.58],[-.45,.44],[-.33,.29],[-.18,.13],[0,0],[.12,.08],[.24,.18],[.36,.33],[.50,.41],[.64,.56],[.79,.74],[.91,.88],[1.00,1.00]]
-          },
-          "alyeska": {
-            w: 168, h: 64, summitIndex: 6,
-            ridge: [[-1.00,1.00],[-.90,.90],[-.80,.76],[-.70,.56],[-.60,.33],[-.49,.12],[-.38,0],[-.27,.06],[-.14,.11],[0,.19],[.15,.28],[.31,.40],[.48,.55],[.66,.69],[.83,.84],[1.00,1.00]]
-          },
-          "gold-star": {
-            w: 126, h: 64, summitIndex: 8,
-            ridge: [[-1.00,1.00],[-.88,.90],[-.75,.80],[-.62,.67],[-.49,.54],[-.36,.38],[-.23,.23],[-.10,.09],[0,0],[.10,.07],[.21,.19],[.33,.35],[.46,.48],[.61,.63],[.77,.80],[.90,.91],[1.00,1.00]]
-          },
-          "healy": {
-            w: 190, h: 54, summitIndex: 9,
-            ridge: [[-1.00,1.00],[-.90,.93],[-.79,.85],[-.68,.75],[-.57,.64],[-.46,.53],[-.35,.43],[-.24,.33],[-.12,.23],[0,0],[.12,.08],[.24,.18],[.37,.28],[.51,.40],[.65,.53],[.79,.69],[.91,.84],[1.00,1.00]]
-          },
-          "east-twin": {
-            w: 178, h: 74, summitIndex: 9,
-            ridge: [[-1.00,1.00],[-.89,.91],[-.78,.80],[-.67,.66],[-.56,.51],[-.45,.36],[-.33,.22],[-.22,.12],[-.11,.05],[0,0],[.10,.03],[.20,.00],[.31,.08],[.43,.20],[.56,.36],[.69,.55],[.82,.76],[.92,.90],[1.00,1.00]]
-          },
-          "fuji": {
-            w: 248, h: 94, summitIndex: 10,
-            ridge: [[-1.00,1.00],[-.90,.93],[-.80,.84],[-.70,.73],[-.60,.61],[-.49,.49],[-.38,.37],[-.28,.26],[-.18,.16],[-.08,.07],[0,0],[.08,.06],[.18,.15],[.29,.26],[.40,.38],[.52,.51],[.64,.64],[.76,.77],[.88,.90],[1.00,1.00]]
-          },
-          "toubkal": {
-            w: 194, h: 80, summitIndex: 9,
-            ridge: [[-1.00,1.00],[-.90,.91],[-.80,.82],[-.70,.70],[-.60,.58],[-.49,.47],[-.38,.35],[-.27,.23],[-.15,.10],[0,0],[.10,.04],[.20,.01],[.31,.10],[.43,.18],[.56,.31],[.69,.48],[.82,.68],[.92,.86],[1.00,1.00]]
-          },
-          "rendezvous": {
-            w: 156, h: 70, summitIndex: 7,
-            ridge: [[-1.00,1.00],[-.89,.92],[-.78,.82],[-.67,.68],[-.56,.51],[-.44,.32],[-.31,.14],[-.16,0],[0,.08],[.15,.18],[.31,.31],[.48,.46],[.65,.62],[.81,.80],[.92,.92],[1.00,1.00]]
-          },
-          "gordon-lyon": {
-            w: 192, h: 50, summitIndex: 9,
-            ridge: [[-1.00,1.00],[-.90,.94],[-.80,.86],[-.69,.77],[-.58,.66],[-.47,.55],[-.36,.43],[-.24,.31],[-.12,.18],[0,0],[.13,.07],[.27,.16],[.42,.28],[.57,.42],[.71,.58],[.84,.76],[.93,.90],[1.00,1.00]]
-          },
-          "lion-head": {
-            w: 158, h: 78, summitIndex: 8,
-            ridge: [[-1.00,1.00],[-.89,.92],[-.79,.82],[-.69,.68],[-.58,.51],[-.47,.34],[-.35,.18],[-.19,.06],[0,0],[.13,.04],[.26,.13],[.40,.25],[.55,.39],[.70,.56],[.83,.74],[.92,.88],[1.00,1.00]]
-          }
-        };
+      const leftPlotted = leftCompleted.map((point, index) =>
+        flankPosition(point, index, leftCompleted.length)
+      );
+      const rightPlotted = rightCompleted.map((point, index) =>
+        flankPosition(point, index, rightCompleted.length)
+      );
 
       function drawPeakRelief(point) {
         if (!point.relief) return;
+        const profile = demProfiles[point.relief];
+        if (!profile) return;
 
-        const spec = reliefSpecs[point.relief];
-        if (!spec) return;
+        const geometry = buildDemGeometry(
+          profile,
+          point.x,
+          point.y,
+          sharedReliefHorizonY,
+          {
+            minimumWidth: minSecondaryWidth,
+            maximumWidth: maxSecondaryWidth
+          }
+        );
+        if (!geometry) return;
 
-        const summitProfile = spec.ridge[spec.summitIndex];
-        const summitRx = summitProfile[0];
-        const summitRy = summitProfile[1];
-
-        const horizonY = sharedReliefHorizonY;
-        const reliefHeight = horizonY - point.y;
-        const reliefWidth = reliefHeight * (spec.w / spec.h);
-        const verticalSpan = 1 - summitRy;
-
-        const coords = spec.ridge.map(([rx, ry]) => ({
-          x: point.x + (rx - summitRx) * reliefWidth / 2,
-          y: point.y + ((ry - summitRy) / verticalSpan) * reliefHeight
-        }));
-
-        const d = coords
-          .map((p, index) => `${index === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
-          .join(" ");
-
-        const leftBase = coords[0];
-        const rightBase = coords[coords.length - 1];
-
-        // Appending after Denali puts the secondary reliefs in front of the
-        // principal massif while keeping routes and waypoints above both.
         const group = svgNode("g", {
-          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
+          class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`,
+          "data-dem-azimuth": profile.azimuth_deg,
+          "data-dem-radius-km": profile.radius_km
         });
 
         svgNode("path", {
           class: "mountain-peak-relief-fill",
-          d: `${d} L ${rightBase.x.toFixed(1)} ${horizonY.toFixed(1)} L ${leftBase.x.toFixed(1)} ${horizonY.toFixed(1)} Z`
+          d: geometry.fillD
         }, group);
 
         svgNode("path", {
           class: "mountain-peak-relief-ridge",
-          d
-        }, group);
-
-        const foldEndX = point.x + (rightBase.x - point.x) * .20;
-        svgNode("path", {
-          class: "mountain-peak-relief-fold",
-          d: `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}
-              C ${(point.x - reliefWidth * .05).toFixed(1)} ${(point.y + reliefHeight * .22).toFixed(1)},
-                ${(point.x + reliefWidth * .07).toFixed(1)} ${(point.y + reliefHeight * .46).toFixed(1)},
-                ${foldEndX.toFixed(1)} ${horizonY.toFixed(1)}`
+          d: geometry.ridgeD
         }, group);
       }
 
@@ -456,8 +417,8 @@
       };
       const plotted = [...leftPlotted, ...rightPlotted, summit];
 
-      // Significant mountain reliefs sit in front of Denali but behind routes
-      // and waypoints. Route endpoints and viewpoints remain visually quiet.
+      // DEM-derived completed peaks render in front of Denali and share one
+      // horizon; route and summit markers are painted above all terrain.
       [...leftPlotted, ...rightPlotted]
         .filter((point) => point.relief)
         .forEach(drawPeakRelief);
@@ -471,7 +432,7 @@
         ...rightPlotted
       ];
 
-      [leftRoute,rightRoute].forEach((route) => {
+      [leftRoute, rightRoute].forEach((route) => {
         svgNode("path", {
           class: "mountain-generated mountain-route",
           d: smoothPath(route)
@@ -558,7 +519,6 @@
         "text-anchor": "start"
       });
       goalMeta.textContent = "GOAL · 20,310 FT";
-
     }
 
     function positionMountainPopover(point) {

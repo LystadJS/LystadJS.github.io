@@ -1012,6 +1012,10 @@
       overflow: visible;
     }
 
+    body[data-page="about"] .mountain-ascent-scroll {
+      overflow: visible;
+    }
+
     body[data-page="about"] .mountain-ascent-svg {
       display: block;
       width: 100%;
@@ -1330,16 +1334,16 @@
       line-height: 1.42;
     }
 
-    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar {
+    body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar {
       height: 6px;
     }
 
-    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar-thumb {
+    body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-thumb {
       background: rgba(111,91,106,.42);
       border-radius: 999px;
     }
 
-    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar-track {
+    body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-track {
       background: transparent;
     }
 
@@ -1553,8 +1557,13 @@
 
       body[data-page="about"] .mountain-ascent-stage {
         min-height: 332px;
+        overflow: visible;
+      }
+
+      body[data-page="about"] .mountain-ascent-scroll {
+        width: 100%;
         overflow-x: auto;
-        overflow-y: visible;
+        overflow-y: hidden;
         overscroll-behavior-x: contain;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;

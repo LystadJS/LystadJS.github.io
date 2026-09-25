@@ -1040,15 +1040,16 @@
 
     body[data-page="about"] .mountain-shadow-ridge {
       fill: none;
-      stroke: rgba(120,98,113,.18);
-      stroke-width: 1.2;
+      stroke: rgba(139,113,132,.24);
+      stroke-width: 1.15;
+      stroke-linecap: round;
       vector-effect: non-scaling-stroke;
     }
 
     body[data-page="about"] .mountain-snow {
-      fill: rgba(221,212,218,.08);
-      stroke: rgba(221,212,218,.08);
-      stroke-width: .75;
+      fill: rgba(227,219,224,.11);
+      stroke: rgba(227,219,224,.08);
+      stroke-width: .7;
     }
 
     body[data-page="about"] .mountain-route {
@@ -1062,8 +1063,8 @@
 
     body[data-page="about"] .mountain-route-progress {
       fill: none;
-      stroke: rgba(153,48,75,.68);
-      stroke-width: 2.1;
+      stroke: rgba(153,48,75,.58);
+      stroke-width: 1.9;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;

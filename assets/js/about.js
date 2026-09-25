@@ -9,6 +9,7 @@
     const mountainData = [
       {
         name: "Mount Inari",
+        flank: "left",
         location: "Kyoto, Japan",
         date: "Jul 2024",
         elevationFt: 764,
@@ -18,6 +19,7 @@
       },
       {
         name: "Ōwakudani",
+        flank: "right",
         location: "Hakone, Japan",
         date: "Jul 2024",
         elevationFt: 3425,
@@ -27,6 +29,7 @@
       },
       {
         name: "Harding Icefield Trail",
+        flank: "left",
         location: "Kenai Fjords National Park, Alaska",
         date: "Jun 2024",
         elevationFt: 3527,
@@ -36,6 +39,7 @@
       },
       {
         name: "Rainbow Peak",
+        flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Apr 2024",
         elevationFt: 3543,
@@ -45,6 +49,7 @@
       },
       {
         name: "Mount Alyeska",
+        flank: "left",
         location: "Girdwood, Alaska",
         date: "Jun 2024",
         elevationFt: 3939,
@@ -54,6 +59,7 @@
       },
       {
         name: "Gold Star Peak",
+        flank: "right",
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
         elevationFt: 4148,
@@ -63,6 +69,7 @@
       },
       {
         name: "Mount Healy",
+        flank: "left",
         location: "Denali region, Alaska",
         date: "May 2024",
         elevationFt: 5716,
@@ -72,6 +79,7 @@
       },
       {
         name: "East Twin Peak",
+        flank: "right",
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
         elevationFt: 5873,
@@ -81,6 +89,7 @@
       },
       {
         name: "Richland Balsam",
+        flank: "left",
         location: "Blue Ridge Parkway, North Carolina",
         date: "Jun 2026",
         elevationFt: 6053,
@@ -90,6 +99,7 @@
       },
       {
         name: "Point Imperial",
+        flank: "right",
         location: "Grand Canyon, Arizona",
         date: "Apr 2018",
         elevationFt: 8803,
@@ -99,6 +109,7 @@
       },
       {
         name: "Mount Fuji",
+        flank: "left",
         location: "Japan",
         date: "Jul 2024",
         elevationFt: 12388,
@@ -108,6 +119,7 @@
       },
       {
         name: "Mount Toubkal",
+        flank: "right",
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
         elevationFt: 13671,
@@ -173,6 +185,9 @@
     function buildMountainProfile() {
       mountainSvg.querySelectorAll(".mountain-generated").forEach((node) => node.remove());
 
+      const summitX = 620;
+      const summitY = elevationY(denaliElevation);
+
       const defs = svgNode("defs", { class: "mountain-generated" });
       const gradient = svgNode("linearGradient", {
         id: "mountain-silhouette-gradient",
@@ -181,9 +196,9 @@
         x2: "0%",
         y2: "100%"
       }, defs);
-      svgNode("stop", { offset: "0%", "stop-color": "#40313d", "stop-opacity": ".56" }, gradient);
-      svgNode("stop", { offset: "48%", "stop-color": "#241b24", "stop-opacity": ".74" }, gradient);
-      svgNode("stop", { offset: "100%", "stop-color": "#110e12", "stop-opacity": ".96" }, gradient);
+      svgNode("stop", { offset: "0%", "stop-color": "#483744", "stop-opacity": ".62" }, gradient);
+      svgNode("stop", { offset: "42%", "stop-color": "#2a2029", "stop-opacity": ".82" }, gradient);
+      svgNode("stop", { offset: "100%", "stop-color": "#100d11", "stop-opacity": ".98" }, gradient);
 
       [0, 5000, 10000, 15000, 20000].forEach((elevation) => {
         const y = elevationY(elevation);
@@ -202,68 +217,143 @@
         label.textContent = elevation === 0 ? "0 FT" : `${elevation / 1000}K`;
       });
 
-      const sorted = [...mountainData].sort((a, b) => a.elevationFt - b.elevationFt);
-      const usableWidth = plot.right - plot.left;
-      const step = usableWidth / (sorted.length - 1);
-      const plotted = sorted.map((item, index) => ({
-        ...item,
-        x: plot.left + step * index,
-        y: elevationY(item.elevationFt)
-      }));
-
-      const summit = plotted[plotted.length - 1];
+      // A broad, asymmetric Denali-inspired massif: long lower shoulders,
+      // a steep upper mountain, and a dominant central summit.
       const silhouettePoints = [
-        { x: 44, y: plot.bottom + 16 },
-        ...plotted.map((point, index) => ({
-          x: point.x,
-          y: Math.min(plot.bottom, point.y + (index < 4 ? 8 : 0))
-        })),
-        { x: summit.x + 40, y: summit.y + 34 },
-        { x: 1125, y: 190 },
-        { x: 1180, y: plot.bottom + 16 }
+        { x: 34, y: 423 },
+        { x: 92, y: 414 },
+        { x: 138, y: 388 },
+        { x: 183, y: 371 },
+        { x: 226, y: 336 },
+        { x: 266, y: 320 },
+        { x: 305, y: 286 },
+        { x: 344, y: 273 },
+        { x: 382, y: 236 },
+        { x: 419, y: 226 },
+        { x: 454, y: 188 },
+        { x: 486, y: 177 },
+        { x: 516, y: 139 },
+        { x: 544, y: 126 },
+        { x: 568, y: 91 },
+        { x: 592, y: 101 },
+        { x: summitX, y: summitY },
+        { x: 641, y: 66 },
+        { x: 660, y: 58 },
+        { x: 682, y: 92 },
+        { x: 713, y: 105 },
+        { x: 741, y: 145 },
+        { x: 777, y: 159 },
+        { x: 812, y: 203 },
+        { x: 855, y: 218 },
+        { x: 900, y: 259 },
+        { x: 951, y: 278 },
+        { x: 1005, y: 319 },
+        { x: 1062, y: 341 },
+        { x: 1121, y: 384 },
+        { x: 1175, y: 423 }
       ];
 
-      const silhouetteTop = smoothPath(silhouettePoints);
+      const silhouetteD = silhouettePoints
+        .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
+        .join(" ");
+
       svgNode("path", {
         class: "mountain-generated mountain-silhouette",
-        d: `${silhouetteTop} L 1180 ${plot.bottom + 26} L 44 ${plot.bottom + 26} Z`
+        d: `${silhouetteD} L 1175 ${plot.bottom + 28} L 34 ${plot.bottom + 28} Z`
       });
 
-      svgNode("path", {
-        class: "mountain-generated mountain-shadow-ridge",
-        d: `M 720 302 C 780 250, 835 228, 884 197 C 926 170, 965 121, ${summit.x} ${summit.y}`
+      // Interior ridges give the massif more relief without pretending to be a
+      // literal topographic trace of Denali.
+      [
+        "M 205 358 C 286 323, 346 286, 405 229 C 461 177, 520 142, 568 91",
+        "M 363 313 C 430 278, 484 229, 525 176 C 558 133, 589 95, 620 44",
+        "M 620 44 C 666 91, 700 126, 741 145 C 797 171, 842 219, 900 259",
+        "M 660 58 C 704 99, 749 143, 805 196 C 876 263, 955 306, 1062 341"
+      ].forEach((d) => {
+        svgNode("path", {
+          class: "mountain-generated mountain-shadow-ridge",
+          d
+        });
       });
 
-      svgNode("path", {
-        class: "mountain-generated mountain-snow",
-        d: `M ${summit.x - 52} ${summit.y + 54}
-            L ${summit.x} ${summit.y}
-            L ${summit.x + 44} ${summit.y + 39}
-            L ${summit.x + 24} ${summit.y + 31}
-            L ${summit.x + 9} ${summit.y + 44}
-            L ${summit.x - 7} ${summit.y + 28}
-            L ${summit.x - 23} ${summit.y + 44}
-            Z`
+      // Stylized upper snowfields and glacier bands.
+      [
+        `M 538 139 L 568 91 L 592 101 L 620 44 L 641 66 L 660 58 L 680 91
+            L 654 83 L 640 96 L 622 78 L 607 108 L 589 101 L 575 126 Z`,
+        "M 430 224 C 470 203, 504 181, 536 149 L 522 183 C 493 201, 465 224, 441 246 Z",
+        "M 703 113 C 747 145, 784 177, 816 207 L 784 194 C 755 173, 730 149, 706 132 Z"
+      ].forEach((d) => {
+        svgNode("path", {
+          class: "mountain-generated mountain-snow",
+          d
+        });
       });
 
-      const completed = plotted.filter((point) => !point.goal);
-      const completedPath = smoothPath(completed);
-      svgNode("path", {
-        class: "mountain-generated mountain-route",
-        d: smoothPath(plotted)
-      });
-      svgNode("path", {
-        class: "mountain-generated mountain-route-progress",
-        d: completedPath
+      const completed = mountainData.filter((point) => !point.goal);
+      const leftCompleted = completed
+        .filter((point) => point.flank === "left")
+        .sort((a, b) => a.elevationFt - b.elevationFt);
+      const rightCompleted = completed
+        .filter((point) => point.flank === "right")
+        .sort((a, b) => a.elevationFt - b.elevationFt);
+
+      function flankPosition(point, index, count) {
+        const ratio = Math.max(0, Math.min(1, point.elevationFt / denaliElevation));
+        const distance = 46 + 405 * Math.pow(1 - ratio, .76);
+        const sequenceNudge = count > 1 ? ((index / (count - 1)) - .5) * 28 : 0;
+        const direction = point.flank === "left" ? -1 : 1;
+        return {
+          ...point,
+          x: summitX + direction * (distance + sequenceNudge),
+          y: elevationY(point.elevationFt)
+        };
+      }
+
+      const leftPlotted = leftCompleted.map((point,index) => flankPosition(point,index,leftCompleted.length));
+      const rightPlotted = rightCompleted.map((point,index) => flankPosition(point,index,rightCompleted.length));
+      const summit = {
+        ...mountainData.find((point) => point.goal),
+        x: summitX,
+        y: summitY
+      };
+      const plotted = [...leftPlotted, ...rightPlotted, summit];
+
+      const leftRoute = [
+        { x: 120, y: plot.bottom + 7 },
+        ...leftPlotted
+      ];
+      const rightRoute = [
+        { x: 1080, y: plot.bottom + 7 },
+        ...rightPlotted
+      ];
+
+      [leftRoute,rightRoute].forEach((route) => {
+        svgNode("path", {
+          class: "mountain-generated mountain-route",
+          d: smoothPath(route)
+        });
+        svgNode("path", {
+          class: "mountain-generated mountain-route-progress",
+          d: smoothPath(route)
+        });
       });
 
-      const lastCompleted = completed[completed.length - 1];
-      svgNode("path", {
-        class: "mountain-generated mountain-route-goal",
-        d: `M ${lastCompleted.x} ${lastCompleted.y}
-            C ${lastCompleted.x + 48} ${lastCompleted.y - 5},
-              ${summit.x - 52} ${summit.y + 24},
-              ${summit.x} ${summit.y}`
+      const leftHigh = leftPlotted[leftPlotted.length - 1];
+      const rightHigh = rightPlotted[rightPlotted.length - 1];
+      [
+        `M ${leftHigh.x} ${leftHigh.y}
+           C ${leftHigh.x + 42} ${leftHigh.y - 12},
+             ${summit.x - 52} ${summit.y + 42},
+             ${summit.x} ${summit.y}`,
+        `M ${rightHigh.x} ${rightHigh.y}
+           C ${rightHigh.x - 42} ${rightHigh.y - 12},
+             ${summit.x + 52} ${summit.y + 42},
+             ${summit.x} ${summit.y}`
+      ].forEach((d) => {
+        svgNode("path", {
+          class: "mountain-generated mountain-route-goal",
+          d
+        });
       });
 
       plotted.forEach((point) => {
@@ -278,21 +368,21 @@
         if (point.goal) {
           svgNode("circle", {
             class: "mountain-goal-halo",
-            r: 16
+            r: 17
           }, group);
         }
 
         svgNode("circle", {
           class: "mountain-waypoint-hit",
-          r: point.goal ? 23 : 18
+          r: point.goal ? 24 : 18
         }, group);
         svgNode("circle", {
           class: "mountain-waypoint-ring",
-          r: point.goal ? 7.5 : 6
+          r: point.goal ? 8 : 6
         }, group);
         svgNode("circle", {
           class: "mountain-waypoint-core",
-          r: point.goal ? 3.2 : 2.5
+          r: point.goal ? 3.4 : 2.5
         }, group);
 
         group.addEventListener("pointerenter", () => openMountainPopover(point, group));
@@ -311,17 +401,17 @@
 
       const goalName = svgNode("text", {
         class: "mountain-generated mountain-goal-name",
-        x: summit.x - 18,
-        y: summit.y - 18,
-        "text-anchor": "end"
+        x: summit.x + 31,
+        y: summit.y + 3,
+        "text-anchor": "start"
       });
       goalName.textContent = "Denali";
 
       const goalMeta = svgNode("text", {
         class: "mountain-generated mountain-goal-meta",
-        x: summit.x - 18,
-        y: summit.y - 3,
-        "text-anchor": "end"
+        x: summit.x + 31,
+        y: summit.y + 19,
+        "text-anchor": "start"
       });
       goalMeta.textContent = "GOAL · 20,310 FT";
 

@@ -24,7 +24,7 @@
         "lat": 60.95909,
         "lon": -149.055862
       },
-      "display_width_factor": 1.9,
+      "display_width_factor": 2.4,
       "key": "alyeska",
       "max_elevation_m": 1193.17,
       "min_elevation_m": 281.61,
@@ -1046,7 +1046,7 @@
         "lat": 61.4448,
         "lon": -149.1443
       },
-      "display_width_factor": 1.45,
+      "display_width_factor": 1.6,
       "key": "east-twin",
       "max_elevation_m": 1764.1,
       "min_elevation_m": 315.89,
@@ -1557,7 +1557,7 @@
         "lat": 35.360638,
         "lon": 138.727347
       },
-      "display_width_factor": 1.15,
+      "display_width_factor": 1.18,
       "key": "fuji",
       "max_elevation_m": 3747.36,
       "min_elevation_m": 646.35,
@@ -2068,7 +2068,7 @@
         "lat": 61.4454401,
         "lon": -149.2040956
       },
-      "display_width_factor": 2.0,
+      "display_width_factor": 2.6,
       "key": "gold-star",
       "max_elevation_m": 1278.42,
       "min_elevation_m": 824.2,
@@ -2579,7 +2579,7 @@
         "lat": 61.261815,
         "lon": -149.506588
       },
-      "display_width_factor": 1.45,
+      "display_width_factor": 1.6,
       "key": "gordon-lyon",
       "max_elevation_m": 1252.47,
       "min_elevation_m": 519.13,
@@ -3090,7 +3090,7 @@
         "lat": 63.780743,
         "lon": -149.013409
       },
-      "display_width_factor": 1.45,
+      "display_width_factor": 1.55,
       "key": "healy",
       "max_elevation_m": 1712.88,
       "min_elevation_m": 802.17,
@@ -3601,7 +3601,7 @@
         "lat": 61.7831618,
         "lon": -147.6690779
       },
-      "display_width_factor": 1.5,
+      "display_width_factor": 1.7,
       "key": "lion-head",
       "max_elevation_m": 941.54,
       "min_elevation_m": 505.69,
@@ -4112,7 +4112,7 @@
         "lat": 61.018901,
         "lon": -149.6668293
       },
-      "display_width_factor": 1.35,
+      "display_width_factor": 1.55,
       "key": "rainbow",
       "max_elevation_m": 1052.94,
       "min_elevation_m": 334.88,
@@ -4623,7 +4623,7 @@
         "lat": 61.2500507,
         "lon": -149.5065451
       },
-      "display_width_factor": 1.45,
+      "display_width_factor": 1.7,
       "key": "rendezvous",
       "max_elevation_m": 1234.73,
       "min_elevation_m": 555.65,
@@ -5134,7 +5134,7 @@
         "lat": 31.060297,
         "lon": -7.915258
       },
-      "display_width_factor": 1.1,
+      "display_width_factor": 1.15,
       "key": "toubkal",
       "max_elevation_m": 4152.5,
       "min_elevation_m": 1962.95,

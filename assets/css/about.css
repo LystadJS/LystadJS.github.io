@@ -1047,12 +1047,12 @@
     }
 
     body[data-page="about"] .mountain-peak-relief {
-      opacity: .40;
+      opacity: .28;
       pointer-events: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-fill {
-      fill: rgba(44,33,43,.78);
+      fill: rgba(34,26,34,.58);
       stroke: none;
     }
 
@@ -1074,19 +1074,19 @@
     }
 
     body[data-page="about"] .mountain-peak-relief--fuji {
-      opacity: .46;
+      opacity: .32;
     }
 
     body[data-page="about"] .mountain-peak-relief--toubkal,
     body[data-page="about"] .mountain-peak-relief--east-twin,
     body[data-page="about"] .mountain-peak-relief--rendezvous,
     body[data-page="about"] .mountain-peak-relief--lion-head {
-      opacity: .43;
+      opacity: .30;
     }
 
     body[data-page="about"] .mountain-peak-relief--gordon-lyon,
     body[data-page="about"] .mountain-peak-relief--healy {
-      opacity: .36;
+      opacity: .25;
     }
 
     body[data-page="about"] .mountain-snow {

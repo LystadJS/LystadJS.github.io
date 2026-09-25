@@ -1047,12 +1047,12 @@
     }
 
     body[data-page="about"] .mountain-peak-relief {
-      opacity: .28;
+      opacity: .36;
       pointer-events: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-fill {
-      fill: rgba(34,26,34,.58);
+      fill: rgba(46,35,45,.70);
       stroke: none;
     }
 

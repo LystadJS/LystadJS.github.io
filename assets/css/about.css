@@ -1330,6 +1330,19 @@
       line-height: 1.42;
     }
 
+    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar-thumb {
+      background: rgba(111,91,106,.42);
+      border-radius: 999px;
+    }
+
+    body[data-page="about"] .mountain-ascent-stage::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
     body[data-page="about"] .mountain-ascent-caption {
       margin-top: .5rem;
       color: #746b74;
@@ -1539,7 +1552,18 @@
       }
 
       body[data-page="about"] .mountain-ascent-stage {
-        min-height: 360px;
+        min-height: 332px;
+        overflow-x: auto;
+        overflow-y: visible;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      body[data-page="about"] .mountain-ascent-svg {
+        width: auto;
+        height: 320px;
+        max-width: none;
       }
 
       body[data-page="about"] .compact-shelf {

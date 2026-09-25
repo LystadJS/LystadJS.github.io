@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install browser audit dependency
-        run: python -m pip install --disable-pip-version-check selenium
+        run: python -m pip install --disable-pip-version-check selenium==4.49.0
 
       - name: Audit deployed visualization
         shell: bash
@@ -159,10 +159,18 @@ jobs:
           ]:
               driver = make_driver(width, height)
               try:
-                  driver.get(URL)
-                  WebDriverWait(driver, 30).until(
-                      lambda d: len(d.find_elements(By.CSS_SELECTOR, ".mountain-waypoint")) >= 10
-                  )
+                  deadline = time.time() + 45
+                  while True:
+                      driver.get(URL + "&t=" + str(time.time_ns()))
+                      ready = driver.execute_script(
+                          "return !!document.getElementById('mountain-ascent-scroll')"
+                          " && document.querySelectorAll('.mountain-waypoint').length >= 10;"
+                      )
+                      if ready:
+                          break
+                      if time.time() >= deadline:
+                          raise RuntimeError("Latest mountain visualization DOM did not deploy within 45 seconds.")
+                      time.sleep(2)
                   time.sleep(0.75)
                   metrics = driver.execute_script(audit_js)
 

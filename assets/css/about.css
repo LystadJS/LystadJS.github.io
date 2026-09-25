@@ -1044,8 +1044,8 @@
 
     body[data-page="about"] .mountain-dem-ridge {
       fill: none;
-      stroke: rgba(172,148,166,.26);
-      stroke-width: 1;
+      stroke: rgba(185,159,179,.48);
+      stroke-width: 1.15;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
@@ -1053,19 +1053,19 @@
     }
 
     body[data-page="about"] .mountain-peak-relief {
-      opacity: .32;
+      opacity: .76;
       pointer-events: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-fill {
-      fill: rgba(44,34,43,.74);
+      fill: rgba(37,28,37,.84);
       stroke: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-ridge {
       fill: none;
-      stroke: rgba(173,149,168,.30);
-      stroke-width: .85;
+      stroke: rgba(207,187,200,.72);
+      stroke-width: 1.2;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;

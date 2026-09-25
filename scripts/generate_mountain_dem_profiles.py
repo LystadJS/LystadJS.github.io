@@ -10,14 +10,16 @@ Terrarium decoding:
 
 Method:
   1. Refine the published summit coordinate to the local DEM maximum.
-  2. Search 0-175 degrees in 5-degree increments for the cross-section that
-     maximizes two-sided relief while penalizing lines that intersect terrain
-     higher than the named summit.
+  2. Use a curated characteristic-view azimuth for each mountain. These views
+     are intentionally frozen so the recognizable silhouette is stable across
+     regenerations rather than changing with an optimization heuristic.
   3. Sample 121 equally spaced DEM elevations across that line.
-  4. Store the raw metric profile plus provenance and selected azimuth.
+  4. Store the raw metric profile, characteristic azimuth, display emphasis,
+     and provenance.
 
-The website controls only presentation scaling. Ridge geometry comes directly
-from these sampled DEM elevations rather than hand-authored SVG points.
+Summit elevation and the shared horizon remain quantitative guides. Horizontal
+presentation may be emphasized per mountain so distinctive shoulders, saddles,
+summit blocks, and volcanic or ridge geometry remain legible.
 """
 
 from __future__ import annotations
@@ -40,7 +42,6 @@ TERRARIUM_URL = (
 )
 ZOOM = 12
 TILE_SIZE = 256
-AZIMUTH_STEP_DEG = 5
 PROFILE_SAMPLES = 121
 EARTH_RADIUS_KM = 6371.0088
 REQUEST_TIMEOUT = 30
@@ -53,6 +54,9 @@ PEAKS = {
         "lat": 61.018901,
         "lon": -149.666134,
         "radius_km": 2.6,
+        "characteristic_azimuth_deg": 105,
+        "display_width_factor": 1.35,
+        "characteristic_view": "Turnagain Arm-facing pyramidal profile",
         "summit_search_m": 300,
         "published_elevation_ft": 3543,
         "coordinate_source": "Peakbagger / USGS",
@@ -62,6 +66,9 @@ PEAKS = {
         "lat": 60.959090,
         "lon": -149.055862,
         "radius_km": 1.5,
+        "characteristic_azimuth_deg": 80,
+        "display_width_factor": 1.90,
+        "characteristic_view": "Broad Alyeska ridge and off-center high point",
         "summit_search_m": 300,
         "published_elevation_ft": 3940,
         "coordinate_source": "Peakbagger / USGS",
@@ -71,6 +78,9 @@ PEAKS = {
         "lat": 61.444699,
         "lon": -149.208230,
         "radius_km": 0.65,
+        "characteristic_azimuth_deg": 170,
+        "display_width_factor": 2.00,
+        "characteristic_view": "Sharp Gold Star summit crown",
         "summit_search_m": 220,
         "published_elevation_ft": 4148,
         "coordinate_source": "Peakbagger / USGS",
@@ -80,6 +90,9 @@ PEAKS = {
         "lat": 63.780743,
         "lon": -149.013409,
         "radius_km": 4.5,
+        "characteristic_azimuth_deg": 130,
+        "display_width_factor": 1.45,
+        "characteristic_view": "Long Mount Healy ridge profile",
         "summit_search_m": 450,
         "published_elevation_ft": 5661,
         "coordinate_source": "Peakbagger / USGS",
@@ -89,6 +102,9 @@ PEAKS = {
         "lat": 61.444800,
         "lon": -149.144300,
         "radius_km": 3.0,
+        "characteristic_azimuth_deg": 175,
+        "display_width_factor": 1.45,
+        "characteristic_view": "Craggy East Twin summit block",
         "summit_search_m": 800,
         "published_elevation_ft": 5873,
         "coordinate_source": "USGS-GNIS-style summit reference",
@@ -98,6 +114,9 @@ PEAKS = {
         "lat": 61.250556,
         "lon": -149.504444,
         "radius_km": 1.8,
+        "characteristic_azimuth_deg": 80,
+        "display_width_factor": 1.45,
+        "characteristic_view": "Pyramidal Rendezvous profile",
         "summit_search_m": 450,
         "published_elevation_ft": 4078,
         "coordinate_source": "USGS-GNIS-style summit reference",
@@ -107,6 +126,9 @@ PEAKS = {
         "lat": 61.261815,
         "lon": -149.506588,
         "radius_km": 3.0,
+        "characteristic_azimuth_deg": 120,
+        "display_width_factor": 1.45,
+        "characteristic_view": "Broad rounded Gordon Lyon ridge",
         "summit_search_m": 450,
         "published_elevation_ft": 4129,
         "coordinate_source": "USGS-GNIS-style summit reference",
@@ -116,6 +138,9 @@ PEAKS = {
         "lat": 61.783611,
         "lon": -147.665278,
         "radius_km": 2.2,
+        "characteristic_azimuth_deg": 90,
+        "display_width_factor": 1.50,
+        "characteristic_view": "Steep Lion Head cliff-and-cap profile",
         "summit_search_m": 400,
         "published_elevation_ft": 2881,
         "coordinate_source": "USGS-GNIS-style summit reference",
@@ -125,6 +150,9 @@ PEAKS = {
         "lat": 35.360638,
         "lon": 138.727347,
         "radius_km": 15.0,
+        "characteristic_azimuth_deg": 95,
+        "display_width_factor": 1.15,
+        "characteristic_view": "Iconic near-conical Fuji profile",
         "summit_search_m": 600,
         "published_elevation_ft": 12388,
         "coordinate_source": "Peakbagger / GSI",
@@ -134,6 +162,9 @@ PEAKS = {
         "lat": 31.060297,
         "lon": -7.915258,
         "radius_km": 8.0,
+        "characteristic_azimuth_deg": 170,
+        "display_width_factor": 1.10,
+        "characteristic_view": "Asymmetric High Atlas Toubkal profile",
         "summit_search_m": 600,
         "published_elevation_ft": 13671,
         "coordinate_source": "Peakbagger / Morocco Div Cart",
@@ -143,6 +174,9 @@ PEAKS = {
         "lat": 63.069042,
         "lon": -151.006347,
         "radius_km": 25.0,
+        "characteristic_azimuth_deg": 160,
+        "display_width_factor": 1.00,
+        "characteristic_view": "Broad Denali massif profile",
         "summit_search_m": 900,
         "published_elevation_ft": 20310,
         "coordinate_source": "Peakbagger / USGS",
@@ -244,59 +278,6 @@ def local_summit(
     return best
 
 
-def orientation_score(
-    sampler: TerrariumSampler,
-    lat: float,
-    lon: float,
-    summit_elevation: float,
-    radius_km: float,
-    azimuth_deg: float,
-) -> float:
-    """Favor two-sided relief while strongly rejecting higher adjacent terrain."""
-    fractions = tuple(i / 20.0 for i in range(1, 21))
-    side_scores = []
-    higher_penalty = 0.0
-
-    for bearing in (azimuth_deg, azimuth_deg + 180.0):
-        drops = []
-        for fraction in fractions:
-            p_lat, p_lon = destination(lat, lon, bearing, radius_km * fraction)
-            elevation = sampler.elevation(p_lat, p_lon)
-            drop = summit_elevation - elevation
-            drops.append(drop)
-            if drop < -5.0:
-                # A line crossing a higher neighbor is not a valid silhouette
-                # for the named summit, so penalize it aggressively.
-                higher_penalty += 10000.0 + abs(drop) * 250.0
-
-        # Weight outer relief more strongly while still checking the near summit.
-        side_scores.append(
-            0.25 * sum(drops[:7]) / 7.0
-            + 0.30 * sum(drops[7:14]) / 7.0
-            + 0.45 * sum(drops[14:]) / 6.0
-        )
-
-    return min(side_scores) + 0.55 * sum(side_scores) - higher_penalty
-
-
-def choose_azimuth(
-    sampler: TerrariumSampler,
-    lat: float,
-    lon: float,
-    summit_elevation: float,
-    radius_km: float,
-) -> float:
-    candidates = range(0, 180, AZIMUTH_STEP_DEG)
-    return float(
-        max(
-            candidates,
-            key=lambda az: orientation_score(
-                sampler, lat, lon, summit_elevation, radius_km, float(az)
-            ),
-        )
-    )
-
-
 def sample_profile(
     sampler: TerrariumSampler,
     lat: float,
@@ -327,19 +308,13 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
         config["summit_search_m"],
     )
 
-    # Keep the named summit as the apex of its own profile. If a proposed
-    # cross-section reaches a higher neighboring ridge, shrink the local window
-    # and recompute rather than clipping or inventing elevations.
+    # Keep the characteristic viewing direction fixed. If the selected
+    # cross-section reaches a higher neighboring ridge, only shrink the window;
+    # never rotate to a less recognizable view or clip/invent terrain.
+    azimuth = float(config["characteristic_azimuth_deg"])
     radius_km = config["radius_km"]
     minimum_radius = config["radius_km"] * 0.45
     for _ in range(6):
-        azimuth = choose_azimuth(
-            sampler,
-            summit_lat,
-            summit_lon,
-            summit_elevation,
-            radius_km,
-        )
         samples = sample_profile(
             sampler,
             summit_lat,
@@ -374,6 +349,9 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
         "radius_km": round(radius_km, 5),
         "requested_radius_km": config["radius_km"],
         "azimuth_deg": azimuth,
+        "profile_mode": "curated_characteristic_view",
+        "characteristic_view": config["characteristic_view"],
+        "display_width_factor": config["display_width_factor"],
         "sample_count": PROFILE_SAMPLES,
         "min_elevation_m": round(min_profile_elevation, 2),
         "max_elevation_m": round(max_profile_elevation, 2),
@@ -393,6 +371,7 @@ def main() -> None:
             f"  azimuth={p['azimuth_deg']:.0f}° "
             f"DEM summit={p['dem_summit']['elevation_m']:.1f} m "
             f"range={p['min_elevation_m']:.1f}-{p['max_elevation_m']:.1f} m "
+            f"width_factor={p['display_width_factor']:.2f} "
             f"center_max={p['center_is_profile_max']}"
         )
 
@@ -410,13 +389,14 @@ def main() -> None:
         "method": {
             "summit_refinement": "17x17 DEM grid around published WGS84 summit reference",
             "orientation_selection": (
-                "5-degree search maximizing two-sided relief with a penalty for "
-                "crossing terrain higher than the named summit"
+                "Curated characteristic-view azimuth frozen per mountain; "
+                "profile window may shrink to keep the named summit as apex"
             ),
             "profile_samples": PROFILE_SAMPLES,
             "presentation_note": (
-                "Raw DEM elevations determine ridge geometry. The website rescales "
-                "profiles to a shared visual horizon while preserving summit anchors."
+                "Raw DEM elevations determine ridge geometry. Summit anchors and the "
+                "shared horizon remain quantitative; per-mountain horizontal emphasis "
+                "is presentation-only and preserves recognizable silhouette features."
             ),
         },
         "profiles": profiles,

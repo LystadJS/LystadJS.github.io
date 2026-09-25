@@ -47,6 +47,7 @@ jobs:
           const stage = document.getElementById("mountain-ascent-stage");
           const svg = document.getElementById("mountain-ascent-svg");
           const popover = document.getElementById("mountain-popover");
+          const scroller = document.getElementById("mountain-ascent-scroll");
           const reliefs = [...svg.querySelectorAll(".mountain-peak-relief")];
           const waypoints = [...svg.querySelectorAll(".mountain-waypoint")];
           const data = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
@@ -129,10 +130,17 @@ jobs:
               ...rect(stage),
               clientWidth:stage.clientWidth,
               clientHeight:stage.clientHeight,
-              scrollWidth:stage.scrollWidth,
-              scrollHeight:stage.scrollHeight,
               overflowX:getComputedStyle(stage).overflowX,
               overflowY:getComputedStyle(stage).overflowY
+            },
+            scroller:{
+              ...rect(scroller),
+              clientWidth:scroller.clientWidth,
+              clientHeight:scroller.clientHeight,
+              scrollWidth:scroller.scrollWidth,
+              scrollHeight:scroller.scrollHeight,
+              overflowX:getComputedStyle(scroller).overflowX,
+              overflowY:getComputedStyle(scroller).overflowY
             },
             reliefMetrics,
             overlaps:overlaps.slice(0,12),
@@ -161,14 +169,22 @@ jobs:
                   if label == "mobile":
                       popover_check = driver.execute_script(r"""
                       const stage=document.getElementById("mountain-ascent-stage");
+                      const scroller=document.getElementById("mountain-ascent-scroll");
                       const points=[...document.querySelectorAll(".mountain-waypoint")];
-                      stage.scrollLeft=Math.max(0,(stage.scrollWidth-stage.clientWidth)*0.70);
-                      const candidate=points[Math.floor(points.length*0.75)];
+                      stage.scrollIntoView({block:"center"});
+                      scroller.scrollLeft=Math.max(0,(scroller.scrollWidth-scroller.clientWidth)*0.70);
+                      const sr=scroller.getBoundingClientRect();
+                      const visible=points.filter(point => {
+                        const r=point.getBoundingClientRect();
+                        const cx=(r.left+r.right)/2;
+                        return cx>=sr.left && cx<=sr.right;
+                      });
+                      const candidate=visible[Math.floor(visible.length/2)] || points[Math.floor(points.length*0.75)];
                       candidate.dispatchEvent(new MouseEvent("click",{bubbles:true}));
                       const p=document.getElementById("mountain-popover").getBoundingClientRect();
                       const s=stage.getBoundingClientRect();
                       return {
-                        stageScrollLeft:stage.scrollLeft,
+                        stageScrollLeft:scroller.scrollLeft,
                         open:document.getElementById("mountain-popover").classList.contains("is-open"),
                         popover:{left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height},
                         stage:{left:s.left,right:s.right,top:s.top,bottom:s.bottom},

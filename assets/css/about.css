@@ -1008,7 +1008,7 @@
 
     body[data-page="about"] .mountain-ascent-stage {
       position: relative;
-      min-height: 430px;
+      min-height: 500px;
       overflow: visible;
     }
 
@@ -1024,14 +1024,14 @@
     }
 
     body[data-page="about"] .mountain-guide {
-      stroke: rgba(255,255,255,.035);
+      stroke: rgba(255,255,255,.024);
       stroke-width: 1;
       stroke-dasharray: 3 8;
       vector-effect: non-scaling-stroke;
     }
 
     body[data-page="about"] .mountain-guide-label {
-      fill: #706671;
+      fill: #665d67;
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: .045em;
@@ -1053,22 +1053,62 @@
     }
 
     body[data-page="about"] .mountain-peak-relief {
-      opacity: .76;
+      opacity: .82;
       pointer-events: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-fill {
-      fill: rgba(37,28,37,.84);
+      fill: rgba(34,26,35,.88);
       stroke: none;
     }
 
     body[data-page="about"] .mountain-peak-relief-ridge {
       fill: none;
-      stroke: rgba(207,187,200,.72);
-      stroke-width: 1.2;
+      stroke: rgba(215,197,208,.78);
+      stroke-width: 1.35;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--signature {
+      opacity: .96;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-fill {
+      fill: rgba(48,36,47,.92);
+    }
+
+    body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-ridge {
+      stroke: rgba(232,215,225,.88);
+      stroke-width: 1.6;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--denali .mountain-peak-relief-fill {
+      fill: url(#mountain-silhouette-gradient);
+    }
+
+    body[data-page="about"] .mountain-profile-label {
+      fill: #d7cbd2;
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+
+    body[data-page="about"] .mountain-profile-label.is-goal {
+      fill: #e1d3b4;
+    }
+
+    body[data-page="about"] .mountain-profile-meta {
+      fill: #837783;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .07em;
+    }
+
+    body[data-page="about"] .mountain-profile-meta.is-goal {
+      fill: #a79677;
     }
 
     body[data-page="about"] .mountain-route {
@@ -1556,7 +1596,7 @@
       }
 
       body[data-page="about"] .mountain-ascent-stage {
-        min-height: 332px;
+        min-height: 402px;
         overflow: visible;
       }
 
@@ -1571,7 +1611,7 @@
 
       body[data-page="about"] .mountain-ascent-svg {
         width: auto;
-        height: 320px;
+        height: 390px;
         max-width: none;
       }
 

@@ -252,25 +252,31 @@ def orientation_score(
     radius_km: float,
     azimuth_deg: float,
 ) -> float:
-    """Favor cross-sections with strong relief on both sides and no higher terrain."""
-    distances = (0.45, 0.70, 1.00)
-    weights = (0.20, 0.30, 0.50)
-    side_drops = []
+    """Favor two-sided relief while strongly rejecting higher adjacent terrain."""
+    fractions = tuple(i / 20.0 for i in range(1, 21))
+    side_scores = []
     higher_penalty = 0.0
 
     for bearing in (azimuth_deg, azimuth_deg + 180.0):
-        weighted_drop = 0.0
-        for fraction, weight in zip(distances, weights):
+        drops = []
+        for fraction in fractions:
             p_lat, p_lon = destination(lat, lon, bearing, radius_km * fraction)
             elevation = sampler.elevation(p_lat, p_lon)
             drop = summit_elevation - elevation
-            weighted_drop += weight * drop
-            if drop < -15.0:
-                higher_penalty += abs(drop) * 8.0
-        side_drops.append(weighted_drop)
+            drops.append(drop)
+            if drop < -5.0:
+                # A line crossing a higher neighbor is not a valid silhouette
+                # for the named summit, so penalize it aggressively.
+                higher_penalty += 10000.0 + abs(drop) * 250.0
 
-    # The minimum term prevents one spectacular flank from dominating a flat one.
-    return min(side_drops) + 0.55 * sum(side_drops) - higher_penalty
+        # Weight outer relief more strongly while still checking the near summit.
+        side_scores.append(
+            0.25 * sum(drops[:7]) / 7.0
+            + 0.30 * sum(drops[7:14]) / 7.0
+            + 0.45 * sum(drops[14:]) / 6.0
+        )
+
+    return min(side_scores) + 0.55 * sum(side_scores) - higher_penalty
 
 
 def choose_azimuth(
@@ -320,28 +326,34 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
         config["lon"],
         config["summit_search_m"],
     )
-    azimuth = choose_azimuth(
-        sampler,
-        summit_lat,
-        summit_lon,
-        summit_elevation,
-        config["radius_km"],
-    )
-    samples = sample_profile(
-        sampler,
-        summit_lat,
-        summit_lon,
-        config["radius_km"],
-        azimuth,
-    )
 
-    center_index = PROFILE_SAMPLES // 2
-    # Make the refined summit raster cell the exact center sample.
-    samples[center_index]["elevation_m"] = round(summit_elevation, 2)
+    # Keep the named summit as the apex of its own profile. If a proposed
+    # cross-section reaches a higher neighboring ridge, shrink the local window
+    # and recompute rather than clipping or inventing elevations.
+    radius_km = config["radius_km"]
+    minimum_radius = config["radius_km"] * 0.45
+    for _ in range(6):
+        azimuth = choose_azimuth(
+            sampler,
+            summit_lat,
+            summit_lon,
+            summit_elevation,
+            radius_km,
+        )
+        samples = sample_profile(
+            sampler,
+            summit_lat,
+            summit_lon,
+            radius_km,
+            azimuth,
+        )
+        center_index = PROFILE_SAMPLES // 2
+        samples[center_index]["elevation_m"] = round(summit_elevation, 2)
+        max_profile_elevation = max(item["elevation_m"] for item in samples)
+        if max_profile_elevation <= summit_elevation + 5.0:
+            break
+        radius_km = max(minimum_radius, radius_km * 0.82)
 
-    # If a selected section still crosses a higher adjacent summit, keep the
-    # DEM values but record the diagnostic. The renderer preserves the named
-    # summit anchor and does not invent ridge geometry.
     max_profile_elevation = max(item["elevation_m"] for item in samples)
     min_profile_elevation = min(item["elevation_m"] for item in samples)
 
@@ -359,7 +371,8 @@ def generate_profile(key: str, config: dict, sampler: TerrariumSampler) -> dict:
             "elevation_m": round(summit_elevation, 2),
         },
         "published_elevation_ft": config["published_elevation_ft"],
-        "radius_km": config["radius_km"],
+        "radius_km": round(radius_km, 5),
+        "requested_radius_km": config["radius_km"],
         "azimuth_deg": azimuth,
         "sample_count": PROFILE_SAMPLES,
         "min_elevation_m": round(min_profile_elevation, 2),

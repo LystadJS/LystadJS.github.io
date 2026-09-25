@@ -1046,6 +1046,42 @@
       vector-effect: non-scaling-stroke;
     }
 
+    body[data-page="about"] .mountain-peak-relief {
+      opacity: .34;
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .mountain-peak-relief-fill {
+      fill: rgba(39,29,38,.72);
+      stroke: none;
+    }
+
+    body[data-page="about"] .mountain-peak-relief-ridge {
+      fill: none;
+      stroke: rgba(163,137,156,.34);
+      stroke-width: .9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    body[data-page="about"] .mountain-peak-relief-fold {
+      fill: none;
+      stroke: rgba(207,192,202,.12);
+      stroke-width: .7;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--fuji {
+      opacity: .42;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--atlas,
+    body[data-page="about"] .mountain-peak-relief--twin {
+      opacity: .38;
+    }
+
     body[data-page="about"] .mountain-snow {
       fill: rgba(227,219,224,.11);
       stroke: rgba(227,219,224,.08);

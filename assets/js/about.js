@@ -186,8 +186,8 @@
     const plot = { left: 72, top: 44, bottom: 400 };
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
-    // One horizontal compression factor is applied to every DEM cross-section.
-    // Lowering it reduces overlap while preserving comparative elevation guidance.
+    // Global base compression keeps the mountain range compact; the generated
+    // characteristic-view metadata applies modest per-profile width emphasis.
     const horizontalScale = 0.18;
     let activeMountainPoint = null;
 
@@ -227,38 +227,13 @@
       return path;
     }
 
-    function smoothRidgePath(points) {
+    function ridgePath(points) {
       if (!points.length) return "";
-      if (points.length === 1) {
-        return `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
-      }
-      if (points.length === 2) {
-        return (
-          `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)} ` +
-          `L ${points[1].x.toFixed(2)} ${points[1].y.toFixed(2)}`
-        );
-      }
-
-      let path = `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
-
-      for (let i = 1; i < points.length; i += 1) {
-        const previous = points[i - 1];
-        const current = points[i];
-        const beforePrevious = points[i - 2] || previous;
-        const next = points[i + 1] || current;
-
-        const cp1x = previous.x + (current.x - beforePrevious.x) / 6;
-        const cp1y = previous.y + (current.y - beforePrevious.y) / 6;
-        const cp2x = current.x - (next.x - previous.x) / 6;
-        const cp2y = current.y - (next.y - previous.y) / 6;
-
-        path +=
-          ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)},` +
-          ` ${cp2x.toFixed(2)} ${cp2y.toFixed(2)},` +
-          ` ${current.x.toFixed(2)} ${current.y.toFixed(2)}`;
-      }
-
-      return path;
+      return points
+        .map((point, index) =>
+          `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`
+        )
+        .join(" ");
     }
 
     function buildDemGeometry(profile, summitX, summitY, horizonY) {
@@ -281,11 +256,13 @@
         return null;
       }
 
-      // Vertical and horizontal geometry both come from metric DEM values.
-      // horizontalScale is global, so relative cross-section proportions are
-      // not hand-tuned mountain by mountain.
+      // Vertical geometry remains DEM/elevation-derived. Horizontal emphasis
+      // is curated per mountain so its characteristic shoulders, saddles, crown,
+      // cone, or ridge remain visually recognizable at this chart scale.
       const pixelsPerMeter = displayHeight / reliefMeters;
-      const width = radiusKm * 2000 * pixelsPerMeter * horizontalScale;
+      const widthFactor = Number(profile.display_width_factor) || 1;
+      const width =
+        radiusKm * 2000 * pixelsPerMeter * horizontalScale * widthFactor;
 
       const coords = profile.samples
         .map((sample) => ({
@@ -302,7 +279,7 @@
 
       if (coords.length < 2) return null;
 
-      const ridgeD = smoothRidgePath(coords);
+      const ridgeD = ridgePath(coords);
 
       const first = coords[0];
       const last = coords[coords.length - 1];
@@ -421,6 +398,9 @@
         const group = svgNode("g", {
           class: `mountain-generated mountain-peak-relief mountain-peak-relief--${point.relief}`
         });
+        const profileTitle = svgNode("title", {}, group);
+        profileTitle.textContent =
+          `${point.name}: ${profile.characteristic_view || "curated characteristic profile"}`;
 
         svgNode("path", {
           class: "mountain-peak-relief-fill",
@@ -440,10 +420,12 @@
       };
       const plotted = [...leftPlotted, ...rightPlotted, summit];
 
-      // DEM-derived completed peaks render in front of Denali and share one
-      // horizon; route and summit markers are painted above all terrain.
+      // Paint tallest completed mountains first and lower profiles last.
+      // This preserves every distinctive foreground silhouette instead of allowing
+      // Fuji, Toubkal, or Healy to bury the smaller peaks behind one large fill.
       [...leftPlotted, ...rightPlotted]
         .filter((point) => point.relief)
+        .sort((a, b) => b.elevationFt - a.elevationFt)
         .forEach(drawPeakRelief);
 
       const leftRoute = [

@@ -182,7 +182,7 @@
     const SVG_NS = "http://www.w3.org/2000/svg";
     const profileWidth = 1200;
     const profileHeight = 470;
-    const plot = { left: 72, right: 1065, top: 44, bottom: 400 };
+    const plot = { left: 72, top: 44, bottom: 400 };
     const denaliElevation = 20310;
     let activeMountainPoint = null;
 
@@ -353,10 +353,7 @@
       const leftPlotted = leftCompleted.map((point,index) => flankPosition(point,index,leftCompleted.length));
       const rightPlotted = rightCompleted.map((point,index) => flankPosition(point,index,rightCompleted.length));
 
-      function drawPeakRelief(point) {
-        if (!point.relief) return;
-
-        const reliefSpecs = {
+      const reliefSpecs = {
           "rainbow": {
             w: 138, h: 60, summitIndex: 8,
             ridge: [[-1.00,1.00],[-.89,.92],[-.78,.83],[-.67,.71],[-.56,.58],[-.45,.44],[-.33,.29],[-.18,.13],[0,0],[.12,.08],[.24,.18],[.36,.33],[.50,.41],[.64,.56],[.79,.74],[.91,.88],[1.00,1.00]]
@@ -399,6 +396,9 @@
           }
         };
 
+      function drawPeakRelief(point) {
+        if (!point.relief) return;
+
         const spec = reliefSpecs[point.relief];
         if (!spec) return;
 
@@ -406,9 +406,14 @@
         const summitRx = summitProfile[0];
         const summitRy = summitProfile[1];
 
+        const horizonY = sharedReliefHorizonY;
+        const reliefHeight = horizonY - point.y;
+        const reliefWidth = reliefHeight * (spec.w / spec.h);
+        const verticalSpan = 1 - summitRy;
+
         const coords = spec.ridge.map(([rx, ry]) => ({
-          x: point.x + (rx - summitRx) * spec.w / 2,
-          y: point.y + (ry - summitRy) * spec.h
+          x: point.x + (rx - summitRx) * reliefWidth / 2,
+          y: point.y + ((ry - summitRy) / verticalSpan) * reliefHeight
         }));
 
         const d = coords
@@ -417,7 +422,6 @@
 
         const leftBase = coords[0];
         const rightBase = coords[coords.length - 1];
-        const horizonY = sharedReliefHorizonY;
 
         // Appending after Denali puts the secondary reliefs in front of the
         // principal massif while keeping routes and waypoints above both.
@@ -439,8 +443,8 @@
         svgNode("path", {
           class: "mountain-peak-relief-fold",
           d: `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}
-              C ${(point.x - spec.w * .05).toFixed(1)} ${(point.y + spec.h * .22).toFixed(1)},
-                ${(point.x + spec.w * .07).toFixed(1)} ${(point.y + spec.h * .46).toFixed(1)},
+              C ${(point.x - reliefWidth * .05).toFixed(1)} ${(point.y + reliefHeight * .22).toFixed(1)},
+                ${(point.x + reliefWidth * .07).toFixed(1)} ${(point.y + reliefHeight * .46).toFixed(1)},
                 ${foldEndX.toFixed(1)} ${horizonY.toFixed(1)}`
         }, group);
       }
@@ -452,9 +456,8 @@
       };
       const plotted = [...leftPlotted, ...rightPlotted, summit];
 
-      // Local relief silhouettes sit behind the route and waypoint layers.
-      // They mark only significant named mountains; route endpoints and viewpoints
-      // remain visually quiet.
+      // Significant mountain reliefs sit in front of Denali but behind routes
+      // and waypoints. Route endpoints and viewpoints remain visually quiet.
       [...leftPlotted, ...rightPlotted]
         .filter((point) => point.relief)
         .forEach(drawPeakRelief);
@@ -556,8 +559,6 @@
       });
       goalMeta.textContent = "GOAL · 20,310 FT";
 
-      mountainStage.dataset.profileWidth = profileWidth;
-      mountainStage.dataset.profileHeight = profileHeight;
     }
 
     function positionMountainPopover(point) {

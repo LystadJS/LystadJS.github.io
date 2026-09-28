@@ -881,13 +881,7 @@
       text-align: center;
     }
 
-    body[data-page="about"] .training-event.popover-left .training-popover {
-      left: auto;
-      right: -5px;
-      transform: translate(0, 6px);
-    }
-
-    body[data-page="about"] .training-event:hover .training-popover,
+        body[data-page="about"] .training-event:hover .training-popover,
     body[data-page="about"] .training-event:focus-visible .training-popover,
     body[data-page="about"] .training-event.is-open .training-popover {
       opacity: 1;
@@ -895,13 +889,7 @@
       transform: translate(-50%, 0);
     }
 
-    body[data-page="about"] .training-event.popover-left:hover .training-popover,
-    body[data-page="about"] .training-event.popover-left:focus-visible .training-popover,
-    body[data-page="about"] .training-event.popover-left.is-open .training-popover {
-      transform: translate(0, 0);
-    }
-
-    body[data-page="about"] .training-popover img {
+        body[data-page="about"] .training-popover img {
       display: block;
       width: auto;
       height: 62px;
@@ -980,8 +968,7 @@
 
 
     body[data-page="about"] .military-media {
-      display: grid;
-      gap: 1.15rem;
+      display: block;
     }
 
     body[data-page="about"] .military-photo {
@@ -1020,11 +1007,7 @@
       aspect-ratio: 4 / 5;
     }
 
-    body[data-page="about"] .military-photo-frame.group {
-      aspect-ratio: 4 / 3;
-    }
-
-    body[data-page="about"] .mountain-ascent {
+        body[data-page="about"] .mountain-ascent {
       margin: 0;
     }
 
@@ -1101,17 +1084,7 @@
       stroke: none;
     }
 
-    body[data-page="about"] .mountain-dem-ridge {
-      fill: none;
-      stroke: rgba(185,159,179,.48);
-      stroke-width: 1.15;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      vector-effect: non-scaling-stroke;
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .mountain-peak-relief {
+        body[data-page="about"] .mountain-peak-relief {
       opacity: .82;
       pointer-events: none;
     }
@@ -1208,34 +1181,7 @@
       fill: #a79677;
     }
 
-    body[data-page="about"] .mountain-route {
-      fill: none;
-      stroke: rgba(188,174,183,.62);
-      stroke-width: 1.35;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    body[data-page="about"] .mountain-route-progress {
-      fill: none;
-      stroke: rgba(153,48,75,.58);
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    body[data-page="about"] .mountain-route-goal {
-      fill: none;
-      stroke: rgba(190,160,112,.54);
-      stroke-width: 1.45;
-      stroke-dasharray: 5 6;
-      stroke-linecap: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    body[data-page="about"] .mountain-waypoint {
+                body[data-page="about"] .mountain-waypoint {
       cursor: pointer;
       outline: none;
     }
@@ -1294,22 +1240,7 @@
       vector-effect: non-scaling-stroke;
     }
 
-    body[data-page="about"] .mountain-goal-name {
-      fill: #ddd0b2;
-      font-family: var(--serif);
-      font-size: 25px;
-      font-weight: 600;
-    }
-
-    body[data-page="about"] .mountain-goal-meta {
-      fill: #988a73;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .065em;
-      text-transform: uppercase;
-    }
-
-    body[data-page="about"] .mountain-popover {
+            body[data-page="about"] .mountain-popover {
       position: absolute;
       z-index: 12;
       width: min(270px, calc(100% - 1rem));

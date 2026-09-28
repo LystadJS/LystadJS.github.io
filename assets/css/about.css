@@ -336,8 +336,8 @@
     }
 
     body[data-page="about"] .service-sankey {
-      --service-left-overscan: 76px;
-      --service-right-overscan: 34px;
+      --service-left-overscan: 82px;
+      --service-right-overscan: 52px;
       position: absolute;
       z-index: 2;
       top: calc(var(--line-y) + 14px);
@@ -748,34 +748,33 @@
       pointer-events: none;
     }
 
+    body[data-page="about"] .past-service-continuation,
     body[data-page="about"] .future-service-continuation {
       position: absolute;
       z-index: 1;
       top: var(--line-y);
-      left: calc(100% + 7px);
-      width: 37px;
       height: 1px;
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .past-service-continuation {
+      right: 100%;
+      width: 28px;
+      background: rgba(159,145,156,.58);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 28%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 28%, #000 100%);
+    }
+
+    body[data-page="about"] .future-service-continuation {
+      left: 100%;
+      width: 46px;
       background: repeating-linear-gradient(
         90deg,
         rgba(184,103,132,.72) 0 4px,
         transparent 4px 8px
       );
-      -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.72) 0%, #000 58%, #000 100%);
-      mask-image: linear-gradient(90deg, rgba(0,0,0,.72) 0%, #000 58%, #000 100%);
-      pointer-events: none;
-    }
-
-    body[data-page="about"] .future-service-continuation::after {
-      content: "";
-      position: absolute;
-      right: -1px;
-      top: -3.5px;
-      width: 8px;
-      height: 8px;
-      border-top: 1px solid rgba(184,103,132,.8);
-      border-right: 1px solid rgba(184,103,132,.8);
-      transform: rotate(45deg);
-      transform-origin: center;
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.78) 42%, transparent 100%);
+      mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.78) 42%, transparent 100%);
     }
 
     body[data-page="about"] .training-event {

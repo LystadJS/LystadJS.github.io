@@ -9,8 +9,10 @@ on:
       - "assets/css/about.css"
       - "assets/js/about.js"
       - "package.json"
+      - "package-lock.json"
       - "playwright.config.mjs"
       - "tests/about-military.spec.mjs"
+      - "tests/__screenshots__/**"
       - ".github/workflows/about-military-regression.yml"
   pull_request:
     paths:
@@ -18,8 +20,10 @@ on:
       - "assets/css/about.css"
       - "assets/js/about.js"
       - "package.json"
+      - "package-lock.json"
       - "playwright.config.mjs"
       - "tests/about-military.spec.mjs"
+      - "tests/__screenshots__/**"
       - ".github/workflows/about-military-regression.yml"
   workflow_dispatch:
 
@@ -41,7 +45,7 @@ jobs:
           node-version: "20"
 
       - name: Install regression-test dependency
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
@@ -54,8 +58,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: about-military-regression
-          path: |
-            test-results/
-            package-lock.json
+          path: test-results/
           if-no-files-found: warn
           retention-days: 14

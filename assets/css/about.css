@@ -1634,6 +1634,19 @@
     }
 
 
+    body[data-page="about"] .timeline-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      clip-path: inset(50%) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
     body[data-page="about"] .timeline-noscript {
       margin-top: .7rem;
       padding: .9rem 0 0;
@@ -1704,6 +1717,84 @@
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
         transition-delay: 0ms !important;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      body[data-page="about"] .timeline-line,
+      body[data-page="about"] .past-service-continuation {
+        background: rgba(218,208,215,.88);
+      }
+
+      body[data-page="about"] .timeline-line.projected,
+      body[data-page="about"] .future-service-continuation {
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(225,116,145,.94) 0 4px,
+          transparent 4px 8px
+        );
+      }
+
+      body[data-page="about"] .year-tick {
+        background: rgba(218,208,215,.48);
+      }
+
+      body[data-page="about"] .year-tick-label,
+      body[data-page="about"] .rank-event-date,
+      body[data-page="about"] .unit-event-date,
+      body[data-page="about"] .training-popover-meta {
+        color: #bdb1ba;
+      }
+
+      body[data-page="about"] .rank-event-abbr,
+      body[data-page="about"] .rank-event-name,
+      body[data-page="about"] .unit-event-name,
+      body[data-page="about"] .training-popover-title {
+        color: #f0e7ec;
+      }
+
+      body[data-page="about"] .current-day-label {
+        color: #dda3b6;
+      }
+
+      body[data-page="about"] .current-day-marker {
+        border-color: #f3b2c5;
+        box-shadow:
+          0 0 0 4px #0b090d,
+          0 0 0 7px rgba(218,104,136,.38),
+          0 0 12px rgba(218,104,136,.28);
+      }
+
+      body[data-page="about"] .service-flow {
+        opacity: .42;
+        stroke: rgba(232,220,228,.18);
+      }
+
+      body[data-page="about"] .service-flow:hover,
+      body[data-page="about"] .service-flow:focus-visible,
+      body[data-page="about"] .service-flow.is-open {
+        opacity: .64;
+        filter: brightness(1.12) saturate(1);
+      }
+
+      body[data-page="about"] .service-flow-label {
+        color: #c7bbc4;
+        text-shadow: 0 1px 3px #000;
+      }
+
+      body[data-page="about"] .unit-event-label,
+      body[data-page="about"] .rank-event-detail,
+      body[data-page="about"] .training-popover-box {
+        border-color: rgba(164,142,159,.82);
+        background: rgba(8,7,10,.98);
+      }
+
+      body[data-page="about"] .unit-event:focus-visible,
+      body[data-page="about"] .rank-event:focus-visible,
+      body[data-page="about"] .training-event:focus-visible,
+      body[data-page="about"] .service-flow:focus-visible {
+        outline-width: 2px;
+        outline-color: #d7a4b6;
       }
     }
 

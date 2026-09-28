@@ -201,6 +201,7 @@
       clampPct(((toUtcDay(date) - rangeStart) / (rangeEnd - rangeStart)) * 100);
     const pos = (date) => pct(date).toFixed(4) + "%";
     const officerPct = pct(militaryTimelineData.officerStart);
+    const roleById = Object.fromEntries(militaryTimelineData.roles.map((role) => [role.id, role]));
     const officerRole = roleById.officer;
 
     kicker.textContent = militaryTimelineData.kicker;
@@ -229,7 +230,6 @@
     const leaderEnd = Math.min(100, leaderPct + transitionWidth);
     const commsEnd = Math.min(100, commsPct + transitionWidth);
     const n = (value) => Number(value.toFixed(4));
-    const roleById = Object.fromEntries(militaryTimelineData.roles.map((role) => [role.id, role]));
 
     const roleAria = (role) =>
       role.id === "officer"

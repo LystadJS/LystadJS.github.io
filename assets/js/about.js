@@ -580,57 +580,70 @@
 
   const currentServiceRow = document.querySelector(".current-service-row");
 
+  const toUtcDay = (value) => Date.parse(value + "T00:00:00Z");
+  const clampPct = (value) => Math.max(0, Math.min(100, value));
+  const pctBetween = (value, start, end) =>
+    clampPct(((value - start) / (end - start)) * 100);
+
   if (currentServiceRow) {
-    const toUtcDay = (value) => Date.parse(value + "T00:00:00Z");
     const start = toUtcDay(currentServiceRow.dataset.start);
     const end = toUtcDay(currentServiceRow.dataset.end);
+    const officerStart = toUtcDay(currentServiceRow.dataset.officerStart);
+
+    currentServiceRow.querySelectorAll("[data-date]").forEach((eventNode) => {
+      const eventDate = toUtcDay(eventNode.dataset.date);
+      if (Number.isFinite(eventDate)) {
+        eventNode.style.setProperty("--x", pctBetween(eventDate, start, end).toFixed(4) + "%");
+      }
+    });
+
+    if (Number.isFinite(officerStart)) {
+      const officerPct = pctBetween(officerStart, start, end);
+      currentServiceRow.style.setProperty("--officer-start", officerPct.toFixed(4) + "%");
+      currentServiceRow.style.setProperty(
+        "--officer-label-x",
+        ((officerPct + 100) / 2).toFixed(4) + "%"
+      );
+
+      const preOfficerSankey = currentServiceRow.querySelector(".service-sankey--preofficer");
+      if (preOfficerSankey) {
+        const leaderStart = toUtcDay(preOfficerSankey.dataset.leaderStart);
+        const commsStart = toUtcDay(preOfficerSankey.dataset.commsStart);
+        const leaderPct = pctBetween(leaderStart, start, officerStart);
+        const commsPct = pctBetween(commsStart, start, officerStart);
+        const transitionWidth = 6;
+        const leaderEnd = Math.min(100, leaderPct + transitionWidth);
+        const commsEnd = Math.min(100, commsPct + transitionWidth);
+        const n = (value) => Number(value.toFixed(4));
+
+        preOfficerSankey.querySelector(".service-flow--infantry")?.setAttribute(
+          "d",
+          `M0 0 H100 V17.3333 H${n(commsEnd)} C${n(commsPct + 4)} 17.3333 ${n(commsPct + 2)} 26 ${n(commsPct)} 26 H${n(leaderEnd)} C${n(leaderPct + 4)} 26 ${n(leaderPct + 2)} 52 ${n(leaderPct)} 52 H0 Z`
+        );
+        preOfficerSankey.querySelector(".service-flow--leader")?.setAttribute(
+          "d",
+          `M${n(leaderPct)} 52 C${n(leaderPct + 2)} 52 ${n(leaderPct + 4)} 26 ${n(leaderEnd)} 26 H${n(commsPct)} C${n(commsPct + 2)} 26 ${n(commsPct + 4)} 17.3333 ${n(commsEnd)} 17.3333 H100 V34.6666 H${n(commsEnd)} C${n(commsPct + 4)} 34.6666 ${n(commsPct + 2)} 52 ${n(commsPct)} 52 H${n(leaderPct)} Z`
+        );
+        preOfficerSankey.querySelector(".service-flow--comms")?.setAttribute(
+          "d",
+          `M${n(commsPct)} 52 C${n(commsPct + 2)} 52 ${n(commsPct + 4)} 34.6666 ${n(commsEnd)} 34.6666 H100 V52 Z`
+        );
+      }
+    }
+
     const today = new Date();
     const now = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-    const pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
-
-    currentServiceRow.style.setProperty("--today", pct.toFixed(4) + "%");
+    currentServiceRow.style.setProperty("--today", pctBetween(now, start, end).toFixed(4) + "%");
   }
 
   const timelineDetailEvents = [...document.querySelectorAll(".unit-event, .rank-event")];
+  const trainingEvents = [...document.querySelectorAll(".training-event")];
+  const serviceFlows = [...document.querySelectorAll(".service-flow")];
 
   function setTimelineDetailState(timelineEvent, isOpen) {
     timelineEvent.classList.toggle("is-detail-open", isOpen);
     timelineEvent.setAttribute("aria-expanded", String(isOpen));
   }
-
-  function closeTimelineDetails(except = null) {
-    timelineDetailEvents.forEach((timelineEvent) => {
-      if (timelineEvent !== except) setTimelineDetailState(timelineEvent, false);
-    });
-  }
-
-  timelineDetailEvents.forEach((timelineEvent) => {
-    timelineEvent.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const willOpen = !timelineEvent.classList.contains("is-detail-open");
-      closeTimelineDetails(timelineEvent);
-      setTimelineDetailState(timelineEvent, willOpen);
-    });
-
-    timelineEvent.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        event.stopPropagation();
-        const willOpen = !timelineEvent.classList.contains("is-detail-open");
-        closeTimelineDetails(timelineEvent);
-        setTimelineDetailState(timelineEvent, willOpen);
-      }
-    });
-  });
-
-  if (timelineDetailEvents.length) {
-    document.addEventListener("click", () => closeTimelineDetails());
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeTimelineDetails();
-    });
-  }
-
-  const trainingEvents = [...document.querySelectorAll(".training-event")];
 
   function setTrainingEventState(trainingEvent, isOpen) {
     trainingEvent.classList.toggle("is-open", isOpen);
@@ -638,25 +651,66 @@
     trainingEvent.querySelector(".training-popover")?.setAttribute("aria-hidden", String(!isOpen));
   }
 
-  function closeTrainingEvents(except = null) {
+  function setServiceFlowState(serviceFlow, isOpen) {
+    serviceFlow.classList.toggle("is-open", isOpen);
+    serviceFlow.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function closeTimelineInteractions(except = null) {
+    timelineDetailEvents.forEach((timelineEvent) => {
+      if (timelineEvent !== except) setTimelineDetailState(timelineEvent, false);
+    });
     trainingEvents.forEach((trainingEvent) => {
       if (trainingEvent !== except) setTrainingEventState(trainingEvent, false);
     });
+    serviceFlows.forEach((serviceFlow) => {
+      if (serviceFlow !== except) setServiceFlowState(serviceFlow, false);
+    });
   }
 
+  timelineDetailEvents.forEach((timelineEvent) => {
+    const toggle = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const willOpen = !timelineEvent.classList.contains("is-detail-open");
+      closeTimelineInteractions(timelineEvent);
+      setTimelineDetailState(timelineEvent, willOpen);
+    };
+
+    timelineEvent.addEventListener("click", toggle);
+    timelineEvent.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") toggle(event);
+    });
+  });
+
   trainingEvents.forEach((trainingEvent) => {
-    trainingEvent.addEventListener("click", (clickEvent) => {
-      clickEvent.stopPropagation();
+    trainingEvent.addEventListener("click", (event) => {
+      event.stopPropagation();
       const willOpen = !trainingEvent.classList.contains("is-open");
-      closeTrainingEvents(trainingEvent);
+      closeTimelineInteractions(trainingEvent);
       setTrainingEventState(trainingEvent, willOpen);
     });
   });
 
-  if (trainingEvents.length) {
-    document.addEventListener("click", () => closeTrainingEvents());
+  serviceFlows.forEach((serviceFlow) => {
+    const toggle = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const willOpen = !serviceFlow.classList.contains("is-open");
+      closeTimelineInteractions(serviceFlow);
+      setServiceFlowState(serviceFlow, willOpen);
+    };
+
+    serviceFlow.addEventListener("click", toggle);
+    serviceFlow.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") toggle(event);
+    });
+  });
+
+  if (timelineDetailEvents.length || trainingEvents.length || serviceFlows.length) {
+    document.addEventListener("click", () => closeTimelineInteractions());
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeTrainingEvents();
+      if (event.key === "Escape") closeTimelineInteractions();
     });
   }
 

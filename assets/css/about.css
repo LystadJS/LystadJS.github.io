@@ -336,7 +336,7 @@
     }
 
     body[data-page="about"] .service-sankey {
-      --service-left-overscan: 80px;
+      --service-left-overscan: 90px;
       position: absolute;
       z-index: 2;
       top: calc(var(--line-y) + 14px);
@@ -1720,11 +1720,12 @@
     }
 
     body[data-page="about"] .training-event.training-stagger {
-      z-index: 7;
+      z-index: 8;
     }
 
     body[data-page="about"] .training-event.training-stagger .qualification-icon {
-      top: 22px;
+      top: 10px;
+      z-index: 2;
     }
 
     body[data-page="about"] .single-line-service-row {

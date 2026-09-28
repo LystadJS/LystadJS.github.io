@@ -1695,12 +1695,39 @@
     }
 
     @media (max-width: 640px) {
+      body[data-page="about"] .career-timeline {
+        --timeline-icon-size: 48px;
+        --timeline-icon-half: 24px;
+        --timeline-sankey-height: 60px;
+      }
+
       body[data-page="about"] .timeline-canvas {
         --timeline-edge-extension: 22px;
         --service-edge-overscan: 40px;
         --service-edge-fade: 32px;
         width: 80%;
         margin-inline: auto;
+      }
+
+      body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
+        width: 18px;
+        height: 48px;
+      }
+
+      body[data-page="about"] .rank-event[data-event-id="spc"] .rank-insignia-wrap {
+        margin-top: 52px;
+      }
+
+      body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {
+        top: calc(var(--line-y) - var(--timeline-icon-size) - 34px);
+      }
+
+      body[data-page="about"] .unit-event[data-event-id="11th-airborne"]::before {
+        height: 34px;
+      }
+
+      body[data-page="about"] .training-event[data-event-id="cwic"] .qualification-icon {
+        top: 49px;
       }
 
       body[data-page="about"] .about-hero {
@@ -1755,7 +1782,8 @@
     }
 
     body[data-page="about"] .timeline-canvas:has(.service-flow--officer:hover) > .service-flow-label--officer,
-    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer {
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer.is-open) > .service-flow-label--officer {
       transform: translate(-100%, -50%);
     }
 

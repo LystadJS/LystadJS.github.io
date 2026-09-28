@@ -119,7 +119,6 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
 
   await page.keyboard.press("Escape");
   await expect(privateRank).toHaveAttribute("aria-expanded", "false");
-
 });
 
 test("military timeline respects reduced motion", async ({ page }) => {
@@ -152,7 +151,6 @@ test("military timeline respects reduced motion", async ({ page }) => {
     expect(longest, `${item.selector} transition should be effectively disabled`).toBeLessThanOrEqual(0.00002);
   }
 });
-
 
 test("military timeline exposes every interactive item to the keyboard with a meaningful accessible name", async ({ page }) => {
   await page.clock.setFixedTime(new Date("2026-09-28T16:00:00Z"));
@@ -238,7 +236,6 @@ test("military timeline has explicit forced-colors behavior", async ({ page }, t
   expect(state.infantryFill).not.toBe("none");
   expect(state.infantryStroke).not.toBe("none");
 });
-
 
 test("military timeline exposes its visual grammar to screen readers", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-1440", "Screen-reader explanation only needs one browser pass.");

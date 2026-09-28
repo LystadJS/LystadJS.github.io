@@ -277,6 +277,9 @@
 
     body[data-page="about"] .timeline-canvas {
       --line-y: var(--timeline-line-y);
+      --today: 89.2875%;
+      --officer-start: 66.6667%;
+      --officer-label-x: 83.3333%;
       --timeline-edge-extension: 38px;
       --service-edge-overscan: 68px;
       --service-edge-fade: 54px;
@@ -311,7 +314,7 @@
     body[data-page="about"] .training-event,
     body[data-page="about"] .year-tick {
       position: absolute;
-      left: var(--x);
+      left: var(--x, 0%);
     }
 
     body[data-page="about"] .year-tick {
@@ -394,10 +397,15 @@
     }
 
     body[data-page="about"] .service-flow:hover,
-    body[data-page="about"] .service-flow:focus-visible {
+    body[data-page="about"] .service-flow:focus-visible,
+    body[data-page="about"] .service-flow.is-open {
       opacity: .49;
       filter: brightness(1.08) saturate(.96);
       outline: none;
+    }
+
+    body[data-page="about"] .service-flow {
+      cursor: pointer;
     }
 
     body[data-page="about"] .service-flow--infantry {
@@ -457,12 +465,16 @@
 
     body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:hover) > .service-flow-label--infantry,
     body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:focus-visible) > .service-flow-label--infantry,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--infantry.is-open) > .service-flow-label--infantry,
     body[data-page="about"] .timeline-canvas:has(.service-flow--leader:hover) > .service-flow-label--leader,
     body[data-page="about"] .timeline-canvas:has(.service-flow--leader:focus-visible) > .service-flow-label--leader,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--leader.is-open) > .service-flow-label--leader,
     body[data-page="about"] .timeline-canvas:has(.service-flow--comms:hover) > .service-flow-label--comms,
     body[data-page="about"] .timeline-canvas:has(.service-flow--comms:focus-visible) > .service-flow-label--comms,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--comms.is-open) > .service-flow-label--comms,
     body[data-page="about"] .timeline-canvas:has(.service-flow--officer:hover) > .service-flow-label--officer,
-    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer {
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer,
+    body[data-page="about"] .timeline-canvas:has(.service-flow--officer.is-open) > .service-flow-label--officer {
       opacity: 1;
       visibility: visible;
       transform: translate(0, -50%);
@@ -549,14 +561,16 @@
 
     body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .current-day-marker,
     body[data-page="about"] .timeline-canvas:has(.rank-event.is-detail-open) .current-day-marker,
-    body[data-page="about"] .timeline-canvas:has(.training-event.is-open) .current-day-marker {
+    body[data-page="about"] .timeline-canvas:has(.training-event.is-open) .current-day-marker,
+    body[data-page="about"] .timeline-canvas:has(.service-flow.is-open) .current-day-marker {
       opacity: .34;
       filter: saturate(.72);
     }
 
     body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .current-day-label,
     body[data-page="about"] .timeline-canvas:has(.rank-event.is-detail-open) .current-day-label,
-    body[data-page="about"] .timeline-canvas:has(.training-event.is-open) .current-day-label {
+    body[data-page="about"] .timeline-canvas:has(.training-event.is-open) .current-day-label,
+    body[data-page="about"] .timeline-canvas:has(.service-flow.is-open) .current-day-label {
       opacity: .38;
       filter: saturate(.72);
     }

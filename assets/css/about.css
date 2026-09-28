@@ -336,28 +336,28 @@
     }
 
     body[data-page="about"] .service-sankey {
+      --service-overscan: 2.35%;
       position: absolute;
       z-index: 2;
       top: calc(var(--line-y) + 14px);
-      left: 0;
-      width: 100%;
       height: var(--timeline-sankey-height);
       overflow: visible;
       pointer-events: none;
     }
 
     body[data-page="about"] .service-sankey--preofficer {
-      width: var(--officer-start, 66.6667%);
+      left: calc(-1 * var(--service-overscan));
+      width: calc(var(--officer-start, 66.6667%) + var(--service-overscan));
     }
 
     body[data-page="about"] .service-sankey--officer {
       left: var(--officer-start, 66.6667%);
-      width: calc(var(--today, 89.2875%) - var(--officer-start, 66.6667%));
+      width: calc(100% - var(--officer-start, 66.6667%) + var(--service-overscan));
     }
 
     body[data-page="about"] .service-flow {
-      opacity: .33;
-      stroke: rgba(190,176,185,.08);
+      opacity: .30;
+      stroke: rgba(190,176,185,.07);
       stroke-width: .35;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
@@ -368,28 +368,29 @@
 
     body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible {
-      opacity: .50;
-      filter: brightness(1.08);
+      opacity: .46;
+      filter: brightness(1.06);
       outline: none;
     }
 
     body[data-page="about"] .service-flow--infantry {
-      /* Darkened Infantry Blue. */
-      fill: rgb(49,95,125);
+      /* Muted Flag Blue 67124 (#0A2230 base). */
+      fill: #334955;
     }
 
     body[data-page="about"] .service-flow--leader {
-      /* Subdued NCO brass/gold. */
-      fill: rgb(101,82,43);
+      /* Army/NCO olive drab. */
+      fill: #4B5320;
     }
 
     body[data-page="about"] .service-flow--comms {
-      /* Darkened Signal Corps orange. */
-      fill: rgb(124,58,18);
+      /* Muted Orange 67110 (#FF4D00 base). */
+      fill: #985D3E;
     }
 
     body[data-page="about"] .service-flow--officer {
-      fill: rgb(82,66,51);
+      /* Muted commissioning-candidate khaki (#D4BF91 base). */
+      fill: #B5A684;
     }
 
     body[data-page="about"] .service-flow-label {
@@ -1716,4 +1717,8 @@
 
     body[data-page="about"] .training-event.training-stagger .qualification-icon {
       top: 58px;
+    }
+
+    body[data-page="about"] .single-line-service-row {
+      overflow: visible;
     }

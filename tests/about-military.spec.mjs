@@ -1,4 +1,8 @@
+import { createRequire } from "node:module";
 import { expect, test } from "@playwright/test";
+
+const require = createRequire(import.meta.url);
+const axePath = require.resolve("axe-core/axe.min.js");
 
 function seconds(value) {
   if (!value) return 0;
@@ -256,9 +260,7 @@ test("military section passes axe-core WCAG A and AA checks", async ({ page }, t
 
   await page.clock.setFixedTime(new Date("2026-09-28T16:00:00Z"));
   await page.goto("/about.html", { waitUntil: "networkidle" });
-  await page.addScriptTag({
-    url: "https://cdn.jsdelivr.net/npm/axe-core@4.10.2/axe.min.js"
-  });
+  await page.addScriptTag({ path: axePath });
 
   const results = await page.evaluate(async () => {
     const target = document.querySelector('section[aria-labelledby="military-title"]');

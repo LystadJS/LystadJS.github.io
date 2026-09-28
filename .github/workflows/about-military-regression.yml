@@ -42,7 +42,9 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: "package-lock.json"
 
       - name: Install regression-test dependency
         run: npm ci --no-audit --no-fund

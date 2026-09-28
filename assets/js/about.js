@@ -14,8 +14,9 @@
       {
         name: "Rendezvous Peak",
         relief: "rendezvous",
-        x: 420,
-        displayWidth: 240,
+        x: 220,
+        displayWidth: 180,
+        labelRow: 0,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4050,
@@ -26,8 +27,9 @@
       {
         name: "Gold Star Peak",
         relief: "gold-star",
-        x: 490,
-        displayWidth: 240,
+        x: 370,
+        displayWidth: 180,
+        labelRow: 1,
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
         elevationFt: 4148,
@@ -38,8 +40,9 @@
       {
         name: "Mount Gordon Lyon",
         relief: "gordon-lyon",
-        x: 560,
-        displayWidth: 300,
+        x: 525,
+        displayWidth: 240,
+        labelRow: 0,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4100,
@@ -51,8 +54,9 @@
         name: "East Twin Peak",
         relief: "east-twin",
         signature: "eastTwin",
-        x: 660,
-        displayWidth: 390,
+        x: 700,
+        displayWidth: 300,
+        labelRow: 1,
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
         elevationFt: 5873,
@@ -64,8 +68,9 @@
         name: "Mount Healy",
         relief: "healy",
         signature: "healy",
-        x: 760,
-        displayWidth: 430,
+        x: 850,
+        displayWidth: 340,
+        labelRow: 0,
         location: "Denali region, Alaska",
         date: "May 2024",
         elevationFt: 5716,
@@ -77,8 +82,9 @@
         name: "Mount Fuji",
         relief: "fuji",
         signature: "fuji",
-        x: 860,
-        displayWidth: 760,
+        x: 650,
+        displayWidth: 650,
+        labelRow: 1,
         location: "Japan",
         date: "Jul 2024",
         elevationFt: 12388,
@@ -90,8 +96,9 @@
         name: "Mount Toubkal",
         relief: "toubkal",
         signature: "toubkal",
-        x: 980,
-        displayWidth: 620,
+        x: 940,
+        displayWidth: 500,
+        labelRow: 0,
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
         elevationFt: 13671,
@@ -103,8 +110,9 @@
         name: "Denali",
         relief: "denali",
         signature: "denali",
-        x: 1080,
-        displayWidth: 980,
+        x: 1280,
+        displayWidth: 760,
+        labelRow: 1,
         location: "Alaska, USA",
         date: "Goal",
         elevationFt: 20310,
@@ -139,21 +147,25 @@
     // the exact published summit elevation; the profile shape is presentation geometry.
     const signatureProfiles = {
       fuji: [
-        [-1.00,1.00],[-.94,.95],[-.88,.89],[-.80,.80],[-.72,.71],
-        [-.64,.62],[-.56,.54],[-.48,.45],[-.40,.37],[-.32,.29],
-        [-.24,.21],[-.17,.14],[-.11,.09],[-.06,.045],[-.02,.015],[0,0],
-        [.02,.015],[.06,.045],[.11,.09],[.17,.14],[.24,.21],[.32,.29],
-        [.40,.37],[.48,.45],[.56,.54],[.64,.62],[.72,.71],[.80,.80],
-        [.88,.89],[.94,.95],[1.00,1.00]
+        [-1.00,1.00],[-.94,.965],[-.88,.915],[-.82,.855],[-.76,.790],
+        [-.70,.720],[-.64,.650],[-.58,.575],[-.52,.500],[-.46,.425],
+        [-.40,.355],[-.34,.290],[-.28,.230],[-.22,.175],[-.16,.125],
+        [-.11,.085],[-.07,.055],[-.035,.025],[0,0],[.035,.025],
+        [.07,.055],[.11,.085],[.16,.125],[.22,.175],[.28,.230],
+        [.34,.290],[.40,.355],[.46,.425],[.52,.500],[.58,.575],
+        [.64,.650],[.70,.720],[.76,.790],[.82,.855],[.88,.915],
+        [.94,.965],[1.00,1.00]
       ],
 
       denali: [
-        [-1.00,1.00],[-.95,.95],[-.90,.89],[-.84,.82],[-.78,.75],
-        [-.72,.69],[-.66,.62],[-.60,.56],[-.54,.50],[-.48,.44],
-        [-.42,.38],[-.36,.33],[-.30,.28],[-.24,.23],[-.18,.19],
-        [-.12,.16],[-.07,.12],[-.03,.085],[.01,.055],[.04,.02],[.06,0],
-        [.09,.025],[.13,.05],[.18,.08],[.24,.12],[.31,.17],[.39,.24],
-        [.48,.32],[.58,.42],[.68,.53],[.78,.66],[.88,.80],[.95,.91],[1.00,1.00]
+        [-1.00,1.00],[-.94,.95],[-.88,.88],[-.82,.80],[-.76,.72],
+        [-.69,.65],[-.62,.58],[-.55,.52],[-.48,.46],[-.42,.40],
+        [-.36,.36],[-.31,.32],[-.26,.27],[-.21,.24],[-.17,.26],
+        [-.13,.20],[-.09,.17],[-.055,.13],[-.025,.105],[.005,.075],
+        [.035,.035],[.060,0],[.088,.020],[.12,.045],[.17,.070],
+        [.23,.105],[.30,.150],[.38,.205],[.46,.285],[.55,.365],
+        [.63,.455],[.71,.555],[.79,.665],[.86,.760],[.92,.845],
+        [.97,.930],[1.00,1.00]
       ],
 
       toubkal: [
@@ -414,10 +426,11 @@
           }
         });
 
+        const labelOffset = (point.labelRow || 0) * 34;
         const label = svgNode("text", {
           class: `mountain-generated mountain-profile-label${point.goal ? " is-goal" : ""}`,
           x: point.x,
-          y: horizonY + 32,
+          y: horizonY + 30 + labelOffset,
           "text-anchor": "middle"
         });
         label.textContent = point.name;
@@ -425,7 +438,7 @@
         const meta = svgNode("text", {
           class: `mountain-generated mountain-profile-meta${point.goal ? " is-goal" : ""}`,
           x: point.x,
-          y: horizonY + 53,
+          y: horizonY + 48 + labelOffset,
           "text-anchor": "middle"
         });
         meta.textContent = point.goal

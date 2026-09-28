@@ -8,6 +8,7 @@ function seconds(value) {
 }
 
 test("military timeline remains centered, symmetric, and interactive", async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date("2026-09-28T16:00:00Z"));
   await page.goto("/about.html", { waitUntil: "networkidle" });
 
   const section = page.locator('section[aria-labelledby="military-title"]');
@@ -88,6 +89,12 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
   await page.waitForTimeout(200);
   await timeline.screenshot({
     path: testInfo.outputPath(`military-timeline-${testInfo.project.name}.png`)
+  });
+
+  await expect(timeline).toHaveScreenshot("military-timeline.png", {
+    animations: "disabled",
+    caret: "hide",
+    maxDiffPixelRatio: 0.01
   });
 
   const leader = page.locator(".service-flow--leader");

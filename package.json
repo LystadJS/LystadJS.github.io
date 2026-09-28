@@ -1,0 +1,10 @@
+{
+  "name": "lystadjs-github-io",
+  "private": true,
+  "scripts": {
+    "test:about": "playwright test tests/about-military.spec.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}

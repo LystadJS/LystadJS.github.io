@@ -282,7 +282,7 @@
       --service-edge-fade: 54px;
       position: relative;
       width: 90%;
-      height: 320px;
+      height: 295px;
       margin-inline: auto;
       overflow: visible;
     }
@@ -293,11 +293,12 @@
       top: var(--line-y);
       left: var(--from, 0%);
       width: calc(var(--to, 100%) - var(--from, 0%));
-      height: 1px;
-      background: rgba(159,145,156,.58);
+      height: 1.25px;
+      background: rgba(166,152,163,.66);
     }
 
     body[data-page="about"] .timeline-line.projected {
+      height: 1px;
       background: repeating-linear-gradient(
         90deg,
         rgba(184,103,132,.72) 0 4px,
@@ -326,7 +327,7 @@
     body[data-page="about"] .year-tick-label {
       position: absolute;
       left: 50%;
-      top: -130px;
+      top: -122px;
       transform: translateX(-50%);
       color: #7d737d;
       font-family: var(--mono);
@@ -402,21 +403,25 @@
     body[data-page="about"] .service-flow--infantry {
       /* Muted Flag Blue 67124 (#0A2230 base). */
       fill: #334955;
+      fill-opacity: 1;
     }
 
     body[data-page="about"] .service-flow--leader {
       /* Army/NCO olive drab. */
       fill: #4B5320;
+      fill-opacity: 1;
     }
 
     body[data-page="about"] .service-flow--comms {
       /* Muted Orange 67110 (#FF4D00 base). */
       fill: #985D3E;
+      fill-opacity: .93;
     }
 
     body[data-page="about"] .service-flow--officer {
       /* Muted commissioning-candidate khaki (#D4BF91 base). */
       fill: #B5A684;
+      fill-opacity: .74;
     }
 
     body[data-page="about"] .service-flow-label {
@@ -520,6 +525,23 @@
         0 0 0 6px rgba(184,56,88,.22),
         0 0 10px rgba(184,56,88,.16);
       transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    body[data-page="about"] .current-day-label {
+      position: absolute;
+      z-index: 5;
+      top: calc(var(--line-y) - 28px);
+      left: var(--today, 89.2875%);
+      transform: translateX(-50%);
+      color: #a86f82;
+      font-family: var(--mono);
+      font-size: .52rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+      white-space: nowrap;
       pointer-events: none;
     }
 
@@ -781,7 +803,8 @@
     body[data-page="about"] .past-service-continuation {
       right: 100%;
       width: var(--timeline-edge-extension);
-      background: rgba(159,145,156,.58);
+      height: 1.25px;
+      background: rgba(166,152,163,.66);
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
       mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
     }
@@ -1570,6 +1593,9 @@
 
     @media (max-width: 900px) {
       body[data-page="about"] .timeline-canvas {
+        --timeline-edge-extension: 30px;
+        --service-edge-overscan: 54px;
+        --service-edge-fade: 43px;
         width: 86%;
         margin-inline: auto;
       }
@@ -1610,14 +1636,12 @@
 
     @media (max-width: 640px) {
       body[data-page="about"] .timeline-canvas {
+        --timeline-edge-extension: 22px;
+        --service-edge-overscan: 40px;
+        --service-edge-fade: 32px;
         width: 80%;
         margin-inline: auto;
       }
-
-      body[data-page="about"] .service-sankey {
-        --service-left-overscan: 56px;
-      }
-
 
       body[data-page="about"] .about-hero {
         padding-top: 3.5rem;

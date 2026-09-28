@@ -234,3 +234,73 @@ test("military timeline has explicit forced-colors behavior", async ({ page }, t
   expect(state.infantryFill).not.toBe("none");
   expect(state.infantryStroke).not.toBe("none");
 });
+
+
+test("military timeline exposes its visual grammar to screen readers", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-1440", "Screen-reader explanation only needs one browser pass.");
+
+  await page.goto("/about.html", { waitUntil: "networkidle" });
+  const timeline = page.locator("#military-career-timeline");
+  const help = page.locator("#military-timeline-help");
+
+  await expect(timeline).toHaveAttribute("role", "region");
+  await expect(timeline).toHaveAttribute("aria-describedby", "military-timeline-help");
+  await expect(help).toContainText("solid line represents completed service time");
+  await expect(help).toContainText("dashed line represents the projected period");
+  await expect(help).toContainText("red Today marker");
+  await expect(help).toContainText("dashed 2LT rank marker");
+});
+
+test("military section passes axe-core WCAG A and AA checks", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name === "tablet-900", "Axe scans target desktop and mobile.");
+
+  await page.clock.setFixedTime(new Date("2026-09-28T16:00:00Z"));
+  await page.goto("/about.html", { waitUntil: "networkidle" });
+  await page.addScriptTag({
+    url: "https://cdn.jsdelivr.net/npm/axe-core@4.10.2/axe.min.js"
+  });
+
+  const results = await page.evaluate(async () => {
+    const target = document.querySelector('section[aria-labelledby="military-title"]');
+    return window.axe.run(target, {
+      runOnly: {
+        type: "tag",
+        values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa"]
+      }
+    });
+  });
+
+  const violations = results.violations.map((violation) => ({
+    id: violation.id,
+    impact: violation.impact,
+    help: violation.help,
+    nodes: violation.nodes.map((node) => ({
+      target: node.target,
+      failureSummary: node.failureSummary
+    }))
+  }));
+
+  expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
+});
+
+test("military timeline responds to increased-contrast preference", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-1440", "Contrast preference only needs one browser pass.");
+
+  await page.emulateMedia({ contrast: "more" });
+  await page.goto("/about.html", { waitUntil: "networkidle" });
+
+  const state = await page.evaluate(() => {
+    const flow = getComputedStyle(document.querySelector(".service-flow--infantry"));
+    const label = getComputedStyle(document.querySelector(".current-day-label"));
+
+    return {
+      prefersMore: window.matchMedia("(prefers-contrast: more)").matches,
+      flowOpacity: Number.parseFloat(flow.opacity),
+      todayColor: label.color
+    };
+  });
+
+  expect(state.prefersMore).toBe(true);
+  expect(state.flowOpacity).toBeGreaterThanOrEqual(0.42);
+  expect(state.todayColor).not.toBe("rgb(168, 111, 130)");
+});

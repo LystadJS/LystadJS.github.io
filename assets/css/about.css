@@ -1175,6 +1175,19 @@
       stroke: rgba(210,193,204,.64);
     }
 
+    body[data-page="about"] .mountain-peak-relief--denali {
+      opacity: .62;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--toubkal {
+      opacity: .70;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--fuji {
+      opacity: .78;
+    }
+
+
     body[data-page="about"] .mountain-peak-relief--mid {
       opacity: .84;
     }
@@ -1199,7 +1212,7 @@
     body[data-page="about"] .mountain-profile-label {
       fill: #d7cbd2;
       font-family: var(--serif);
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 600;
       letter-spacing: -.01em;
     }
@@ -1211,7 +1224,7 @@
     body[data-page="about"] .mountain-profile-meta {
       fill: #837783;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: .07em;
     }
 

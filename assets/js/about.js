@@ -5,7 +5,6 @@
     start: "2021-11-01",
     end: "2027-05-01",
     officerStart: "2025-07-01",
-    ariaLabel: "Service and leadership chronology, November 2021 through May 2027",
     kicker: "Service & Leadership Chronology · Nov 2021–May 2027",
     todayLabel: "Today",
     roles: [
@@ -174,7 +173,7 @@
         datetime: "2027-05",
         status: "Expected",
         officer: true,
-        className: "edge-end expected"
+        className: "expected"
       }
     ]
   });
@@ -202,11 +201,8 @@
       clampPct(((toUtcDay(date) - rangeStart) / (rangeEnd - rangeStart)) * 100);
     const pos = (date) => pct(date).toFixed(4) + "%";
     const officerPct = pct(militaryTimelineData.officerStart);
-    const officerRole = militaryTimelineData.roles.find((role) => role.id === "officer");
-    const leaderRole = militaryTimelineData.roles.find((role) => role.id === "leader");
-    const commsRole = militaryTimelineData.roles.find((role) => role.id === "comms");
+    const officerRole = roleById.officer;
 
-    career.setAttribute("aria-label", militaryTimelineData.ariaLabel);
     kicker.textContent = militaryTimelineData.kicker;
     canvas.style.setProperty("--officer-start", officerPct.toFixed(4) + "%");
     canvas.style.setProperty("--officer-label-x", ((officerPct + 100) / 2).toFixed(4) + "%");
@@ -227,8 +223,8 @@
       );
     }
 
-    const leaderPct = pct(leaderRole.start, start, officerStart);
-    const commsPct = pct(commsRole.start, start, officerStart);
+    const leaderPct = pct(roleById.leader.start, start, officerStart);
+    const commsPct = pct(roleById.comms.start, start, officerStart);
     const transitionWidth = 6;
     const leaderEnd = Math.min(100, leaderPct + transitionWidth);
     const commsEnd = Math.min(100, commsPct + transitionWidth);
@@ -251,8 +247,8 @@
       </svg>
       ${militaryTimelineData.roles.map((role) => {
         const labelX = role.id === "officer"
-          ? "var(--officer-label-x,83.3333%)"
-          : "var(--officer-start,66.6667%)";
+          ? "var(--officer-label-x)"
+          : "var(--officer-start)";
         const labelY = role.id === "infantry" ? "12px" : role.id === "leader" ? "36px" : role.id === "comms" ? "60px" : "36px";
         return `<span class="service-flow-label service-flow-label--${role.id}" style="--label-x:${labelX};--label-y:${labelY};" aria-hidden="true">${role.labelLines.join("<br>")}</span>`;
       }).join("")}

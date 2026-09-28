@@ -578,6 +578,45 @@
     currentServiceRow.style.setProperty("--today", pct.toFixed(4) + "%");
   }
 
+  const timelineDetailEvents = [...document.querySelectorAll(".unit-event, .rank-event")];
+
+  function setTimelineDetailState(timelineEvent, isOpen) {
+    timelineEvent.classList.toggle("is-detail-open", isOpen);
+    timelineEvent.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function closeTimelineDetails(except = null) {
+    timelineDetailEvents.forEach((timelineEvent) => {
+      if (timelineEvent !== except) setTimelineDetailState(timelineEvent, false);
+    });
+  }
+
+  timelineDetailEvents.forEach((timelineEvent) => {
+    timelineEvent.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const willOpen = !timelineEvent.classList.contains("is-detail-open");
+      closeTimelineDetails(timelineEvent);
+      setTimelineDetailState(timelineEvent, willOpen);
+    });
+
+    timelineEvent.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        const willOpen = !timelineEvent.classList.contains("is-detail-open");
+        closeTimelineDetails(timelineEvent);
+        setTimelineDetailState(timelineEvent, willOpen);
+      }
+    });
+  });
+
+  if (timelineDetailEvents.length) {
+    document.addEventListener("click", () => closeTimelineDetails());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeTimelineDetails();
+    });
+  }
+
   const trainingEvents = [...document.querySelectorAll(".training-event")];
 
   function setTrainingEventState(trainingEvent, isOpen) {

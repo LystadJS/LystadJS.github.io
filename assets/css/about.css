@@ -1624,6 +1624,19 @@
       margin-top: 1rem;
     }
 
+
+    @media (prefers-reduced-motion: reduce) {
+      body[data-page="about"] *,
+      body[data-page="about"] *::before,
+      body[data-page="about"] *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+
     @media (max-width: 900px) {
       body[data-page="about"] .timeline-canvas {
         --timeline-edge-extension: 30px;

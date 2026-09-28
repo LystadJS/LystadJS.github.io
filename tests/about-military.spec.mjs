@@ -35,7 +35,8 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
 
     const visibleSelectors = [
       ".unit-event img",
-      ".rank-insignia-wrap",
+      ".rank-insignia",
+      ".rank-insignia-svg",
       ".qualification-icon",
       ".rank-event-abbr",
       ".year-tick-label"
@@ -84,6 +85,10 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
     ).toBeLessThanOrEqual(geometry.viewportWidth + 1);
   }
 
+  await section.screenshot({
+    path: testInfo.outputPath(`military-${testInfo.project.name}.png`)
+  });
+
   const leader = page.locator(".service-flow--leader");
   const leaderLabel = page.locator(".service-flow-label--leader");
   await leader.click();
@@ -91,7 +96,7 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
   await expect(leaderLabel).toHaveCSS("visibility", "visible");
 
   const privateRank = page.locator('[data-event-id="pv2"]');
-  await privateRank.click();
+  await privateRank.locator(".rank-insignia").click();
   await expect(privateRank).toHaveAttribute("aria-expanded", "true");
   await expect(leader).toHaveAttribute("aria-expanded", "false");
 
@@ -103,9 +108,6 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
   await page.keyboard.press("Escape");
   await expect(privateRank).toHaveAttribute("aria-expanded", "false");
 
-  await section.screenshot({
-    path: testInfo.outputPath(`military-${testInfo.project.name}.png`)
-  });
 });
 
 test("military timeline respects reduced motion", async ({ page }) => {

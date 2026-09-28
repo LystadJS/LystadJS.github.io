@@ -61,7 +61,7 @@ jobs:
                       driver.execute_script("arguments[0].scrollLeft=260;", scroller)
                       time.sleep(.2)
 
-                  stage.screenshot(f"audit/{label}.png")
+                  driver.find_element(By.ID, "mountain-ascent-svg").screenshot(f"audit/{label}.png")
 
                   metrics = driver.execute_script(r"""
                     const svg=document.getElementById("mountain-ascent-svg");
@@ -105,8 +105,8 @@ jobs:
                   driver.quit()
 
           out={
-              "desktop":audit("desktop",1440,1000),
-              "mobile":audit("mobile",390,844)
+              "desktop":audit("desktop",1440,1800),
+              "mobile":audit("mobile",390,1200)
           }
           Path("audit/metrics.json").write_text(json.dumps(out,indent=2))
           print(json.dumps(out))

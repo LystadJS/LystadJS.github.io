@@ -1,0 +1,59 @@
+name: About Military Regression
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "about.html"
+      - "assets/css/about.css"
+      - "assets/js/about.js"
+      - "package.json"
+      - "playwright.config.mjs"
+      - "tests/about-military.spec.mjs"
+      - ".github/workflows/about-military-regression.yml"
+  pull_request:
+    paths:
+      - "about.html"
+      - "assets/css/about.css"
+      - "assets/js/about.js"
+      - "package.json"
+      - "playwright.config.mjs"
+      - "tests/about-military.spec.mjs"
+      - ".github/workflows/about-military-regression.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  military-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install regression-test dependency
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run military-section regression checks
+        run: npm run test:about
+
+      - name: Upload rendered military-section checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: about-military-regression
+          path: test-results/
+          if-no-files-found: warn
+          retention-days: 14

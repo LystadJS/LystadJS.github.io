@@ -14,8 +14,8 @@
       {
         name: "Rendezvous Peak",
         relief: "rendezvous",
-        x: 155,
-        displayWidth: 220,
+        x: 420,
+        displayWidth: 240,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4050,
@@ -24,22 +24,10 @@
         image: ""
       },
       {
-        name: "Mount Gordon Lyon",
-        relief: "gordon-lyon",
-        x: 405,
-        displayWidth: 255,
-        location: "Chugach Mountains, Alaska",
-        date: "Date TBD",
-        elevationFt: 4100,
-        type: "Summit",
-        note: "A broad tundra-covered Chugach summit above Arctic Valley with rounded shoulders.",
-        image: ""
-      },
-      {
         name: "Gold Star Peak",
         relief: "gold-star",
-        x: 650,
-        displayWidth: 220,
+        x: 490,
+        displayWidth: 240,
         location: "Chugach State Park, Alaska",
         date: "Jun 2024",
         elevationFt: 4148,
@@ -48,74 +36,89 @@
         image: ""
       },
       {
-        name: "Mount Healy",
-        relief: "healy",
-        x: 915,
-        displayWidth: 320,
-        location: "Denali region, Alaska",
-        date: "May 2024",
-        elevationFt: 5716,
-        type: "Mountain",
-        note: "A long Alaska Range ridge immediately outside the developed core of Denali National Park.",
+        name: "Mount Gordon Lyon",
+        relief: "gordon-lyon",
+        x: 560,
+        displayWidth: 300,
+        location: "Chugach Mountains, Alaska",
+        date: "Date TBD",
+        elevationFt: 4100,
+        type: "Summit",
+        note: "A broad tundra-covered Chugach summit above Arctic Valley with rounded shoulders.",
         image: ""
       },
       {
         name: "East Twin Peak",
         relief: "east-twin",
-        x: 1195,
-        displayWidth: 320,
+        signature: "eastTwin",
+        x: 660,
+        displayWidth: 390,
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
         elevationFt: 5873,
         type: "Summit",
-        note: "A craggy Chugach summit block with a visibly broken upper ridge.",
+        note: "A craggy Chugach summit block with a visibly broken, twin-crested upper ridge.",
+        image: ""
+      },
+      {
+        name: "Mount Healy",
+        relief: "healy",
+        signature: "healy",
+        x: 760,
+        displayWidth: 430,
+        location: "Denali region, Alaska",
+        date: "May 2024",
+        elevationFt: 5716,
+        type: "Mountain",
+        note: "A long Alaska Range ridge with a broad crest rather than a single isolated point.",
         image: ""
       },
       {
         name: "Mount Fuji",
         relief: "fuji",
         signature: "fuji",
-        x: 1490,
-        displayWidth: 570,
+        x: 860,
+        displayWidth: 760,
         location: "Japan",
         date: "Jul 2024",
         elevationFt: 12388,
         type: "Summit",
-        note: "Japan's highest peak, rendered here with its broad, nearly symmetrical volcanic cone.",
+        note: "Japan's highest peak, rendered as a broad, iconic volcanic cone.",
         image: ""
       },
       {
         name: "Mount Toubkal",
         relief: "toubkal",
-        x: 1810,
-        displayWidth: 430,
+        signature: "toubkal",
+        x: 980,
+        displayWidth: 620,
         location: "Atlas Mountains, Morocco",
         date: "May 2019",
         elevationFt: 13671,
         type: "Summit",
-        note: "The highest peak in North Africa, shown as a rugged asymmetric High Atlas massif.",
+        note: "North Africa's highest peak, rendered as a broad asymmetric High Atlas massif.",
         image: ""
       },
       {
         name: "Denali",
         relief: "denali",
         signature: "denali",
-        x: 2110,
-        displayWidth: 720,
+        x: 1080,
+        displayWidth: 980,
         location: "Alaska, USA",
         date: "Goal",
         elevationFt: 20310,
         type: "Long-term objective",
-        note: "The long-term objective anchoring the composition, rendered as a broad asymmetric massif rather than a narrow summit spike.",
+        note: "The long-term objective anchoring the composition, rendered as a broad dominant massif.",
         image: "",
         goal: true
       }
     ];
 
     const SVG_NS = "http://www.w3.org/2000/svg";
-    const profileWidth = 2400;
+    const profileWidth = 1680;
     const profileHeight = 780;
-    const plot = { left: 80, right: 2320, top: 70, bottom: 650 };
+    const plot = { left: 70, right: 1610, top: 70, bottom: 650 };
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     let activeMountainPoint = null;
@@ -136,20 +139,45 @@
     // the exact published summit elevation; the profile shape is presentation geometry.
     const signatureProfiles = {
       fuji: [
-        [-1.00,1.00],[-.93,.95],[-.86,.89],[-.78,.81],[-.70,.72],
-        [-.62,.63],[-.54,.54],[-.46,.45],[-.38,.36],[-.30,.28],
-        [-.22,.20],[-.15,.13],[-.09,.075],[-.04,.035],[0,0],
-        [.04,.035],[.09,.075],[.15,.13],[.22,.20],[.30,.28],
-        [.38,.36],[.46,.45],[.54,.54],[.62,.63],[.70,.72],
-        [.78,.81],[.86,.89],[.93,.95],[1.00,1.00]
+        [-1.00,1.00],[-.94,.95],[-.88,.89],[-.80,.80],[-.72,.71],
+        [-.64,.62],[-.56,.54],[-.48,.45],[-.40,.37],[-.32,.29],
+        [-.24,.21],[-.17,.14],[-.11,.09],[-.06,.045],[-.02,.015],[0,0],
+        [.02,.015],[.06,.045],[.11,.09],[.17,.14],[.24,.21],[.32,.29],
+        [.40,.37],[.48,.45],[.56,.54],[.64,.62],[.72,.71],[.80,.80],
+        [.88,.89],[.94,.95],[1.00,1.00]
       ],
+
       denali: [
-        [-1.00,1.00],[-.94,.92],[-.88,.84],[-.82,.76],[-.76,.69],
-        [-.70,.62],[-.64,.55],[-.58,.49],[-.52,.43],[-.46,.38],
-        [-.40,.34],[-.34,.30],[-.28,.25],[-.22,.21],[-.17,.18],
-        [-.12,.20],[-.07,.14],[-.02,.095],[.035,.00],[.09,.035],
-        [.15,.065],[.22,.11],[.30,.17],[.38,.24],[.47,.32],
-        [.57,.42],[.67,.53],[.77,.65],[.87,.79],[.94,.90],[1.00,1.00]
+        [-1.00,1.00],[-.95,.95],[-.90,.89],[-.84,.82],[-.78,.75],
+        [-.72,.69],[-.66,.62],[-.60,.56],[-.54,.50],[-.48,.44],
+        [-.42,.38],[-.36,.33],[-.30,.28],[-.24,.23],[-.18,.19],
+        [-.12,.16],[-.07,.12],[-.03,.085],[.01,.055],[.04,.02],[.06,0],
+        [.09,.025],[.13,.05],[.18,.08],[.24,.12],[.31,.17],[.39,.24],
+        [.48,.32],[.58,.42],[.68,.53],[.78,.66],[.88,.80],[.95,.91],[1.00,1.00]
+      ],
+
+      toubkal: [
+        [-1.00,1.00],[-.92,.92],[-.84,.84],[-.76,.76],[-.68,.69],
+        [-.60,.61],[-.52,.54],[-.44,.47],[-.36,.40],[-.28,.33],
+        [-.20,.25],[-.13,.18],[-.06,.11],[0,0],[.05,.03],[.11,.07],
+        [.18,.12],[.26,.19],[.35,.28],[.45,.39],[.56,.51],[.68,.64],
+        [.80,.77],[.91,.89],[1.00,1.00]
+      ],
+
+      eastTwin: [
+        [-1.00,1.00],[-.90,.93],[-.80,.86],[-.70,.77],[-.60,.66],
+        [-.50,.55],[-.40,.43],[-.31,.31],[-.24,.21],[-.18,.13],
+        [-.13,.08],[-.09,.05],[-.05,.03],[-.02,.015],[0,0],[.04,.04],
+        [.08,.07],[.12,.05],[.17,.08],[.22,.14],[.28,.22],[.36,.31],
+        [.46,.43],[.58,.57],[.72,.72],[.86,.87],[1.00,1.00]
+      ],
+
+      healy: [
+        [-1.00,1.00],[-.92,.92],[-.84,.84],[-.76,.77],[-.68,.70],
+        [-.60,.63],[-.52,.56],[-.44,.49],[-.36,.43],[-.28,.37],
+        [-.20,.31],[-.12,.25],[-.04,.20],[.03,.15],[.10,.11],[.16,.08],
+        [.21,.06],[.27,.04],[.34,.03],[.41,.01],[.46,0],[.52,.03],
+        [.60,.08],[.68,.15],[.77,.24],[.86,.36],[.94,.50],[1.00,1.00]
       ]
     };
 
@@ -306,7 +334,7 @@
       // Broad signature mountains are painted first; smaller profiles then sit
       // cleanly in their own dedicated slots without being swallowed by them.
       [...plotted]
-        .sort((a, b) => b.displayWidth - a.displayWidth)
+        .sort((a, b) => b.elevationFt - a.elevationFt)
         .forEach((point) => {
           const profile = demProfiles[point.relief];
           const signature = point.signature ? signatureProfiles[point.signature] : null;
@@ -323,6 +351,9 @@
           ];
           if (point.signature) classes.push("mountain-peak-relief--signature");
           if (point.goal) classes.push("mountain-peak-relief--goal");
+          if (point.elevationFt >= 12000) classes.push("mountain-peak-relief--back");
+          else if (point.elevationFt >= 5500) classes.push("mountain-peak-relief--mid");
+          else classes.push("mountain-peak-relief--front");
 
           const group = svgNode("g", { class: classes.join(" ") });
           const profileTitle = svgNode("title", {}, group);

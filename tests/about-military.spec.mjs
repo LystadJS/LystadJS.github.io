@@ -148,3 +148,89 @@ test("military timeline respects reduced motion", async ({ page }) => {
     expect(longest, `${item.selector} transition should be effectively disabled`).toBeLessThanOrEqual(0.00002);
   }
 });
+
+
+test("military timeline exposes every interactive item to the keyboard with a meaningful accessible name", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-09-28T16:00:00Z"));
+  await page.goto("/about.html", { waitUntil: "networkidle" });
+
+  const groups = [
+    { selector: ".service-flow", count: 4 },
+    { selector: ".rank-event", count: 4 },
+    { selector: ".unit-event", count: 3 },
+    { selector: ".training-event", count: 6 }
+  ];
+
+  for (const group of groups) {
+    const items = page.locator(group.selector);
+    await expect(items).toHaveCount(group.count);
+
+    for (let index = 0; index < group.count; index += 1) {
+      const item = items.nth(index);
+      const accessibility = await item.evaluate((node) => ({
+        tabIndex: node.tabIndex,
+        name: (node.getAttribute("aria-label") || "").trim(),
+        expanded: node.getAttribute("aria-expanded")
+      }));
+
+      expect(accessibility.tabIndex, `${group.selector}[${index}] should be keyboard focusable`).toBe(0);
+      expect(accessibility.name.length, `${group.selector}[${index}] needs a meaningful accessible name`).toBeGreaterThan(4);
+      expect(accessibility.expanded).toBe("false");
+
+      await item.focus();
+      await expect(item).toBeFocused();
+      await item.press("Enter");
+      await expect(item).toHaveAttribute("aria-expanded", "true");
+      await page.keyboard.press("Escape");
+      await expect(item).toHaveAttribute("aria-expanded", "false");
+    }
+  }
+});
+
+test("military chronology remains available without JavaScript", async ({ browser }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-1440", "No-JS fallback only needs one browser pass.");
+
+  const context = await browser.newContext({
+    baseURL: "http://127.0.0.1:4173",
+    javaScriptEnabled: false,
+    viewport: { width: 900, height: 1000 }
+  });
+  const page = await context.newPage();
+
+  await page.goto("/about.html", { waitUntil: "load" });
+  const fallback = page.locator(".timeline-noscript");
+  await expect(fallback).toBeVisible();
+  await expect(page.locator(".timeline-noscript-list li")).toHaveCount(15);
+  await expect(fallback).toContainText("PV2 · Private");
+  await expect(fallback).toContainText("Officer Commissioning Candidate");
+  await expect(fallback).toContainText("2LT · Second Lieutenant");
+
+  await context.close();
+});
+
+test("military timeline has explicit forced-colors behavior", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-1440", "Forced-colors behavior only needs one browser pass.");
+
+  await page.emulateMedia({ forcedColors: "active" });
+  await page.goto("/about.html", { waitUntil: "networkidle" });
+
+  const state = await page.evaluate(() => {
+    const marker = getComputedStyle(document.querySelector(".current-day-marker"));
+    const infantry = getComputedStyle(document.querySelector(".service-flow--infantry"));
+    const popover = getComputedStyle(document.querySelector(".training-popover-box"));
+
+    return {
+      forcedColors: window.matchMedia("(forced-colors: active)").matches,
+      markerShadow: marker.boxShadow,
+      infantryFill: infantry.fill,
+      infantryStroke: infantry.stroke,
+      popoverShadow: popover.boxShadow
+    };
+  });
+
+  expect(state.forcedColors).toBe(true);
+  expect(state.markerShadow).toBe("none");
+  expect(state.popoverShadow).toBe("none");
+  expect(state.infantryFill).not.toBe("none");
+  expect(state.infantryStroke).not.toBe("none");
+});

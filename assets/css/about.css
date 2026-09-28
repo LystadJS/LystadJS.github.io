@@ -513,7 +513,7 @@
       position: absolute;
       z-index: 5;
       top: calc(var(--line-y) - var(--timeline-marker-half));
-      left: var(--today, 67.1151%);
+      left: var(--today, 89.2875%);
       box-sizing: border-box;
       width: var(--timeline-marker-size);
       height: var(--timeline-marker-size);

@@ -42,7 +42,7 @@
         relief: "gordon-lyon",
         x: 525,
         displayWidth: 240,
-        labelRow: 0,
+        labelRow: 2,
         location: "Chugach Mountains, Alaska",
         date: "Date TBD",
         elevationFt: 4100,
@@ -56,7 +56,7 @@
         signature: "eastTwin",
         x: 700,
         displayWidth: 300,
-        labelRow: 1,
+        labelRow: 0,
         location: "Chugach Mountains, Alaska",
         date: "Feb 2023",
         elevationFt: 5873,
@@ -70,7 +70,7 @@
         signature: "healy",
         x: 850,
         displayWidth: 340,
-        labelRow: 0,
+        labelRow: 2,
         location: "Denali region, Alaska",
         date: "May 2024",
         elevationFt: 5716,
@@ -110,8 +110,8 @@
         name: "Denali",
         relief: "denali",
         signature: "denali",
-        x: 1280,
-        displayWidth: 760,
+        x: 1260,
+        displayWidth: 720,
         labelRow: 1,
         location: "Alaska, USA",
         date: "Goal",
@@ -126,7 +126,7 @@
     const SVG_NS = "http://www.w3.org/2000/svg";
     const profileWidth = 1680;
     const profileHeight = 780;
-    const plot = { left: 70, right: 1610, top: 70, bottom: 650 };
+    const plot = { left: 70, right: 1610, top: 90, bottom: 650 };
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     let activeMountainPoint = null;

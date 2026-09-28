@@ -488,6 +488,7 @@
       transform: translateX(-50%);
       cursor: pointer;
       outline: none;
+      pointer-events: none;
     }
 
     body[data-page="about"] .rank-event.edge-start,
@@ -495,6 +496,13 @@
     body[data-page="about"] .rank-event.edge-end.expected {
       transform: translateX(-50%);
       text-align: center;
+    }
+
+    body[data-page="about"] .rank-event-marker,
+    body[data-page="about"] .rank-insignia,
+    body[data-page="about"] .rank-insignia-svg,
+    body[data-page="about"] .rank-event-abbr {
+      pointer-events: auto;
     }
 
     body[data-page="about"] .rank-event-marker {
@@ -577,6 +585,7 @@
 
     body[data-page="about"] .rank-insignia-wrap {
       display: flex;
+      pointer-events: none;
       justify-content: center;
       align-items: center;
       height: var(--timeline-icon-size);

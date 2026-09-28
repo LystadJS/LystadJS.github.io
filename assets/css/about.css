@@ -1714,8 +1714,16 @@
         height: 48px;
       }
 
+      body[data-page="about"] .rank-event[data-event-id="pv2"] .rank-event-abbr {
+        transform: translateY(-4px);
+      }
+
       body[data-page="about"] .rank-event[data-event-id="spc"] .rank-insignia-wrap {
         margin-top: 52px;
+      }
+
+      body[data-page="about"] .rank-event[data-event-id="spc"] .rank-event-abbr {
+        transform: translateY(5px);
       }
 
       body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {

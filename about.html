@@ -116,7 +116,15 @@
 
         </div>
       </div>
-      <div class="career-timeline" id="military-career-timeline">
+      <div
+        class="career-timeline"
+        id="military-career-timeline"
+        role="region"
+        aria-label="Service and leadership chronology, November 2021 through May 2027"
+        aria-describedby="military-timeline-help">
+        <p id="military-timeline-help" class="timeline-sr-only">
+          The solid line represents completed service time. The dashed line represents the projected period through the expected May 2027 commission. The red Today marker identifies the current date. The dashed 2LT rank marker is an expected future milestone. Colored service bands show overlapping roles; activate a role, rank, unit, or qualification to reveal its details.
+        </p>
         <p class="timeline-kicker" id="military-timeline-kicker"></p>
         <svg class="timeline-filter-defs" aria-hidden="true" focusable="false">
           <defs>
@@ -142,10 +150,7 @@
         </div>
 
         <noscript>
-          <div
-            class="timeline-noscript"
-            role="region"
-            aria-label="Service and leadership chronology, November 2021 through May 2027">
+          <div class="timeline-noscript">
             <p class="timeline-noscript-kicker">Service &amp; Leadership Chronology · Nov 2021–May 2027</p>
             <ol class="timeline-noscript-list">
               <li><time datetime="2021-11">Nov 2021</time><strong>PV2 · Private</strong><span>Indirect Fire Infantryman</span></li>

@@ -1634,6 +1634,67 @@
     }
 
 
+    body[data-page="about"] .timeline-noscript {
+      margin-top: .7rem;
+      padding: .9rem 0 0;
+      border-top: 1px solid rgba(74,53,71,.62);
+    }
+
+    body[data-page="about"] .timeline-noscript-kicker {
+      margin: 0 0 .65rem;
+      color: #887d87;
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .065em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .timeline-noscript-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid rgba(74,53,71,.42);
+    }
+
+    body[data-page="about"] .timeline-noscript-list li {
+      display: grid;
+      grid-template-columns: minmax(72px, .34fr) minmax(0, 1fr);
+      gap: .22rem .7rem;
+      align-content: start;
+      padding: .62rem .7rem .66rem 0;
+      border-bottom: 1px solid rgba(74,53,71,.42);
+    }
+
+    body[data-page="about"] .timeline-noscript-list li:nth-child(odd) {
+      padding-right: 1rem;
+    }
+
+    body[data-page="about"] .timeline-noscript-list time {
+      grid-row: 1 / span 2;
+      color: #918592;
+      font-family: var(--mono);
+      font-size: .64rem;
+      letter-spacing: .055em;
+      text-transform: uppercase;
+    }
+
+    body[data-page="about"] .timeline-noscript-list strong {
+      color: #d5cbd1;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    body[data-page="about"] .timeline-noscript-list span {
+      color: #918592;
+      font-size: .72rem;
+      line-height: 1.15;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       body[data-page="about"] *,
       body[data-page="about"] *::before,
@@ -1643,6 +1704,145 @@
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
         transition-delay: 0ms !important;
+      }
+    }
+
+    @media (forced-colors: active) {
+      body[data-page="about"] .career-timeline,
+      body[data-page="about"] .timeline-canvas,
+      body[data-page="about"] .timeline-noscript,
+      body[data-page="about"] .timeline-noscript-list,
+      body[data-page="about"] .timeline-noscript-list li,
+      body[data-page="about"] .unit-event-label,
+      body[data-page="about"] .rank-event-detail,
+      body[data-page="about"] .training-popover-box {
+        forced-color-adjust: none;
+      }
+
+      body[data-page="about"] .career-timeline,
+      body[data-page="about"] .timeline-noscript,
+      body[data-page="about"] .timeline-noscript-list,
+      body[data-page="about"] .timeline-noscript-list li {
+        border-color: GrayText;
+      }
+
+      body[data-page="about"] .timeline-line,
+      body[data-page="about"] .past-service-continuation {
+        background: CanvasText !important;
+      }
+
+      body[data-page="about"] .timeline-line.projected,
+      body[data-page="about"] .future-service-continuation {
+        background: repeating-linear-gradient(
+          90deg,
+          Highlight 0 4px,
+          transparent 4px 8px
+        ) !important;
+      }
+
+      body[data-page="about"] .year-tick {
+        background: GrayText;
+      }
+
+      body[data-page="about"] .year-tick-label,
+      body[data-page="about"] .timeline-kicker,
+      body[data-page="about"] .timeline-noscript-kicker,
+      body[data-page="about"] .timeline-noscript-list time,
+      body[data-page="about"] .timeline-noscript-list span {
+        color: GrayText;
+        background: Canvas;
+      }
+
+      body[data-page="about"] .timeline-noscript-list strong,
+      body[data-page="about"] .rank-event-name,
+      body[data-page="about"] .unit-event-name,
+      body[data-page="about"] .rank-event-abbr,
+      body[data-page="about"] .training-popover-title,
+      body[data-page="about"] .training-popover-school,
+      body[data-page="about"] .training-popover-meta,
+      body[data-page="about"] .service-flow-label {
+        color: CanvasText;
+        text-shadow: none;
+      }
+
+      body[data-page="about"] .current-day-marker {
+        border-color: CanvasText;
+        background: Highlight;
+        box-shadow: none;
+      }
+
+      body[data-page="about"] .current-day-label {
+        color: Highlight;
+      }
+
+      body[data-page="about"] .service-flow {
+        opacity: 1;
+        stroke: Canvas;
+        stroke-width: 1;
+        filter: none;
+      }
+
+      body[data-page="about"] .service-flow--infantry {
+        fill: CanvasText;
+        fill-opacity: .28;
+      }
+
+      body[data-page="about"] .service-flow--leader {
+        fill: Highlight;
+        fill-opacity: .34;
+      }
+
+      body[data-page="about"] .service-flow--comms {
+        fill: LinkText;
+        fill-opacity: .32;
+      }
+
+      body[data-page="about"] .service-flow--officer {
+        fill: GrayText;
+        fill-opacity: .34;
+      }
+
+      body[data-page="about"] .service-flow:hover,
+      body[data-page="about"] .service-flow:focus-visible,
+      body[data-page="about"] .service-flow.is-open {
+        opacity: 1;
+        stroke: Highlight;
+        stroke-width: 1.5;
+        filter: none;
+      }
+
+      body[data-page="about"] .rank-event-marker,
+      body[data-page="about"] .training-event::before {
+        border-color: CanvasText;
+        background: Canvas;
+        box-shadow: none;
+      }
+
+      body[data-page="about"] .rank-event.expected .rank-event-marker {
+        border-color: GrayText;
+        background: Canvas;
+      }
+
+      body[data-page="about"] .unit-event-label,
+      body[data-page="about"] .rank-event-detail,
+      body[data-page="about"] .training-popover-box {
+        border-color: CanvasText;
+        background: Canvas;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+
+      body[data-page="about"] .unit-event:focus-visible,
+      body[data-page="about"] .rank-event:focus-visible,
+      body[data-page="about"] .training-event:focus-visible,
+      body[data-page="about"] .service-flow:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 4px;
+      }
+
+      body[data-page="about"] .qualification-icon {
+        color: CanvasText;
+        opacity: 1;
       }
     }
 
@@ -1746,6 +1946,15 @@
       body[data-page="about"] .service-facts,
       body[data-page="about"] .life-photo-grid {
         grid-template-columns: 1fr;
+      }
+
+      body[data-page="about"] .timeline-noscript-list {
+        grid-template-columns: 1fr;
+      }
+
+      body[data-page="about"] .timeline-noscript-list li,
+      body[data-page="about"] .timeline-noscript-list li:nth-child(odd) {
+        padding-right: 0;
       }
 
       body[data-page="about"] .mountain-ascent-header {

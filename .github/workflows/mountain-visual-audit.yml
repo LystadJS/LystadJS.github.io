@@ -12,6 +12,9 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
@@ -20,9 +23,13 @@ jobs:
       - name: Install browser tooling
         run: python -m pip install --disable-pip-version-check selenium pillow
 
-      - name: Capture deployed mountain composition
+      - name: Capture current mountain composition
         run: |
           mkdir -p audit
+          python -m http.server 8000 >/tmp/mountain-audit-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 2
           python - <<'PY'
           import json
           import time
@@ -32,7 +39,7 @@ jobs:
           from selenium.webdriver.common.by import By
           from selenium.webdriver.support.ui import WebDriverWait
 
-          URL = "https://lystadjs.github.io/about.html?mountain-visual-audit=1"
+          URL = "http://127.0.0.1:8000/about.html?mountain-visual-audit=1"
 
           def driver_for(width, height):
               options = Options()

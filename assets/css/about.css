@@ -277,10 +277,13 @@
 
     body[data-page="about"] .timeline-canvas {
       --line-y: var(--timeline-line-y);
+      --timeline-edge-extension: 38px;
+      --service-edge-overscan: 68px;
+      --service-edge-fade: 54px;
       position: relative;
       width: 90%;
       height: 320px;
-      margin-inline: 5%;
+      margin-inline: auto;
       overflow: visible;
     }
 
@@ -336,8 +339,6 @@
     }
 
     body[data-page="about"] .service-sankey {
-      --service-left-overscan: 82px;
-      --service-right-overscan: 52px;
       position: absolute;
       z-index: 2;
       top: calc(var(--line-y) + 14px);
@@ -347,17 +348,37 @@
     }
 
     body[data-page="about"] .service-sankey--preofficer {
-      left: calc(-1 * var(--service-left-overscan));
-      width: calc(var(--officer-start, 66.6667%) + var(--service-left-overscan));
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 100%);
+      left: calc(-1 * var(--service-edge-overscan));
+      width: calc(var(--officer-start, 66.6667%) + var(--service-edge-overscan));
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0,
+        #000 var(--service-edge-fade),
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        90deg,
+        transparent 0,
+        #000 var(--service-edge-fade),
+        #000 100%
+      );
     }
 
     body[data-page="about"] .service-sankey--officer {
       left: var(--officer-start, 66.6667%);
-      width: calc(100% - var(--officer-start, 66.6667%) + var(--service-right-overscan));
-      -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
-      mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
+      width: calc(100% - var(--officer-start, 66.6667%) + var(--service-edge-overscan));
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--service-edge-fade)),
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--service-edge-fade)),
+        transparent 100%
+      );
     }
 
     body[data-page="about"] .service-flow {
@@ -759,22 +780,22 @@
 
     body[data-page="about"] .past-service-continuation {
       right: 100%;
-      width: 28px;
+      width: var(--timeline-edge-extension);
       background: rgba(159,145,156,.58);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 28%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 28%, #000 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
     }
 
     body[data-page="about"] .future-service-continuation {
       left: 100%;
-      width: 46px;
+      width: var(--timeline-edge-extension);
       background: repeating-linear-gradient(
         90deg,
         rgba(184,103,132,.72) 0 4px,
         transparent 4px 8px
       );
-      -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.78) 42%, transparent 100%);
-      mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.78) 42%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+      mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
     }
 
     body[data-page="about"] .training-event {
@@ -1619,7 +1640,7 @@
     @media (max-width: 900px) {
       body[data-page="about"] .timeline-canvas {
         width: 86%;
-        margin-inline: 7%;
+        margin-inline: auto;
       }
 
       body[data-page="about"] .service-flow-label {
@@ -1659,7 +1680,7 @@
     @media (max-width: 640px) {
       body[data-page="about"] .timeline-canvas {
         width: 80%;
-        margin-inline: 10%;
+        margin-inline: auto;
       }
 
       body[data-page="about"] .service-sankey {

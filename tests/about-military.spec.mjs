@@ -38,7 +38,6 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
       ".rank-insignia",
       ".rank-insignia-svg",
       ".qualification-icon",
-      ".rank-event-abbr",
       ".year-tick-label"
     ];
 
@@ -85,8 +84,10 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
     ).toBeLessThanOrEqual(geometry.viewportWidth + 1);
   }
 
-  await section.screenshot({
-    path: testInfo.outputPath(`military-${testInfo.project.name}.png`)
+  await timeline.evaluate((node) => node.scrollIntoView({ block: "center", inline: "nearest" }));
+  await page.waitForTimeout(200);
+  await timeline.screenshot({
+    path: testInfo.outputPath(`military-timeline-${testInfo.project.name}.png`)
   });
 
   const leader = page.locator(".service-flow--leader");

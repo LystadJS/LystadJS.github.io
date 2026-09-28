@@ -1084,6 +1084,31 @@
       stroke-width: 1.6;
     }
 
+    body[data-page="about"] .mountain-peak-relief--back {
+      opacity: .72;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--back .mountain-peak-relief-ridge {
+      stroke: rgba(210,193,204,.64);
+    }
+
+    body[data-page="about"] .mountain-peak-relief--mid {
+      opacity: .84;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--front {
+      opacity: .98;
+    }
+
+    body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-fill {
+      fill: rgba(27,21,28,.96);
+    }
+
+    body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-ridge {
+      stroke: rgba(232,219,227,.94);
+      stroke-width: 1.55;
+    }
+
     body[data-page="about"] .mountain-peak-relief--denali .mountain-peak-relief-fill {
       fill: url(#mountain-silhouette-gradient);
     }
@@ -1091,7 +1116,7 @@
     body[data-page="about"] .mountain-profile-label {
       fill: #d7cbd2;
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: 19px;
       font-weight: 600;
       letter-spacing: -.01em;
     }
@@ -1103,7 +1128,7 @@
     body[data-page="about"] .mountain-profile-meta {
       fill: #837783;
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 11px;
       letter-spacing: .07em;
     }
 
@@ -1611,7 +1636,7 @@
 
       body[data-page="about"] .mountain-ascent-svg {
         width: auto;
-        height: 390px;
+        height: 370px;
         max-width: none;
       }
 

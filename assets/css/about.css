@@ -336,7 +336,8 @@
     }
 
     body[data-page="about"] .service-sankey {
-      --service-left-overscan: 90px;
+      --service-left-overscan: 76px;
+      --service-right-overscan: 34px;
       position: absolute;
       z-index: 2;
       top: calc(var(--line-y) + 14px);
@@ -348,11 +349,15 @@
     body[data-page="about"] .service-sankey--preofficer {
       left: calc(-1 * var(--service-left-overscan));
       width: calc(var(--officer-start, 66.6667%) + var(--service-left-overscan));
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 100%);
     }
 
     body[data-page="about"] .service-sankey--officer {
       left: var(--officer-start, 66.6667%);
-      width: calc(100% - var(--officer-start, 66.6667%));
+      width: calc(100% - var(--officer-start, 66.6667%) + var(--service-right-overscan));
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%);
     }
 
     body[data-page="about"] .service-flow {

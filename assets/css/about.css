@@ -1736,6 +1736,11 @@
         max-width: none;
       }
 
+      body[data-page="about"] .mountain-profile-label,
+      body[data-page="about"] .mountain-profile-meta {
+        display: none;
+      }
+
       body[data-page="about"] .compact-shelf {
         overflow-x: auto;
         justify-content: flex-start;

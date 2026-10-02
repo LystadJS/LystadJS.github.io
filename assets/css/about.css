@@ -2210,3 +2210,20 @@
       z-index: 2;
     }
 
+/* Match the About lede typography to the homepage hero lede. */
+body[data-page="about"] .about-hero .hero-lede {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.42;
+  text-align: left;
+}
+
+body[data-page="about"] .about-hero .hero-lede + .hero-lede {
+  margin-top: 1rem;
+}
+

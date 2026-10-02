@@ -2,14 +2,14 @@
   "source_repository": "https://github.com/LystadJS/UNGA81-Transcript-Agent",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "analysis-core.js": "62abd73e72457ef75e66ea1e9fda1d9b3446b378d07e5aa039a9c7a6242843f0",
-    "analysis-ui.js": "24693ac41ededbc7856921772fda0e47bda56dd348e8de6779b55a6ddbf1cb17",
+    "analysis-core.js": "94b3d10a5a62580a9a0f77dc280d1054d8fb9bfb69fe198a9253ecf6a652f824",
+    "analysis-ui.js": "78aaaea473e4186fa77bd9cb84771e52bc582f17a5c758c262d36b8879c4d1ea",
     "analysis.css": "5417235bafa6051e9e835178baa73fcb3159ce93691970b067e0a4dfcf609a21",
     "app.css": "61519c8e30ede764289de62374494be8e8f53a10ab613bd6bb266c76f786c4b9",
     "app.js": "1b7298ba7d83fed8f3c340cd5bfd74f41d227cbd8be166f3d9b6cb04e9af063b",
-    "collector.js": "9d2c2859b5751396ca01440c8a09b3552d3184d4498cc1267460a684331a44fe",
+    "collector.js": "7793efaff9f1c0ab386726981c8fc8a747252aa55e183220488be24f2590b310",
     "countries.json": "fdaa3592eb31fd928fb94925997a5f38156cb5a7d002bc206fa16de03c30194f",
-    "index.html": "98534090852a0e463fed5a1c3be8d94e1d4ed61ae42d4c670dedb55049a9bd22",
+    "index.html": "797e099ee7fe2bf82462ddda089e8f491d356d32d7383ee0da64cb4541b760ca",
     "theme.css": "09798beb2fc8ce857c19806280ddeb5178e3cb931285ba86153298c91af3c3cc",
     "reports/hlw-cuba/asr-model.json": "306f6dc22bc3455edf9b90f8d4b069bdecec3628c06dda0dd0fe5c9e5d51a1e7",
     "reports/hlw-cuba/brief.css": "426eef487f8ac6b8006113bd950d4720a4763ef0f04b08d3d0e7c44054b748a4",
@@ -92,5 +92,6 @@
     "reports/hlw-cuba/w_unops.txt": "a4863016e3e2d952d06955cbf4c9dd664a87354e267c90ed58cc8a37d72ff990",
     "reports/hlw-cuba/w_unwomen-original.txt": "6030a20e4b4ce4e8e4896c1317e8749b6fe13b3e2977a2a284861d6dd391e40d",
     "meeting-scopes.js": "dc00eeeaef1369c98b4f824d74f4ba2764b370d4a1682df5666d2533caa73d25"
-  }
+  },
+  "source_commit": "2fc6f648a19ad26bde38e27d47f4b2935280a346"
 }

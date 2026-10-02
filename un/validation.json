@@ -1,0 +1,14 @@
+[
+  {
+    "width": 1440,
+    "navigation": true,
+    "nested_review": true,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "navigation": true,
+    "nested_review": true,
+    "overflow": false
+  }
+]

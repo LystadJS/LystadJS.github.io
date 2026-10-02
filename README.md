@@ -27,6 +27,8 @@ The site is intentionally static and dependency-light: HTML, CSS, and JavaScript
 | `research.html` | Academic research, applied research, and the Empirical Settings Explorer |
 | `projects.html` | Legacy redirect to `research.html#applied-research` |
 | `code.html` | Repositories, development work, and technical methods |
+| `un/` | UN project directory linked from Code & Development |
+| `un/transcript-agent/` | Public Transcript Agent review interface and reports; synced from its project repository |
 | `cv.html` | Curriculum vitae |
 | `notes.html` / `notes/` | Technical and research notes |
 

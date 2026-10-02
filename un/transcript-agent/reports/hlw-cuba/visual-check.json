@@ -1,0 +1,24 @@
+[
+  {
+    "width": 1440,
+    "overflow": false,
+    "charts_match_csv": true,
+    "scope_filter": true,
+    "topic_drilldown": true,
+    "search_and_empty_state": true,
+    "pagination": true,
+    "appearance": true,
+    "script_errors": []
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "charts_match_csv": true,
+    "scope_filter": true,
+    "topic_drilldown": true,
+    "search_and_empty_state": true,
+    "pagination": true,
+    "appearance": true,
+    "script_errors": []
+  }
+]

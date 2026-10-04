@@ -1179,6 +1179,14 @@
       aspect-ratio: 4 / 5;
     }
 
+    body[data-page="about"] .military-photo-frame.landscape {
+      aspect-ratio: 3 / 2;
+    }
+
+    body[data-page="about"] .military-photo-frame.landscape img {
+      object-position: center center;
+    }
+
         body[data-page="about"] .mountain-ascent {
       margin: 0;
     }

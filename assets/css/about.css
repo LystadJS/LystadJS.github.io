@@ -3136,3 +3136,28 @@ body[data-page="about"] .badge-icon-rams-head {
     height: 29px;
   }
 }
+
+
+/* Official-silhouette badge sizing refinement. */
+body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+  top: 27px;
+  width: 38px;
+  height: 24px;
+}
+
+body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+  top: 26px;
+  width: 30px;
+  height: 30px;
+}
+
+body[data-page="about"] .badge-icon {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+body[data-page="about"] .badge-icon-parachutist,
+body[data-page="about"] .badge-icon-rams-head {
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.18));
+}

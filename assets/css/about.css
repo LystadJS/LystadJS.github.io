@@ -2785,3 +2785,136 @@ body[data-page="about"] #off-clock-title {
     transition: none !important;
   }
 }
+
+/* Final photo + mission refinement. */
+
+/* Military image: match the site's portrait and editorial-photo treatment. */
+body[data-page="about"] .military-media {
+  max-width: 420px;
+}
+
+body[data-page="about"] .military-photo-frame {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #4a3547;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(141,23,50,.12), transparent 54%),
+    linear-gradient(145deg, rgba(101,69,126,.09), rgba(10,8,12,.96));
+  box-shadow:
+    0 24px 65px rgba(0,0,0,.38),
+    inset 0 0 0 5px #0b090c,
+    inset 0 0 0 6px rgba(184,149,117,.12);
+}
+
+body[data-page="about"] .military-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(7,7,9,.01), rgba(7,7,9,.035) 54%, rgba(7,7,9,.30)),
+    radial-gradient(ellipse at center, transparent 46%, rgba(7,7,9,.36) 100%);
+  box-shadow:
+    inset 0 0 56px rgba(0,0,0,.30),
+    inset 0 -18px 42px rgba(141,23,50,.035);
+}
+
+body[data-page="about"] .military-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: 4;
+  border: 1px solid rgba(221,204,183,.11);
+  pointer-events: none;
+}
+
+body[data-page="about"] .military-photo-frame img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  filter:
+    saturate(.78)
+    contrast(1.06)
+    brightness(.90);
+  transform: scale(1.003);
+}
+
+/* My Next Mission: quiet editorial card aligned to the homepage destination language. */
+body[data-page="about"] .about-direction {
+  position: relative;
+  display: block;
+  max-width: 860px;
+  margin-top: 1.2rem;
+  padding: 1rem 1.15rem 1.05rem 1.25rem;
+  border: 1px solid rgba(74,53,71,.72);
+  border-left: 2px solid rgba(191,49,82,.72);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(101,69,126,.10), transparent 48%),
+    linear-gradient(120deg, rgba(255,255,255,.018), transparent 62%),
+    rgba(13,11,16,.64);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 10px 28px rgba(0,0,0,.12);
+}
+
+body[data-page="about"] .about-direction::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: .85rem;
+  bottom: .85rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(191,49,82,.72) 18%,
+    rgba(146,112,172,.54) 82%,
+    transparent
+  );
+}
+
+body[data-page="about"] .about-direction-kicker {
+  display: block;
+  margin: 0 0 .38rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .56rem;
+  line-height: 1.2;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+body[data-page="about"] .about-direction-title {
+  display: block;
+  margin: 0;
+  color: #ded4dc;
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+body[data-page="about"] .about-direction-copy {
+  max-width: 720px;
+  margin: .5rem 0 0;
+  color: #978a96;
+  font-family: var(--sans);
+  font-size: .78rem;
+  line-height: 1.58;
+}
+
+@media (max-width: 780px) {
+  body[data-page="about"] .military-media {
+    max-width: 100%;
+  }
+
+  body[data-page="about"] .about-direction {
+    padding: .95rem 1rem 1rem 1.1rem;
+  }
+}

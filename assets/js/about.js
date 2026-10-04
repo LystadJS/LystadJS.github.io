@@ -238,9 +238,13 @@
         <path class="service-flow service-flow--infantry" tabindex="0" role="button" aria-expanded="false" aria-label="${roleAria(roleById.infantry)}" d="M0 0 H100 V17.3333 H${n(commsEnd)} C${n(commsPct + 4)} 17.3333 ${n(commsPct + 2)} 26 ${n(commsPct)} 26 H${n(leaderEnd)} C${n(leaderPct + 4)} 26 ${n(leaderPct + 2)} 52 ${n(leaderPct)} 52 H0 Z"><title>${roleById.infantry.title}</title></path>
         <path class="service-flow service-flow--leader" tabindex="0" role="button" aria-expanded="false" aria-label="${roleAria(roleById.leader)}" d="M${n(leaderPct)} 52 C${n(leaderPct + 2)} 52 ${n(leaderPct + 4)} 26 ${n(leaderEnd)} 26 H${n(commsPct)} C${n(commsPct + 2)} 26 ${n(commsPct + 4)} 17.3333 ${n(commsEnd)} 17.3333 H100 V34.6666 H${n(commsEnd)} C${n(commsPct + 4)} 34.6666 ${n(commsPct + 2)} 52 ${n(commsPct)} 52 H${n(leaderPct)} Z"><title>${roleById.leader.title}</title></path>
         <path class="service-flow service-flow--comms" tabindex="0" role="button" aria-expanded="false" aria-label="${roleAria(roleById.comms)}" d="M${n(commsPct)} 52 C${n(commsPct + 2)} 52 ${n(commsPct + 4)} 34.6666 ${n(commsEnd)} 34.6666 H100 V52 Z"><title>${roleById.comms.title}</title></path>
+        <path class="service-band-edge service-band-edge--top" d="M0 .7 H100" aria-hidden="true"></path>
+        <path class="service-band-edge service-band-edge--bottom" d="M0 51.3 H100" aria-hidden="true"></path>
       </svg>
       <svg class="service-sankey service-sankey--officer" viewBox="0 0 100 52" preserveAspectRatio="none" role="group" aria-label="Officer Commissioning Candidate, July 2025 through expected commissioning in May 2027">
         <path class="service-flow service-flow--officer" tabindex="0" role="button" aria-expanded="false" aria-label="${roleAria(officerRole)}" d="M0 0 H100 V52 H0 Z"><title>${officerRole.title}</title></path>
+        <path class="service-band-edge service-band-edge--top" d="M0 .7 H100" aria-hidden="true"></path>
+        <path class="service-band-edge service-band-edge--bottom" d="M0 51.3 H100" aria-hidden="true"></path>
       </svg>
       ${militaryTimelineData.roles.map((role) => {
         const labelX = role.id === "officer"

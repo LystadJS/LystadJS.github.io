@@ -2918,3 +2918,62 @@ body[data-page="about"] .about-direction-copy {
     padding: .95rem 1rem 1rem 1.1rem;
   }
 }
+
+/* Compact military timeline: years first, tighter insignia spacing. */
+body[data-page="about"] .career-timeline {
+  --timeline-line-y: 108px;
+  margin-top: 1rem;
+  padding: .45rem .8rem .15rem;
+}
+
+body[data-page="about"] .timeline-kicker {
+  display: none;
+}
+
+body[data-page="about"] .timeline-canvas {
+  height: 235px;
+}
+
+body[data-page="about"] .year-tick-label {
+  top: -92px;
+}
+
+body[data-page="about"] .unit-event {
+  top: calc(var(--line-y) - var(--timeline-icon-size) - 4px);
+}
+
+body[data-page="about"] .unit-event::before {
+  height: 4px;
+}
+
+body[data-page="about"] .current-day-label {
+  top: calc(var(--line-y) - 24px);
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .career-timeline {
+    --timeline-line-y: 96px;
+    padding-top: .4rem;
+    padding-bottom: .1rem;
+  }
+
+  body[data-page="about"] .timeline-canvas {
+    height: 215px;
+  }
+
+  body[data-page="about"] .year-tick-label {
+    top: -80px;
+  }
+
+  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"]) {
+    top: calc(var(--line-y) - var(--timeline-icon-size) - 3px);
+  }
+
+  body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {
+    top: calc(var(--line-y) - var(--timeline-icon-size) - 24px);
+  }
+
+  body[data-page="about"] .unit-event[data-event-id="11th-airborne"]::before {
+    height: 24px;
+  }
+}

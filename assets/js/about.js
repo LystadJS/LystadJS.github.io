@@ -121,10 +121,10 @@
       },
       {
         id: "eib",
-        date: "2024-08-01",
+        date: "2024-09-01",
         title: "Expert Infantryman Badge",
         school: "Infantry proficiency qualification",
-        dateLabel: "Aug 2024",
+        dateLabel: "Sep 2024",
         logo: "assets/images/about/military/expert-infantry-badge.svg",
         logoClass: "eib-icon",
         icon: "eib",

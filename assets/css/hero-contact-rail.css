@@ -432,3 +432,41 @@ body[data-page="index"] .hero-contact-link:focus-visible::after {
 
 /* Portrait proportion refinement. */
 body[data-page="index"] .headshot-frame{aspect-ratio:3 / 4;}
+
+
+/* Current inquiry: full-line project link. */
+body[data-page="index"] .hero-note-link {
+  box-sizing: border-box;
+  padding: .48rem .62rem;
+  margin-left: -.62rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+body[data-page="index"] .hero-note-link:hover,
+body[data-page="index"] .hero-note-link:focus-visible {
+  color: var(--paper);
+  background: linear-gradient(90deg, rgba(141,23,50,.11), rgba(141,23,50,.025) 72%, transparent);
+  border-color: rgba(191,49,82,.22);
+  box-shadow: inset 2px 0 0 var(--crimson-bright);
+  outline: none;
+}
+
+body[data-page="index"] .hero-note-link:hover .prompt,
+body[data-page="index"] .hero-note-link:focus-visible .prompt {
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="index"] .hero-note-link {
+    transition: none;
+  }
+}

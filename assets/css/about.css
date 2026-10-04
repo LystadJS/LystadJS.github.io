@@ -3161,3 +3161,22 @@ body[data-page="about"] .badge-icon-parachutist,
 body[data-page="about"] .badge-icon-rams-head {
   filter: drop-shadow(0 2px 5px rgba(0,0,0,.18));
 }
+
+
+/* Service-band edge rules: subtle top/bottom definition with inherited fade. */
+body[data-page="about"] .service-band-edge {
+  fill: none;
+  stroke: rgba(218,205,214,.22);
+  stroke-width: .8;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+  pointer-events: none;
+}
+
+body[data-page="about"] .service-band-edge--top {
+  stroke: rgba(226,214,222,.20);
+}
+
+body[data-page="about"] .service-band-edge--bottom {
+  stroke: rgba(151,131,145,.22);
+}

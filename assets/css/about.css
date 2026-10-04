@@ -3065,3 +3065,74 @@ body[data-page="about"] .badge-icon-rams-head {
     height: 27px;
   }
 }
+
+/* Larger anchored portrait + refined Army badge proportions. */
+
+@media (min-width: 981px) {
+  body[data-page="about"] .about-hero-grid {
+    gap: clamp(3rem, 5vw, 4.25rem);
+  }
+
+  body[data-page="about"] .about-hero-grid > .reveal:first-child {
+    padding-right: 1.15rem;
+  }
+
+  body[data-page="about"] .about-portrait {
+    transform: scale(1.40);
+    transform-origin: top right;
+  }
+
+  body[data-page="about"] .about-hero .hero-lede {
+    font-size: clamp(1.10rem, 1.42vw, 1.40rem);
+    line-height: 1.38;
+  }
+
+  body[data-page="about"] .about-summary {
+    max-width: 780px;
+    font-size: .84rem;
+    line-height: 1.58;
+  }
+
+  body[data-page="about"] .about-direction {
+    max-width: 780px;
+  }
+
+  body[data-page="about"] .about-direction-copy {
+    font-size: .76rem;
+    line-height: 1.54;
+  }
+}
+
+body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+  top: 27px;
+  width: 37px;
+  height: 28px;
+}
+
+body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+  top: 26px;
+  width: 31px;
+  height: 31px;
+}
+
+body[data-page="about"] .badge-icon-parachutist {
+  stroke-width: 1;
+}
+
+body[data-page="about"] .badge-icon-rams-head {
+  stroke-width: 1;
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+    top: 27px;
+    width: 35px;
+    height: 26px;
+  }
+
+  body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+    top: 26px;
+    width: 29px;
+    height: 29px;
+  }
+}

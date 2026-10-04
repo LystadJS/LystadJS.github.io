@@ -5,7 +5,6 @@
     start: "2021-11-01",
     end: "2027-05-01",
     officerStart: "2025-07-01",
-    kicker: "Service & Leadership Chronology · Nov 2021–May 2027",
     todayLabel: "Today",
     roles: [
       {
@@ -188,9 +187,8 @@
 
   function renderMilitaryTimeline() {
     const career = document.getElementById("military-career-timeline");
-    const kicker = document.getElementById("military-timeline-kicker");
     const canvas = document.getElementById("military-timeline-canvas");
-    if (!career || !kicker || !canvas) return null;
+    if (!career || !canvas) return null;
 
     const toUtcDay = (value) => Date.parse(value + "T00:00:00Z");
     const clampPct = (value) => Math.max(0, Math.min(100, value));
@@ -204,7 +202,6 @@
     const roleById = Object.fromEntries(militaryTimelineData.roles.map((role) => [role.id, role]));
     const officerRole = roleById.officer;
 
-    kicker.textContent = militaryTimelineData.kicker;
     canvas.style.setProperty("--officer-start", officerPct.toFixed(4) + "%");
     canvas.style.setProperty("--officer-label-x", ((officerPct + 100) / 2).toFixed(4) + "%");
 

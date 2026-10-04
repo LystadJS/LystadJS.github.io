@@ -2981,3 +2981,87 @@ body[data-page="about"] .current-day-label {
     height: 24px;
   }
 }
+
+/* Timeline year/badge + anchored hero portrait refinement. */
+
+/* Raise year labels exactly 10px from the current compact timeline position. */
+body[data-page="about"] .year-tick-label {
+  top: -102px;
+}
+
+/* Iconized Army badge treatments for Airborne School and BMMC. */
+body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+  top: 29px;
+  width: 36px;
+  height: 22px;
+}
+
+body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+  top: 27px;
+  width: 29px;
+  height: 29px;
+}
+
+body[data-page="about"] .badge-icon {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+body[data-page="about"] .badge-icon-parachutist,
+body[data-page="about"] .badge-icon-rams-head {
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.22));
+}
+
+/* Enlarge the top-right portrait while anchoring the existing top/right edges.
+   Scaling from the top-right expands only leftward and downward. */
+@media (min-width: 981px) {
+  body[data-page="about"] .about-hero-grid {
+    gap: clamp(2.5rem, 4.5vw, 3.75rem);
+  }
+
+  body[data-page="about"] .about-hero-grid > .reveal:first-child {
+    min-width: 0;
+    padding-right: .75rem;
+  }
+
+  body[data-page="about"] .about-portrait {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.25);
+    transform-origin: top right;
+  }
+
+  body[data-page="about"] .about-hero .hero-lede {
+    font-size: clamp(1.16rem, 1.52vw, 1.48rem);
+    line-height: 1.4;
+  }
+
+  body[data-page="about"] .about-summary {
+    max-width: 810px;
+    font-size: .86rem;
+    line-height: 1.62;
+  }
+
+  body[data-page="about"] .about-direction {
+    max-width: 810px;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .year-tick-label {
+    top: -90px;
+  }
+
+  body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+    top: 28px;
+    width: 34px;
+    height: 21px;
+  }
+
+  body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+    top: 27px;
+    width: 27px;
+    height: 27px;
+  }
+}

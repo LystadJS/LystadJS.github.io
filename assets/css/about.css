@@ -2939,11 +2939,11 @@ body[data-page="about"] .year-tick-label {
 }
 
 body[data-page="about"] .unit-event {
-  top: calc(var(--line-y) - var(--timeline-icon-size) - 4px);
+  top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
 }
 
 body[data-page="about"] .unit-event::before {
-  height: 4px;
+  height: 14px;
 }
 
 body[data-page="about"] .current-day-label {
@@ -2966,7 +2966,11 @@ body[data-page="about"] .current-day-label {
   }
 
   body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"]) {
-    top: calc(var(--line-y) - var(--timeline-icon-size) - 3px);
+    top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
+  }
+
+  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"])::before {
+    height: 14px;
   }
 
   body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {

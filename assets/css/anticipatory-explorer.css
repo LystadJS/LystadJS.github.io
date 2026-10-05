@@ -169,13 +169,6 @@
   filter: brightness(1.14);
 }
 #anticipatory-direction .ae-panel { padding: 1rem 1.1rem 1.15rem; }
-#anticipatory-direction .ae-panel-tag {
-  margin: 0 0 .45rem;
-  color: var(--ae-active);
-  font: 500 .63rem/1.6 var(--mono, monospace);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
 #anticipatory-direction .ae-panel h3 {
   margin: 0 0 .9rem;
   color: var(--ae-ink);
@@ -377,11 +370,10 @@
 #anticipatory-direction .ae-popover .ae-panel {
   padding: 1.05rem 1.15rem 1.1rem;
 }
-#anticipatory-direction .ae-popover .ae-panel-tag {
-  padding-right: 2.25rem;
-}
 #anticipatory-direction .ae-popover .ae-panel h3 {
-  max-width: 18ch;
+  max-width: 20ch;
+  margin-bottom: .75rem;
+  padding-right: 2.25rem;
   font-size: clamp(1.45rem, 1.9vw, 1.82rem);
 }
 #anticipatory-direction .ae-popover .ae-facts > div {

@@ -3223,3 +3223,12 @@ body[data-page="about"] .service-band-edge--bottom {
     object-position: center center;
   }
 }
+
+
+/* Section 1 heading: full-width natural wrapping. */
+body[data-page="about"] .service-section .essay-heading h2 {
+  max-width: none;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}

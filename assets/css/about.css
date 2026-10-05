@@ -3181,42 +3181,8 @@ body[data-page="about"] .service-band-edge--bottom {
   stroke: rgba(66,56,64,.64);
 }
 
-/* Section 1 finalization: single-line header + matched media/text heights. */
-
-/* Desktop: keep the full Military Service heading on one baseline. */
+/* Section 1 finalization: matched media/text heights only. */
 @media (min-width: 981px) {
-  body[data-page="about"] .service-section .essay-heading {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr) max-content;
-    gap: clamp(.9rem, 1.8vw, 1.5rem);
-    align-items: baseline;
-    margin-bottom: clamp(1.25rem, 2vw, 1.65rem);
-  }
-
-  body[data-page="about"] .service-section .essay-index {
-    white-space: nowrap;
-  }
-
-  body[data-page="about"] .service-section .essay-heading-copy {
-    display: contents;
-  }
-
-  body[data-page="about"] .service-section .essay-heading h2 {
-    max-width: none;
-    white-space: nowrap;
-    font-size: clamp(2.35rem, 4.1vw, 3.85rem);
-    line-height: .92;
-    letter-spacing: -.035em;
-  }
-
-  body[data-page="about"] .service-section .service-meta {
-    margin: 0;
-    justify-self: end;
-    white-space: nowrap;
-    align-self: baseline;
-  }
-
-  /* Let the row height be set by the text panel, then make the photograph match it. */
   body[data-page="about"] .military-layout {
     grid-template-columns: minmax(0, 1.18fr) minmax(300px, .72fr);
     gap: 1rem;

@@ -3184,3 +3184,75 @@ body[data-page="about"] .service-section .essay-heading h2 {
   overflow-wrap: normal;
   word-break: normal;
 }
+
+
+/* Hero portrait: exact summary-to-mission vertical alignment. */
+@media (min-width: 981px) {
+  body[data-page="about"] .about-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 19vw, 255px);
+    grid-template-rows: auto auto;
+    column-gap: clamp(2rem, 3.8vw, 3.25rem);
+    row-gap: .9rem;
+    align-items: start;
+  }
+
+  body[data-page="about"] .about-hero-title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin: .45rem 0 0;
+    padding-right: 0;
+  }
+
+  body[data-page="about"] .about-hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+    padding-right: 0;
+  }
+
+  body[data-page="about"] .about-portrait {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    justify-self: end;
+    align-self: stretch;
+    transform: none;
+  }
+
+  body[data-page="about"] .about-portrait-frame {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  body[data-page="about"] .about-portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+  }
+
+  body[data-page="about"] .about-hero .hero-lede {
+    margin-top: 0;
+  }
+
+  body[data-page="about"] .about-direction {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  body[data-page="about"] .about-hero-title {
+    margin-bottom: 0;
+  }
+
+  body[data-page="about"] .about-hero-copy {
+    min-width: 0;
+  }
+}

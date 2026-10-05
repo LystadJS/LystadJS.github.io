@@ -139,7 +139,7 @@
 
     body[data-page="about"] .about-section-nav {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       padding-top: 0;
       padding-bottom: 0;
       border-bottom: 1px solid var(--line);
@@ -362,15 +362,7 @@
       }
 
       body[data-page="about"] .about-section-nav {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      body[data-page="about"] .about-section-nav a:nth-child(2) {
-        border-right: 0;
-      }
-
-      body[data-page="about"] .about-section-nav a:nth-child(n+3) {
-        border-top: 1px solid rgba(74,53,71,.42);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -1729,26 +1721,6 @@
       line-height: 1.5;
     }
 
-    body[data-page="about"] .off-clock-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
-      gap: clamp(2rem, 4vw, 3.5rem);
-      align-items: start;
-    }
-
-    body[data-page="about"] .off-clock-copy {
-      max-width: 720px;
-      margin: 0;
-      color: var(--muted);
-      font-size: .84rem;
-      line-height: 1.68;
-    }
-
-    body[data-page="about"] .off-clock-copy + .off-clock-copy {
-      margin-top: 1rem;
-    }
-
-
     body[data-page="about"] .timeline-sr-only {
       position: absolute !important;
       width: 1px !important;
@@ -2068,8 +2040,7 @@
 
       body[data-page="about"] .about-hero-grid,
       body[data-page="about"] .military-layout,
-      body[data-page="about"] .shelf-wrap,
-      body[data-page="about"] .off-clock-grid {
+      body[data-page="about"] .shelf-wrap {
         grid-template-columns: 1fr;
       }
 
@@ -2379,7 +2350,7 @@ body[data-page="about"] .about-portrait img {
 /* Section navigator: translated from the index hero destination-card treatment. */
 body[data-page="about"] .about-section-nav {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: .7rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2522,8 +2493,7 @@ body[data-page="about"] .service-meta {
 /* Reusable About panels now use the same surface recipe as index destination cards. */
 body[data-page="about"] .military-primary,
 body[data-page="about"] .mountain-ascent,
-body[data-page="about"] .shelf-wrap,
-body[data-page="about"] .off-clock-grid > div:first-child {
+body[data-page="about"] .shelf-wrap {
   border: 1px solid var(--line);
   background: var(--about-panel-bg);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
@@ -2681,26 +2651,9 @@ body[data-page="about"] .book-note h3 {
   color: #ded4dc;
 }
 
-/* Off-clock copy gets the same restrained panel treatment as the analytical content. */
-body[data-page="about"] .off-clock-grid {
-  gap: 1rem;
-}
-
-body[data-page="about"] .off-clock-grid > div:first-child {
-  padding: clamp(1.25rem, 2.4vw, 1.65rem);
-}
-
-body[data-page="about"] .off-clock-copy {
-  max-width: 760px;
-  color: #ada0ad;
-  font-size: .9rem;
-  line-height: 1.72;
-}
-
 body[data-page="about"] #military-title,
 body[data-page="about"] #outside-title,
-body[data-page="about"] #shelf-title,
-body[data-page="about"] #off-clock-title {
+body[data-page="about"] #shelf-title {
   scroll-margin-top: 110px;
 }
 
@@ -2711,7 +2664,7 @@ body[data-page="about"] #off-clock-title {
   }
 
   body[data-page="about"] .about-section-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   body[data-page="about"] .military-layout {
@@ -2764,8 +2717,7 @@ body[data-page="about"] #off-clock-title {
 
   body[data-page="about"] .military-primary,
   body[data-page="about"] .mountain-ascent,
-  body[data-page="about"] .shelf-wrap,
-  body[data-page="about"] .off-clock-grid > div:first-child {
+  body[data-page="about"] .shelf-wrap {
     padding: 1rem;
   }
 

@@ -1,0 +1,51 @@
+name: Prepare validated research layout
+on:
+  push:
+    branches: [chatgpt/research-layout-20261005]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare checked files without publishing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os, json, base64, lzma, hashlib, urllib.request
+          repo = os.environ['GITHUB_REPOSITORY']
+          assert repo == 'LystadJS/LystadJS.github.io'
+          base = 'b19585a46b248763554177b486cb3c14dc0f4588'
+          def api(path, body=None):
+              data = None if body is None else json.dumps(body).encode()
+              req = urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path, data=data, headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json', 'Content-Type':'application/json'})
+              with urllib.request.urlopen(req, timeout=60) as response:
+                  return json.load(response)
+          def git_hash(data):
+              return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          assert api('git/ref/heads/main')['object']['sha'] == base, 'Main advanced; reconcile before preparing.'
+          expected = {'research.html':'27bbeeda9a6d8259be18745ae12af0ed4e2fa641','assets/css/research-projects.css':'16e793a8a8d8b2abcc3ce5c0c3808d718f2d72e8','tests/research-layout-validation.json':'92c71d010c36377dc9d60e808aeda6f9b5af8129'}
+          chunks = ['ae8f669307dbc1f6ea05328a5e32bb8ddcc5cf58','fff0408de0ed0a57a87b4d4eee6d2639677df476','f4b02265e00e69c14e05eb4e6c9547784fc8ccad','b39306355d310edd0c20de24f29b0c49fa9fc567','085db75a4cc78dbd26d34dca2342c614b06470f6']
+          parts = []
+          for sha in chunks:
+              data = base64.b64decode(api('git/blobs/'+sha)['content'])
+              assert git_hash(data) == sha
+              parts.append(data)
+          # Payload is a JSON map of three locally validated text files, never executable code.
+          files = json.loads(lzma.decompress(base64.b64decode(b''.join(parts))))
+          assert set(files) == set(expected)
+          rows = []
+          receipt = []
+          for path, text in files.items():
+              data = text.encode('utf-8')
+              assert git_hash(data) == expected[path], 'Content mismatch: '+path
+              sha = api('git/blobs', {'content':text,'encoding':'utf-8'})['sha']
+              assert sha == expected[path]
+              rows.append({'path':path,'mode':'100644','type':'blob','sha':sha})
+              receipt.append({'path':path,'sha':sha,'bytes':len(data)})
+          base_tree = api('git/commits/'+base)['tree']['sha']
+          tree = api('git/trees', {'base_tree':base_tree,'tree':rows})['sha']
+          # No branch or publication is changed here. The connector publishes after receipt review.
+          print('RESEARCH_LAYOUT_RECEIPT='+json.dumps({'base':base,'tree':tree,'files':receipt}))
+          PY

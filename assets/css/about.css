@@ -3256,3 +3256,12 @@ body[data-page="about"] .service-section .essay-heading h2 {
     min-width: 0;
   }
 }
+
+
+/* Hero text inset: move left-side copy slightly toward portrait. */
+@media (min-width: 981px) {
+  body[data-page="about"] .about-hero-title,
+  body[data-page="about"] .about-hero-copy {
+    padding-left: clamp(.75rem, 1.35vw, 1.1rem);
+  }
+}

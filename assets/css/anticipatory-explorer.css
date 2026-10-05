@@ -484,3 +484,97 @@ body[data-page="index"] #correspondence {
     padding-bottom:3.5rem;
   }
 }
+
+
+/* Repository-linked method buttons for anticipatory research bridge. */
+#anticipatory-direction .ae-research-bridge {
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+#anticipatory-direction .ae-methods-block {
+  min-width: 0;
+}
+
+#anticipatory-direction .ae-method-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .48rem;
+  margin-top: .02rem;
+}
+
+#anticipatory-direction .ae-method-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .55rem;
+  min-width: 0;
+  min-height: 42px;
+  padding: .58rem 1.7rem .58rem .68rem;
+  border: 1px solid rgba(74,53,71,.72);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.014), rgba(255,255,255,.003)),
+    rgba(13,10,15,.68);
+  color: #cfc4cb;
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 500;
+  line-height: 1.28;
+  text-decoration: none;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+#anticipatory-direction .ae-method-button::after {
+  content: "↗";
+  position: absolute;
+  right: .62rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #706371;
+  font-family: var(--mono, monospace);
+  font-size: .68rem;
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+#anticipatory-direction .ae-method-button.is-focus {
+  border-color: rgba(141,23,50,.56);
+  background:
+    linear-gradient(90deg, rgba(141,23,50,.08), transparent 78%),
+    linear-gradient(135deg, rgba(101,69,126,.055), transparent 64%),
+    rgba(14,10,16,.74);
+  color: #ded3db;
+}
+
+#anticipatory-direction .ae-method-button:hover,
+#anticipatory-direction .ae-method-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(191,49,82,.62);
+  background:
+    linear-gradient(90deg, rgba(141,23,50,.12), transparent 80%),
+    rgba(17,12,19,.82);
+  color: var(--ae-ink);
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+  outline: none;
+}
+
+#anticipatory-direction .ae-method-button:hover::after,
+#anticipatory-direction .ae-method-button:focus-visible::after {
+  color: var(--crimson-bright);
+  transform: translate(2px, -50%);
+}
+
+@media (max-width: 760px) {
+  #anticipatory-direction .ae-method-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  #anticipatory-direction .ae-method-button {
+    min-height: 40px;
+  }
+}

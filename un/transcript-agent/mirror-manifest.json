@@ -2,14 +2,21 @@
   "source_repository": "https://github.com/LystadJS/UNGA81-Transcript-Agent",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "analysis-core.js": "94b3d10a5a62580a9a0f77dc280d1054d8fb9bfb69fe198a9253ecf6a652f824",
-    "analysis-ui.js": "78aaaea473e4186fa77bd9cb84771e52bc582f17a5c758c262d36b8879c4d1ea",
-    "analysis.css": "5417235bafa6051e9e835178baa73fcb3159ce93691970b067e0a4dfcf609a21",
+    "analysis-core.js": "f7b92f7a7adf35889286e7bff20b810d9cadefdd35d6f506923e7e97efc00124",
+    "analysis-ui.js": "9418508788eb2c9ad379ff590f6e055041b9235ee90b1a99912a425a4a634220",
+    "analysis.css": "171e43479b56ffba2d8a2658f6bdd7d48a8f8782a1c5a7e1dc3779474f027509",
     "app.css": "61519c8e30ede764289de62374494be8e8f53a10ab613bd6bb266c76f786c4b9",
     "app.js": "1b7298ba7d83fed8f3c340cd5bfd74f41d227cbd8be166f3d9b6cb04e9af063b",
-    "collector.js": "7793efaff9f1c0ab386726981c8fc8a747252aa55e183220488be24f2590b310",
+    "cluster-core.js": "7ead442c0380d0112ea3b2d43633fe5f96679fe21b3e9c61cc86d84809e4c887",
+    "cluster-view.js": "1a8336c83852210461380b579a137a1841cf9128584c5188228bb87b23cf5464",
+    "cluster-worker.js": "eef7048883a4fb05dc028a96bf1458b32d35a90971de9c7eccc647706e7b10ca",
+    "collector.js": "1eaf763f0dedfe4a63655494f46df37c55e36baa4ff93ee5f444271ac291111f",
     "countries.json": "fdaa3592eb31fd928fb94925997a5f38156cb5a7d002bc206fa16de03c30194f",
-    "index.html": "797e099ee7fe2bf82462ddda089e8f491d356d32d7383ee0da64cb4541b760ca",
+    "index.html": "a0fc4c9cdf8b9847d7dae180959770b56da99f15d5a72bcca3d3ad878ca652dc",
+    "meeting-scopes.js": "b25ac0a37c2b5ec8681d0acf7843657dfc27dc27ef51b5d1fa7dadb61d506be6",
+    "numerics-manifest.json": "de808c21a870939b5b58f4a7b323e80d337640183e7298da5d8f7ccec6d7807f",
+    "numerics.js": "03459b95f300c77949738137cc0a8e01593b0767e35fc7e6f921bb83963fa2e8",
+    "NUMERICS_LICENSES.txt": "7ac72f59e31b3d4adc8f2b66d427cb0a87f8c017aa23005f459979e6c75e2b0e",
     "theme.css": "09798beb2fc8ce857c19806280ddeb5178e3cb931285ba86153298c91af3c3cc",
     "reports/hlw-cuba/asr-model.json": "306f6dc22bc3455edf9b90f8d4b069bdecec3628c06dda0dd0fe5c9e5d51a1e7",
     "reports/hlw-cuba/brief.css": "426eef487f8ac6b8006113bd950d4720a4763ef0f04b08d3d0e7c44054b748a4",
@@ -90,8 +97,6 @@
     "reports/hlw-cuba/w_russia.txt": "a10f82e3a788e6d1dd89ac4bb351f391dff55c273eccaa240254b823362cfd90",
     "reports/hlw-cuba/w_unctad.txt": "193b691b4b7db8f260eb0499f35028652833d6e1e16682df8015c48626de7159",
     "reports/hlw-cuba/w_unops.txt": "a4863016e3e2d952d06955cbf4c9dd664a87354e267c90ed58cc8a37d72ff990",
-    "reports/hlw-cuba/w_unwomen-original.txt": "6030a20e4b4ce4e8e4896c1317e8749b6fe13b3e2977a2a284861d6dd391e40d",
-    "meeting-scopes.js": "dc00eeeaef1369c98b4f824d74f4ba2764b370d4a1682df5666d2533caa73d25"
-  },
-  "source_commit": "2fc6f648a19ad26bde38e27d47f4b2935280a346"
+    "reports/hlw-cuba/w_unwomen-original.txt": "6030a20e4b4ce4e8e4896c1317e8749b6fe13b3e2977a2a284861d6dd391e40d"
+  }
 }

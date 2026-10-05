@@ -1,0 +1,113 @@
+name: Prepare UN header objects
+on:
+  push:
+    branches: ["chatgpt/un-header-preview-20261005"]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Prepare reviewed files without publishing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, json, base64, zlib, urllib.request, hashlib
+          repo=os.environ["GITHUB_REPOSITORY"]
+          is_site=repo.endswith("/LystadJS.github.io")
+          base="dbb97cbd4b33705801fe6fcea24ca75d48c21e7b" if is_site else "debb23ab8fe57f2725cd259496d3b52dc28a64e5"
+          endpoint="https://api.github.com/repos/"+repo+"/"
+          def api(path, body=None):
+              payload=None if body is None else json.dumps(body).encode()
+              req=urllib.request.Request(endpoint+path, data=payload, headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"], "Accept":"application/vnd.github+json", "Content-Type":"application/json"})
+              with urllib.request.urlopen(req, timeout=60) as r: return json.load(r)
+          assert api("git/ref/heads/main")["object"]["sha"]==base, "Main advanced; prepare from the new head."
+          base_tree=api("git/commits/"+base)["tree"]["sha"]
+          tree=api("git/trees/"+base_tree+"?recursive=1")
+          assert not tree.get("truncated"), "Repository tree truncated."
+          entries={v["path"]:v for v in tree["tree"] if v["type"]=="blob"}
+          cache={}; changed={}
+          def blob(sha): return base64.b64decode(api("git/blobs/"+sha)["content"])
+          def read(path):
+              if path not in cache: cache[path]=blob(entries[path]["sha"])
+              return cache[path]
+          def text(path):return read(path).decode("utf-8")
+          def put(path,value):
+              data=value.encode("utf-8") if isinstance(value,str) else value
+              if data!=read(path):changed[path]=data
+          def branding(icon):
+           return '''
+          /* USUN mastheads — shared palette and existing approved seal, 2026-10-05. */
+          :root{--usun-brand-gold:#C1A783;--usun-brand-navy:#062135;--usun-brand-icon:url("ICON")}
+          body>header,body>main>header:first-child{color:var(--usun-brand-gold)}
+          body>header .masthead .eyebrow,body>header :is(h1,h2,h3,p,a,span,strong,small,.usun-identity,.usun-department,.usun-status),body>main>header:first-child :is(h1,h2,h3,p,a,span,strong,small){color:var(--usun-brand-gold)}
+          /* Directory and collection workspace: replace the boxed monograms. */
+          .un-masthead .un-mark{display:block;width:72px;height:72px;flex:none;padding:0;border:0;background:none;box-shadow:none}
+          .un-masthead .un-mark img{display:block;width:100%;height:100%;object-fit:contain}
+          body>header .masthead{display:grid;grid-template-columns:72px minmax(0,1fr);align-items:center;gap:22px}
+          body>header .masthead>div{min-width:0}
+          body>header .masthead .mark{display:block;width:72px;height:72px;min-width:72px;margin:0;padding:0;border:0;box-shadow:none;background:var(--usun-brand-icon) center/contain no-repeat;color:transparent;font-size:0;line-height:0;overflow:hidden}
+          body>header .masthead .mark br{display:none}
+          body>header.usun-masthead .usun-seal{width:72px;height:72px;object-fit:contain;flex:none;border:0;box-shadow:none}
+          /* Audit and recovery pages have a plain header rather than a masthead wrapper. */
+          body>main>header:first-child,body>header:has(>h1){position:relative;background:var(--usun-brand-navy);border-bottom:4px solid #D01319;padding:26px 30px 26px 124px;min-height:124px}
+          body>main>header:first-child::before,body>header:has(>h1)::before{content:"";position:absolute;left:28px;top:26px;width:72px;height:72px;background:var(--usun-brand-icon) center/contain no-repeat}
+          body>main>header:first-child h1,body>header:has(>h1) h1{margin-top:0;line-height:1.18}
+          body>main>header:first-child a{display:inline-block;text-underline-offset:.2em}
+          @media(max-width:700px){
+           .un-masthead .un-mark{width:64px;height:64px}
+           body>header .masthead{grid-template-columns:64px minmax(0,1fr);gap:16px}
+           body>header .masthead .mark{display:block;width:64px;height:64px;min-width:64px}
+           body>header.usun-masthead .usun-seal{width:64px;height:64px}
+          }
+          @media(max-width:600px){
+           body>main>header:first-child,body>header:has(>h1){padding:106px 20px 22px}
+           body>main>header:first-child::before,body>header:has(>h1)::before{left:20px;top:22px;width:64px;height:64px}
+          }
+          @media print{body>header,body>main>header:first-child{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+          '''.replace('ICON',icon)
+          if is_site:
+              html=blob("5a7daf9e429c689f94268ec194e05f5be6f50971").decode()
+              assert 'viewBox="0 0 560 366"' in html and html.count('class="project-row"')==4
+              html=html.replace('aria-label="John S. Lystad home">JSL</a>', 'aria-label="John S. Lystad home"><img src="transcript-agent/reports/hlw-cuba/seal.png" width="72" height="72" alt="U.S. Mission to the United Nations"></a>')
+              put("un/index.html",html.replace("un.css?v=20261005-2","un.css?v=20261005-3"))
+              css=zlib.decompress(base64.b64decode("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"))
+              assert hashlib.sha1(b"blob "+str(len(css)).encode()+b"\0"+css).hexdigest()=="c7904879f8e64ebd614a84af2ccd7d9515779860"
+              put("un/un.css",css.decode().rstrip()+"\n"+branding("transcript-agent/reports/hlw-cuba/seal.png"))
+              paths={"un/transcript-agent/theme.css":"reports/hlw-cuba/seal.png", "un/transcript-agent/analysis.css":"reports/hlw-cuba/seal.png", "un/transcript-agent/reports/hlw-cuba/usun-theme.css":"seal.png"}
+              audit="un/transcript-agent/passage-audit.html"
+          else:
+              paths={"site/theme.css":"reports/hlw-cuba/seal.png", "site/analysis.css":"reports/hlw-cuba/seal.png", "reports/hlw-cuba/usun-theme.css":"seal.png"}
+              audit="site/passage-audit.html"
+          for path,icon in paths.items():
+              put(path,text(path).replace("\r\n","\n").rstrip()+"\n"+branding(icon))
+          link=b'<link rel="stylesheet" href="theme.css?v=usun-gold-20261005">'
+          assert link not in read(audit)
+          put(audit,read(audit).replace(b"</title>",b"</title>"+link,1))
+          if is_site:
+              path="un/transcript-agent/mirror-manifest.json";manifest=json.loads(text(path))
+              for p in [*paths,audit]:manifest["files"][p.removeprefix("un/transcript-agent/")]=hashlib.sha256(changed[p]).hexdigest()
+              put(path,json.dumps(manifest,indent=2)+"\n")
+              path="un/README.md";s=text(path).replace("The hub uses the main portfolio stylesheet. The Transcript Agent retains its own\nreview interface and report styling.", "The hub uses the Transcript Agent palette and its own portfolio layout. All seven\nUN pages use the existing USUN seal and gold (#C1A783) masthead lettering. The\nTranscript Agent retains its review interface and report styling.")
+              s+="\nHeader styling is embedded in `un.css`, the agent's `theme.css` and `analysis.css`,\nand the HLW report's `usun-theme.css`. The complete `analysis.css` is retained\nbecause standalone report downloads embed it. Reuse the existing seal; do not\nreplace it with a text monogram. Keep source-repository styles synchronized before\nrefreshing the public mirror.\n"
+              put(path,s.replace("\r\n","\n"))
+          else:
+              # Preserve the stylesheet link when the audit page is regenerated.
+              anchor='<title>Passage composition comparison · UN Transcript Agent</title>'
+              for path in entries:
+                  if path.startswith("tools/") and "passage" in path.lower() and path.endswith(".py"):
+                      original=text(path)
+                      if anchor in original and link.decode() not in original:
+                          put(path,original.replace(anchor,anchor+link.decode()))
+          rows=[];receipt=[]
+          for path,data in sorted(changed.items()):
+              sha=api("git/blobs",{"content":base64.b64encode(data).decode(),"encoding":"base64"})["sha"]
+              assert sha==hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
+              rows.append({"path":path,"mode":"100644","type":"blob","sha":sha})
+              receipt.append({"path":path,"sha":sha,"bytes":len(data)})
+          result=api("git/trees",{"base_tree":base_tree,"tree":rows})
+          # This prepares unreachable Git objects only. The connector publishes after hash review.
+          print("UN_HEADER_RECEIPT="+json.dumps({"repository":repo,"base":base,"tree":result["sha"],"files":receipt}))
+          PYTHON

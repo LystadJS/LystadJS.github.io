@@ -3180,3 +3180,80 @@ body[data-page="about"] .service-band-edge--top {
 body[data-page="about"] .service-band-edge--bottom {
   stroke: rgba(66,56,64,.64);
 }
+
+/* Section 1 finalization: single-line header + matched media/text heights. */
+
+/* Desktop: keep the full Military Service heading on one baseline. */
+@media (min-width: 981px) {
+  body[data-page="about"] .service-section .essay-heading {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    gap: clamp(.9rem, 1.8vw, 1.5rem);
+    align-items: baseline;
+    margin-bottom: clamp(1.25rem, 2vw, 1.65rem);
+  }
+
+  body[data-page="about"] .service-section .essay-index {
+    white-space: nowrap;
+  }
+
+  body[data-page="about"] .service-section .essay-heading-copy {
+    display: contents;
+  }
+
+  body[data-page="about"] .service-section .essay-heading h2 {
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(2.35rem, 4.1vw, 3.85rem);
+    line-height: .92;
+    letter-spacing: -.035em;
+  }
+
+  body[data-page="about"] .service-section .service-meta {
+    margin: 0;
+    justify-self: end;
+    white-space: nowrap;
+    align-self: baseline;
+  }
+
+  /* Let the row height be set by the text panel, then make the photograph match it. */
+  body[data-page="about"] .military-layout {
+    grid-template-columns: minmax(0, 1.18fr) minmax(300px, .72fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  body[data-page="about"] .military-primary {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  body[data-page="about"] .military-media {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  body[data-page="about"] .military-photo,
+  body[data-page="about"] .military-photo-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  body[data-page="about"] .military-photo-frame.landscape {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  body[data-page="about"] .military-photo-frame.landscape img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}

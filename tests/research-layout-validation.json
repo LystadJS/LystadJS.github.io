@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-05",
+  "baseline_commit": "b19585a46b248763554177b486cb3c14dc0f4588",
+  "scope": "Research & Applied Work project organization; no theme replacement",
+  "renderer": "Local Chromium with original styles/scripts inlined; external fonts and map CDN unavailable",
+  "projects": 10,
+  "inline_svg_figures": 10,
+  "resource_controls": 30,
+  "verified_active_resource_links": 6,
+  "unlinked_controls": 24,
+  "unlinked_label": "Not yet linked",
+  "tested_widths": [
+    320,
+    390,
+    600,
+    768,
+    980,
+    1024,
+    1440,
+    1920
+  ],
+  "checks": {
+    "one_project_per_row": "passed",
+    "summary_left_figure_right_above_980px": "passed",
+    "resources_beneath_both_columns": "passed",
+    "mobile_stacking": "passed",
+    "page_horizontal_overflow": "none",
+    "svg_labels_within_viewbox": "passed",
+    "original_titles_summaries_topics_and_ids": "preserved",
+    "theme_tokens_hero_background_type_families": "unchanged",
+    "header_footer_geographic_explorer": "unchanged",
+    "native_source_disclosure_keyboard": "passed",
+    "resource_keyboard_navigation": "passed",
+    "mobile_menu": "passed",
+    "console_page_errors": 0,
+    "seven_public_pcoa_points": "geometry and data attributes preserved"
+  },
+  "limits": [
+    "External Google Fonts and jsVectorMap CDN were not exercised in local verification. Existing declarations and map markup/scripts were preserved.",
+    "Nine figures are labeled conceptual/design illustrations, not empirical findings. The AI figure retains the existing public PCoA baseline.",
+    "Resources without a verified project-specific destination remain inactive; no generic repositories are substituted.",
+    "Production deployment status is verified separately from this local record."
+  ]
+}

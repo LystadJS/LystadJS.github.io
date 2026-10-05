@@ -1,339 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="John S. Lystad's United Nations applied research portfolio: transcript intelligence, peacekeeping optimization, humanitarian response, and AI governance.">
-  <meta name="theme-color" content="#062135">
-  <title>UN Projects | John S. Lystad</title>
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="un.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="John S. Lystad's UN projects: transcript intelligence, peacekeeping optimization, Himalayan flood response, and AI governance.">
+<meta name="theme-color" content="#062135"><title>UN Projects | John S. Lystad</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="un.css?v=20261005-3">
 </head>
 <body>
-  <a class="skip-link" href="#content">Skip to projects</a>
-
-  <header class="un-masthead">
-    <div class="un-masthead-inner">
-      <a class="un-mark" href="../index.html" aria-label="John S. Lystad home">
-        <span>JSL</span>
-        <span>UN</span>
-      </a>
-      <div class="un-identity">
-        <p class="eyebrow">JOHN S. LYSTAD · UNITED NATIONS APPLIED RESEARCH</p>
-        <h1>UN Projects</h1>
-      </div>
-      <div class="un-status" aria-label="Portfolio status">
-        PUBLIC PORTFOLIO<br>
-        <strong>METHODS · DATA · CODE</strong>
-      </div>
-    </div>
-  </header>
-
-  <nav class="un-nav" aria-label="UN project navigation">
-    <a href="../index.html">← Main site</a>
-    <a href="#transcript-intelligence">Transcript intelligence</a>
-    <a href="#peacekeeping">Peacekeeping</a>
-    <a href="#himalayan-flood">Himalayan flood</a>
-    <a href="#ai-governance">AI governance</a>
-  </nav>
-
-  <main id="content" class="un-main">
-    <section class="un-intro" aria-labelledby="portfolio-heading">
-      <p class="eyebrow eyebrow-blue">UNITED NATIONS · APPLIED ANALYSIS · OPEN METHODS WHERE RELEASABLE</p>
-      <h2 id="portfolio-heading">Applied research for difficult multilateral problems.</h2>
-      <p class="un-lead">This directory is an accessible overview of UN-facing analytical projects. Each project pairs a plain-language explanation with a visual model of the problem, then links to public methodology, data, and source code where those materials can be released.</p>
-      <div class="un-principles" aria-label="Portfolio principles">
-        <div><span>Evidence</span><strong>Trace patterns back to sources.</strong></div>
-        <div><span>Methods</span><strong>Make analytical choices inspectable.</strong></div>
-        <div><span>Access</span><strong>Explain technical work without requiring technical training.</strong></div>
-      </div>
-    </section>
-
-    <section class="project-list" aria-label="UN projects">
-
-      <article class="project-row project-row-current" id="transcript-intelligence">
-        <div class="project-main">
-          <div class="project-copy">
-            <div class="project-kicker"><span class="project-index">01</span><span class="status-chip status-current">CURRENT PROJECT</span><span>TRANSCRIPT INTELLIGENCE</span></div>
-            <h2><a href="transcript-agent/">UN Transcript Intelligence</a></h2>
-            <p class="project-summary">A public workflow for collecting UN transcripts by date and meeting scope, searching a topic or collecting the full available record, and moving from descriptive patterns back to the exact source passages.</p>
-            <p class="project-detail">The browser workspace combines coverage checks, source-linked review, TF-IDF, dimensional representations, clustering, overlapping NMF components, stability diagnostics, and downloadable reports. The goal is not to replace close reading; it is to make a large transcript record easier to inspect systematically.</p>
-            <div class="project-tags" aria-label="Transcript project methods">
-              <span>Transcript collection</span><span>Text analysis</span><span>Clustering</span><span>Source review</span>
-            </div>
-            <p class="project-open"><a href="transcript-agent/">Open the live transcript workspace →</a></p>
-          </div>
-
-          <figure class="project-visual">
-            <div class="visual-bar"><span>TRANSCRIPT WORKFLOW</span><span>COLLECT → STRUCTURE → REVIEW</span></div>
-            <svg viewBox="0 0 720 390" role="img" aria-labelledby="transcript-viz-title transcript-viz-desc">
-              <title id="transcript-viz-title">UN transcript analysis workflow</title>
-              <desc id="transcript-viz-desc">A conceptual flow from UN transcript sources through collection and text representation to exploratory structure and source-linked evidence review.</desc>
-              <defs>
-                <marker id="arrow-blue-1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L6,3 z" class="viz-arrow-fill"/>
-                </marker>
-              </defs>
-              <rect class="viz-stage" x="28" y="48" width="142" height="126" rx="4"/>
-              <text class="viz-label" x="48" y="78">SOURCE RECORD</text>
-              <rect class="viz-doc" x="49" y="95" width="74" height="50" rx="2"/>
-              <line class="viz-doc-line" x1="61" y1="108" x2="108" y2="108"/>
-              <line class="viz-doc-line" x1="61" y1="119" x2="104" y2="119"/>
-              <line class="viz-doc-line" x1="61" y1="130" x2="96" y2="130"/>
-              <circle class="viz-source-dot" cx="140" cy="108" r="7"/>
-              <circle class="viz-source-dot" cx="140" cy="132" r="7"/>
-              <text class="viz-caption" x="48" y="163">date · meeting · speaker</text>
-
-              <line class="viz-connector" x1="170" y1="111" x2="222" y2="111" marker-end="url(#arrow-blue-1)"/>
-
-              <rect class="viz-stage" x="226" y="48" width="156" height="126" rx="4"/>
-              <text class="viz-label" x="246" y="78">TEXT FEATURES</text>
-              <rect class="viz-chip" x="248" y="96" width="54" height="25" rx="3"/>
-              <rect class="viz-chip" x="309" y="96" width="50" height="25" rx="3"/>
-              <rect class="viz-chip" x="248" y="129" width="76" height="25" rx="3"/>
-              <rect class="viz-chip" x="331" y="129" width="28" height="25" rx="3"/>
-              <text class="viz-chip-text" x="259" y="113">TF-IDF</text>
-              <text class="viz-chip-text" x="319" y="113">PCA</text>
-              <text class="viz-chip-text" x="259" y="146">LSA / NMF</text>
-              <text class="viz-chip-text" x="338" y="146">…</text>
-
-              <line class="viz-connector" x1="382" y1="111" x2="434" y2="111" marker-end="url(#arrow-blue-1)"/>
-
-              <rect class="viz-stage" x="438" y="48" width="254" height="126" rx="4"/>
-              <text class="viz-label" x="458" y="78">EXPLORATORY STRUCTURE</text>
-              <circle class="viz-point viz-point-a" cx="485" cy="116" r="7"/>
-              <circle class="viz-point viz-point-a" cx="509" cy="100" r="6"/>
-              <circle class="viz-point viz-point-a" cx="521" cy="128" r="5"/>
-              <circle class="viz-point viz-point-b" cx="574" cy="116" r="7"/>
-              <circle class="viz-point viz-point-b" cx="595" cy="96" r="5"/>
-              <circle class="viz-point viz-point-b" cx="606" cy="132" r="6"/>
-              <circle class="viz-point viz-point-c" cx="649" cy="111" r="7"/>
-              <circle class="viz-point viz-point-c" cx="667" cy="136" r="5"/>
-              <path class="viz-halo" d="M466 116c14-33 70-44 83 2 10 37-68 45-83-2z"/>
-              <path class="viz-halo" d="M551 116c13-37 68-42 79 0 8 39-63 48-79 0z"/>
-
-              <path class="viz-review-line" d="M566 174 C566 224 460 213 460 263"/>
-              <path class="viz-review-line" d="M566 174 C566 224 610 213 610 263"/>
-              <rect class="viz-evidence" x="334" y="263" width="252" height="89" rx="4"/>
-              <text class="viz-label" x="354" y="289">SOURCE-LINKED EVIDENCE</text>
-              <line class="viz-text-line" x1="354" y1="307" x2="550" y2="307"/>
-              <line class="viz-text-line" x1="354" y1="320" x2="532" y2="320"/>
-              <line class="viz-text-line" x1="354" y1="333" x2="495" y2="333"/>
-              <circle class="viz-source-dot" cx="565" cy="319" r="8"/>
-              <text class="viz-small" x="28" y="334">Patterns are exploratory.</text>
-              <text class="viz-small" x="28" y="352">Claims return to passages.</text>
-            </svg>
-            <figcaption>Conceptual workflow. The interface uses statistical structure to organize a large record while preserving links back to the underlying evidence.</figcaption>
-          </figure>
-        </div>
-        <div class="project-actions" aria-label="UN Transcript Intelligence resources">
-          <a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent/blob/main/docs/BROWSER_ANALYSIS.md"><span>Methodology</span><small>Browser analysis guide</small><b aria-hidden="true">↗</b></a>
-          <a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent/tree/main/data"><span>Data</span><small>Public repository data</small><b aria-hidden="true">↗</b></a>
-          <a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent"><span>GitHub repository</span><small>UNGA81-Transcript-Agent</small><b aria-hidden="true">↗</b></a>
-        </div>
-      </article>
-
-      <article class="project-row" id="peacekeeping">
-        <div class="project-main">
-          <div class="project-copy">
-            <div class="project-kicker"><span class="project-index">02</span><span class="status-chip">ONGOING</span><span>PEACEKEEPING OPTIMIZATION</span></div>
-            <h2>Optimizing UN Peacekeeping Efforts</h2>
-            <p class="project-summary">An ongoing project developing a systematic way to compare peacekeeping conditions, operational constraints, and resource trade-offs so that alternative mission configurations can be evaluated more clearly.</p>
-            <p class="project-detail">The public-facing design will emphasize the decision problem: different missions face different mandates, risks, logistical constraints, and resource limits. The analytical objective is to make those trade-offs explicit and testable without presenting a model as a substitute for political or operational judgment.</p>
-            <div class="project-tags" aria-label="Peacekeeping project themes">
-              <span>Optimization</span><span>Decision support</span><span>Resource allocation</span><span>Peacekeeping</span>
-            </div>
-          </div>
-
-          <figure class="project-visual">
-            <div class="visual-bar"><span>DECISION FRAMEWORK</span><span>CONDITIONS → CONSTRAINTS → TRADE-OFFS</span></div>
-            <svg viewBox="0 0 720 390" role="img" aria-labelledby="peace-viz-title peace-viz-desc">
-              <title id="peace-viz-title">Peacekeeping optimization conceptual framework</title>
-              <desc id="peace-viz-desc">A conceptual diagram showing mission conditions and resource constraints entering an optimization layer that compares alternative mission configurations.</desc>
-              <defs>
-                <marker id="arrow-blue-2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L6,3 z" class="viz-arrow-fill"/>
-                </marker>
-              </defs>
-              <text class="viz-label" x="34" y="45">MISSION CONDITIONS</text>
-              <rect class="viz-input" x="34" y="64" width="152" height="48" rx="4"/>
-              <rect class="viz-input" x="34" y="124" width="152" height="48" rx="4"/>
-              <rect class="viz-input" x="34" y="184" width="152" height="48" rx="4"/>
-              <rect class="viz-input" x="34" y="244" width="152" height="48" rx="4"/>
-              <text class="viz-node-text" x="54" y="93">MANDATE</text>
-              <text class="viz-node-text" x="54" y="153">RISK</text>
-              <text class="viz-node-text" x="54" y="213">LOGISTICS</text>
-              <text class="viz-node-text" x="54" y="273">RESOURCES</text>
-
-              <line class="viz-connector" x1="186" y1="88" x2="282" y2="155"/>
-              <line class="viz-connector" x1="186" y1="148" x2="282" y2="175"/>
-              <line class="viz-connector" x1="186" y1="208" x2="282" y2="195"/>
-              <line class="viz-connector" x1="186" y1="268" x2="282" y2="215"/>
-
-              <rect class="viz-engine" x="282" y="132" width="160" height="106" rx="53"/>
-              <text class="viz-engine-label" x="362" y="176" text-anchor="middle">COMPARE</text>
-              <text class="viz-engine-label" x="362" y="197" text-anchor="middle">TRADE-OFFS</text>
-              <text class="viz-small" x="362" y="217" text-anchor="middle">subject to constraints</text>
-
-              <line class="viz-connector" x1="442" y1="185" x2="505" y2="185" marker-end="url(#arrow-blue-2)"/>
-              <text class="viz-label" x="510" y="45">ALTERNATIVES</text>
-              <rect class="viz-output" x="510" y="64" width="176" height="68" rx="4"/>
-              <rect class="viz-output viz-output-emphasis" x="510" y="151" width="176" height="68" rx="4"/>
-              <rect class="viz-output" x="510" y="238" width="176" height="68" rx="4"/>
-              <text class="viz-node-text" x="531" y="91">CONFIGURATION A</text>
-              <text class="viz-small" x="531" y="113">different resource mix</text>
-              <text class="viz-node-text" x="531" y="178">CONFIGURATION B</text>
-              <text class="viz-small" x="531" y="200">different trade-off</text>
-              <text class="viz-node-text" x="531" y="265">CONFIGURATION C</text>
-              <text class="viz-small" x="531" y="287">different constraint fit</text>
-              <line class="viz-rule" x1="34" y1="330" x2="686" y2="330"/>
-              <text class="viz-small" x="34" y="353">Conceptual model only — not a released operational recommendation.</text>
-            </svg>
-            <figcaption>Conceptual framework, not model output. The project is being structured around transparent comparison of constraints and alternatives.</figcaption>
-          </figure>
-        </div>
-        <div class="project-actions" aria-label="Peacekeeping project resources">
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>Methodology</span><small>Public release forthcoming</small><b aria-hidden="true">—</b></span>
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>Data</span><small>Public release forthcoming</small><b aria-hidden="true">—</b></span>
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>GitHub repository</span><small>Public repository forthcoming</small><b aria-hidden="true">—</b></span>
-        </div>
-      </article>
-
-      <article class="project-row" id="himalayan-flood">
-        <div class="project-main">
-          <div class="project-copy">
-            <div class="project-kicker"><span class="project-index">03</span><span class="status-chip">APPLIED PROJECT</span><span>HUMANITARIAN RESPONSE</span></div>
-            <h2>Himalayan Flood Response</h2>
-            <p class="project-summary">An applied analysis of humanitarian access and response effectiveness along the Nepalese-Chinese border, focused on how difficult operating conditions shape the ability to reach affected communities.</p>
-            <p class="project-detail">The project treats access as a system rather than a single distance: terrain, crossing points, transport corridors, and response pathways can create very different practical levels of reach. The aim is to communicate those constraints clearly enough to support operational comparison and prioritization.</p>
-            <div class="project-tags" aria-label="Himalayan flood project themes">
-              <span>Humanitarian access</span><span>Spatial analysis</span><span>Response effectiveness</span><span>Cross-border systems</span>
-            </div>
-          </div>
-
-          <figure class="project-visual">
-            <div class="visual-bar"><span>ACCESS SCHEMATIC</span><span>TERRAIN · ROUTES · RESPONSE REACH</span></div>
-            <svg viewBox="0 0 720 390" role="img" aria-labelledby="flood-viz-title flood-viz-desc">
-              <title id="flood-viz-title">Himalayan flood response access schematic</title>
-              <desc id="flood-viz-desc">A conceptual mountain and valley cross-section with a border, settlements, route segments, and a flood-affected corridor illustrating humanitarian access constraints.</desc>
-              <path class="viz-mountain-back" d="M20 257 L102 126 L157 202 L238 82 L315 201 L390 111 L468 221 L552 132 L700 271 L700 322 L20 322 Z"/>
-              <path class="viz-mountain-front" d="M20 276 L132 192 L206 254 L294 166 L369 256 L447 184 L531 260 L605 205 L700 281 L700 322 L20 322 Z"/>
-              <path class="viz-river" d="M52 307 C150 278 195 335 286 302 C384 267 420 333 506 303 C578 278 624 302 686 289"/>
-              <line class="viz-border" x1="406" y1="62" x2="406" y2="326"/>
-              <text class="viz-label" x="332" y="49">NEPAL</text>
-              <text class="viz-label" x="428" y="49">CHINA</text>
-              <path class="viz-route" d="M78 278 C151 239 206 257 282 218 C328 195 366 191 401 196"/>
-              <path class="viz-route viz-route-dashed" d="M413 196 C473 199 520 232 621 218"/>
-              <circle class="viz-settlement" cx="93" cy="270" r="8"/>
-              <circle class="viz-settlement" cx="284" cy="216" r="8"/>
-              <circle class="viz-settlement" cx="514" cy="231" r="8"/>
-              <circle class="viz-settlement" cx="623" cy="217" r="8"/>
-              <circle class="viz-crossing" cx="406" cy="196" r="10"/>
-              <path class="viz-flood-zone" d="M228 293 C273 274 329 279 369 298 C339 330 263 334 228 293 Z"/>
-              <text class="viz-small" x="235" y="344">flood-affected corridor</text>
-              <line class="viz-legend-line" x1="494" y1="344" x2="532" y2="344"/>
-              <text class="viz-small" x="542" y="348">response route</text>
-              <circle class="viz-settlement" cx="494" cy="365" r="6"/>
-              <text class="viz-small" x="510" y="369">community / access point</text>
-            </svg>
-            <figcaption>Conceptual access schematic, not a geographic map. It shows why response reach can depend on route continuity and crossing constraints, not distance alone.</figcaption>
-          </figure>
-        </div>
-        <div class="project-actions" aria-label="Himalayan Flood Response resources">
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>Methodology</span><small>Public case study forthcoming</small><b aria-hidden="true">—</b></span>
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>Data</span><small>Public release forthcoming</small><b aria-hidden="true">—</b></span>
-          <span class="project-action is-disabled" role="link" aria-disabled="true"><span>GitHub repository</span><small>Public repository forthcoming</small><b aria-hidden="true">—</b></span>
-        </div>
-      </article>
-
-      <article class="project-row" id="ai-governance">
-        <div class="project-main">
-          <div class="project-copy">
-            <div class="project-kicker"><span class="project-index">04</span><span class="status-chip">OPEN-SOURCE LAYER</span><span>AI GOVERNANCE</span></div>
-            <h2>AI Governance Diffusion &amp; Non-Proliferation</h2>
-            <p class="project-summary">An open-source research program examining AI governance, non-proliferation, and the multilateral process terrain through which policy ideas move, change, and potentially become institutionalized.</p>
-            <p class="project-detail">The public reproducibility layer converts structured process-evidence profiles into a mixed-data distance, applies a correction for non-Euclidean structure, and uses principal coordinates analysis to map institutional similarity. The broader project asks how governance provisions diffuse across venues while keeping similarity distinct from influence or political alignment.</p>
-            <div class="project-tags" aria-label="AI governance project methods">
-              <span>AI governance</span><span>PCoA</span><span>Institutional mapping</span><span>Policy diffusion</span>
-            </div>
-          </div>
-
-          <figure class="project-visual">
-            <div class="visual-bar"><span>PUBLIC REPRODUCIBILITY LAYER</span><span>EVIDENCE → DISTANCE → PROCESS TERRAIN</span></div>
-            <svg viewBox="0 0 720 390" role="img" aria-labelledby="ai-viz-title ai-viz-desc">
-              <title id="ai-viz-title">AI governance process terrain methodology</title>
-              <desc id="ai-viz-desc">A conceptual flow from structured process evidence to mixed-data distances and a two-dimensional institutional terrain used to compare governance processes without equating proximity with political alignment.</desc>
-              <defs>
-                <marker id="arrow-blue-4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L6,3 z" class="viz-arrow-fill"/>
-                </marker>
-              </defs>
-              <rect class="viz-stage" x="28" y="58" width="164" height="124" rx="4"/>
-              <text class="viz-label" x="48" y="86">PROCESS EVIDENCE</text>
-              <rect class="viz-matrix-cell" x="49" y="105" width="22" height="18"/>
-              <rect class="viz-matrix-cell" x="75" y="105" width="22" height="18"/>
-              <rect class="viz-matrix-cell viz-matrix-cell-on" x="101" y="105" width="22" height="18"/>
-              <rect class="viz-matrix-cell" x="127" y="105" width="22" height="18"/>
-              <rect class="viz-matrix-cell viz-matrix-cell-on" x="153" y="105" width="18" height="18"/>
-              <rect class="viz-matrix-cell viz-matrix-cell-on" x="49" y="128" width="22" height="18"/>
-              <rect class="viz-matrix-cell" x="75" y="128" width="22" height="18"/>
-              <rect class="viz-matrix-cell" x="101" y="128" width="22" height="18"/>
-              <rect class="viz-matrix-cell viz-matrix-cell-on" x="127" y="128" width="22" height="18"/>
-              <rect class="viz-matrix-cell" x="153" y="128" width="18" height="18"/>
-              <text class="viz-caption" x="49" y="166">coded process profile</text>
-
-              <line class="viz-connector" x1="192" y1="120" x2="244" y2="120" marker-end="url(#arrow-blue-4)"/>
-
-              <rect class="viz-stage" x="248" y="58" width="168" height="124" rx="4"/>
-              <text class="viz-label" x="268" y="86">STRUCTURAL DISTANCE</text>
-              <circle class="viz-distance-ring" cx="306" cy="130" r="27"/>
-              <circle class="viz-distance-ring" cx="357" cy="130" r="27"/>
-              <line class="viz-distance-link" x1="306" y1="130" x2="357" y2="130"/>
-              <text class="viz-caption" x="268" y="166">mixed-data comparison</text>
-
-              <line class="viz-connector" x1="416" y1="120" x2="468" y2="120" marker-end="url(#arrow-blue-4)"/>
-
-              <rect class="viz-stage" x="472" y="58" width="220" height="256" rx="4"/>
-              <text class="viz-label" x="492" y="86">PROCESS TERRAIN</text>
-              <line class="viz-axis" x1="505" y1="267" x2="659" y2="267"/>
-              <line class="viz-axis" x1="520" y1="105" x2="520" y2="282"/>
-              <circle class="viz-point viz-point-a" cx="548" cy="154" r="7"/>
-              <circle class="viz-point viz-point-a" cx="573" cy="177" r="6"/>
-              <circle class="viz-point viz-point-b" cx="624" cy="136" r="7"/>
-              <circle class="viz-point viz-point-b" cx="645" cy="163" r="5"/>
-              <circle class="viz-point viz-point-c" cx="579" cy="232" r="7"/>
-              <circle class="viz-point viz-point-c" cx="612" cy="244" r="6"/>
-              <path class="viz-halo" d="M532 161c13-36 63-43 77 0 10 39-60 48-77 0z"/>
-              <path class="viz-halo" d="M602 151c12-37 58-37 72-2 10 37-54 46-72 2z"/>
-              <text class="viz-small" x="537" y="299">similarity in coded profiles</text>
-
-              <path class="viz-question-line" d="M332 182 C332 234 284 233 284 282"/>
-              <text class="viz-label" x="48" y="247">BROADER RESEARCH QUESTION</text>
-              <rect class="viz-question" x="48" y="264" width="348" height="50" rx="4"/>
-              <text class="viz-node-text" x="66" y="286">How do governance provisions move across venues</text>
-              <text class="viz-node-text" x="66" y="303">and change as they diffuse?</text>
-              <text class="viz-small" x="48" y="350">Proximity ≠ influence, alignment, preference, or causal effect.</text>
-            </svg>
-            <figcaption>The public repository reproduces a structured process-terrain analysis. The broader research program uses that terrain as one input to questions about governance diffusion and non-proliferation.</figcaption>
-          </figure>
-        </div>
-        <div class="project-actions" aria-label="AI Governance resources">
-          <a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation/blob/main/REPRODUCIBILITY.md"><span>Methodology</span><small>Reproducibility contract</small><b aria-hidden="true">↗</b></a>
-          <a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation/tree/main/data"><span>Data</span><small>Public / non-public boundary</small><b aria-hidden="true">↗</b></a>
-          <a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation"><span>GitHub repository</span><small>Sanitized public layer</small><b aria-hidden="true">↗</b></a>
-        </div>
-      </article>
-    </section>
-
-    <section class="un-disclosure" aria-labelledby="disclosure-heading">
-      <h2 id="disclosure-heading">Scope &amp; disclosure</h2>
-      <p>These are personal research and development projects, not official United Nations records, U.S. Government products, or institutional positions. Public links are limited to releasable materials; unavailable methodology, data, or code is marked as forthcoming rather than implied to be public.</p>
-    </section>
-  </main>
-
-  <footer class="un-footer">
-    <span>John S. Lystad · UN applied research portfolio</span>
-    <span><a href="../research.html">Research &amp; Applied Work</a> · <a href="../code.html">Code &amp; Development</a></span>
-  </footer>
-</body>
-</html>
+<a class="skip-link" href="#content">Skip to projects</a>
+<header class="un-masthead"><div class="un-masthead-inner"><a class="un-mark" href="../index.html" aria-label="John S. Lystad home"><img src="transcript-agent/reports/hlw-cuba/seal.png" width="72" height="72" alt="U.S. Mission to the United Nations"></a><div class="un-identity"><p>John S. Lystad · Applied research</p><h1>UN Projects</h1></div></div></header>
+<nav class="un-nav" aria-label="Project navigation"><a href="../index.html">← Main site</a><a href="#transcript-intelligence">Transcripts</a><a href="#peacekeeping">Peacekeeping</a><a href="#himalayan-flood">Himalayan flood</a><a href="#ai-governance">AI governance</a></nav>
+<main id="content" class="un-main"><div class="un-intro"><p>My UN projects examine what states say, how peacekeeping resources are used, where aid access breaks down, and how AI rules spread.</p></div>
+<section class="project-list" aria-label="Projects, newest first"><article class="project-row" id="transcript-intelligence" aria-labelledby="heading-transcript-intelligence">
+<div class="project-main"><div class="project-copy"><p class="project-kicker"><span class="project-index">01</span> / Current project</p><h2 id="heading-transcript-intelligence"><a href="transcript-agent/">UN Transcript Intelligence</a></h2><p class="project-summary">The workspace turns UN proceedings into a searchable, source-linked record. Choose dates, meetings, and topics, then examine recurring language, compare groups of passages, and open the source behind each pattern. Coverage checks identify gaps in the available record.</p><p class="project-open"><a href="transcript-agent/">Open the transcript workspace <span aria-hidden="true">→</span></a></p></div>
+<figure class="project-visual"><div class="visual-bar"><span>From speech to evidence</span><span class="visual-type">Schematic</span></div><svg viewBox="0 0 560 344" role="img" aria-labelledby="transcript-title transcript-desc">
+<title id="transcript-title">Collect passages, explore language, inspect sources</title><desc id="transcript-desc">Illustrative documents become groups of similar passages. A return arrow links the selected passage to the original record. These are schematic groups, not fitted results.</desc>
+<defs><marker id="transcript-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 7 4 1 7" class="arrow-head"/></marker></defs>
+<text class="diagram-label" x="94" y="48" text-anchor="middle">Collect</text><text class="diagram-label" x="280" y="48" text-anchor="middle">Explore</text><text class="diagram-label" x="466" y="48" text-anchor="middle">Inspect</text>
+<g class="paper-stack"><rect x="46" y="94" width="92" height="122" rx="4"/><rect x="38" y="102" width="92" height="122" rx="4"/><rect x="30" y="110" width="92" height="122" rx="4"/></g>
+<path class="text-line" d="M48 135h56M48 150h56M48 165h40M48 195h52M48 210h44"/><path class="accent-line" d="M48 180h56"/>
+<path class="connector" d="M144 166h49" marker-end="url(#transcript-arrow)"/>
+<ellipse class="cluster-halo" cx="244" cy="127" rx="36" ry="40"/><ellipse class="cluster-halo" cx="313" cy="208" rx="37" ry="38"/>
+<g class="passage-dot"><circle cx="233" cy="112" r="7"/><circle cx="256" cy="120" r="7"/><circle cx="238" cy="140" r="7"/><circle cx="255" cy="150" r="7"/></g>
+<g class="passage-square"><rect x="294" y="105" width="13" height="13"/><rect x="318" y="119" width="13" height="13"/><rect x="301" y="141" width="13" height="13"/></g>
+<g class="passage-diamond"><path d="m305 181 8 8-8 8-8-8z"/><path d="m326 212 8 8-8 8-8-8z"/><path d="m298 221 8 8-8 8-8-8z"/></g>
+<circle class="selected-ring" cx="313" cy="208" r="10"/><path class="connector selected-connector" d="M331 202 356 166h34" marker-end="url(#transcript-arrow)"/>
+<rect class="source-card" x="408" y="94" width="116" height="144" rx="4"/><path class="text-line" d="M429 125h70M429 142h70M429 159h48M429 194h70M429 211h57"/><path class="accent-line" d="M429 177h70"/>
+<path class="return-path" d="M466 249v33H77v-38" marker-end="url(#transcript-arrow)"/>
+<text class="diagram-note" x="280" y="317" text-anchor="middle">Return to the original passage</text></svg><figcaption>Illustrative passages. Similar language prompts closer reading; it does not establish political agreement.</figcaption></figure></div>
+<div class="project-actions" aria-label="UN Transcript Intelligence resources"><a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent/blob/main/docs/BROWSER_ANALYSIS.md" aria-label="Methodology for UN Transcript Intelligence">Methodology<span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent/tree/main/data" aria-label="Data for UN Transcript Intelligence">Data<span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/LystadJS/UNGA81-Transcript-Agent" aria-label="GitHub repository for UN Transcript Intelligence">GitHub repository<span aria-hidden="true">↗</span></a></div></article><article class="project-row" id="peacekeeping" aria-labelledby="heading-peacekeeping">
+<div class="project-main"><div class="project-copy"><p class="project-kicker"><span class="project-index">02</span> / Ongoing</p><h2 id="heading-peacekeeping">UN Peacekeeping Optimization</h2><p class="project-summary">This ongoing project asks how UN peacekeeping can use limited resources more effectively. The aim is to compare mission needs, mandates, and logistical constraints, then examine the trade-offs between feasible options.</p></div>
+<figure class="project-visual"><div class="visual-bar"><span>Constraints before choices</span><span class="visual-type">Conceptual design</span></div><svg viewBox="0 0 560 344" role="img" aria-labelledby="peace-title peace-desc">
+<title id="peace-title">Constraints shape the available mission options</title><desc id="peace-desc">Mandate, logistics, and resources feed into a set of feasible options. Options A, B, and C are shown equally; no preferred configuration or measured performance is implied.</desc>
+<defs><marker id="peace-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 7 4 1 7" class="arrow-head"/></marker></defs>
+<g class="constraint-box"><rect x="24" y="52" width="152" height="58" rx="4"/><rect x="204" y="52" width="152" height="58" rx="4"/><rect x="384" y="52" width="152" height="58" rx="4"/></g>
+<text class="diagram-label" x="100" y="87" text-anchor="middle">Mandate</text><text class="diagram-label" x="280" y="87" text-anchor="middle">Logistics</text><text class="diagram-label" x="460" y="87" text-anchor="middle">Resources</text>
+<path class="connector" d="M100 110v25h360v-25M280 110v48" marker-end="url(#peace-arrow)"/>
+<rect class="decision-box" x="155" y="163" width="250" height="62" rx="4"/><text class="diagram-label inverse" x="280" y="201" text-anchor="middle">Feasible options</text>
+<path class="connector" d="M280 225v25M100 270v-20h360v20M280 250v20"/><path class="connector" d="M100 262v13" marker-end="url(#peace-arrow)"/><path class="connector" d="M280 262v13" marker-end="url(#peace-arrow)"/><path class="connector" d="M460 262v13" marker-end="url(#peace-arrow)"/>
+<g class="option-box"><rect x="24" y="280" width="152" height="46" rx="4"/><rect x="204" y="280" width="152" height="46" rx="4"/><rect x="384" y="280" width="152" height="46" rx="4"/></g>
+<text class="diagram-label" x="100" y="310" text-anchor="middle">Option A</text><text class="diagram-label" x="280" y="310" text-anchor="middle">Option B</text><text class="diagram-label" x="460" y="310" text-anchor="middle">Option C</text></svg><figcaption>A framework for comparing alternatives, not a fitted model or a preferred mission plan.</figcaption></figure></div>
+<div class="project-actions" aria-label="UN Peacekeeping Optimization resources"><span class="project-action unavailable">Methodology<small>Not yet published</small></span><span class="project-action unavailable">Data<small>Not yet published</small></span><span class="project-action unavailable">GitHub repository<small>Not yet published</small></span></div></article><article class="project-row" id="himalayan-flood" aria-labelledby="heading-himalayan-flood">
+<div class="project-main"><div class="project-copy"><p class="project-kicker"><span class="project-index">03</span> / Applied project</p><h2 id="heading-himalayan-flood">Himalayan Flood Response</h2><p class="project-summary">This project examines humanitarian access and response effectiveness along the Nepalese–Chinese border. The central question is practical: which obstacles stand between a response effort and the communities it is meant to reach?</p></div>
+<figure class="project-visual"><div class="visual-bar"><span>Nearby is not always reachable</span><span class="visual-type">Access schematic</span></div><svg viewBox="0 0 560 344" role="img" aria-labelledby="flood-title flood-desc">
+<title id="flood-title">A broken route separates a response hub from a community</title><desc id="flood-desc">Schematic mountain terrain and a river lie between an aid hub and a community. A red cross marks a disrupted crossing; the onward connection is dashed. This is not a map or a documented event location.</desc>
+<path class="ridge-back" d="M0 239 67 104 102 159 173 66 237 164 285 112 333 180 405 88 477 182 526 135 560 214V277H0Z"/>
+<path class="snow" d="m145 109 28-43 28 43-23-10-10 12-10-11zM378 127l27-39 24 36-19-8-11 12-10-9z"/>
+<path class="ridge-front" d="M0 258 80 174 137 227 220 159 288 239 359 170 431 223 490 170 560 246V288H0Z"/>
+<path class="river" d="M282 148c-62 43 40 71-8 106s-12 47 13 64"/>
+<path class="route-open" d="M66 246c60-39 82 23 140-1l34-10"/>
+<path class="route-unavailable" d="M296 236c65-30 94 34 193 2"/>
+<path class="route-break" d="m248 234 42 1M260 225l17 19M277 225l-17 19"/>
+<rect class="hub" x="55" y="235" width="24" height="24" rx="2"/><path class="hub-detail" d="M62 253v-10h10v10"/>
+<circle class="community" cx="490" cy="239" r="12"/>
+<path class="label-leader" d="M269 209V34h61"/><text class="diagram-label" x="340" y="40">Disrupted</text><text class="diagram-label" x="340" y="71">crossing</text>
+<text class="diagram-label" x="36" y="306">Aid hub</text><text class="diagram-label" x="390" y="306">Community</text></svg><figcaption>Illustrative terrain, not a geographic map. A disrupted crossing can break the route to a nearby community.</figcaption></figure></div>
+<div class="project-actions" aria-label="Himalayan Flood Response resources"><span class="project-action unavailable">Methodology<small>Not yet published</small></span><span class="project-action unavailable">Data<small>Not yet published</small></span><span class="project-action unavailable">GitHub repository<small>Not yet published</small></span></div></article><article class="project-row" id="ai-governance" aria-labelledby="heading-ai-governance">
+<div class="project-main"><div class="project-copy"><p class="project-kicker"><span class="project-index">04</span> / Public research</p><h2 id="heading-ai-governance">AI Governance &amp; Non-Proliferation</h2><p class="project-summary">This research examines how AI governance provisions move across institutions, and what that means for non-proliferation. Its public release maps similarities among selected multilateral processes using coded evidence.</p></div>
+<figure class="project-visual"><div class="visual-bar"><span>Comparing governance processes</span><span class="visual-type">Public PCoA baseline</span></div><svg class="ai-chart" viewBox="0 0 560 366" role="img" aria-labelledby="ai-title ai-desc">
+<title id="ai-title">Seven AI governance processes in the public PCoA baseline</title><desc id="ai-desc">Reproduced principal coordinates, using the same scale on both axes. The first two axes retain 66.9 percent of corrected positive inertia. Distances summarize coded process-evidence similarity, not influence, political agreement, or diffusion probabilities. Exact coordinates and source code are available immediately below.</desc>
+<path class="plot-axis" d="M30 341H537M30 341V27"/><path class="zero-guide" d="M30 155H537M228 27V341"/>
+<text class="axis-title" x="350" y="362" text-anchor="middle">PCoA 1 · 39.8%</text><text class="axis-title" transform="translate(20 166) rotate(-90)" text-anchor="middle">PCoA 2 · 27.1%</text><g class="process-point" data-venue="GDC" data-pcoa1="-0.115746195214" data-pcoa2="-0.046991477856"><title>GDC: (-0.115746, -0.046991)</title><path class="point-leader" d="M162 182 146 211h-27"/><circle cx="162.025" cy="181.785" r="6"/><text class="process-label" x="83" y="222"><tspan x="83" dy="0">GDC</tspan></text></g><g class="process-point" data-venue="AI Panel / Dialogue" data-pcoa1="-0.115620264458" data-pcoa2="-0.008982967202"><title>AI Panel / Dialogue: (-0.115620, -0.008983)</title><path class="point-leader" d="M162 160 144 140h-11"/><circle cx="162.096" cy="160.120" r="6"/><text class="process-label" x="33" y="143"><tspan x="33" dy="0">AI Panel /</tspan><tspan x="33" dy="23">Dialogue</tspan></text></g><g class="process-point" data-venue="ITU C24/85" data-pcoa1="-0.201763199912" data-pcoa2="0.113429111295"><title>ITU C24/85: (-0.201763, 0.113429)</title><path class="point-leader" d="M113 90 102 65"/><circle cx="112.995" cy="90.345" r="6"/><text class="process-label" x="42" y="52"><tspan x="42" dy="0">ITU C24/85</tspan></text></g><g class="process-point" data-venue="WSIS+20" data-pcoa1="-0.098116054147" data-pcoa2="0.105182378106"><title>WSIS+20: (-0.098116, 0.105182)</title><path class="point-leader" d="M172 95h6"/><circle cx="172.074" cy="95.046" r="6"/><text class="process-label" x="182" y="107"><tspan x="182" dy="0">WSIS+20</tspan></text></g><g class="process-point" data-venue="Global Dialogue 2026" data-pcoa1="0.077909246277" data-pcoa2="-0.284644291766"><title>Global Dialogue 2026: (0.077909, -0.284644)</title><path class="point-leader" d="M272 317h24"/><circle cx="272.408" cy="317.247" r="6"/><text class="process-label" x="305" y="301"><tspan x="305" dy="0">Global Dialogue</tspan><tspan x="305" dy="23">2026</tspan></text></g><g class="process-point" data-venue="CSTD 29" data-pcoa1="0.322772482969" data-pcoa2="0.171557827464"><title>CSTD 29: (0.322772, 0.171558)</title><path class="point-leader" d="M412 57h10"/><circle cx="411.980" cy="57.212" r="6"/><text class="process-label" x="427" y="52"><tspan x="427" dy="0">CSTD 29</tspan></text></g><g class="process-point" data-venue="UNESCO AI Ethics" data-pcoa1="0.130563984484" data-pcoa2="-0.049550580041"><title>UNESCO AI Ethics: (0.130564, -0.049551)</title><path class="point-leader" d="M302 183 320 190"/><circle cx="302.421" cy="183.244" r="6"/><text class="process-label" x="328" y="199"><tspan x="328" dy="0">UNESCO AI</tspan><tspan x="328" dy="23">Ethics</tspan></text></g></svg><figcaption>Proximity reflects coded evidence, not influence or political agreement. This map does not predict which rules will spread.</figcaption><details class="figure-data"><summary>Coordinates &amp; source</summary><div class="data-content"><p>Principal coordinates analysis (PCoA) of 7 processes and 19 coded features. The two axes retain 66.9% of corrected positive inertia; distances in two dimensions are approximate.</p><div class="data-table"><table><caption>Public process-evidence baseline</caption><thead><tr><th scope="col">Process</th><th scope="col">PCoA 1</th><th scope="col">PCoA 2</th></tr></thead><tbody><tr><th scope="row">GDC</th><td>-0.115746</td><td>-0.046991</td></tr><tr><th scope="row">AI Panel / Dialogue</th><td>-0.115620</td><td>-0.008983</td></tr><tr><th scope="row">ITU C24/85</th><td>-0.201763</td><td>0.113429</td></tr><tr><th scope="row">WSIS+20</th><td>-0.098116</td><td>0.105182</td></tr><tr><th scope="row">Global Dialogue 2026</th><td>0.077909</td><td>-0.284644</td></tr><tr><th scope="row">CSTD 29</th><td>0.322772</td><td>0.171558</td></tr><tr><th scope="row">UNESCO AI Ethics</th><td>0.130564</td><td>-0.049551</td></tr></tbody></table></div><p><a href="https://github.com/LystadJS/project-ai-governance-non-proliferation/blob/main/analysis/01_pcoa_process_terrain.R">Reproduction code</a> · Five equally weighted feature blocks, structural Gower distance, and Lingoes correction. Source blob: <code>ec6fc78</code>.</p></div></details></figure></div>
+<div class="project-actions" aria-label="AI Governance &amp; Non-Proliferation resources"><a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation/blob/main/REPRODUCIBILITY.md" aria-label="Methodology for AI Governance &amp; Non-Proliferation">Methodology<span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation/blob/main/data/README.md" aria-label="Data for AI Governance &amp; Non-Proliferation">Data<span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/LystadJS/project-ai-governance-non-proliferation" aria-label="GitHub repository for AI Governance &amp; Non-Proliferation">GitHub repository<span aria-hidden="true">↗</span></a></div></article></section>
+<p class="un-disclosure">Personal research, not official UN or U.S. Government positions.</p></main>
+<footer class="un-footer"><span>John S. Lystad</span><div><a href="../research.html">Research &amp; Applied Work</a><a href="../code.html">Code &amp; Development</a></div></footer>
+</body></html>

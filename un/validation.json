@@ -1,14 +1,27 @@
-[
-  {
-    "width": 1440,
-    "navigation": true,
-    "nested_review": true,
-    "overflow": false
+{
+  "date": "2026-10-05",
+  "scope": "UN portfolio refinement and masthead consistency",
+  "baseline_commit": "dbb97cbd4b33705801fe6fcea24ca75d48c21e7b",
+  "renderer": "Local Chromium; existing HTML, styles, and seal inlined; scripts disabled for visual checks",
+  "header_checks": {
+    "pages": 7,
+    "renders": 25,
+    "status": "passed",
+    "checks": ["USUN seal loaded at 64 or 72 pixels", "Masthead text is #C1A783", "No header text exceeds header bounds"],
+    "portfolio_widths": [320, 390, 600, 768, 960, 1024, 1440],
+    "other_page_widths": [320, 390, 1440]
   },
-  {
-    "width": 390,
-    "navigation": true,
-    "nested_review": true,
-    "overflow": false
-  }
-]
+  "portfolio_checks": {
+    "projects": 4,
+    "resource_controls": 12,
+    "keyboard_source_table": "passed",
+    "keyboard_focus_indicator": "passed",
+    "horizontal_overflow": "none at tested widths",
+    "pcoa_source_blob": "ec6fc78f3c991743f3ded8be58c68c6031277ffe",
+    "pcoa_coordinate_check": "passed; maximum difference from rounded public coordinates 4.83e-7",
+    "pcoa_axis_scale": "570 SVG units per coordinate unit on both axes"
+  },
+  "preservation": "Analytical JavaScript and data unchanged; passage audit receives only a stylesheet link",
+  "remaining_observation": "The existing HLW Cuba brief body has horizontal overflow at 320 pixels; its masthead passes. This is outside the header change.",
+  "production_browser_check": "Not performed in this record; local visual verification is distinct from Pages deployment status"
+}

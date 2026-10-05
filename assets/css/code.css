@@ -1,0 +1,754 @@
+/* Code & Development page
+   Visual reconciliation with the current About-page system.
+   Scoped to body[data-page="code"] so shared site assets remain untouched. */
+
+body[data-page="code"] {
+  --code-panel-bg:
+    radial-gradient(circle at 12% 20%, rgba(101,69,126,.08), transparent 48%),
+    linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
+    rgba(13,11,16,.72);
+  --code-panel-raised:
+    radial-gradient(circle at 14% 18%, rgba(101,69,126,.105), transparent 52%),
+    linear-gradient(145deg, rgba(255,255,255,.022), rgba(255,255,255,.004)),
+    rgba(15,11,18,.82);
+}
+
+body[data-page="code"] main {
+  overflow: visible;
+}
+
+/* ---------------------------------------------------------------------
+   Hero — same hierarchy, spacing, and serif-led typography as About.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .code-page-hero {
+  height: auto;
+  min-height: 0;
+  padding: clamp(5rem, 8vw, 7rem) 0 4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-page="code"] .code-page-hero .page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+  gap: clamp(2rem, 3.8vw, 3.25rem);
+  align-items: end;
+}
+
+body[data-page="code"] .code-page-hero .kicker {
+  margin: 0 0 .7rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .62rem;
+  line-height: 1.2;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .code-page-hero h1 {
+  max-width: none;
+  margin: 0 0 1rem;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 600;
+  line-height: .88;
+  letter-spacing: -.05em;
+}
+
+body[data-page="code"] .code-page-hero .page-hero-grid > div > p:not(.kicker) {
+  max-width: 830px;
+  margin: 0;
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.42;
+}
+
+body[data-page="code"] .page-index-card {
+  align-self: end;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid rgba(74,53,71,.72);
+  background: var(--code-panel-bg);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 12px 32px rgba(0,0,0,.15);
+}
+
+body[data-page="code"] .page-index-card div {
+  display: grid;
+  grid-template-columns: minmax(92px, .72fr) minmax(0, 1.28fr);
+  gap: .85rem;
+  align-items: baseline;
+  padding: .7rem 0;
+  border-top: 1px solid rgba(74,53,71,.46);
+}
+
+body[data-page="code"] .page-index-card div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+body[data-page="code"] .page-index-card div:last-child {
+  padding-bottom: 0;
+}
+
+body[data-page="code"] .page-index-card span {
+  color: #8f8290;
+  font-family: var(--mono);
+  font-size: .54rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .page-index-card strong,
+body[data-page="code"] .page-index-card strong a {
+  color: #ded4dc;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+body[data-page="code"] .page-index-card strong a {
+  text-decoration: none;
+}
+
+body[data-page="code"] .page-index-card strong a:hover,
+body[data-page="code"] .page-index-card strong a:focus-visible {
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------------
+   Sections — use About's 84px index rail and 5–8rem section rhythm.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .code-page-layout {
+  padding: 0;
+}
+
+body[data-page="code"] .code-page-section,
+body[data-page="code"] .driftmapr-section {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  scroll-margin-top: 110px;
+}
+
+body[data-page="code"] .code-page-section:first-child {
+  border-top: 0;
+}
+
+body[data-page="code"] .code-section-label,
+body[data-page="code"] .driftmapr-section .code-section-label {
+  margin: 0;
+  padding-top: .15rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .7rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .code-section-body {
+  min-width: 0;
+}
+
+body[data-page="code"] .code-section-heading {
+  display: block;
+  margin-bottom: 3rem;
+}
+
+body[data-page="code"] .code-section-heading h2,
+body[data-page="code"] .driftmapr-section .dm-header h2 {
+  max-width: 920px;
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: .95;
+  letter-spacing: -.035em;
+}
+
+body[data-page="code"] .code-section-heading p {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .94rem;
+  line-height: 1.68;
+}
+
+/* ---------------------------------------------------------------------
+   Shared panel language — mirrors About cards/panels.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .code-card,
+body[data-page="code"] .signal-console,
+body[data-page="code"] .code-hub-link,
+body[data-page="code"] .driftmapr-section .dm-problem,
+body[data-page="code"] .driftmapr-section .dm-alignment {
+  border: 1px solid var(--line);
+  background: var(--code-panel-bg);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
+}
+
+body[data-page="code"] .code-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(330px, .82fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+/* Repository cards */
+body[data-page="code"] .code-hub-list {
+  display: grid;
+  gap: .6rem;
+}
+
+body[data-page="code"] .code-hub-link {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .8rem;
+  align-items: center;
+  min-height: 78px;
+  padding: .9rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+body[data-page="code"] .code-hub-link:not(.code-hub-link-muted):hover,
+body[data-page="code"] .code-hub-link:not(.code-hub-link-muted):focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(191,49,82,.48);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(101,69,126,.13), transparent 54%),
+    linear-gradient(90deg, rgba(141,23,50,.055), transparent 76%),
+    rgba(16,12,19,.74);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    inset 0 0 0 1px rgba(255,255,255,.018);
+  outline: none;
+}
+
+body[data-page="code"] .code-hub-link strong {
+  display: block;
+  color: #ded4dc;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+body[data-page="code"] .code-hub-link small {
+  display: block;
+  margin-top: .28rem;
+  color: #817582;
+  font-family: var(--sans);
+  font-size: .72rem;
+  line-height: 1.48;
+}
+
+body[data-page="code"] .code-hub-arrow,
+body[data-page="code"] .code-hub-status {
+  color: #706371;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .05em;
+}
+
+body[data-page="code"] .code-hub-link:hover .code-hub-arrow,
+body[data-page="code"] .code-hub-link:focus-visible .code-hub-arrow {
+  color: var(--paper);
+}
+
+body[data-page="code"] #un-projects .code-hub-link {
+  max-width: 780px;
+  min-height: 90px;
+}
+
+/* ---------------------------------------------------------------------
+   Interactive terminal — retain functionality, remove excess hardware feel.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .signal-console {
+  min-width: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(101,69,126,.07), transparent 42%),
+    rgba(10,8,12,.88);
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.22),
+    inset 0 0 0 1px rgba(255,255,255,.012);
+}
+
+body[data-page="code"] .console-hardware {
+  display: none;
+}
+
+body[data-page="code"] .console-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  min-height: 42px;
+  padding: .7rem .9rem;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(141,23,50,.025), transparent 68%),
+    rgba(15,11,18,.72);
+}
+
+body[data-page="code"] .console-title,
+body[data-page="code"] .console-status {
+  color: #928594;
+  font-family: var(--mono);
+  font-size: .55rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .console-title {
+  color: #c2b5bf;
+}
+
+body[data-page="code"] .status-lamp {
+  box-shadow: none;
+}
+
+body[data-page="code"] .console-screen {
+  min-height: 500px;
+  padding: 1rem 1.05rem 1.15rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.008), transparent 18%),
+    rgba(7,7,9,.38);
+}
+
+body[data-page="code"] .console-line {
+  font-family: var(--mono);
+  font-size: .64rem;
+  line-height: 1.55;
+}
+
+body[data-page="code"] .console-output {
+  margin-top: .75rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  max-height: none;
+  padding-right: .6rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(146,112,172,.28) transparent;
+}
+
+body[data-page="code"] .console-output pre {
+  min-width: max-content;
+  margin: 0;
+}
+
+body[data-page="code"] .console-output code {
+  display: block;
+  color: #d5cad3;
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.62;
+}
+
+/* ---------------------------------------------------------------------
+   Repository/method library.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .code-library-panel {
+  padding: clamp(1rem, 2vw, 1.35rem);
+  background: var(--code-panel-bg);
+}
+
+body[data-page="code"] .code-library-span {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0 0 .75rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .58rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .code-library-span::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(74,53,71,.88), rgba(74,53,71,.12));
+}
+
+body[data-page="code"] .code-library-hubs {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-page="code"] .code-library-index {
+  padding-top: 1.2rem;
+}
+
+body[data-page="code"] .code-library-group + .code-library-group {
+  margin-top: 1.35rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(49,38,50,.84);
+}
+
+body[data-page="code"] .code-library-group-title {
+  display: flex;
+  gap: .55rem;
+  align-items: baseline;
+  margin-bottom: .65rem;
+  color: #9e919e;
+  font-family: var(--mono);
+  font-size: .56rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .code-library-group-title > span {
+  color: var(--crimson-bright);
+}
+
+body[data-page="code"] .code-method-list {
+  display: grid;
+  gap: .45rem;
+}
+
+body[data-page="code"] .code-method-button {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: .7rem;
+  align-items: center;
+  width: 100%;
+  min-height: 58px;
+  padding: .68rem .76rem;
+  border: 1px solid rgba(74,53,71,.62);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.012), rgba(255,255,255,.002)),
+    rgba(11,9,13,.62);
+  color: #aaa0aa;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    color 140ms ease;
+}
+
+body[data-page="code"] .code-method-button:hover,
+body[data-page="code"] .code-method-button:focus-visible,
+body[data-page="code"] .code-method-button[aria-pressed="true"] {
+  transform: translateY(-1px);
+  border-color: rgba(191,49,82,.46);
+  background:
+    linear-gradient(90deg, rgba(141,23,50,.065), transparent 80%),
+    rgba(15,11,17,.78);
+  color: var(--paper);
+  outline: none;
+}
+
+body[data-page="code"] .code-method-index {
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .52rem;
+  letter-spacing: .08em;
+}
+
+body[data-page="code"] .code-method-copy strong {
+  display: block;
+  color: inherit;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+body[data-page="code"] .code-method-copy small {
+  display: block;
+  margin-top: .2rem;
+  color: #7f7480;
+  font-family: var(--mono);
+  font-size: .49rem;
+  line-height: 1.35;
+  letter-spacing: .02em;
+}
+
+body[data-page="code"] .code-method-button[aria-pressed="true"] .code-method-copy small {
+  color: #a798a3;
+}
+
+/* ---------------------------------------------------------------------
+   driftmapR — reconcile with the same hierarchy and panel language.
+   --------------------------------------------------------------------- */
+
+body[data-page="code"] .driftmapr-section {
+  --dm-copy: #ada0ad;
+  --dm-muted: #817582;
+  --dm-rule: rgba(49,38,50,.88);
+}
+
+body[data-page="code"] .driftmapr-section .dm-header {
+  max-width: 900px;
+  margin-bottom: 3rem;
+}
+
+body[data-page="code"] .driftmapr-section .dm-status {
+  margin: 0 0 .65rem;
+  color: var(--crimson-bright);
+  font-family: var(--mono);
+  font-size: .58rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .driftmapr-section .dm-lede {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+body[data-page="code"] .driftmapr-section .dm-intro {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .94rem;
+  line-height: 1.68;
+}
+
+body[data-page="code"] .driftmapr-section .dm-problem {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin: 0 0 1rem;
+  padding: clamp(1.15rem, 2.2vw, 1.55rem);
+  border-top: 1px solid var(--line);
+}
+
+body[data-page="code"] .driftmapr-section .dm-problem h3 {
+  margin: 0;
+  color: #ded4dc;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+}
+
+body[data-page="code"] .driftmapr-section .dm-problem h3 em {
+  color: #b7a3b8;
+  font-weight: inherit;
+}
+
+body[data-page="code"] .driftmapr-section .dm-problem p {
+  margin: 0 0 .8rem;
+  color: #ada0ad;
+  font-family: var(--sans);
+  font-size: .9rem;
+  line-height: 1.68;
+}
+
+body[data-page="code"] .driftmapr-section .dm-problem p:last-child {
+  margin-bottom: 0;
+}
+
+body[data-page="code"] .driftmapr-section .dm-alignment {
+  overflow: hidden;
+  margin: 0;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(101,69,126,.07), transparent 48%),
+    rgba(10,8,12,.72);
+}
+
+body[data-page="code"] .driftmapr-section .dm-figure-bar {
+  padding: .78rem 1rem;
+  border-bottom: 1px solid var(--line);
+  color: #817582;
+  font-family: var(--mono);
+  font-size: .55rem;
+  line-height: 1.5;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body[data-page="code"] .driftmapr-section .dm-figure-bar span:first-child {
+  color: #b9abb7;
+}
+
+body[data-page="code"] .driftmapr-section figcaption {
+  padding: .85rem 1rem;
+  border-top: 1px solid var(--line);
+  color: #817582;
+  font-family: var(--sans);
+  font-size: .74rem;
+  line-height: 1.62;
+}
+
+body[data-page="code"] .driftmapr-section .dm-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  margin-top: 1rem;
+}
+
+body[data-page="code"] .driftmapr-section .dm-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: .7rem .8rem;
+  border: 1px solid rgba(74,53,71,.72);
+  background: var(--code-panel-bg);
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.08;
+  text-decoration: none;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+body[data-page="code"] .driftmapr-section .dm-links a:hover,
+body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(191,49,82,.48);
+  background:
+    linear-gradient(90deg, rgba(141,23,50,.06), transparent 80%),
+    rgba(15,11,17,.78);
+  outline: none;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive behavior — mirrors About breakpoints.
+   --------------------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  body[data-page="code"] .code-page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  body[data-page="code"] .page-index-card {
+    max-width: 540px;
+  }
+
+  body[data-page="code"] .code-layout {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="code"] .console-screen {
+    min-height: 420px;
+  }
+
+  body[data-page="code"] .driftmapr-section .dm-problem {
+    grid-template-columns: 1fr;
+    gap: .9rem;
+  }
+}
+
+@media (max-width: 780px) {
+  body[data-page="code"] .code-page-section,
+  body[data-page="code"] .driftmapr-section {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+
+  body[data-page="code"] .code-section-heading {
+    margin-bottom: 2rem;
+  }
+
+  body[data-page="code"] .code-section-label,
+  body[data-page="code"] .driftmapr-section .code-section-label {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-page="code"] .code-page-hero {
+    padding: 4rem 0 3rem;
+  }
+
+  body[data-page="code"] .code-page-section,
+  body[data-page="code"] .driftmapr-section {
+    padding: 4rem 0;
+  }
+
+  body[data-page="code"] .page-index-card {
+    padding: .95rem 1rem;
+  }
+
+  body[data-page="code"] .page-index-card div {
+    grid-template-columns: 1fr;
+    gap: .2rem;
+  }
+
+  body[data-page="code"] .code-library-panel {
+    padding: 1rem;
+  }
+
+  body[data-page="code"] .console-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .25rem;
+  }
+
+  body[data-page="code"] .console-screen {
+    min-height: 360px;
+    padding: .85rem;
+  }
+
+  body[data-page="code"] .console-output code {
+    font-size: .68rem;
+  }
+
+  body[data-page="code"] .driftmapr-section .dm-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="code"] .code-hub-link,
+  body[data-page="code"] .code-method-button,
+  body[data-page="code"] .driftmapr-section .dm-links a {
+    transition: none !important;
+  }
+}
+
+@media print {
+  body[data-page="code"] .code-page-section,
+  body[data-page="code"] .driftmapr-section {
+    display: block;
+  }
+}

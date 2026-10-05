@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
   <link rel="stylesheet" href="assets/css/hero-contact-rail.css?v=project-link-1">
   <link rel="stylesheet" href="assets/css/homepage-research.css?v=minimal-1">
-  <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=minimal-1">
+  <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=popover-minimal-1">
   <style>
     .rpm-map-wrap{contain:layout paint;}
     .rpm-map.is-filtered .rpm-network-node:not(.is-active):not(.is-related){opacity:.075!important;}
@@ -216,47 +216,31 @@
       <aside class="ae-popover" id="ae-popover" aria-label="Research problem details" aria-live="polite" hidden>
         <button class="ae-popover-close" type="button" aria-label="Close research details">×</button>
       <article class="ae-panel" data-ae-panel="detect">
-        <p class="ae-panel-tag">Detect</p>
         <h3>Is the system changing?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Distinguish real change from noise, missing data, and measurement error.</dd></div>
-          <div><dt>Inputs</dt><dd>Weak indicators, missing records, shifting measures, and irregular reporting.</dd></div>
-          <div><dt>Output</dt><dd>A candidate change in latent state or structure, with uncertainty.</dd></div>
-          <div><dt>Methods</dt><dd>Latent-variable models · unsupervised learning · measurement models</dd></div>
-          <div><dt>Inferential risk</dt><dd>Proxy error, reporting shifts, or unstable representations can create false warnings.</dd></div>
+          <div><dt>Purpose</dt><dd>Distinguish real change from noise, missing data, and measurement error.</dd></div>
+          <div><dt>Statistical methods</dt><dd>Latent-variable models · unsupervised learning · measurement models</dd></div>
         </dl>
       </article>
       <article class="ae-panel" data-ae-panel="forecast">
-        <p class="ae-panel-tag">Forecast</p>
         <h3>Where—and when—could risk intensify?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Estimate where risk may rise, when it may rise, and whether the warning arrives early enough to act.</dd></div>
-          <div><dt>Inputs</dt><dd>Estimated states, temporal histories, network dependencies, and event timing.</dd></div>
-          <div><dt>Output</dt><dd>A horizon-specific forecast of location, timing, pathways, and uncertainty.</dd></div>
-          <div><dt>Methods</dt><dd>Longitudinal models · event histories · dynamic networks</dd></div>
-          <div><dt>Inferential risk</dt><dd>Late warnings, poor calibration, or information leakage can make a forecast useless or misleading.</dd></div>
+          <div><dt>Purpose</dt><dd>Estimate where risk may rise, when it may rise, and whether the warning arrives early enough to act.</dd></div>
+          <div><dt>Statistical methods</dt><dd>Longitudinal models · event histories · dynamic networks</dd></div>
         </dl>
       </article>
       <article class="ae-panel" data-ae-panel="intervene">
-        <p class="ae-panel-tag">Intervene</p>
         <h3>What could change the outcome?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Compare feasible actions and estimate which ones could change the trajectory.</dd></div>
-          <div><dt>Inputs</dt><dd>Candidate actions, operational constraints, and observational or experimental evidence.</dd></div>
-          <div><dt>Output</dt><dd>An estimate of where, when, and how intervention could reduce harm, including possible side effects.</dd></div>
-          <div><dt>Methods</dt><dd>Causal inference · decision theory · intervention evaluation</dd></div>
-          <div><dt>Inferential risk</dt><dd>Prediction does not identify causal leverage. An intervention can fail, displace harm, or worsen it.</dd></div>
+          <div><dt>Purpose</dt><dd>Compare feasible actions and estimate which ones could change the trajectory.</dd></div>
+          <div><dt>Statistical methods</dt><dd>Causal inference · decision theory · intervention evaluation</dd></div>
         </dl>
       </article>
       <article class="ae-panel" data-ae-panel="adapt">
-        <p class="ae-panel-tag">Adapt</p>
         <h3>What changes once events begin?</h3>
         <dl class="ae-facts">
-          <div><dt>Statistical task</dt><dd>Update the model as evidence arrives and test whether the response should change.</dd></div>
-          <div><dt>Inputs</dt><dd>New observations, reporting delays, and outcomes after intervention.</dd></div>
-          <div><dt>Output</dt><dd>A revised forecast and a reason to continue, change, or stop the response.</dd></div>
-          <div><dt>Methods</dt><dd>Sequential inference · Bayesian updating · response evaluation</dd></div>
-          <div><dt>Inferential risk</dt><dd>Changes in measurement, selection, or exposure can mimic improvement or deterioration.</dd></div>
+          <div><dt>Purpose</dt><dd>Update the model as evidence arrives and test whether the response should change.</dd></div>
+          <div><dt>Statistical methods</dt><dd>Sequential inference · Bayesian updating · response evaluation</dd></div>
         </dl>
       </article>
       </aside>

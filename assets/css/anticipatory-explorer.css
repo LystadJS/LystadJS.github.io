@@ -48,11 +48,15 @@
 }
 #anticipatory-direction h2 em { color: #c0a8c4; font-weight: inherit; }
 #anticipatory-direction .ae-intro {
-  max-width: 760px;
+  width: 100%;
+  max-width: none;
   margin: 1rem 0 0;
   color: var(--ae-copy);
   font-size: .95rem;
   line-height: 1.75;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 #anticipatory-direction .ae-figure {
   border: 1px solid var(--ae-line);
@@ -434,7 +438,7 @@
 #anticipatory-direction .ae-research-bridge span {
   display: block;
   margin-bottom: .38rem;
-  color: var(--ae-muted);
+  color: var(--crimson-bright);
   font: 400 .58rem/1.5 var(--mono, monospace);
   letter-spacing: .075em;
   text-transform: uppercase;

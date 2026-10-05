@@ -752,3 +752,48 @@ body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
     display: block;
   }
 }
+
+
+/* Cross-page visualization alignment: full section-shell surfaces. */
+body[data-page="code"] .code-page-section,
+body[data-page="code"] .driftmapr-section {
+  --code-visual-overhang: calc(84px + 1rem);
+}
+
+/* About/Index visualizations begin at the full section-shell edge rather
+   than after the section-index rail. Extend Code's primary visual surfaces
+   to the same left edge while preserving their existing right edge. */
+@media (min-width: 781px) {
+  body[data-page="code"] .signal-console {
+    width: calc(100% + var(--code-visual-overhang));
+    margin-left: calc(-1 * var(--code-visual-overhang));
+  }
+
+  body[data-page="code"] .driftmapr-section .dm-alignment {
+    width: calc(100% + var(--code-visual-overhang));
+    max-width: none;
+    margin-left: calc(-1 * var(--code-visual-overhang));
+  }
+}
+
+/* Keep the visual rhythm consistent with full-width figures elsewhere:
+   heading → 3rem breathing room → framed visualization. */
+body[data-page="code"] .code-layout {
+  margin-top: 0;
+}
+
+body[data-page="code"] .signal-console,
+body[data-page="code"] .driftmapr-section .dm-alignment {
+  border-color: var(--line);
+  border-radius: 0;
+}
+
+/* Once the section rail collapses on smaller screens, visualizations return
+   to the normal single-column width with no artificial overhang. */
+@media (max-width: 780px) {
+  body[data-page="code"] .signal-console,
+  body[data-page="code"] .driftmapr-section .dm-alignment {
+    width: 100%;
+    margin-left: 0;
+  }
+}

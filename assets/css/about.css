@@ -3258,10 +3258,17 @@ body[data-page="about"] .service-section .essay-heading h2 {
 }
 
 
-/* Hero text inset: move left-side copy slightly toward portrait. */
+/* Hero text inset: move left-side copy toward portrait and align summary blocks. */
 @media (min-width: 981px) {
   body[data-page="about"] .about-hero-title,
   body[data-page="about"] .about-hero-copy {
-    padding-left: clamp(.75rem, 1.35vw, 1.1rem);
+    padding-left: clamp(1.05rem, 1.75vw, 1.45rem);
+  }
+
+  body[data-page="about"] .about-hero-copy > .hero-lede,
+  body[data-page="about"] .about-summary,
+  body[data-page="about"] .about-direction {
+    width: 100%;
+    max-width: none;
   }
 }

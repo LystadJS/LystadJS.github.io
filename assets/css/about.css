@@ -3190,9 +3190,9 @@ body[data-page="about"] .service-section .essay-heading h2 {
 @media (min-width: 981px) {
   body[data-page="about"] .about-hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(220px, 19vw, 255px);
+    grid-template-columns: minmax(0, 1fr) clamp(270px, 23vw, 320px);
     grid-template-rows: auto auto;
-    column-gap: clamp(2rem, 3.8vw, 3.25rem);
+    column-gap: clamp(1.6rem, 3vw, 2.5rem);
     row-gap: .9rem;
     align-items: start;
   }

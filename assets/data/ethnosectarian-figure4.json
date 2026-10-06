@@ -1,0 +1,237 @@
+{
+  "repository": "LystadJS/counterterrorism_ethnosectarian_islamic_state",
+  "commit": "f129ec2f515f5e908eb448ef37c41788e2e45a4c",
+  "figure": "figures/fig4.svg",
+  "blob": "50234d6834e6c9c4db4508182968d2ab35f8b7ff",
+  "source": "https://github.com/LystadJS/counterterrorism_ethnosectarian_islamic_state/blob/f129ec2f515f5e908eb448ef37c41788e2e45a4c/figures/fig4.svg",
+  "status": "Preliminary repository output; not a frozen publication release",
+  "derivation": "Values recovered from SVG vector geometry, not raw observations or refitted models. Labels retain the source whole percentages. Axis calibration: 297.58 SVG units = 1 probability unit. Geometry is rounded in the source SVG.",
+  "intervals": "Original conf_low/conf_high intervals preserved. Confidence level is not stated in the dashboard export; no 95% label is added.",
+  "records": [
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Shia-majority",
+      "metric": "civilian",
+      "estimate": 0.6285032596276631,
+      "lower": 0.5881443645406277,
+      "upper": 0.6671147254519793,
+      "label": "63%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Shia-majority",
+      "metric": "observed",
+      "estimate": 0.7420861617044157,
+      "label": "74%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Shia-majority",
+      "metric": "religious",
+      "estimate": 0.09157201424826938,
+      "lower": 0.06105921096847893,
+      "upper": 0.13512332818065742,
+      "label": "9%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Kurdish-majority",
+      "metric": "civilian",
+      "estimate": 0.6211102896700049,
+      "lower": 0.5846495060151893,
+      "upper": 0.6562941057866791,
+      "label": "62%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Kurdish-majority",
+      "metric": "observed",
+      "estimate": 0.5425431816654345,
+      "label": "54%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Kurdish-majority",
+      "metric": "religious",
+      "estimate": 0.11855635459372262,
+      "lower": 0.07997849317830484,
+      "upper": 0.17225620001344175,
+      "label": "12%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Sunni-majority",
+      "metric": "civilian",
+      "estimate": 0.5684521809261375,
+      "lower": 0.5417366758518719,
+      "upper": 0.5947308286847235,
+      "label": "57%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Sunni-majority",
+      "metric": "observed",
+      "estimate": 0.555346461455743,
+      "label": "56%"
+    },
+    {
+      "phase": "Pre-Caliphate Expansion",
+      "group": "Sunni-majority",
+      "metric": "religious",
+      "estimate": 0.05756435244304051,
+      "lower": 0.042812016936622115,
+      "upper": 0.07698770078634307,
+      "label": "6%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Shia-majority",
+      "metric": "civilian",
+      "estimate": 0.5752066671147253,
+      "lower": 0.534612541165401,
+      "upper": 0.6147926607970967,
+      "label": "58%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Shia-majority",
+      "metric": "observed",
+      "estimate": 0.5082666845890181,
+      "label": "51%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Shia-majority",
+      "metric": "religious",
+      "estimate": 0.028462934336985105,
+      "lower": 0.01666778681363007,
+      "upper": 0.048222326769272204,
+      "label": "3%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Kurdish-majority",
+      "metric": "civilian",
+      "estimate": 0.567511257476981,
+      "lower": 0.538443443779824,
+      "upper": 0.5961086094495598,
+      "label": "57%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Kurdish-majority",
+      "metric": "observed",
+      "estimate": 0.5903622555279253,
+      "label": "59%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Kurdish-majority",
+      "metric": "religious",
+      "estimate": 0.03760333355736253,
+      "lower": 0.025707372807312244,
+      "upper": 0.05467437327777398,
+      "label": "4%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Sunni-majority",
+      "metric": "civilian",
+      "estimate": 0.5132065326970899,
+      "lower": 0.4930774917669199,
+      "upper": 0.5332683648094633,
+      "label": "51%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Sunni-majority",
+      "metric": "observed",
+      "estimate": 0.511862356341152,
+      "label": "51%"
+    },
+    {
+      "phase": "Caliphate Period",
+      "group": "Sunni-majority",
+      "metric": "religious",
+      "estimate": 0.017440688218294042,
+      "lower": 0.01196316956784712,
+      "upper": 0.025371328718327694,
+      "label": "2%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Shia-majority",
+      "metric": "civilian",
+      "estimate": 0.49963035150211693,
+      "lower": 0.45685193897439363,
+      "upper": 0.5423751596209422,
+      "label": "50%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Shia-majority",
+      "metric": "observed",
+      "estimate": 0.44132670206331076,
+      "label": "44%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Shia-majority",
+      "metric": "religious",
+      "estimate": 0.025304119900530858,
+      "lower": 0.01300490624369919,
+      "upper": 0.04862557967605359,
+      "label": "3%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Kurdish-majority",
+      "metric": "civilian",
+      "estimate": 0.4917669198198805,
+      "lower": 0.45443242153370533,
+      "upper": 0.5292022313327509,
+      "label": "49%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Kurdish-majority",
+      "metric": "observed",
+      "estimate": 0.47274682438335913,
+      "label": "47%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Kurdish-majority",
+      "metric": "religious",
+      "estimate": 0.03350359567175223,
+      "lower": 0.01804556757846631,
+      "upper": 0.06129444183076823,
+      "label": "3%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Sunni-majority",
+      "metric": "civilian",
+      "estimate": 0.43739498622219225,
+      "lower": 0.410780294374622,
+      "upper": 0.4643457221587471,
+      "label": "44%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Sunni-majority",
+      "metric": "observed",
+      "estimate": 0.4537603333557363,
+      "label": "45%"
+    },
+    {
+      "phase": "Post-Caliphate Insurgency",
+      "group": "Sunni-majority",
+      "metric": "religious",
+      "estimate": 0.015491632502184334,
+      "lower": 0.008770750722494837,
+      "upper": 0.027185966798844118,
+      "label": "2%"
+    }
+  ]
+}

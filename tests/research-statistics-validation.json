@@ -1,0 +1,46 @@
+{
+  "baseline_commit": "51c0660350aa96dbc39d7e0483816928dc0568ae",
+  "scope": "Research page statistical visualization refinement; project copy, order, resource controls, existing theme styles, and PCoA entry preserved",
+  "changed_figures": 9,
+  "retained_source_backed_pcoa_figures": 1,
+  "source_backed_adaptation": {
+    "repository": "LystadJS/counterterrorism_ethnosectarian_islamic_state",
+    "commit": "f129ec2f515f5e908eb448ef37c41788e2e45a4c",
+    "figure": "figures/fig4.svg",
+    "blob": "50234d6834e6c9c4db4508182968d2ab35f8b7ff",
+    "records": 27,
+    "model_estimates_with_intervals": 18,
+    "observed_compositions": 9,
+    "views": ["Civilian model", "Religious model conditional on civilian targeting", "Observed civilian / state-security mix"],
+    "precision": "Approximate values recovered from rounded vector coordinates; source whole-percentage labels preserved",
+    "status": "Preliminary repository output; no model refit or new empirical claim"
+  },
+  "synthetic_method_demonstrations": 8,
+  "synthetic_disclosure": "Every demonstration is labeled in its header and includes assumptions, formulas, and numerical inputs in an expandable table",
+  "validation": {
+    "staging_workflow_run": 37524905948,
+    "staging_job": 112479327997,
+    "staging_conclusion": "success",
+    "commands": ["npm run check", "npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs"],
+    "unit_tests_passed": 7,
+    "local_references_checked": 181,
+    "javascript_syntax_checks": 15,
+    "figure_viewport_widths": [320, 390, 600, 780, 900, 980, 1024, 1440, 1920],
+    "page_horizontal_overflow": "none",
+    "visible_svg_text_outside_viewbox": "none",
+    "local_runtime_errors": 0,
+    "keyboard_view_selection": "passed",
+    "source_tables_and_csv": "passed",
+    "no_javascript_fallback": "passed",
+    "generated_files_matched_local_candidate": 9,
+    "non_figure_markup_comparison": "unchanged except two new research-only asset references",
+    "pcoa_entry_comparison": "byte-for-byte unchanged"
+  },
+  "limits": [
+    "The eight synthetic demonstrations are not empirical findings for their associated projects.",
+    "The Figure 4 export does not state the confidence level; its source intervals are retained without adding a 95% claim.",
+    "External fonts, map CDN, and live registry availability were isolated in browser tests; their production declarations were unchanged.",
+    "Browser validation covered the research figures and existing cross-page functional/layout suite, not the separate military-timeline screenshot baseline.",
+    "Deployment status is recorded separately in GitHub Actions."
+  ]
+}

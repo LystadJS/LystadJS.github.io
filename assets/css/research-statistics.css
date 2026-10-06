@@ -1,0 +1,53 @@
+/* Statistical panels only: existing palette, typography, row geometry and
+   section rhythm remain owned by the portfolio stylesheets. */
+body[data-page="research"] .rp-stat { min-width: 480px; }
+body[data-page="research"] .rp-stat text { font-family: var(--sans); }
+body[data-page="research"] .st-label { fill: var(--paper-soft); font-size: 15px; }
+body[data-page="research"] .st-subtitle { fill: var(--paper-soft); font-size: 16px; font-weight: 500; }
+body[data-page="research"] .st-tick { fill: #b3a6b5; font-size: 14px; font-variant-numeric: tabular-nums; }
+body[data-page="research"] .st-phase { fill: var(--violet-bright); font-size: 13px; font-weight: 500; }
+body[data-page="research"] .st-value { fill: var(--paper-soft); font: 500 14px var(--mono); }
+body[data-page="research"] .st-cell-value { fill: var(--paper); font: 500 12px var(--mono); }
+body[data-page="research"] .st-grid { stroke: var(--line); stroke-width: 1; }
+body[data-page="research"] .st-axis { stroke: var(--muted); stroke-width: 1.2; }
+body[data-page="research"] .st-series { fill: none; stroke: var(--violet-bright); stroke-width: 2.5; stroke-linejoin: round; }
+body[data-page="research"] .st-point { fill: var(--violet-bright); stroke: var(--paper-soft); stroke-width: 1; }
+body[data-page="research"] .st-band { fill: var(--violet-bright); fill-opacity: .16; stroke: none; }
+body[data-page="research"] .st-heat { fill: var(--violet-bright); stroke: var(--line-bright); stroke-width: .75; }
+body[data-page="research"] .st-bar { fill: var(--violet); }
+body[data-page="research"] .st-bar-label { fill: var(--paper); font: 500 12px var(--mono); }
+body[data-page="research"] .st-series.st-red { stroke: var(--crimson-bright); }
+body[data-page="research"] .st-series.st-pale { stroke: var(--paper-soft); stroke-dasharray: 6 4; }
+body[data-page="research"] :is(.st-point,.st-band).st-red { fill: var(--crimson-bright); }
+body[data-page="research"] .st-bar.st-red { fill: var(--crimson); }
+body[data-page="research"] .st-point.st-pale { fill: var(--paper-soft); }
+body[data-page="research"] .st-reference { stroke: var(--paper-soft); stroke-width: 1.2; stroke-dasharray: 4 5; opacity: .7; }
+body[data-page="research"] .st-controls { display: flex; flex-wrap: wrap; gap: .5rem; padding: .75rem 1rem; border-bottom: 1px solid var(--line); }
+body[data-page="research"] .st-controls button { min-height: 38px; padding: .4rem .6rem; background: transparent; border: 1px solid var(--line-bright); color: var(--paper-soft); font: 400 .73rem/1.4 var(--sans); cursor: pointer; }
+body[data-page="research"] .st-controls button:hover { border-color: var(--crimson-bright); }
+body[data-page="research"] .st-controls button[aria-pressed="true"] { background: var(--panel-raised); border-color: var(--violet-bright); box-shadow: inset 0 -2px var(--violet-bright); }
+body[data-page="research"] :is(.st-controls button,.st-scroll,.rp-data-table):focus-visible { outline: 2px solid var(--paper); outline-offset: -3px; }
+body[data-page="research"] :is(.st-controls,[data-target-panel])[hidden] { display: none; }
+body[data-page="research"] .rp-stat-figure .rp-figure-type { color: #b3a6b5; }
+body[data-page="research"] .st-scroll-hint { display: none; }
+body[data-page="research"] .rp-stat-figure .rp-data-table th:first-child { min-width: 8rem; }
+@media (max-width: 520px) {
+  body[data-page="research"] .st-scroll-hint { display: block; margin-top: .4rem; font-size: .72rem; }
+  body[data-page="research"] .st-controls { padding: .6rem .75rem; gap: .4rem; }
+  body[data-page="research"] .st-controls button { min-height: 44px; }
+}
+@media (prefers-contrast: more) {
+  body[data-page="research"] .st-grid { stroke: var(--muted); }
+}
+@media (forced-colors: active) {
+  body[data-page="research"] .st-series { stroke: LinkText; }
+  body[data-page="research"] .st-series.st-red { stroke: CanvasText; stroke-dasharray: 3 2; }
+  body[data-page="research"] .st-series.st-pale { stroke: CanvasText; stroke-dasharray: 8 4; }
+  body[data-page="research"] .rp-stat :is(text,.st-point) { fill: CanvasText; }
+  body[data-page="research"] :is(.st-grid,.st-axis,.st-reference) { stroke: CanvasText; }
+  body[data-page="research"] .st-controls button[aria-pressed="true"] { border: 2px solid Highlight; }
+}
+@media print {
+  body[data-page="research"] .rp-stat { min-width: 0; }
+  body[data-page="research"] .st-scroll-hint { display: none; }
+}

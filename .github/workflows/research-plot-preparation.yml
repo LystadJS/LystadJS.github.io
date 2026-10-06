@@ -1,0 +1,65 @@
+name: Prepare and validate research plots
+on:
+  push:
+    branches: ['chatgpt/research-statistics-20261006']
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Retrieve and verify the pinned Figure 4
+        run: |
+          python3 - <<'PY'
+          import urllib.request
+          url='https://raw.githubusercontent.com/LystadJS/counterterrorism_ethnosectarian_islamic_state/f129ec2f515f5e908eb448ef37c41788e2e45a4c/figures/fig4.svg'
+          with urllib.request.urlopen(url,timeout=30) as response:
+              data=response.read()
+          open('/tmp/fig4.svg','wb').write(data)
+          PY
+          python3 scripts/build_research_figures.py --source-svg /tmp/fig4.svg
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check
+      - name: Research figures and cross-page layout checks
+        run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs
+      - name: Record generated Git blobs without publishing a branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,json,hashlib,base64,urllib.request
+          from pathlib import Path
+          expected={'research.html':'7da9f44e8792914c7ed3d2d018e5ca376f1d448e','assets/data/ethnosectarian-figure4.json':'427d0842e450d7b706859138625649b856a121f2','assets/data/ethnosectarian-figure4.csv':'527a86abb6681ad20e02c39658497913bcf87c7b','assets/data/research-plot-demos.json':'39d196721917601440234068e3adaf72cbe1fbcd','scripts/build_research_figures.py':'33ba90bca394574a9c2829f88ac12f1277a658f3','assets/css/research-statistics.css':'7dc7761845480202719dbce1159384e5a519436c','assets/js/research-statistics.js':'d2591bc922bf895da131c59176afd4b5bf2dae93','tests/test_research_figures.py':'670e9556308374f22e0b5c002a7ebb557524699a','tests/research-statistics.spec.mjs':'c119407ee85815f605923c5cf4bf2c6ee53d659f'}
+          receipt=[]
+          for name, sha in expected.items():
+              data=Path(name).read_bytes()
+              actual=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              assert actual==sha, (name,actual,sha)
+              req=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs',data=json.dumps({'content':base64.b64encode(data).decode(),'encoding':'base64'}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=30) as r: result=json.load(r)
+              assert result['sha']==sha
+              receipt.append({'path':name,'sha':sha,'bytes':len(data)})
+          Path('research-plot-receipt.json').write_text(json.dumps(receipt,indent=2))
+          print(json.dumps(receipt,indent=2))
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: research-plot-validation
+          path: |
+            test-results/
+            research-plot-receipt.json
+            research.html
+            assets/css/research-statistics.css
+            assets/js/research-statistics.js
+            assets/data/ethnosectarian-figure4.*
+            assets/data/research-plot-demos.json
+          retention-days: 7

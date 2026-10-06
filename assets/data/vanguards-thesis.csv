@@ -1,0 +1,266 @@
+unit,period,measure_type,measure,reported_value,unit_of_measure,table,printed_page,pdf_page
+Iraq and the Levant,2013–2019,tactic,Seizure,4.0,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Pitched Battle,0,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Assassination,3.0,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Raid,10.6,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Ambush,1.2,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Hostage-taking,10.8,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Armed Assault,3.7,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Bombing,60.2,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Unarmed Assault,0,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Infrastructure Attack,1.7,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Intimidation/Extortion/Theft,.1,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Other,0,percent,4.1,39,49
+Iraq and the Levant,2013–2019,tactic,Unknown,4.6,percent,4.1,39,49
+Iraq and the Levant,2013–2019,suicide_indicator,Suicide,20.6,percent,4.1,39,49
+Iraq and the Levant,2013–2019,suicide_indicator,Non-suicide,79.4,percent,4.1,39,49
+Libya,2014–2019,tactic,Seizure,1.6,percent,5.2,49,59
+Libya,2014–2019,tactic,Pitched Battle,0,percent,5.2,49,59
+Libya,2014–2019,tactic,Assassination,3.0,percent,5.2,49,59
+Libya,2014–2019,tactic,Raid,16.2,percent,5.2,49,59
+Libya,2014–2019,tactic,Ambush,0.8,percent,5.2,49,59
+Libya,2014–2019,tactic,Hostage-taking,28.3,percent,5.2,49,59
+Libya,2014–2019,tactic,Armed Assault,4.0,percent,5.2,49,59
+Libya,2014–2019,tactic,Bombing,37.9,percent,5.2,49,59
+Libya,2014–2019,tactic,Unarmed Assault,0,percent,5.2,49,59
+Libya,2014–2019,tactic,Infrastructure Attack,3.5,percent,5.2,49,59
+Libya,2014–2019,tactic,Intimidation/Extortion/Theft,1.9,percent,5.2,49,59
+Libya,2014–2019,tactic,Other,0,percent,5.2,49,59
+Libya,2014–2019,tactic,Unknown,2.8,percent,5.2,49,59
+Libya,2014–2019,suicide_indicator,Suicide,15.5,percent,5.2,49,59
+Libya,2014–2019,suicide_indicator,Non-suicide,84.5,percent,5.2,49,59
+Libya,2014–2019,linkage,Foreign-born emir,1,score,5.1,46,56
+Libya,2014–2019,linkage,Emir ascension method,1,score,5.1,46,56
+Libya,2014–2019,linkage,Emir combat experience,1,score,5.1,46,56
+Libya,2014–2019,linkage,Unilateral attack claims,1,score,5.1,46,56
+Libya,2014–2019,linkage,“Pioneer” insurgency,0,score,5.1,46,56
+Libya,2014–2019,linkage,Self-identification as wilaya,1,score,5.1,46,56
+Libya,2014–2019,linkage,2014 bay’ah,1,score,5.1,46,56
+Libya,2014–2019,linkage,Reception of arms,1,score,5.1,46,56
+Libya,2014–2019,linkage,Reception of funding,1,score,5.1,46,56
+Libya,2014–2019,linkage,Total,8,score,5.1,46,56
+Yemen,2014–2019,tactic,Seizure,2.5,percent,5.5,53,63
+Yemen,2014–2019,tactic,Pitched Battle,0,percent,5.5,53,63
+Yemen,2014–2019,tactic,Assassination,17.8,percent,5.5,53,63
+Yemen,2014–2019,tactic,Raid,6.8,percent,5.5,53,63
+Yemen,2014–2019,tactic,Ambush,1.7,percent,5.5,53,63
+Yemen,2014–2019,tactic,Hostage-taking,4.2,percent,5.5,53,63
+Yemen,2014–2019,tactic,Armed Assault,4.2,percent,5.5,53,63
+Yemen,2014–2019,tactic,Bombing,59.3,percent,5.5,53,63
+Yemen,2014–2019,tactic,Unarmed Assault,0,percent,5.5,53,63
+Yemen,2014–2019,tactic,Infrastructure Attack,1.7,percent,5.5,53,63
+Yemen,2014–2019,tactic,Intimidation/Extortion/Theft,.8,percent,5.5,53,63
+Yemen,2014–2019,tactic,Other,0,percent,5.5,53,63
+Yemen,2014–2019,tactic,Unknown,.8,percent,5.5,53,63
+Yemen,2014–2019,suicide_indicator,Suicide,44.9,percent,5.5,53,63
+Yemen,2014–2019,suicide_indicator,Non-suicide,55.1,percent,5.5,53,63
+Yemen,2014–2019,linkage,Foreign-born emir,0,score,5.4,50,60
+Yemen,2014–2019,linkage,Emir ascension method,1,score,5.4,50,60
+Yemen,2014–2019,linkage,Emir combat experience,1,score,5.4,50,60
+Yemen,2014–2019,linkage,Unilateral attack claims,1,score,5.4,50,60
+Yemen,2014–2019,linkage,“Pioneer” insurgency,0,score,5.4,50,60
+Yemen,2014–2019,linkage,Self-identification as wilaya,1,score,5.4,50,60
+Yemen,2014–2019,linkage,2014 bay’ah,1,score,5.4,50,60
+Yemen,2014–2019,linkage,Reception of arms,1,score,5.4,50,60
+Yemen,2014–2019,linkage,Reception of funding,1,score,5.4,50,60
+Yemen,2014–2019,linkage,Total,7,score,5.4,50,60
+Sinai,2014–2019,tactic,Seizure,1.0,percent,5.8,57,67
+Sinai,2014–2019,tactic,Pitched Battle,0,percent,5.8,57,67
+Sinai,2014–2019,tactic,Assassination,6.2,percent,5.8,57,67
+Sinai,2014–2019,tactic,Raid,22.2,percent,5.8,57,67
+Sinai,2014–2019,tactic,Ambush,3.7,percent,5.8,57,67
+Sinai,2014–2019,tactic,Hostage-taking,12.1,percent,5.8,57,67
+Sinai,2014–2019,tactic,Armed Assault,7.8,percent,5.8,57,67
+Sinai,2014–2019,tactic,Bombing,44.6,percent,5.8,57,67
+Sinai,2014–2019,tactic,Unarmed Assault,0,percent,5.8,57,67
+Sinai,2014–2019,tactic,Infrastructure Attack,1.6,percent,5.8,57,67
+Sinai,2014–2019,tactic,Intimidation/Extortion/Theft,0.4,percent,5.8,57,67
+Sinai,2014–2019,tactic,Other,0,percent,5.8,57,67
+Sinai,2014–2019,tactic,Unknown,0.5,percent,5.8,57,67
+Sinai,2014–2019,suicide_indicator,Suicide,7.4,percent,5.8,57,67
+Sinai,2014–2019,suicide_indicator,Non-suicide,92.6,percent,5.8,57,67
+Sinai,2014–2019,linkage,Foreign-born emir,0,score,5.7,54,64
+Sinai,2014–2019,linkage,Emir ascension method,0,score,5.7,54,64
+Sinai,2014–2019,linkage,Emir combat experience,1,score,5.7,54,64
+Sinai,2014–2019,linkage,Unilateral attack claims,1,score,5.7,54,64
+Sinai,2014–2019,linkage,“Pioneer” insurgency,0,score,5.7,54,64
+Sinai,2014–2019,linkage,Self-identification as wilaya,1,score,5.7,54,64
+Sinai,2014–2019,linkage,2014 bay’ah,1,score,5.7,54,64
+Sinai,2014–2019,linkage,Reception of arms,1,score,5.7,54,64
+Sinai,2014–2019,linkage,Reception of funding,1,score,5.7,54,64
+Sinai,2014–2019,linkage,Total,6,score,5.7,54,64
+East Asia,2014–2019,tactic,Seizure,0.3,percent,5.11,61,71
+East Asia,2014–2019,tactic,Pitched Battle,0,percent,5.11,61,71
+East Asia,2014–2019,tactic,Assassination,4.1,percent,5.11,61,71
+East Asia,2014–2019,tactic,Raid,6.4,percent,5.11,61,71
+East Asia,2014–2019,tactic,Ambush,6.7,percent,5.11,61,71
+East Asia,2014–2019,tactic,Hostage-taking,29.1,percent,5.11,61,71
+East Asia,2014–2019,tactic,Armed Assault,13.7,percent,5.11,61,71
+East Asia,2014–2019,tactic,Bombing,36.1,percent,5.11,61,71
+East Asia,2014–2019,tactic,Unarmed Assault,0,percent,5.11,61,71
+East Asia,2014–2019,tactic,Infrastructure Attack,2.1,percent,5.11,61,71
+East Asia,2014–2019,tactic,Intimidation/Extortion/Theft,1.3,percent,5.11,61,71
+East Asia,2014–2019,tactic,Other,0,percent,5.11,61,71
+East Asia,2014–2019,tactic,Unknown,0.3,percent,5.11,61,71
+East Asia,2014–2019,suicide_indicator,Suicide,1.5,percent,5.11,61,71
+East Asia,2014–2019,suicide_indicator,Non-suicide,98.5,percent,5.11,61,71
+East Asia,2014–2019,linkage,Foreign-born emir,0,score,5.10,58,68
+East Asia,2014–2019,linkage,Emir ascension method,0,score,5.10,58,68
+East Asia,2014–2019,linkage,Emir combat experience,0,score,5.10,58,68
+East Asia,2014–2019,linkage,Unilateral attack claims,1,score,5.10,58,68
+East Asia,2014–2019,linkage,“Pioneer” insurgency,0,score,5.10,58,68
+East Asia,2014–2019,linkage,Self-identification as wilaya,1,score,5.10,58,68
+East Asia,2014–2019,linkage,2014 bay’ah,1,score,5.10,58,68
+East Asia,2014–2019,linkage,Reception of arms,1,score,5.10,58,68
+East Asia,2014–2019,linkage,Reception of funding,1,score,5.10,58,68
+East Asia,2014–2019,linkage,Total,5,score,5.10,58,68
+Khorasan,2014–2019,tactic,Seizure,1.1,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Pitched Battle,0,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Assassination,14.1,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Raid,17.2,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Ambush,7.3,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Hostage-taking,9.7,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Armed Assault,9.7,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Bombing,38.5,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Unarmed Assault,0,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Infrastructure Attack,2.1,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Intimidation/Extortion/Theft,0,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Other,0,percent,5.14,65,75
+Khorasan,2014–2019,tactic,Unknown,0.5,percent,5.14,65,75
+Khorasan,2014–2019,suicide_indicator,Suicide,19.6,percent,5.14,65,75
+Khorasan,2014–2019,suicide_indicator,Non-suicide,80.4,percent,5.14,65,75
+Khorasan,2014–2019,linkage,Foreign-born emir,0,score,5.13,62,72
+Khorasan,2014–2019,linkage,Emir ascension method,0,score,5.13,62,72
+Khorasan,2014–2019,linkage,Emir combat experience,0,score,5.13,62,72
+Khorasan,2014–2019,linkage,Unilateral attack claims,1,score,5.13,62,72
+Khorasan,2014–2019,linkage,“Pioneer” insurgency,0,score,5.13,62,72
+Khorasan,2014–2019,linkage,Self-identification as wilaya,1,score,5.13,62,72
+Khorasan,2014–2019,linkage,2014 bay’ah,1,score,5.13,62,72
+Khorasan,2014–2019,linkage,Reception of arms,1,score,5.13,62,72
+Khorasan,2014–2019,linkage,Reception of funding,1,score,5.13,62,72
+Khorasan,2014–2019,linkage,Total,5,score,5.13,62,72
+West Africa,2014–2019,tactic,Seizure,3.0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Pitched Battle,0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Assassination,1.2,percent,5.17,69,79
+West Africa,2014–2019,tactic,Raid,44.0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Ambush,5.7,percent,5.17,69,79
+West Africa,2014–2019,tactic,Hostage-taking,3.8,percent,5.17,69,79
+West Africa,2014–2019,tactic,Armed Assault,8.7,percent,5.17,69,79
+West Africa,2014–2019,tactic,Bombing,29.4,percent,5.17,69,79
+West Africa,2014–2019,tactic,Unarmed Assault,0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Infrastructure Attack,0.4,percent,5.17,69,79
+West Africa,2014–2019,tactic,Intimidation/Extortion/Theft,0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Other,0,percent,5.17,69,79
+West Africa,2014–2019,tactic,Unknown,3.8,percent,5.17,69,79
+West Africa,2014–2019,suicide_indicator,Suicide,25.2,percent,5.17,69,79
+West Africa,2014–2019,suicide_indicator,Non-suicide,74.8,percent,5.17,69,79
+West Africa,2014–2019,linkage,Foreign-born emir,0,score,5.16,66,76
+West Africa,2014–2019,linkage,Emir ascension method,.66,score,5.16,66,76
+West Africa,2014–2019,linkage,Emir combat experience,0,score,5.16,66,76
+West Africa,2014–2019,linkage,Unilateral attack claims,0,score,5.16,66,76
+West Africa,2014–2019,linkage,“Pioneer” insurgency,0,score,5.16,66,76
+West Africa,2014–2019,linkage,Self-identification as wilaya,1,score,5.16,66,76
+West Africa,2014–2019,linkage,2014 bay’ah,0,score,5.16,66,76
+West Africa,2014–2019,linkage,Reception of arms,1,score,5.16,66,76
+West Africa,2014–2019,linkage,Reception of funding,1,score,5.16,66,76
+West Africa,2014–2019,linkage,Total,3.66,score,5.16,66,76
+Greater Sahara,2014–2019,tactic,Seizure,0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Pitched Battle,0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Assassination,14.7,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Raid,32.0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Ambush,18.7,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Hostage-taking,12.0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Armed Assault,9.3,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Bombing,10.7,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Unarmed Assault,0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Infrastructure Attack,0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Intimidation/Extortion/Theft,1.3,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Other,0,percent,5.20,73,83
+Greater Sahara,2014–2019,tactic,Unknown,1.3,percent,5.20,73,83
+Greater Sahara,2014–2019,suicide_indicator,Suicide,8.0,percent,5.20,73,83
+Greater Sahara,2014–2019,suicide_indicator,Non-suicide,92.0,percent,5.20,73,83
+Greater Sahara,2014–2019,linkage,Foreign-born emir,0,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Emir ascension method,1,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Emir combat experience,0,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Unilateral attack claims,1,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,“Pioneer” insurgency,0,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Self-identification as wilaya,1,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,2014 bay’ah,0,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Reception of arms,1,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Reception of funding,1,score,5.19,70,80
+Greater Sahara,2014–2019,linkage,Total,5,score,5.19,70,80
+Caucasus,2014–2019,tactic,Seizure,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Pitched Battle,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Assassination,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Raid,28.6,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Ambush,7.1,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Hostage-taking,3.6,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Armed Assault,35.7,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Bombing,21.4,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Unarmed Assault,3.6,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Infrastructure Attack,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Intimidation/Extortion/Theft,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Other,0,percent,5.23,77,87
+Caucasus,2014–2019,tactic,Unknown,0,percent,5.23,77,87
+Caucasus,2014–2019,suicide_indicator,Suicide,17.9,percent,5.23,77,87
+Caucasus,2014–2019,suicide_indicator,Non-suicide,82.1,percent,5.23,77,87
+Caucasus,2014–2019,linkage,Foreign-born emir,0,score,5.22,74,84
+Caucasus,2014–2019,linkage,Emir ascension method,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,Emir combat experience,0,score,5.22,74,84
+Caucasus,2014–2019,linkage,Unilateral attack claims,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,“Pioneer” insurgency,0,score,5.22,74,84
+Caucasus,2014–2019,linkage,Self-identification as wilaya,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,2014 bay’ah,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,Reception of arms,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,Reception of funding,1,score,5.22,74,84
+Caucasus,2014–2019,linkage,Total,6,score,5.22,74,84
+Congo,2014–2019,tactic,Seizure,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Pitched Battle,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Assassination,1.5,percent,5.26,81,91
+Congo,2014–2019,tactic,Raid,53.7,percent,5.26,81,91
+Congo,2014–2019,tactic,Ambush,13.2,percent,5.26,81,91
+Congo,2014–2019,tactic,Hostage-taking,11.8,percent,5.26,81,91
+Congo,2014–2019,tactic,Armed Assault,8.8,percent,5.26,81,91
+Congo,2014–2019,tactic,Bombing,1.5,percent,5.26,81,91
+Congo,2014–2019,tactic,Unarmed Assault,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Infrastructure Attack,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Intimidation/Extortion/Theft,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Other,0,percent,5.26,81,91
+Congo,2014–2019,tactic,Unknown,9.6,percent,5.26,81,91
+Congo,2014–2019,suicide_indicator,Suicide,0,percent,5.26,81,91
+Congo,2014–2019,suicide_indicator,Non-suicide,100,percent,5.26,81,91
+Congo,2014–2019,linkage,Foreign-born emir,0,score,5.25,78,88
+Congo,2014–2019,linkage,Emir ascension method,0,score,5.25,78,88
+Congo,2014–2019,linkage,Emir combat experience,0,score,5.25,78,88
+Congo,2014–2019,linkage,Unilateral attack claims,0,score,5.25,78,88
+Congo,2014–2019,linkage,“Pioneer” insurgency,0,score,5.25,78,88
+Congo,2014–2019,linkage,Self-identification as wilaya,0,score,5.25,78,88
+Congo,2014–2019,linkage,2014 bay’ah,0,score,5.25,78,88
+Congo,2014–2019,linkage,Reception of arms,1,score,5.25,78,88
+Congo,2014–2019,linkage,Reception of funding,1,score,5.25,78,88
+Congo,2014–2019,linkage,Total,2,score,5.25,78,88
+Mozambique,2014–2019,tactic,Seizure,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Pitched Battle,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Assassination,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Raid,41.3,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Ambush,19.6,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Hostage-taking,24.0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Armed Assault,2.2,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Bombing,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Unarmed Assault,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Infrastructure Attack,2.2,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Intimidation/Extortion/Theft,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Other,0,percent,5.29,85,95
+Mozambique,2014–2019,tactic,Unknown,10.9,percent,5.29,85,95
+Mozambique,2014–2019,suicide_indicator,Suicide,0,percent,5.29,85,95
+Mozambique,2014–2019,suicide_indicator,Non-suicide,100,percent,5.29,85,95
+Mozambique,2014–2019,linkage,Foreign-born emir,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,Emir ascension method,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,Emir combat experience,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,Unilateral attack claims,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,“Pioneer” insurgency,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,Self-identification as wilaya,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,2014 bay’ah,0,score,5.28,82,92
+Mozambique,2014–2019,linkage,Reception of arms,1,score,5.28,82,92
+Mozambique,2014–2019,linkage,Reception of funding,1,score,5.28,82,92
+Mozambique,2014–2019,linkage,Total,2,score,5.28,82,92

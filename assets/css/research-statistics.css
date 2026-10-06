@@ -73,3 +73,23 @@ body[data-page="research"] .rp-stat-figure .rp-data-table th:first-child { min-w
   #paper-estimating-lethality :is(.mi-hatch,.mi-trace,.mi-pooled-line) { stroke: CanvasText; }
   #paper-estimating-lethality .mi-point { fill: CanvasText; stroke: Canvas; }
 }
+
+/* Vanguards: source-reported thesis statistics, isolated from other figures. */
+#paper-vanguards [data-vanguards-panel][hidden] { display: none; }
+#paper-vanguards .vg-heat { fill: var(--violet); stroke: var(--line-bright); stroke-width: .65; }
+#paper-vanguards :is(.vg-cell-value,.vg-dot-value) { fill: var(--paper); font: 500 13px var(--mono); font-variant-numeric: tabular-nums; }
+#paper-vanguards .vg-col { fill: var(--paper-soft); font-size: 13px; }
+#paper-vanguards .vg-name { fill: var(--paper-soft); font-size: 14px; }
+#paper-vanguards .vg-note { fill: #b3a6b5; font-size: 13px; }
+#paper-vanguards .vg-baseline-text { fill: var(--paper); font-weight: 600; }
+#paper-vanguards .vg-baseline-box { fill: none; stroke: var(--paper-soft); stroke-width: .8; }
+#paper-vanguards .vg-divider { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 4; }
+#paper-vanguards .vg-stem { stroke: var(--violet-bright); stroke-width: 2; opacity: .5; }
+#paper-vanguards .st-point.vg-raid { fill: var(--crimson-bright); }
+@media (forced-colors: active) {
+  #paper-vanguards .vg-heat { fill: Canvas; stroke: CanvasText; fill-opacity: 1; }
+  #paper-vanguards :is(.vg-baseline-box,.vg-divider,.vg-stem) { stroke: CanvasText; }
+  #paper-vanguards .vg-baseline-box { fill: none; }
+  #paper-vanguards .rp-stat text { fill: CanvasText; }
+  #paper-vanguards .st-point { fill: CanvasText; stroke: Canvas; }
+}

@@ -1,0 +1,42 @@
+{
+  "baseline_commit": "ff9b6d5ad82c6ac6d3555d7f438e7d8b66b1ab60",
+  "scope": "Replace only the Vanguards synthetic figure with reported thesis values; preserve copy, resource controls, page rhythm, palette, and all other figures.",
+  "source": "HITM Thesis.pdf, John Lystad, Florida State University, 2022",
+  "source_sha256": "ef06e537c341112da4677b1701cd334fdde21beb60a9f0af3cf692b04d0996fc",
+  "data": {
+    "baseline_units": 1,
+    "wilayat_or_wings": 10,
+    "tactic_percentages": 143,
+    "suicide_and_non_suicide_percentages": 22,
+    "linkage_criteria_and_totals": 100,
+    "csv_values": 265,
+    "tactic_totals_percent": [99.9, 100.0, 99.8, 100.1, 100.1, 100.2, 100.0, 100.0, 100.0, 100.1, 100.2],
+    "rescaled_or_imputed_values": 0,
+    "linkage_totals_reconcile": true,
+    "source_tables_visually_reviewed": true,
+    "full_pdf_published": false
+  },
+  "local_validation": {
+    "renderer": "Chromium, exact local CSS and figure scripts inlined because localhost navigation is blocked; external fonts and map services isolated",
+    "viewports": [320, 390, 600, 780, 900, 980, 1024, 1440, 1920],
+    "views_per_viewport": 3,
+    "plot_geometry_checks": 27,
+    "page_overflow": false,
+    "clipped_svg_labels": [],
+    "runtime_errors": [],
+    "keyboard_controls_and_source_disclosure": "passed",
+    "all_heatmap_values_match_source": true,
+    "other_nine_projects": "byte-for-byte unchanged",
+    "vanguards_nonfigure_markup": "unchanged",
+    "unit_tests_passed": 14,
+    "local_references_checked": 183,
+    "javascript_syntax_checks": 16
+  },
+  "limits": [
+    "The source windows differ: ISIL baseline 2013–2019, affiliate study window 2014–2019; affiliate inception dates vary.",
+    "No province-specific sample sizes, fitted linkage association, p-values, or confidence intervals were inferred.",
+    "The thesis leaves the linkage–behavior association for further quantitative work (pp. 86–87).",
+    "Unused target-choice tables have a Libya sum discrepancy and Caucasus prose/table disagreement, documented in the source notes without correction.",
+    "CI tests and deployment outcomes are recorded separately by GitHub Actions."
+  ]
+}

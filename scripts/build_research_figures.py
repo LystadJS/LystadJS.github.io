@@ -178,24 +178,13 @@ def missing():
                   'A MICE-style diagnostic example: missingness patterns, imputed-only chain traces, and pooled uncertainty. Synthetic data—not study results.',
                   detail, height=642)
 
-def distance():
-    profiles=[[.55,.30,.10,.05],[.50,.35,.10,.05],[.58,.24,.12,.06],[.12,.18,.50,.20],[.08,.22,.48,.22],[.10,.15,.53,.22]]
-    dist=[[math.sqrt(sum((a-b)**2 for a,b in zip(p,q)))/math.sqrt(2) for q in profiles] for p in profiles]
-    s=text(30,28,'Between-unit distance in four-part tactical profiles','st-subtitle')
-    l,t,c=146,77,36
-    for i in range(6):
-        s+=text(l+i*c+c/2,t-14,chr(65+i),'st-label','middle')+text(l-16,t+i*c+24,chr(65+i),'st-label','end')
-        for j in range(6):
-            v=dist[i][j];opacity=.08+.78*v/.5
-            s+=f'<rect x="{l+j*c}" y="{t+i*c}" width="{c-2}" height="{c-2}" class="st-heat" fill-opacity="{opacity:.3f}"/>'
-            s+=text(l+j*c+c/2-1,t+i*c+22,f'{v:.2f}','st-cell-value','middle')
-    # Average-link distances explain the high-level two-block structure; the matrix itself is exact.
-    s+=text(402,117,'Dissimilarity','st-label')
-    for i,v in enumerate([0,.1,.2,.3,.4,.5]):
-        s+=f'<rect x="404" y="{132+i*23}" width="24" height="21" class="st-heat" fill-opacity="{.08+.78*v/.5:.3f}"/>'+text(438,148+i*23,f'{v:.1f}','st-tick')
-    s+=text(254,323,'Units A–F · same scale in both dimensions','st-label','middle')
-    rows=[[chr(65+i)]+[f'{v:.2f}' for v in p] for i,p in enumerate(profiles)]
-    return demo('distance','Cohesion within and between units',s,'A quantitative distance matrix reveals two distinct profile groups. Generic units stand in for the comparison—not real wilayat.','Six assumed unit profiles, each summing to 1 across four categories. Distance = Euclidean distance / sqrt(2), bounded by 0–1 for composition vectors. The displayed color range is 0–0.5.',['Unit','Category 1','Category 2','Category 3','Category 4'],rows,350)
+def vanguards():
+    from vanguards_panel import build_panel
+    graphic, detail, controls = build_panel(ROOT, text, line, dot, table, esc)
+    return figure('st-vanguards', 'Tactical variation across wilayat', '2022 thesis · reported', graphic,
+                  'Reported tactic shares and linkage scores, not synthetic examples. Different profiles are visible; their relationship to central linkage remains an open question in the thesis.',
+                  detail, controls, height=520)
+
 
 def climate():
     s,x,y=axes(0,20,-.5,3.5,[0,5,10,15,20],[0,1,2,3],'Projection step','Change from baseline (standardized units)')
@@ -270,7 +259,7 @@ def main():
     args=ap.parse_args()
     data=extract(args.source_svg) if args.source_svg else json.loads(DATA.read_text())
     if data['blob']!=BLOB or len(data['records'])!=27:raise ValueError('Unrecognized source dataset')
-    replacements={'paper-target-map':target_plot(data),'paper-estimating-lethality':missing(),'paper-vanguards':distance(),'paper-climate-terrorism':climate(),'project-himalayan-flood':flood(),'project-food-under-fire':food(),'project-protecting-aid-workers':aid(),'project-autonomous-weapons':weights(),'project-ambassador-advising':decision()}
+    replacements={'paper-target-map':target_plot(data),'paper-estimating-lethality':missing(),'paper-vanguards':vanguards(),'paper-climate-terrorism':climate(),'project-himalayan-flood':flood(),'project-food-under-fire':food(),'project-protecting-aid-workers':aid(),'project-autonomous-weapons':weights(),'project-ambassador-advising':decision()}
     p=ROOT/'research.html'; document=p.read_text()
     for key,new in replacements.items():
         pattern=rf'(<article\b[^>]*\bid="{re.escape(key)}"[^>]*>)(.*?)(</article>)'
@@ -282,6 +271,8 @@ def main():
     # Keep the source-backed PCoA panel and its precise coordinates unchanged.
     if 'assets/css/research-statistics.css' not in document:
         document=document.replace('</head>','<link rel="stylesheet" href="assets/css/research-statistics.css?v=20261006-1">\n<script src="assets/js/research-statistics.js?v=20261006-1" defer></script>\n</head>')
+    if 'assets/js/vanguards.js' not in document:
+        document = document.replace('</head>', '<script src="assets/js/vanguards.js?v=20261006-1" defer></script>\n</head>')
     p.write_text(document)
     (ROOT/'assets/data/research-plot-demos.json').write_text(json.dumps(DEMO,indent=2)+'\n')
     with (ROOT/'assets/data/ethnosectarian-figure4.csv').open('w',newline='') as f:

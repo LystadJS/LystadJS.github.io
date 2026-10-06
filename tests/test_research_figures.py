@@ -29,13 +29,12 @@ class ResearchFigures(unittest.TestCase):
 
     def test_demo_inputs_are_explicit_and_consistent(self):
         data = json.loads((ROOT/'assets/data/research-plot-demos.json').read_text())
-        self.assertEqual(len(data), 8)
+        self.assertEqual(len(data), 7)
         for demo in data.values():
             self.assertIn('not empirical', demo['status'])
             self.assertTrue(demo['assumptions'])
             self.assertTrue(demo['values'])
-        for row in data['distance']['values']:
-            self.assertAlmostEqual(sum(map(float,row[1:])),1)
+        self.assertNotIn('distance', data)
         times=data['flood']['values']
         self.assertEqual(sum(row[1] <= 6 for row in times),10)
         self.assertEqual(sum(row[2] <= 6 for row in times),3)
@@ -45,7 +44,7 @@ class ResearchFigures(unittest.TestCase):
             self.assertGreater(high,rate)
 
     def test_generation_is_idempotent(self):
-        names=['research.html','assets/data/ethnosectarian-figure4.json','assets/data/ethnosectarian-figure4.csv','assets/data/research-plot-demos.json']
+        names=['research.html','assets/data/ethnosectarian-figure4.json','assets/data/ethnosectarian-figure4.csv','assets/data/research-plot-demos.json','assets/data/vanguards-thesis.csv']
         before={name:(ROOT/name).read_bytes() for name in names}
         subprocess.run([sys.executable,str(ROOT/'scripts/build_research_figures.py')],check=True,capture_output=True,timeout=20)
         for name in names:

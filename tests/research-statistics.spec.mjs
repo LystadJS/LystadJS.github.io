@@ -15,7 +15,7 @@ test('statistical figures retain project organization and identify synthetic inp
   await expect(page.locator('.rp-resource')).toHaveCount(30);
   await expect(page.locator('.research-figure svg')).toHaveCount(10);
   await expect(page.locator('.rp-stat-figure')).toHaveCount(9);
-  await expect(page.locator('[data-evidence="Synthetic method demo"]')).toHaveCount(8);
+  await expect(page.locator('[data-evidence="Synthetic method demo"]')).toHaveCount(7);
   await expect(page.locator('.research-figure img, .research-figure canvas')).toHaveCount(0);
   await expect(page.locator('.process-point')).toHaveCount(7);
 });
@@ -78,7 +78,7 @@ test('all numeric tables remain readable with JavaScript disabled', async ({ bro
   const page=await context.newPage();
   await page.route('https://**/*',route=>route.abort());
   await page.goto('/research.html');
-  await expect(page.locator('.st-controls')).toBeHidden();
+  for (const control of await page.locator('.st-controls').all()) await expect(control).toBeHidden();
   await expect(page.locator('[data-target-panel="civilian"]')).toBeVisible();
   for (const details of await page.locator('.rp-stat-figure details').all()) {
     await details.locator('summary').click();

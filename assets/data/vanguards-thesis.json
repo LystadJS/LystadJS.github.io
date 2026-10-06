@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "status": "Source-reported descriptive statistics, transcribed from the author-supplied thesis; no new model fit",
+  "source": {
+    "title": "Vanguards of Terror: Analyzing the Tactical Orientation and Cohesion of the Islamic State Insurgency 1999–2019",
+    "author": "John Lystad",
+    "institution": "Florida State University",
+    "year": 2022,
+    "filename": "HITM Thesis.pdf",
+    "sha256": "ef06e537c341112da4677b1701cd334fdde21beb60a9f0af3cf692b04d0996fc",
+    "source_access": "Author-supplied PDF. The full thesis is not republished in this website update.",
+    "table_scope": "Table 4.1 and the ten tactic/linkage table pairs in Chapter 5",
+    "pdf_page_offset": 10
+  },
+  "transcription": "Numeric strings preserve printed precision. Repeated ISIL columns were checked against Table 4.1. Tables were checked against rendered PDF pages, not OCR.",
+  "tactic_order": [
+    "Seizure",
+    "Pitched Battle",
+    "Assassination",
+    "Raid",
+    "Ambush",
+    "Hostage-taking",
+    "Armed Assault",
+    "Bombing",
+    "Unarmed Assault",
+    "Infrastructure Attack",
+    "Intimidation/Extortion/Theft",
+    "Other",
+    "Unknown"
+  ],
+  "displayed_metrics": [
+    "Bombing",
+    "Raid",
+    "Hostage-taking",
+    "Armed Assault",
+    "Seizure",
+    "Suicide"
+  ],
+  "linkage_criteria": [
+    "Foreign-born emir",
+    "Emir ascension method",
+    "Emir combat experience",
+    "Unilateral attack claims",
+    "“Pioneer” insurgency",
+    "Self-identification as wilaya",
+    "2014 bay’ah",
+    "Reception of arms",
+    "Reception of funding"
+  ],
+  "units": {
+    "tactics": "percent of operations",
+    "suicide": "percent of operations; cross-cutting indicator, not a mutually exclusive tactic",
+    "linkage_items": "criterion score, 0–1",
+    "linkage_total": "sum of nine criterion scores, 0–9"
+  },
+  "interpretation_limits": [
+    "ISIL baseline: 8 April 2013–31 December 2019; affiliate study window: 29 June 2014–31 December 2019. These are not identical exposure windows; individual affiliates formed at different dates.",
+    "The thesis reports 6,606 ISIL operations and 2,639 affiliate operations overall. No province-specific sample sizes or confidence intervals are inferred from these totals.",
+    "Tactics are coded by operational objective using the thesis hierarchy, not directly by GTD weapon or attack-type labels.",
+    "Selected heatmap columns do not form a complete composition. Suicide can occur alongside a tactic and is shown separately.",
+    "Reported tactic totals range from 99.8% to 100.2%. Values are not normalized, rounded beyond the source precision, or imputed.",
+    "Chapter 5 conclusion (printed p. 86) and Chapter 6 (p. 87) explicitly require further quantitative analysis of the linkage–behavior association. The figure does not supply a fitted association, significance test, or causal effect."
+  ],
+  "source_audit": [
+    {
+      "item": "Target-choice table 5.3",
+      "printed_page": 49,
+      "finding": "Libya target shares are printed as 60.2%, 36.5%, and 0.3%, totaling 97.0%.",
+      "handling": "Target-choice values are not used in the new plot; no correction has been inferred."
+    },
+    {
+      "item": "Caucasus targeting prose and Table 5.24",
+      "printed_pages": [
+        76,
+        77
+      ],
+      "finding": "Prose describes a military/police preference; the table reports 78.6% civilian and 17.9% military/police.",
+      "handling": "No attempt to reconcile the conflict; target-choice values are not used in the new plot."
+    },
+    {
+      "item": "Table and geography naming",
+      "finding": "Several prose table references differ from the printed table captions; Caucasus/Caucuses spellings vary.",
+      "handling": "Provenance follows printed table captions and page numbers. Display uses Caucasus, as in the tactic table."
+    }
+  ],
+  "records": [
+    {
+      "name": "Iraq and the Levant",
+      "label": "ISIL baseline",
+      "kind": "baseline",
+      "period": "2013–2019",
+      "period_start": "2013-04-08",
+      "period_end": "2019-12-31",
+      "tactics": {
+        "Seizure": "4.0",
+        "Pitched Battle": "0",
+        "Assassination": "3.0",
+        "Raid": "10.6",
+        "Ambush": "1.2",
+        "Hostage-taking": "10.8",
+        "Armed Assault": "3.7",
+        "Bombing": "60.2",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "1.7",
+        "Intimidation/Extortion/Theft": ".1",
+        "Other": "0",
+        "Unknown": "4.6"
+      },
+      "source": {
+        "tactics_table": "4.1",
+        "printed_page": 39,
+        "pdf_page": 49
+      },
+      "suicide": "20.6",
+      "non_suicide": "79.4",
+      "reported_tactic_total_percent": "99.9"
+    },
+    {
+      "name": "Libya",
+      "label": "Libya",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "1.6",
+        "Pitched Battle": "0",
+        "Assassination": "3.0",
+        "Raid": "16.2",
+        "Ambush": "0.8",
+        "Hostage-taking": "28.3",
+        "Armed Assault": "4.0",
+        "Bombing": "37.9",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "3.5",
+        "Intimidation/Extortion/Theft": "1.9",
+        "Other": "0",
+        "Unknown": "2.8"
+      },
+      "source": {
+        "linkage_table": "5.1",
+        "linkage_printed_page": 46,
+        "linkage_pdf_page": 56,
+        "tactics_table": "5.2",
+        "targets_table": "5.3",
+        "printed_page": 49,
+        "pdf_page": 59
+      },
+      "suicide": "15.5",
+      "non_suicide": "84.5",
+      "linkage_items": {
+        "Foreign-born emir": "1",
+        "Emir ascension method": "1",
+        "Emir combat experience": "1",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "8",
+      "reported_tactic_total_percent": "100.0"
+    },
+    {
+      "name": "Yemen",
+      "label": "Yemen",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "2.5",
+        "Pitched Battle": "0",
+        "Assassination": "17.8",
+        "Raid": "6.8",
+        "Ambush": "1.7",
+        "Hostage-taking": "4.2",
+        "Armed Assault": "4.2",
+        "Bombing": "59.3",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "1.7",
+        "Intimidation/Extortion/Theft": ".8",
+        "Other": "0",
+        "Unknown": ".8"
+      },
+      "source": {
+        "linkage_table": "5.4",
+        "linkage_printed_page": 50,
+        "linkage_pdf_page": 60,
+        "tactics_table": "5.5",
+        "targets_table": "5.6",
+        "printed_page": 53,
+        "pdf_page": 63
+      },
+      "suicide": "44.9",
+      "non_suicide": "55.1",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "1",
+        "Emir combat experience": "1",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "7",
+      "reported_tactic_total_percent": "99.8"
+    },
+    {
+      "name": "Sinai",
+      "label": "Sinai",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "1.0",
+        "Pitched Battle": "0",
+        "Assassination": "6.2",
+        "Raid": "22.2",
+        "Ambush": "3.7",
+        "Hostage-taking": "12.1",
+        "Armed Assault": "7.8",
+        "Bombing": "44.6",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "1.6",
+        "Intimidation/Extortion/Theft": "0.4",
+        "Other": "0",
+        "Unknown": "0.5"
+      },
+      "source": {
+        "linkage_table": "5.7",
+        "linkage_printed_page": 54,
+        "linkage_pdf_page": 64,
+        "tactics_table": "5.8",
+        "targets_table": "5.9",
+        "printed_page": 57,
+        "pdf_page": 67
+      },
+      "suicide": "7.4",
+      "non_suicide": "92.6",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "0",
+        "Emir combat experience": "1",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "6",
+      "reported_tactic_total_percent": "100.1"
+    },
+    {
+      "name": "East Asia",
+      "label": "East Asia",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "0.3",
+        "Pitched Battle": "0",
+        "Assassination": "4.1",
+        "Raid": "6.4",
+        "Ambush": "6.7",
+        "Hostage-taking": "29.1",
+        "Armed Assault": "13.7",
+        "Bombing": "36.1",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "2.1",
+        "Intimidation/Extortion/Theft": "1.3",
+        "Other": "0",
+        "Unknown": "0.3"
+      },
+      "source": {
+        "linkage_table": "5.10",
+        "linkage_printed_page": 58,
+        "linkage_pdf_page": 68,
+        "tactics_table": "5.11",
+        "targets_table": "5.12",
+        "printed_page": 61,
+        "pdf_page": 71
+      },
+      "suicide": "1.5",
+      "non_suicide": "98.5",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "0",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "5",
+      "reported_tactic_total_percent": "100.1"
+    },
+    {
+      "name": "Khorasan",
+      "label": "Khorasan",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "1.1",
+        "Pitched Battle": "0",
+        "Assassination": "14.1",
+        "Raid": "17.2",
+        "Ambush": "7.3",
+        "Hostage-taking": "9.7",
+        "Armed Assault": "9.7",
+        "Bombing": "38.5",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "2.1",
+        "Intimidation/Extortion/Theft": "0",
+        "Other": "0",
+        "Unknown": "0.5"
+      },
+      "source": {
+        "linkage_table": "5.13",
+        "linkage_printed_page": 62,
+        "linkage_pdf_page": 72,
+        "tactics_table": "5.14",
+        "targets_table": "5.15",
+        "printed_page": 65,
+        "pdf_page": 75
+      },
+      "suicide": "19.6",
+      "non_suicide": "80.4",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "0",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "5",
+      "reported_tactic_total_percent": "100.2"
+    },
+    {
+      "name": "West Africa",
+      "label": "West Africa",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "3.0",
+        "Pitched Battle": "0",
+        "Assassination": "1.2",
+        "Raid": "44.0",
+        "Ambush": "5.7",
+        "Hostage-taking": "3.8",
+        "Armed Assault": "8.7",
+        "Bombing": "29.4",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "0.4",
+        "Intimidation/Extortion/Theft": "0",
+        "Other": "0",
+        "Unknown": "3.8"
+      },
+      "source": {
+        "linkage_table": "5.16",
+        "linkage_printed_page": 66,
+        "linkage_pdf_page": 76,
+        "tactics_table": "5.17",
+        "targets_table": "5.18",
+        "printed_page": 69,
+        "pdf_page": 79
+      },
+      "suicide": "25.2",
+      "non_suicide": "74.8",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": ".66",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "0",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "0",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "3.66",
+      "reported_tactic_total_percent": "100.0"
+    },
+    {
+      "name": "Greater Sahara",
+      "label": "Greater Sahara",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "0",
+        "Pitched Battle": "0",
+        "Assassination": "14.7",
+        "Raid": "32.0",
+        "Ambush": "18.7",
+        "Hostage-taking": "12.0",
+        "Armed Assault": "9.3",
+        "Bombing": "10.7",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "0",
+        "Intimidation/Extortion/Theft": "1.3",
+        "Other": "0",
+        "Unknown": "1.3"
+      },
+      "source": {
+        "linkage_table": "5.19",
+        "linkage_printed_page": 70,
+        "linkage_pdf_page": 80,
+        "tactics_table": "5.20",
+        "targets_table": "5.21",
+        "printed_page": 73,
+        "pdf_page": 83
+      },
+      "suicide": "8.0",
+      "non_suicide": "92.0",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "1",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "0",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "5",
+      "reported_tactic_total_percent": "100.0"
+    },
+    {
+      "name": "Caucasus",
+      "label": "Caucasus",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "0",
+        "Pitched Battle": "0",
+        "Assassination": "0",
+        "Raid": "28.6",
+        "Ambush": "7.1",
+        "Hostage-taking": "3.6",
+        "Armed Assault": "35.7",
+        "Bombing": "21.4",
+        "Unarmed Assault": "3.6",
+        "Infrastructure Attack": "0",
+        "Intimidation/Extortion/Theft": "0",
+        "Other": "0",
+        "Unknown": "0"
+      },
+      "source": {
+        "linkage_table": "5.22",
+        "linkage_printed_page": 74,
+        "linkage_pdf_page": 84,
+        "tactics_table": "5.23",
+        "targets_table": "5.24",
+        "printed_page": 77,
+        "pdf_page": 87
+      },
+      "suicide": "17.9",
+      "non_suicide": "82.1",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "1",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "1",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "1",
+        "2014 bay’ah": "1",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "6",
+      "reported_tactic_total_percent": "100.0"
+    },
+    {
+      "name": "Congo",
+      "label": "Congo",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "0",
+        "Pitched Battle": "0",
+        "Assassination": "1.5",
+        "Raid": "53.7",
+        "Ambush": "13.2",
+        "Hostage-taking": "11.8",
+        "Armed Assault": "8.8",
+        "Bombing": "1.5",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "0",
+        "Intimidation/Extortion/Theft": "0",
+        "Other": "0",
+        "Unknown": "9.6"
+      },
+      "source": {
+        "linkage_table": "5.25",
+        "linkage_printed_page": 78,
+        "linkage_pdf_page": 88,
+        "tactics_table": "5.26",
+        "targets_table": "5.27",
+        "printed_page": 81,
+        "pdf_page": 91
+      },
+      "suicide": "0",
+      "non_suicide": "100",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "0",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "0",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "0",
+        "2014 bay’ah": "0",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "2",
+      "reported_tactic_total_percent": "100.1"
+    },
+    {
+      "name": "Mozambique",
+      "label": "Mozambique",
+      "kind": "wilaya",
+      "period": "2014–2019",
+      "tactics": {
+        "Seizure": "0",
+        "Pitched Battle": "0",
+        "Assassination": "0",
+        "Raid": "41.3",
+        "Ambush": "19.6",
+        "Hostage-taking": "24.0",
+        "Armed Assault": "2.2",
+        "Bombing": "0",
+        "Unarmed Assault": "0",
+        "Infrastructure Attack": "2.2",
+        "Intimidation/Extortion/Theft": "0",
+        "Other": "0",
+        "Unknown": "10.9"
+      },
+      "source": {
+        "linkage_table": "5.28",
+        "linkage_printed_page": 82,
+        "linkage_pdf_page": 92,
+        "tactics_table": "5.29",
+        "targets_table": "5.30",
+        "printed_page": 85,
+        "pdf_page": 95
+      },
+      "suicide": "0",
+      "non_suicide": "100",
+      "linkage_items": {
+        "Foreign-born emir": "0",
+        "Emir ascension method": "0",
+        "Emir combat experience": "0",
+        "Unilateral attack claims": "0",
+        "“Pioneer” insurgency": "0",
+        "Self-identification as wilaya": "0",
+        "2014 bay’ah": "0",
+        "Reception of arms": "1",
+        "Reception of funding": "1"
+      },
+      "linkage_total": "2",
+      "reported_tactic_total_percent": "100.2"
+    }
+  ]
+}

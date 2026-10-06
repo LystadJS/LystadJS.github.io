@@ -55,61 +55,6 @@
     ],
     "diagnostics": "assets/data/missing-lethality-mice-demo.json"
   },
-  "distance": {
-    "status": "Synthetic method demonstration; not empirical project results",
-    "assumptions": "Six assumed unit profiles, each summing to 1 across four categories. Distance = Euclidean distance / sqrt(2), bounded by 0\u20131 for composition vectors. The displayed color range is 0\u20130.5.",
-    "columns": [
-      "Unit",
-      "Category 1",
-      "Category 2",
-      "Category 3",
-      "Category 4"
-    ],
-    "values": [
-      [
-        "A",
-        "0.55",
-        "0.30",
-        "0.10",
-        "0.05"
-      ],
-      [
-        "B",
-        "0.50",
-        "0.35",
-        "0.10",
-        "0.05"
-      ],
-      [
-        "C",
-        "0.58",
-        "0.24",
-        "0.12",
-        "0.06"
-      ],
-      [
-        "D",
-        "0.12",
-        "0.18",
-        "0.50",
-        "0.20"
-      ],
-      [
-        "E",
-        "0.08",
-        "0.22",
-        "0.48",
-        "0.22"
-      ],
-      [
-        "F",
-        "0.10",
-        "0.15",
-        "0.53",
-        "0.22"
-      ]
-    ]
-  },
   "climate": {
     "status": "Synthetic method demonstration; not empirical project results",
     "assumptions": "Assumed trajectories: m(t) = 0.06t or 0.14t; envelope half-width = 0.015t + 0.001t\u00b2. Envelopes are illustrative ranges, not fitted confidence intervals.",

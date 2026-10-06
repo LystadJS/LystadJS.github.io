@@ -1,0 +1,26 @@
+{
+  "baseline_commit": "90b4b217703d8a458869f5943ba4f4aea95001c3",
+  "scope": "Four academic abstract blocks only; all figures, titles, labels, resource links, applied works, styling, and scripts unchanged.",
+  "word_counts": [
+    227,
+    230,
+    246,
+    245
+  ],
+  "page_errors": [],
+  "limits": [
+    "Local Chromium used exact candidate CSS and scripts inlined for in-memory rendering because browser navigation is restricted. External fonts, map CDN, and registry services were isolated, not independently revalidated.",
+    "No new statistical analysis or literature update. Full uploaded papers were not republished.",
+    "Existing publication-date labels remain unchanged; journal publication status is unverified."
+  ],
+  "keyboard_and_existing_figure_controls": "passed",
+  "no_javascript_abstracts": "visible",
+  "layout_checks": 36,
+  "all_10_figures_byte_unchanged": true,
+  "six_applied_projects_byte_unchanged": true,
+  "unit_tests_passed": 20,
+  "local_references_checked": 183,
+  "javascript_syntax_checks": 16,
+  "source_boundary": "Three uploaded papers and the pinned Target Map repository; no outside literature additions.",
+  "figure_regeneration_preserves_abstracts": true
+}

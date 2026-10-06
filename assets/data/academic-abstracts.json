@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "updated": "2026-10-06",
+  "baseline_commit": "90b4b217703d8a458869f5943ba4f4aea95001c3",
+  "voice_profile": {
+    "plugin": "jsl-writing-voice",
+    "version": "1.0.0"
+  },
+  "scope": "Source-grounded journal-length abstracts for the four academic works. No new analyses, literature update, or claim of journal acceptance.",
+  "abstracts": [
+    {
+      "id": "paper-target-map",
+      "paragraphs": [
+        "The Islamic State’s sectarian ideology does not, by itself, explain the geography or composition of its violence. This study examines how district-level ethnosectarian context relates to attack frequency and target selection in Iraq, distinguishing where attacks concentrate from whether they target civilians, state or security actors, or religious institutions and groups.",
+        "The analysis spatially links Global Terrorism Database events to Iraqi district boundaries and ethnicity polygons, then uses LandScan 2008 population estimates to construct population-weighted demographic profiles. Complete district-month panels retain months without recorded attacks, while spatial-join checks and comparisons with area-weighted composition document key measurement choices. Descriptive heatmaps and temporal summaries characterize attack concentration. Two-stage logistic regression separates the probability of civilian rather than state/security targeting from the probability of religious targeting conditional on a civilian attack, comparing demographic contexts across expansion, territorial rule, and post-Caliphate insurgency.",
+        "Preliminary model estimates indicate consistently higher civilian-targeting probabilities in Shia- and Kurdish-majority districts than in Sunni-majority districts, alongside declining probabilities across all three groups over successive phases. During the Caliphate period, the corresponding estimates are approximately 58%, 57%, and 51%. Religious-targeting probabilities also decline after the expansion phase. These results distinguish the location of insurgent activity from the composition of its targets: demographic concentration alone cannot establish whom insurgents intend to harm. The findings remain contextual associations, not evidence of individual victims’ identities or causal effects of district composition."
+      ],
+      "sources": [
+        {
+          "kind": "repository",
+          "repository": "LystadJS/counterterrorism_ethnosectarian_islamic_state",
+          "commit": "f129ec2f515f5e908eb448ef37c41788e2e45a4c",
+          "paths": [
+            "README.md",
+            "analysis/01_population_weighted_heatmap.R",
+            "analysis/02_targeting_composition_dashboard.R",
+            "figures/fig4.svg"
+          ],
+          "supports": "Population-weighted district-month construction, spatial checks, two logistic regressions, phase-specific predicted probabilities, and preliminary status."
+        }
+      ],
+      "editorial_notes": [
+        "The full Target Map manuscript was not supplied. This abstract describes the inspected repository workflow and Figure 4; no sample size, observation window, count-model specification, or additional significance test is invented.",
+        "The canonical dashboard caption identifies two logistic regressions. Other model-object filenames were not treated as proof of the specification underlying Figure 4.",
+        "The existing website date label says Published May 2026, while the repository labels its results preliminary and the missing-lethality paper cites Target Map as unpublished. Existing date labels are outside this copy-only change; journal publication status remains unverified."
+      ],
+      "title": "The Caliphate's Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq",
+      "word_count": 227,
+      "paragraph_roles": [
+        "background_and_objective",
+        "methods",
+        "findings_and_implication"
+      ]
+    },
+    {
+      "id": "paper-estimating-lethality",
+      "paragraphs": [
+        "Missing casualty reports complicate a basic question in terrorism research: are suicide attacks more lethal than other attacks, or does incomplete reporting distort the comparison? This study examines that association in 16,227 Islamic State-linked incidents recorded in the Global Terrorism Database across 46 countries from 1994 to 2021. Fatality counts are missing in 8.1% of events and wounded-victim counts in 16.1%, with complete cases differing from omitted events in their tactical and targeting characteristics.",
+        "Linear regression models log(1 + fatalities), adjusting for wounded victims and attack, target, temporal, and regional characteristics. The analysis compares complete-case estimation, weighting, mean imputation, missing-indicator adjustment, deterministic regression imputation, stochastic regression imputation, and multiple imputation by chained equations (MICE). The preferred analysis retains 14,920 events with observed fatalities and imputes incomplete wounded-victim information under a missing-at-random assumption. Twenty imputation chains run for twenty iterations; trace plots and observed-versus-imputed density comparisons assess the imputation process before estimates are pooled.",
+        "The estimated suicide-attack coefficient remains positive across all seven approaches, ranging from 0.824 to 0.913. The pooled MICE estimate is 0.852 (95% confidence interval: 0.809–0.894; p < .001), compared with 0.879 under complete-case analysis. The substantive association therefore persists across the missing-data treatments examined, while estimated magnitude and uncertainty depend on how incomplete records are handled. The study supports a positive adjusted association between suicide attacks and logged fatalities, without establishing causation or robustness to missing-not-at-random reporting."
+      ],
+      "sources": [
+        {
+          "kind": "uploaded paper",
+          "file": "LystadJ.pdf",
+          "title": "Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism",
+          "date": "2026-05-22",
+          "pages": "1–5 (sample and missingness); 5–8 (comparative methods); 8–11 (MICE, diagnostics, and Table 4)",
+          "supports": "16,227 records; 14,920 observed-outcome cases; missingness rates; log-linear model; seven implemented treatments; 20 chains/20 iterations; pooled coefficient and reported interval.",
+          "sha256": "d006493b8e327100012cc2fa179d1b1aca6c222ac42525094dc29879e9b1f063"
+        }
+      ],
+      "editorial_notes": [
+        "The source describes MICE for missing wounded-victim information in events with observed fatalities; the abstract does not claim that all missing fatality outcomes were imputed.",
+        "Predictive mean matching is discussed as an example in the paper, not unambiguously identified as the fitted imputation method. It is not asserted as the actual implementation.",
+        "The earlier website summary asserted perpetrator-attribution bias. That analysis is not documented in the uploaded paper and is not repeated.",
+        "The source mentions claimed status in its data discussion but omits it from some model descriptions. The abstract avoids an unsupported exhaustive adjustment set.",
+        "The numerical coefficient and its log-transformed outcome are retained rather than turning the exponentiated coefficient into a percentage change in arithmetic-mean fatalities. Diagnostics are not described as proof of MAR."
+      ],
+      "title": "Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism",
+      "word_count": 230,
+      "paragraph_roles": [
+        "background_and_objective",
+        "methods",
+        "findings_and_implication"
+      ]
+    },
+    {
+      "id": "paper-vanguards",
+      "paragraphs": [
+        "A shared organizational identity can conceal substantial differences in how insurgent affiliates operate. This thesis examines the strategic and tactical cohesion of the Islamic State and its Associated Movement, asking whether its regional provinces reproduce the operational patterns of the Iraq-and-Levant organization or retain distinct preferences shaped by their local histories and circumstances.",
+        "The study combines comparative case analysis with descriptive event statistics from the Global Terrorism Database. A baseline of 6,606 Iraq-and-Levant operations from 2013–2019 is compared with 2,639 affiliate operations within the 2014–2019 study window, covering ten provinces or operationally distinct wings. Events are recoded through a thirteen-category hierarchy that classifies tactics by operational objective rather than weapon technology. Frequency distributions, percentage comparisons, target profiles, and geographic mapping describe variation across affiliates. A nine-criterion additive linkage index separately summarizes ties to central leadership through leadership characteristics, attack-claim practices, organizational identification, allegiance timing, and material support.",
+        "The comparisons show that affiliation does not imply a uniform tactical repertoire. Bombings account for 60.2% of the Iraq-and-Levant baseline, whereas raids predominate in the Congo and Mozambique wings, representing 53.7% and 41.3% of operations, respectively. Suicide use and territorial-seizure activity also vary across affiliates. These descriptive differences establish the limits of treating the movement as a single operational actor. They do not establish that stronger central linkage causes greater tactical cohesion; the thesis leaves that relationship for further quantitative testing. Its contribution is a comparative measurement framework for assessing organizational variation and informing responses tailored to individual affiliates."
+      ],
+      "sources": [
+        {
+          "kind": "uploaded thesis",
+          "file": "HITM Thesis.pdf",
+          "title": "Vanguards of Terror: Analyzing the Tactical Orientation and Cohesion of the Islamic State Insurgency 1999–2019",
+          "date": "2022",
+          "pages": "Printed pp. 36–39 (baseline, tactic coding, Table 4.1); 43–44 (affiliate sample and linkage criteria); 81 and 85 (Congo/Mozambique tactic shares); 86–89 (conclusions and limits); 93–94 (codebook)",
+          "supports": "6,606 baseline and 2,639 affiliate operations; thirteen-category recoding; descriptive comparisons; nine-component linkage index; reported tactic shares; untested linkage association.",
+          "sha256": "ef06e537c341112da4677b1701cd334fdde21beb60a9f0af3cf692b04d0996fc"
+        }
+      ],
+      "editorial_notes": [
+        "The 1999–2019 title describes the historical scope; the baseline and affiliate event-analysis windows differ and are stated explicitly.",
+        "No regression, clustering, estimated linkage effect, confidence interval, or significance test is attributed to the thesis.",
+        "The unused target-choice table inconsistencies identified in the prior visualization audit do not enter this abstract."
+      ],
+      "title": "Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency: 1999-2019",
+      "word_count": 246,
+      "paragraph_roles": [
+        "background_and_objective",
+        "methods",
+        "findings_and_implication"
+      ]
+    },
+    {
+      "id": "paper-climate-terrorism",
+      "paragraphs": [
+        "Environmental stress can create opportunities for terrorist recruitment when livelihoods deteriorate and governments cannot meet basic needs. This study examines how projected climate change could alter those conditions in the Middle East, focusing on the interaction between physical exposure, resource scarcity, displacement, and state capacity rather than treating climate as a direct cause of terrorism.",
+        "The analysis compares NASA Goddard Institute for Space Studies Global Climate Model output, accessed through Columbia University’s EzGCM software, under the paper’s business-as-usual emissions scenario and a baseline using 2019 carbon dioxide levels. Spatial and seasonal comparisons examine surface temperature, precipitation, and evaporation, including annual, summer, and winter temperature patterns. The paper interprets these projections alongside the wet-bulb temperature framework and published evidence on humidity and heat stress. Historical accounts of Islamic State and al-Qaeda recruitment provide a qualitative basis for identifying how environmental disruption may be exploited.",
+        "Under the scenario examined, the paper reports warming of approximately 1–7°C across much of the region by 2100, including summer increases of 3–7°C. Its synthesis identifies distinct pressures: inland warming and drying threaten agricultural livelihoods, while combined heat and humidity heighten exposure around the Arabian Peninsula and Persian Gulf. The resulting argument is conditional: environmental deterioration may expand recruitment opportunities where public support and adaptation remain inadequate. The study develops a scenario-based account of this pathway, not a statistically estimated climate–terrorism effect or a forecast of attack counts, and locates the policy problem in the interaction between climatic pressure and governance capacity."
+      ],
+      "sources": [
+        {
+          "kind": "uploaded article",
+          "file": "The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa.docx",
+          "title_in_document": "The Effects of Climate Change on the Development of Terrorist Networks in the Middle East",
+          "sections": [
+            "Methodology",
+            "The Global Climate Model",
+            "Surface Temperature",
+            "Wet Bulb Temperature",
+            "Precipitation, Evaporation, and Humidity",
+            "Discussion and Conclusion"
+          ],
+          "supports": "GISS/EzGCM two-scenario comparison; 2019 baseline; annual/seasonal comparisons; reported 1–7°C and summer 3–7°C warming; qualitative climate–recruitment argument.",
+          "sha256": "bb9ff37be658761ccdb7f0d5295f87e4f2e64b6423e030c7e929f08ba96c50f5"
+        }
+      ],
+      "editorial_notes": [
+        "The supplied article focuses on the Middle East despite the broader website title. The abstract follows the documented analytic geography; the existing title is preserved.",
+        "The source labels its business-as-usual scenario A1F1 in the methods and later discusses RCP8.5. The abstract uses its descriptive scenario name without treating those labels as equivalent or silently reconciling them.",
+        "Temperature changes are preserved in Celsius. The source’s Fahrenheit figures appear to convert absolute temperatures rather than changes and are omitted, not silently corrected.",
+        "The wet-bulb framework is discussed, but the article does not provide a reproducible table of calculated wet-bulb estimates. No new computation is claimed.",
+        "No regression, causal identification strategy, formal network analysis, or probability forecast is documented. Projection ranges are attributed to the paper, not presented as updated climate projections."
+      ],
+      "title": "The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa",
+      "word_count": 245,
+      "paragraph_roles": [
+        "background_and_objective",
+        "methods",
+        "findings_and_implication"
+      ]
+    }
+  ]
+}

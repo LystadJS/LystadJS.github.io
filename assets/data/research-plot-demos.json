@@ -1,33 +1,59 @@
 {
   "missing": {
     "status": "Synthetic method demonstration; not empirical project results",
-    "assumptions": "Assume recorded attacks average 4 deaths. Overall mean = (1 \u2212 missing fraction) \u00d7 4 + missing fraction \u00d7 assumed unreported mean. No project data are used.",
+    "assumptions": "Seed 20261006; 180 fictional events; deaths and injuries are incomplete. Missingness depends only on the observed reporting index (MAR by construction). Five independently initialized chains run 20 iterations of fully conditional specification with five-donor predictive mean matching. Conditional predictions use log1p counts. This small Python demonstration is not output from the R mice package or the study.",
     "columns": [
-      "Missing fraction",
-      "Recorded mean",
-      "Zero-fill mean",
-      "Mean if unreported = 10"
+      "Imputation",
+      "Mean",
+      "SE",
+      "Lower 95%",
+      "Upper 95%"
     ],
     "values": [
       [
-        "20%",
-        4,
-        "3.2",
-        "5.2"
+        "1",
+        "2.539",
+        "0.168",
+        "2.207",
+        "2.871"
       ],
       [
-        "40%",
-        4,
-        "2.4",
-        "6.4"
+        "2",
+        "2.244",
+        "0.150",
+        "1.949",
+        "2.540"
       ],
       [
-        "60%",
-        4,
-        "1.6",
-        "7.6"
+        "3",
+        "2.461",
+        "0.150",
+        "2.166",
+        "2.757"
+      ],
+      [
+        "4",
+        "2.372",
+        "0.158",
+        "2.061",
+        "2.683"
+      ],
+      [
+        "5",
+        "2.383",
+        "0.159",
+        "2.069",
+        "2.698"
+      ],
+      [
+        "Pooled",
+        "2.400",
+        "0.198",
+        "1.991",
+        "2.809"
       ]
-    ]
+    ],
+    "diagnostics": "assets/data/missing-lethality-mice-demo.json"
   },
   "distance": {
     "status": "Synthetic method demonstration; not empirical project results",

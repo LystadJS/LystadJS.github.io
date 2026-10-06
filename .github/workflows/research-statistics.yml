@@ -8,9 +8,13 @@ on:
       - assets/js/research-statistics.js
       - assets/data/ethnosectarian-figure4.*
       - assets/data/research-plot-demos.json
+      - assets/data/missing-lethality-mice-demo.json
       - scripts/build_research_figures.py
+      - scripts/*missing_lethality*.py
       - tests/test_research_figures.py
       - tests/research-statistics.spec.mjs
+      - tests/test_missing_lethality.py
+      - tests/missing-lethality.spec.mjs
       - .github/workflows/research-statistics.yml
   pull_request:
     paths:
@@ -19,8 +23,11 @@ on:
       - assets/js/research-statistics.js
       - assets/data/**
       - scripts/build_research_figures.py
+      - scripts/*missing_lethality*.py
       - tests/research-statistics.spec.mjs
       - tests/test_research_figures.py
+      - tests/test_missing_lethality.py
+      - tests/missing-lethality.spec.mjs
       - .github/workflows/research-statistics.yml
 permissions:
   contents: read
@@ -38,7 +45,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - run: npm run check
-      - run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs
+      - run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs tests/missing-lethality.spec.mjs
       - uses: actions/upload-artifact@v7
         if: always()
         with:

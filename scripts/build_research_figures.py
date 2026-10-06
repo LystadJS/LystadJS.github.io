@@ -171,16 +171,12 @@ def demo(key,title,graphic,caption,assumptions,headers,rows,height=375):
     return figure('st-'+key,title,'Synthetic method demo',graphic,caption,detail,height=height)
 
 def missing():
-    s,x,y=axes(0,10,0,10,[0,2,4,6,8,10],[0,2,4,6,8,10],'Assumed mean deaths in unreported attacks','Mean deaths per attack')
-    s+=line(x(4),45,x(4),272,'st-reference')
-    rows=[]
-    for frac,cls in [(.2,''),(.4,' st-red'),(.6,' st-pale')]:
-        vals=[(v,4*(1-frac)+v*frac) for v in range(11)]
-        s+=path([(x(a),y(b)) for a,b in vals],'st-series'+cls)
-        s+=dot(x(0),y(vals[0][1]),'st-point'+cls)
-        rows.append([f'{frac:.0%}',4,f'{vals[0][1]:.1f}',f'{vals[-1][1]:.1f}'])
-    s+=legend([('20% missing','st-series'),('40% missing','st-series st-red'),('60% missing','st-series st-pale')])
-    return demo('missing','Missingness changes the estimate',s,'Zero-filling unreported deaths pulls the estimated mean down. Alternative assumptions matter more as the share of missing records rises.','Assume recorded attacks average 4 deaths. Overall mean = (1 − missing fraction) × 4 + missing fraction × assumed unreported mean. No project data are used.',['Missing fraction','Recorded mean','Zero-fill mean','Mean if unreported = 10'],rows)
+    from missing_lethality_panel import build_panel
+    graphic, detail, metadata = build_panel(ROOT, text, line, path, dot, table)
+    DEMO['missing'] = metadata
+    return figure('st-missing', 'Missingness, imputation & pooling', 'Synthetic method demo', graphic,
+                  'A MICE-style diagnostic example: missingness patterns, imputed-only chain traces, and pooled uncertainty. Synthetic data—not study results.',
+                  detail, height=642)
 
 def distance():
     profiles=[[.55,.30,.10,.05],[.50,.35,.10,.05],[.58,.24,.12,.06],[.12,.18,.50,.20],[.08,.22,.48,.22],[.10,.15,.53,.22]]

@@ -1,0 +1,58 @@
+{
+  "baseline_commit": "790b2abcd2ee09d88d154cf996977b3736f5316d",
+  "viewport_checks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 600,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 780,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 900,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 980,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "clipped_labels": []
+    },
+    {
+      "width": 1920,
+      "overflow": false,
+      "clipped_labels": []
+    }
+  ],
+  "runtime_errors": [],
+  "keyboard_details": "passed",
+  "no_javascript": "passed",
+  "other_projects_and_copy": "unchanged",
+  "data_status": "synthetic Python FCS / PMM demonstration, not R mice or study results",
+  "renderer": "Chromium; exact local styles/scripts inlined for an in-memory render; external fonts/map isolated",
+  "unit_tests_passed": 10,
+  "javascript_unchanged": true
+}

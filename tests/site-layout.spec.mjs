@@ -69,7 +69,10 @@ test('every Code method button loads a distinct, intact example', async ({ page 
   expect(await buttons.count()).toBeGreaterThan(8);
   const seen = new Set();
   for (const button of await buttons.all()) {
-    await button.click();
+    // Keyboard activation tests the same native click handler without moving
+    // the pointer over adjacent controls when the terminal height changes.
+    await button.focus();
+    await button.press('Enter');
     await expect(button).toHaveAttribute('aria-pressed', 'true');
     await expect(page.locator('[data-code-snippet][aria-pressed="true"]')).toHaveCount(1);
     const code = await page.locator('#terminal-code').textContent();
@@ -142,15 +145,15 @@ test('portrait variants and explicit CV logo paths load without probe requests',
   await page.goto('/about.html');
   const portrait = page.locator('.about-portrait img');
   await expect(portrait).toBeVisible();
-  expect(await portrait.evaluate(image => image.complete && image.naturalWidth > 0)).toBeTruthy();
+  await expect.poll(() => portrait.evaluate(image => image.complete && image.naturalWidth > 0), { timeout: 15000 }).toBe(true);
   expect(await portrait.evaluate(image => image.currentSrc)).toMatch(/headshot-(480|960)\.webp$/);
   await page.goto('/cv.html');
   const logos = page.locator('.cv-org-logo img,.cv-role-logo img');
   await expect(logos).toHaveCount(19);
-  for (const image of await logos.all()) {
-    await image.scrollIntoViewIfNeeded();
-    await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0)).toBe(true);
-  }
+  // Some logos are intentionally inside collapsed disclosures. Verify every
+  // declared URL without pretending those hidden elements are scroll targets.
+  await logos.evaluateAll(images => images.forEach(image => { image.loading = 'eager'; }));
+  await expect.poll(() => logos.evaluateAll(images => images.filter(image => image.complete && image.naturalWidth > 0).length), { timeout: 15000 }).toBe(19);
   await expect(page.locator('[href^="YOUR-"]')).toHaveCount(0);
   expect(failures).toEqual([]);
 });

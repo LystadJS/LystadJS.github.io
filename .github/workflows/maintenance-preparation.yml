@@ -1,0 +1,104 @@
+name: Prepare reviewed maintenance files
+on:
+  push:
+    branches: ['chatgpt/maintenance-preparation-20261005']
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: bd550ec8efe92aa9170058d1adbf379c2ee82928
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Reconstruct hash-checked source delta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os, json, base64, lzma, hashlib, urllib.request
+          from pathlib import Path
+          repo = os.environ['GITHUB_REPOSITORY']
+          assert repo == 'LystadJS/LystadJS.github.io'
+          def api(path, body=None):
+              req = urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path, data=None if body is None else json.dumps(body).encode(), headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json', 'Content-Type':'application/json'})
+              with urllib.request.urlopen(req, timeout=60) as response: return json.load(response)
+          def git_hash(data): return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          def blob(sha):
+              data = base64.b64decode(api('git/blobs/'+sha)['content'])
+              assert git_hash(data) == sha
+              return data
+          meta = json.loads(blob('79e84ee7b86d2271e6d76d0cb20bdc0f0cef0d58'))
+          assert api('git/ref/heads/main')['object']['sha'] == meta['base'], 'Main advanced; reconcile first.'
+          chunks = ['6785d2cd5927c3a746f99c3623e6ed59319419d1','8c035bbed4ed137baac7b5aa221bee0e350df8e0','3a6c0fec169870965df421abac8daffed8e34c77']
+          delta = json.loads(lzma.decompress(base64.b64decode(b''.join(blob(sha) for sha in chunks))))
+          assert set(delta) == set(meta['expected'])
+          # Delta is data only. Reconstruct all files before replacing their bases.
+          outputs = {}
+          for name, change in delta.items():
+              path = Path(name)
+              assert not path.is_absolute() and '..' not in path.parts
+              if 'text' in change: text = change['text']
+              else:
+                  source = Path(change['basis']).read_bytes()
+                  assert git_hash(source) == change['basis_sha'], 'Baseline mismatch: '+name
+                  lines = source.decode().splitlines(keepends=True)
+                  text = ''.join(''.join(lines[p[0]:p[0]+p[1]]) if isinstance(p,list) else p for p in change['pieces'])
+              data = text.encode()
+              assert git_hash(data) == meta['expected'][name], 'Output mismatch: '+name
+              outputs[path] = data
+          for path, data in outputs.items():
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_bytes(data)
+          for name in meta['deleted']:
+              path=Path(name)
+              assert path.is_file() and not path.is_symlink()
+              path.unlink()
+          Path('/tmp/maintenance-meta.json').write_text(json.dumps(meta))
+          print('Reconstructed',len(outputs),'verified files; removed',len(meta['deleted']),'retired assets.')
+          PY
+      - name: Reproduce portrait derivatives and regenerate dependency lock
+        run: |
+          python3 -m venv /tmp/portrait-env
+          /tmp/portrait-env/bin/pip install --disable-pip-version-check pillow==12.3.0
+          /tmp/portrait-env/bin/python scripts/optimize_portraits.py
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm run check
+      - name: Prepare Git objects without moving any branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os, json, base64, hashlib, urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          def api(path, body=None):
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path,data=None if body is None else json.dumps(body).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=60) as r: return json.load(r)
+          def git_hash(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          meta=json.loads(Path('/tmp/maintenance-meta.json').read_text())
+          expected=meta['expected'] | meta['images']
+          for name, sha in expected.items(): assert git_hash(Path(name).read_bytes())==sha, 'Artifact mismatch: '+name
+          lock=json.loads(Path('package-lock.json').read_text())
+          assert lock['packages']['node_modules/@playwright/test']['version']=='1.57.0'
+          assert lock['packages']['node_modules/playwright']['version']=='1.57.0'
+          assert lock['packages']['node_modules/playwright-core']['version']=='1.57.0'
+          assert lock['packages']['node_modules/axe-core']['version']=='4.10.2'
+          expected['package-lock.json']=git_hash(Path('package-lock.json').read_bytes())
+          assert api('git/ref/heads/main')['object']['sha']==meta['base'], 'Main advanced; reconcile first.'
+          rows=[]; receipt=[]
+          for name, sha in expected.items():
+              data=Path(name).read_bytes()
+              actual=api('git/blobs',{'content':base64.b64encode(data).decode(),'encoding':'base64'})['sha']
+              assert actual==sha
+              rows.append({'path':name,'mode':'100644','type':'blob','sha':sha})
+              receipt.append({'path':name,'sha':sha,'bytes':len(data)})
+          rows += [{'path':name,'mode':'100644','type':'blob','sha':None} for name in meta['deleted']]
+          base_tree=api('git/commits/'+meta['base'])['tree']['sha']
+          tree=api('git/trees',{'base_tree':base_tree,'tree':rows})['sha']
+          print('MAINTENANCE_RECEIPT='+json.dumps({'base':meta['base'],'tree':tree,'files':receipt,'deleted':meta['deleted']}))
+          PY

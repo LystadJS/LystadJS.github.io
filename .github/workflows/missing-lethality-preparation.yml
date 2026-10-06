@@ -1,0 +1,102 @@
+name: Validate missing-lethality diagnostics
+on:
+  push:
+    branches: ['chatgpt/missing-lethality-20261006']
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: 790b2abcd2ee09d88d154cf996977b3736f5316d
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Reconstruct the locally reviewed source delta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma, os, urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          assert repo=='LystadJS/LystadJS.github.io'
+          sha='606f6c404d9f939b60ac51c119b20427efaa810c'
+          request=urllib.request.Request('https://api.github.com/repos/'+repo+'/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(request,timeout=60) as r: raw=base64.b64decode(json.load(r)['content'])
+          def digest(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          assert digest(raw)==sha
+          payload=json.loads(lzma.decompress(base64.b64decode(raw)))
+          assert payload['base']=='790b2abcd2ee09d88d154cf996977b3736f5316d'
+          Path('/tmp/missing-lethality-expected.json').write_text(json.dumps(payload['expected']))
+          Path('/tmp/research-before.html').write_bytes(Path('research.html').read_bytes())
+          for name, change in payload['changes'].items():
+              path=Path(name)
+              assert not path.is_absolute() and '..' not in path.parts
+              if 'text' in change:text=change['text']
+              else:
+                  old=path.read_bytes()
+                  assert digest(old)==change['basis_sha'], 'Baseline changed: '+name
+                  lines=old.decode().splitlines(keepends=True)
+                  text=''.join(''.join(lines[p[0]:p[0]+p[1]]) if isinstance(p,list) else p for p in change['pieces'])
+              data=text.encode()
+              assert digest(data)==payload['expected'][name], 'Delta mismatch: '+name
+              path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+          page=Path('research.html')
+          page.write_text(page.read_text().replace('research-statistics.css?v=20261006-1','research-statistics.css?v=20261006-2'))
+          PY
+      - run: python3 scripts/build_research_figures.py
+      - name: Verify exact candidate and isolation to one figure
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          expected=json.loads(Path('/tmp/missing-lethality-expected.json').read_text())
+          for name,sha in expected.items():
+              data=Path(name).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==sha, name
+          def normalize(text):
+              pattern=r'(<article\b[^>]*\bid="paper-estimating-lethality"[^>]*>)(.*?)(</article>)'
+              match=re.search(pattern,text,re.S)
+              assert match
+              inner,count=re.subn(r'<figure\b.*?</figure>','FIGURE',match[2],flags=re.S)
+              assert count==1
+              text=text[:match.start()]+match[1]+inner+match[3]+text[match.end():]
+              return text.replace('research-statistics.css?v=20261006-2','research-statistics.css?v=20261006-1')
+          assert normalize(Path('/tmp/research-before.html').read_text())==normalize(Path('research.html').read_text())
+          print('All 10 candidate files match local hashes; other page content is unchanged.')
+          PY
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check
+      - name: Research and layout regression tests
+        run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs tests/missing-lethality.spec.mjs
+      - name: Store validated blobs without moving branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,json,os,urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY'];expected=json.loads(Path('/tmp/missing-lethality-expected.json').read_text());rows=[]
+          for name,sha in expected.items():
+              data=Path(name).read_bytes()
+              request=urllib.request.Request('https://api.github.com/repos/'+repo+'/git/blobs',data=json.dumps({'content':base64.b64encode(data).decode(),'encoding':'base64'}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(request,timeout=60) as r: actual=json.load(r)['sha']
+              assert actual==sha,name
+              rows.append({'path':name,'sha':sha,'bytes':len(data)})
+          Path('missing-lethality-receipt.json').write_text(json.dumps({'base':'790b2abcd2ee09d88d154cf996977b3736f5316d','files':rows},indent=2)+'\n')
+          print('MISSING_LETHALITY_RECEIPT='+json.dumps(rows))
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: missing-lethality-validation
+          path: |
+            test-results/
+            missing-lethality-receipt.json
+          retention-days: 7

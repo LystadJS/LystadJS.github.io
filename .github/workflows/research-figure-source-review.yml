@@ -1,0 +1,37 @@
+name: Research figure source review
+on:
+  push:
+    branches: ['chatgpt/research-figure-sources-20261006']
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve pinned public research figures
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, urllib.request
+          from pathlib import Path
+          repo = 'LystadJS/counterterrorism_ethnosectarian_islamic_state'
+          ref = 'f129ec2f515f5e908eb448ef37c41788e2e45a4c'
+          files = {'figures/fig1.svg':'9b1de5cc2997e46b43f5347bbc66767f66a36964','figures/fig3.svg':'45b76c88b423bde8a95e8092b1231d4bbc239655','figures/fig4.svg':'50234d6834e6c9c4db4508182968d2ab35f8b7ff','analysis/02_targeting_composition_dashboard.R':'54382610f6442b6fa294381187903fcb160008cc','README.md':'5a62aaf324c1062c6cf4a53930209bd786018a2d'}
+          receipt = {'repository': repo, 'commit': ref, 'files': []}
+          for name, expected in files.items():
+              url = f'https://raw.githubusercontent.com/{repo}/{ref}/{name}'
+              with urllib.request.urlopen(url, timeout=30) as r: data=r.read()
+              actual=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              assert actual == expected, name
+              path=Path('sources')/name
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_bytes(data)
+              receipt['files'].append({'path': name, 'blob': actual, 'bytes': len(data)})
+          Path('sources/provenance.json').write_text(json.dumps(receipt, indent=2))
+          print(json.dumps(receipt, indent=2))
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: research-figure-sources
+          path: sources/
+          retention-days: 7

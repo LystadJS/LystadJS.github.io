@@ -1,0 +1,102 @@
+name: Validate source-grounded academic abstracts
+on:
+  push:
+    branches: ['chatgpt/academic-abstracts-20261006']
+permissions:
+  contents: write
+jobs:
+  abstracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Reconstruct the reviewed text and checks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,json,base64,zlib,hashlib,urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          assert repo=='LystadJS/LystadJS.github.io'
+          sha='5e4380bd4d3c7f490c1dcbcc5eae67c66a0eab90'
+          req=urllib.request.Request('https://api.github.com/repos/'+repo+'/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req,timeout=60) as r: raw=base64.b64decode(json.load(r)['content'])
+          def git_hash(data): return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          assert git_hash(raw)==sha
+          payload=json.loads(zlib.decompress(base64.b64decode(raw)))
+          assert payload['base']=='90b4b217703d8a458869f5943ba4f4aea95001c3'
+          allowed={'assets/data/academic-abstracts.json','scripts/update_academic_abstracts.py','tests/test_academic_abstracts.py','tests/academic-abstracts-validation.json'}
+          assert set(payload['files'])==allowed
+          assert set(payload['expected'])==allowed|{'research.html'}
+          for name, content in payload['files'].items():
+              data=content.encode()
+              assert git_hash(data)==payload['expected'][name]
+              Path(name).parent.mkdir(parents=True,exist_ok=True)
+              Path(name).write_bytes(data)
+          Path('/tmp/abstracts-payload.json').write_text(json.dumps(payload))
+          PY
+      - run: python3 scripts/update_academic_abstracts.py
+      - name: Verify exact reviewed page and isolated copy changes
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,re,subprocess
+          from pathlib import Path
+          p=json.loads(Path('/tmp/abstracts-payload.json').read_text())
+          for name,sha in p['expected'].items():
+              d=Path(name).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(d)).encode()+b'\0'+d).hexdigest()==sha,name
+          before=subprocess.check_output(['git','show',p['base']+':research.html']).decode()
+          after=Path('research.html').read_text()
+          strip=lambda s:re.sub(r'<div class="rp-summary">.*?</div>','',s,flags=re.S)
+          assert strip(before)==strip(after)
+          b=re.findall(r'<article\b.*?</article>',before,re.S)
+          a=re.findall(r'<article\b.*?</article>',after,re.S)
+          assert len(a)==len(b)==10
+          assert sum(x!=y for x,y in zip(a,b))==4
+          assert re.findall(r'<figure\b.*?</figure>',before,re.S)==re.findall(r'<figure\b.*?</figure>',after,re.S)
+          print('Only four academic abstract blocks changed; ten figures and all other page markup preserved.')
+          PY
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check
+      - run: python3 scripts/update_academic_abstracts.py --check
+      - name: Cross-page, research-figure, imputation and Vanguards regression tests
+        run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs tests/missing-lethality.spec.mjs tests/vanguards.spec.mjs
+      - name: Store validated Git objects without publishing a branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,json,base64,urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          p=json.loads(Path('/tmp/abstracts-payload.json').read_text())
+          receipt=[]
+          for name,expected in p['expected'].items():
+              data=Path(name).read_bytes()
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/git/blobs',data=json.dumps({'content':base64.b64encode(data).decode(),'encoding':'base64'}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=60) as r: sha=json.load(r)['sha']
+              assert sha==expected,name
+              receipt.append({'path':name,'sha':sha,'bytes':len(data)})
+          Path('abstracts-receipt.json').write_text(json.dumps(receipt,indent=2))
+          print('ABSTRACTS_RECEIPT='+json.dumps(receipt))
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: academic-abstracts-validation
+          path: |
+            research.html
+            assets/data/academic-abstracts.json
+            scripts/update_academic_abstracts.py
+            tests/test_academic_abstracts.py
+            tests/academic-abstracts-validation.json
+            test-results/
+            abstracts-receipt.json
+          retention-days: 14

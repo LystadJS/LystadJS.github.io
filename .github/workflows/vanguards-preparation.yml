@@ -1,0 +1,102 @@
+name: Validate thesis-based Vanguards figure
+on:
+  push:
+    branches: ['chatgpt/vanguards-20261006']
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ff9b6d5ad82c6ac6d3555d7f438e7d8b66b1ab60
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Reconstruct reviewed source changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,json,base64,lzma,hashlib,urllib.request,re
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          assert repo=='LystadJS/LystadJS.github.io'
+          def api(path):
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(req,timeout=60) as r:return json.load(r)
+          def sha(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          key='58c57374dc5178610a83966645f0de8e15bb812b'
+          raw=base64.b64decode(api('git/blobs/'+key)['content'])
+          assert sha(raw)==key
+          meta=json.loads(lzma.decompress(base64.b64decode(raw)))
+          assert api('git/ref/heads/main')['object']['sha']==meta['base'],'Main advanced; reconcile first.'
+          Path('/tmp/vanguards-baseline.html').write_bytes(Path('research.html').read_bytes())
+          for name,change in meta['delta'].items():
+              p=Path(name)
+              assert not p.is_absolute() and '..' not in p.parts
+              if 'text' in change: text=change['text']
+              else:
+                  old=p.read_bytes();assert sha(old)==change['basis_sha'],name
+                  lines=old.decode().splitlines(keepends=True)
+                  text=''.join(''.join(lines[v[0]:v[0]+v[1]]) if isinstance(v,list) else v for v in change['pieces'])
+              data=text.encode();assert sha(data)==meta['expected'][name],name
+              p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
+          p=Path('research.html')
+          p.write_text(re.sub(r'(research-statistics\.css)\?v=[^"\s]+',r'\1?v=20261006-3',p.read_text()))
+          Path('/tmp/vanguards-meta.json').write_text(json.dumps(meta))
+          PY
+      - run: python3 scripts/build_research_figures.py
+      - name: Verify generated outputs and single-project scope
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,hashlib
+          meta=json.loads(Path('/tmp/vanguards-meta.json').read_text())
+          for name,expected in meta['expected'].items():
+              d=Path(name).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(d)).encode()+b'\0'+d).hexdigest()==expected,name
+          def projects(s):return dict(re.findall(r'<article\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</article>',s,re.S))
+          a=projects(Path('/tmp/vanguards-baseline.html').read_text());b=projects(Path('research.html').read_text())
+          assert a.keys()==b.keys()
+          assert [k for k in a if a[k]!=b[k]]==['paper-vanguards']
+          strip=lambda s:re.sub(r'<figure\b.*?</figure>','',s,flags=re.S)
+          assert strip(a['paper-vanguards'])==strip(b['paper-vanguards'])
+          print('All 14 generated/source files match the local candidate; other projects and copy unchanged.')
+          PY
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check
+      - name: Research, imputation, Vanguards and shared-layout tests
+        run: npx playwright test tests/site-layout.spec.mjs tests/research-statistics.spec.mjs tests/missing-lethality.spec.mjs tests/vanguards.spec.mjs
+      - name: Store validated Git objects without publishing a branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,json,base64,urllib.request
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY'];meta=json.loads(Path('/tmp/vanguards-meta.json').read_text())
+          def api(path,body=None):
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path,data=None if body is None else json.dumps(body).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=60) as r:return json.load(r)
+          assert api('git/ref/heads/main')['object']['sha']==meta['base'],'Main advanced; reconcile first.'
+          receipt=[]
+          for name,expected in meta['expected'].items():
+              content=Path(name).read_bytes()
+              actual=api('git/blobs',{'content':base64.b64encode(content).decode(),'encoding':'base64'})['sha']
+              assert actual==expected,name
+              receipt.append({'path':name,'sha':actual,'bytes':len(content)})
+          Path('vanguards-receipt.json').write_text(json.dumps({'base':meta['base'],'files':receipt},indent=2))
+          print('VANGUARDS_RECEIPT='+json.dumps(receipt))
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: vanguards-validation
+          path: |
+            test-results/
+            vanguards-receipt.json
+          retention-days: 14

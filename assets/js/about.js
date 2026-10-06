@@ -445,6 +445,9 @@
     const denaliElevation = 20310;
     const demProfiles = window.MOUNTAIN_DEM_PROFILES?.profiles || {};
     let activeMountainPoint = null;
+    let activeMountainData = null;
+    let mountainFrame = 0;
+    let hitTargetsDirty = false;
 
     const popoverImage = document.getElementById("mountain-popover-image");
     const popoverPlaceholder = document.getElementById("mountain-popover-placeholder");
@@ -815,6 +818,7 @@
         activeMountainPoint.classList.remove("is-active");
       }
       activeMountainPoint = group;
+      activeMountainData = point;
       group.classList.add("is-active");
 
       popoverType.textContent = point.type;
@@ -839,7 +843,7 @@
       mountainPopover.classList.add("is-open");
       mountainPopover.setAttribute("aria-hidden", "false");
 
-      requestAnimationFrame(() => positionMountainPopover(point));
+      scheduleMountainLayout();
       mountainPopover.dataset.activeName = point.name;
     }
 
@@ -849,6 +853,7 @@
       mountainPopover.removeAttribute("data-active-name");
       if (activeMountainPoint) activeMountainPoint.classList.remove("is-active");
       activeMountainPoint = null;
+      activeMountainData = null;
     }
 
     buildMountainProfile();
@@ -869,28 +874,23 @@
       closeMountainPopover();
     });
 
-    function repositionOpenMountainPopover() {
-      if (!mountainPopover.classList.contains("is-open") || !activeMountainPoint) return;
-      const pointName = mountainPopover.dataset.activeName;
-      const point = mountainData.find((item) => item.name === pointName);
-      const transform = activeMountainPoint.getAttribute("transform") || "";
-      const match = transform.match(/translate\(([-\d.]+)\s+([-\d.]+)\)/);
-      if (point && match) {
-        positionMountainPopover({
-          ...point,
-          x: Number(match[1]),
-          y: Number(match[2])
-        });
-      }
+    function scheduleMountainLayout(updateHitTargets = false) {
+      hitTargetsDirty ||= updateHitTargets === true;
+      if (mountainFrame) return;
+      mountainFrame = requestAnimationFrame(() => {
+        mountainFrame = 0;
+        if (hitTargetsDirty) {
+          hitTargetsDirty = false;
+          updateWaypointHitTargets();
+        }
+        if (activeMountainData && mountainPopover.classList.contains("is-open")) {
+          positionMountainPopover(activeMountainData);
+        }
+      });
     }
 
-    window.addEventListener("resize", () => {
-      updateWaypointHitTargets();
-      repositionOpenMountainPopover();
-    });
-    mountainScroll.addEventListener("scroll", repositionOpenMountainPopover, {
-      passive: true
-    });
+    window.addEventListener("resize", () => scheduleMountainLayout(true), { passive: true });
+    mountainScroll.addEventListener("scroll", () => scheduleMountainLayout(), { passive: true });
   }
 
     const timelineDetailEvents = currentServiceRow ? [...currentServiceRow.querySelectorAll(".unit-event, .rank-event")] : [];

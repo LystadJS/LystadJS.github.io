@@ -69,19 +69,8 @@
       tag.replaceWith(link);
     });
 
-    const aiCard = document.getElementById("project-ai-nonproliferation");
-    const aiWorkLinks = aiCard?.querySelector(".work-links");
-    const aiUrl = client.resolveFrom(registry, "projects", "ai-governance-non-proliferation");
-    if (aiWorkLinks && aiUrl) {
-      const link = document.createElement("a");
-      link.href = aiUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "Public reproducibility repository ↗";
-      link.setAttribute("aria-label", "Open the public AI governance reproducibility repository");
-      aiWorkLinks.replaceChildren(link);
-    }
   }
 
+  convert(null);
   client.ready.then(convert);
 })();

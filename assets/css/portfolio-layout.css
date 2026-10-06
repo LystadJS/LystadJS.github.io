@@ -1,0 +1,107 @@
+/* Shared geometry for About, Research & Applied Work, and Code & Development.
+   Page styles own colors, type, and components; this file owns section rhythm.
+   Keep it after the page styles. UN pages deliberately do not load this file. */
+body:is([data-page="about"], [data-page="research"], [data-page="code"]) {
+  --portfolio-section-space: clamp(4rem, 7vw, 6rem);
+  --portfolio-hero-top: clamp(4rem, 7vw, 6rem);
+  --portfolio-hero-bottom: 4rem;
+  --portfolio-heading-space: 3rem;
+  --portfolio-rail-width: 84px;
+  --portfolio-rail-gap: 1rem;
+  --portfolio-visual-overhang: calc(var(--portfolio-rail-width) + var(--portfolio-rail-gap));
+  --portfolio-anchor-offset: 110px;
+  --code-visual-overhang: var(--portfolio-visual-overhang);
+  --research-visual-overhang: var(--portfolio-visual-overhang);
+}
+
+body:is([data-page="about"], [data-page="research"], [data-page="code"])
+:is(.about-hero, .research-page-hero, .code-page-hero) {
+  height: auto;
+  min-height: 0;
+  padding: var(--portfolio-hero-top) 0 var(--portfolio-hero-bottom);
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-page="about"] :is(.about-hero-title, .about-hero-copy) {
+  padding-left: 0;
+}
+
+body[data-page="about"] .about-section-nav {
+  padding-block: 2rem;
+}
+
+body[data-page="research"] .research-layout,
+body[data-page="code"] .code-page-layout {
+  padding: 0;
+}
+
+body:is([data-page="about"], [data-page="research"], [data-page="code"])
+:is(.essay-section, .research-section, .code-page-section) {
+  margin-block: 0;
+  padding: var(--portfolio-section-space) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  scroll-margin-top: var(--portfolio-anchor-offset);
+}
+
+/* A first section receives the same breathing room as later sections. Its
+   divider is already supplied by the hero, so it must not draw a second one. */
+body[data-page="research"] .research-section:first-child,
+body[data-page="code"] .code-page-section:first-child {
+  border-top: 0;
+}
+
+body[data-page="about"] .essay-heading,
+body[data-page="research"] .research-section,
+body[data-page="code"] .code-page-section {
+  display: grid;
+  grid-template-columns: var(--portfolio-rail-width) minmax(0, 1fr);
+  gap: var(--portfolio-rail-gap);
+  align-items: start;
+}
+
+body[data-page="about"] .essay-heading,
+body[data-page="research"] .research-section-heading,
+body[data-page="code"] :is(.code-section-heading, .dm-header) {
+  margin-bottom: var(--portfolio-heading-space);
+}
+
+body[data-page="research"] .research-section-heading,
+body[data-page="code"] .code-section-heading {
+  display: block;
+}
+
+body[data-page="research"] .research-project {
+  padding-block: var(--portfolio-heading-space);
+  scroll-margin-top: var(--portfolio-anchor-offset);
+}
+body[data-page="research"] .research-project:first-child { padding-top: 0; }
+body[data-page="research"] .research-project:last-child { padding-bottom: 0; }
+body[data-page="research"] .rp-resources { margin-top: 1.5rem; }
+
+@media (max-width: 780px) {
+  body:is([data-page="about"], [data-page="research"], [data-page="code"]) {
+    --portfolio-heading-space: 2rem;
+    --portfolio-visual-overhang: 0px;
+  }
+  body[data-page="about"] .essay-heading,
+  body[data-page="research"] .research-section,
+  body[data-page="code"] .code-page-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  body:is([data-page="about"], [data-page="research"], [data-page="code"]) {
+    --portfolio-hero-bottom: 3rem;
+  }
+}
+
+@media print {
+  body:is([data-page="about"], [data-page="research"], [data-page="code"])
+  :is(.essay-section, .research-section, .code-page-section) {
+    display: block;
+    padding-block: 1.5rem;
+  }
+}

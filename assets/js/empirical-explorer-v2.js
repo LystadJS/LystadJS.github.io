@@ -7,7 +7,11 @@
   const filters = document.getElementById("empirical-filters");
   const explorer = document.querySelector(".empirical-explorer");
 
-  if (!D || !mapEl || !panel || !filters || !explorer || typeof window.jsVectorMap === "undefined") return;
+  if (!D || !mapEl || !panel || !filters || !explorer) return;
+  if (typeof window.jsVectorMap === "undefined") {
+    panel.innerHTML = '<div class="empirical-load-error">The map is unavailable. All research entries remain available in the portfolio above.</div>';
+    return;
+  }
 
   const legend = document.querySelector(".empirical-legend span:last-child");
   const note = document.querySelector(".empirical-map-note");
@@ -16,6 +20,7 @@
   let scope = "all";
   let locked = null;
   let preview = null;
+  let regionNodes = [];
 
   const uniq = values => [...new Set(values)];
   const esc = (value = "") => String(value).replace(/[&<>"']/g, character => ({
@@ -54,10 +59,19 @@
     return scope === "all" || (project.scopes || []).includes(scope);
   }
 
+  // The page's project data is immutable after initialization. Cache the small
+  // set of scope combinations instead of rebuilding it on every pointer move.
+  const projectCache = new Map();
+  const caseCache = new Map();
+  const scopeKey = () => `${mode}:${scope}`;
   function selectedProjects() {
-    return Object.entries(MODE_CONFIG[mode].collection())
-      .filter(([, project]) => projectMatches(project))
-      .map(([id, project]) => ({ id, ...project }));
+    const key = scopeKey();
+    if (!projectCache.has(key)) {
+      projectCache.set(key, Object.entries(MODE_CONFIG[mode].collection())
+        .filter(([, project]) => projectMatches(project))
+        .map(([id, project]) => ({ id, ...project })));
+    }
+    return projectCache.get(key);
   }
 
   function buildCountryCases(projects, explicitOnly = false) {
@@ -76,7 +90,9 @@
   }
 
   function currentCases() {
-    return buildCountryCases(selectedProjects(), mode === "applied");
+    const key = scopeKey();
+    if (!caseCache.has(key)) caseCache.set(key, buildCountryCases(selectedProjects(), mode === "applied"));
+    return caseCache.get(key);
   }
 
   function globalAppliedProjects(excludeProjects = []) {
@@ -102,6 +118,8 @@
   }
 
   function animatePanel() {
+    // Renderers notify consumers directly; no subtree observers or repair pass.
+    panel.dispatchEvent(new CustomEvent("empirical:panel-rendered"));
     const element = panel.querySelector(".empirical-panel-inner");
     if (element?.animate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
       element.animate([
@@ -124,7 +142,7 @@
     }
 
     if (note) {
-      if (mode === "applied") note.textContent = "Only countries tied to explicit applied-project coverage are highlighted";
+      if (mode === "applied") note.textContent = "Only countries tied to country-specific applied work are highlighted";
       else if (mode === "military") note.textContent = "Military-service scope assignments can be added later in the data file";
       else if (mode === "journalism") note.textContent = "Reporting-scope assignments can be added later in the data file";
       else note.textContent = "Hover to preview · Select a country to explore";
@@ -251,27 +269,17 @@
 
   function syncMap() {
     const cases = currentCases();
-    mapEl.querySelectorAll(".jvm-region[data-code]").forEach(region => {
+    regionNodes.forEach(region => {
       const code = region.dataset.code;
       const activeCase = cases[code];
 
-      region.classList.remove(
-        "empirical-region--active",
-        "empirical-region--filtered",
-        "empirical-region--preview",
-        "empirical-region--selected",
-        "empirical-region--un-scope",
-        "empirical-region--un-specific",
-        "empirical-region--category-active"
-      );
+      region.classList.toggle("empirical-region--active", Boolean(activeCase) && mode === "research");
+      region.classList.toggle("empirical-region--un-specific", Boolean(activeCase) && mode === "applied");
+      region.classList.toggle("empirical-region--category-active", Boolean(activeCase) && !["research", "applied"].includes(mode));
+      region.classList.toggle("empirical-region--preview", Boolean(activeCase) && preview === code);
+      region.classList.toggle("empirical-region--selected", Boolean(activeCase) && locked === code);
 
       if (activeCase) {
-        if (mode === "research") region.classList.add("empirical-region--active");
-        else if (mode === "applied") region.classList.add("empirical-region--un-specific");
-        else region.classList.add("empirical-region--category-active");
-
-        region.classList.toggle("empirical-region--preview", preview === code);
-        region.classList.toggle("empirical-region--selected", locked === code);
         region.tabIndex = 0;
         region.setAttribute("role","button");
         region.setAttribute("aria-label",`Explore ${MODE_CONFIG[mode].label.toLowerCase()} in ${activeCase.country}`);
@@ -295,42 +303,42 @@
   }
 
   function bindRegions() {
-    mapEl.querySelectorAll(".jvm-region[data-code]").forEach(region => {
-      if (region.dataset.empiricalScopesBound) return;
-      region.dataset.empiricalScopesBound = "1";
-      const code = region.dataset.code;
-
-      region.addEventListener("pointerenter", () => {
-        if (!currentCases()[code]) return;
-        preview = code;
-        syncMap();
-        if (!locked) previewPanel(code);
-      });
-
-      region.addEventListener("pointerleave", () => {
-        if (preview !== code) return;
-        preview = null;
-        syncMap();
-        locked ? detailPanel(locked) : defaultPanel();
-      });
-
-      region.addEventListener("click", () => {
-        if (!currentCases()[code]) return;
-        locked = code;
-        preview = null;
-        syncMap();
-        detailPanel(code);
-      });
-
-      region.addEventListener("keydown", event => {
-        if (event.key !== "Enter" && event.key !== " ") return;
-        if (!currentCases()[code]) return;
-        event.preventDefault();
-        locked = code;
-        preview = null;
-        syncMap();
-        detailPanel(code);
-      });
+    regionNodes = [...mapEl.querySelectorAll(".jvm-region[data-code]")];
+    const getRegion = event => event.target.closest?.(".jvm-region[data-code]");
+    const select = region => {
+      const code = region?.dataset.code;
+      if (!currentCases()[code]) return;
+      locked = code;
+      preview = null;
+      syncMap();
+      detailPanel(code);
+    };
+    const showPreview = region => {
+      const code = region?.dataset.code;
+      if (!currentCases()[code] || preview === code) return;
+      preview = code;
+      syncMap();
+      if (!locked) previewPanel(code);
+    };
+    // One delegated listener per event, rather than four per map region.
+    mapEl.addEventListener("pointerover", event => showPreview(getRegion(event)));
+    mapEl.addEventListener("focusin", event => showPreview(getRegion(event)));
+    const leavePreview = event => {
+      const region = getRegion(event);
+      if (!region || region.contains(event.relatedTarget) || preview !== region.dataset.code) return;
+      preview = null;
+      syncMap();
+      locked ? detailPanel(locked) : defaultPanel();
+    };
+    mapEl.addEventListener("pointerout", leavePreview);
+    mapEl.addEventListener("focusout", leavePreview);
+    mapEl.addEventListener("click", event => select(getRegion(event)));
+    mapEl.addEventListener("keydown", event => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      const region = getRegion(event);
+      if (!region || !currentCases()[region.dataset.code]) return;
+      event.preventDefault();
+      select(region);
     });
   }
 

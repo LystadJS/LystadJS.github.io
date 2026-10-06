@@ -13,8 +13,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/about.css?v=hero-text-aligned-2">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261006-1">
+  <link rel="stylesheet" href="assets/css/about.css?v=20261006-1">
+<link rel="stylesheet" href="assets/css/portfolio-layout.css?v=20261006-1">
 </head>
 <body data-page="about">
 
@@ -59,11 +60,10 @@
 
       <figure class="about-portrait reveal">
         <div class="about-portrait-frame">
-          <img
-            src="assets/images/headshot.jpeg"
-            alt="Portrait of John S. Lystad"
-            loading="eager"
-            fetchpriority="high">
+          <picture>
+            <source type="image/webp" srcset="assets/images/headshot-480.webp 480w, assets/images/headshot-960.webp 960w" sizes="(max-width: 980px) 190px, 320px">
+            <img src="assets/images/headshot.jpeg" width="1070" height="1338" alt="Portrait of John S. Lystad" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
         </div>
       </figure>
     </div>
@@ -98,6 +98,7 @@
             <div class="military-photo-frame landscape">
               <img
                 src="assets/images/about/military-service-group.jpg"
+                width="960" height="640" decoding="async"
                 alt="Mortar platoon soldiers during Arctic field training in Alaska"
                 loading="lazy">
             </div>
@@ -301,9 +302,9 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script defer src="assets/js/main.js?v=20261006-1"></script>
 <script src="assets/js/mountain-dem-profiles.js"></script>
-<script src="assets/js/about.js?v=badge-shapes-3"></script>
+<script src="assets/js/about.js?v=20261006-1"></script>
 
 </body>
 </html>

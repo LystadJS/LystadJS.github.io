@@ -1,0 +1,47 @@
+name: Website regression
+
+on:
+  push:
+    branches: [main, 'chatgpt/site-maintenance-*']
+    paths:
+      - '*.html'
+      - 'assets/**'
+      - 'notes/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package*.json'
+      - 'playwright.config.mjs'
+      - '.github/workflows/website-regression.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Check local references and mirror safeguards
+        run: npm run check
+      - name: Check layouts and existing timeline regressions
+        run: npm test
+      - name: Record dependency advisory report
+        if: always()
+        run: |
+          mkdir -p test-results
+          npm audit --json > test-results/dependency-audit.json || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: website-regression
+          path: test-results/
+          retention-days: 14

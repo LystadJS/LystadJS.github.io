@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261006-1">
   <link rel="stylesheet" href="assets/css/research-program.css">
   <link rel="stylesheet" href="assets/css/research-program-review.css?v=metadata-1">
   <link rel="stylesheet" href="assets/css/research-program-typography.css">
@@ -26,12 +26,10 @@
     .rpm-map.is-filtered .rpm-edge:not(.is-active){opacity:.012!important;}
     .rpm-map.is-filtered .rpm-cluster-halo:not(.is-related){opacity:.15;}
   </style>
-  <script defer src="assets/js/research-program-data.js?v=metadata-1"></script>
-  <script defer src="assets/js/research-program-specific-methods.js"></script>
-  <script defer src="assets/js/research-program-language.js"></script>
-  <script defer src="assets/js/research-program-text-overrides.js"></script>
+  <script defer src="assets/js/research-program-data.js?v=20261006-1"></script>
   <script defer src="assets/js/research-program-core.js?v=metadata-1"></script>
-  <script defer src="assets/js/main.js?v=minimal-1"></script>
+  <script defer src="assets/js/main.js?v=20261006-1"></script>
+  <script defer src="assets/js/home-hero.js?v=20261006-1"></script>
   <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
 </head>
 <body data-page="index">
@@ -66,7 +64,10 @@
             <div class="headshot-fallback" aria-hidden="true">
               <span>JSL</span>
             </div>
-            <img class="headshot-image" alt="Portrait of John S. Lystad">
+            <picture>
+              <source type="image/webp" srcset="assets/images/headshot-480.webp 480w, assets/images/headshot-960.webp 960w" sizes="(max-width: 640px) 180px, 220px">
+              <img class="headshot-image" src="assets/images/headshot.jpeg" width="1070" height="1338" alt="Portrait of John S. Lystad" fetchpriority="high" decoding="async">
+            </picture>
             <span class="headshot-corner corner-tl" aria-hidden="true"></span>
             <span class="headshot-corner corner-tr" aria-hidden="true"></span>
             <span class="headshot-corner corner-bl" aria-hidden="true"></span>
@@ -364,38 +365,6 @@
   </div>
 </footer>
 
-<script>
-(() => {
-  const target = document.querySelector(".headshot-image");
-  if (!target) return;
 
-  const candidates = [
-    "assets/images/headshot.jpg",
-    "assets/images/headshot.jpeg",
-    "assets/images/headshot.png",
-    "assets/images/headshot.webp"
-  ];
-
-  let index = 0;
-
-  function tryNextHeadshot() {
-    if (index >= candidates.length) {
-      target.hidden = true;
-      return;
-    }
-
-    const candidate = candidates[index++];
-    const probe = new Image();
-
-    probe.onload = () => {
-      target.src = candidate;
-      target.hidden = false;
-    };
-    probe.onerror = tryNextHeadshot;
-    probe.src = candidate;
-  }
-  tryNextHeadshot();
-})();
-</script>
 </body>
 </html>

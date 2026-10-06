@@ -63,7 +63,11 @@ Because the site uses relative asset paths, previewing through an HTTP server is
 ## Maintenance conventions
 
 - Shared visual rules belong in `assets/css/style.css`.
-- Shared interactions belong in `assets/js/main.js` unless a page-specific script is materially clearer inline.
+- Section spacing and index-rail geometry for About, Research, and Code belong in `assets/css/portfolio-layout.css`, loaded after each page stylesheet. Page-specific styles own component appearance, not section spacing.
+- Shared navigation and progressive enhancement belong in `assets/js/main.js`. Homepage enhancements, CV controls, and Code examples have their own cached scripts.
+- `research-program-data.js` is the single canonical homepage graph payload; do not add runtime text-override layers.
+- Both Research tag linkers use `research-registry.js` for one bounded registry request. The geographic renderer emits `empirical:panel-rendered` rather than requiring DOM repair observers.
+- Legacy page addresses remain redirects; unassigned resources are labels rather than broken template links.
 - Public-facing academic and applied research descriptions should remain consistent with the underlying repository documentation.
 - The website should link outward to reproducible technical artifacts rather than duplicate full project documentation.
 
@@ -79,3 +83,20 @@ Because the site uses relative asset paths, previewing through an HTTP server is
 
 **John S. Lystad**  
 [Website](https://lystadjs.github.io/) · [GitHub](https://github.com/LystadJS) · [LinkedIn](https://linkedin.com/LystadJS)
+
+## Validation and asset maintenance
+
+```bash
+
+# Node 22 and Python 3.11 or later
+npm ci
+npx playwright install chromium
+npm run check
+npm test
+```
+
+The website regression workflow checks all three portfolio layouts, mobile navigation, Code examples, Research resources and map-adapter interactions, no-JavaScript content, explicit image paths, and the existing military-timeline accessibility contract. Deterministic layout tests block external font/map services; the geographic adapter is tested separately with an explicitly labeled fixture. Existing historical validation records describe their original runs.
+
+Responsive WebP portraits retain the JPEG fallback. Rebuild the two derivatives with `python scripts/optimize_portraits.py` in an authoring environment with Pillow 12.3.0. No build framework or image dependency is shipped to visitors.
+
+The public UN mirror is updated only by `scripts/sync_un_project.py`; it rejects path traversal and symlinks, skips unchanged bytes, and removes only files recorded in the previous manifest. Website maintenance does not rewrite that application's statistical code or data.

@@ -1,0 +1,159 @@
+{
+  "baseline_commit": "bd550ec8efe92aa9170058d1adbf379c2ee82928",
+  "scope": "Standardized portfolio geometry and first-party code maintenance; UN mirror unchanged",
+  "section_padding": "clamp(4rem, 7vw, 6rem): 64\u201396px on tested default-size screens",
+  "heading_gap": {
+    "desktop_px": 48,
+    "up_to_780px": 32
+  },
+  "validation": {
+    "local_renderer": "Chromium via Python Playwright; exact local styles and scripts inlined because local HTTP navigation is unavailable",
+    "layout_pages": [
+      "about",
+      "research",
+      "code"
+    ],
+    "viewport_widths": [
+      320,
+      390,
+      600,
+      768,
+      780,
+      900,
+      980,
+      1024,
+      1440,
+      1920
+    ],
+    "layout_renders": 30,
+    "page_overflow": "none",
+    "runtime_errors": 0,
+    "theme_comparisons": 15,
+    "compared_pages": [
+      "about",
+      "research",
+      "code",
+      "index",
+      "cv"
+    ],
+    "theme_differences": 0,
+    "main_svg_geometry": "unchanged in all compared pages",
+    "interaction_widths": [
+      390,
+      900,
+      1440
+    ],
+    "code_example_buttons": 12,
+    "military_keyboard_targets": 17,
+    "mountain_popovers": 8,
+    "research_projects": 10,
+    "research_resource_controls": 30,
+    "pcoa_points": 7,
+    "map_adapter_fixture_modes": 4,
+    "no_javascript_copy": "visible on all three focal pages",
+    "static_pages_checked": 9,
+    "local_asset_and_link_references": 169,
+    "javascript_syntax_checks": 14,
+    "mirror_fixture_tests": 4
+  },
+  "cleanup": {
+    "removed_legacy_assets": [
+      "assets/css/style-base.css",
+      "assets/css/driftmapr.css",
+      "assets/js/empirical-consistency.js",
+      "assets/js/empirical-explorer.js",
+      "assets/js/research-program.js",
+      "assets/js/research-program-language.js",
+      "assets/js/research-program-specific-methods.js",
+      "assets/js/research-program-text-overrides.js"
+    ],
+    "template_link_placeholders_removed": 52,
+    "placeholder_disposition": "51 inactive resource labels; one verified Gists destination",
+    "cv_logo_paths_resolved": 19,
+    "shared_registry_fetches_per_research_load": 1,
+    "home_graph": {
+      "nodes": 62,
+      "edges": 139,
+      "final_data_payload_sha256": "5bbab207c314546c804a7d58736920b0b6c04b1768d2bcd2e6016c1a5ac316a9"
+    }
+  },
+  "page_budgets": {
+    "about": {
+      "before": {
+        "first_party_text_bytes": 313153,
+        "gzip_text_bytes": 61349,
+        "files": 7
+      },
+      "after": {
+        "first_party_text_bytes": 232050,
+        "gzip_text_bytes": 49190,
+        "files": 7
+      },
+      "text_reduction_percent": 25.9
+    },
+    "research": {
+      "before": {
+        "first_party_text_bytes": 245251,
+        "gzip_text_bytes": 55508,
+        "files": 17
+      },
+      "after": {
+        "first_party_text_bytes": 177135,
+        "gzip_text_bytes": 44626,
+        "files": 17
+      },
+      "text_reduction_percent": 27.8
+    },
+    "code": {
+      "before": {
+        "first_party_text_bytes": 173864,
+        "gzip_text_bytes": 35428,
+        "files": 6
+      },
+      "after": {
+        "first_party_text_bytes": 111627,
+        "gzip_text_bytes": 25058,
+        "files": 6
+      },
+      "text_reduction_percent": 35.8
+    },
+    "index": {
+      "before": {
+        "first_party_text_bytes": 264935,
+        "gzip_text_bytes": 64187,
+        "files": 16
+      },
+      "after": {
+        "first_party_text_bytes": 190132,
+        "gzip_text_bytes": 47166,
+        "files": 13
+      },
+      "text_reduction_percent": 28.2
+    },
+    "cv": {
+      "before": {
+        "first_party_text_bytes": 166050,
+        "gzip_text_bytes": 32212,
+        "files": 4
+      },
+      "after": {
+        "first_party_text_bytes": 123719,
+        "gzip_text_bytes": 25680,
+        "files": 5
+      },
+      "text_reduction_percent": 25.5
+    }
+  },
+  "unchanged_un_files": 129,
+  "portrait_bytes": {
+    "headshot-960.webp": 90984,
+    "headshot.jpeg": 435542,
+    "headshot-480.webp": 36436
+  },
+  "limits": [
+    "Payload reductions measure local HTML/CSS/JavaScript source bytes, not measured network latency or a Lighthouse score.",
+    "External fonts and the real map CDN were unavailable locally. The original declarations are preserved; the map adapter was tested using an explicit library fixture and its unavailable-service state.",
+    "Code examples received syntax-oriented cleanup, not a new end-to-end run of the referenced statistical models.",
+    "CI and publication outcomes are recorded by GitHub separately from this local validation record."
+  ]
+}

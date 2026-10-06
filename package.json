@@ -2,10 +2,13 @@
   "name": "lystadjs-github-io",
   "private": true,
   "scripts": {
-    "test:about": "playwright test tests/about-military.spec.mjs"
+    "test:about": "playwright test tests/about-military.spec.mjs",
+    "check": "python3 tests/site-integrity.py && python3 -m unittest discover -s tests -p \"test_*.py\"",
+    "test:site": "playwright test tests/site-layout.spec.mjs",
+    "test": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "1.55.0",
+    "@playwright/test": "1.57.0",
     "axe-core": "4.10.2"
   }
 }

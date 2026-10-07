@@ -1,0 +1,123 @@
+name: UN latent workspace release
+on:
+  push:
+    branches: [feat/un-latent-comparison, main]
+    paths: ['.github/workflows/un-latent-release.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  SOURCE_COMMIT: 65e786928414c970d58545540cdf25e8be578765
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/feat/un-latent-comparison'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/un-latent-comparison
+          path: website
+      - uses: actions/checkout@v4
+        with:
+          repository: LystadJS/UNGA81-Transcript-Agent
+          ref: ${{ env.SOURCE_COMMIT }}
+          path: project
+          persist-credentials: false
+      - name: Synchronize only the explicitly public build
+        run: |
+          python3 website/scripts/sync_un_project.py project | tee sync-first.json
+          python3 website/scripts/sync_un_project.py project | tee sync-second.json
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          second=json.loads(Path('sync-second.json').read_text())
+          assert second['copied']==0 and second['removed']==0, second
+          root=Path('website/un/transcript-agent')
+          manifest=json.loads((root/'mirror-manifest.json').read_text())['files']
+          for relative,digest in manifest.items():
+              assert hashlib.sha256((root/relative).read_bytes()).hexdigest()==digest, relative
+          for name in ['latent.html','latent-core.js','meeting-picker.js','meeting-picker-core.js','release.json']:
+              assert name in manifest, name
+          assert 'Compare latent structure' in (root/'index.html').read_text()
+          print(json.dumps({'status':'PASS','public_files':len(manifest),'all_manifest_hashes_match':True,'idempotent':True,'source_commit':'65e786928414c970d58545540cdf25e8be578765'}))
+          PY
+      - name: Commit the mirror without unrelated changes
+        run: |
+          git -C website config user.name 'github-actions[bot]'
+          git -C website config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C website add un/transcript-agent
+          if ! git -C website diff --cached --quiet; then
+            git -C website commit -m "Sync UN comparison and meeting assets from ${SOURCE_COMMIT}"
+            git -C website push origin HEAD:feat/un-latent-comparison
+          fi
+          git -C website rev-parse HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: un-mirror-sync-validation
+          path: sync-*.json
+  live:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: website
+      - uses: actions/checkout@v4
+        with:
+          repository: LystadJS/UNGA81-Transcript-Agent
+          ref: ${{ env.SOURCE_COMMIT }}
+          path: project
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser QA runtime
+        run: |
+          timeout 120 npm install --prefix "$RUNNER_TEMP/un-live-qa" --ignore-scripts --no-audit --no-fund --fetch-timeout=30000 --fetch-retries=1 playwright@1.55.0
+          if command -v google-chrome >/dev/null; then
+            echo 'PW_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            timeout 180 "$RUNNER_TEMP/un-live-qa/node_modules/.bin/playwright" install --only-shell chromium
+          fi
+      - name: Verify deployed assets against the checked-in mirror
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, time, urllib.request
+          from pathlib import Path
+          root=Path('website/un/transcript-agent')
+          names=['index.html','latent.html','latent-core.js','latent-worker.js','latent-ui.js','latent-view.js','latent.css','meeting-picker.js','meeting-picker-core.js','collector.js','analysis-core.js','analysis-ui.js','release.json']
+          expected={n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names}
+          base='https://lystadjs.github.io/un/transcript-agent/'
+          for attempt in range(30):
+              try:
+                  for name,digest in expected.items():
+                      request=urllib.request.Request(base+name+'?validation='+digest,headers={'Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(request,timeout=20) as response:
+                          assert hashlib.sha256(response.read()).hexdigest()==digest, name
+                  Path('live-assets.json').write_text(json.dumps({'status':'PASS','url':base,'verified_sha256':expected},indent=2))
+                  print('PASS deployed source and navigation hashes');break
+              except Exception as error:
+                  if attempt==29:raise
+                  print('Deployment not yet identical:',str(error));time.sleep(10)
+          PY
+      - name: Exercise deployed saved-run and individual-meeting workflows
+        env:
+          NODE_PATH: ${{ runner.temp }}/un-live-qa/node_modules
+        run: |
+          node project/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
+          node project/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
+      - name: Check the live UN inventory separately
+        run: node project/tools/check_meeting_live.cjs 2026-09-24 live-UN-source.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: un-latent-live-validation
+          path: |
+            live-assets.json
+            live-UN-source.json
+            live-browser-validation
+            live-picker-validation

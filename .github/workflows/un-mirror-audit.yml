@@ -1,0 +1,51 @@
+name: Audit UN public mirror
+on:
+  push:
+    branches: [feat/un-latent-comparison]
+    paths: ['un/transcript-agent/**', '.github/workflows/un-mirror-audit.yml']
+  pull_request:
+    paths: ['un/transcript-agent/**', '.github/workflows/un-mirror-audit.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check mirror bytes and unchanged report content
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          base='4e38b15ad1f72fc4ac8373f639218e39dfd3198f'
+          root=Path('un/transcript-agent')
+          manifest=json.loads((root/'mirror-manifest.json').read_text())['files']
+          for relative,digest in manifest.items():
+              assert hashlib.sha256((root/relative).read_bytes()).hexdigest()==digest, relative
+          changed=subprocess.check_output(['git','diff','--name-only',base,'HEAD','--',str(root)]).decode().splitlines()
+          expected={'analysis-core.js','analysis-ui.js','analysis.css','cluster-worker.js','collector.js','index.html','nmf-worker.js','mirror-manifest.json'}
+          allowed_new={'latent-core.js','latent-ui.js','latent-view.js','latent-worker.js','latent.css','latent.html','meeting-picker-core.js','meeting-picker.js','release.json'}
+          normalized=[];functional=[];added=[]
+          for name in changed:
+              relative=str(Path(name).relative_to(root))
+              old=subprocess.run(['git','show',base+':'+name],capture_output=True)
+              new=Path(name).read_bytes()
+              if old.returncode:
+                  assert relative in allowed_new, 'Unexpected new public asset: '+relative
+                  added.append(relative)
+              elif old.stdout.replace(b'\r\n',b'\n')==new.replace(b'\r\n',b'\n'):
+                  normalized.append(relative)
+              else:
+                  assert relative in expected, 'Unexpected content change: '+relative
+                  functional.append(relative)
+          result={'status':'PASS','manifest_files':len(manifest),'line_endings_only':normalized,'functional_changes':functional,'new_assets':added,'unchanged_report_content':True}
+          print(json.dumps(result,indent=2))
+          Path('un-mirror-audit.json').write_text(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: un-mirror-audit
+          path: un-mirror-audit.json

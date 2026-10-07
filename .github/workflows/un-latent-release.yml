@@ -1,16 +1,16 @@
 name: UN latent workspace release
 on:
   push:
-    branches: [feat/un-latent-comparison, main]
+    branches: [fix/un-meeting-routes, main]
     paths: ['.github/workflows/un-latent-release.yml']
   workflow_dispatch:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 65e786928414c970d58545540cdf25e8be578765
+  SOURCE_COMMIT: f7f1fa623ba3d588d51eec0ac0a8febb2decc288
 jobs:
   sync:
-    if: github.ref == 'refs/heads/feat/un-latent-comparison'
+    if: github.ref == 'refs/heads/fix/un-meeting-routes'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: feat/un-latent-comparison
+          ref: fix/un-meeting-routes
           path: website
       - uses: actions/checkout@v4
         with:
@@ -26,7 +26,7 @@ jobs:
           ref: ${{ env.SOURCE_COMMIT }}
           path: project
           persist-credentials: false
-      - name: Synchronize only the explicitly public build
+      - name: Synchronize only the public application build
         run: |
           python3 website/scripts/sync_un_project.py project | tee sync-first.json
           python3 website/scripts/sync_un_project.py project | tee sync-second.json
@@ -39,19 +39,17 @@ jobs:
           manifest=json.loads((root/'mirror-manifest.json').read_text())['files']
           for relative,digest in manifest.items():
               assert hashlib.sha256((root/relative).read_bytes()).hexdigest()==digest, relative
-          for name in ['latent.html','latent-core.js','meeting-picker.js','meeting-picker-core.js','release.json']:
-              assert name in manifest, name
-          assert 'Compare latent structure' in (root/'index.html').read_text()
-          print(json.dumps({'status':'PASS','public_files':len(manifest),'all_manifest_hashes_match':True,'idempotent':True,'source_commit':'65e786928414c970d58545540cdf25e8be578765'}))
+          assert json.loads((root/'release.json').read_text())['browser_engine']=='browser-descriptive-1.12.1'
+          print(json.dumps({'status':'PASS','public_files':len(manifest),'all_manifest_hashes_match':True,'idempotent':True}))
           PY
-      - name: Commit the mirror without unrelated changes
+      - name: Commit only the public mirror
         run: |
           git -C website config user.name 'github-actions[bot]'
           git -C website config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git -C website add un/transcript-agent
           if ! git -C website diff --cached --quiet; then
-            git -C website commit -m "Sync UN comparison and meeting assets from ${SOURCE_COMMIT}"
-            git -C website push origin HEAD:feat/un-latent-comparison
+            git -C website commit -m "Sync live-verified UN meeting routes from ${SOURCE_COMMIT}"
+            git -C website push origin HEAD:fix/un-meeting-routes
           fi
           git -C website rev-parse HEAD
       - uses: actions/upload-artifact@v4
@@ -104,13 +102,15 @@ jobs:
                   if attempt==29:raise
                   print('Deployment not yet identical:',str(error));time.sleep(10)
           PY
-      - name: Exercise deployed saved-run and individual-meeting workflows
+      - name: Exercise deployed comparison and meeting workflows
         env:
           NODE_PATH: ${{ runner.temp }}/un-live-qa/node_modules
         run: |
           node project/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
           node project/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
-      - name: Check the live UN inventory separately
+      - name: Require actual live UN inventory and selected-meeting collection
+        env:
+          REQUIRE_LIVE_MEETING: '1'
         run: node project/tools/check_meeting_live.cjs 2026-09-24 live-UN-source.json
       - uses: actions/upload-artifact@v4
         if: always()

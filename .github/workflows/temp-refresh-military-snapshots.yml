@@ -1,0 +1,63 @@
+name: Temporary military timeline screenshot baseline reconciliation
+
+on:
+  push:
+    branches: [fix/site-research-build-idempotence]
+    paths: [".github/workflows/temp-refresh-military-snapshots.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  reviewed-screenshot-baselines:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/site-research-build-idempotence
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install pinned browser and dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Refresh screenshot baselines against unchanged actual page
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx playwright test tests/about-military.spec.mjs --update-snapshots
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          changed=subprocess.check_output(['git','diff','--name-only']).decode().splitlines()
+          exact={f'tests/__screenshots__/{mode}/military-timeline.png'
+            for mode in ['desktop-1440','tablet-900','mobile-390']}
+          assert set(changed)==exact,('Unreviewed visual baseline drift',changed)
+          for path in changed:
+            payload=Path(path).read_bytes()
+            assert payload[:8]==b'\x89PNG\r\n\x1a\n',path
+            assert len(payload)>10000,path
+          print('PASS three viewport image baselines changed; website source/styles unchanged')
+          PY
+      - name: Run entire Python and native browser regression suite on refreshed baselines
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run check
+          npm test
+      - name: Commit only independently verified military screenshot baselines
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tests/__screenshots__/desktop-1440/military-timeline.png \
+                  tests/__screenshots__/tablet-900/military-timeline.png \
+                  tests/__screenshots__/mobile-390/military-timeline.png
+          git commit -m "test(site): refresh three timeline snapshots for current approved layout"
+          git push origin HEAD:fix/site-research-build-idempotence
+          echo "UPDATED_BASELINE_COMMIT=$(git rev-parse HEAD)"

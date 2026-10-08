@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: 1610a436de98733b94778340e8ac21b0ab6333f5
+          ref: f188af68e9f70a97f21ff24f2aced4c2d207f3c9
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization

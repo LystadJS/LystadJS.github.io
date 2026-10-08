@@ -464,7 +464,7 @@
                     <p class="card-kicker">Unpublished Manuscript</p>
                     <h3 id="title-paper-estimating-lethality">Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism</h3>
                     <div class="rp-summary">
-                      <p>Incomplete records with missing casualty data complicate what should be a basic question in counterterrorism research: are suicide attacks more lethal than other attacks? This study examines that question across 16,227 Islamic State-linked incidents in 46 countries between 1994* to 2021. Despite its recognized comprehensiveness, the Global Terrorism Database has missing fatal casualty data in 8.1% of events and missing non-fatal casualty data in 16.1%, with complete cases differing from omitted events in their tactical and targeting characteristics.</p>
+                      <p>Missing casualty reports complicate a basic question in terrorism research: are suicide attacks more lethal than other attacks, or does incomplete reporting distort the comparison? This study examines that association in 16,227 Islamic State-linked incidents recorded in the Global Terrorism Database across 46 countries from 1994 to 2021. Fatality counts are missing in 8.1% of events and wounded-victim counts in 16.1%, with complete cases differing from omitted events in their tactical and targeting characteristics.</p>
                       <p>Linear regression models log(1 + fatalities), adjusting for wounded victims and attack, target, temporal, and regional characteristics. The analysis compares complete-case estimation, weighting, mean imputation, missing-indicator adjustment, deterministic regression imputation, stochastic regression imputation, and multiple imputation by chained equations (MICE). The preferred analysis retains 14,920 events with observed fatalities and imputes incomplete wounded-victim information under a missing-at-random assumption. Twenty imputation chains run for twenty iterations; trace plots and observed-versus-imputed density comparisons assess the imputation process before estimates are pooled.</p>
                       <p>The estimated suicide-attack coefficient remains positive across all seven approaches, ranging from 0.824 to 0.913. The pooled MICE estimate is 0.852 (95% confidence interval: 0.809–0.894; p &lt; .001), compared with 0.879 under complete-case analysis. The substantive association therefore persists across the missing-data treatments examined, while estimated magnitude and uncertainty depend on how incomplete records are handled. The study supports a positive adjusted association between suicide attacks and logged fatalities, without establishing causation or robustness to missing-not-at-random reporting.</p>
                     </div>
@@ -474,10 +474,16 @@
                   <figure class="research-figure rp-stat-figure" data-evidence="Synthetic method demo" aria-labelledby="st-missing-caption">
                     <div class="rp-figure-bar">
                       <span>Missingness, imputation &amp; pooling</span>
+                      <span class="rp-figure-type">Synthetic method demo</span>
                     </div>
                     <div class="rp-plot st-scroll" tabindex="0" role="region" aria-label="Missingness, imputation &amp; pooling; horizontally scrollable on narrow screens">
                       <svg xmlns="http://www.w3.org/2000/svg" class="rp-stat" viewBox="0 0 560 642" role="img" aria-labelledby="st-missing-title st-missing-desc">
                         <title id="st-missing-title">Missingness, imputation &amp; pooling</title>
+                        <desc id="st-missing-desc">A MICE-style diagnostic example: missingness patterns, imputed-only chain traces, and pooled uncertainty. Synthetic data—not study results. Illustrative assumed inputs; these are not project results.</desc>
+                        <text x="24.00" y="26.00" class="st-subtitle" text-anchor="start">A  Missingness patterns</text>
+                        <text x="532.00" y="26.00" class="st-tick" text-anchor="end">180 synthetic records</text>
+                        <text x="132.00" y="48.00" class="st-tick" text-anchor="start">First 24 records</text>
+                        <text x="536.00" y="48.00" class="st-tick" text-anchor="end">NA %</text>
                         <text x="24.00" y="71.00" class="st-label" text-anchor="start">Deaths</text>
                         <g class="mi-cell" data-missing="true">
                           <title>Record 1, Deaths: missing</title>
@@ -890,8 +896,9 @@
                         <rect x="248" y="141" width="12" height="12" class="mi-missing"/>
                         <line x1="251.00" y1="150.00" x2="257.00" y2="143.00" class="mi-hatch"/>
                         <text x="268.00" y="152.00" class="st-tick" text-anchor="start">Missing</text>
+                        <text x="536.00" y="152.00" class="st-tick" text-anchor="end">NA %: all records</text>
                         <line x1="24.00" y1="165.00" x2="536.00" y2="165.00" class="st-grid"/>
-                        <text x="24.00" y="190.00" class="st-subtitle" text-anchor="start">Imputation Diagnostics</text>
+                        <text x="24.00" y="190.00" class="st-subtitle" text-anchor="start">B  Imputation-chain diagnostics</text>
                         <text x="64.00" y="214.00" class="st-label" text-anchor="start">Imputed mean</text>
                         <line x1="64.00" y1="301.00" x2="250.00" y2="301.00" class="st-grid"/>
                         <text x="55.00" y="306.00" class="st-tick" text-anchor="end">0</text>
@@ -973,7 +980,7 @@
                         <line x1="435.00" y1="362.00" x2="456.00" y2="362.00" class="st-series mi-trace mi-chain-5"/>
                         <text x="463.00" y="367.00" class="st-tick" text-anchor="start">Chain 5</text>
                         <line x1="24.00" y1="383.00" x2="536.00" y2="383.00" class="st-grid"/>
-                        <text x="24.00" y="409.00" class="st-subtitle" text-anchor="start">Pooled estimates:</text>
+                        <text x="24.00" y="409.00" class="st-subtitle" text-anchor="start">C  Pool estimates, not filled-in records</text>
                         <line x1="132.00" y1="426.00" x2="132.00" y2="574.00" class="st-grid"/>
                         <text x="132.00" y="594.00" class="st-tick" text-anchor="middle">1.5</text>
                         <line x1="247.62" y1="426.00" x2="247.62" y2="574.00" class="st-grid"/>
@@ -1021,6 +1028,8 @@
                         <text x="280.00" y="620.00" class="st-label" text-anchor="middle">Mean deaths per synthetic event · 95% intervals</text>
                       </svg>
                     </div>
+                    <figcaption id="st-missing-caption">A MICE-style diagnostic example: missingness patterns, imputed-only chain traces, and pooled uncertainty. Synthetic data—not study results.<span class="st-scroll-hint">Scroll within the plot on small screens.</span>
+                    </figcaption>
                     <details class="rp-figure-data">
                       <summary>Assumptions & values</summary>
                       <div class="rp-data-content">

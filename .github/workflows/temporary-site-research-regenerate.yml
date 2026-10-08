@@ -1,0 +1,83 @@
+name: Temporary reviewed website generator reconciliation
+
+on:
+  push:
+    branches:
+      - fix/site-research-build-idempotence
+    paths:
+      - .github/workflows/temporary-site-research-regenerate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile-checked-in-generators:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/site-research-build-idempotence
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Regenerate only source-backed academic prose and nine reproducible figures
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research.html "$RUNNER_TEMP/original-research.html"
+          python3 scripts/update_academic_abstracts.py
+          python3 scripts/build_research_figures.py
+          python3 - <<'PY'
+          import pathlib,re,subprocess,hashlib
+          root=pathlib.Path('.')
+          before=pathlib.Path(__import__('os').environ['RUNNER_TEMP'],'original-research.html').read_text(encoding='utf8')
+          after=(root/'research.html').read_text(encoding='utf8')
+          summaries=r'<div class="rp-summary">.*?</div>'
+          figures=r'<figure\b.*?</figure>'
+          ids=re.findall(r'<article\b[^>]*\bid="([^"]+)"',before,re.S)
+          assert len(ids)==len(set(ids))==10,'Project article identity/number changed'
+          assert re.findall(r'<article\b[^>]*\bid="([^"]+)"',after,re.S)==ids
+          assert len(re.findall(summaries,before,re.S))==len(re.findall(summaries,after,re.S))==4
+          assert len(re.findall(figures,before,re.S))==len(re.findall(figures,after,re.S))==10
+          def stable(page):
+              page=re.sub(summaries,'[[ACADEMIC_SUMMARY]]',page,flags=re.S)
+              return re.sub(figures,'[[FIGURE]]',page,flags=re.S)
+          assert stable(before)==stable(after),'Non-figure/non-abstract website content changed'
+          forbidden=re.compile(r'https?://(?:api\.openai|chatgpt\.com)|PRIVATE KEY|github_pat_',re.I)
+          assert not forbidden.search(after),'Unintended remote API/secret'
+          diff=subprocess.check_output(['git','diff','--name-only']).decode().splitlines()
+          permitted={'research.html','assets/data/ethnosectarian-figure4.csv',
+                     'assets/data/research-plot-demos.json'}
+          assert set(diff)<=permitted,('Generator changed unauthorized files',diff)
+          for p in ('research.html','assets/data/ethnosectarian-figure4.csv',
+                    'assets/data/research-plot-demos.json'):
+              assert (root/p).is_file(),p
+          print('PASS: only four reviewed summaries and nine generated figures changed')
+          print('Reproducible page SHA256',hashlib.sha256(after.encode()).hexdigest())
+          print('Changed generated files',diff)
+          PY
+      - name: Verify the original source generators are stable and tests pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/update_academic_abstracts.py --check
+          python3 -m unittest tests.test_academic_abstracts tests.test_research_figures
+          python3 -m unittest discover -s tests -p "test_*.py"
+          git diff --stat
+      - name: Commit only the verified generated HTML/data to maintenance branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research.html assets/data/ethnosectarian-figure4.csv assets/data/research-plot-demos.json
+          if git diff --cached --quiet; then
+            echo 'All generator outputs already synchronized'
+            exit 0
+          fi
+          git commit -m "fix(site): synchronize reviewed abstracts and source-backed research figures"
+          git push origin HEAD:fix/site-research-build-idempotence
+          echo "MAINTENANCE_GENERATED_SHA=$(git rev-parse HEAD)"

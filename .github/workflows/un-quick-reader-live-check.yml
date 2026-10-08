@@ -22,7 +22,7 @@ jobs:
           assert manifest['source_repository']=='https://github.com/LystadJS/UNGA81-Transcript-Agent'
           release=json.loads((root/'release.json').read_text())
           assert release['browser_engine']=='browser-descriptive-1.12.2'
-          assert release['quick_reader_engine']=='un.meeting-quick-reader.v1.1-source-checked'
+          assert release['quick_reader_engine']=='un.meeting-quick-reader.v1.2-context-and-adjudication'
           filenames=['index.html','analysis-core.js','analysis-ui.js','analysis.css','collector.js','meeting-quick-reader.js','release.json']
           expected={}
           for name in filenames:

@@ -1,9 +1,8 @@
 name: Verify deployed UN meeting quick reader
+# Live Pages bytes are checked only after main deployment, not in pull requests.
 on:
   push:
     branches: [main, feat/un-quick-reader-live-check]
-    paths: ['.github/workflows/un-quick-reader-live-check.yml', 'un/transcript-agent/**']
-  pull_request:
     paths: ['.github/workflows/un-quick-reader-live-check.yml', 'un/transcript-agent/**']
 permissions:
   contents: read
@@ -23,7 +22,7 @@ jobs:
           assert manifest['source_repository']=='https://github.com/LystadJS/UNGA81-Transcript-Agent'
           release=json.loads((root/'release.json').read_text())
           assert release['browser_engine']=='browser-descriptive-1.12.2'
-          assert release['quick_reader_engine']=='un.meeting-quick-reader.v1'
+          assert release['quick_reader_engine']=='un.meeting-quick-reader.v1.1-source-checked'
           filenames=['index.html','analysis-core.js','analysis-ui.js','analysis.css','collector.js','meeting-quick-reader.js','release.json']
           expected={}
           for name in filenames:

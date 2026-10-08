@@ -1,0 +1,125 @@
+name: Temporary coordinator sync of released UN synthetic research browser
+
+on:
+  push:
+    branches: [coord/sync-un-research-preview]
+    paths: ['.github/workflows/sync-un-research-preview-temp.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  exact-public-build-mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout website staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: coord/sync-un-research-preview
+          path: website
+          fetch-depth: 0
+      - name: Checkout exact verified source release SHA
+        uses: actions/checkout@v4
+        with:
+          repository: LystadJS/UNGA81-Transcript-Agent
+          ref: dd5ebdad0c50ccb36ba79b895d76b91b47f06288
+          path: project
+          persist-credentials: false
+      - name: Verify exact source and website branch inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C project rev-parse HEAD)" = dd5ebdad0c50ccb36ba79b895d76b91b47f06288
+          test "$(git -C website branch --show-current)" = coord/sync-un-research-preview
+          test -f website/scripts/sync_un_project.py
+          test -f project/site/research.html
+          test -f project/site/experimental/evidence-viz/evidence-viz.js
+          test -f project/site/parallel/w05-browser/experimental/method-lab/worker.js
+      - name: Synchronize only the canonical public Pages build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 website/scripts/sync_un_project.py project | tee sync-first.json
+          python3 website/scripts/sync_un_project.py project | tee sync-second.json
+      - name: Validate canonical source build, exact mirror SHA and idempotence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 project/tools/build_pages.py "$RUNNER_TEMP/rebuilt-public"
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          built=Path(__import__('os').environ['RUNNER_TEMP'])/'rebuilt-public'
+          target=Path('website/un/transcript-agent')
+          manifest=json.loads((target/'mirror-manifest.json').read_text())
+          assert manifest['source_repository']=='https://github.com/LystadJS/UNGA81-Transcript-Agent'
+          files=manifest['files']
+          assert len(files)>0
+          actual={p.relative_to(built).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+                  for p in built.rglob('*') if p.is_file()}
+          assert files==dict(sorted(actual.items())), 'Manifest differs from full canonical Pages build'
+          for name,expected in files.items():
+              dst=target/name
+              assert dst.is_file() and not dst.is_symlink(),name
+              assert hashlib.sha256(dst.read_bytes()).hexdigest()==expected,name
+          required=['index.html','latent.html','research.html','research-wiring.js',
+            'research-wiring.css','release.json',
+            'parallel/w05-browser/experimental/method-lab/index.html',
+            'parallel/w05-browser/experimental/method-lab/contracts.js',
+            'parallel/w05-browser/experimental/method-lab/worker.js',
+            'parallel/w05-browser/experimental/method-lab/fixtures/synthetic-contract.json',
+            'experimental/evidence-viz/index.html',
+            'experimental/evidence-viz/evidence-viz.js',
+            'experimental/evidence-viz/fixture.js']
+          for name in required:assert name in files,name
+          for forbidden in ['experimental/evidence-viz/tests.cjs',
+            'experimental/evidence-viz/browser_smoke.py',
+            'parallel/w05-browser/experimental/method-lab/test-browser.cjs',
+            'parallel/w05-browser/experimental/method-lab/ACCEPTANCE.md']:
+              assert forbidden not in files,forbidden
+          release=json.loads((target/'release.json').read_text())
+          assert release['browser_engine']=='browser-descriptive-1.12.2'
+          assert release['D1_publication_gates_changed'] is False
+          assert release['research_browser']['status']=='released_synthetic_research_preview'
+          assert release['research_browser']['heldout_37_meetings_opened'] is False
+          assert release['research_browser']['empirical_validation']=='not_run'
+          assert 'Research methods (experimental)' in (target/'index.html').read_text()
+          assert 'research.html' in (target/'latent.html').read_text()
+          first=json.load(open('sync-first.json'))
+          second=json.load(open('sync-second.json'))
+          assert second['copied']==second['removed']==0,second
+          assert first['public_files']==len(files)
+          Path('mirror-release-validation.json').write_text(json.dumps({
+            'status':'PASS','source_sha':'dd5ebdad0c50ccb36ba79b895d76b91b47f06288',
+            'public_files':len(files),'copied_first':first['copied'],
+            'removed_first':first['removed'],'unchanged_first':first['unchanged'],
+            'idempotent':True,'synthetic_only':True,
+            'research_asset_sha256':{key:files[key] for key in required},
+            'original_corpus_opened':False,'heldout_meetings_opened':0
+          },indent=2,sort_keys=True)+'\n')
+          print('PASS canonical public source-to-mirror sync, SHA256 and zero missing/extra files')
+          PY
+          git -C website diff --name-only | grep -v '^un/transcript-agent/' && {
+            echo "Unexpected website file change"; exit 1; } || true
+      - name: Commit verified public mirror to staging branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C website config user.name 'github-actions[bot]'
+          git -C website config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C website add un/transcript-agent
+          if ! git -C website diff --cached --quiet; then
+            git -C website commit -m "Sync verified W3/W5/W6 research preview from dd5ebdad0c50"
+            git -C website push origin HEAD:coord/sync-un-research-preview
+          fi
+          echo "VERIFIED_WEBSITE_STAGE_SHA=$(git -C website rev-parse HEAD)"
+      - name: Upload sync audit only
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-research-mirror-audit
+          path: |
+            sync-first.json
+            sync-second.json
+            mirror-release-validation.json
+          retention-days: 14

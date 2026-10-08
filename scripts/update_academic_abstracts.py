@@ -46,8 +46,23 @@ def update_html(document, items):
         title = re.search(r'<h3\b[^>]*>(.*?)</h3>', body, re.DOTALL)
         if not title or html.unescape(re.sub(r'<[^>]+>', '', title.group(1))) != item['title']:
             raise ValueError(f'Title changed for {item["id"]}; review the source mapping.')
-        replacement = '<div class="rp-summary">' + ''.join('<p>' + html.escape(p, quote=False) + '</p>' for p in item['paragraphs']) + '</div>'
-        new_body, count = re.subn(r'<div class="rp-summary">.*?</div>', lambda _: replacement, body, flags=re.DOTALL)
+        # Match the enclosing element's indentation; do not compact the page.
+        def replace_summary(found):
+            line_start = body.rfind("\n", 0, found.start()) + 1
+            whitespace = body[line_start:found.start()]
+            indent = whitespace if not whitespace.strip() else ""
+            paragraphs = "\n".join(
+                indent + "  <p>" + html.escape(p, quote=False) + "</p>"
+                for p in item["paragraphs"]
+            )
+            return '<div class="rp-summary">\n' + paragraphs + "\n" + indent + "</div>"
+
+        new_body, count = re.subn(
+            r'<div class="rp-summary">.*?</div>',
+            replace_summary,
+            body,
+            flags=re.DOTALL,
+        )
         if count != 1:
             raise ValueError(f'Expected one abstract container: {item["id"]}')
         document = document[:match.start(2)] + new_body + document[match.end(2):]

@@ -1,8 +1,12 @@
+<p align="center">
+  <img src="assets/readme-banner.svg" alt="USUN-themed UN Projects banner" width="100%" />
+</p>
+
 # UN project directory
 
 Navigation: `/code.html` → `/un/` → `/un/transcript-agent/`.
 
-The hub uses the Transcript Agent palette and its own portfolio layout. All seven
+The hub uses the minimalist shared USUN-themed banner and the Transcript Agent palette, while retaining its own portfolio layout. All seven
 UN pages use the existing USUN seal and gold (#C1A783) masthead lettering. The
 Transcript Agent retains its review interface and report styling. Its working source remains in
 https://github.com/LystadJS/UNGA81-Transcript-Agent; the older project Pages URL

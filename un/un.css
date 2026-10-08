@@ -47,3 +47,10 @@ body>main>header:first-child a{display:inline-block;text-underline-offset:.2em}
  body>main>header:first-child::before,body>header:has(>h1)::before{left:20px;top:22px;width:64px;height:64px}
 }
 @media print{body>header,body>main>header:first-child{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* Shared minimal banner for the UN project directory.  The SVG carries the existing seal, title, and palette. */
+.un-masthead.un-banner-masthead{background:#062135;border:0}
+.un-banner-masthead .un-masthead-inner{display:block;max-width:1280px;padding:0;margin:0 auto}
+.un-banner-masthead .un-brand-banner{display:block;width:100%;height:auto}
+.un-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media print{.un-banner-masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact}}

@@ -1,0 +1,59 @@
+name: Verify deployed UN meeting quick reader
+on:
+  push:
+    branches: [main, feat/un-quick-reader-live-check]
+    paths: ['.github/workflows/un-quick-reader-live-check.yml', 'un/transcript-agent/**']
+  pull_request:
+    paths: ['.github/workflows/un-quick-reader-live-check.yml', 'un/transcript-agent/**']
+permissions:
+  contents: read
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify public Pages bytes against the checked-in source mirror
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,time,urllib.request
+          from pathlib import Path
+          root=Path('un/transcript-agent')
+          manifest=json.loads((root/'mirror-manifest.json').read_text())
+          assert manifest['source_repository']=='https://github.com/LystadJS/UNGA81-Transcript-Agent'
+          release=json.loads((root/'release.json').read_text())
+          assert release['browser_engine']=='browser-descriptive-1.12.2'
+          assert release['quick_reader_engine']=='un.meeting-quick-reader.v1'
+          filenames=['index.html','analysis-core.js','analysis-ui.js','analysis.css','collector.js','meeting-quick-reader.js','release.json']
+          expected={}
+          for name in filenames:
+              assert name in manifest['files'],name
+              data=(root/name).read_bytes()
+              assert hashlib.sha256(data).hexdigest()==manifest['files'][name],name
+              expected[name]=manifest['files'][name]
+          assert b'meeting-quick-reader.js' in (root/'index.html').read_bytes()
+          base='https://lystadjs.github.io/un/transcript-agent/'
+          for attempt in range(20):
+              errors=[]
+              for name,digest in expected.items():
+                  url=base+name+'?verify='+digest[:16]
+                  try:
+                      req=urllib.request.Request(url,headers={'Cache-Control':'no-cache','User-Agent':'UN-QuickReader-Asset-Verification/1.0'})
+                      with urllib.request.urlopen(req,timeout=12) as resp:
+                          assert resp.status==200
+                          actual=hashlib.sha256(resp.read()).hexdigest()
+                      if actual!=digest:errors.append(name+': content differs from checked-in mirror')
+                  except Exception as exc:errors.append(name+': '+str(exc)[:160])
+              if not errors:break
+              if attempt==19:raise AssertionError('Live asset verification failed: '+str(errors))
+              print('Asset propagation retry',attempt+1,errors,flush=True)
+              time.sleep(5)
+          report={'schema':'un.meeting-quick-reader-live-verification.v1','status':'PASS','public_url':base,'verified_sha256':expected,'assets_verified':len(expected),'transcripts_requested':0,'external_genai_api_requests':0}
+          Path('un-quick-reader-live-verification.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: un-quick-reader-live-verification
+          path: un-quick-reader-live-verification.json
+          retention-days: 14

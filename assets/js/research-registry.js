@@ -1,9 +1,13 @@
 /* One bounded registry request, shared by portfolio and geographic tags. */
 (() => {
   "use strict";
+
   if (window.JSLResearchRegistry) return;
   const url = "https://raw.githubusercontent.com/LystadJS/research-registry/main/dist/research-registry.json";
+
   const repositoryIndex = "https://github.com/LystadJS?tab=repositories";
+
+  // Bound the request; the rest of the portfolio works without it.
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   const ready = fetch(url, { signal: controller.signal })
@@ -18,6 +22,7 @@
     .catch(() => null)
     .finally(() => clearTimeout(timeout));
 
+  // Shared by the portfolio tags and country-panel links.
   window.JSLResearchRegistry = {
     url,
     repositoryIndex,

@@ -1,3 +1,6 @@
+/* Research page geometry and type. Figure rules live in the two
+   research-specific component stylesheets. */
+
 body[data-page="research"] .research-section-label::before {
   content: "◇";
   display: inline-block;
@@ -10,21 +13,6 @@ body[data-page="research"] .research-section-label::before {
 body[data-page="research"] .research-page-hero p:not(.kicker) {
   margin: 0;
   line-height: 1.55;
-}
-body[data-page="research"] .contact-panel {
-  padding: clamp(1.6rem, 3vw, 2.4rem);
-}
-body[data-page="research"] .contact-panel h2 {
-  max-width: 720px;
-  margin: .35rem auto .7rem;
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-body[data-page="research"] .contact-panel > p:not(.eyebrow) {
-  font-size: .82rem;
-  line-height: 1.55;
-}
-body[data-page="research"] .contact-panel .hero-actions {
-  margin: 1rem 0 0;
 }
 @media (min-width: 701px) {
   body[data-page="research"] .page-hero {

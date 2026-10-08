@@ -10,6 +10,7 @@
 
   const normalize = value => String(value || "").trim().toLowerCase();
 
+  // Prefer exact classifications over the broader pattern matches.
   const EXACT = new Map([
     ["political violence", ["domains", "political-violence"]],
     ["terrorism", ["domains", "terrorism-counterterrorism"]],
@@ -102,6 +103,7 @@
     });
   }
 
+  // Country cards are rebuilt on selection and filter changes.
   let registry = null;
   panel.addEventListener("empirical:panel-rendered", () => convertTags(registry));
   convertTags(registry);

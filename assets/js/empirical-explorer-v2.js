@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  // Country and project records come from the checked-in local dataset.
   const D = window.JSL_EMPIRICAL_DATA;
   const mapEl = document.getElementById("empirical-map");
   const panel = document.getElementById("empirical-panel");
@@ -28,6 +29,7 @@
   })[character]);
   const plural = (count, singular, pluralForm = `${singular}s`) => count === 1 ? singular : pluralForm;
 
+  // The research, UN, military and reporting modes share one map.
   const MODE_CONFIG = {
     research: {
       label: "Research",
@@ -302,6 +304,7 @@
     defaultPanel();
   }
 
+  // Delegated listeners keep the region controls lightweight.
   function bindRegions() {
     regionNodes = [...mapEl.querySelectorAll(".jvm-region[data-code]")];
     const getRegion = event => event.target.closest?.(".jvm-region[data-code]");
@@ -356,16 +359,17 @@
     defaultPanel();
   });
 
+  // The rest of the portfolio remains usable if the map cannot load.
   try {
     new window.jsVectorMap({
-      selector:"#empirical-map",
-      map:"world",
-      backgroundColor:"transparent",
-      zoomOnScroll:false,
-      zoomButtons:true,
-      regionStyle:{
-        initial:{ fill:"#211b23", stroke:"#3c303d", strokeWidth:.45 },
-        hover:{ fill:"#211b23" }
+      selector: "#empirical-map",
+      map: "world",
+      backgroundColor: "transparent",
+      zoomOnScroll: false,
+      zoomButtons: true,
+      regionStyle: {
+        initial: { fill: "#211b23", stroke: "#3c303d", strokeWidth: .45 },
+        hover: { fill: "#211b23" }
       },
       onRegionTooltipShow(event, tooltip, code) {
         const item = currentCases()[code];

@@ -25,6 +25,35 @@ NS = {'s': 'http://www.w3.org/2000/svg'}
 DATA = ROOT / 'assets/data/ethnosectarian-figure4.json'
 DEMO = {}
 
+def format_figure_markup(markup, indent):
+    """Indent generated figures without changing their text or coordinates."""
+    compact = re.sub(r">\s+<", "><", markup).strip()
+    parts = re.split(r"(?<=>)(?=<)", compact)
+    lines = []
+    depth = 0
+
+    for part in parts:
+        at = max(0, depth - int(part.startswith("</")))
+        prefix = "\n" + indent + "  " * at if lines else ""
+        lines.append(prefix + part)
+
+        for match in re.finditer(r"</?([A-Za-z][\w:-]*)\b[^>]*>", part):
+            tag = match.group(0)
+            name = match.group(1).lower()
+            if tag.startswith("</"):
+                depth -= 1
+            elif not re.search(r"/\s*>$", tag) and name not in {
+                "meta", "link", "img", "hr", "br", "input", "source",
+                "area", "base", "embed", "col", "param", "track", "wbr"
+            }:
+                depth += 1
+
+    if depth:
+        raise ValueError("Unbalanced generated figure markup")
+
+    return "".join(lines)
+
+
 def esc(value):
     return html.escape(str(value), quote=True)
 
@@ -259,15 +288,38 @@ def main():
     args=ap.parse_args()
     data=extract(args.source_svg) if args.source_svg else json.loads(DATA.read_text())
     if data['blob']!=BLOB or len(data['records'])!=27:raise ValueError('Unrecognized source dataset')
-    replacements={'paper-target-map':target_plot(data),'paper-estimating-lethality':missing(),'paper-vanguards':vanguards(),'paper-climate-terrorism':climate(),'project-himalayan-flood':flood(),'project-food-under-fire':food(),'project-protecting-aid-workers':aid(),'project-autonomous-weapons':weights(),'project-ambassador-advising':decision()}
-    p=ROOT/'research.html'; document=p.read_text()
-    for key,new in replacements.items():
-        pattern=rf'(<article\b[^>]*\bid="{re.escape(key)}"[^>]*>)(.*?)(</article>)'
-        match=re.search(pattern,document,re.S)
-        if not match:raise ValueError('Missing project: '+key)
-        inner,n=re.subn(r'<figure\b.*?</figure>',lambda _:new,match[2],flags=re.S)
-        if n!=1:raise ValueError('Expected one figure: '+key)
-        document=document[:match.start()]+match[1]+inner+match[3]+document[match.end():]
+    replacements = {
+        "paper-target-map": target_plot(data),
+        "paper-estimating-lethality": missing(),
+        "paper-vanguards": vanguards(),
+        "paper-climate-terrorism": climate(),
+        "project-himalayan-flood": flood(),
+        "project-food-under-fire": food(),
+        "project-protecting-aid-workers": aid(),
+        "project-autonomous-weapons": weights(),
+        "project-ambassador-advising": decision(),
+    }
+
+    p = ROOT / 'research.html'
+    document = p.read_text()
+
+    for key, markup in replacements.items():
+        pattern = rf'(<article\b[^>]*\bid="{re.escape(key)}"[^>]*>)(.*?)(</article>)'
+        match = re.search(pattern, document, re.S)
+        if not match:
+            raise ValueError('Missing project: ' + key)
+
+        def insert_figure(found):
+            line_start = found.string.rfind("\n", 0, found.start()) + 1
+            whitespace = found.string[line_start:found.start()]
+            prefix = whitespace if not whitespace.strip() else ""
+            return format_figure_markup(markup, prefix)
+
+        inner, n = re.subn(r'<figure\b.*?</figure>', insert_figure, match[2], flags=re.S)
+        if n != 1:
+            raise ValueError('Expected one figure: ' + key)
+
+        document = document[:match.start()] + match[1] + inner + match[3] + document[match.end():]
     # Keep the source-backed PCoA panel and its precise coordinates unchanged.
     if 'assets/css/research-statistics.css' not in document:
         document=document.replace('</head>','<link rel="stylesheet" href="assets/css/research-statistics.css?v=20261006-1">\n<script src="assets/js/research-statistics.js?v=20261006-1" defer></script>\n</head>')

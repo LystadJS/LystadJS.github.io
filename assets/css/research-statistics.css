@@ -1,95 +1,324 @@
 /* Statistical panels only: existing palette, typography, row geometry and
    section rhythm remain owned by the portfolio stylesheets. */
-body[data-page="research"] .rp-stat { min-width: 480px; }
-body[data-page="research"] .rp-stat text { font-family: var(--sans); }
-body[data-page="research"] .st-label { fill: var(--paper-soft); font-size: 15px; }
-body[data-page="research"] .st-subtitle { fill: var(--paper-soft); font-size: 16px; font-weight: 500; }
-body[data-page="research"] .st-tick { fill: #b3a6b5; font-size: 14px; font-variant-numeric: tabular-nums; }
-body[data-page="research"] .st-phase { fill: var(--violet-bright); font-size: 13px; font-weight: 500; }
-body[data-page="research"] .st-value { fill: var(--paper-soft); font: 500 14px var(--mono); }
-body[data-page="research"] .st-cell-value { fill: var(--paper); font: 500 12px var(--mono); }
-body[data-page="research"] .st-grid { stroke: var(--line); stroke-width: 1; }
-body[data-page="research"] .st-axis { stroke: var(--muted); stroke-width: 1.2; }
-body[data-page="research"] .st-series { fill: none; stroke: var(--violet-bright); stroke-width: 2.5; stroke-linejoin: round; }
-body[data-page="research"] .st-point { fill: var(--violet-bright); stroke: var(--paper-soft); stroke-width: 1; }
-body[data-page="research"] .st-band { fill: var(--violet-bright); fill-opacity: .16; stroke: none; }
-body[data-page="research"] .st-heat { fill: var(--violet-bright); stroke: var(--line-bright); stroke-width: .75; }
-body[data-page="research"] .st-bar { fill: var(--violet); }
-body[data-page="research"] .st-bar-label { fill: var(--paper); font: 500 12px var(--mono); }
-body[data-page="research"] .st-series.st-red { stroke: var(--crimson-bright); }
-body[data-page="research"] .st-series.st-pale { stroke: var(--paper-soft); stroke-dasharray: 6 4; }
-body[data-page="research"] :is(.st-point,.st-band).st-red { fill: var(--crimson-bright); }
-body[data-page="research"] .st-bar.st-red { fill: var(--crimson); }
-body[data-page="research"] .st-point.st-pale { fill: var(--paper-soft); }
-body[data-page="research"] .st-reference { stroke: var(--paper-soft); stroke-width: 1.2; stroke-dasharray: 4 5; opacity: .7; }
-body[data-page="research"] .st-controls { display: flex; flex-wrap: wrap; gap: .5rem; padding: .75rem 1rem; border-bottom: 1px solid var(--line); }
-body[data-page="research"] .st-controls button { min-height: 38px; padding: .4rem .6rem; background: transparent; border: 1px solid var(--line-bright); color: var(--paper-soft); font: 400 .73rem/1.4 var(--sans); cursor: pointer; }
-body[data-page="research"] .st-controls button:hover { border-color: var(--crimson-bright); }
-body[data-page="research"] .st-controls button[aria-pressed="true"] { background: var(--panel-raised); border-color: var(--violet-bright); box-shadow: inset 0 -2px var(--violet-bright); }
-body[data-page="research"] :is(.st-controls button,.st-scroll,.rp-data-table):focus-visible { outline: 2px solid var(--paper); outline-offset: -3px; }
-body[data-page="research"] :is(.st-controls,[data-target-panel])[hidden] { display: none; }
-body[data-page="research"] .rp-stat-figure .rp-figure-type { color: #b3a6b5; }
-body[data-page="research"] .st-scroll-hint { display: none; }
-body[data-page="research"] .rp-stat-figure .rp-data-table th:first-child { min-width: 8rem; }
+body[data-page="research"] .rp-stat {
+  min-width: 480px;
+}
+body[data-page="research"] .rp-stat text {
+  font-family: var(--sans);
+}
+body[data-page="research"] .st-label {
+  fill: var(--paper-soft);
+  font-size: 15px;
+}
+body[data-page="research"] .st-subtitle {
+  fill: var(--paper-soft);
+  font-size: 16px;
+  font-weight: 500;
+}
+body[data-page="research"] .st-tick {
+  fill: #b3a6b5;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+body[data-page="research"] .st-phase {
+  fill: var(--violet-bright);
+  font-size: 13px;
+  font-weight: 500;
+}
+body[data-page="research"] .st-value {
+  fill: var(--paper-soft);
+  font: 500 14px var(--mono);
+}
+body[data-page="research"] .st-cell-value {
+  fill: var(--paper);
+  font: 500 12px var(--mono);
+}
+body[data-page="research"] .st-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+body[data-page="research"] .st-axis {
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+body[data-page="research"] .st-series {
+  fill: none;
+  stroke: var(--violet-bright);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+body[data-page="research"] .st-point {
+  fill: var(--violet-bright);
+  stroke: var(--paper-soft);
+  stroke-width: 1;
+}
+body[data-page="research"] .st-band {
+  fill: var(--violet-bright);
+  fill-opacity: .16;
+  stroke: none;
+}
+body[data-page="research"] .st-heat {
+  fill: var(--violet-bright);
+  stroke: var(--line-bright);
+  stroke-width: .75;
+}
+body[data-page="research"] .st-bar {
+  fill: var(--violet);
+}
+body[data-page="research"] .st-bar-label {
+  fill: var(--paper);
+  font: 500 12px var(--mono);
+}
+body[data-page="research"] .st-series.st-red {
+  stroke: var(--crimson-bright);
+}
+body[data-page="research"] .st-series.st-pale {
+  stroke: var(--paper-soft);
+  stroke-dasharray: 6 4;
+}
+body[data-page="research"] :is(.st-point,.st-band).st-red {
+  fill: var(--crimson-bright);
+}
+body[data-page="research"] .st-bar.st-red {
+  fill: var(--crimson);
+}
+body[data-page="research"] .st-point.st-pale {
+  fill: var(--paper-soft);
+}
+body[data-page="research"] .st-reference {
+  stroke: var(--paper-soft);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 5;
+  opacity: .7;
+}
+body[data-page="research"] .st-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+body[data-page="research"] .st-controls button {
+  min-height: 38px;
+  padding: .4rem .6rem;
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--paper-soft);
+  font: 400 .73rem/1.4 var(--sans);
+  cursor: pointer;
+}
+body[data-page="research"] .st-controls button:hover {
+  border-color: var(--crimson-bright);
+}
+body[data-page="research"] .st-controls button[aria-pressed="true"] {
+  background: var(--panel-raised);
+  border-color: var(--violet-bright);
+  box-shadow: inset 0 -2px var(--violet-bright);
+}
+body[data-page="research"] :is(.st-controls button,.st-scroll,.rp-data-table):focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: -3px;
+}
+body[data-page="research"] :is(.st-controls,[data-target-panel])[hidden] {
+  display: none;
+}
+body[data-page="research"] .rp-stat-figure .rp-figure-type {
+  color: #b3a6b5;
+}
+body[data-page="research"] .st-scroll-hint {
+  display: none;
+}
+body[data-page="research"] .rp-stat-figure .rp-data-table th:first-child {
+  min-width: 8rem;
+}
 @media (max-width: 520px) {
-  body[data-page="research"] .st-scroll-hint { display: block; margin-top: .4rem; font-size: .72rem; }
-  body[data-page="research"] .st-controls { padding: .6rem .75rem; gap: .4rem; }
-  body[data-page="research"] .st-controls button { min-height: 44px; }
+  body[data-page="research"] .st-scroll-hint {
+    display: block;
+    margin-top: .4rem;
+    font-size: .72rem;
+  }
+  body[data-page="research"] .st-controls {
+    padding: .6rem .75rem;
+    gap: .4rem;
+  }
+  body[data-page="research"] .st-controls button {
+    min-height: 44px;
+  }
 }
 @media (prefers-contrast: more) {
-  body[data-page="research"] .st-grid { stroke: var(--muted); }
+  body[data-page="research"] .st-grid {
+    stroke: var(--muted);
+  }
 }
 @media (forced-colors: active) {
-  body[data-page="research"] .st-series { stroke: LinkText; }
-  body[data-page="research"] .st-series.st-red { stroke: CanvasText; stroke-dasharray: 3 2; }
-  body[data-page="research"] .st-series.st-pale { stroke: CanvasText; stroke-dasharray: 8 4; }
-  body[data-page="research"] .rp-stat :is(text,.st-point) { fill: CanvasText; }
-  body[data-page="research"] :is(.st-grid,.st-axis,.st-reference) { stroke: CanvasText; }
-  body[data-page="research"] .st-controls button[aria-pressed="true"] { border: 2px solid Highlight; }
+  body[data-page="research"] .st-series {
+    stroke: LinkText;
+  }
+  body[data-page="research"] .st-series.st-red {
+    stroke: CanvasText;
+    stroke-dasharray: 3 2;
+  }
+  body[data-page="research"] .st-series.st-pale {
+    stroke: CanvasText;
+    stroke-dasharray: 8 4;
+  }
+  body[data-page="research"] .rp-stat :is(text,.st-point) {
+    fill: CanvasText;
+  }
+  body[data-page="research"] :is(.st-grid,.st-axis,.st-reference) {
+    stroke: CanvasText;
+  }
+  body[data-page="research"] .st-controls button[aria-pressed="true"] {
+    border: 2px solid Highlight;
+  }
 }
 @media print {
-  body[data-page="research"] .rp-stat { min-width: 0; }
-  body[data-page="research"] .st-scroll-hint { display: none; }
+  body[data-page="research"] .rp-stat {
+    min-width: 0;
+  }
+  body[data-page="research"] .st-scroll-hint {
+    display: none;
+  }
 }
 
 /* Missing-lethality diagnostics: scope every addition to its own project. */
-#paper-estimating-lethality .mi-observed { fill: var(--violet); fill-opacity: .45; stroke: var(--line-bright); stroke-width: .8; }
-#paper-estimating-lethality .mi-missing { fill: var(--bg-soft); stroke: var(--crimson-bright); stroke-width: 1.2; }
-#paper-estimating-lethality .mi-hatch { stroke: var(--crimson-bright); stroke-width: 1; }
-#paper-estimating-lethality .mi-trace { stroke-width: 1.7; }
-#paper-estimating-lethality :is(.mi-chain-1,.mi-chain-4) { stroke: var(--violet-bright); }
-#paper-estimating-lethality :is(.mi-chain-2,.mi-chain-5) { stroke: var(--crimson-bright); }
-#paper-estimating-lethality .mi-chain-3 { stroke: var(--paper-soft); stroke-dasharray: 5 3; }
-#paper-estimating-lethality .mi-chain-4 { stroke-dasharray: 8 3 2 3; }
-#paper-estimating-lethality .mi-chain-5 { stroke-dasharray: 2 3; }
-#paper-estimating-lethality .mi-point { stroke: var(--paper-soft); stroke-width: 1; stroke-dasharray: none; }
-#paper-estimating-lethality :is(.mi-point.mi-chain-2,.mi-point.mi-chain-5) { fill: var(--crimson-bright); }
-#paper-estimating-lethality .mi-point.mi-chain-3 { fill: var(--paper-soft); }
-#paper-estimating-lethality .mi-pooled { fill: var(--paper); stroke: var(--paper); stroke-width: 1; }
-#paper-estimating-lethality .mi-pooled-line { stroke: var(--paper); stroke-width: 3; }
+#paper-estimating-lethality .mi-observed {
+  fill: var(--violet);
+  fill-opacity: .45;
+  stroke: var(--line-bright);
+  stroke-width: .8;
+}
+#paper-estimating-lethality .mi-missing {
+  fill: var(--bg-soft);
+  stroke: var(--crimson-bright);
+  stroke-width: 1.2;
+}
+#paper-estimating-lethality .mi-hatch {
+  stroke: var(--crimson-bright);
+  stroke-width: 1;
+}
+#paper-estimating-lethality .mi-trace {
+  stroke-width: 1.7;
+}
+#paper-estimating-lethality :is(.mi-chain-1,.mi-chain-4) {
+  stroke: var(--violet-bright);
+}
+#paper-estimating-lethality :is(.mi-chain-2,.mi-chain-5) {
+  stroke: var(--crimson-bright);
+}
+#paper-estimating-lethality .mi-chain-3 {
+  stroke: var(--paper-soft);
+  stroke-dasharray: 5 3;
+}
+#paper-estimating-lethality .mi-chain-4 {
+  stroke-dasharray: 8 3 2 3;
+}
+#paper-estimating-lethality .mi-chain-5 {
+  stroke-dasharray: 2 3;
+}
+#paper-estimating-lethality .mi-point {
+  stroke: var(--paper-soft);
+  stroke-width: 1;
+  stroke-dasharray: none;
+}
+#paper-estimating-lethality :is(.mi-point.mi-chain-2,.mi-point.mi-chain-5) {
+  fill: var(--crimson-bright);
+}
+#paper-estimating-lethality .mi-point.mi-chain-3 {
+  fill: var(--paper-soft);
+}
+#paper-estimating-lethality .mi-pooled {
+  fill: var(--paper);
+  stroke: var(--paper);
+  stroke-width: 1;
+}
+#paper-estimating-lethality .mi-pooled-line {
+  stroke: var(--paper);
+  stroke-width: 3;
+}
 @media (forced-colors: active) {
-  #paper-estimating-lethality :is(.mi-observed,.mi-pooled) { fill: CanvasText; stroke: CanvasText; }
-  #paper-estimating-lethality .mi-missing { fill: Canvas; stroke: CanvasText; }
-  #paper-estimating-lethality :is(.mi-hatch,.mi-trace,.mi-pooled-line) { stroke: CanvasText; }
-  #paper-estimating-lethality .mi-point { fill: CanvasText; stroke: Canvas; }
+  #paper-estimating-lethality :is(.mi-observed,.mi-pooled) {
+    fill: CanvasText;
+    stroke: CanvasText;
+  }
+  #paper-estimating-lethality .mi-missing {
+    fill: Canvas;
+    stroke: CanvasText;
+  }
+  #paper-estimating-lethality :is(.mi-hatch,.mi-trace,.mi-pooled-line) {
+    stroke: CanvasText;
+  }
+  #paper-estimating-lethality .mi-point {
+    fill: CanvasText;
+    stroke: Canvas;
+  }
 }
 
 /* Vanguards: source-reported thesis statistics, isolated from other figures. */
-#paper-vanguards [data-vanguards-panel][hidden] { display: none; }
-#paper-vanguards .vg-heat { fill: var(--violet); stroke: var(--line-bright); stroke-width: .65; }
-#paper-vanguards :is(.vg-cell-value,.vg-dot-value) { fill: var(--paper); font: 500 13px var(--mono); font-variant-numeric: tabular-nums; }
-#paper-vanguards .vg-col { fill: var(--paper-soft); font-size: 13px; }
-#paper-vanguards .vg-name { fill: var(--paper-soft); font-size: 14px; }
-#paper-vanguards .vg-note { fill: #b3a6b5; font-size: 13px; }
-#paper-vanguards .vg-baseline-text { fill: var(--paper); font-weight: 600; }
-#paper-vanguards .vg-baseline-box { fill: none; stroke: var(--paper-soft); stroke-width: .8; }
-#paper-vanguards .vg-divider { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 4; }
-#paper-vanguards .vg-stem { stroke: var(--violet-bright); stroke-width: 2; opacity: .5; }
-#paper-vanguards .st-point.vg-raid { fill: var(--crimson-bright); }
+#paper-vanguards [data-vanguards-panel][hidden] {
+  display: none;
+}
+#paper-vanguards .vg-heat {
+  fill: var(--violet);
+  stroke: var(--line-bright);
+  stroke-width: .65;
+}
+#paper-vanguards :is(.vg-cell-value,.vg-dot-value) {
+  fill: var(--paper);
+  font: 500 13px var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+#paper-vanguards .vg-col {
+  fill: var(--paper-soft);
+  font-size: 13px;
+}
+#paper-vanguards .vg-name {
+  fill: var(--paper-soft);
+  font-size: 14px;
+}
+#paper-vanguards .vg-note {
+  fill: #b3a6b5;
+  font-size: 13px;
+}
+#paper-vanguards .vg-baseline-text {
+  fill: var(--paper);
+  font-weight: 600;
+}
+#paper-vanguards .vg-baseline-box {
+  fill: none;
+  stroke: var(--paper-soft);
+  stroke-width: .8;
+}
+#paper-vanguards .vg-divider {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+#paper-vanguards .vg-stem {
+  stroke: var(--violet-bright);
+  stroke-width: 2;
+  opacity: .5;
+}
+#paper-vanguards .st-point.vg-raid {
+  fill: var(--crimson-bright);
+}
 @media (forced-colors: active) {
-  #paper-vanguards .vg-heat { fill: Canvas; stroke: CanvasText; fill-opacity: 1; }
-  #paper-vanguards :is(.vg-baseline-box,.vg-divider,.vg-stem) { stroke: CanvasText; }
-  #paper-vanguards .vg-baseline-box { fill: none; }
-  #paper-vanguards .rp-stat text { fill: CanvasText; }
-  #paper-vanguards .st-point { fill: CanvasText; stroke: Canvas; }
+  #paper-vanguards .vg-heat {
+    fill: Canvas;
+    stroke: CanvasText;
+    fill-opacity: 1;
+  }
+  #paper-vanguards :is(.vg-baseline-box,.vg-divider,.vg-stem) {
+    stroke: CanvasText;
+  }
+  #paper-vanguards .vg-baseline-box {
+    fill: none;
+  }
+  #paper-vanguards .rp-stat text {
+    fill: CanvasText;
+  }
+  #paper-vanguards .st-point {
+    fill: CanvasText;
+    stroke: Canvas;
+  }
 }

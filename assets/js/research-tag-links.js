@@ -7,6 +7,7 @@
     resolveFrom: () => null
   };
 
+  // Repository-backed research labels.
   const TARGETS = {
     "Counterterrorism": ["domains", "terrorism-counterterrorism"],
     "Data Visualization": ["methods", "statistical-computing"],
@@ -25,6 +26,7 @@
     "Decision support": ["methods", "statistical-computing"]
   };
 
+  // On-site navigation targets.
   const LOCAL = {
     "Interdisciplinary Research": "research.html#academic-research",
     "Operational analysis": "cv.html#skills",
@@ -68,7 +70,6 @@
       }
       tag.replaceWith(link);
     });
-
   }
 
   convert(null);

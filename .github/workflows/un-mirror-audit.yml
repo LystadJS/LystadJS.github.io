@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: f8d1c239e163c5167e44d97ddb42c2c07562a3a9
+          ref: dd5ebdad0c50ccb36ba79b895d76b91b47f06288
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization
@@ -35,7 +35,30 @@ jobs:
               assert target.is_file() and not target.is_symlink(),path
               assert hashlib.sha256(target.read_bytes()).hexdigest()==digest,path
           assert 'meeting-quick-reader.js' in manifest['files']
-          assert json.loads((root/'release.json').read_text())['browser_engine']=='browser-descriptive-1.12.2'
+          # Research release is an explicit allowlist of synthetic-only browser
+          # assets; no source work, model weights, tests or hidden review data.
+          for name in (
+              'research.html','research-wiring.js','research-wiring.css',
+              'parallel/w05-browser/experimental/method-lab/index.html',
+              'parallel/w05-browser/experimental/method-lab/worker.js',
+              'parallel/w05-browser/experimental/method-lab/fixtures/synthetic-contract.json',
+              'experimental/evidence-viz/index.html',
+              'experimental/evidence-viz/evidence-viz.js',
+          ):
+              assert name in manifest['files'],name
+          for excluded in (
+              'experimental/evidence-viz/tests.cjs',
+              'experimental/evidence-viz/browser_smoke.py',
+              'parallel/w05-browser/experimental/method-lab/test-browser.cjs',
+              'parallel/w05-browser/experimental/method-lab/ACCEPTANCE.md',
+          ):
+              assert excluded not in manifest['files'],excluded
+          release=json.loads((root/'release.json').read_text())
+          assert release['browser_engine']=='browser-descriptive-1.12.2'
+          assert release['D1_publication_gates_changed'] is False
+          assert release['research_browser']['status']=='released_synthetic_research_preview'
+          assert release['research_browser']['empirical_validation']=='not_run'
+          assert release['research_browser']['heldout_37_meetings_opened'] is False
           print(json.dumps({'manifest_files':len(manifest['files']),'verified':True}))
           PY
       - name: Execute canonical source-to-mirror sync and require idempotence

@@ -40,11 +40,27 @@ jobs:
           ids=re.findall(r'<article\b[^>]*\bid="([^"]+)"',before,re.S)
           assert len(ids)==len(set(ids))==10,'Project article identity/number changed'
           assert re.findall(r'<article\b[^>]*\bid="([^"]+)"',after,re.S)==ids
-          assert len(re.findall(summaries,before,re.S))==len(re.findall(summaries,after,re.S))==4
-          assert len(re.findall(figures,before,re.S))==len(re.findall(figures,after,re.S))==10
+          previous_abstracts=re.findall(summaries,before,re.S)
+          current_abstracts=re.findall(summaries,after,re.S)
+          assert len(previous_abstracts)==len(current_abstracts)==10
+          # Only first four summary blocks are owned by academic abstraction.
+          assert previous_abstracts[4:]==current_abstracts[4:], 'Six applied project summaries changed'
+          previous_figures=re.findall(figures,before,re.S)
+          current_figures=re.findall(figures,after,re.S)
+          assert len(previous_figures)==len(current_figures)==10
+          # Eighth project contains its independent source-backed PCoA panel.
+          assert previous_figures[7]==current_figures[7], 'PCoA diagram changed'
           def stable(page):
-              page=re.sub(summaries,'[[ACADEMIC_SUMMARY]]',page,flags=re.S)
-              return re.sub(figures,'[[FIGURE]]',page,flags=re.S)
+              def mask(pattern,replace):
+                  def convert(m):
+                      index=convert.number
+                      convert.number+=1
+                      return '[['+replace+str(index)+']]' if (replace=='ABSTRACT_' and index<4 or
+                          replace=='FIGURE_' and index!=7) else m.group()
+                  convert.number=0
+                  return re.sub(pattern,convert,page,flags=re.S)
+              page=mask(summaries,'ABSTRACT_')
+              return mask(figures,'FIGURE_')
           assert stable(before)==stable(after),'Non-figure/non-abstract website content changed'
           forbidden=re.compile(r'https?://(?:api\.openai|chatgpt\.com)|PRIVATE KEY|github_pat_',re.I)
           assert not forbidden.search(after),'Unintended remote API/secret'

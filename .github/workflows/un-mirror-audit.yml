@@ -75,3 +75,124 @@ jobs:
         with:
           name: meeting-quick-reader-mirror-validation
           path: mirror-sync.json
+
+  live_research:
+    name: Verify the deployed synthetic research mirror on the live website
+    needs: audit
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compare changed live research/browser assets against exact mirror SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,time,urllib.request,urllib.error
+          from pathlib import Path
+          root=Path('un/transcript-agent')
+          original=json.loads((root/'mirror-manifest.json').read_text())
+          files=original['files']
+          must=['index.html','latent.html','release.json',
+            'research.html','research-wiring.js','research-wiring.css',
+            'meeting-quick-reader.js']
+          select=sorted(set(must+[p for p in files if
+            p.startswith('experimental/evidence-viz/') or
+            p.startswith('parallel/w05-browser/experimental/method-lab/')]))
+          assert all(p in files for p in select)
+          expected={k:files[k] for k in select}
+          expected['mirror-manifest.json']=hashlib.sha256((root/'mirror-manifest.json').read_bytes()).hexdigest()
+          base='https://lystadjs.github.io/un/transcript-agent/'
+          last_error=None
+          for attempt in range(36):
+            try:
+              for name,digest in expected.items():
+                req=urllib.request.Request(base+name+'?verify='+digest[:16],
+                    headers={'Cache-Control':'no-cache','Accept-Encoding':'identity',
+                             'User-Agent':'UN-Research-Pages-Release-Validation/1'})
+                with urllib.request.urlopen(req,timeout=20) as response:
+                  assert response.status==200,(name,response.status)
+                  content=response.read()
+                found=hashlib.sha256(content).hexdigest()
+                assert found==digest,(name,found,digest)
+              last_error=None
+              break
+            except Exception as e:
+              last_error=str(e)
+              print('Waiting for exact Pages assets:',last_error,flush=True)
+              if attempt<35:time.sleep(10)
+          if last_error:raise AssertionError(
+            'Live portfolio mirror did not converge to verified manifest: '+last_error)
+          release=json.loads((root/'release.json').read_text())
+          assert release['research_browser']['status']=='released_synthetic_research_preview'
+          assert release['D1_publication_gates_changed'] is False
+          result={
+            'status':'PASS','site':base,'source_commit':'dd5ebdad0c50ccb36ba79b895d76b91b47f06288',
+            'asset_count':len(expected),'live_sha256':expected,
+            'synthetic_research_only':True,'empirical_validation':'not_run',
+            'heldout_transcripts_opened':0,
+          }
+          Path('live-un-research.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+          print('PASS exact live Pages SHA256 for',len(expected),'research and core assets')
+          PY
+      - name: Test actual desktop/mobile research browser with local Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install playwright==1.55.0
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          from playwright.sync_api import sync_playwright
+          bin=shutil.which('google-chrome') or shutil.which('chromium')
+          assert bin,'Local Chromium not installed'
+          base='https://lystadjs.github.io/un/transcript-agent/'
+          with sync_playwright() as pw:
+            b=pw.chromium.launch(executable_path=bin,headless=True,
+              args=['--no-sandbox','--disable-dev-shm-usage'])
+            try:
+              for name,w,h in [('desktop',1440,900),('mobile',390,844)]:
+                context=b.new_context(viewport={'width':w,'height':h},reduced_motion='reduce')
+                page=context.new_page()
+                errors=[]
+                external=[]
+                page.on('pageerror',lambda err:errors.append(str(err)))
+                page.on('request',lambda req:external.append(req.url) if
+                  not req.url.startswith('https://lystadjs.github.io/') and
+                  not req.url.startswith('about:') and
+                  not req.url.startswith('data:') else None)
+                try:
+                  page.goto(base+'research.html',wait_until='load',timeout=30000)
+                  assert page.locator('h1').inner_text()=='Source-bound research methods'
+                  assert page.locator('#research-status').inner_text()=='No source-bound graph imported.'
+                  page.locator('#w5 details').evaluate('(el)=>el.open=true')
+                  page.locator('#w6 details').evaluate('(el)=>el.open=true')
+                  assert 'Research Method Lab' in page.frame_locator(
+                    '#w5 iframe').locator('h1').inner_text(timeout=15000)
+                  assert 'Evidence visualization suite' in page.frame_locator(
+                    '#w6 iframe').locator('h1').inner_text(timeout=15000)
+                  assert page.frame_locator('#w6 iframe').locator('.ev-panel').count()==4
+                  assert page.evaluate('document.documentElement.scrollWidth')<=w+2
+                  assert not errors,(name,errors)
+                  assert not external,(name,external)
+                  page.screenshot(path='live-research-'+name+'.png',full_page=True)
+                finally:
+                  context.close()
+            finally:b.close()
+          print('PASS actual live hosted research browser, W5/W6 frames, two viewports, no external requests')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-un-synthetic-research-asset-validation
+          path: |
+            live-un-research.json
+            live-research-desktop.png
+            live-research-mobile.png
+          retention-days: 14

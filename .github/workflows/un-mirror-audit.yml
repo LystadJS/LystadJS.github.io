@@ -79,7 +79,7 @@ jobs:
   live_research:
     name: Verify the deployed synthetic research mirror on the live website
     needs: audit
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     timeout-minutes: 18
     permissions:

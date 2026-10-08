@@ -2,9 +2,9 @@
   "source_repository": "https://github.com/LystadJS/UNGA81-Transcript-Agent",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "analysis-core.js": "725754fac030f1873193effe014d5275bf9e65c76f340368c1db7dc25f948d2b",
-    "analysis-ui.js": "7c96f1cebd96407f0c474d00cac4d921a00900cd97bfbb27caa3b23a7b39f729",
-    "analysis.css": "237401e652c6581702404608564aff67ca27106c13345e8552299595618ee0e8",
+    "analysis-core.js": "2eb3a56df5559364b9acd5933da3e8c6b54ac184922d293ca4d69b19af6b4845",
+    "analysis-ui.js": "b36c69b6348bb0a45ca5c09ded66a68ac32f69c59bb649649c27f7670dc79b2d",
+    "analysis.css": "291b17fcde4c33457ba7e1f1b9db6ad9aadaaa234ecd2a0f4e71aab123121081",
     "app.css": "61519c8e30ede764289de62374494be8e8f53a10ab613bd6bb266c76f786c4b9",
     "app.js": "1b7298ba7d83fed8f3c340cd5bfd74f41d227cbd8be166f3d9b6cb04e9af063b",
     "cluster-algorithms.js": "0d4131ecfd6aa7f6cd9136a0d4b0c6ace814c4885213cbd5d784dff098148df5",
@@ -13,7 +13,7 @@
     "cluster-stability.js": "afcddd2497db118a1eba3ca4e6d45788d9995156e2cacf0357dd570155116c70",
     "cluster-view.js": "78494449f131030cb95abef3e486f5170714e1f35400c059a3c10b7bc23e51e6",
     "cluster-worker.js": "c3ee4e98d11db7a463c903f6cce483b54cf475045648518b1749a191f8685441",
-    "collector.js": "e57038302ee05052675aae61deaa5a892a0d1a4df92b8e7f6bf6e5f484f480aa",
+    "collector.js": "b703ab976c6f3c93cc4e2984582a4129e6b27de84b03a283ac5283a00a88f7ae",
     "comparison-view.js": "959dd74205b0bd3e6c642217b0c98f9ac3f215758f8276b278fb92520e92e3ad",
     "countries.json": "fdaa3592eb31fd928fb94925997a5f38156cb5a7d002bc206fa16de03c30194f",
     "display-audit.html": "1d2955509bb9a18f14ebfe11273b53c85818d87cdaaa4939fa9c31ce051ff388",
@@ -23,7 +23,7 @@
     "hdbscan-core.js": "289ce5c73f3b9a53ad18b2b02098ba31a632f213319c11a2957dffb899d66ba7",
     "HDBSCAN_LICENSE.txt": "26dd9837384fa2d7b703a5c16751849fcd2a0c17c9d5a39da1437b51e73a73fd",
     "hierarchy-view.js": "e82f1eac88d7b73eb401c8b1b16c46e23d54df03cfdcc6ac9423383c66c9dd27",
-    "index.html": "fa00f30931321cb0809291c8eb676c678875c3385fcabd46d0955cf0efb9dd2e",
+    "index.html": "216b68a91a24e529b2dd65b980ea2a4587f1e9bf0ae773b56aca1d1340fd4d12",
     "latent-core.js": "092daa17122c0f3c2873ce020e406d95741c1c428258445e034f78b5e07a120d",
     "latent-ui.js": "565e6586f126e6fc4dceb96d1e5a0ccca3aa89276a6a9653d803b19475aa12cc",
     "latent-view.js": "fa96264b4965b7c72f478c61746d66ccd13ed5eb4256aac1b1366d5eaf039df0",
@@ -50,7 +50,7 @@
     "passage-pilot.html": "97c1b00acd55143d63ea2430bfeda3d4b7a1b323a78e8573771a6bbb0396a0a5",
     "passage-pilot.js": "3870286c9192305003baca4b891f67fb08e0a7459e38dd1683f3cfc7885b3761",
     "passage-selection.js": "be8fea68224a902774a1ef38aaccb611972b5cdf6aa2b17848a30a7112df7057",
-    "release.json": "82f6c5ab95bd03ae3ced129971f40a92ce0ef0a606ca2553720e0b4fc1fcf672",
+    "release.json": "96ed32056567bf3eda22be4724e6d0293b10f33e5b0a25ef00dad08de9c8ef04",
     "reports/hlw-cuba/asr-model.json": "3f68ca3e2dfab89b2300b97d08a9113cc16263980b939f8bf013cb27cca1351a",
     "reports/hlw-cuba/brief.css": "30887ba2366c73306c4dfaa733864e62a850d3a05fd1dc71d97fe01af5f8915e",
     "reports/hlw-cuba/brief.js": "261e0e2069634f6683e2d1cc50549596e147684f88c37df24b03f9199e0c443e",
@@ -134,6 +134,7 @@
     "representation-metrics.js": "025a9214422de7f843fe6386f0ac7354e5f5bbd148bffdb06cd6583cb000a747",
     "reviewed-units.js": "9645b15e0cd2752bda5a3ea90acd00c91c8836950059e76a8ecce306bc9cbfc7",
     "stability-view.js": "53d49fef88576d6c2333b4b93089a547b0439e4e9f3fc3571ffcf3c46dda7e89",
-    "theme.css": "62556e458922ae9bfeaa5882f01cf8a8c180c1a33972bfdab22fa93a5e4b4f2a"
+    "theme.css": "62556e458922ae9bfeaa5882f01cf8a8c180c1a33972bfdab22fa93a5e4b4f2a",
+    "meeting-quick-reader.js": "1258be628fba0605335952efce9182d259d45fc8110a2b7b88eb4e1bd24315df"
   }
 }

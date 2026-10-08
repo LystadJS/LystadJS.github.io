@@ -177,6 +177,10 @@ jobs:
                     '#w5 iframe').locator('h1').inner_text(timeout=15000)
                   assert 'Evidence visualization suite' in page.frame_locator(
                     '#w6 iframe').locator('h1').inner_text(timeout=15000)
+                  # The iframe heading can render before its deferred charts.
+                  # Wait for real panel readiness; never interpret a race as
+                  # a missing published asset.
+                  page.frame_locator('#w6 iframe').locator('.ev-panel').first.wait_for(timeout=15000)
                   assert page.frame_locator('#w6 iframe').locator('.ev-panel').count()==4
                   assert page.evaluate('document.documentElement.scrollWidth')<=w+2
                   assert not errors,(name,errors)

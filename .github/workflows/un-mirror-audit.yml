@@ -177,6 +177,10 @@ jobs:
                     '#w5 iframe').locator('h1').inner_text(timeout=15000)
                   assert 'Evidence visualization suite' in page.frame_locator(
                     '#w6 iframe').locator('h1').inner_text(timeout=15000)
+                  # Iframe title can load before deferred fixture scripts render.
+                  # Require the fourth evidence panel to exist before counting;
+                  # a genuinely broken renderer still times out and fails CI.
+                  page.frame_locator('#w6 iframe').locator('.ev-panel').nth(3).wait_for(timeout=15000)
                   assert page.frame_locator('#w6 iframe').locator('.ev-panel').count()==4
                   assert page.evaluate('document.documentElement.scrollWidth')<=w+2
                   assert not errors,(name,errors)

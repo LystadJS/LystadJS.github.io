@@ -344,9 +344,9 @@ body[data-page="code"] .driftmapr-section .dm-alignment {
 }
 body[data-page="code"] .code-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(330px, .82fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  align-items: start;
+  align-items: stretch;
 }
 /* Repository cards */
 body[data-page="code"] .code-hub-list {
@@ -417,6 +417,8 @@ body[data-page="code"] #un-projects .code-hub-link {
    Interactive terminal — retain functionality, remove excess hardware feel.
    --------------------------------------------------------------------- */
 body[data-page="code"] .signal-console {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   overflow: hidden;
   background:
@@ -453,6 +455,7 @@ body[data-page="code"] .status-lamp {
   box-shadow: none;
 }
 body[data-page="code"] .console-screen {
+  flex: 1;
   min-height: 500px;
   padding: 1rem 1.05rem 1.15rem;
   background:
@@ -697,6 +700,20 @@ body[data-page="code"] .driftmapr-section figcaption {
   font-size: .74rem;
   line-height: 1.62;
 }
+body[data-page="code"] .driftmapr-section .dm-outlook {
+  max-width: 840px;
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+body[data-page="code"] .driftmapr-section .dm-outlook a {
+  color: #ded0dc;
+  text-decoration: underline;
+  text-decoration-color: #805169;
+  text-underline-offset: .2em;
+}
 body[data-page="code"] .driftmapr-section .dm-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -746,6 +763,7 @@ body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
 
   body[data-page="code"] .code-layout {
   grid-template-columns: 1fr;
+  align-items: start;
   }
 
   body[data-page="code"] .console-screen {
@@ -805,20 +823,18 @@ body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
   transition: none !important;
   }
 }
-/* Cross-page visualization alignment: full section-shell surfaces. */
-/* About/Index visualizations begin at the full section-shell edge rather
-   than after the section-index rail. Extend Code's primary visual surfaces
-   to the same left edge while preserving their existing right edge. */
+/* Keep both archive panels within the same full-width visual surface.
+   Extending the grid, rather than only the terminal, preserves equal
+   column widths and aligns their edges with the driftmapR diagram. */
 @media (min-width: 781px) {
-  body[data-page="code"] .signal-console {
-  width: calc(100% + var(--code-visual-overhang));
-  margin-left: calc(-1 * var(--code-visual-overhang));
+  body[data-page="code"] .code-layout,
+  body[data-page="code"] .driftmapr-section .dm-alignment {
+    width: calc(100% + var(--code-visual-overhang));
+    margin-left: calc(-1 * var(--code-visual-overhang));
   }
 
   body[data-page="code"] .driftmapr-section .dm-alignment {
-  width: calc(100% + var(--code-visual-overhang));
-  max-width: none;
-  margin-left: calc(-1 * var(--code-visual-overhang));
+    max-width: none;
   }
 }
 /* Keep the visual rhythm consistent with full-width figures elsewhere:
@@ -834,9 +850,9 @@ body[data-page="code"] .driftmapr-section .dm-alignment {
 /* Once the section rail collapses on smaller screens, visualizations return
    to the normal single-column width with no artificial overhang. */
 @media (max-width: 780px) {
-  body[data-page="code"] .signal-console,
+  body[data-page="code"] .code-layout,
   body[data-page="code"] .driftmapr-section .dm-alignment {
-  width: 100%;
-  margin-left: 0;
+    width: 100%;
+    margin-left: 0;
   }
 }

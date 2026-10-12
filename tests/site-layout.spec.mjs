@@ -66,7 +66,7 @@ test('mobile navigation closes on Escape and resets when resized', async ({ page
 test('Code panels have equal dimensions and driftmapR links retain their layout', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop-1440', 'This check owns its viewport matrix.');
 
-  for (const width of [390, 640, 780, 781, 900, 980, 981, 1024, 1440, 1920]) {
+  for (const width of [390, 640, 780, 781, 860, 861, 900, 980, 981, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/code.html', { waitUntil: 'load' });
 

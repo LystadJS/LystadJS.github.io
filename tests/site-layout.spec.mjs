@@ -66,7 +66,7 @@ test('mobile navigation closes on Escape and resets when resized', async ({ page
 test('Code panels have equal dimensions and driftmapR links retain their layout', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop-1440', 'This check owns its viewport matrix.');
 
-  for (const width of [390, 780, 900, 1024, 1440, 1920]) {
+  for (const width of [390, 640, 780, 781, 860, 861, 900, 980, 981, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/code.html', { waitUntil: 'load' });
 
@@ -79,14 +79,42 @@ test('Code panels have equal dimensions and driftmapR links retain their layout'
         terminal: box(document.querySelector('.code-layout .signal-console')),
         library: box(document.querySelector('.code-layout .code-library-panel')),
         diagram: box(document.querySelector('#driftmapr .dm-alignment')),
+        problem: box(document.querySelector('#driftmapr .dm-problem')),
+        outlook: box(document.querySelector('#driftmapr .dm-outlook')),
+        resources: box(document.querySelector('#driftmapr .dm-links')),
         links: [...document.querySelectorAll('#driftmapr .dm-links a')].map(box),
         overflow: document.documentElement.scrollWidth - innerWidth
       };
     });
 
-    const { terminal, library, diagram, links, overflow } = geometry;
+    const { terminal, library, diagram, problem, outlook, resources, links, overflow } = geometry;
     expect(links).toHaveLength(2);
-    expect(overflow, `horizontal overflow at ${width}px`).toBeLessThanOrEqual(1);
+    if (overflow > 1) {
+      const offenders = await page.evaluate(() =>
+        [...document.querySelectorAll('body *')]
+          .map(element => {
+            const rect = element.getBoundingClientRect();
+            const className = typeof element.className === 'string' ? element.className : '';
+            return {
+              element: `${element.tagName.toLowerCase()}${element.id ? '#' + element.id : ''}${className ? '.' + className.trim().replaceAll(' ', '.') : ''}`,
+              left: Math.round(rect.left),
+              right: Math.round(rect.right)
+            };
+          })
+          .filter(item => item.right > innerWidth + 1)
+          .sort((a, b) => b.right - a.right)
+          .slice(0, 8)
+      );
+      expect(overflow, `horizontal overflow at ${width}px: ${JSON.stringify(offenders)}`).toBeLessThanOrEqual(1);
+    }
+
+    // The problem panel, figure, explanation, and resource buttons share
+    // the same outer edges, including at the index-rail breakpoint.
+    for (const [name, surface] of Object.entries({ problem, outlook, resources })) {
+      expect(Math.abs(surface.left - diagram.left), `${name} left edge at ${width}px`).toBeLessThanOrEqual(1);
+      expect(Math.abs(surface.right - diagram.right), `${name} right edge at ${width}px`).toBeLessThanOrEqual(1);
+      expect(Math.abs(surface.width - diagram.width), `${name} width at ${width}px`).toBeLessThanOrEqual(1);
+    }
 
     // Both visual surfaces begin at the section rail and end at the body edge.
     expect(Math.abs(terminal.left - diagram.left), `left edge at ${width}px`).toBeLessThanOrEqual(1);

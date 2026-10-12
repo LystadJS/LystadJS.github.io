@@ -89,7 +89,24 @@ test('Code panels have equal dimensions and driftmapR links retain their layout'
 
     const { terminal, library, diagram, problem, outlook, resources, links, overflow } = geometry;
     expect(links).toHaveLength(2);
-    expect(overflow, `horizontal overflow at ${width}px`).toBeLessThanOrEqual(1);
+    if (overflow > 1) {
+      const offenders = await page.evaluate(() =>
+        [...document.querySelectorAll('body *')]
+          .map(element => {
+            const rect = element.getBoundingClientRect();
+            const className = typeof element.className === 'string' ? element.className : '';
+            return {
+              element: `${element.tagName.toLowerCase()}${element.id ? '#' + element.id : ''}${className ? '.' + className.trim().replaceAll(' ', '.') : ''}`,
+              left: Math.round(rect.left),
+              right: Math.round(rect.right)
+            };
+          })
+          .filter(item => item.right > innerWidth + 1)
+          .sort((a, b) => b.right - a.right)
+          .slice(0, 8)
+      );
+      expect(overflow, `horizontal overflow at ${width}px: ${JSON.stringify(offenders)}`).toBeLessThanOrEqual(1);
+    }
 
     // The problem panel, figure, explanation, and resource buttons share
     // the same outer edges, including at the index-rail breakpoint.

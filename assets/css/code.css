@@ -823,6 +823,14 @@ body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
   transition: none !important;
   }
 }
+/* The desktop navigation and the full brand subtitle cannot share a
+   781–860px header. Keep the navigation visible without a horizontal scrollbar. */
+@media (min-width: 781px) and (max-width: 860px) {
+  body[data-page="code"] .brand-role {
+    display: none;
+  }
+}
+
 /* Use the section-shell edges for the archive and complete driftmapR
    explanation. A shared overhang keeps every surface aligned with the diagram. */
 @media (min-width: 781px) {

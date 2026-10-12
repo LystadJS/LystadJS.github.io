@@ -63,6 +63,64 @@ test('mobile navigation closes on Escape and resets when resized', async ({ page
   await expect(page.locator('.site-nav')).not.toHaveClass(/open/);
 });
 
+test('Code panels have equal dimensions and driftmapR links retain their layout', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop-1440', 'This check owns its viewport matrix.');
+
+  for (const width of [390, 780, 900, 1024, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/code.html', { waitUntil: 'load' });
+
+    const geometry = await page.evaluate(() => {
+      const box = element => {
+        const { left, right, top, bottom, width, height } = element.getBoundingClientRect();
+        return { left, right, top, bottom, width, height };
+      };
+      return {
+        terminal: box(document.querySelector('.code-layout .signal-console')),
+        library: box(document.querySelector('.code-layout .code-library-panel')),
+        diagram: box(document.querySelector('#driftmapr .dm-alignment')),
+        links: [...document.querySelectorAll('#driftmapr .dm-links a')].map(box),
+        overflow: document.documentElement.scrollWidth - innerWidth
+      };
+    });
+
+    const { terminal, library, diagram, links, overflow } = geometry;
+    expect(links).toHaveLength(2);
+    expect(overflow, `horizontal overflow at ${width}px`).toBeLessThanOrEqual(1);
+
+    // Both visual surfaces begin at the section rail and end at the body edge.
+    expect(Math.abs(terminal.left - diagram.left), `left edge at ${width}px`).toBeLessThanOrEqual(1);
+    expect(Math.abs(library.right - diagram.right), `right edge at ${width}px`).toBeLessThanOrEqual(1);
+
+    if (width > 980) {
+      expect(Math.abs(terminal.width - library.width), `panel widths at ${width}px`).toBeLessThanOrEqual(1);
+      expect(Math.abs(terminal.height - library.height), `panel heights at ${width}px`).toBeLessThanOrEqual(1);
+      expect(Math.abs(terminal.top - library.top), `panel tops at ${width}px`).toBeLessThanOrEqual(1);
+    } else {
+      expect(library.top, `stacked panels at ${width}px`).toBeGreaterThanOrEqual(terminal.bottom - 1);
+      expect(Math.abs(terminal.width - library.width), `stack widths at ${width}px`).toBeLessThanOrEqual(1);
+    }
+
+    if (width > 640) {
+      expect(Math.abs(links[0].width - links[1].width), `resource widths at ${width}px`).toBeLessThanOrEqual(1);
+      expect(Math.abs(links[0].height - links[1].height), `resource heights at ${width}px`).toBeLessThanOrEqual(1);
+    } else {
+      expect(links[1].top, `stacked resources at ${width}px`).toBeGreaterThanOrEqual(links[0].bottom - 1);
+    }
+
+    if (width === 1440) {
+      await page.locator('[data-code-snippet="hdbscan"]').click();
+      const heights = await page.locator('.code-layout > *').evaluateAll(elements =>
+        elements.map(element => element.getBoundingClientRect().height)
+      );
+      expect(Math.abs(heights[0] - heights[1]), 'panels stay equal when changing examples').toBeLessThanOrEqual(1);
+    }
+  }
+
+  await expect(page.locator('#driftmapr .dm-lede')).toContainText('A moving map');
+  await expect(page.locator('#driftmapr .dm-alignment figcaption')).toContainText('Schematic only');
+});
+
 test('every Code method button loads a distinct, intact example', async ({ page }) => {
   await page.goto('/code.html');
   const buttons = page.locator('[data-code-snippet]');

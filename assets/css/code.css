@@ -701,7 +701,7 @@ body[data-page="code"] .driftmapr-section figcaption {
   line-height: 1.62;
 }
 body[data-page="code"] .driftmapr-section .dm-outlook {
-  max-width: 840px;
+  max-width: none;
   margin: 1.4rem 0 0;
   color: var(--muted);
   font-family: var(--sans);
@@ -823,12 +823,14 @@ body[data-page="code"] .driftmapr-section .dm-links a:focus-visible {
   transition: none !important;
   }
 }
-/* Keep both archive panels within the same full-width visual surface.
-   Extending the grid, rather than only the terminal, preserves equal
-   column widths and aligns their edges with the driftmapR diagram. */
+/* Use the section-shell edges for the archive and complete driftmapR
+   explanation. A shared overhang keeps every surface aligned with the diagram. */
 @media (min-width: 781px) {
   body[data-page="code"] .code-layout,
-  body[data-page="code"] .driftmapr-section .dm-alignment {
+  body[data-page="code"] .driftmapr-section .dm-problem,
+  body[data-page="code"] .driftmapr-section .dm-alignment,
+  body[data-page="code"] .driftmapr-section .dm-outlook,
+  body[data-page="code"] .driftmapr-section .dm-links {
     width: calc(100% + var(--code-visual-overhang));
     margin-left: calc(-1 * var(--code-visual-overhang));
   }
@@ -847,11 +849,13 @@ body[data-page="code"] .driftmapr-section .dm-alignment {
   border-color: var(--line);
   border-radius: 0;
 }
-/* Once the section rail collapses on smaller screens, visualizations return
-   to the normal single-column width with no artificial overhang. */
+/* Without the index rail, all surfaces occupy the normal content width. */
 @media (max-width: 780px) {
   body[data-page="code"] .code-layout,
-  body[data-page="code"] .driftmapr-section .dm-alignment {
+  body[data-page="code"] .driftmapr-section .dm-problem,
+  body[data-page="code"] .driftmapr-section .dm-alignment,
+  body[data-page="code"] .driftmapr-section .dm-outlook,
+  body[data-page="code"] .driftmapr-section .dm-links {
     width: 100%;
     margin-left: 0;
   }

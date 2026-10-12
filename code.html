@@ -15,7 +15,7 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
     <link href="assets/css/style.css?v=20261006-1" rel="stylesheet"/>
-    <link href="assets/css/code.css?v=20261006-1" rel="stylesheet"/>
+    <link href="assets/css/code.css?v=20261012-1" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/css/portfolio-layout.css?v=20261006-1">
 </head>
 <body data-page="code">
@@ -278,19 +278,20 @@
     <header class="dm-header">
       <h2 id="driftmapr-title"><i>driftmapR</i></h2>
       <p class="dm-status">R package · In development</p>
-      <p class="dm-intro">driftmapR is my R-package development project for comparing repeated low-dimensional maps. The work examines how to distinguish coordinate changes from structural change and carry uncertainty into that comparison.</p>
+      <p class="dm-lede">A moving map does not necessarily mean a changing system.</p>
+      <p class="dm-intro">I am developing driftmapR to compare repeated low-dimensional representations of the same observations. The package aligns corresponding points, measures residual movement, and supports repeated-fit comparisons so differences between maps can be examined rather than assumed to be meaningful.</p>
     </header>
 
     <div class="dm-problem">
-      <h3>When a map moves,<br><em>did the system change?</em></h3>
+      <h3>What remains<br><em>after alignment?</em></h3>
       <div>
-        <p>A map can rotate or shift without the underlying system changing. Alignment addresses that ambiguity; it does not, on its own, establish substantive change.</p>
-        <p>For anticipatory analysis, this is a prior question: before interpreting movement as a warning, establish whether it reflects the system or the way the map was constructed.</p>
+        <p>Separate runs can rotate, reflect, or translate a map while preserving its underlying relationships. Alignment puts matched observations in a common frame, making the differences that remain easier to measure and inspect.</p>
+        <p>Residual movement still needs explanation. Differences in sample composition, measurement, or algorithmic stability may resemble structural change. Resampling can probe that sensitivity, but the project's inferential reliability remains under validation.</p>
       </div>
     </div>
 
     <figure class="dm-alignment">
-      <div class="dm-figure-bar"><span>Representation → comparison</span><span>Illustrative geometry</span></div>
+      <div class="dm-figure-bar"><span>Repeated maps → alignment → comparison</span><span>Illustrative geometry</span></div>
       <svg class="dm-diagram-wide" viewBox="0 0 580 270" role="img" aria-labelledby="driftmapr-align-title driftmapr-align-desc">
               <title id="driftmapr-align-title">Comparing two representations after alignment</title>
               <desc id="driftmapr-align-desc">Two small point configurations show a similar pattern with different orientations and one displaced point. An aligned overlay brings corresponding points together and highlights a remaining displacement to investigate. This is an illustration, not a result from the software.</desc>
@@ -324,11 +325,14 @@
   <text class="as-axis-label" x="467" y="215" text-anchor="middle">RESIDUAL CHANGE?</text>
 </svg>
       </div>
-      <figcaption>Illustration only—not output from driftmapR, a validation result, or an early-warning model. The remaining displacement is a question to investigate, not proof of substantive change.</figcaption>
+      <figcaption>Schematic only; no fitted data or validation result is shown. The highlighted displacement calls for further testing, not a conclusion about structural change or predictive performance.</figcaption>
     </figure>
+
+    <p class="dm-outlook">My aim is a traceable comparison: identify which observations were matched, document how the maps were aligned, quantify the movement that remained, and report its sensitivity to repeated fitting. For <a href="index.html#anticipatory-science">anticipatory research</a>, that evidence matters more than a striking visual displacement.</p>
+
     <div class="dm-links">
+      <a href="https://github.com/LystadJS/draftmapR" target="_blank" rel="noopener noreferrer">Source &amp; development <span aria-hidden="true">↗</span></a>
       <a href="research.html">Research context <span aria-hidden="true">→</span></a>
-      <a href="index.html#anticipatory-science">Anticipatory research <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

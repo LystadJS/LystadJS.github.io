@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: dd5ebdad0c50ccb36ba79b895d76b91b47f06288
+          ref: 980c1f169036ac70a97a97ba37e06de2109ca6d1
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization
@@ -38,7 +38,7 @@ jobs:
           # Research release is an explicit allowlist of synthetic-only browser
           # assets; no source work, model weights, tests or hidden review data.
           for name in (
-              'research.html','research-wiring.js','research-wiring.css',
+              'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
               'parallel/w05-browser/experimental/method-lab/index.html',
               'parallel/w05-browser/experimental/method-lab/worker.js',
               'parallel/w05-browser/experimental/method-lab/fixtures/synthetic-contract.json',
@@ -100,7 +100,7 @@ jobs:
           original=json.loads((root/'mirror-manifest.json').read_text())
           files=original['files']
           must=['index.html','latent.html','release.json',
-            'research.html','research-wiring.js','research-wiring.css',
+            'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
             'meeting-quick-reader.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
@@ -133,7 +133,7 @@ jobs:
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['D1_publication_gates_changed'] is False
           result={
-            'status':'PASS','site':base,'source_commit':'dd5ebdad0c50ccb36ba79b895d76b91b47f06288',
+            'status':'PASS','site':base,'source_commit':'980c1f169036ac70a97a97ba37e06de2109ca6d1',
             'asset_count':len(expected),'live_sha256':expected,
             'synthetic_research_only':True,'empirical_validation':'not_run',
             'heldout_transcripts_opened':0,
@@ -170,11 +170,14 @@ jobs:
                 try:
                   page.goto(base+'research.html',wait_until='load',timeout=30000)
                   assert page.locator('h1').inner_text()=='Source-bound research methods'
+                  assert page.locator('#w2 h2').inner_text()=='Inspect native W2 weighted consensus'
                   assert page.locator('#research-status').inner_text()=='No source-bound graph imported.'
                   page.locator('#w5 details').evaluate('(el)=>el.open=true')
+                  page.locator('#w5 iframe').scroll_into_view_if_needed()
                   page.locator('#w6 details').evaluate('(el)=>el.open=true')
                   assert 'Research Method Lab' in page.frame_locator(
                     '#w5 iframe').locator('h1').inner_text(timeout=15000)
+                  page.locator('#w6 iframe').scroll_into_view_if_needed()
                   assert 'Evidence visualization suite' in page.frame_locator(
                     '#w6 iframe').locator('h1').inner_text(timeout=15000)
                   # The iframe heading can render before its deferred charts.

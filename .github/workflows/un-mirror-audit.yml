@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: af482cfd6f3c954f53033e5b0419e830adeac648
+          ref: 33d128049a77a67cf980a7173bef41409fd66797
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization
@@ -133,7 +133,7 @@ jobs:
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['D1_publication_gates_changed'] is False
           result={
-            'status':'PASS','site':base,'source_commit':'af482cfd6f3c954f53033e5b0419e830adeac648',
+            'status':'PASS','site':base,'source_commit':'33d128049a77a67cf980a7173bef41409fd66797',
             'asset_count':len(expected),'live_sha256':expected,
             'synthetic_research_only':True,'empirical_validation':'not_run',
             'heldout_transcripts_opened':0,

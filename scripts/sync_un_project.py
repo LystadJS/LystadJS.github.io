@@ -62,7 +62,7 @@ def sync(source: str | Path, *, site: Path | None = None) -> dict[str, object]:
         built = Path(directory) / "site"
         module.build(built)
         files = {}
-        for path in sorted(built.rglob("*")):
+        for path in sorted(built.rglob("*"), key=lambda item: item.relative_to(built).as_posix()):
             relative = path.relative_to(built).as_posix()
             checked_path(built, relative)
             checked_path(target, relative)

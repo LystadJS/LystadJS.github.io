@@ -2,11 +2,12 @@ name: Website regression
 
 on:
   push:
-    branches: [main, 'chatgpt/site-maintenance-*']
+    branches: [main]
     paths:
       - '*.html'
       - 'assets/**'
       - 'notes/**'
+      - 'un/**'
       - 'scripts/**'
       - 'tests/**'
       - 'package*.json'
@@ -28,6 +29,9 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Check local references and mirror safeguards

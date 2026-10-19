@@ -7,6 +7,8 @@ on:
     paths: ['un/transcript-agent/**', '.github/workflows/un-mirror-audit.yml']
 permissions:
   contents: read
+env:
+  SOURCE_COMMIT: 20e785c4dfc50aadf290b590ba19e23d21dae1ea
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -18,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: 20e785c4dfc50aadf290b590ba19e23d21dae1ea
+          ref: ${{ env.SOURCE_COMMIT }}
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization
@@ -94,7 +96,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import hashlib,json,time,urllib.request,urllib.error
+          import hashlib,json,os,time,urllib.request,urllib.error
           from pathlib import Path
           root=Path('un/transcript-agent')
           original=json.loads((root/'mirror-manifest.json').read_text())
@@ -133,7 +135,7 @@ jobs:
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['D1_publication_gates_changed'] is False
           result={
-            'status':'PASS','site':base,'source_commit':'20e785c4dfc50aadf290b590ba19e23d21dae1ea',
+            'status':'PASS','site':base,'source_commit':os.environ['SOURCE_COMMIT'],
             'asset_count':len(expected),'live_sha256':expected,
             'synthetic_research_only':True,'empirical_validation':'not_run',
             'heldout_transcripts_opened':0,
@@ -202,4 +204,42 @@ jobs:
             live-un-research.json
             live-research-desktop.png
             live-research-mobile.png
+          retention-days: 14
+
+  live_meetings:
+    name: Verify deployed comparison and meeting workflows
+    needs: [audit, live_research]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: LystadJS/UNGA81-Transcript-Agent
+          ref: ${{ env.SOURCE_COMMIT }}
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise deployed comparison and meeting interfaces
+        run: |
+          node source/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
+          node source/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
+      - name: Require actual live meeting inventory and selected-meeting collection
+        env:
+          REQUIRE_LIVE_MEETING: '1'
+        run: node source/tools/check_meeting_live.cjs 2026-09-24 live-UN-source.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: un-live-meeting-validation
+          path: |
+            live-UN-source.json
+            live-browser-validation
+            live-picker-validation
           retention-days: 14

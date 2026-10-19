@@ -65,6 +65,8 @@ Because the site uses relative asset paths, previewing through an HTTP server is
 - Shared visual rules belong in `assets/css/style.css`.
 - Section spacing and index-rail geometry for About, Research, and Code belong in `assets/css/portfolio-layout.css`, loaded after each page stylesheet. Page-specific styles own component appearance, not section spacing.
 - Shared navigation and progressive enhancement belong in `assets/js/main.js`. Homepage enhancements, CV controls, and Code examples have their own cached scripts.
+- Homepage network presentation belongs in the readable `assets/css/research-program.css`; its former review/typography overrides and inline filtering rules are consolidated there. About hero rules are co-located at the end of `about.css`, preserving their responsive cascade.
+- Research figure view controls share the initializer in `assets/js/research-statistics.js`.
 - `research-program-data.js` is the single canonical homepage graph payload; do not add runtime text-override layers.
 - Both Research tag linkers use `research-registry.js` for one bounded registry request. The geographic renderer emits `empirical:panel-rendered` rather than requiring DOM repair observers.
 - Legacy page addresses remain redirects; unassigned resources are labels rather than broken template links.
@@ -96,6 +98,10 @@ npm test
 ```
 
 The website regression workflow checks all three portfolio layouts, mobile navigation, Code examples, Research resources and map-adapter interactions, no-JavaScript content, explicit image paths, and the existing military-timeline accessibility contract. Deterministic layout tests block external font/map services; the geographic adapter is tested separately with an explicitly labeled fixture. Existing historical validation records describe their original runs.
+
+`npm run check` validates root pages, nested Notes and UN HTML, and local portfolio/UN JavaScript syntax before running the Python unit tests. The npm checks and Playwright server select `python` on Windows and `python3` elsewhere; set `PYTHON` to use a particular interpreter. Figure generation uses UTF-8 and preserves existing checkout line endings. Windows skips the symlink-rejection fixture only when the account lacks symlink privileges; Linux CI runs it.
+
+`website-regression.yml` owns the complete portfolio suite; the former About and Research workflows duplicated those tests. `un-mirror-audit.yml` owns source-to-mirror validation and post-deployment research/meeting checks using one pinned source revision. The historical branch-specific UN release workflow has been retired. Update the mirror audit's `SOURCE_COMMIT` alongside future mirror releases.
 
 Responsive WebP portraits retain the JPEG fallback. Rebuild the two derivatives with `python scripts/optimize_portraits.py` in an authoring environment with Pillow 12.3.0. No build framework or image dependency is shipped to visitors.
 

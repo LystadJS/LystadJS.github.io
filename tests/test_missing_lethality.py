@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class MissingLethality(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data = json.loads((ROOT / 'assets/data/missing-lethality-mice-demo.json').read_text())
+        cls.data = json.loads((ROOT / 'assets/data/missing-lethality-mice-demo.json').read_text(encoding="utf-8"))
 
     def test_observed_records_and_pmm_donor_support(self):
         d = self.data

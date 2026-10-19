@@ -2,14 +2,28 @@
 from pathlib import Path
 import json
 import math
+import runpy
 import subprocess
 import sys
+import tempfile
 import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 class ResearchFigures(unittest.TestCase):
+    def test_utf8_writer_preserves_existing_line_endings(self):
+        write_utf8 = runpy.run_path(str(ROOT/'scripts/build_research_figures.py'))['write_utf8']
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'figure.html'
+            text = '<p>Source-backed estimates — “uncertainty”</p>\n'
+            for newline in ('\n', '\r\n'):
+                with self.subTest(newline=repr(newline)):
+                    expected = text.replace('\n', newline).encode('utf-8')
+                    path.write_bytes(expected)
+                    write_utf8(path, text)
+                    self.assertEqual(path.read_bytes(), expected)
+
     def test_source_labels_and_bounds(self):
-        source = json.loads((ROOT/'assets/data/ethnosectarian-figure4.json').read_text())
+        source = json.loads((ROOT/'assets/data/ethnosectarian-figure4.json').read_text(encoding="utf-8"))
         self.assertEqual(source['blob'], '50234d6834e6c9c4db4508182968d2ab35f8b7ff')
         rows = source['records']
         self.assertEqual(len(rows), 27)
@@ -28,7 +42,7 @@ class ResearchFigures(unittest.TestCase):
                     self.assertTrue(0 <= row['lower'] <= row['estimate'] <= row['upper'] <= 1)
 
     def test_demo_inputs_are_explicit_and_consistent(self):
-        data = json.loads((ROOT/'assets/data/research-plot-demos.json').read_text())
+        data = json.loads((ROOT/'assets/data/research-plot-demos.json').read_text(encoding="utf-8"))
         self.assertEqual(len(data), 7)
         for demo in data.values():
             self.assertIn('not empirical', demo['status'])

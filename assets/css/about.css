@@ -1,60 +1,15 @@
 /* About page styles — page-specific presentation and responsive behavior. */
 
-body[data-page="about"] {
-  --about-muted: #918493;
-  --about-faint: #766d77;
-    }
-
 body[data-page="about"] main {
   overflow: hidden;
-    }
+}
 
 body[data-page="about"] .essay-index,
     body[data-page="about"] .photo-label {
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: .1em;
-    }
-
-body[data-page="about"] .about-hero .lead {
-  max-width: 760px;
-  margin: 0;
-  color: #cfc4cb;
-  font-family: var(--serif);
-  font-size: clamp(1.28rem, 2vw, 1.72rem);
-  line-height: 1.35;
-    }
-
-body[data-page="about"] .about-hero .intro {
-  max-width: 720px;
-  margin: .9rem 0 0;
-  color: var(--muted);
-  font-size: .86rem;
-  line-height: 1.65;
-    }
-
-body[data-page="about"] .about-direction span {
-  display: block;
-  margin-bottom: .36rem;
-    }
-
-body[data-page="about"] .about-portrait-frame::before {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(221,204,183,.10);
-  pointer-events: none;
-    }
-
-body[data-page="about"] .about-portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-    }
-
-body[data-page="about"] .about-portrait img {
-  display: block;
-    }
+}
 
 body[data-page="about"] .about-section-nav a {
   display: grid;
@@ -67,27 +22,25 @@ body[data-page="about"] .about-section-nav a {
   border-right: 1px solid rgba(74,53,71,.42);
   text-decoration: none;
   transition: color 150ms ease, background 150ms ease;
-    }
+}
 
 body[data-page="about"] .about-section-nav a + a {
   padding-left: .9rem;
-    }
+}
 
 body[data-page="about"] .about-section-nav a:last-child {
   border-right: 0;
-    }
+}
 
 body[data-page="about"] .about-section-nav a:hover,
     body[data-page="about"] .about-section-nav a:focus-visible {
   color: #d3c7cf;
-  background: rgba(141,23,50,.035);
-  outline: none;
-    }
+}
 
 body[data-page="about"] .about-section-nav a:hover span,
     body[data-page="about"] .about-section-nav a:focus-visible span {
   color: var(--crimson-bright);
-    }
+}
 
 body[data-page="about"] .photo-placeholder {
   position: relative;
@@ -97,7 +50,7 @@ body[data-page="about"] .photo-placeholder {
   overflow: hidden;
   isolation: isolate;
   border: 1px solid var(--line-bright);
-    }
+}
 
 body[data-page="about"] .photo-placeholder::before {
   content: "";
@@ -106,7 +59,7 @@ body[data-page="about"] .photo-placeholder::before {
   z-index: 2;
   border: 1px solid rgba(221,204,183,.10);
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .photo-placeholder::after {
   content: "";
@@ -115,21 +68,21 @@ body[data-page="about"] .photo-placeholder::after {
   z-index: 1;
   pointer-events: none;
   background: radial-gradient(ellipse at center, transparent 46%, rgba(7,7,9,.34) 100%);
-    }
+}
 
 body[data-page="about"] .photo-placeholder.portrait {
   aspect-ratio: 4 / 5;
   max-width: 360px;
   justify-self: end;
-    }
+}
 
 body[data-page="about"] .photo-placeholder.landscape {
   aspect-ratio: 16 / 10;
-    }
+}
 
 body[data-page="about"] .photo-placeholder.wide {
   aspect-ratio: 16 / 7;
-    }
+}
 
 body[data-page="about"] .photo-label {
   position: relative;
@@ -139,50 +92,42 @@ body[data-page="about"] .photo-label {
   background: rgba(7,7,9,.74);
   font-size: .54rem;
   text-align: center;
-    }
+}
 
 body[data-page="about"] .essay-heading-copy {
   min-width: 0;
-    }
+}
 
 body[data-page="about"] .military-layout {
   display: grid;
   align-items: start;
-    }
+}
 
 body[data-page="about"] .military-primary {
   min-width: 0;
-    }
+}
 
 @media (max-width: 900px) {
-  body[data-page="about"] .about-portrait {
-  width: min(330px, 82vw);
-  justify-self: start;
-      }
-
   body[data-page="about"] .about-section-nav {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 640px) {
   body[data-page="about"] .about-section-nav a {
-  gap: .48rem;
-  padding-top: .78rem;
-  padding-bottom: .74rem;
-      }
-
+    gap: .48rem;
+    padding-top: .78rem;
+    padding-bottom: .74rem;
+  }
   body[data-page="about"] .about-section-nav a + a {
-  padding-left: .65rem;
-      }
-
+    padding-left: .65rem;
+  }
   body[data-page="about"] .about-section-nav strong {
-  font-size: .55rem;
-      }
-    }
+    font-size: .55rem;
+  }
+}
 
 body[data-page="about"] .career-timeline {
-  --timeline-line-y: 145px;
   --timeline-icon-size: 72px;
   --timeline-marker-size: 14px;
   --timeline-marker-half: 7px;
@@ -190,7 +135,7 @@ body[data-page="about"] .career-timeline {
   width: 100%;
   padding-top: .72rem;
   border-top: 1px solid rgba(74,53,71,.62);
-    }
+}
 
 body[data-page="about"] .timeline-kicker {
   margin: 0 0 .2rem;
@@ -201,7 +146,7 @@ body[data-page="about"] .timeline-kicker {
   line-height: 1.16;
   letter-spacing: .065em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .rank-event-date,
     body[data-page="about"] .rank-event-abbr,
@@ -211,7 +156,7 @@ body[data-page="about"] .rank-event-date,
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: .08em;
-    }
+}
 
 body[data-page="about"] .timeline-canvas {
   --line-y: var(--timeline-line-y);
@@ -222,7 +167,7 @@ body[data-page="about"] .timeline-canvas {
   width: 90%;
   margin-inline: auto;
   overflow: visible;
-    }
+}
 
 body[data-page="about"] .timeline-line {
   position: absolute;
@@ -232,7 +177,7 @@ body[data-page="about"] .timeline-line {
   width: calc(var(--to, 100%) - var(--from, 0%));
   height: 1.25px;
   background: rgba(166,152,163,.66);
-    }
+}
 
 body[data-page="about"] .timeline-line.projected {
   height: 1px;
@@ -241,7 +186,7 @@ body[data-page="about"] .timeline-line.projected {
         rgba(184,103,132,.72) 0 4px,
         transparent 4px 8px
       );
-    }
+}
 
 body[data-page="about"] .rank-event,
     body[data-page="about"] .unit-event,
@@ -249,7 +194,7 @@ body[data-page="about"] .rank-event,
     body[data-page="about"] .year-tick {
   position: absolute;
   left: var(--x);
-    }
+}
 
 body[data-page="about"] .year-tick {
   z-index: 2;
@@ -259,7 +204,7 @@ body[data-page="about"] .year-tick {
   background: rgba(174,160,171,.24);
   transform: translateX(-50%);
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .year-tick-label {
   position: absolute;
@@ -273,7 +218,7 @@ body[data-page="about"] .year-tick-label {
   padding: .12rem .24rem;
   border-radius: 2px;
   background: rgba(11,9,13,.72);
-    }
+}
 
 body[data-page="about"] .service-sankey {
   position: absolute;
@@ -282,7 +227,7 @@ body[data-page="about"] .service-sankey {
   height: var(--timeline-sankey-height);
   overflow: visible;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .service-sankey--preofficer {
   left: calc(-1 * var(--service-edge-overscan));
@@ -299,7 +244,7 @@ body[data-page="about"] .service-sankey--preofficer {
         #000 var(--service-edge-fade),
         #000 100%
       );
-    }
+}
 
 body[data-page="about"] .service-sankey--officer {
   left: var(--officer-start);
@@ -316,7 +261,7 @@ body[data-page="about"] .service-sankey--officer {
         #000 calc(100% - var(--service-edge-fade)),
         transparent 100%
       );
-    }
+}
 
 body[data-page="about"] .service-flow {
   opacity: .30;
@@ -327,7 +272,7 @@ body[data-page="about"] .service-flow {
   shape-rendering: geometricPrecision;
   pointer-events: auto;
   transition: opacity 180ms ease-out, filter 180ms ease-out;
-    }
+}
 
 body[data-page="about"] .service-flow:hover,
     body[data-page="about"] .service-flow:focus-visible,
@@ -335,35 +280,35 @@ body[data-page="about"] .service-flow:hover,
   opacity: .49;
   filter: brightness(1.08) saturate(.96);
   outline: none;
-    }
+}
 
 body[data-page="about"] .service-flow {
   cursor: pointer;
-    }
+}
 
 body[data-page="about"] .service-flow--infantry {
   /* Muted Flag Blue 67124 (#0A2230 base). */
   fill: #334955;
   fill-opacity: 1;
-    }
+}
 
 body[data-page="about"] .service-flow--leader {
   /* Army/NCO olive drab. */
   fill: #4B5320;
   fill-opacity: 1;
-    }
+}
 
 body[data-page="about"] .service-flow--comms {
   /* Muted Orange 67110 (#FF4D00 base). */
   fill: #985D3E;
   fill-opacity: .93;
-    }
+}
 
 body[data-page="about"] .service-flow--officer {
   /* Muted commissioning-candidate khaki (#D4BF91 base). */
   fill: #B5A684;
   fill-opacity: .74;
-    }
+}
 
 body[data-page="about"] .service-flow-label {
   position: absolute;
@@ -390,11 +335,10 @@ body[data-page="about"] .service-flow-label {
   word-break: normal;
   text-shadow: 0 1px 2px rgba(0,0,0,.55);
   pointer-events: none;
-  transition:
-        opacity 150ms ease-out,
+  transition: opacity 150ms ease-out,
         transform 150ms ease-out,
         visibility 150ms linear;
-    }
+}
 
 body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:hover) > .service-flow-label--infantry,
     body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:focus-visible) > .service-flow-label--infantry,
@@ -411,7 +355,7 @@ body[data-page="about"] .timeline-canvas:has(.service-flow--infantry:hover) > .s
   opacity: 1;
   visibility: visible;
   transform: translate(0, -50%);
-    }
+}
 
 body[data-page="about"] .rank-event {
   z-index: 3;
@@ -422,14 +366,14 @@ body[data-page="about"] .rank-event {
   cursor: pointer;
   outline: none;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .rank-event-marker,
     body[data-page="about"] .rank-insignia,
     body[data-page="about"] .rank-insignia-svg,
     body[data-page="about"] .rank-event-abbr {
   pointer-events: auto;
-    }
+}
 
 body[data-page="about"] .rank-event-marker {
   display: block;
@@ -441,13 +385,13 @@ body[data-page="about"] .rank-event-marker {
   border-radius: 50%;
   background: #0b090d;
   box-shadow: 0 0 0 4px #0b090d;
-    }
+}
 
 body[data-page="about"] .rank-event.expected .rank-event-marker {
   border-style: dashed;
   border-color: #a06f82;
   background: #171017;
-    }
+}
 
 body[data-page="about"] .current-day-marker {
   position: absolute;
@@ -460,14 +404,13 @@ body[data-page="about"] .current-day-marker {
   border: 1px solid var(--crimson-bright);
   border-radius: 50%;
   background: var(--crimson);
-  box-shadow:
-        0 0 0 4px #0b090d,
+  box-shadow: 0 0 0 4px #0b090d,
         0 0 0 6px rgba(184,56,88,.22),
         0 0 10px rgba(184,56,88,.16);
   transform: translateX(-50%);
   pointer-events: none;
   transition: opacity 150ms ease-out, filter 150ms ease-out;
-    }
+}
 
 body[data-page="about"] .current-day-label {
   position: absolute;
@@ -484,7 +427,7 @@ body[data-page="about"] .current-day-label {
   white-space: nowrap;
   pointer-events: none;
   transition: opacity 150ms ease-out, filter 150ms ease-out;
-    }
+}
 
 body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .current-day-marker,
     body[data-page="about"] .timeline-canvas:has(.rank-event.is-detail-open) .current-day-marker,
@@ -492,7 +435,7 @@ body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .curren
     body[data-page="about"] .timeline-canvas:has(.service-flow.is-open) .current-day-marker {
   opacity: .34;
   filter: saturate(.72);
-    }
+}
 
 body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .current-day-label,
     body[data-page="about"] .timeline-canvas:has(.rank-event.is-detail-open) .current-day-label,
@@ -500,7 +443,7 @@ body[data-page="about"] .timeline-canvas:has(.unit-event.is-detail-open) .curren
     body[data-page="about"] .timeline-canvas:has(.service-flow.is-open) .current-day-label {
   opacity: .38;
   filter: saturate(.72);
-    }
+}
 
 body[data-page="about"] .rank-insignia-wrap {
   display: flex;
@@ -509,7 +452,7 @@ body[data-page="about"] .rank-insignia-wrap {
   align-items: center;
   height: var(--timeline-icon-size);
   margin-top: 8px;
-    }
+}
 
 body[data-page="about"] .rank-insignia,
     body[data-page="about"] .rank-insignia-svg {
@@ -520,14 +463,14 @@ body[data-page="about"] .rank-insignia,
   background: transparent !important;
   border: 0 !important;
   filter: drop-shadow(0 5px 10px rgba(0,0,0,.25));
-    }
+}
 
 body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
   width: 26px;
   height: 70px;
   max-width: none;
   max-height: none;
-    }
+}
 
 body[data-page="about"] .rank-event-abbr {
   display: block;
@@ -536,7 +479,7 @@ body[data-page="about"] .rank-event-abbr {
   font-size: .73rem;
   line-height: 1;
   white-space: nowrap;
-    }
+}
 
 body[data-page="about"] .rank-event-detail {
   position: absolute;
@@ -553,15 +496,14 @@ body[data-page="about"] .rank-event-detail {
   visibility: hidden;
   transform: translate(-50%, -3px);
   pointer-events: none;
-  transition:
-        opacity 140ms ease-out,
+  transition: opacity 140ms ease-out,
         transform 140ms ease-out,
         visibility 140ms linear;
-    }
+}
 
 body[data-page="about"] .rank-event.edge-start .rank-event-detail {
   width: 132px;
-    }
+}
 
 body[data-page="about"] .rank-event:hover .rank-event-detail,
     body[data-page="about"] .rank-event:focus-visible .rank-event-detail,
@@ -569,13 +511,13 @@ body[data-page="about"] .rank-event:hover .rank-event-detail,
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
-    }
+}
 
 body[data-page="about"] .rank-event:focus-visible {
   outline: 1px solid rgba(183,126,146,.72);
   outline-offset: 4px;
   border-radius: 4px;
-    }
+}
 
 body[data-page="about"] .rank-event-name,
     body[data-page="about"] .unit-event-name {
@@ -585,11 +527,11 @@ body[data-page="about"] .rank-event-name,
   font-size: 1.26rem;
   font-weight: 600;
   line-height: .98;
-    }
+}
 
 body[data-page="about"] .rank-event-name {
   margin-top: 0;
-    }
+}
 
 body[data-page="about"] .rank-event-date,
     body[data-page="about"] .unit-event-date {
@@ -598,16 +540,16 @@ body[data-page="about"] .rank-event-date,
   font-size: .69rem;
   line-height: 1.05;
   white-space: nowrap;
-    }
+}
 
 body[data-page="about"] .rank-event-date {
   margin-top: .28rem;
-    }
+}
 
 body[data-page="about"] .rank-event.expected .rank-event-name,
     body[data-page="about"] .rank-event.expected .rank-event-abbr {
   color: #a38995;
-    }
+}
 
 body[data-page="about"] .rank-event-status {
   display: inline-block;
@@ -617,7 +559,7 @@ body[data-page="about"] .rank-event-status {
   color: #ad8b9a;
   font-size: .61rem;
   line-height: 1;
-    }
+}
 
 body[data-page="about"] .unit-event {
   z-index: 3;
@@ -626,7 +568,7 @@ body[data-page="about"] .unit-event {
   transform: translateX(-50%);
   cursor: pointer;
   outline: none;
-    }
+}
 
 body[data-page="about"] .unit-event::before {
   content: "";
@@ -641,7 +583,7 @@ body[data-page="about"] .unit-event::before {
       );
   transform: translateX(-50%);
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .unit-event img {
   display: block;
@@ -652,7 +594,7 @@ body[data-page="about"] .unit-event img {
   background: transparent !important;
   border: 0 !important;
   filter: drop-shadow(0 5px 10px rgba(0,0,0,.22));
-    }
+}
 
 body[data-page="about"] .unit-event-label {
   position: absolute;
@@ -670,11 +612,10 @@ body[data-page="about"] .unit-event-label {
   transform: translate(-50%, 3px);
   text-align: center;
   pointer-events: none;
-  transition:
-        opacity 140ms ease-out,
+  transition: opacity 140ms ease-out,
         transform 140ms ease-out,
         visibility 140ms linear;
-    }
+}
 
 body[data-page="about"] .unit-event:hover,
     body[data-page="about"] .unit-event:focus-visible,
@@ -683,7 +624,7 @@ body[data-page="about"] .unit-event:hover,
     body[data-page="about"] .rank-event:focus-visible,
     body[data-page="about"] .rank-event.is-detail-open {
   z-index: 9;
-    }
+}
 
 body[data-page="about"] .unit-event:hover .unit-event-label,
     body[data-page="about"] .unit-event:focus-visible .unit-event-label,
@@ -691,23 +632,23 @@ body[data-page="about"] .unit-event:hover .unit-event-label,
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
-    }
+}
 
 body[data-page="about"] .unit-event:focus-visible {
   outline: 1px solid rgba(183,126,146,.72);
   outline-offset: 4px;
   border-radius: 4px;
-    }
+}
 
 body[data-page="about"] .unit-event-name {
   margin-top: .12rem;
   letter-spacing: 0;
   white-space: normal;
-    }
+}
 
 body[data-page="about"] .unit-event-date {
   margin-top: .16rem;
-    }
+}
 
 body[data-page="about"] .unit-event.commissioning-transition::after {
   content: "";
@@ -720,7 +661,7 @@ body[data-page="about"] .unit-event.commissioning-transition::after {
   transform: rotate(50deg);
   transform-origin: left center;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .past-service-continuation,
     body[data-page="about"] .future-service-continuation {
@@ -729,7 +670,7 @@ body[data-page="about"] .past-service-continuation,
   top: var(--line-y);
   height: 1px;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .past-service-continuation {
   right: 100%;
@@ -738,7 +679,7 @@ body[data-page="about"] .past-service-continuation {
   background: rgba(166,152,163,.66);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
-    }
+}
 
 body[data-page="about"] .future-service-continuation {
   left: 100%;
@@ -750,7 +691,7 @@ body[data-page="about"] .future-service-continuation {
       );
   -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
   mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
-    }
+}
 
 body[data-page="about"] .training-event {
   z-index: 6;
@@ -763,7 +704,7 @@ body[data-page="about"] .training-event {
   background: transparent;
   transform: translateX(-50%);
   cursor: pointer;
-    }
+}
 
 body[data-page="about"] .training-event::before {
   content: "";
@@ -776,7 +717,7 @@ body[data-page="about"] .training-event::before {
   background: #0b090d;
   box-shadow: 0 0 0 3px rgba(11,9,13,.92);
   transition: background 140ms ease, transform 140ms ease, border-color 140ms ease;
-    }
+}
 
 body[data-page="about"] .qualification-icon {
   position: absolute;
@@ -789,7 +730,7 @@ body[data-page="about"] .qualification-icon {
   opacity: .84;
   pointer-events: none;
   transition: color 120ms ease, opacity 120ms ease, transform 120ms ease;
-    }
+}
 
 body[data-page="about"] .qualification-icon svg,
     body[data-page="about"] .qualification-icon img {
@@ -799,7 +740,7 @@ body[data-page="about"] .qualification-icon svg,
   object-fit: contain;
   overflow: visible;
   background: transparent !important;
-    }
+}
 
 body[data-page="about"] .training-event:hover .qualification-icon,
     body[data-page="about"] .training-event:focus-visible .qualification-icon,
@@ -807,7 +748,7 @@ body[data-page="about"] .training-event:hover .qualification-icon,
   color: #c892a5;
   opacity: 1;
   transform: translateX(-50%) scale(1.08);
-    }
+}
 
 body[data-page="about"] .training-event:hover::before,
     body[data-page="about"] .training-event:focus-visible::before,
@@ -815,12 +756,12 @@ body[data-page="about"] .training-event:hover::before,
   background: var(--crimson);
   border-color: #e29ab0;
   transform: scale(1.18);
-    }
+}
 
 body[data-page="about"] .training-event:focus-visible {
   outline: 1px solid #b77e92;
   outline-offset: 4px;
-    }
+}
 
 body[data-page="about"] .training-popover {
   position: absolute;
@@ -833,7 +774,7 @@ body[data-page="about"] .training-popover {
   transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
   pointer-events: none;
   text-align: center;
-    }
+}
 
 body[data-page="about"] .training-event:hover .training-popover,
     body[data-page="about"] .training-event:focus-visible .training-popover,
@@ -841,7 +782,7 @@ body[data-page="about"] .training-event:hover .training-popover,
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
-    }
+}
 
 body[data-page="about"] .training-popover img {
   display: block;
@@ -853,18 +794,18 @@ body[data-page="about"] .training-popover img {
   background: transparent !important;
   border: 0 !important;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,.32));
-    }
+}
 
 body[data-page="about"] .training-popover img.nwtc-logo {
   filter: url(#nwtc-remove-white) drop-shadow(0 6px 12px rgba(0,0,0,.32));
-    }
+}
 
 body[data-page="about"] .training-popover img.eib-icon {
   width: 124px;
   height: auto;
   max-width: 124px;
   margin-bottom: .42rem;
-    }
+}
 
 body[data-page="about"] .training-popover-box {
   display: block;
@@ -873,7 +814,7 @@ body[data-page="about"] .training-popover-box {
   background: rgba(8,7,10,.91);
   box-shadow: 0 8px 20px rgba(0,0,0,.22);
   backdrop-filter: blur(5px);
-    }
+}
 
 body[data-page="about"] .training-popover-title {
   display: block;
@@ -881,7 +822,7 @@ body[data-page="about"] .training-popover-title {
   font-family: var(--serif);
   font-size: 1.16rem;
   line-height: 1.02;
-    }
+}
 
 body[data-page="about"] .training-popover-school {
   display: block;
@@ -889,7 +830,7 @@ body[data-page="about"] .training-popover-school {
   color: #988b95;
   font-size: .8rem;
   line-height: 1.1;
-    }
+}
 
 body[data-page="about"] .training-popover-meta {
   display: block;
@@ -897,7 +838,7 @@ body[data-page="about"] .training-popover-meta {
   color: #766d75;
   font-size: .66rem;
   line-height: 1.08;
-    }
+}
 
 body[data-page="about"] .timeline-filter-defs {
   position: absolute;
@@ -905,7 +846,7 @@ body[data-page="about"] .timeline-filter-defs {
   height: 0;
   overflow: hidden;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .military-photo figcaption,
     body[data-page="about"] .life-photo figcaption {
@@ -915,36 +856,37 @@ body[data-page="about"] .military-photo figcaption,
   font-size: .54rem;
   letter-spacing: .075em;
   text-transform: uppercase;
-    }
+}
+
 body[data-page="about"] .military-photo figcaption {
   font-size: .64rem;
-    }
+}
 
 body[data-page="about"] .military-media {
   display: block;
   width: 100%;
   justify-self: end;
-    }
+}
 
 body[data-page="about"] .military-photo {
   margin: 0;
-    }
+}
 
 body[data-page="about"] .military-photo-frame.portrait {
   aspect-ratio: 4 / 5;
-    }
+}
 
 body[data-page="about"] .military-photo-frame.landscape {
   aspect-ratio: 3 / 2;
-    }
+}
 
 body[data-page="about"] .military-photo-frame.landscape img {
   object-position: center center;
-    }
+}
 
 body[data-page="about"] .mountain-ascent {
   margin: 0;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-header {
   display: grid;
@@ -952,14 +894,14 @@ body[data-page="about"] .mountain-ascent-header {
   gap: clamp(1.2rem, 3vw, 2.4rem);
   align-items: end;
   border-bottom: 1px solid rgba(74,53,71,.62);
-    }
+}
 
 body[data-page="about"] .mountain-ascent-kicker {
   margin: 0 0 .3rem;
   font-family: var(--mono);
   line-height: 1.1;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-header h3 {
   margin: 0;
@@ -967,58 +909,58 @@ body[data-page="about"] .mountain-ascent-header h3 {
   font-size: clamp(1.85rem, 3.4vw, 2.7rem);
   font-weight: 600;
   line-height: .95;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-deck {
   max-width: 66ch;
   margin: 0;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-stage {
   position: relative;
   min-height: 500px;
   overflow: visible;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-scroll {
   overflow: visible;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
-    }
+}
 
 body[data-page="about"] .mountain-guide {
   stroke: rgba(255,255,255,.024);
   stroke-width: 1;
   stroke-dasharray: 3 8;
   vector-effect: non-scaling-stroke;
-    }
+}
 
 body[data-page="about"] .mountain-guide-label {
   fill: #665d67;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .045em;
-    }
+}
 
 body[data-page="about"] .mountain-silhouette {
   fill: url(#mountain-silhouette-gradient);
   stroke: none;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief {
   opacity: .82;
   pointer-events: none;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief-fill {
   fill: rgba(34,26,35,.88);
   stroke: none;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief-ridge {
   fill: none;
@@ -1027,61 +969,61 @@ body[data-page="about"] .mountain-peak-relief-ridge {
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--signature {
   opacity: .96;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-fill {
   fill: rgba(48,36,47,.92);
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-ridge {
   stroke: rgba(232,215,225,.88);
   stroke-width: 1.6;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--back {
   opacity: .72;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--back .mountain-peak-relief-ridge {
   stroke: rgba(210,193,204,.64);
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--denali {
   opacity: .62;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--toubkal {
   opacity: .70;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--fuji {
   opacity: .78;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--mid {
   opacity: .84;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--front {
   opacity: .98;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-fill {
   fill: rgba(27,21,28,.96);
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-ridge {
   stroke: rgba(232,219,227,.94);
   stroke-width: 1.55;
-    }
+}
 
 body[data-page="about"] .mountain-peak-relief--denali .mountain-peak-relief-fill {
   fill: url(#mountain-silhouette-gradient);
-    }
+}
 
 body[data-page="about"] .mountain-profile-label {
   fill: #d7cbd2;
@@ -1089,32 +1031,32 @@ body[data-page="about"] .mountain-profile-label {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -.01em;
-    }
+}
 
 body[data-page="about"] .mountain-profile-label.is-goal {
   fill: #e1d3b4;
-    }
+}
 
 body[data-page="about"] .mountain-profile-meta {
   fill: #837783;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .07em;
-    }
+}
 
 body[data-page="about"] .mountain-profile-meta.is-goal {
   fill: #a79677;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint {
   cursor: pointer;
   outline: none;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint-hit {
   fill: transparent;
   stroke: none;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint-ring {
   fill: #0b090d;
@@ -1124,14 +1066,14 @@ body[data-page="about"] .mountain-waypoint-ring {
   transition: fill 140ms ease, stroke 140ms ease, transform 140ms ease;
   transform-box: fill-box;
   transform-origin: center;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint-core {
   fill: rgba(157,48,77,.9);
   transition: transform 140ms ease, fill 140ms ease;
   transform-box: fill-box;
   transform-origin: center;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint:hover .mountain-waypoint-ring,
     body[data-page="about"] .mountain-waypoint:focus-visible .mountain-waypoint-ring,
@@ -1139,23 +1081,23 @@ body[data-page="about"] .mountain-waypoint:hover .mountain-waypoint-ring,
   fill: #171017;
   stroke: #d7cbd3;
   transform: scale(1.22);
-    }
+}
 
 body[data-page="about"] .mountain-waypoint:hover .mountain-waypoint-core,
     body[data-page="about"] .mountain-waypoint:focus-visible .mountain-waypoint-core,
     body[data-page="about"] .mountain-waypoint.is-active .mountain-waypoint-core {
   fill: #bf3152;
   transform: scale(1.12);
-    }
+}
 
 body[data-page="about"] .mountain-waypoint.is-goal .mountain-waypoint-ring {
   stroke: rgba(206,177,126,.88);
   stroke-width: 1.8;
-    }
+}
 
 body[data-page="about"] .mountain-waypoint.is-goal .mountain-waypoint-core {
   fill: #c4a268;
-    }
+}
 
 body[data-page="about"] .mountain-goal-halo {
   fill: none;
@@ -1163,7 +1105,7 @@ body[data-page="about"] .mountain-goal-halo {
   stroke-width: 1.2;
   stroke-dasharray: 3 4;
   vector-effect: non-scaling-stroke;
-    }
+}
 
 body[data-page="about"] .mountain-popover {
   position: absolute;
@@ -1179,14 +1121,14 @@ body[data-page="about"] .mountain-popover {
   transform: translateY(7px);
   pointer-events: none;
   transition: opacity 150ms ease-out, transform 150ms ease-out, visibility 150ms linear;
-    }
+}
 
 body[data-page="about"] .mountain-popover.is-open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
-    }
+}
 
 body[data-page="about"] .mountain-popover-close {
   position: absolute;
@@ -1204,31 +1146,30 @@ body[data-page="about"] .mountain-popover-close {
   color: #cfc3cb;
   font: 400 1rem/1 var(--sans);
   cursor: pointer;
-    }
+}
 
 body[data-page="about"] .mountain-popover-close:hover,
     body[data-page="about"] .mountain-popover-close:focus-visible {
   border-color: rgba(218,203,212,.48);
   color: #efe4ea;
   outline: none;
-    }
+}
 
 body[data-page="about"] .mountain-popover-media {
   position: relative;
   height: 138px;
   overflow: hidden;
   border-bottom: 1px solid rgba(74,53,71,.62);
-  background:
-        radial-gradient(circle at 68% 26%, rgba(126,92,117,.18), transparent 32%),
+  background: radial-gradient(circle at 68% 26%, rgba(126,92,117,.18), transparent 32%),
         linear-gradient(145deg, #241b25 0%, #151117 54%, #0c0a0d 100%);
-    }
+}
 
 body[data-page="about"] .mountain-popover-media img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-    }
+}
 
 body[data-page="about"] .mountain-popover-placeholder {
   position: absolute;
@@ -1240,7 +1181,7 @@ body[data-page="about"] .mountain-popover-placeholder {
   font-size: .55rem;
   letter-spacing: .09em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .mountain-popover-placeholder::before {
   content: "";
@@ -1249,20 +1190,19 @@ body[data-page="about"] .mountain-popover-placeholder::before {
   right: 14%;
   bottom: 20%;
   height: 44%;
-  background:
-        linear-gradient(137deg, transparent 0 24%, rgba(130,112,126,.14) 24% 50%, transparent 50%),
+  background: linear-gradient(137deg, transparent 0 24%, rgba(130,112,126,.14) 24% 50%, transparent 50%),
         linear-gradient(43deg, transparent 0 35%, rgba(102,86,99,.16) 35% 61%, transparent 61%);
   clip-path: polygon(0 100%, 25% 42%, 42% 69%, 64% 18%, 100% 100%);
-    }
+}
 
 body[data-page="about"] .mountain-popover-placeholder span {
   position: relative;
   z-index: 1;
-    }
+}
 
 body[data-page="about"] .mountain-popover-body {
   padding: .82rem .9rem .9rem;
-    }
+}
 
 body[data-page="about"] .mountain-popover-type {
   display: block;
@@ -1272,7 +1212,7 @@ body[data-page="about"] .mountain-popover-type {
   font-size: .52rem;
   letter-spacing: .075em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .mountain-popover-name {
   display: block;
@@ -1281,7 +1221,7 @@ body[data-page="about"] .mountain-popover-name {
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1;
-    }
+}
 
 body[data-page="about"] .mountain-popover-location {
   display: block;
@@ -1289,20 +1229,20 @@ body[data-page="about"] .mountain-popover-location {
   color: #948793;
   font-size: .72rem;
   line-height: 1.25;
-    }
+}
 
 body[data-page="about"] .mountain-popover-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .8rem;
   margin: .75rem 0 0;
-    }
+}
 
 body[data-page="about"] .mountain-popover-meta div {
   min-width: 0;
   padding-top: .48rem;
   border-top: 1px solid rgba(74,53,71,.54);
-    }
+}
 
 body[data-page="about"] .mountain-popover-meta dt {
   margin: 0;
@@ -1311,34 +1251,34 @@ body[data-page="about"] .mountain-popover-meta dt {
   font-size: .49rem;
   letter-spacing: .075em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .mountain-popover-meta dd {
   margin: .2rem 0 0;
   color: #cfc4cb;
   font-size: .75rem;
   line-height: 1.2;
-    }
+}
 
 body[data-page="about"] .mountain-popover-note {
   margin: .7rem 0 0;
   color: #a89da5;
   font-size: .69rem;
   line-height: 1.42;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar {
   height: 6px;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-thumb {
   background: rgba(111,91,106,.42);
   border-radius: 999px;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-track {
   background: transparent;
-    }
+}
 
 body[data-page="about"] .mountain-ascent-caption {
   margin-top: .5rem;
@@ -1348,17 +1288,17 @@ body[data-page="about"] .mountain-ascent-caption {
   line-height: 1.55;
   letter-spacing: .04em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .life-photo-grid {
   display: grid;
   grid-template-columns: 1.15fr .85fr;
   align-items: start;
-    }
+}
 
 body[data-page="about"] .life-photo {
   margin: 0;
-    }
+}
 
 body[data-page="about"] .timeline-sr-only {
   position: absolute !important;
@@ -1371,13 +1311,13 @@ body[data-page="about"] .timeline-sr-only {
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
   border: 0 !important;
-    }
+}
 
 body[data-page="about"] .timeline-noscript {
   margin-top: .7rem;
   padding: .9rem 0 0;
   border-top: 1px solid rgba(74,53,71,.62);
-    }
+}
 
 body[data-page="about"] .timeline-noscript-kicker {
   margin: 0 0 .65rem;
@@ -1387,7 +1327,7 @@ body[data-page="about"] .timeline-noscript-kicker {
   font-weight: 500;
   letter-spacing: .065em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list {
   display: grid;
@@ -1396,7 +1336,7 @@ body[data-page="about"] .timeline-noscript-list {
   padding: 0;
   list-style: none;
   border-top: 1px solid rgba(74,53,71,.42);
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list li {
   display: grid;
@@ -1405,11 +1345,11 @@ body[data-page="about"] .timeline-noscript-list li {
   align-content: start;
   padding: .62rem .7rem .66rem 0;
   border-bottom: 1px solid rgba(74,53,71,.42);
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list li:nth-child(odd) {
   padding-right: 1rem;
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list time {
   grid-row: 1 / span 2;
@@ -1418,7 +1358,7 @@ body[data-page="about"] .timeline-noscript-list time {
   font-size: .64rem;
   letter-spacing: .055em;
   text-transform: uppercase;
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list strong {
   color: #d5cbd1;
@@ -1426,103 +1366,91 @@ body[data-page="about"] .timeline-noscript-list strong {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.05;
-    }
+}
 
 body[data-page="about"] .timeline-noscript-list span {
   color: #918592;
   font-size: .72rem;
   line-height: 1.15;
-    }
+}
 
 @media (prefers-reduced-motion: reduce) {
   body[data-page="about"] *,
       body[data-page="about"] *::before,
       body[data-page="about"] *::after {
-  animation-duration: .01ms !important;
-  animation-iteration-count: 1 !important;
-  scroll-behavior: auto !important;
-  transition-duration: .01ms !important;
-  transition-delay: 0ms !important;
-      }
-    }
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
 
 @media (prefers-contrast: more) {
   body[data-page="about"] .timeline-line,
       body[data-page="about"] .past-service-continuation {
-  background: rgba(218,208,215,.88);
-      }
-
+    background: rgba(218,208,215,.88);
+  }
   body[data-page="about"] .timeline-line.projected,
       body[data-page="about"] .future-service-continuation {
-  background: repeating-linear-gradient(
+    background: repeating-linear-gradient(
           90deg,
           rgba(225,116,145,.94) 0 4px,
           transparent 4px 8px
         );
-      }
-
+  }
   body[data-page="about"] .year-tick {
-  background: rgba(218,208,215,.48);
-      }
-
+    background: rgba(218,208,215,.48);
+  }
   body[data-page="about"] .year-tick-label,
       body[data-page="about"] .rank-event-date,
       body[data-page="about"] .unit-event-date,
       body[data-page="about"] .training-popover-meta {
-  color: #bdb1ba;
-      }
-
+    color: #bdb1ba;
+  }
   body[data-page="about"] .rank-event-abbr,
       body[data-page="about"] .rank-event-name,
       body[data-page="about"] .unit-event-name,
       body[data-page="about"] .training-popover-title {
-  color: #f0e7ec;
-      }
-
+    color: #f0e7ec;
+  }
   body[data-page="about"] .current-day-label {
-  color: #dda3b6;
-      }
-
+    color: #dda3b6;
+  }
   body[data-page="about"] .current-day-marker {
-  border-color: #f3b2c5;
-  box-shadow:
-          0 0 0 4px #0b090d,
+    border-color: #f3b2c5;
+    box-shadow: 0 0 0 4px #0b090d,
           0 0 0 7px rgba(218,104,136,.38),
           0 0 12px rgba(218,104,136,.28);
-      }
-
+  }
   body[data-page="about"] .service-flow {
-  opacity: .42;
-  stroke: rgba(232,220,228,.18);
-      }
-
+    opacity: .42;
+    stroke: rgba(232,220,228,.18);
+  }
   body[data-page="about"] .service-flow:hover,
       body[data-page="about"] .service-flow:focus-visible,
       body[data-page="about"] .service-flow.is-open {
-  opacity: .64;
-  filter: brightness(1.12) saturate(1);
-      }
-
+    opacity: .64;
+    filter: brightness(1.12) saturate(1);
+  }
   body[data-page="about"] .service-flow-label {
-  color: #c7bbc4;
-  text-shadow: 0 1px 3px #000;
-      }
-
+    color: #c7bbc4;
+    text-shadow: 0 1px 3px #000;
+  }
   body[data-page="about"] .unit-event-label,
       body[data-page="about"] .rank-event-detail,
       body[data-page="about"] .training-popover-box {
-  border-color: rgba(164,142,159,.82);
-  background: rgba(8,7,10,.98);
-      }
-
+    border-color: rgba(164,142,159,.82);
+    background: rgba(8,7,10,.98);
+  }
   body[data-page="about"] .unit-event:focus-visible,
       body[data-page="about"] .rank-event:focus-visible,
       body[data-page="about"] .training-event:focus-visible,
       body[data-page="about"] .service-flow:focus-visible {
-  outline-width: 2px;
-  outline-color: #d7a4b6;
-      }
-    }
+    outline-width: 2px;
+    outline-color: #d7a4b6;
+  }
+}
 
 @media (forced-colors: active) {
   body[data-page="about"] .career-timeline,
@@ -1533,43 +1461,37 @@ body[data-page="about"] .timeline-noscript-list span {
       body[data-page="about"] .unit-event-label,
       body[data-page="about"] .rank-event-detail,
       body[data-page="about"] .training-popover-box {
-  forced-color-adjust: none;
-      }
-
+    forced-color-adjust: none;
+  }
   body[data-page="about"] .career-timeline,
       body[data-page="about"] .timeline-noscript,
       body[data-page="about"] .timeline-noscript-list,
       body[data-page="about"] .timeline-noscript-list li {
-  border-color: GrayText;
-      }
-
+    border-color: GrayText;
+  }
   body[data-page="about"] .timeline-line,
       body[data-page="about"] .past-service-continuation {
-  background: CanvasText !important;
-      }
-
+    background: CanvasText !important;
+  }
   body[data-page="about"] .timeline-line.projected,
       body[data-page="about"] .future-service-continuation {
-  background: repeating-linear-gradient(
+    background: repeating-linear-gradient(
           90deg,
           Highlight 0 4px,
           transparent 4px 8px
         ) !important;
-      }
-
+  }
   body[data-page="about"] .year-tick {
-  background: GrayText;
-      }
-
+    background: GrayText;
+  }
   body[data-page="about"] .year-tick-label,
       body[data-page="about"] .timeline-kicker,
       body[data-page="about"] .timeline-noscript-kicker,
       body[data-page="about"] .timeline-noscript-list time,
       body[data-page="about"] .timeline-noscript-list span {
-  color: GrayText;
-  background: Canvas;
-      }
-
+    color: GrayText;
+    background: Canvas;
+  }
   body[data-page="about"] .timeline-noscript-list strong,
       body[data-page="about"] .rank-event-name,
       body[data-page="about"] .unit-event-name,
@@ -1578,370 +1500,198 @@ body[data-page="about"] .timeline-noscript-list span {
       body[data-page="about"] .training-popover-school,
       body[data-page="about"] .training-popover-meta,
       body[data-page="about"] .service-flow-label {
-  color: CanvasText;
-  text-shadow: none;
-      }
-
+    color: CanvasText;
+    text-shadow: none;
+  }
   body[data-page="about"] .current-day-marker {
-  border-color: CanvasText;
-  background: Highlight;
-  box-shadow: none;
-      }
-
+    border-color: CanvasText;
+    background: Highlight;
+    box-shadow: none;
+  }
   body[data-page="about"] .current-day-label {
-  color: Highlight;
-      }
-
+    color: Highlight;
+  }
   body[data-page="about"] .service-flow {
-  opacity: 1;
-  stroke: Canvas;
-  stroke-width: 1;
-  filter: none;
-      }
-
+    opacity: 1;
+    stroke: Canvas;
+    stroke-width: 1;
+    filter: none;
+  }
   body[data-page="about"] .service-flow--infantry {
-  fill: CanvasText;
-  fill-opacity: .28;
-      }
-
+    fill: CanvasText;
+    fill-opacity: .28;
+  }
   body[data-page="about"] .service-flow--leader {
-  fill: Highlight;
-  fill-opacity: .34;
-      }
-
+    fill: Highlight;
+    fill-opacity: .34;
+  }
   body[data-page="about"] .service-flow--comms {
-  fill: LinkText;
-  fill-opacity: .32;
-      }
-
+    fill: LinkText;
+    fill-opacity: .32;
+  }
   body[data-page="about"] .service-flow--officer {
-  fill: GrayText;
-  fill-opacity: .34;
-      }
-
+    fill: GrayText;
+    fill-opacity: .34;
+  }
   body[data-page="about"] .service-flow:hover,
       body[data-page="about"] .service-flow:focus-visible,
       body[data-page="about"] .service-flow.is-open {
-  opacity: 1;
-  stroke: Highlight;
-  stroke-width: 1.5;
-  filter: none;
-      }
-
+    opacity: 1;
+    stroke: Highlight;
+    stroke-width: 1.5;
+    filter: none;
+  }
   body[data-page="about"] .rank-event-marker,
       body[data-page="about"] .training-event::before {
-  border-color: CanvasText;
-  background: Canvas;
-  box-shadow: none;
-      }
-
+    border-color: CanvasText;
+    background: Canvas;
+    box-shadow: none;
+  }
   body[data-page="about"] .rank-event.expected .rank-event-marker {
-  border-color: GrayText;
-  background: Canvas;
-      }
-
+    border-color: GrayText;
+    background: Canvas;
+  }
   body[data-page="about"] .unit-event-label,
       body[data-page="about"] .rank-event-detail,
       body[data-page="about"] .training-popover-box {
-  border-color: CanvasText;
-  background: Canvas;
-  box-shadow: none;
-  backdrop-filter: none;
-      }
-
+    border-color: CanvasText;
+    background: Canvas;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
   body[data-page="about"] .unit-event:focus-visible,
       body[data-page="about"] .rank-event:focus-visible,
       body[data-page="about"] .training-event:focus-visible,
       body[data-page="about"] .service-flow:focus-visible {
-  outline: 2px solid Highlight;
-  outline-offset: 4px;
-      }
-
+    outline: 2px solid Highlight;
+    outline-offset: 4px;
+  }
   body[data-page="about"] .qualification-icon {
-  color: CanvasText;
-  opacity: 1;
-      }
-    }
+    color: CanvasText;
+    opacity: 1;
+  }
+}
 
 @media (max-width: 900px) {
   body[data-page="about"] .timeline-canvas {
-  --timeline-edge-extension: 30px;
-  --service-edge-overscan: 54px;
-  --service-edge-fade: 43px;
-  width: 86%;
-  margin-inline: auto;
-      }
-
+    --timeline-edge-extension: 30px;
+    --service-edge-overscan: 54px;
+    --service-edge-fade: 43px;
+    width: 86%;
+    margin-inline: auto;
+  }
   body[data-page="about"] .service-flow-label {
-  width: clamp(120px, 20vw, 152px);
-  font-size: clamp(.46rem, .98vw, .54rem);
-      }
-
-  body[data-page="about"] .about-hero-grid,
-      body[data-page="about"] .military-layout {
-  grid-template-columns: 1fr;
-      }
-
+    width: clamp(120px, 20vw, 152px);
+    font-size: clamp(.46rem, .98vw, .54rem);
+  }
+  body[data-page="about"] .military-layout {
+    grid-template-columns: 1fr;
+  }
   body[data-page="about"] .photo-placeholder.portrait {
-  justify-self: start;
-  width: min(330px, 82vw);
-      }
-
+    justify-self: start;
+    width: min(330px, 82vw);
+  }
   body[data-page="about"] .military-media {
-  max-width: 420px;
-  justify-self: start;
-      }
-
+    max-width: 420px;
+    justify-self: start;
+  }
   body[data-page="about"] .military-photo {
-  max-width: 420px;
-      }
-    }
+    max-width: 420px;
+  }
+}
 
 @media (max-width: 640px) {
   body[data-page="about"] .career-timeline {
-  --timeline-icon-size: 48px;
-  --timeline-sankey-height: 60px;
-      }
-
+    --timeline-icon-size: 48px;
+    --timeline-sankey-height: 60px;
+  }
   body[data-page="about"] .timeline-canvas {
-  --timeline-edge-extension: 22px;
-  --service-edge-overscan: 40px;
-  --service-edge-fade: 32px;
-  width: 80%;
-  margin-inline: auto;
-      }
-
+    --timeline-edge-extension: 22px;
+    --service-edge-overscan: 40px;
+    --service-edge-fade: 32px;
+    width: 80%;
+    margin-inline: auto;
+  }
   body[data-page="about"] .rank-insignia-svg.rank-insignia-officer {
-  width: 18px;
-  height: 48px;
-      }
-
+    width: 18px;
+    height: 48px;
+  }
   body[data-page="about"] .rank-event[data-event-id="pv2"] .rank-event-abbr {
-  transform: translateY(-4px);
-      }
-
+    transform: translateY(-4px);
+  }
   body[data-page="about"] .rank-event[data-event-id="spc"] .rank-insignia-wrap {
-  margin-top: 52px;
-      }
-
+    margin-top: 52px;
+  }
   body[data-page="about"] .rank-event[data-event-id="spc"] .rank-event-abbr {
-  transform: translateY(5px);
-      }
-
+    transform: translateY(5px);
+  }
   body[data-page="about"] .training-event[data-event-id="cwic"] .qualification-icon {
-  top: 49px;
-      }
-
-  body[data-page="about"] .about-hero {
-  padding-top: 3.5rem;
-  padding-bottom: 3rem;
-      }
-
+    top: 49px;
+  }
   body[data-page="about"] .life-photo-grid {
-  grid-template-columns: 1fr;
-      }
-
+    grid-template-columns: 1fr;
+  }
   body[data-page="about"] .timeline-noscript-list {
-  grid-template-columns: 1fr;
-      }
-
+    grid-template-columns: 1fr;
+  }
   body[data-page="about"] .timeline-noscript-list li,
       body[data-page="about"] .timeline-noscript-list li:nth-child(odd) {
-  padding-right: 0;
-      }
-
+    padding-right: 0;
+  }
   body[data-page="about"] .mountain-ascent-stage {
-  min-height: 402px;
-  overflow: visible;
-      }
-
+    min-height: 402px;
+    overflow: visible;
+  }
   body[data-page="about"] .mountain-ascent-scroll {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-      }
-
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
   body[data-page="about"] .mountain-ascent-svg {
-  width: auto;
-  height: 370px;
-  max-width: none;
-      }
-
+    width: auto;
+    height: 370px;
+    max-width: none;
+  }
   body[data-page="about"] .mountain-profile-label,
       body[data-page="about"] .mountain-profile-meta {
-  display: none;
-      }
-    }
+    display: none;
+  }
+}
+
 body[data-page="about"] .service-flow-label--officer {
   left: calc(var(--label-x) - 9px);
   transform: translate(calc(-100% + 3px), -50%);
   text-align: right;
-    }
+}
 
 body[data-page="about"] .timeline-canvas:has(.service-flow--officer:hover) > .service-flow-label--officer,
     body[data-page="about"] .timeline-canvas:has(.service-flow--officer:focus-visible) > .service-flow-label--officer,
     body[data-page="about"] .timeline-canvas:has(.service-flow--officer.is-open) > .service-flow-label--officer {
   transform: translate(-100%, -50%);
-    }
+}
 
 body[data-page="about"] .training-event.training-stagger {
   z-index: 8;
-    }
+}
 
 body[data-page="about"] .training-event.training-stagger .qualification-icon {
   top: 27px;
   z-index: 2;
-    }
-
-/* Match the About lede typography to the homepage hero lede. */
-body[data-page="about"] .about-hero .hero-lede {
-  margin-left: 0;
-  margin-right: 0;
-  text-align: left;
-}
-
-body[data-page="about"] .about-hero .hero-lede + .hero-lede {
-  margin-top: 1rem;
 }
 
 /* Index-master reconciliation: About page adopts homepage visual grammar without changing homepage assets. */
+
 body[data-page="about"] {
   --about-muted: var(--muted);
   --about-faint: #786d79;
-  --about-panel-bg:
-    radial-gradient(circle at 12% 20%, rgba(101,69,126,.08), transparent 48%),
+  --about-panel-bg: radial-gradient(circle at 12% 20%, rgba(101,69,126,.08), transparent 48%),
     linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
     rgba(13,11,16,.72);
 }
 
-/* Hero: same hierarchy, proportions, and tonal system as the immutable index hero. */
-
-body[data-page="about"] .about-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(150px, 15vw, 195px);
-  gap: clamp(1.75rem, 3.15vw, 2.65rem);
-  align-items: center;
-}
-
-body[data-page="about"] .about-hero h1 {
-  max-width: none;
-  margin: .45rem 0 1rem;
-  font-family: var(--serif);
-  font-size: clamp(4rem, 8vw, 7rem);
-  line-height: .88;
-  font-weight: 600;
-  letter-spacing: -.05em;
-}
-
-body[data-page="about"] .about-hero .hero-lede {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  color: #cfc4cb;
-  font-family: var(--serif);
-  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
-  line-height: 1.42;
-}
-
-body[data-page="about"] .about-hero .hero-lede strong {
-  color: var(--paper);
-  font-weight: 600;
-}
-
-body[data-page="about"] .about-summary {
-  max-width: 860px;
-  margin: 1rem 0 0;
-  color: var(--muted);
-  font-size: .9rem;
-  line-height: 1.68;
-}
-
-body[data-page="about"] .about-direction {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: .7rem;
-  align-items: start;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(74,53,71,.46);
-  font-family: var(--mono);
-}
-
-body[data-page="about"] .about-direction::before {
-  color: var(--crimson-bright);
-  font-size: .76rem;
-  line-height: 1.45;
-}
-
-body[data-page="about"] .about-direction span {
-  grid-column: 2;
-  margin: 0;
-  color: #a698a5;
-  font-family: var(--mono);
-  font-size: .58rem;
-  line-height: 1.25;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .about-direction p {
-  grid-column: 2;
-  margin: .18rem 0 0;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: .72rem;
-  line-height: 1.5;
-}
-
-body[data-page="about"] .about-portrait {
-  width: 100%;
-  margin: 0;
-  justify-self: end;
-}
-
-body[data-page="about"] .about-portrait-frame {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid #4a3547;
-  background:
-    radial-gradient(circle at 50% 38%, rgba(141,23,50,.13), transparent 52%),
-    linear-gradient(145deg, rgba(101,69,126,.10), rgba(10,8,12,.96));
-  box-shadow:
-    0 24px 65px rgba(0,0,0,.42),
-    inset 0 0 0 5px #0b090c,
-    inset 0 0 0 6px rgba(184,149,117,.13);
-}
-
-body[data-page="about"] .about-portrait-frame::before {
-  inset: 8px;
-  z-index: 4;
-  border-color: rgba(221,204,183,.12);
-}
-
-body[data-page="about"] .about-portrait-frame::after {
-  z-index: 3;
-  background:
-    linear-gradient(to bottom, rgba(7,7,9,.02), rgba(7,7,9,.04) 52%, rgba(7,7,9,.38)),
-    radial-gradient(ellipse at center, transparent 44%, rgba(7,7,9,.42) 100%);
-  box-shadow: inset 0 0 55px rgba(0,0,0,.36);
-}
-
-body[data-page="about"] .about-portrait img {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
-  filter: saturate(.82) contrast(1.04) brightness(.92);
-}
-
-/* Section navigator: translated from the index hero destination-card treatment. */
 body[data-page="about"] .about-section-nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1964,8 +1714,7 @@ body[data-page="about"] .about-section-nav a + a {
   background: var(--about-panel-bg);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
   color: inherit;
-  transition:
-    transform 160ms ease,
+  transition: transform 160ms ease,
     border-color 160ms ease,
     background 160ms ease,
     box-shadow 160ms ease;
@@ -1987,12 +1736,10 @@ body[data-page="about"] .about-section-nav a:hover,
 body[data-page="about"] .about-section-nav a:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(191,49,82,.48);
-  background:
-    radial-gradient(circle at 15% 20%, rgba(101,69,126,.13), transparent 54%),
+  background: radial-gradient(circle at 15% 20%, rgba(101,69,126,.13), transparent 54%),
     linear-gradient(90deg, rgba(141,23,50,.055), transparent 76%),
     rgba(16,12,19,.74);
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.18),
+  box-shadow: 0 10px 30px rgba(0,0,0,.18),
     inset 0 0 0 1px rgba(255,255,255,.018);
   outline: none;
 }
@@ -2067,6 +1814,7 @@ body[data-page="about"] .service-meta {
 }
 
 /* Reusable About panels now use the same surface recipe as index destination cards. */
+
 body[data-page="about"] .military-primary,
 body[data-page="about"] .mountain-ascent {
   border: 1px solid var(--line);
@@ -2097,12 +1845,12 @@ body[data-page="about"] .military-photo-frame {
 
 body[data-page="about"] .career-timeline {
   border: 1px solid var(--line);
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.012), rgba(255,255,255,.003)),
+  background: linear-gradient(145deg, rgba(255,255,255,.012), rgba(255,255,255,.003)),
     rgba(10,8,12,.58);
 }
 
 /* Mountaineering visualization remains the focal object, but sits on a homepage-consistent instrument surface. */
+
 body[data-page="about"] .mountain-ascent {
   padding: clamp(1rem, 2vw, 1.35rem);
 }
@@ -2146,8 +1894,7 @@ body[data-page="about"] .life-photo-grid {
 
 body[data-page="about"] .photo-placeholder {
   border-color: var(--line);
-  background:
-    radial-gradient(circle at 20% 18%, rgba(101,69,126,.09), transparent 52%),
+  background: radial-gradient(circle at 20% 18%, rgba(101,69,126,.09), transparent 52%),
     linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
     rgba(13,11,16,.72);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
@@ -2170,73 +1917,48 @@ body[data-page="about"] #outside-title {
 }
 
 @media (max-width: 980px) {
-  body[data-page="about"] .about-hero-grid {
-  grid-template-columns: minmax(0, 1fr) 160px;
-  gap: 1.5rem;
-  }
-
   body[data-page="about"] .about-section-nav {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
   body[data-page="about"] .military-layout {
-  grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
-
   body[data-page="about"] .military-media {
-  width: min(360px, 100%);
-  }
-}
-
-@media (max-width: 780px) {
-  body[data-page="about"] .about-hero-grid {
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  }
-
-  body[data-page="about"] .about-portrait {
-  width: min(58vw, 190px);
-  justify-self: start;
+    width: min(360px, 100%);
   }
 }
 
 @media (max-width: 640px) {
-
   body[data-page="about"] .about-section-nav {
-  grid-template-columns: 1fr;
-  gap: .5rem;
+    grid-template-columns: 1fr;
+    gap: .5rem;
   }
-
   body[data-page="about"] .about-section-nav a,
   body[data-page="about"] .about-section-nav a + a {
-  min-height: 72px;
+    min-height: 72px;
   }
-
   body[data-page="about"] .military-primary,
   body[data-page="about"] .mountain-ascent {
-  padding: 1rem;
+    padding: 1rem;
   }
-
   body[data-page="about"] .career-timeline {
-  padding-left: .2rem;
-  padding-right: .2rem;
+    padding-left: .2rem;
+    padding-right: .2rem;
   }
-
   body[data-page="about"] .mountain-ascent-header {
-  grid-template-columns: 1fr;
-  gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .6rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body[data-page="about"] .about-section-nav a {
-  transition: none !important;
+    transition: none !important;
   }
 }
 
 /* Final photo + mission refinement. */
 
-/* Military image: match the site's portrait and editorial-photo treatment. */
 body[data-page="about"] .military-media {
   max-width: 420px;
 }
@@ -2246,11 +1968,9 @@ body[data-page="about"] .military-photo-frame {
   overflow: hidden;
   isolation: isolate;
   border: 1px solid #4a3547;
-  background:
-    radial-gradient(circle at 50% 38%, rgba(141,23,50,.12), transparent 54%),
+  background: radial-gradient(circle at 50% 38%, rgba(141,23,50,.12), transparent 54%),
     linear-gradient(145deg, rgba(101,69,126,.09), rgba(10,8,12,.96));
-  box-shadow:
-    0 24px 65px rgba(0,0,0,.38),
+  box-shadow: 0 24px 65px rgba(0,0,0,.38),
     inset 0 0 0 5px #0b090c,
     inset 0 0 0 6px rgba(184,149,117,.12);
 }
@@ -2261,11 +1981,9 @@ body[data-page="about"] .military-photo-frame::before {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background:
-    linear-gradient(to bottom, rgba(7,7,9,.01), rgba(7,7,9,.035) 54%, rgba(7,7,9,.30)),
+  background: linear-gradient(to bottom, rgba(7,7,9,.01), rgba(7,7,9,.035) 54%, rgba(7,7,9,.30)),
     radial-gradient(ellipse at center, transparent 46%, rgba(7,7,9,.36) 100%);
-  box-shadow:
-    inset 0 0 56px rgba(0,0,0,.30),
+  box-shadow: inset 0 0 56px rgba(0,0,0,.30),
     inset 0 -18px 42px rgba(141,23,50,.035);
 }
 
@@ -2286,14 +2004,406 @@ body[data-page="about"] .military-photo-frame img {
   display: block;
   object-fit: cover;
   object-position: center center;
-  filter:
-    saturate(.78)
+  filter: saturate(.78)
     contrast(1.06)
     brightness(.90);
   transform: scale(1.003);
 }
 
 /* My Next Mission: quiet editorial card aligned to the homepage destination language. */
+
+@media (max-width: 780px) {
+  body[data-page="about"] .military-media {
+    max-width: 100%;
+  }
+}
+
+/* Compact military timeline: years first, tighter insignia spacing. */
+
+body[data-page="about"] .career-timeline {
+  --timeline-line-y: 108px;
+  margin-top: 1rem;
+  padding: .45rem .8rem .15rem;
+}
+
+body[data-page="about"] .timeline-kicker {
+  display: none;
+}
+
+body[data-page="about"] .timeline-canvas {
+  height: 235px;
+}
+
+body[data-page="about"] .unit-event {
+  top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
+}
+
+body[data-page="about"] .unit-event::before {
+  height: 14px;
+}
+
+body[data-page="about"] .current-day-label {
+  top: calc(var(--line-y) - 24px);
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .career-timeline {
+    --timeline-line-y: 96px;
+    padding-top: .4rem;
+    padding-bottom: .1rem;
+  }
+  body[data-page="about"] .timeline-canvas {
+    height: 215px;
+  }
+  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"]) {
+    top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
+  }
+  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"])::before {
+    height: 14px;
+  }
+  body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {
+    top: calc(var(--line-y) - var(--timeline-icon-size) - 24px);
+  }
+  body[data-page="about"] .unit-event[data-event-id="11th-airborne"]::before {
+    height: 24px;
+  }
+}
+
+/* Raise year labels exactly 10px from the current compact timeline position. */
+
+body[data-page="about"] .year-tick-label {
+  top: -102px;
+}
+
+/* Iconized Army badge treatments for Airborne School and BMMC. */
+
+@media (max-width: 640px) {
+  body[data-page="about"] .year-tick-label {
+    top: -90px;
+  }
+}
+
+body[data-page="about"] .badge-icon-parachutist {
+  stroke-width: 1;
+}
+
+body[data-page="about"] .badge-icon-rams-head {
+  stroke-width: 1;
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+    top: 27px;
+    width: 35px;
+    height: 26px;
+  }
+  body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+    top: 26px;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+/* Official-silhouette badge sizing refinement. */
+
+body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
+  top: 27px;
+  width: 38px;
+  height: 24px;
+}
+
+body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
+  top: 26px;
+  width: 30px;
+  height: 30px;
+}
+
+body[data-page="about"] .badge-icon {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+body[data-page="about"] .badge-icon-parachutist,
+body[data-page="about"] .badge-icon-rams-head {
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.18));
+}
+
+/* Service-band edge rules: subtle top/bottom definition with inherited fade. */
+
+body[data-page="about"] .service-band-edge {
+  fill: none;
+  stroke: rgba(84,72,82,.56);
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+  pointer-events: none;
+}
+
+body[data-page="about"] .service-band-edge--top {
+  stroke: rgba(101,86,97,.60);
+}
+
+body[data-page="about"] .service-band-edge--bottom {
+  stroke: rgba(66,56,64,.64);
+}
+
+/* Section 1 finalization: matched media/text heights only. */
+
+@media (min-width: 981px) {
+  body[data-page="about"] .military-layout {
+    grid-template-columns: minmax(0, 1.18fr) minmax(300px, .72fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+  body[data-page="about"] .military-primary {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  body[data-page="about"] .military-media {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+  body[data-page="about"] .military-photo,
+  body[data-page="about"] .military-photo-frame {
+    width: 100%;
+    height: 100%;
+  }
+  body[data-page="about"] .military-photo-frame.landscape {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+  body[data-page="about"] .military-photo-frame.landscape img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Section 1 heading: full-width natural wrapping. */
+
+body[data-page="about"] .service-section .essay-heading h2 {
+  max-width: none;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* About hero: portrait, copy and responsive layout. Rule order preserves the established tablet and desktop cascade. */
+
+body[data-page="about"] .about-hero .lead {
+  max-width: 760px;
+  margin: 0;
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: clamp(1.28rem, 2vw, 1.72rem);
+  line-height: 1.35;
+}
+
+body[data-page="about"] .about-hero .intro {
+  max-width: 720px;
+  margin: .9rem 0 0;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.65;
+}
+
+body[data-page="about"] .about-direction span {
+  display: block;
+  margin-bottom: .36rem;
+}
+
+body[data-page="about"] .about-portrait-frame::before {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(221,204,183,.10);
+  pointer-events: none;
+}
+
+body[data-page="about"] .about-portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+body[data-page="about"] .about-portrait img {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  body[data-page="about"] .about-portrait {
+    width: min(330px, 82vw);
+    justify-self: start;
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page="about"] .about-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-page="about"] .about-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+}
+
+body[data-page="about"] .about-hero .hero-lede {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+body[data-page="about"] .about-hero .hero-lede + .hero-lede {
+  margin-top: 1rem;
+}
+
+body[data-page="about"] .about-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(150px, 15vw, 195px);
+  gap: clamp(1.75rem, 3.15vw, 2.65rem);
+  align-items: center;
+}
+
+body[data-page="about"] .about-hero h1 {
+  max-width: none;
+  margin: .45rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: .88;
+  font-weight: 600;
+  letter-spacing: -.05em;
+}
+
+body[data-page="about"] .about-hero .hero-lede {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: #cfc4cb;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.42;
+}
+
+body[data-page="about"] .about-hero .hero-lede strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+body[data-page="about"] .about-summary {
+  max-width: 860px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.68;
+}
+
+body[data-page="about"] .about-direction {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .7rem;
+  align-items: start;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(74,53,71,.46);
+  font-family: var(--mono);
+}
+
+body[data-page="about"] .about-direction::before {
+  color: var(--crimson-bright);
+  font-size: .76rem;
+  line-height: 1.45;
+}
+
+body[data-page="about"] .about-direction span {
+  grid-column: 2;
+  margin: 0;
+  color: #a698a5;
+  font-family: var(--mono);
+  font-size: .58rem;
+  line-height: 1.25;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body[data-page="about"] .about-direction p {
+  grid-column: 2;
+  margin: .18rem 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+body[data-page="about"] .about-portrait {
+  width: 100%;
+  margin: 0;
+  justify-self: end;
+}
+
+body[data-page="about"] .about-portrait-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #4a3547;
+  background: radial-gradient(circle at 50% 38%, rgba(141,23,50,.13), transparent 52%),
+    linear-gradient(145deg, rgba(101,69,126,.10), rgba(10,8,12,.96));
+  box-shadow: 0 24px 65px rgba(0,0,0,.42),
+    inset 0 0 0 5px #0b090c,
+    inset 0 0 0 6px rgba(184,149,117,.13);
+}
+
+body[data-page="about"] .about-portrait-frame::before {
+  inset: 8px;
+  z-index: 4;
+  border-color: rgba(221,204,183,.12);
+}
+
+body[data-page="about"] .about-portrait-frame::after {
+  z-index: 3;
+  background: linear-gradient(to bottom, rgba(7,7,9,.02), rgba(7,7,9,.04) 52%, rgba(7,7,9,.38)),
+    radial-gradient(ellipse at center, transparent 44%, rgba(7,7,9,.42) 100%);
+  box-shadow: inset 0 0 55px rgba(0,0,0,.36);
+}
+
+body[data-page="about"] .about-portrait img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(.82) contrast(1.04) brightness(.92);
+}
+
+@media (max-width: 980px) {
+  body[data-page="about"] .about-hero-grid {
+    grid-template-columns: minmax(0, 1fr) 160px;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 780px) {
+  body[data-page="about"] .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  body[data-page="about"] .about-portrait {
+    width: min(58vw, 190px);
+    justify-self: start;
+  }
+}
+
 body[data-page="about"] .about-direction {
   position: relative;
   display: block;
@@ -2302,12 +2412,10 @@ body[data-page="about"] .about-direction {
   padding: 1rem 1.15rem 1.05rem 1.25rem;
   border: 1px solid rgba(74,53,71,.72);
   border-left: 2px solid rgba(191,49,82,.72);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(101,69,126,.10), transparent 48%),
+  background: radial-gradient(circle at 12% 18%, rgba(101,69,126,.10), transparent 48%),
     linear-gradient(120deg, rgba(255,255,255,.018), transparent 62%),
     rgba(13,11,16,.64);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.012),
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.012),
     0 10px 28px rgba(0,0,0,.12);
 }
 
@@ -2358,332 +2466,120 @@ body[data-page="about"] .about-direction-copy {
 }
 
 @media (max-width: 780px) {
-  body[data-page="about"] .military-media {
-  max-width: 100%;
-  }
-
   body[data-page="about"] .about-direction {
-  padding: .95rem 1rem 1rem 1.1rem;
+    padding: .95rem 1rem 1rem 1.1rem;
   }
 }
 
-/* Compact military timeline: years first, tighter insignia spacing. */
-body[data-page="about"] .career-timeline {
-  --timeline-line-y: 108px;
-  margin-top: 1rem;
-  padding: .45rem .8rem .15rem;
-}
-
-body[data-page="about"] .timeline-kicker {
-  display: none;
-}
-
-body[data-page="about"] .timeline-canvas {
-  height: 235px;
-}
-
-body[data-page="about"] .unit-event {
-  top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
-}
-
-body[data-page="about"] .unit-event::before {
-  height: 14px;
-}
-
-body[data-page="about"] .current-day-label {
-  top: calc(var(--line-y) - 24px);
-}
-
-@media (max-width: 640px) {
-  body[data-page="about"] .career-timeline {
-  --timeline-line-y: 96px;
-  padding-top: .4rem;
-  padding-bottom: .1rem;
-  }
-
-  body[data-page="about"] .timeline-canvas {
-  height: 215px;
-  }
-
-  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"]) {
-  top: calc(var(--line-y) - var(--timeline-icon-size) - 14px);
-  }
-
-  body[data-page="about"] .unit-event:not([data-event-id="11th-airborne"])::before {
-  height: 14px;
-  }
-
-  body[data-page="about"] .unit-event[data-event-id="11th-airborne"] {
-  top: calc(var(--line-y) - var(--timeline-icon-size) - 24px);
-  }
-
-  body[data-page="about"] .unit-event[data-event-id="11th-airborne"]::before {
-  height: 24px;
-  }
-}
-
-/* Timeline year/badge + anchored hero portrait refinement. */
-
-/* Raise year labels exactly 10px from the current compact timeline position. */
-body[data-page="about"] .year-tick-label {
-  top: -102px;
-}
-
-/* Iconized Army badge treatments for Airborne School and BMMC. */
-
-/* Enlarge the top-right portrait while anchoring the existing top/right edges.
-   Scaling from the top-right expands only leftward and downward. */
 @media (min-width: 981px) {
-
   body[data-page="about"] .about-hero-grid > .reveal:first-child {
-  min-width: 0;
+    min-width: 0;
   }
-
   body[data-page="about"] .about-portrait {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
   }
 }
-
-@media (max-width: 640px) {
-  body[data-page="about"] .year-tick-label {
-  top: -90px;
-  }
-}
-
-/* Larger anchored portrait + refined Army badge proportions. */
 
 @media (min-width: 981px) {
   body[data-page="about"] .about-hero-grid {
-  gap: clamp(3rem, 5vw, 4.25rem);
+    gap: clamp(3rem, 5vw, 4.25rem);
   }
-
   body[data-page="about"] .about-hero-grid > .reveal:first-child {
-  padding-right: 1.15rem;
+    padding-right: 1.15rem;
   }
-
   body[data-page="about"] .about-portrait {
-  transform-origin: top right;
+    transform-origin: top right;
   }
-
   body[data-page="about"] .about-hero .hero-lede {
-  font-size: clamp(1.10rem, 1.42vw, 1.40rem);
-  line-height: 1.38;
+    font-size: clamp(1.10rem, 1.42vw, 1.40rem);
+    line-height: 1.38;
   }
-
   body[data-page="about"] .about-summary {
-  max-width: 780px;
-  font-size: .84rem;
-  line-height: 1.58;
+    max-width: 780px;
+    font-size: .84rem;
+    line-height: 1.58;
   }
-
   body[data-page="about"] .about-direction {
-  max-width: 780px;
+    max-width: 780px;
   }
-
   body[data-page="about"] .about-direction-copy {
-  font-size: .76rem;
-  line-height: 1.54;
+    font-size: .76rem;
+    line-height: 1.54;
   }
 }
 
-body[data-page="about"] .badge-icon-parachutist {
-  stroke-width: 1;
-}
-
-body[data-page="about"] .badge-icon-rams-head {
-  stroke-width: 1;
-}
-
-@media (max-width: 640px) {
-  body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
-  top: 27px;
-  width: 35px;
-  height: 26px;
-  }
-
-  body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
-  top: 26px;
-  width: 29px;
-  height: 29px;
-  }
-}
-
-/* Official-silhouette badge sizing refinement. */
-body[data-page="about"] .training-event[data-event-id="airborne-school"] .qualification-icon {
-  top: 27px;
-  width: 38px;
-  height: 24px;
-}
-
-body[data-page="about"] .training-event[data-event-id="bmmc"] .qualification-icon {
-  top: 26px;
-  width: 30px;
-  height: 30px;
-}
-
-body[data-page="about"] .badge-icon {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-body[data-page="about"] .badge-icon-parachutist,
-body[data-page="about"] .badge-icon-rams-head {
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,.18));
-}
-
-/* Service-band edge rules: subtle top/bottom definition with inherited fade. */
-body[data-page="about"] .service-band-edge {
-  fill: none;
-  stroke: rgba(84,72,82,.56);
-  stroke-width: 1.15;
-  vector-effect: non-scaling-stroke;
-  shape-rendering: geometricPrecision;
-  pointer-events: none;
-}
-
-body[data-page="about"] .service-band-edge--top {
-  stroke: rgba(101,86,97,.60);
-}
-
-body[data-page="about"] .service-band-edge--bottom {
-  stroke: rgba(66,56,64,.64);
-}
-
-/* Section 1 finalization: matched media/text heights only. */
-@media (min-width: 981px) {
-  body[data-page="about"] .military-layout {
-  grid-template-columns: minmax(0, 1.18fr) minmax(300px, .72fr);
-  gap: 1rem;
-  align-items: stretch;
-  }
-
-  body[data-page="about"] .military-primary {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  }
-
-  body[data-page="about"] .military-media {
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  justify-self: stretch;
-  align-self: stretch;
-  }
-
-  body[data-page="about"] .military-photo,
-  body[data-page="about"] .military-photo-frame {
-  width: 100%;
-  height: 100%;
-  }
-
-  body[data-page="about"] .military-photo-frame.landscape {
-  aspect-ratio: auto;
-  min-height: 100%;
-  }
-
-  body[data-page="about"] .military-photo-frame.landscape img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  }
-}
-
-/* Section 1 heading: full-width natural wrapping. */
-body[data-page="about"] .service-section .essay-heading h2 {
-  max-width: none;
-  white-space: normal;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-/* Hero portrait: exact summary-to-mission vertical alignment. */
 @media (min-width: 981px) {
   body[data-page="about"] .about-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(270px, 23vw, 320px);
-  grid-template-rows: auto auto;
-  column-gap: clamp(1.6rem, 3vw, 2.5rem);
-  row-gap: .9rem;
-  align-items: start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(270px, 23vw, 320px);
+    grid-template-rows: auto auto;
+    column-gap: clamp(1.6rem, 3vw, 2.5rem);
+    row-gap: .9rem;
+    align-items: start;
   }
-
   body[data-page="about"] .about-hero-title {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  margin: .45rem 0 0;
-  padding-right: 0;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin: .45rem 0 0;
+    padding-right: 0;
   }
-
   body[data-page="about"] .about-hero-copy {
-  grid-column: 1;
-  grid-row: 2;
-  min-width: 0;
-  padding-right: 0;
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+    padding-right: 0;
   }
-
   body[data-page="about"] .about-portrait {
-  grid-column: 2;
-  grid-row: 2;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  justify-self: end;
-  align-self: stretch;
-  transform: none;
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    justify-self: end;
+    align-self: stretch;
+    transform: none;
   }
-
   body[data-page="about"] .about-portrait-frame {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
   }
-
   body[data-page="about"] .about-portrait img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
   }
-
   body[data-page="about"] .about-hero .hero-lede {
-  margin-top: 0;
+    margin-top: 0;
   }
-
   body[data-page="about"] .about-direction {
-  margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 980px) {
   body[data-page="about"] .about-hero-title {
-  margin-bottom: 0;
+    margin-bottom: 0;
   }
-
   body[data-page="about"] .about-hero-copy {
-  min-width: 0;
+    min-width: 0;
   }
 }
 
-/* Hero text inset: move left-side copy toward portrait and align summary blocks. */
 @media (min-width: 981px) {
   body[data-page="about"] .about-hero-title,
-  body[data-page="about"] .about-hero-copy {
-  padding-left: clamp(1.05rem, 1.75vw, 1.45rem);
+body[data-page="about"] .about-hero-copy {
+    padding-left: clamp(1.05rem, 1.75vw, 1.45rem);
   }
-
   body[data-page="about"] .about-hero-copy > .hero-lede,
-  body[data-page="about"] .about-summary,
-  body[data-page="about"] .about-direction {
-  width: 100%;
-  max-width: none;
+body[data-page="about"] .about-summary,
+body[data-page="about"] .about-direction {
+    width: 100%;
+    max-width: none;
   }
 }

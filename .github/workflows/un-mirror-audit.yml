@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
-          ref: 4e0cc7c2e5384daf23e046a2aff75a9c32f3d90b
+          ref: 6a106919e89f72a9c37c00ffdd8e45756d4578e6
           path: source
           persist-credentials: false
       - name: Verify manifest hashes before synchronization
@@ -54,7 +54,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.14.1'
+          assert release['browser_engine']=='browser-descriptive-1.14.2'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'
@@ -133,7 +133,7 @@ jobs:
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['D1_publication_gates_changed'] is False
           result={
-            'status':'PASS','site':base,'source_commit':'4e0cc7c2e5384daf23e046a2aff75a9c32f3d90b',
+            'status':'PASS','site':base,'source_commit':'6a106919e89f72a9c37c00ffdd8e45756d4578e6',
             'asset_count':len(expected),'live_sha256':expected,
             'synthetic_research_only':True,'empirical_validation':'not_run',
             'heldout_transcripts_opened':0,

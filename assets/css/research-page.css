@@ -121,7 +121,7 @@ body[data-page="research"] .page-index-card strong a:focus-visible {
   color: var(--paper);
 }
 /* ---------------------------------------------------------------------
-   Sections — 84px index rail and About-style vertical rhythm.
+   Sections — shared numeric index rail and About-style vertical rhythm.
    --------------------------------------------------------------------- */
 body[data-page="research"] .research-section-label {
   margin: 0;
@@ -147,7 +147,7 @@ body[data-page="research"] .research-section-heading h2 {
   margin: 0;
   color: var(--paper);
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: var(--section-heading-size);
   font-weight: 600;
   line-height: .95;
   letter-spacing: -.035em;

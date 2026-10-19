@@ -294,7 +294,7 @@ body[data-page="code"] .page-index-card strong a:focus-visible {
   color: var(--paper);
 }
 /* ---------------------------------------------------------------------
-   Sections — use About's 84px index rail and 5–8rem section rhythm.
+   Sections — shared numeric index rail and About-style section rhythm.
    --------------------------------------------------------------------- */
 body[data-page="code"] .code-section-label,
 body[data-page="code"] .driftmapr-section .code-section-label {
@@ -317,7 +317,7 @@ body[data-page="code"] .driftmapr-section .dm-header h2 {
   margin: 0;
   color: var(--paper);
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: var(--section-heading-size);
   font-weight: 600;
   line-height: .95;
   letter-spacing: -.035em;

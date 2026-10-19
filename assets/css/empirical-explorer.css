@@ -4,7 +4,6 @@
    ============================================================ */
 
 body[data-page="research"] .research-section--explorer {
-  display: block !important;
   padding-bottom: 0;
 }
 

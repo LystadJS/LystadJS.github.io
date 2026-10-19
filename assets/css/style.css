@@ -19,6 +19,8 @@
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Inter", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --section-heading-size: clamp(2.8rem, 6vw, 5rem);
+  --section-index-rail-width: clamp(3.5rem, 8.5vw, 7rem);
   --shadow: 0 28px 90px rgba(0,0,0,.38);
 }
 
@@ -618,7 +620,7 @@ main { overflow: clip; }
 
 .section-header {
   display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
+  grid-template-columns: var(--section-index-rail-width) minmax(0, 1fr);
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -627,7 +629,7 @@ main { overflow: clip; }
   margin: 0;
   max-width: 850px;
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: var(--section-heading-size);
   line-height: .95;
   font-weight: 600;
   letter-spacing: -.035em;
@@ -637,6 +639,19 @@ main { overflow: clip; }
   max-width: 750px;
   color: var(--muted);
   margin: 1rem 0 0;
+}
+
+/* Number-only section indexes share heading scale, but retain their own type
+   and color. The rail keeps the number beside the heading at every width. */
+.section-header > .section-index {
+  font-size: var(--section-heading-size);
+  line-height: .95;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.section-header > .section-index::before {
+  content: none;
 }
 
 .panel,
@@ -1131,7 +1146,7 @@ code {
   .site-nav.open { display: flex; }
   .site-nav a { padding: .85rem; }
 
-  .section-header { grid-template-columns: 1fr; gap: .5rem; }
+  .section-header { grid-template-columns: var(--section-index-rail-width) minmax(0, 1fr); gap: .5rem; }
   .section-index { order: -1; }
 
   .footer-inner {

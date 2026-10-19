@@ -6,7 +6,7 @@ body:is([data-page="about"], [data-page="research"], [data-page="code"]) {
   --portfolio-hero-top: clamp(4rem, 7vw, 6rem);
   --portfolio-hero-bottom: 4rem;
   --portfolio-heading-space: 3rem;
-  --portfolio-rail-width: 84px;
+  --portfolio-rail-width: var(--section-index-rail-width);
   --portfolio-rail-gap: 1rem;
   --portfolio-visual-overhang: calc(var(--portfolio-rail-width) + var(--portfolio-rail-gap));
   --portfolio-anchor-offset: 110px;
@@ -71,6 +71,35 @@ body[data-page="code"] .code-section-heading {
   display: block;
 }
 
+body[data-page="about"] .essay-heading h2,
+body[data-page="research"] .research-section-heading h2,
+body[data-page="code"] :is(.code-section-heading, .dm-header) h2 {
+  overflow-wrap: anywhere;
+}
+
+body[data-page="about"] .essay-index,
+body[data-page="research"] .research-section-label,
+body[data-page="code"] .code-section-label,
+body[data-page="code"] .driftmapr-section .code-section-label {
+  margin: 0;
+  padding-top: 0;
+  font-size: var(--section-heading-size);
+  line-height: .95;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+body[data-page="about"] .essay-index::before,
+body[data-page="research"] .research-section-label::before,
+body[data-page="code"] .code-section-label::before {
+  content: none;
+}
+
+/* Align with the title below driftmapR's small package-status overline. */
+body[data-page="code"] .driftmapr-section .code-section-label {
+  padding-top: calc(.58rem * 1.4 + .65rem);
+}
+
 body[data-page="research"] .research-project {
   padding-block: var(--portfolio-heading-space);
   scroll-margin-top: var(--portfolio-anchor-offset);
@@ -87,8 +116,31 @@ body[data-page="research"] .rp-resources { margin-top: 1.5rem; }
   body[data-page="about"] .essay-heading,
   body[data-page="research"] .research-section,
   body[data-page="code"] .code-page-section {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: var(--portfolio-rail-width) minmax(0, 1fr);
     gap: .5rem;
+  }
+
+  /* Keep the number beside the heading while allowing the section's figures,
+     cards and prose to use the full mobile width below it. */
+  body[data-page="research"] .research-section-body,
+  body[data-page="code"] .code-section-body {
+    display: contents;
+  }
+
+  body[data-page="research"] .research-section-body > *,
+  body[data-page="code"] .code-section-body > * {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="research"] .research-section-heading,
+  body[data-page="code"] :is(.code-section-heading, .dm-header) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  body[data-page="research"] .research-section,
+  body[data-page="code"] .code-page-section {
+    row-gap: 0;
   }
 }
 

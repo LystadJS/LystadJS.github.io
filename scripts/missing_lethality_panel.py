@@ -4,7 +4,7 @@ import math
 
 
 def build_panel(root, text, line, path, dot, table):
-    data = json.loads((root / 'assets/data/missing-lethality-mice-demo.json').read_text())
+    data = json.loads((root / 'assets/data/missing-lethality-mice-demo.json').read_text(encoding="utf-8"))
     if data['m'] != 5 or data['iterations'] != 20 or data['n'] != 180:
         raise ValueError('Review the panel geometry before changing the demonstration size.')
     records, chains, pooled = data['observed_records'], data['chains'], data['pooled']

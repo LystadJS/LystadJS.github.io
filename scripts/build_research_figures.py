@@ -25,6 +25,15 @@ NS = {'s': 'http://www.w3.org/2000/svg'}
 DATA = ROOT / 'assets/data/ethnosectarian-figure4.json'
 DEMO = {}
 
+def write_utf8(path, text):
+    """Write UTF-8 while preserving a checkout's existing LF or CRLF endings."""
+    line_ending = "\n"
+    if path.exists():
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            if "\r\n" in handle.read():
+                line_ending = "\r\n"
+    path.write_text(text, encoding="utf-8", newline=line_ending)
+
 def format_figure_markup(markup, indent):
     """Indent generated figures without changing their text or coordinates."""
     compact = re.sub(r">\s+<", "><", markup).strip()
@@ -148,7 +157,7 @@ def extract(svg_file):
         derivation='Values recovered from SVG vector geometry, not raw observations or refitted models. Labels retain the source whole percentages. Axis calibration: 297.58 SVG units = 1 probability unit. Geometry is rounded in the source SVG.',
         intervals='Original conf_low/conf_high intervals preserved. Confidence level is not stated in the dashboard export; no 95% label is added.',records=records)
     DATA.parent.mkdir(parents=True,exist_ok=True)
-    DATA.write_text(json.dumps(result,indent=2)+'\n')
+    write_utf8(DATA, json.dumps(result,indent=2)+'\n')
     return result
 
 def target_plot(data):
@@ -286,7 +295,7 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--source-svg',type=Path)
     args=ap.parse_args()
-    data=extract(args.source_svg) if args.source_svg else json.loads(DATA.read_text())
+    data=extract(args.source_svg) if args.source_svg else json.loads(DATA.read_text(encoding="utf-8"))
     if data['blob']!=BLOB or len(data['records'])!=27:raise ValueError('Unrecognized source dataset')
     replacements = {
         "paper-target-map": target_plot(data),
@@ -301,7 +310,7 @@ def main():
     }
 
     p = ROOT / 'research.html'
-    document = p.read_text()
+    document = p.read_text(encoding="utf-8")
 
     for key, markup in replacements.items():
         pattern = rf'(<article\b[^>]*\bid="{re.escape(key)}"[^>]*>)(.*?)(</article>)'
@@ -322,12 +331,10 @@ def main():
         document = document[:match.start()] + match[1] + inner + match[3] + document[match.end():]
     # Keep the source-backed PCoA panel and its precise coordinates unchanged.
     if 'assets/css/research-statistics.css' not in document:
-        document=document.replace('</head>','<link rel="stylesheet" href="assets/css/research-statistics.css?v=20261006-1">\n<script src="assets/js/research-statistics.js?v=20261006-1" defer></script>\n</head>')
-    if 'assets/js/vanguards.js' not in document:
-        document = document.replace('</head>', '<script src="assets/js/vanguards.js?v=20261006-1" defer></script>\n</head>')
-    p.write_text(document)
-    (ROOT/'assets/data/research-plot-demos.json').write_text(json.dumps(DEMO,indent=2)+'\n')
-    with (ROOT/'assets/data/ethnosectarian-figure4.csv').open('w',newline='') as f:
+        document=document.replace('</head>','<link rel="stylesheet" href="assets/css/research-statistics.css?v=20261006-1">\n<script src="assets/js/research-statistics.js?v=20261019-1" defer></script>\n</head>')
+    write_utf8(p, document)
+    write_utf8(ROOT/'assets/data/research-plot-demos.json', json.dumps(DEMO,indent=2)+'\n')
+    with (ROOT/'assets/data/ethnosectarian-figure4.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=['phase','group','metric','estimate','lower','upper','label'])
         w.writeheader();w.writerows(data['records'])
     print(f'Built {len(replacements)} native plots; retained the source-backed PCoA figure.')

@@ -53,7 +53,7 @@ def export_csv(root, rows):
 
 
 def build_panel(root, text, line, dot, table, esc):
-    data = json.loads((root / 'assets/data/vanguards-thesis.json').read_text())
+    data = json.loads((root / 'assets/data/vanguards-thesis.json').read_text(encoding="utf-8"))
     rows = validate(data)
     export_csv(root, rows)
     panels = []

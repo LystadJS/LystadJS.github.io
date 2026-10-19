@@ -12,7 +12,7 @@ from vanguards_panel import validate
 class Vanguards(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data=json.loads((ROOT/'assets/data/vanguards-thesis.json').read_text())
+        cls.data=json.loads((ROOT/'assets/data/vanguards-thesis.json').read_text(encoding="utf-8"))
         cls.rows=validate(cls.data)
 
     def test_source_and_full_table_structure(self):
@@ -49,12 +49,12 @@ class Vanguards(unittest.TestCase):
         self.assertEqual(self.rows[6]['linkage_items']['Emir ascension method'],'.66')
 
     def test_csv_and_provenance(self):
-        with (ROOT/'assets/data/vanguards-thesis.csv').open() as f: values=list(csv.DictReader(f))
+        with (ROOT/'assets/data/vanguards-thesis.csv').open(encoding='utf-8') as f: values=list(csv.DictReader(f))
         self.assertEqual(len(values),265)
         self.assertEqual(sum(v['measure_type']=='tactic' for v in values),143)
         self.assertEqual(sum(v['measure_type']=='linkage' for v in values),100)
         self.assertTrue(all(v['table'] and v['pdf_page'] and v['printed_page'] for v in values))
-        self.assertNotIn('distance',json.loads((ROOT/'assets/data/research-plot-demos.json').read_text()))
+        self.assertNotIn('distance',json.loads((ROOT/'assets/data/research-plot-demos.json').read_text(encoding="utf-8")))
         self.assertEqual(len(self.data['source_audit']),3)
 
 if __name__=='__main__': unittest.main()

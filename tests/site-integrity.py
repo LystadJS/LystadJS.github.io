@@ -31,8 +31,10 @@ class Document(HTMLParser):
                 self.links.append((tag, "srcset", candidate.strip().split()[0]))
 
 
-def run() -> dict:
-    pages = sorted(ROOT.glob("*.html")) + sorted((ROOT / "notes").glob("*.html"))
+def run(root: Path = ROOT) -> dict:
+    # Include the UN landing page and all public mirrored documents. Mirrored
+    # application source is maintained upstream; this check only validates it.
+    pages = sorted(root.glob("*.html")) + sorted((root / "notes").rglob("*.html")) + sorted((root / "un").rglob("*.html"))
     parsed = {path: Document(path.read_text(encoding="utf-8")) for path in pages}
     errors = []
     checked = 0
@@ -42,23 +44,24 @@ def run() -> dict:
             url = urlsplit(raw)
             if url.scheme or url.netloc:
                 continue
-            destination = (ROOT / unquote(url.path).lstrip("/") if url.path.startswith("/") else path.parent / unquote(url.path)).resolve() if url.path else path
+            destination = (root / unquote(url.path).lstrip("/") if url.path.startswith("/") else path.parent / unquote(url.path)).resolve() if url.path else path
             if destination.is_dir():
                 destination /= "index.html"
             if not destination.exists():
-                errors.append(f"{path.relative_to(ROOT)}: missing {attribute}={raw}")
+                errors.append(f"{path.relative_to(root)}: missing {attribute}={raw}")
                 continue
             checked += 1
             if attribute == "href" and url.fragment and destination in parsed and unquote(url.fragment) not in parsed[destination].ids:
-                errors.append(f"{path.relative_to(ROOT)}: missing anchor {raw}")
+                errors.append(f"{path.relative_to(root)}: missing anchor {raw}")
     script_count = 0
-    for path in sorted((ROOT / "assets/js").glob("*.js")):
+    scripts = sorted((root / "assets/js").glob("*.js")) + sorted((root / "un").rglob("*.js"))
+    for path in scripts:
         completed = subprocess.run(["node", "--check", str(path)], capture_output=True, text=True)
         script_count += 1
         if completed.returncode:
             errors.append(completed.stderr.strip())
-    for path in (ROOT / "assets/css").glob("*.css"):
-        for match in re.finditer(r'@import\s+(?:url\()?[^;]*;', path.read_text()):
+    for path in sorted((root / "assets/css").glob("*.css")) + sorted((root / "un").rglob("*.css")):
+        for match in re.finditer(r'@import\s+(?:url\()?[^;]*;', path.read_text(encoding="utf-8")):
             errors.append(f"{path.name}: avoid render-blocking stylesheet import {match[0]}")
     result = {"pages": len(pages), "local_references_checked": checked, "javascript_files_parsed": script_count, "errors": errors}
     if errors:

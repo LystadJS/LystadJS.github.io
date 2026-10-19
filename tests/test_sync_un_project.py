@@ -60,7 +60,12 @@ def build(output):
     def test_symlink_is_rejected(self):
         self.site.mkdir()
         (self.site / "un").mkdir()
-        (self.site / "un/transcript-agent").symlink_to(self.source, target_is_directory=True)
+        try:
+            (self.site / "un/transcript-agent").symlink_to(self.source, target_is_directory=True)
+        except OSError as error:
+            if getattr(error, "winerror", None) == 1314:
+                self.skipTest("Windows requires Developer Mode or symlink privileges")
+            raise
         with self.assertRaises(ValueError):
             module.sync(self.source, site=self.site)
 

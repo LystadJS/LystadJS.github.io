@@ -1,4 +1,5 @@
 #anticipatory-direction {
+  --section-heading-size: clamp(2.7rem, 4.2vw, 3.8rem);
   --ae-ink: #eee5e1;
   --ae-copy: #bfb2bf;
   --ae-muted: #9f93a2;
@@ -43,7 +44,7 @@
 #anticipatory-direction h2 {
   margin: 0;
   color: var(--ae-ink);
-  font: 500 clamp(2.7rem, 4.2vw, 3.8rem)/1.03 var(--serif, Georgia, serif);
+  font: 500 var(--section-heading-size)/1.03 var(--serif, Georgia, serif);
   letter-spacing: -.035em;
 }
 #anticipatory-direction h2 em { color: #c0a8c4; font-weight: inherit; }
@@ -229,7 +230,7 @@
     gap: .9rem;
     margin-bottom: 1.5rem;
   }
-  #anticipatory-direction h2 { font-size: clamp(2.35rem, 8.2vw, 3.1rem); }
+  #anticipatory-direction { --section-heading-size: clamp(2.35rem, 8.2vw, 3.1rem); }
   #anticipatory-direction .ae-intro { font-size: .88rem; }
   #anticipatory-direction .ae-svg-wrap { padding: .7rem .55rem .15rem; }
   #anticipatory-direction .ae-facts > div {

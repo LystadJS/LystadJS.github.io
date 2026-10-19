@@ -235,6 +235,50 @@ test('homepage graph data and single Gists action survive consolidation', async 
   await expect(page.locator('.hero-contact-rail a[href="https://gist.github.com/LystadJS"]')).toHaveCount(1);
 });
 
+test('number-only section indexes match their headings at every responsive width', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop-1440', 'This check owns its viewport matrix.');
+  test.setTimeout(90000);
+  for (const width of widths) {
+    await page.setViewportSize({ width, height: 1000 });
+    for (const name of ['index', ...Object.keys(paths)]) {
+      await page.goto(`/${name}.html`);
+      const indexes = await page.locator('[data-section-index]').evaluateAll(elements => elements.map(index => {
+        const section = index.closest('section');
+        const heading = section.querySelector('h2');
+        const css = getComputedStyle(index);
+        const title = getComputedStyle(heading);
+        const numberBox = index.getBoundingClientRect();
+        const headingBox = heading.getBoundingClientRect();
+        const textRange = document.createRange();
+        textRange.selectNodeContents(heading);
+        return {
+          text: index.textContent.trim(), size: css.fontSize, headingSize: title.fontSize,
+          font: css.fontFamily, headingFont: title.fontFamily,
+          color: css.color,
+          marker: getComputedStyle(index, '::before').content,
+          right: numberBox.right, headingLeft: headingBox.left,
+          top: numberBox.top, headingBottom: headingBox.bottom,
+          textRight: Math.max(...[...textRange.getClientRects()].map(rect => rect.right)), headingRight: headingBox.right
+        };
+      }));
+      expect(indexes).toHaveLength(['index', 'about'].includes(name) ? 2 : 3);
+      for (const index of indexes) {
+        expect(index.text).toMatch(/^\d{2}$/);
+        expect(index.size).toBe(index.headingSize);
+        expect(index.font).toContain('IBM Plex Mono');
+        expect(index.headingFont).toContain('Cormorant Garamond');
+        expect(index.color).toBe('rgb(191, 49, 82)');
+        expect(index.marker).toBe('none');
+        expect(index.right, `${name} ${index.text} at ${width}px`).toBeLessThan(index.headingLeft);
+        expect(index.top).toBeLessThan(index.headingBottom);
+        expect(index.textRight, `${name} ${index.text} text at ${width}px`).toBeLessThanOrEqual(index.headingRight + 1);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${name} at ${width}px`).toBeLessThanOrEqual(1);
+      if ([390, 1440].includes(width)) await page.screenshot({ path: info.outputPath(`${name}-section-index-${width}.png`), fullPage: true });
+    }
+  }
+});
+
 test('portrait variants and explicit CV logo paths load without probe requests', async ({ page }) => {
   const failures = [];
   page.on('response', response => { if (response.url().includes('/assets/images/') && response.status() >= 400) failures.push(response.url()); });

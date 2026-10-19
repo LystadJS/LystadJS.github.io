@@ -66,9 +66,18 @@ test('mobile navigation closes on Escape and resets when resized', async ({ page
 test('Code panels have equal dimensions and driftmapR links retain their layout', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop-1440', 'This check owns its viewport matrix.');
 
-  for (const width of [390, 640, 780, 781, 860, 861, 900, 980, 981, 1024, 1440, 1920]) {
+  for (const width of [390, 520, 521, 640, 780, 781, 860, 861, 900, 980, 981, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/code.html', { waitUntil: 'load' });
+
+    // Assert the current surfaces before measuring so a missing panel names
+    // the failed contract instead of throwing from getBoundingClientRect.
+    for (const selector of ['.code-layout .signal-console', '.code-layout .code-library-panel',
+      '#driftmapr .dm-alignment', '#driftmapr .dm-problem', '#driftmapr .dm-links']) {
+      await expect(page.locator(selector), `${selector} at ${width}px`).toBeVisible();
+    }
+    await expect(page.locator('#driftmapr .dm-diagram-wide')).toBeVisible({ visible: width > 520 });
+    await expect(page.locator('#driftmapr .dm-diagram-mobile')).toBeVisible({ visible: width <= 520 });
 
     const geometry = await page.evaluate(() => {
       const box = element => {
@@ -80,14 +89,13 @@ test('Code panels have equal dimensions and driftmapR links retain their layout'
         library: box(document.querySelector('.code-layout .code-library-panel')),
         diagram: box(document.querySelector('#driftmapr .dm-alignment')),
         problem: box(document.querySelector('#driftmapr .dm-problem')),
-        outlook: box(document.querySelector('#driftmapr .dm-outlook')),
         resources: box(document.querySelector('#driftmapr .dm-links')),
         links: [...document.querySelectorAll('#driftmapr .dm-links a')].map(box),
         overflow: document.documentElement.scrollWidth - innerWidth
       };
     });
 
-    const { terminal, library, diagram, problem, outlook, resources, links, overflow } = geometry;
+    const { terminal, library, diagram, problem, resources, links, overflow } = geometry;
     expect(links).toHaveLength(2);
     if (overflow > 1) {
       const offenders = await page.evaluate(() =>
@@ -108,9 +116,9 @@ test('Code panels have equal dimensions and driftmapR links retain their layout'
       expect(overflow, `horizontal overflow at ${width}px: ${JSON.stringify(offenders)}`).toBeLessThanOrEqual(1);
     }
 
-    // The problem panel, figure, explanation, and resource buttons share
+    // The problem panel, figure, and resource buttons share
     // the same outer edges, including at the index-rail breakpoint.
-    for (const [name, surface] of Object.entries({ problem, outlook, resources })) {
+    for (const [name, surface] of Object.entries({ problem, resources })) {
       expect(Math.abs(surface.left - diagram.left), `${name} left edge at ${width}px`).toBeLessThanOrEqual(1);
       expect(Math.abs(surface.right - diagram.right), `${name} right edge at ${width}px`).toBeLessThanOrEqual(1);
       expect(Math.abs(surface.width - diagram.width), `${name} width at ${width}px`).toBeLessThanOrEqual(1);
@@ -146,7 +154,9 @@ test('Code panels have equal dimensions and driftmapR links retain their layout'
   }
 
   await expect(page.locator('#driftmapr .dm-lede')).toContainText('A moving map');
-  await expect(page.locator('#driftmapr .dm-alignment figcaption')).toContainText('Schematic only');
+  await expect(page.locator('#driftmapr .dm-problem')).toContainText('inferential reliability remains under validation');
+  await expect(page.locator('#driftmapr .dm-diagram-wide')).toContainText('ALIGNED COMPARISON');
+  await expect(page.locator('#driftmapr .dm-diagram-mobile svg')).toHaveCount(3);
 });
 
 test('every Code method button loads a distinct, intact example', async ({ page }) => {

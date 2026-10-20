@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: c8adc34cf4b31d94132d72614f025b2d6db1de17
+  SOURCE_COMMIT: 1f2d571040117894738e7cd2863795988c94df3e
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.23.0'
+          assert release['browser_engine']=='browser-descriptive-1.24.0'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'

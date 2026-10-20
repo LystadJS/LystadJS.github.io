@@ -21,7 +21,7 @@ jobs:
           manifest=json.loads((root/'mirror-manifest.json').read_text())
           assert manifest['source_repository']=='https://github.com/LystadJS/UNGA81-Transcript-Agent'
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.25.0'
+          assert release['browser_engine']=='browser-descriptive-1.26.0'
           assert release['quick_reader_engine']=='un.meeting-quick-reader.v1.4-object-expressions'
           filenames=['index.html','analysis-core.js','analysis-ui.js','analysis.css','collector.js','meeting-quick-reader.js','text-units.js','position-comparison.js','position-view.js','release.json']
           expected={}

@@ -1,17 +1,17 @@
 :root{color-scheme:light;--navy:#172941;--ink:#25354a;--muted:#5c6878;--gold:#a9894a;--line:#d8dfe6;--canvas:#f5f7f9;--paper:#fff;--red:#873c41}
 *{box-sizing:border-box}
-html{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--canvas);line-height:1.5}
+html{font-family:"Schibsted Grotesk", system-ui, sans-serif;color:var(--ink);background:var(--canvas);line-height:1.5}
 body{margin:0}
 .masthead{background:var(--navy);color:#fff;padding:2.1rem max(1.25rem,calc((100vw - 1220px)/2))}
 .topline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:#e0cc9f}
-h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);margin:1.3rem 0 .3rem}
+h1{font-family:"Fraunces", Georgia, serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);margin:1.3rem 0 .3rem}
 .masthead p{color:#d2dce5;max-width:800px;margin:.3rem 0 .5rem}
 main{max-width:1260px;margin:2rem auto;padding:0 1rem;display:grid;gap:1.1rem}
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:.2rem;padding:1.4rem 1.5rem;box-shadow:0 1px 4px #17294109}
 .section-head{display:flex;align-items:baseline;gap:1rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
 .index{color:var(--gold);font-weight:700;letter-spacing:.1em;font-size:.8rem}
-h2{font-family:Georgia,serif;font-size:1.45rem;font-weight:500;margin:0 0 .7rem}
-h3{font-family:Georgia,serif;font-size:1.15rem;font-weight:500}
+h2{font-family:"Fraunces", Georgia, serif;font-size:1.45rem;font-weight:500;margin:0 0 .7rem}
+h3{font-family:"Fraunces", Georgia, serif;font-size:1.15rem;font-weight:500}
 p{margin:.6rem 0 1rem}
 .form-grid,.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .control{display:flex;flex-direction:column;gap:.45rem;align-items:stretch;padding:1rem;background:var(--canvas);border:1px solid var(--line)}
@@ -53,7 +53,7 @@ summary{cursor:pointer;color:var(--navy);font-weight:600}
 .capability p{margin:.35rem 0 0}
 a{color:#1c507c}
 footer{text-align:center;color:var(--muted);font-size:.78rem;padding:1.3rem}
-code{font-family:ui-monospace,Consolas,monospace;font-size:.9em}
+code{font-family:"Commit Mono", ui-monospace, monospace;font-size:.9em}
 @media(max-width:680px){
  .masthead{padding:1.4rem 1rem}
  .panel{padding:1.05rem .85rem}

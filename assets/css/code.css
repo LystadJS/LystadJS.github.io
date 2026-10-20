@@ -241,7 +241,7 @@ body[data-page="code"] .code-page-hero .page-hero-grid > div > p:not(.kicker) {
   max-width: 830px;
   margin: 0;
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.2rem, 1.65vw, 1.55rem);
   line-height: 1.42;
 }
@@ -281,7 +281,7 @@ body[data-page="code"] .page-index-card div > span {
 body[data-page="code"] .page-index-card strong,
 body[data-page="code"] .page-index-card strong a {
   color: #ded4dc;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.18;
@@ -385,7 +385,7 @@ body[data-page="code"] .code-hub-link:not(.code-hub-link-muted):focus-visible {
 body[data-page="code"] .code-hub-link strong {
   display: block;
   color: #ded4dc;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.08rem;
   font-weight: 600;
   line-height: 1.08;
@@ -586,7 +586,7 @@ body[data-page="code"] .code-method-index {
 body[data-page="code"] .code-method-copy strong {
   display: block;
   color: inherit;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.02rem;
   font-weight: 600;
   line-height: 1.05;
@@ -628,7 +628,7 @@ body[data-page="code"] .driftmapr-section .dm-lede {
   max-width: 780px;
   margin: 1rem 0 0;
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.2rem, 1.65vw, 1.55rem);
   font-weight: 500;
   line-height: 1.42;
@@ -652,7 +652,7 @@ body[data-page="code"] .driftmapr-section .dm-problem {
 body[data-page="code"] .driftmapr-section .dm-problem h3 {
   margin: 0;
   color: #ded4dc;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.7rem, 3vw, 2.45rem);
   font-weight: 600;
   line-height: 1.02;
@@ -729,7 +729,7 @@ body[data-page="code"] .driftmapr-section .dm-links a {
   border: 1px solid rgba(74,53,71,.72);
   background: var(--code-panel-bg);
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.08;

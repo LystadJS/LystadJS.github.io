@@ -523,7 +523,7 @@ body[data-page="about"] .rank-event-name,
     body[data-page="about"] .unit-event-name {
   display: block;
   color: #ddd2d9;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.26rem;
   font-weight: 600;
   line-height: .98;
@@ -819,7 +819,7 @@ body[data-page="about"] .training-popover-box {
 body[data-page="about"] .training-popover-title {
   display: block;
   color: #e2d7de;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.16rem;
   line-height: 1.02;
 }
@@ -905,7 +905,7 @@ body[data-page="about"] .mountain-ascent-kicker {
 
 body[data-page="about"] .mountain-ascent-header h3 {
   margin: 0;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.85rem, 3.4vw, 2.7rem);
   font-weight: 600;
   line-height: .95;
@@ -1027,7 +1027,7 @@ body[data-page="about"] .mountain-peak-relief--denali .mountain-peak-relief-fill
 
 body[data-page="about"] .mountain-profile-label {
   fill: #d7cbd2;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -.01em;
@@ -1217,7 +1217,7 @@ body[data-page="about"] .mountain-popover-type {
 body[data-page="about"] .mountain-popover-name {
   display: block;
   color: #e3d8df;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1;
@@ -1362,7 +1362,7 @@ body[data-page="about"] .timeline-noscript-list time {
 
 body[data-page="about"] .timeline-noscript-list strong {
   color: #d5cbd1;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.05;
@@ -1761,7 +1761,7 @@ body[data-page="about"] .about-section-nav span {
 body[data-page="about"] .about-section-nav strong {
   overflow: visible;
   color: #ded4dc;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.08rem;
   line-height: 1.06;
   font-weight: 600;
@@ -2202,7 +2202,7 @@ body[data-page="about"] .about-hero .lead {
   max-width: 760px;
   margin: 0;
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.28rem, 2vw, 1.72rem);
   line-height: 1.35;
 }
@@ -2290,7 +2290,7 @@ body[data-page="about"] .about-hero .hero-lede {
   max-width: none;
   margin: 0;
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.2rem, 1.65vw, 1.55rem);
   line-height: 1.42;
 }
@@ -2450,7 +2450,7 @@ body[data-page="about"] .about-direction-title {
   display: block;
   margin: 0;
   color: #ded4dc;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.25rem, 2vw, 1.55rem);
   font-weight: 600;
   line-height: 1.05;

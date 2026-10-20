@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: e43e364a448780ceb16b04a234415fd34218e9a7
+  SOURCE_COMMIT: 58769c6bc9af98a488fe453f89be84a729505bec
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -37,6 +37,8 @@ jobs:
               assert target.is_file() and not target.is_symlink(),path
               assert hashlib.sha256(target.read_bytes()).hexdigest()==digest,path
           assert 'meeting-quick-reader.js' in manifest['files']
+          assert 'position-comparison.js' in manifest['files']
+          assert 'position-view.js' in manifest['files']
           # Research release is an explicit allowlist of synthetic-only browser
           # assets; no source work, model weights, tests or hidden review data.
           for name in (
@@ -56,7 +58,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.18.0'
+          assert release['browser_engine']=='browser-descriptive-1.19.0'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'

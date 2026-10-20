@@ -84,3 +84,6 @@ h1, h2 { font-family: var(--serif) !important; }
 h3, h4, h5, h6 { font-family: var(--sans) !important; }
 code, pre, kbd, samp { font-family: var(--mono) !important; }
 svg text { font-family: var(--sans); }
+.un-intro p, .lex-detail blockquote { font-family: var(--sans); }
+.report-document .metric strong, .report-document .quick-stats strong,
+.metrics strong, .lex-stats strong, .number { font-family: var(--mono); }

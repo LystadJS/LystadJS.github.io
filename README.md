@@ -105,4 +105,6 @@ The website regression workflow checks all three portfolio layouts, mobile navig
 
 Responsive WebP portraits retain the JPEG fallback. Rebuild the two derivatives with `python scripts/optimize_portraits.py` in an authoring environment with Pillow 12.3.0. No build framework or image dependency is shipped to visitors.
 
-The public UN mirror is updated only by `scripts/sync_un_project.py`; it rejects path traversal and symlinks, skips unchanged bytes, and removes only files recorded in the previous manifest. Website maintenance does not rewrite that application's statistical code or data.
+The public UN mirror is updated only by `scripts/sync_un_project.py`; it rejects path traversal and symlinks, skips unchanged bytes, and removes only files recorded in the previous manifest. Before hashing, `scripts/site_typography.py` applies the website's shared font framework to generated HTML/CSS. Website maintenance does not rewrite that application's statistical code or data.
+
+All pages load `assets/css/typography.css`: Fraunces for main titles and section headers, Schibsted Grotesk for body text and subheadings, and Commit Mono for technical text. Fonts are self-hosted in `assets/fonts/` with their original licenses. Keep generated mirror typography changes in the synchronization step so future app releases retain the website fonts.

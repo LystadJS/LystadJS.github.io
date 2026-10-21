@@ -9,6 +9,10 @@ import os
 from pathlib import Path, PurePosixPath
 import shutil
 import tempfile
+try:
+    from site_typography import apply_typography
+except ModuleNotFoundError:  # Imported from the repository root by engineering tests.
+    from scripts.site_typography import apply_typography
 
 SOURCE_REPOSITORY = "https://github.com/LystadJS/UNGA81-Transcript-Agent"
 
@@ -61,6 +65,7 @@ def sync(source: str | Path, *, site: Path | None = None) -> dict[str, object]:
     with tempfile.TemporaryDirectory() as directory:
         built = Path(directory) / "site"
         module.build(built)
+        apply_typography(built)
         files = {}
         for path in sorted(built.rglob("*"), key=lambda item: item.relative_to(built).as_posix()):
             relative = path.relative_to(built).as_posix()
@@ -95,8 +100,8 @@ def sync(source: str | Path, *, site: Path | None = None) -> dict[str, object]:
                 removed += 1
 
     manifest = json.dumps({"source_repository": SOURCE_REPOSITORY, "files": files}, indent=2) + "\n"
-    if not manifest_path.exists() or manifest_path.read_text(encoding="utf-8") != manifest:
-        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=target, delete=False) as tmp:
+    if not manifest_path.exists() or manifest_path.read_bytes() != manifest.encode("utf-8"):
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", newline="\n", dir=target, delete=False) as tmp:
             staging = Path(tmp.name)
             tmp.write(manifest)
         try:

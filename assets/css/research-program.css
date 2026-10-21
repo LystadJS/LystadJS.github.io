@@ -136,7 +136,7 @@ body[data-page="index"] .hero-note {
   border: 1px solid rgba(191,49,82,.36);
   color: var(--crimson-bright);
   background: rgba(141,23,50,.10);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: .72rem;
   font-weight: 700;
   transform: rotate(45deg);
@@ -283,7 +283,7 @@ body[data-page="index"] .hero-note {
 
 .rpm-center text.rpm-center-main {
   fill: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 19px;
   font-weight: 600;
   letter-spacing: 0;
@@ -381,7 +381,7 @@ body[data-page="index"] .hero-note {
 .rpm-detail h3 {
   margin: 0;
   color: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 600;
 }
 
@@ -499,7 +499,7 @@ body[data-page="index"] .hero-note {
 }
 
 .rpm-mobile-name {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 600;
 }
 
@@ -1264,7 +1264,7 @@ body[data-page="index"] .hero-note {
 
 .rpm-network-center-label {
   fill: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0;
@@ -1282,7 +1282,7 @@ body[data-page="index"] .hero-note {
 
 .rpm-kind-pillar .rpm-network-node-label {
   fill: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 10.1px;
   font-weight: 600;
   letter-spacing: 0;

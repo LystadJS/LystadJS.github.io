@@ -5,7 +5,7 @@
   --ev-rule:#d5dee6; --ev-wash:#f5f7f9;
 }
 * { box-sizing:border-box }
-body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 Arial,Helvetica,sans-serif }
+body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 "Schibsted Grotesk", system-ui, sans-serif}
 .ev-demo a { color:var(--ev-blue); text-underline-offset:3px }
 .ev-demo :is(button,select,a,summary):focus-visible {
   outline:3px solid #a88750; outline-offset:3px;
@@ -18,14 +18,14 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 }
 .ev-brand { display:flex; align-items:center; gap:18px; }
 .ev-monogram { width:62px; height:62px; flex:none; border:1px solid #8091a1;
-  display:grid; place-items:center; font:700 18px Georgia,serif; letter-spacing:-.04em; color:#e0d0b3 }
+  display:grid; place-items:center; font:700 18px "Fraunces", Georgia, serif; letter-spacing:-.04em; color:#e0d0b3 }
 .ev-overline { margin:0 0 5px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#c6d5e0 }
-.ev-masthead h1 { margin:0; color:#e0cda9; font:normal 29px/1.12 Georgia,'Times New Roman',serif }
+.ev-masthead h1 { margin:0; color:#e0cda9; font:normal 29px/1.12 "Fraunces", Georgia, serif}
 .ev-byline { max-width:360px; margin:0; color:#dee6ec; font-size:12px; }
 .ev-wrap { max-width:1250px; padding:27px 24px 60px; margin:0 auto }
 .ev-summary { display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px;
   align-items:center; margin:4px 0 20px; }
-.ev-summary h2 { font:normal 26px/1.2 Georgia,serif; color:var(--ev-navy); margin:0 0 7px }
+.ev-summary h2 { font:normal 26px/1.2 "Fraunces", Georgia, serif; color:var(--ev-navy); margin:0 0 7px }
 .ev-summary p { max-width:72ch; margin:0; color:var(--ev-muted) }
 .ev-flag { align-self:flex-start; border:1px solid #dbc8a2; color:#644e29;
   background:#fff8ec; padding:8px 12px; font-size:12px; font-weight:700 }
@@ -39,10 +39,10 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
   padding:21px 24px 25px; box-shadow:0 3px 11px rgba(6,33,53,.04); }
 .ev-panel-head { display:flex; justify-content:space-between; gap:10px; align-items:center;
   border-bottom:1px solid var(--ev-rule); padding-bottom:12px }
-.ev-panel h2 { font:normal 25px Georgia,serif; color:var(--ev-navy); margin:0; }
+.ev-panel h2 { font:normal 25px "Fraunces", Georgia, serif; color:var(--ev-navy); margin:0; }
 .ev-panel h3 { color:var(--ev-blue); margin:22px 0 7px; font-size:14px }
 .ev-state { border:1px solid var(--ev-rule); padding:4px 9px; color:var(--ev-muted);
-  font:700 11px Arial,sans-serif; text-transform:uppercase; letter-spacing:.08em }
+  font:700 11px "Schibsted Grotesk", system-ui, sans-serif; text-transform:uppercase; letter-spacing:.08em }
 .ev-provenance { font-size:12px; color:var(--ev-blue); letter-spacing:.01em; margin:13px 0 6px; }
 .ev-note { font-size:13px; line-height:1.5; color:var(--ev-muted); margin:8px 0 12px;
   max-width:105ch; }
@@ -63,7 +63,7 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 .ev-panel tbody th { background:#f9fafb; font-weight:700; white-space:nowrap; }
 .ev-hit { display:block; padding:5px 7px; width:100%; border:1px solid transparent;
   border-radius:2px; cursor:pointer; background:#edf3f7; text-align:left;
-  color:#183b5d; font:12px/1.4 Arial,Helvetica,sans-serif; }
+  color:#183b5d; font:12px/1.4 "Schibsted Grotesk", system-ui, sans-serif; }
 .ev-hit:hover { border-color:#9babbc; background:#dbe9f2 }
 .ev-missing { color:#6c5762; background:#eee; padding:6px 8px; display:block }
 .ev-diagonal { color:#9aa6b1; font-weight:700 }
@@ -74,7 +74,7 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 .ev-ledger { border-top:1px solid var(--ev-rule); margin-top:14px; padding-top:11px }
 .ev-ledger summary { font-size:13px; font-weight:700; color:var(--ev-blue); cursor:pointer; }
 .ev-panel-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:7px; }
-.ev-panel-actions button { font:700 12px Arial,sans-serif; border:1px solid #9cabb7;
+.ev-panel-actions button { font:700 12px "Schibsted Grotesk", system-ui, sans-serif; border:1px solid #9cabb7;
   padding:8px 12px; background:#fff; color:var(--ev-blue); cursor:pointer }
 .ev-panel-actions button:hover { background:#e9f0f5; }
 .ev-method-footer { border-top:1px solid var(--ev-rule); padding-top:15px; margin:28px 0 0;

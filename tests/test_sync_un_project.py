@@ -47,6 +47,33 @@ def build(output):
         self.assertEqual(result["removed"], 1)
         self.assertTrue((target / "local.txt").exists())
 
+    def test_typography_survives_regeneration_and_nested_pages(self):
+        self.builder.write_text('''from pathlib import Path
+def build(output):
+    output = Path(output); (output / "nested").mkdir(parents=True)
+    (output / "nested/index.html").write_text('<html><head><style>body{font:16px Arial,sans-serif}h1{font-family:Georgia,serif}</style></head><body><h1>Title</h1><script>const label="Arial";</script></body></html>')
+    (output / "index.html").write_text('<html><head></head><body>Home</body></html>')
+''')
+        module.sync(self.source, site=self.site)
+        target = self.site / "un/transcript-agent/nested/index.html"
+        text = target.read_text()
+        self.assertIn('../../../assets/css/typography.css?v=1', text)
+        self.assertIn('"Schibsted Grotesk"', text)
+        self.assertIn('"Fraunces"', text)
+        self.assertIn('const label="Arial"', text)
+        self.assertEqual(module.sync(self.source, site=self.site)["copied"], 0)
+
+    def test_implicit_html_head_receives_font_stylesheet(self):
+        self.builder.write_text('''from pathlib import Path
+def build(output):
+    output = Path(output); output.mkdir(parents=True)
+    (output / "index.html").write_text('<!doctype html><html><meta charset="utf-8"><title>Report</title><header><h1>Report</h1></header></html>')
+''')
+        module.sync(self.source, site=self.site)
+        text = (self.site / "un/transcript-agent/index.html").read_text()
+        self.assertIn('../../assets/css/typography.css?v=1', text)
+        self.assertLess(text.index('typography.css'), text.index('<header>'))
+
     def test_traversal_is_rejected_before_changes(self):
         module.sync(self.source, site=self.site)
         target = self.site / "un/transcript-agent"

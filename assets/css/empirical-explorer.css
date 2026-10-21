@@ -223,7 +223,7 @@ body[data-page="research"] .research-section--explorer .research-section-heading
 .jvm-tooltip strong {
   display: block;
   margin-bottom: .1rem;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   font-weight: 600;
 }
@@ -268,7 +268,7 @@ body[data-page="research"] .research-section--explorer .research-section-heading
 .empirical-panel-empty h3,
 .empirical-country-title {
   margin: .25rem 0 .65rem;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.65rem, 2.6vw, 2.25rem);
   line-height: 1;
 }
@@ -305,7 +305,7 @@ body[data-page="research"] .research-section--explorer .research-section-heading
 .empirical-summary-item strong {
   display: block;
   color: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.4rem;
   line-height: 1;
 }
@@ -420,7 +420,7 @@ body[data-page="research"] .research-section--explorer .research-section-heading
 .empirical-project h4 {
   margin: 0;
   color: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.25;

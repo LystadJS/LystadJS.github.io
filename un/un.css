@@ -19,7 +19,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{html{scroll-behavior:auto}.un-nav,.skip-link,.project-open{display:none}.un-masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact}.un-main{padding:0;max-width:none}.un-intro{padding:20px 0}.project-main{grid-template-columns:1fr 1fr;gap:24px}.project-row{break-inside:avoid;padding:25px 0}.project-copy h2{font-size:25px}.project-summary{font-size:12px}.project-actions{grid-template-columns:repeat(3,1fr)}.project-action{font-size:11px;padding:8px;min-height:36px}.visual-type{white-space:normal}.project-visual figcaption{font-size:11px}.figure-data{display:none}.un-footer{padding:12px 0}}
 
-/* USUN mastheads — shared palette and existing approved seal, 2026-10-05. */
+/* USUN mastheads â€” shared palette and existing approved seal, 2026-10-05. */
 :root{--usun-brand-gold:#C1A783;--usun-brand-navy:#062135;--usun-brand-icon:url("transcript-agent/reports/hlw-cuba/seal.png")}
 body>header,body>main>header:first-child{color:var(--usun-brand-gold)}
 body>header .masthead .eyebrow,body>header :is(h1,h2,h3,p,a,span,strong,small,.usun-identity,.usun-department,.usun-status),body>main>header:first-child :is(h1,h2,h3,p,a,span,strong,small){color:var(--usun-brand-gold)}

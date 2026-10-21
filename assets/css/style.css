@@ -16,9 +16,9 @@
   --electric: #91a8bb;
   --success: #9eaa8e;
   --max: 1180px;
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Inter", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Schibsted Grotesk", system-ui, sans-serif;
+  --mono: "Commit Mono", ui-monospace, monospace;
   --section-heading-size: clamp(2.8rem, 6vw, 5rem);
   --section-index-rail-width: clamp(3.5rem, 8.5vw, 7rem);
   --shadow: 0 28px 90px rgba(0,0,0,.38);
@@ -505,7 +505,7 @@ main { overflow: clip; }
   max-width: none;
   margin: 0;
   color: #cfc4cb;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.28rem, 2vw, 1.72rem);
   line-height: 1.35;
 }
@@ -665,7 +665,7 @@ main { overflow: clip; }
 
 .code-card h3 {
   margin: .65rem 0;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 2rem;
   line-height: 1.05;
   font-weight: 600;
@@ -905,7 +905,7 @@ body[data-page="index"] .correspondence-section .eyebrow::before {
 .page-index-card strong {
   display: block;
   margin-top: .15rem;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -938,7 +938,7 @@ body[data-page="index"] .correspondence-section .eyebrow::before {
 .prose .lead {
   margin-top: 0;
   color: var(--paper);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.7rem;
   line-height: 1.35;
 }

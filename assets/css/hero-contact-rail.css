@@ -172,7 +172,7 @@ body[data-page="index"] .hero-practice-links strong {
   display: block;
   margin-top: .12rem;
   color: #d8ccd5;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.08rem;
   line-height: 1.1;
   font-weight: 600;

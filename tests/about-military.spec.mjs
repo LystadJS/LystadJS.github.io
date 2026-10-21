@@ -95,7 +95,14 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
     path: testInfo.outputPath(`military-timeline-${testInfo.project.name}.png`)
   });
 
-  await expect(timeline).toHaveScreenshot("military-timeline.png", {
+  // Font metrics move this section to fractional document coordinates. Use an
+  // integer capture rectangle so browser/platform rounding cannot add a row.
+  const timelineBox = await timeline.boundingBox();
+  await expect(page).toHaveScreenshot("military-timeline.png", {
+    clip: {
+      x: Math.floor(timelineBox.x), y: Math.floor(timelineBox.y),
+      width: Math.round(timelineBox.width), height: Math.round(timelineBox.height)
+    },
     animations: "disabled",
     caret: "hide",
     maxDiffPixelRatio: 0.01

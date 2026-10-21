@@ -217,6 +217,15 @@ function selfStatement(line,r,rewriteBelief=true){
  const verbs={'continues to':'continue to','will continue to':'continue to','supports':'support','opposes':'oppose','rejects':'reject','endorses':'endorse','welcomes':'welcome','calls for':'call for','calls on':'call on','calls upon':'call upon','urges':'urge','demands':'demand','advocates':'advocate','remains committed to':'remain committed to','remains strongly committed to':'remain committed to','is committed to':'are committed to'};
  return text.replace(/^we (continues to|will continue to|supports|opposes|rejects|endorses|welcomes|calls for|calls on|calls upon|urges|demands|advocates|remains strongly committed to|remains committed to|is committed to)\b/i,(_,verb)=>'We '+verbs[verb.toLowerCase()]);
 }
+// Bounded own endorsements with explicit safeguards are qualified support, not opposition.
+const UJ_QUALIFICATION='Supports universal jurisdiction within agreed limits and sovereignty safeguards, or a state-agreed normative basis. This is qualified support, not unrestricted endorsement; it is not scored against the U.S.';
+function qualifiedSupport(line,policy,r){
+ if(policy.id!=='universal_jurisdiction')return false;
+ const own=selfStatement(line,r);
+ return /^we (?:remain|are) committed to ending impunity\b[^.!?]{0,100}\bthrough universal jurisdiction\b[^.!?]{0,120}\bwithin agreed limits\b[^.!?]{0,100}\brespect for (?:the )?sovereignty of states\.?$/i.test(own)||
+  /^we support (?:the )?[^.!?]{0,50}\bgroup in seeking a common normative basis for (?:the exercise of )?universal jurisdiction\b[^.!?]{0,180}\bdeveloped by states\b[^.!?]{0,80}\badopted by consensus\.?$/i.test(own);
+}
+function qualifiedSupportRows(rows){return rows.length>0&&rows.some(e=>e.stance==='qualified')&&rows.every(e=>e.stance==='support'||(e.stance==='qualified'&&e.qualified_direction==='support'));}
 function direction(line,policy,r,previousLine){
  if(policy.adjacentDeclaration?.test(line)&&national(r)&&policy.precedingDeclaration.test(selfStatement(previousLine||'',r)))return 'qualified';
  if(/\?/.test(line)||!policy.target.test(line)||policy.reject?.test(line)||(policy.required&&!policy.required.test(line))||(policy.requiredRecord&&!policy.requiredRecord.test((r?.text||line)+' '+(r?.meeting||'')))||!T.summaryEvidenceSentence(line)||T.unclearWording(line))return null;
@@ -225,6 +234,7 @@ function direction(line,policy,r,previousLine){
  const reportedText=ownBelief?line.replace(/\bbelieves?\b/i,''):line;
  // Keep original quoted/reported wording even when self-normalization shortens a declaration.
  if(/\b(?:according to|said|says|stated|claims?|quoted|believes?|argues?|maintains?|asserts?|announced|the report|the resolution|the declaration)\b|[“”\"]/i.test(reportedText))return null;
+ if(qualifiedSupport(line,policy,r))return 'qualified';
  const qualificationText=policy.qualifiersOutsideTarget?line.replace(policy.target,''):line;
  const qualified=/\b(?:if|unless|provided that|subject to|only|when|on condition|with the consent|consensus-based|complementarity between|as long as|cautious approach|with caution|circumspection|due process|fair trial|respect for sovereignty|would|could|might|temporary|conditional|unilateral|partial|limited|excluding|except|not all)\b/i.test(qualificationText);
  const uncertaintyText=policy.id==='nuclear_disarmament'?line.replace(/world without nuclear weapons/ig,''):qualificationText;
@@ -275,12 +285,12 @@ function evidence(records,p){
    if(policy.cuba&&(c.id!=='cuba'||!/\bCuba(?:n)?\b/i.test(r.text)))return;
    const url=safe(r.source_url);if(!url)return;
    const key=[country(r),r.date,line.toLowerCase().replace(/\s+/g,' ')].join('|');if(seen.has(key))return;seen.add(key);
-   found.push({record_id:r.id,text_sha256:r.text_sha256,raw_sha256:r.raw_sha256||null,json_pointer:r.json_pointer||null,country:country(r),date:r.date,policy:policy.id,context:c.id,context_basis:c.basis,stance,...(stance==='qualified'&&(policy.qualifiedDeclaration?.test(selfStatement(line,r))||adjacent)?{qualification:policy.qualification}:{}),excerpt:adjacent?sentences[index-1]+' '+line:line,sentence_index:index,...(adjacent?{sentence_indices:[index-1,index]}:{}),source_url:url,attribution:'Recorded country affiliation; automatic provisional expression, not a verified government position'});
+   found.push({record_id:r.id,text_sha256:r.text_sha256,raw_sha256:r.raw_sha256||null,json_pointer:r.json_pointer||null,country:country(r),date:r.date,policy:policy.id,context:c.id,context_basis:c.basis,stance,...(stance==='qualified'&&qualifiedSupport(line,policy,r)?{qualified_direction:'support',qualification:UJ_QUALIFICATION}:stance==='qualified'&&(policy.qualifiedDeclaration?.test(selfStatement(line,r))||adjacent)?{qualification:policy.qualification}:{}),excerpt:adjacent?sentences[index-1]+' '+line:line,sentence_index:index,...(adjacent?{sentence_indices:[index-1,index]}:{}),source_url:url,attribution:'Recorded country affiliation; automatic provisional expression, not a verified government position'});
   });
  }
  return {found,withheld};
 }
-function state(rows){const dirs=new Set(rows.map(x=>x.stance));if(!rows.length)return 'missing';if(dirs.size===1)return [...dirs][0];return 'mixed';}
+function state(rows){const dirs=new Set(rows.map(x=>x.stance));if(!rows.length)return 'missing';if(dirs.size===1)return [...dirs][0];if(qualifiedSupportRows(rows))return 'qualified';return 'mixed';}
 function build(records,baselineRecords,settings){
  const p={...settings,...options(settings)},policy=POLICIES.find(x=>x.id===p.positionPolicy),a=evidence(records,p),b=evidence(baselineRecords.filter(r=>isUS(r.country)),p);
  const withheldRecords=records.filter(r=>policy.target.test(r.text||'')&&(!national(r)||P.unresolved(r))).map(r=>({record_id:r.id,source_url:safe(r.source_url),attribution:P.attribution(r),reason:!national(r)?'not_an_unambiguous_national_statement':'unresolved_wording'}));
@@ -360,9 +370,70 @@ function nearby(records,baselineRecords,settings,overviewResult){
  const group=evidenceRows=>{const out=new Map();for(const e of evidenceRows){const k=e.country+'|'+e.date;if(!out.has(k))out.set(k,{country:e.country,date:e.date,evidence:[]});if(!out.get(k).evidence.some(x=>x.excerpt===e.excerpt))out.get(k).evidence.push(e);}return [...out.values()];};
  const matchPriority=(countryRows,usRows,countryState,usState)=>{const reference=group(usRows);for(const c of group(countryRows)){if(isUS(c.country))continue;for(const u of nearest(c.date,reference))add({country:c.country,policy:{id:'child_protection_priority',label:'Child protection: shared broad priority',domain:'Human rights and inclusion'},context:{id:'different_measures',label:'Different measures; national strategy not matched'},country_date:c.date,us_date:u.date,relationship:'shared_priority_only',country_state:countryState,us_state:usState,country_evidence:c.evidence,us_evidence:u.evidence,qualification:'Both identify child protection as a priority. A broad committee priority does not endorse the other country’s comprehensive national strategy. No exact-policy agreement is established.'});}};
  if(window){matchPriority(plans(own),priorityEvidence(us),'national_strategy_being_formulated','broad_priority');matchPriority(priorityEvidence(own),plans(us),'broad_priority','national_strategy_being_formulated');}
+
+ const priorityAreas=[
+  {id:'climate_finance',label:'Climate finance',domain:'Climate and environment',object:'(?:climate finance|climate financing)',policies:['climate_finance'],limits:'Requests and funding priorities do not establish agreement on contributors, recipients, amounts or terms.'},
+  {id:'torture_convention',label:'Convention against Torture accession',domain:'Human rights and inclusion',object:'(?:accession to|ratification of|acceding to|ratifying) (?:the )?(?:Convention against Torture|UNCAT)',policies:['torture_convention'],limits:'A treaty-accession priority does not establish completed ratification, an immediate timetable or agreement on reservations. Other treaties are not substituted.'},
+  {id:'human_rights_institutions',label:'National human-rights institutions',domain:'Human rights and inclusion',object:'(?:strengthening |establishing |restoring )?(?:national human rights institutions|a national human rights institution|the Office of the Ombudsman)',policies:['national_ombudsman'],limits:'An Ombudsman is not equated with a Paris-Principles-compliant national human-rights institution; institutional design remains unmatched.'},
+  {id:'renewable_energy',label:'Renewable energy',domain:'Climate and environment',object:'(?:renewable energy|expanding renewable energy|the renewable energy transition)',policies:['renewable_energy','national_renewable_target_2050'],limits:'A renewable-energy priority does not endorse another country’s percentage, deadline, national target or implementation claims.'}
+ ];
+ const coverage=[];
+ for(const area of priorityAreas){
+  const collect=source=>{
+   const explicit=source.flatMap(r=>T.sentences(r.text).flatMap((line,i)=>{
+    const ownLine=selfStatement(line,r);
+    if(!new RegExp('^we (?:identify|consider|regard) '+area.object+' as (?:a |our )?(?:key |national |important )?priority\\.$','i').test(ownLine)||!safe(r.source_url))return [];
+    return [{country:country(r),date:r.date,record_id:r.id,text_sha256:r.text_sha256,raw_sha256:r.raw_sha256||null,json_pointer:r.json_pointer||null,source_url:safe(r.source_url),excerpt:line,sentence_index:i,stance:'priority',context_basis:'bounded_explicit_'+area.id+'_priority',qualification:area.limits,attribution:'Recorded national affiliation; automatic provisional evidence, not independently verified'}];
+   }));
+   const candidates=area.policies.flatMap(id=>evidence(source,{positionPolicy:id,positionContext:'*'}).found);
+   const blocked=new Set(candidates.filter(e=>e.stance==='oppose'||(e.stance==='qualified'&&!e.qualification)).map(e=>e.country+'|'+e.date));
+   return [...explicit,...candidates.filter(e=>e.stance==='support'||(e.stance==='qualified'&&e.qualification))].filter(e=>!blocked.has(e.country+'|'+e.date));
+  };
+  const countryDates=group(collect(own)).filter(c=>!isUS(c.country)),usDates=group(collect(us));
+  coverage.push({id:area.id,label:area.label,country_dates:countryDates.length,us_dates:usDates.length,qualification:area.limits});
+  if(window)for(const c of countryDates)for(const u of nearest(c.date,usDates)){
+   if(rows.some(row=>row.country===c.country&&row.country_date===c.date&&row.us_date===u.date&&area.policies.includes(row.policy.id)&&row.relationship!=='shared_priority_only'))continue;
+   add({country:c.country,policy:{id:area.id+'_priority',label:area.label+': shared broad priority',domain:area.domain},context:{id:'different_measures',label:'Different measures; specific commitments not matched'},country_date:c.date,us_date:u.date,relationship:'shared_priority_only',country_state:'expressed_policy_priority',us_state:'expressed_policy_priority',country_evidence:c.evidence,us_evidence:u.evidence,qualification:'Both express a priority concerning '+area.label.toLowerCase()+'. '+area.limits+' No exact-policy agreement is established.'});
+  }
+ }
  rows.sort((a,b)=>a.country.localeCompare(b.country)||a.policy.id.localeCompare(b.policy.id)||a.country_date.localeCompare(b.country_date)||a.us_date.localeCompare(b.us_date));
- return {schema:'un.nearby-date-comparisons.v1',status:'automatic_provisional_not_human_reviewed',window_days:window,offset_definition:'U.S. date minus country date: positive means the U.S. statement is later; negative means earlier.',selection:'Nearest eligible different-date U.S. evidence within the saved window; equally near dates are both shown. Report dates, scope, topic, exclusions and national-attribution rules still apply.',same_day_score_unchanged:true,rows,shared_priority_findings:rows.filter(r=>r.relationship==='shared_priority_only').length,same_policy_findings:rows.filter(r=>r.relationship!=='shared_priority_only').length,limitations:['Cross-date direction is not an as-of estimate: the U.S. position may change between statements. No statement is backdated, carried forward or interpolated.','Same policy question means the same declared question and context, not full policy identity or overall diplomatic agreement. Qualified, conflicting, domestic and unspecified-context positions cannot establish an exact-policy direction comparison.','Shared-priority coverage is currently limited to bounded child-protection declarations and national-strategy plans; other thematic similarities remain unestablished.','Only retained sources are compared. Missing evidence is not neutrality, disagreement or proof that no statement exists elsewhere. Imported review notes never create evidence.'],external_ai_calls:0};
+ return {schema:'un.nearby-date-comparisons.v1',status:'automatic_provisional_not_human_reviewed',window_days:window,offset_definition:'U.S. date minus country date: positive means the U.S. statement is later; negative means earlier.',selection:'Nearest eligible different-date U.S. evidence within the saved window; equally near dates are both shown. Report dates, scope, topic, exclusions and national-attribution rules still apply.',same_day_score_unchanged:true,priority_coverage:coverage,rows,shared_priority_findings:rows.filter(r=>r.relationship==='shared_priority_only').length,same_policy_findings:rows.filter(r=>r.relationship!=='shared_priority_only').length,limitations:['Cross-date direction is not an as-of estimate: the U.S. position may change between statements. No statement is backdated, carried forward or interpolated.','Same policy question means the same declared question and context, not full policy identity or overall diplomatic agreement. Qualified, conflicting, domestic and unspecified-context positions cannot establish an exact-policy direction comparison.','Shared-priority coverage includes bounded declarations and expressed commitments on child protection, climate finance, Convention against Torture accession, national human-rights institutions and renewable energy. Topic mentions alone do not establish priorities.','Only retained sources are compared. Missing evidence is not neutrality, disagreement or proof that no statement exists elsewhere. Imported review notes never create evidence.'],external_ai_calls:0};
 }
 
-const api={nearby,POLICIES,CONTEXTS,contextsFor,US,isUS,options,national,context,selfStatement,direction,evidence,build,overview};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.UNPositions=api;
+// Imported documentary review is context only, never automatic position evidence.
+function documents(review,records){
+ if(!review)return null;
+ const out={schema:'un.documentary-policy-comparisons.v1',status:'imported_assistant_review_not_independently_verified',rows:[],withheld:0,contributes_to_scores:false};
+ if(review.schema!=='un.documentary-policy-review.v1'||!Array.isArray(review.entries)||review.entries.length>50){out.withheld=1;return out;}
+ const validDate=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v;
+ const official=v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&(u.hostname.endsWith('.gov')||['docstore.ohchr.org','digitallibrary.un.org','docs.un.org','treaties.un.org'].includes(u.hostname))?u.href:null;}catch{return null;}};
+ const text=v=>typeof v==='string'&&v.length>0&&v.length<=3000;
+ const seen=new Set();
+ for(const row of review.entries){
+  const doc=row?.document,ref=row?.reference;
+  const source=ref&&/^[a-f0-9]{64}$/i.test(ref.text_sha256||'')&&records.find(r=>r.id===ref.record_id&&r.text_sha256===ref.text_sha256&&r.country===row.country&&r.date===ref.date&&national(r)&&!P.unresolved(r));
+  if(!doc||!source||!safe(source.source_url)||!validDate(doc.date)||!validDate(ref.date)||!validDate(row.reviewed_on)||doc.date>row.reviewed_on||!official(doc.url)||!['policy_area','country_summary','document_summary','comparison','qualification','relationship'].every(k=>text(row[k]))||!['title','issuer','date_basis','section','historical_status'].every(k=>text(doc[k]))||!text(row.id)||seen.has(row.id)) {out.withheld++;continue;}
+  seen.add(row.id);
+  out.rows.push({id:row.id,country:source.country,policy_area:row.policy_area,country_date:source.date,country_summary:row.country_summary,reference:{record_id:source.id,text_sha256:source.text_sha256,source_url:safe(source.source_url)},document:{title:doc.title,issuer:doc.issuer,url:official(doc.url),date:doc.date,date_basis:doc.date_basis,section:doc.section,historical_status:doc.historical_status,...(validDate(doc.publication_date)?{publication_date:doc.publication_date}:{})},document_summary:row.document_summary,relationship:row.relationship,comparison:row.comparison,qualification:row.qualification,reviewed_on:row.reviewed_on,day_difference:Math.round((Date.parse(doc.date)-Date.parse(source.date))/86400000),evidence_kind:'official_document_review_not_UN_meeting_statement',contributes_to_scores:false});
+ }
+ return out;
+}
+
+// A briefing reorganizes established evidence; it never creates a new stance or score.
+function briefings(overviewResult,nearbyResult,documentaryResult){
+ const refs=rows=>[...new Map(rows.filter(x=>safe(x.source_url)).map(x=>[x.record_id,{record_id:x.record_id,source_url:safe(x.source_url),text_sha256:x.text_sha256}])).values()];
+ const countries=overviewResult.countries.filter(c=>!isUS(c.country)).map(c=>{
+  const positions=c.positions.map(p=>{const d=p.days.filter(d=>d.country_evidence.length).at(-1);return {policy:p.policy,context:p.context,date:d.date,state:d.country_state,...(d.country_state==='qualified'&&qualifiedSupportRows(d.country_evidence)?{qualified_direction:'support'}:{}),qualifications:[...new Set(d.country_evidence.map(e=>e.qualification).filter(Boolean))],sources:refs(d.country_evidence)};});
+  const nearby=(nearbyResult?.rows||[]).filter(r=>r.country===c.country).map(r=>({policy:r.policy,context:r.context,relationship:r.relationship,country_date:r.country_date,us_date:r.us_date,day_difference:r.day_difference,qualification:r.qualification,country_sources:refs(r.country_evidence),us_sources:refs(r.us_evidence)}));
+  const documents=(documentaryResult?.rows||[]).filter(r=>r.country===c.country);
+  const gaps=c.positions.filter(p=>!p.same&&!p.opposite).map(p=>({policy:p.policy,context:p.context,reason:p.context.id==='domestic'?'Different national implementation contexts; no exact cross-country measure is established.':p.context.id==='unspecified'?'Policy context is not established.':'Matching explicit, unqualified evidence on the same date is not established. Qualified expressions and shared priorities do not close this gap.'}));
+  const shared=nearby.filter(r=>r.relationship==='shared_priority_only').length;
+  const takeaway=positions.length?`${c.country} has source-supported expressions on ${positions.length} policy/context item${positions.length===1?'':'s'}. ${shared?`${shared} shared-priority finding${shared===1?'':'s'} with the U.S. ${shared===1?'is':'are'} supported on nearby dates; this does not establish exact policy agreement.`:'No nearby shared priority is established by these rules in this selection.'}${documents.length?' Official documents supply separate dated context.':''}`:'No usable explicit national position is established by these rules in this selection. This is an evidence gap, not neutrality.';
+  return {country:c.country,takeaway,un_positions:positions,un_nearby:nearby,official_documents:documents,same_day:{comparable_question_dates:c.comparable_question_dates,same_direction:c.same_direction,opposite_direction:c.opposite_direction},gaps,attribution_gap:positions.length?null:c.coverage_reason,not_scored:true};
+ });
+ countries.sort((a,b)=>Number(b.official_documents.length>0)-Number(a.official_documents.length>0)||a.country.localeCompare(b.country));
+ return {schema:'un.country-comparison-briefings.v1',status:'source_bound_automatic_summary_with_imported_provisional_documentary_notes',start:overviewResult.start,end:overviewResult.end,nearby_window_days:nearbyResult?.window_days||0,countries,limitations:['UN transcript wording and recorded national affiliations remain provisional; collective or unresolved material cannot establish a national position.','Official documents are imported review notes, not UN meeting statements, current legal-effect certifications or additional position evidence. Dates are not carried forward.','Current gaps mean gaps in this selected evidence. They do not establish neutrality, opposition, or absence of policy elsewhere.','One policy/context item is summarized once at its latest expressed date. Repeated source passages add no weight; other dated evidence remains in the full report.'],external_ai_calls:0,contributes_new_scores:false};
+}
+
+const api={briefings,documents,nearby,POLICIES,CONTEXTS,contextsFor,US,isUS,options,national,context,selfStatement,direction,evidence,build,overview};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.UNPositions=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

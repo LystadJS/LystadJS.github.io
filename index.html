@@ -92,7 +92,6 @@
         <div class="section-index" data-section-index>01</div>
     <div>
       <h2 id="as-program-title">Statistics for Social Impact</h2>
-      <p class="ae-intro">I employ statistical methods to detect emerging danger, forecast where and when systems may be most vulnerable, and evaluate interventions to prevent catastrophe or reduce harm once a crisis begins.</p>
       <div class="ae-research-bridge">
         <div>
           <span>The question I want to answer:</span>
@@ -146,7 +145,6 @@
             </g>
             <ellipse class="ae-detect-ring" cx="400" cy="207" rx="48" ry="48"/>
             <path class="ae-callout" d="M438 143H488V164"/>
-            <text class="ae-chart-note" x="436" y="141" text-anchor="end">CANDIDATE SIGNAL</text>
           </g>
 
           <g class="ae-layer ae-layer-forecast" data-ae-region="forecast">
@@ -155,12 +153,10 @@
             <path class="ae-region-hit" d="M389 208C435 192 471 170 511 151S632 99 715 102"/>
             <path class="ae-risk-path" d="M389 208C435 192 471 170 511 151S632 99 715 102"/>
             <circle class="ae-now-point" cx="389" cy="208" r="5"/>
-            <text class="ae-chart-note" x="407" y="86">POSSIBLE FUTURES</text>
           </g>
 
           <g class="ae-layer ae-layer-intervene" data-ae-region="intervene">
             <rect class="ae-window" x="474" y="72" width="74" height="235"/>
-            <text class="ae-chart-note" x="511" y="60" text-anchor="middle">POSSIBLE ACTION WINDOW</text>
             <circle class="ae-action-point" cx="511" cy="151" r="5"/>
             <path class="ae-region-hit" d="M511 151C559 192 585 230 641 239S686 246 715 244"/>
             <path class="ae-alt-path" d="M511 151C559 192 585 230 641 239S686 246 715 244"/>
@@ -172,27 +168,26 @@
             <g class="ae-update-points"><circle cx="539" cy="184" r="4"/><circle cx="566" cy="174" r="4"/><circle cx="593" cy="182" r="4"/><circle cx="618" cy="169" r="4"/></g>
             <path class="ae-update-fill" d="M618 169C650 177 679 183 715 183L715 257C678 255 650 244 618 169Z" fill="url(#ae-update-band)"/>
             <path class="ae-updated-path" d="M618 169C651 181 679 192 715 192"/>
-            <text class="ae-chart-note" x="710" y="149" text-anchor="end">NEW EVIDENCE</text>
           </g>
 
           <path class="ae-flowline" d="M118 374H640"/>
 
-          <g class="ae-hotspot ae-hotspot-detect" data-ae-stage="detect" aria-label="Detect stage: identify candidate warning signals">
+          <g class="ae-hotspot ae-hotspot-detect" data-ae-stage="detect" aria-label="DETECT">
             <rect class="ae-stage-hit" x="36" y="350" width="164" height="66" rx="4"/>
             <circle class="ae-stage-dot" cx="118" cy="374" r="5"/>
             <text class="ae-stage-label" x="118" y="405" text-anchor="middle">DETECT</text>
           </g>
-          <g class="ae-hotspot ae-hotspot-forecast" data-ae-stage="forecast" aria-label="Forecast stage: project possible trajectories">
+          <g class="ae-hotspot ae-hotspot-forecast" data-ae-stage="forecast" aria-label="FORECAST">
             <rect class="ae-stage-hit" x="210" y="350" width="164" height="66" rx="4"/>
             <circle class="ae-stage-dot" cx="292" cy="374" r="5"/>
             <text class="ae-stage-label" x="292" y="405" text-anchor="middle">FORECAST</text>
           </g>
-          <g class="ae-hotspot ae-hotspot-intervene" data-ae-stage="intervene" aria-label="Intervene stage: compare possible actions">
+          <g class="ae-hotspot ae-hotspot-intervene" data-ae-stage="intervene" aria-label="INTERVENE">
             <rect class="ae-stage-hit" x="385" y="350" width="164" height="66" rx="4"/>
             <circle class="ae-stage-dot" cx="467" cy="374" r="5"/>
             <text class="ae-stage-label" x="467" y="405" text-anchor="middle">INTERVENE</text>
           </g>
-          <g class="ae-hotspot ae-hotspot-adapt" data-ae-stage="adapt" aria-label="Adapt stage: update as new evidence arrives">
+          <g class="ae-hotspot ae-hotspot-adapt" data-ae-stage="adapt" aria-label="ADAPT">
             <rect class="ae-stage-hit" x="558" y="350" width="164" height="66" rx="4"/>
             <circle class="ae-stage-dot" cx="640" cy="374" r="5"/>
             <text class="ae-stage-label" x="640" y="405" text-anchor="middle">ADAPT</text>
@@ -201,9 +196,9 @@
       </div>
 
       <div class="ae-legend" aria-label="Diagram legend">
-        <span><i class="ae-key ae-key-history"></i>Observed data</span>
-        <span><i class="ae-key ae-key-risk"></i>Modeled / hypothetical path</span>
-        <span><i class="ae-key ae-key-band"></i>Illustrative uncertainty</span>
+        <span><i class="ae-key ae-key-history"></i>Observations</span>
+        <span><i class="ae-key ae-key-risk"></i>Modeled Trajectory</span>
+        <span><i class="ae-key ae-key-band"></i>Uncertainty</span>
       </div>
 
       <aside class="ae-popover" id="ae-popover" aria-label="Research problem details" aria-live="polite" hidden>
@@ -328,7 +323,6 @@
     <section class="section reveal correspondence-section" id="correspondence">
       <div class="contact-panel">
         <h2>Contact Me</h2>
-        <p>Feel free to reach out if you would like to talk about my work, potential collaboration, or anything else.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="cv.html">CV</a>
           <a class="button button-secondary" href="mailto:jl17842@nyu.edu">NYU Email</a>

@@ -1296,8 +1296,12 @@ body[data-page="cv"] main {
 
 @media (max-width: 900px) {
   .cv-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
+  }
+
+  .cv-document {
+    overflow-wrap: anywhere;
   }
 
   .cv-sidebar {
@@ -1359,7 +1363,7 @@ body[data-page="cv"] main {
   }
 
   .cv-document-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .cv-contact-block {
@@ -1367,13 +1371,13 @@ body[data-page="cv"] main {
   }
 
   .cv-section {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.1rem;
     padding: 3rem 0;
   }
 
   .cv-entry {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: .65rem;
   }
 

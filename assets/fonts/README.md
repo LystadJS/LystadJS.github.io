@@ -1,9 +1,9 @@
 # Website fonts
 
-Self-hosted WOFF2 files, served with `font-display: swap` by `assets/css/typography.css`.
+Self-hosted WOFF2 fonts with `font-display: swap`, loaded from `assets/css/typography.css`.
 
-- Fraunces: variable regular/italic, Latin and Latin Extended, from the [Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/fraunces).
-- Schibsted Grotesk: variable regular/italic, Latin and Latin Extended, from the [Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/schibstedgrotesk).
-- Commit Mono: V143 variable webfont from the [official repository](https://github.com/eigilnikolajsen/commit-mono/tree/main/src/fonts/fontlab).
+- Atkinson Hyperlegible: upright/italic, regular/bold, from the [Braille Institute distribution](https://github.com/googlefonts/atkinson-hyperlegible).
+- EB Garamond: variable upright/italic, Latin and Latin Extended, from [Fontsource](https://github.com/fontsource/font-files/tree/main/fonts/variable/eb-garamond).
+- JetBrains Mono: variable upright/italic, Latin and Latin Extended, from [Fontsource](https://github.com/fontsource/font-files/tree/main/fonts/variable/jetbrains-mono).
 
-Each family is distributed under the SIL Open Font License; the original licenses are included beside these files. The site uses Fraunces for main titles and section headers, Schibsted Grotesk for body text and subheadings, and Commit Mono for code, indexes, and technical metadata.
+Each family uses the SIL Open Font License, included in this folder. Atkinson Hyperlegible is for body text and H3-H6; EB Garamond is for titles and H1/H2; JetBrains Mono is for code and technical labels. Prior font assets remain for backwards compatibility.

@@ -15,7 +15,7 @@ test('every page loads the self-hosted font framework and semantic font roles', 
   for (const file of pages) {
     await page.goto(`/${file}`);
     const result = await page.evaluate(async () => {
-      const faces = await Promise.all(['Fraunces', 'Schibsted Grotesk', 'Commit Mono'].map(async name => {
+      const faces = await Promise.all(['EB Garamond', 'Atkinson Hyperlegible', 'JetBrains Mono'].map(async name => {
         const loaded = await document.fonts.load(`400 16px "${name}"`, 'Statistics 01 é');
         return { name, loaded: loaded.length > 0 && loaded.every(face => face.status === 'loaded') };
       }));
@@ -27,9 +27,9 @@ test('every page loads the self-hosted font framework and semantic font roles', 
       };
     });
     expect(result.faces.every(face => face.loaded), `${file}: font files actually decoded`).toBe(true);
-    expect(result.body, file).toContain('Schibsted Grotesk');
-    for (const h of result.headings) expect(h.family, `${file} ${h.tag}`).toContain(['H1','H2'].includes(h.tag) ? 'Fraunces' : 'Schibsted Grotesk');
-    for (const family of result.technical) expect(family, `${file}: technical face`).toContain('Commit Mono');
+    expect(result.body, file).toContain('Atkinson Hyperlegible');
+    for (const h of result.headings) expect(h.family, `${file} ${h.tag}`).toContain(['H1','H2'].includes(h.tag) ? 'EB Garamond' : 'Atkinson Hyperlegible');
+    for (const family of result.technical) expect(family, `${file}: technical face`).toContain('JetBrains Mono');
     if (['index.html', 'about.html', 'research.html', 'code.html', 'cv.html', 'un/index.html'].includes(file)) {
       await page.screenshot({ path: info.outputPath(`${file.replace('.html', '').replaceAll('/', '-')}-typography.png`) });
       if (await page.locator('[data-section-index]').count()) {

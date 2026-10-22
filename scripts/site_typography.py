@@ -3,9 +3,9 @@ from pathlib import Path
 import posixpath
 import re
 
-SERIF = '"Fraunces", Georgia, serif'
-SANS = '"Schibsted Grotesk", system-ui, sans-serif'
-MONO = '"Commit Mono", ui-monospace, monospace'
+SERIF = '"EB Garamond", Georgia, serif'
+SANS = '"Atkinson Hyperlegible", system-ui, sans-serif'
+MONO = '"JetBrains Mono", ui-monospace, monospace'
 
 
 def family(value: str) -> str:

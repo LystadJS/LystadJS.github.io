@@ -1,0 +1,37 @@
+name: Refresh typeface-dependent timeline baselines (temporary)
+
+on:
+  push:
+    branches: [style/atkinson-eb-garamond-jetbrains-mono]
+    paths:
+      - .github/workflows/update-typography-snapshots.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: style/atkinson-eb-garamond-jetbrains-mono
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Re-record typography-sensitive military timeline screenshots
+        run: npx playwright test tests/about-military.spec.mjs --project=desktop-1440 --project=tablet-900 -g "military timeline remains centered" --update-snapshots
+      - name: Commit only regenerated baselines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/__screenshots__/desktop-1440/military-timeline.png tests/__screenshots__/tablet-900/military-timeline.png
+          if git diff --cached --quiet; then
+            echo "No snapshot updates"
+            exit 0
+          fi
+          git commit -m "Refresh military timeline baselines for updated typography"
+          git push origin HEAD:refs/heads/style/atkinson-eb-garamond-jetbrains-mono

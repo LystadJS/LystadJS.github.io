@@ -40,10 +40,10 @@ def apply_typography(root: Path, *, prefix: str = 'un/transcript-agent') -> None
         if path.suffix == '.html':
             # A cached pre-migration CSS file may still contain literal old faces.
             text = re.sub(r'(href=["\'])(?!https?:|//)([^"\']+\.css)(?:\?[^"\']*)?(["\'])',
-                          r'\1\2?v=20261020-1\3', text)
+                          r'\1\2?v=20261023-1\3', text)
             parent = posixpath.dirname(prefix + '/' + path.relative_to(root).as_posix())
             href = posixpath.relpath('assets/css/typography.css', parent)
-            link = f'<link rel="stylesheet" href="{href}?v=1">'
+            link = f'<link rel="stylesheet" href="{href}?v=20261023-1">'
             if '</head>' in text:
                 text = text.replace('</head>', link + '</head>', 1)
             else:

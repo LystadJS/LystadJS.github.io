@@ -64,9 +64,19 @@
 }
 
 html, body { font-family: var(--sans) !important; }
-h1, h2 { font-family: var(--serif) !important; }
+h1, h2 { font-family: var(--serif) !important; font-weight: 700 !important; }
+.brand-name, .brand-sigil span, .headshot-fallback span, .footer-title {
+  font-family: var(--serif);
+  font-weight: 700;
+}
 h3, h4, h5, h6 { font-family: var(--sans) !important; }
 code, pre, kbd, samp { font-family: var(--mono) !important; }
+[data-section-index], .section-index, .cv-section-label,
+.eyebrow, .kicker, .meta-label, .card-kicker, .brand-role,
+.project-kicker, .project-index, .research-index, .research-kicker,
+.research-eyebrow, .ev-overline, .topline {
+  font-family: var(--mono) !important;
+}
 svg text { font-family: var(--sans); }
 .un-intro p, .lex-detail blockquote { font-family: var(--sans); }
 .report-document .metric strong, .report-document .quick-stats strong,

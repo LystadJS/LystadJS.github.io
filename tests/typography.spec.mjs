@@ -22,12 +22,14 @@ test('every page loads the self-hosted font framework and semantic font roles', 
       return {
         faces,
         body: getComputedStyle(document.body).fontFamily,
+        prose: [...document.querySelectorAll('p,figcaption,blockquote,li,td')].filter(e => !e.matches('.footer-title,.brand-name,.usun-identity,.usun-title')).map(e => ({family:getComputedStyle(e).fontFamily, label:e.className || e.tagName})),
         headings: [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(h => ({ tag: h.tagName, family: getComputedStyle(h).fontFamily, weight: getComputedStyle(h).fontWeight })),
         technical: [...document.querySelectorAll('code,pre,kbd,samp,[data-section-index]')].map(e => getComputedStyle(e).fontFamily)
       };
     });
     expect(result.faces.every(face => face.loaded), `${file}: font files actually decoded`).toBe(true);
     expect(result.body, file).toContain('Atkinson Hyperlegible');
+    for (const prose of result.prose) expect(prose.family, `${file}: ${prose.label}`).toMatch(/Atkinson Hyperlegible|JetBrains Mono/);
     for (const h of result.headings) expect(h.family, `${file} ${h.tag}`).toContain(['H1','H2'].includes(h.tag) ? 'EB Garamond' : 'Atkinson Hyperlegible');
     for (const h of result.headings.filter(h => ['H1','H2'].includes(h.tag))) expect(h.weight, `${file}: bold ${h.tag}`).toBe('700');
     for (const family of result.technical) expect(family, `${file}: technical face`).toContain('JetBrains Mono');

@@ -61,15 +61,22 @@
   --serif: "EB Garamond", Georgia, serif;
   --sans: "Atkinson Hyperlegible", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
+  --usun-serif: var(--serif);
+  --usun-sans: var(--sans);
 }
 
 html, body { font-family: var(--sans) !important; }
 h1, h2 { font-family: var(--serif) !important; font-weight: 700 !important; }
-.brand-name, .brand-sigil span, .headshot-fallback span, .footer-title {
+.brand-name, .brand-sigil span, .headshot-fallback span, .footer-title,
+.usun-identity, .usun-title {
   font-family: var(--serif);
   font-weight: 700;
 }
 h3, h4, h5, h6 { font-family: var(--sans) !important; }
+p, figcaption, caption, blockquote, li, td, th, dd, dt { font-family: var(--sans); }
+#anticipatory-direction .ae-research-bridge > div:first-child p {
+  font-family: var(--sans);
+}
 code, pre, kbd, samp { font-family: var(--mono) !important; }
 [data-section-index], .section-index, .cv-section-label,
 .eyebrow, .kicker, .meta-label, .card-kicker, .brand-role,

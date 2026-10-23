@@ -81,7 +81,9 @@ test('all numeric tables remain readable with JavaScript disabled', async ({ bro
   for (const control of await page.locator('.st-controls').all()) await expect(control).toBeHidden();
   await expect(page.locator('[data-target-panel="civilian"]')).toBeVisible();
   for (const details of await page.locator('.rp-stat-figure details').all()) {
-    await details.locator('summary').click();
+    const summary = details.locator('summary');
+    await summary.focus();
+    await summary.press('Enter');
     await expect(details.locator('table')).toBeVisible();
   }
   await context.close();

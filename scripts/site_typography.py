@@ -3,9 +3,9 @@ from pathlib import Path
 import posixpath
 import re
 
-SERIF = '"Fraunces", Georgia, serif'
-SANS = '"Schibsted Grotesk", system-ui, sans-serif'
-MONO = '"Commit Mono", ui-monospace, monospace'
+SERIF = '"EB Garamond", Georgia, serif'
+SANS = '"Atkinson Hyperlegible", system-ui, sans-serif'
+MONO = '"JetBrains Mono", ui-monospace, monospace'
 
 
 def family(value: str) -> str:
@@ -14,7 +14,7 @@ def family(value: str) -> str:
         return value
     if re.search(r'mono|Consolas|Menlo', value, re.I):
         return MONO
-    if re.search(r'Georgia|Times|Garamond|Fraunces', value, re.I):
+    if re.search(r'Georgia|Times|Garamond|EB Garamond', value, re.I):
         return SERIF
     return SANS
 

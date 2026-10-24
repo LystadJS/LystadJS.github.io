@@ -16,9 +16,9 @@
   --electric: #91a8bb;
   --success: #9eaa8e;
   --max: 1180px;
-  --serif: "Fraunces", Georgia, serif;
-  --sans: "Schibsted Grotesk", system-ui, sans-serif;
-  --mono: "Commit Mono", ui-monospace, monospace;
+  --serif: "EB Garamond", Georgia, serif;
+  --sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
   --section-heading-size: clamp(2.8rem, 6vw, 5rem);
   --section-index-rail-width: clamp(3.5rem, 8.5vw, 7rem);
   --shadow: 0 28px 90px rgba(0,0,0,.38);

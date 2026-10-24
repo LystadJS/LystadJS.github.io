@@ -265,8 +265,8 @@ test('number-only section indexes match their headings at every responsive width
       for (const index of indexes) {
         expect(index.text).toMatch(/^\d{2}$/);
         expect(index.size).toBe(index.headingSize);
-        expect(index.font).toContain('Commit Mono');
-        expect(index.headingFont).toContain('Fraunces');
+        expect(index.font).toContain('JetBrains Mono');
+        expect(index.headingFont).toContain('EB Garamond');
         expect(index.color).toBe('rgb(191, 49, 82)');
         expect(index.marker).toBe('none');
         expect(index.right, `${name} ${index.text} at ${width}px`).toBeLessThan(index.headingLeft);

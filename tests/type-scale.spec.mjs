@@ -19,13 +19,13 @@ test('every page shares five text sizes and consistent semantic roles', async ({
       })); probe.remove();
       const elements = [...document.querySelectorAll('body *')].filter(e => e.namespaceURI === 'http://www.w3.org/1999/xhtml' && [...e.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()));
       const sizes = [...new Set(elements.map(e => parseFloat(getComputedStyle(e).fontSize)))];
-      const roles = ['h1','h2','h3','h4','h5','h6','button','input','select','textarea','[data-section-index]'].flatMap(selector => [...document.querySelectorAll(selector)].map(e => ({ selector, size: parseFloat(getComputedStyle(e).fontSize) })));
+      const roles = ['h1','h2','h3','h4','h5','h6','button','input','select','textarea','[data-section-index]','.kicker','.page-index-card span','figcaption','.service-meta','.rp-figure-type'].flatMap(selector => [...document.querySelectorAll(selector)].map(e => ({ selector, size: parseFloat(getComputedStyle(e).fontSize) })));
       return { tokens, sizes, roles };
     });
     const allowed = Object.values(result.tokens);
     expect(result.sizes.filter(size => !allowed.some(v => Math.abs(v - size) < .02)), `${file}: sizes outside the shared scale`).toEqual([]);
     for (const { selector, size } of result.roles) {
-      const role = selector === 'h1' ? 'display' : ['h2','[data-section-index]'].includes(selector) ? 'section' : /^h[3-6]$/.test(selector) ? 'subheading' : 'body';
+      const role = selector === 'h1' ? 'display' : ['h2','[data-section-index]'].includes(selector) ? 'section' : /^h[3-6]$/.test(selector) ? 'subheading' : ['button','input','select','textarea'].includes(selector) ? 'body' : 'meta';
       expect(size, `${file}: ${selector}`).toBeCloseTo(result.tokens[role], 1);
     }
     if (['index.html','about.html','research.html','code.html','cv.html','un/index.html','un/transcript-agent/index.html'].includes(file)) await page.screenshot({ path: info.outputPath(`${file.replaceAll('/','-')}-scale.png`) });

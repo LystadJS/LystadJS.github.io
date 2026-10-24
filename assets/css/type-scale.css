@@ -28,28 +28,42 @@
     font-size: var(--type-subheading) !important;
   }
 
-  button, input, select, textarea, option, label, summary,
+  p, li, td, th, dd, blockquote, button, input, select, textarea, option, label, summary,
   .site-nav a, .cv-toc a, code, pre, kbd, samp,
   .hero-lede, .cv-lead, .cv-technical-intro, .dm-lede,
   .un-intro p, .page-hero-grid > div > p:not(.kicker) {
     font-size: var(--type-body) !important;
   }
 
-  small, sup, sub, figcaption, caption, time,
+  small, sup, sub, figcaption, caption, time, dt,
   .eyebrow, .kicker, .meta-label, .card-kicker, .brand-role,
   .project-kicker, .project-index, .research-index, .research-kicker,
   .research-eyebrow, .ev-overline, .topline, .hint, .method-note,
   .cv-section-label, .cv-entry-type, .cv-entry-kicker, .cv-entry-meta,
   .cv-org-meta, .cv-role-meta, .cv-contact-block, .cv-tags,
   .cv-sidebar-actions, .cv-side-button, .cv-technical-link,
-  .page-index-card .meta-label, .code-method-label,
+  .page-index-card span, .code-method-label, .hero-note,
+  .ae-legend, .rpm-detail-kicker, .rpm-detail-label, .rpm-detail-link,
+  .rpm-footer-legend, .about-direction-kicker, .service-meta,
+  .mountain-ascent-kicker, .mountain-profile-label, .photo-label,
+  .rp-figure-type, .research-tag-link, .empirical-legend,
+  .empirical-map-note, .empirical-panel-kicker, .empirical-summary-item span,
+  .empirical-projects-title, .empirical-project-status, .empirical-project-link,
+  .console-title, .console-status, .code-library-span, .code-library-group-title,
+  .dm-status, .cv-org-context, .cv-disclosure > span,
+  .cv-technical-hub-index, .cv-skill-domain-index,
+  .cv-technical-ledger-heading > span, .cv-technical-category-header > span,
+  .cv-method-group > span,
   .rp-kicker, .rp-meta, .rp-resource, .rp-resource-state,
-  .site-footer, .un-footer, .usun-footer, .usun-status, .un-banner-kicker,
+  .site-footer, .site-footer p, .un-footer, .un-footer p,
+  .usun-footer, .usun-footer p, figcaption p, caption p, .hint p, .method-note p,
+  .usun-status, .un-banner-kicker,
   .usun-kicker, .usun-department, .jvm-tooltip,
   .year-tick-label, .current-day-label, .service-flow-label,
-  .unit-event-label, .rank-event-label {
+  .unit-event-label, .rank-event-label, .rank-event-abbr, .rank-event-status {
     font-size: var(--type-meta) !important;
   }
+  .un-banner-copy h1 { color: #fff !important; }
  }
 }
 

@@ -2,9 +2,9 @@ name: Audit UN public mirror
 on:
   push:
     branches: [main, feat/un-quick-reader-mirror]
-    paths: ['un/transcript-agent/**', 'scripts/site_typography.py', 'scripts/sync_un_project.py', 'assets/css/typography.css', 'assets/css/type-scale.css', '.github/workflows/un-mirror-audit.yml']
+    paths: ['un/transcript-agent/**', 'scripts/site_typography.py', 'scripts/sync_un_project.py', 'assets/css/typography.css', 'assets/css/type-scale.css', 'assets/css/spacing.css', '.github/workflows/un-mirror-audit.yml']
   pull_request:
-    paths: ['un/transcript-agent/**', 'scripts/site_typography.py', 'scripts/sync_un_project.py', 'assets/css/typography.css', 'assets/css/type-scale.css', '.github/workflows/un-mirror-audit.yml']
+    paths: ['un/transcript-agent/**', 'scripts/site_typography.py', 'scripts/sync_un_project.py', 'assets/css/typography.css', 'assets/css/type-scale.css', 'assets/css/spacing.css', '.github/workflows/un-mirror-audit.yml']
 permissions:
   contents: read
 env:

@@ -44,8 +44,10 @@ def apply_typography(root: Path, *, prefix: str = 'un/transcript-agent') -> None
             parent = posixpath.dirname(prefix + '/' + path.relative_to(root).as_posix())
             href = posixpath.relpath('assets/css/typography.css', parent)
             scale_href = posixpath.relpath('assets/css/type-scale.css', parent)
+            spacing_href = posixpath.relpath('assets/css/spacing.css', parent)
             link = (f'<link rel="stylesheet" href="{href}?v=20261023-1">'
-                    f'<link rel="stylesheet" href="{scale_href}?v=20261024-1">')
+                    f'<link rel="stylesheet" href="{scale_href}?v=20261024-1">'
+                    f'<link rel="stylesheet" href="{spacing_href}?v=20261024-1">')
             if '</head>' in text:
                 text = text.replace('</head>', link + '</head>', 1)
             else:

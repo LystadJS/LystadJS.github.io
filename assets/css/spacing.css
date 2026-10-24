@@ -1,0 +1,73 @@
+/* Shared spacing roles; component grids and chart coordinates remain local. */
+@layer spacing {
+ @media screen {
+  :root {
+    --space-label: 12px;
+    --space-body: 16px;
+    --space-card: 24px;
+    --space-heading: 48px;
+    --space-section: clamp(64px, 7vw, 96px);
+    --space-gutter: 32px;
+    --space-action-x: 24px;
+  }
+  @media (max-width: 700px) {
+    :root { --space-gutter: 16px; --space-card: 16px; --space-action-x: 16px; }
+  }
+  @media (max-width: 780px) { :root { --space-heading: 32px; } }
+
+  /* Reading flow, including generated reports. No universal margin reset:
+     visualizations, navigation rails and compact data labels own their layout. */
+  h1 { margin-block: 0 var(--space-card) !important; }
+  h2 { margin-block: 0 var(--space-card) !important; }
+  h3, h4, h5, h6 { margin-block: 0 var(--space-body) !important; }
+  p { margin-block: 0 var(--space-body) !important; }
+  :is([data-section-index], .hero-note, .brand-role, .service-meta, .hint, .method-note,
+      .cv-entry-meta, .cv-org-meta, .cv-role-meta, .usun-status, .un-banner-kicker) {
+    margin-block: 0 !important;
+  }
+  :is(.eyebrow, .kicker, .project-kicker, .research-kicker, .rp-kicker) {
+    margin-block: 0 var(--space-label) !important;
+  }
+  :is(.section-header, .essay-heading, .research-section-heading, .code-section-heading, .dm-header) {
+    margin-block-end: var(--space-heading) !important;
+  }
+  :is(.section-header, .essay-heading, .research-section-heading, .code-section-heading, .dm-header) h2,
+  :is(.masthead, .un-banner-copy) h1 {
+    margin-block: 0 !important;
+  }
+  :is(.section-header, .research-section-heading, .code-section-heading) p {
+    margin-block: var(--space-body) 0 !important;
+  }
+  :is(.section, .essay-section, .research-section, .code-page-section, .project-row) {
+    padding-block: var(--space-section) !important;
+  }
+  :is(.about-hero, .research-page-hero, .code-page-hero, .cv-page-hero) {
+    padding-block: var(--space-section) var(--space-heading) !important;
+  }
+  .cv-section { padding-block: var(--space-heading) !important; }
+
+  /* Keep each content column's existing maximum width and grid structure. */
+  .site-shell, .header-inner { width: min(calc(100% - 2 * var(--space-gutter)), var(--max)) !important; }
+  .un-main, body:not([data-page]) > main {
+    padding-inline: var(--space-gutter) !important;
+  }
+  :is(.un-nav, body:not([data-page]) > nav) { padding-inline: var(--space-gutter) !important; }
+
+  :is(.button, .btn, .cv-print-button, .project-action, .project-open a,
+      form button, .toolbar button, .actions button) {
+    padding: var(--space-label) var(--space-action-x) !important;
+  }
+  :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=hidden]), select, textarea) {
+    padding: var(--space-label) var(--space-body) !important;
+  }
+  :is(.report, .notice, fieldset, .report-document .metric) {
+    padding: var(--space-card) !important;
+  }
+  :is(.project-summary, .project-open, .project-actions, .rp-resources, .cv-hero-actions) {
+    margin-block-start: var(--space-card) !important;
+  }
+  :is(.project-visual figcaption, .visual-bar) {
+    padding: var(--space-label) var(--space-body) !important;
+  }
+ }
+}

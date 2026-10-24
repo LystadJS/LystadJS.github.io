@@ -1,9 +1,9 @@
 # Website fonts
 
-Self-hosted WOFF2 files, served with `font-display: swap` by `assets/css/typography.css`.
+Self-hosted WOFF2 files loaded by `assets/css/typography.css` with `font-display: swap`.
 
-- Fraunces: variable regular/italic, Latin and Latin Extended, from the [Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/fraunces).
-- Schibsted Grotesk: variable regular/italic, Latin and Latin Extended, from the [Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/schibstedgrotesk).
-- Commit Mono: V143 variable webfont from the [official repository](https://github.com/eigilnikolajsen/commit-mono/tree/main/src/fonts/fontlab).
+- **Atkinson Hyperlegible**: regular, bold, italic, and bold italic, from the [Braille Institute's Atkinson Hyperlegible distribution](https://github.com/googlefonts/atkinson-hyperlegible/tree/main/fonts/webfonts). Used for body text, smaller headings, and interface controls.
+- **EB Garamond**: variable roman and italic, from the [EB Garamond 12 upstream distribution](https://github.com/octaviopardo/EBGaramond12/tree/master/fonts/webfonts). Used for H1/H2, main titles, and serif accents.
+- **JetBrains Mono**: variable roman and italic, from the [official JetBrains Mono distribution](https://github.com/JetBrains/JetBrainsMono/tree/master/fonts/webfonts). Used for code, section indexes, technical labels, and numerical metadata.
 
-Each family is distributed under the SIL Open Font License; the original licenses are included beside these files. The site uses Fraunces for main titles and section headers, Schibsted Grotesk for body text and subheadings, and Commit Mono for code, indexes, and technical metadata.
+All three families use the SIL Open Font License 1.1; the original license text for each is included in this directory. H1/H2 use EB Garamond at weight 700. The UN landing-page SVG banner embeds the same EB Garamond and JetBrains Mono webfonts because SVG images cannot inherit the page's fonts or load external font files; regenerate those embedded copies if the corresponding font files change.

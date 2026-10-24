@@ -25,9 +25,9 @@ test('CV fits the viewport while mobile navigation scrolls independently', async
     expect(geometry.overflow, `CV overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(geometry.documentRight).toBeLessThanOrEqual(width);
     expect(geometry.titleRight, `CV title at ${width}px`).toBeLessThanOrEqual(width);
-    expect(geometry.serif).toContain('Fraunces');
-    expect(geometry.sans).toContain('Schibsted Grotesk');
-    expect(geometry.mono).toContain('Commit Mono');
+    expect(geometry.serif).toContain('EB Garamond');
+    expect(geometry.sans).toContain('Atkinson Hyperlegible');
+    expect(geometry.mono).toContain('JetBrains Mono');
     if (width <= 900) {
       const toc = page.locator('.cv-toc');
       expect(await toc.evaluate(e => e.scrollWidth > e.clientWidth)).toBe(true);

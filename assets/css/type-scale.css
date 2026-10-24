@@ -1,0 +1,65 @@
+/* Five shared text sizes. SVG charts retain their viewBox-coordinate labels. */
+@layer type-scale {
+ @media screen {
+  :root {
+    --type-body: var(--reading, 1rem);
+    --type-meta: calc(var(--type-body) * .75);
+    --type-subheading: calc(var(--type-body) * 1.25);
+    --type-section: clamp(calc(var(--type-body) * 2), 2.777778vw, calc(var(--type-body) * 2.5));
+    --type-display: clamp(calc(var(--type-body) * 3), 4.444444vw, calc(var(--type-body) * 4));
+  }
+
+  /* Inherit through spans/links rather than creating smaller nested variants.
+     Important declarations in this layer also supersede old inline UI sizes. */
+  :where(body, body *):not(svg, svg *, math, math *) {
+    font-size: inherit !important;
+  }
+  :where(body *)::before, :where(body *)::after { font-size: inherit !important; }
+  body { font-size: var(--type-body) !important; }
+
+  h1, .headshot-fallback span { font-size: var(--type-display) !important; }
+  h2, [data-section-index] { font-size: var(--type-section) !important; }
+  h3, h4, h5, h6, legend,
+  .brand-name, .brand-sigil span, .footer-title, .un-mark,
+  .hero-practice-links strong, .page-index-card strong,
+  .code-hub-link strong, .cv-org-logo-fallback, .cv-role-logo-fallback,
+  .empirical-country-title, .metric strong, .metrics strong,
+  .quick-stats strong, .lex-stats strong, .number {
+    font-size: var(--type-subheading) !important;
+  }
+
+  button, input, select, textarea, option, label, summary,
+  .site-nav a, .cv-toc a, code, pre, kbd, samp,
+  .hero-lede, .cv-lead, .cv-technical-intro, .dm-lede,
+  .un-intro p, .page-hero-grid > div > p:not(.kicker) {
+    font-size: var(--type-body) !important;
+  }
+
+  small, sup, sub, figcaption, caption, time,
+  .eyebrow, .kicker, .meta-label, .card-kicker, .brand-role,
+  .project-kicker, .project-index, .research-index, .research-kicker,
+  .research-eyebrow, .ev-overline, .topline, .hint, .method-note,
+  .cv-section-label, .cv-entry-type, .cv-entry-kicker, .cv-entry-meta,
+  .cv-org-meta, .cv-role-meta, .cv-contact-block, .cv-tags,
+  .cv-sidebar-actions, .cv-side-button, .cv-technical-link,
+  .page-index-card .meta-label, .code-method-label,
+  .rp-kicker, .rp-meta, .rp-resource, .rp-resource-state,
+  .site-footer, .un-footer, .usun-footer, .usun-status, .un-banner-kicker,
+  .usun-kicker, .usun-department, .jvm-tooltip,
+  .year-tick-label, .current-day-label, .service-flow-label,
+  .unit-event-label, .rank-event-label {
+    font-size: var(--type-meta) !important;
+  }
+ }
+}
+
+/* Keep the directory's visible title in HTML so it shares the page-title size. */
+.un-masthead.un-banner-masthead { border-top: 4px solid #c1a783; border-bottom: 4px solid #d01319; }
+.un-banner-masthead .un-masthead-inner { position: relative; }
+.un-banner-emblems { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; height: auto; }
+.un-banner-copy { position: relative; width: 60%; min-height: 248px; margin: auto; padding: 24px 0; display: flex; flex-direction: column; justify-content: center; gap: 8px; text-align: center; }
+.un-banner-copy h1 { margin: 0; line-height: 1; overflow-wrap: anywhere; color: #fff; }
+.un-banner-copy .un-banner-kicker { margin: 0; color: #c1a783; font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; line-height: 1.4; }
+@media (max-width: 700px) { .un-banner-copy { width: 70%; min-height: 152px; padding: 16px 0; } }
+/* The full brand strapline no longer fits beside 16px navigation at this width. */
+@media (max-width: 1100px) { .brand-role { display: none; } }

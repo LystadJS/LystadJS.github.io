@@ -58,6 +58,7 @@ def build(output):
         target = self.site / "un/transcript-agent/nested/index.html"
         text = target.read_text()
         self.assertIn('../../../assets/css/typography.css?v=20261023-1', text)
+        self.assertIn('../../../assets/css/type-scale.css?v=20261024-1', text)
         self.assertIn('"Atkinson Hyperlegible"', text)
         self.assertIn('"EB Garamond"', text)
         self.assertIn('const label="Arial"', text)

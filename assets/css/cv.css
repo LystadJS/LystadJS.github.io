@@ -167,6 +167,7 @@ body[data-page="cv"] main {
 
 .cv-document {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 
@@ -1298,10 +1299,6 @@ body[data-page="cv"] main {
   .cv-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
-  }
-
-  .cv-document {
-    overflow-wrap: anywhere;
   }
 
   .cv-sidebar {

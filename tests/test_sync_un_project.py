@@ -59,6 +59,7 @@ def build(output):
         text = target.read_text()
         self.assertIn('../../../assets/css/typography.css?v=20261023-1', text)
         self.assertIn('../../../assets/css/type-scale.css?v=20261024-1', text)
+        self.assertIn('../../../assets/css/spacing.css?v=20261024-1', text)
         self.assertIn('"Atkinson Hyperlegible"', text)
         self.assertIn('"EB Garamond"', text)
         self.assertIn('const label="Arial"', text)

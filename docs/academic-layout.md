@@ -1,5 +1,7 @@
 # Compact academic layout
 
+The navigation precedes the banner and stays at the top of the viewport during scrolling. Its 78% opaque background and backdrop blur keep underlying content visible while preserving readable links.
+
 Reference: [Owlstown Argyle preview](https://www.owlstown.com/themes) and [sidebar contact layout](https://www.owlstown.com/pages/3154-contact-info-block). The implementation uses the structural ideas of a photographic banner and a profile beside the homepage content, without copying theme source or demo content.
 
 The personal pages share `assets/css/academic-layout.css`: a 200px banner on desktop, 120px on mobile, ordinary navigation, 32px section padding and 24px heading separation. The banner file is `assets/images/site-banner.jpg`, initially a gray image labeled “Add image here” at the user's request. Replace that file with a JPEG photograph using the same name; a wide image around 1600×240px is recommended. No HTML changes are needed. The crop is controlled by `object-position` in the shared stylesheet.

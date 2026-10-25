@@ -2,6 +2,7 @@
 body[data-page] { background-image: none; --shadow: none; }
 body[data-page]::before { content: none; }
 .site-banner { width: 100%; height: clamp(240px, 40vw, 560px); overflow: hidden; background: #373e43; }
+.site-banner picture { display: block; width: 100%; height: 100%; }
 .site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
 .site-header {
   position: sticky;

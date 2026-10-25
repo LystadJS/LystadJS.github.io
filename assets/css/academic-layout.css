@@ -1,8 +1,8 @@
 /* Compact academic shell: photograph, ordinary navigation and readable prose. */
 body[data-page] { background-image: none; --shadow: none; }
 body[data-page]::before { content: none; }
-.site-banner { width: 100%; height: 200px; overflow: hidden; background: #373e43; }
-.site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.site-banner { width: 100%; height: clamp(240px, 40vw, 560px); overflow: hidden; background: #373e43; }
+.site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
 .site-header {
   position: sticky;
   top: 0;
@@ -49,7 +49,6 @@ body[data-page="index"] .contact-panel { padding: 0; border: 0; background: none
 @layer spacing { @media screen { body[data-page] { --space-section: 32px; --space-heading: 24px; } } }
 @media (max-width: 900px) { .academic-home { grid-template-columns: 220px minmax(0, 1fr); gap: 24px; } }
 @media (max-width: 700px) {
-  .site-banner { height: 120px; }
   .academic-home { display: block; padding-top: 24px; }
   .academic-profile { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
   .profile-photo { width: 120px; margin: 0; }

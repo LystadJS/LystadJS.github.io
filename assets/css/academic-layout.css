@@ -2,7 +2,7 @@
 body[data-page] { background-image: none; --shadow: none; }
 body[data-page]::before { content: none; }
 .site-banner { width: 100%; height: 200px; overflow: hidden; background: #373e43; }
-.site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .site-header { position: relative; backdrop-filter: none; background: var(--bg); }
 .header-inner { min-height: 64px; }
 .brand-sigil { display: none; }
@@ -43,7 +43,6 @@ body[data-page="index"] .contact-panel { padding: 0; border: 0; background: none
 @media (max-width: 900px) { .academic-home { grid-template-columns: 220px minmax(0, 1fr); gap: 24px; } }
 @media (max-width: 700px) {
   .site-banner { height: 120px; }
-  .site-banner img { object-position: center 12%; }
   .academic-home { display: block; padding-top: 24px; }
   .academic-profile { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
   .profile-photo { width: 120px; margin: 0; }

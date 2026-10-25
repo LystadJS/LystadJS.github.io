@@ -7,7 +7,7 @@ test('photographic banner and profile layout work across desktop and mobile widt
   await page.route('https://**/*', route => route.abort());
   for (const width of [320,390,700,768,900,1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    for (const file of ['index.html','about.html','research.html','code.html','cv.html','notes/example-note.html']) {
+    for (const file of ['index.html','about.html','research.html','code.html','cv.html','404.html','notes/example-note.html']) {
       const response = await page.goto(`/${file}`);
       expect(response.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
@@ -15,7 +15,7 @@ test('photographic banner and profile layout work across desktop and mobile widt
       await expect(banner).toBeVisible();
       const box = await banner.boundingBox();
       expect(box.width).toBe(width);
-      expect(box.height).toBe(width <= 700 ? 120 : 200);
+      expect(box.height).toBeCloseTo(Math.min(560, Math.max(240, width * 0.4)), 1);
       const header = page.locator('.site-header');
       expect((await header.boundingBox()).y).toBe(0);
       const alpha = await header.evaluate(e => parseFloat(getComputedStyle(e).backgroundColor.split(',').at(-1)));
@@ -25,6 +25,11 @@ test('photographic banner and profile layout work across desktop and mobile widt
       expect((await header.boundingBox()).y).toBe(0);
       await page.evaluate(() => window.scrollTo(0, 0));
       await expect.poll(() => banner.locator('img').evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
+      const image = banner.locator('img');
+      const dimensions = await image.evaluate(e => ({ width: e.naturalWidth, height: e.naturalHeight }));
+      await expect(image).toHaveAttribute('width', String(dimensions.width));
+      await expect(image).toHaveAttribute('height', String(dimensions.height));
+      await expect(image).toHaveCSS('object-position', '50% 100%');
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${file} at ${width}`).toBeLessThanOrEqual(1);
       if (file === 'index.html') {
         const profile = await page.locator('.academic-profile').boundingBox();

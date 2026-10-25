@@ -27,8 +27,8 @@ test('photographic banner and profile layout work across desktop and mobile widt
       await expect.poll(() => banner.locator('img').evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
       const image = banner.locator('img');
       const dimensions = await image.evaluate(e => ({ width: e.naturalWidth, height: e.naturalHeight }));
-      await expect(image).toHaveAttribute('width', String(dimensions.width));
-      await expect(image).toHaveAttribute('height', String(dimensions.height));
+      expect(dimensions.width / dimensions.height).toBeCloseTo(1.5, 2);
+      await expect.poll(() => image.evaluate(e => e.currentSrc)).toContain('site-banner-enhanced-');
       await expect(image).toHaveCSS('object-position', '50% 100%');
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${file} at ${width}`).toBeLessThanOrEqual(1);
       if (file === 'index.html') {
@@ -93,4 +93,19 @@ test('current work is a full-line keyboard-accessible project button', async ({ 
   await project.waitForLoadState();
   expect(project.url()).toBe(destination);
   await project.close();
+});
+
+
+test('high-density banner selects the large image and retains the original fallback', async ({ browser }, info) => {
+  test.skip(info.project.name !== 'desktop-1440');
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 2 });
+  await context.route('https://**/*', route => route.abort());
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:4173/');
+  const image = page.locator('.site-banner img');
+  await expect.poll(() => image.evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
+  await expect.poll(() => image.evaluate(e => e.currentSrc)).toContain('site-banner-enhanced-3840.webp');
+  await page.locator('.site-banner source').evaluate(e => e.remove());
+  await expect.poll(() => image.evaluate(e => e.complete && e.naturalWidth > 0 && e.currentSrc.endsWith('/site-banner.jpg'))).toBe(true);
+  await context.close();
 });

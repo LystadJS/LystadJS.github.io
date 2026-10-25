@@ -1,0 +1,24 @@
+{
+  "source": "site-banner.jpg",
+  "original_size": [
+    2048,
+    1365
+  ],
+  "original_sha256": "7c5cf1ac50a0f0ef5cbda282ba5a3978c2eb31ff6f65deb97faef32ac22a84e7",
+  "enhancement": "AI-assisted apparent-sharpness reconstruction with image_gen; original retained unchanged",
+  "generated_native_size": [
+    1536,
+    1024
+  ],
+  "generated_master_sha256": "ac2a2d15ef796acb10dddc701ce23e401b633570f3817bb13142b550f0e1b9a7",
+  "exports": {
+    "widths": [
+      960,
+      1920,
+      3840
+    ],
+    "encoding": "WebP quality 90",
+    "resampling": "Lanczos"
+  },
+  "limitations": "Larger raster exports are upsampled from the enhanced master, not recovered camera detail. Generated stars and texture may differ. Use original JPEG when photographic fidelity is required."
+}

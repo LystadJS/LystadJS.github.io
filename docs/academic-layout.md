@@ -8,6 +8,6 @@ The personal pages share `assets/css/academic-layout.css`: a 200px banner on des
 
 The homepage profile and contact links are static HTML. Above 700px the profile sits to the left of the introduction and research content. On smaller screens it precedes that content. The profile name uses the existing 40px heading size to fit the sidebar, while the font families, weights and colors retain the existing framework. Research diagrams and their keyboard controls remain available.
 
-The redesign removes the animated cursor, injected destination cards, decorative portrait frame, diamond brand mark and noise overlay. `home-hero.js` now only handles a failed portrait load. Institutional UN workspaces keep their own presentation. Print hides the photographic banner and contact navigation.
+The layout retains the original dark academic theme: grid background, crimson/violet gradients, noise texture, diamond brand mark, navigation accents, and button/panel finishes. The homepage portrait has a border and shadow that fit that theme. The structure remains compact, with a banner and left profile column rather than the old hero cards. `home-hero.js` only handles a failed portrait load. Institutional UN workspaces keep their own presentation. Print hides the photographic banner and contact navigation.
 
 Regression coverage checks the banner, profile placement, image loading, static contact links, narrow-screen overflow and no-JavaScript behavior, alongside the existing typography, spacing, CV and interactive-figure checks.

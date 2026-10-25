@@ -11,6 +11,16 @@ test('photographic banner and profile layout work across desktop and mobile widt
       const response = await page.goto(`/${file}`);
       expect(response.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
+      const theme = await page.evaluate(() => ({
+        background: getComputedStyle(document.body).backgroundImage,
+        texture: getComputedStyle(document.body, '::before').content,
+        crimson: getComputedStyle(document.documentElement).getPropertyValue('--crimson').trim()
+      }));
+      expect(theme.background).toContain('radial-gradient');
+      expect(theme.background).toContain('linear-gradient');
+      expect(theme.texture).not.toBe('none');
+      expect(theme.crimson).toBe('#8d1732');
+      await expect(page.locator('.brand-sigil')).toBeVisible();
       const banner = page.locator('.site-banner');
       await expect(banner).toBeVisible();
       const box = await banner.boundingBox();

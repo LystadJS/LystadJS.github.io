@@ -47,7 +47,9 @@ test('photographic banner and profile layout work across desktop and mobile widt
           expect(bounds.x).toBeGreaterThanOrEqual(profile.x);
           expect(bounds.x + bounds.width).toBeLessThanOrEqual(profile.x + profile.width + 1);
         }
-        await expect(page.locator('.hero-practice-index,.console-cursor')).toHaveCount(0);
+        await expect(page.locator('.hero-practice-index')).toHaveCount(0);
+        await expect(page.locator('.current-work .console-cursor')).toHaveCount(1);
+        await expect(page.locator('.current-work')).toHaveCSS('font-family', /JetBrains Mono/);
         if ([390,1440].includes(width)) await page.screenshot({ path: info.outputPath(`home-${width}.png`) });
       }
     }
@@ -65,7 +67,30 @@ test('profile, contact details and navigation are available without JavaScript',
   for (const href of ['research.html', 'code.html', 'cv.html']) {
     await expect(page.locator(`.profile-page-card[href="${href}"]`)).toBeVisible();
   }
+  await expect(page.locator('.current-work[href="https://github.com/LystadJS/project-ai-governance-non-proliferation"]')).toBeVisible();
   await expect(page.locator('.profile-contact a[href="mailto:jl17842@nyu.edu"]')).toBeVisible();
   await expect(page.locator('.profile-contact a[href="https://gist.github.com/LystadJS"]')).toBeVisible();
   await context.close();
+});
+
+
+test('current work is a full-line keyboard-accessible project button', async ({ page, context }, info) => {
+  test.skip(info.project.name !== 'desktop-1440');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const destination = 'https://github.com/LystadJS/project-ai-governance-non-proliferation';
+  await context.route(destination, route => route.fulfill({ contentType: 'text/html', body: '<title>Project destination</title>' }));
+  await page.goto('/');
+  const work = page.locator('.current-work');
+  await expect(work).toHaveAttribute('target', '_blank');
+  await expect(work.locator('.prompt')).toHaveText('>');
+  await expect(work.locator('.console-cursor')).toHaveCSS('animation-name', 'none');
+  await work.focus();
+  await expect(work).toBeFocused();
+  await expect(work).toHaveCSS('outline-style', 'solid');
+  const opened = context.waitForEvent('page');
+  await work.press('Enter');
+  const project = await opened;
+  await project.waitForLoadState();
+  expect(project.url()).toBe(destination);
+  await project.close();
 });

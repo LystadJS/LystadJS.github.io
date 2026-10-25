@@ -1,0 +1,31 @@
+/* Restore the full-line project link without the former hero layout. */
+body[data-page="index"] .home-introduction .current-work {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  padding: .48rem .62rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+.current-work .current-work-copy { min-width: 0; overflow-wrap: anywhere; }
+body[data-page="index"] .home-introduction .current-work:hover,
+body[data-page="index"] .home-introduction .current-work:focus-visible {
+  color: var(--paper);
+  background: linear-gradient(90deg, rgba(141, 23, 50, .11), rgba(141, 23, 50, .025) 72%, transparent);
+  border-color: rgba(191, 49, 82, .4);
+  box-shadow: inset 2px 0 0 var(--crimson-bright);
+  text-decoration: none;
+}
+body[data-page="index"] .home-introduction .current-work:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 3px;
+}
+.current-work:hover .prompt, .current-work:focus-visible .prompt { color: var(--paper); }
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="index"] .home-introduction .current-work { transition: none; }
+  .current-work .console-cursor { animation: none !important; opacity: 1; }
+}

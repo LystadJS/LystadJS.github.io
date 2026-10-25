@@ -1,0 +1,47 @@
+/* Restore the illustrated destination cards inside the current profile sidebar. */
+body[data-page="index"] .academic-profile .profile-pages {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+.profile-pages .profile-page-card {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 12px;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px 12px;
+  border: 1px solid rgba(74, 53, 71, .72);
+  background: radial-gradient(circle at 12% 20%, rgba(101, 69, 126, .09), transparent 52%), rgba(13, 11, 16, .58);
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.profile-pages .profile-page-card:hover,
+.profile-pages .profile-page-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(191, 49, 82, .65);
+  background: rgba(31, 20, 35, .8);
+  text-decoration: none;
+}
+.profile-pages .profile-page-card:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 3px;
+}
+.profile-page-card .hero-practice-card-copy { min-width: 0; }
+.profile-page-card strong { display: block; color: var(--paper); font-family: var(--serif); line-height: 1.12; }
+.profile-page-card small { display: block; margin-top: 5px; color: var(--paper-soft); font-family: var(--mono); line-height: 1.4; }
+.profile-page-card .hero-practice-arrow { color: var(--paper-soft); }
+.profile-page-card .hero-practice-icon { display: block; width: 38px; height: 34px; }
+.profile-page-card .mini-edge { stroke: #736576; stroke-width: 1.2; }
+.profile-page-card .mini-method { fill: #0d0b10; stroke: var(--electric); stroke-width: 1.25; }
+.profile-page-card .mini-app { fill: #120e15; stroke: var(--crimson-bright); stroke-width: 1.25; }
+.profile-page-card .mini-project { fill: #d8ccd5; stroke: #d8ccd5; }
+.profile-page-card .mini-gold { fill: #0d0b10; stroke: #b7a176; stroke-width: 1.25; }
+@layer type-scale {
+  @media screen {
+    body[data-page="index"] .profile-page-card strong { font-size: var(--type-subheading) !important; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-pages .profile-page-card { transition: none; }
+}

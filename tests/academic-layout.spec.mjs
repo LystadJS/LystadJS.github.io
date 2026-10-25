@@ -16,6 +16,14 @@ test('photographic banner and profile layout work across desktop and mobile widt
       const box = await banner.boundingBox();
       expect(box.width).toBe(width);
       expect(box.height).toBe(width <= 700 ? 120 : 200);
+      const header = page.locator('.site-header');
+      expect((await header.boundingBox()).y).toBe(0);
+      const alpha = await header.evaluate(e => parseFloat(getComputedStyle(e).backgroundColor.split(',').at(-1)));
+      expect(alpha).toBeGreaterThan(0);
+      expect(alpha).toBeLessThan(1);
+      await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 500); });
+      expect((await header.boundingBox()).y).toBe(0);
+      await page.evaluate(() => window.scrollTo(0, 0));
       await expect.poll(() => banner.locator('img').evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${file} at ${width}`).toBeLessThanOrEqual(1);
       if (file === 'index.html') {

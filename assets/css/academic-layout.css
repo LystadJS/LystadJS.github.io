@@ -1,0 +1,60 @@
+/* Compact academic shell: photograph, ordinary navigation and readable prose. */
+body[data-page] { background-image: none; --shadow: none; }
+body[data-page]::before { content: none; }
+.site-banner { width: 100%; height: 200px; overflow: hidden; background: #373e43; }
+.site-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.site-header { position: relative; backdrop-filter: none; background: var(--bg); }
+.header-inner { min-height: 64px; }
+.brand-sigil { display: none; }
+.brand-name { font-family: var(--serif); }
+.brand-role { text-transform: none; letter-spacing: 0; }
+.site-nav a { border: 0; background: none; padding: 8px 0; border-radius: 0; }
+.site-nav { gap: 24px; }
+.site-nav a::after { bottom: 0; }
+.site-footer { padding-block: 24px; background: none; }
+.button { box-shadow: none; background-image: none; border-radius: 0; }
+.reveal { opacity: 1; transform: none; }
+.academic-home { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 40px; align-items: start; padding-block: 32px; }
+.academic-profile { min-width: 0; }
+.profile-photo { display: block; width: 220px; max-width: 100%; aspect-ratio: 1; overflow: hidden; margin-bottom: 16px; }
+.academic-profile .profile-photo img { position: static; inset: auto; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 1; transform: scale(1.45); transform-origin: 50% 40%; }
+.profile-identity h1 { line-height: 1; letter-spacing: -.025em; }
+.profile-identity p { color: var(--paper-soft); line-height: 1.45; }
+.profile-pages { display: grid; gap: 8px; padding-block: 16px; border-block: 1px solid var(--line); }
+.profile-pages a, .profile-contact a { text-decoration: none; color: var(--paper-soft); }
+.profile-pages a:hover, .profile-contact a:hover { color: var(--paper); text-decoration: underline; }
+body[data-page="index"] .profile-contact { position: static; display: grid; width: auto; gap: 8px; padding: 16px 0; margin: 0; border: 0; transform: none; }
+.academic-content { min-width: 0; }
+.home-introduction { padding-bottom: 24px; }
+.home-introduction .hero-lede { font-family: var(--sans); line-height: 1.6; }
+.current-work a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+body[data-page="index"] .hero-lede { max-width: none; }
+body[data-page="index"] { --type-display: 40px; }
+body[data-page="index"] #anticipatory-direction { padding-block: 32px; margin-block: 0; }
+body[data-page="index"] #anticipatory-science { margin-top: 0; }
+body[data-page] :is(.section-header, .essay-heading, .research-section-heading, .code-section-heading) { column-gap: 16px; }
+body[data-page] .hero::before, body[data-page] .hero::after { content: none; }
+body[data-page="index"] .section-header { grid-template-columns: 48px minmax(0, 1fr); }
+body[data-page="index"] #anticipatory-direction .ae-research-bridge { grid-template-columns: 1fr; gap: 12px; }
+body[data-page="index"] #anticipatory-direction .ae-research-bridge span { text-transform: none; letter-spacing: 0; }
+body[data-page="index"] #anticipatory-direction .ae-layout { grid-template-columns: minmax(0, 1fr); }
+body[data-page="index"] .contact-panel { padding: 0; border: 0; background: none; box-shadow: none; }
+@layer spacing { @media screen { body[data-page] { --space-section: 32px; --space-heading: 24px; } } }
+@media (max-width: 900px) { .academic-home { grid-template-columns: 220px minmax(0, 1fr); gap: 24px; } }
+@media (max-width: 700px) {
+  .site-banner { height: 120px; }
+  .academic-home { display: block; padding-top: 24px; }
+  .academic-profile { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .profile-photo { width: 120px; margin: 0; }
+  .profile-identity h1 { overflow-wrap: anywhere; }
+  .profile-pages, body[data-page="index"] .profile-contact { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 12px 0; }
+  .profile-pages { border-bottom: 0; }
+  body[data-page="index"] .profile-contact { padding: 0; grid-row: auto; }
+  .home-introduction { padding-bottom: 16px; }
+  body[data-page="index"] .section-header { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
+}
+@media print {
+  .site-banner, .profile-pages, .profile-contact { display: none; }
+  .academic-home { display: block; }
+  .profile-photo { width: 120px; }
+}

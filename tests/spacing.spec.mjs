@@ -20,7 +20,8 @@ test('shared reading and control spacing stays consistent on every page', async 
         }
       };
       const card = innerWidth <= 700 ? 16 : 24;
-      const heading = innerWidth <= 780 ? 32 : 48;
+      const personal = !!document.body.dataset.page;
+      const heading = personal ? 24 : innerWidth <= 780 ? 32 : 48;
       add('h1:not(.masthead h1):not(.un-banner-copy h1)', 'marginBottom', card);
       add('h3,h4,h5,h6', 'marginBottom', 16);
       add('main > p:not([class]),.hero-lede,.about-summary,.rp-summary > p', 'marginBottom', 16);
@@ -28,7 +29,7 @@ test('shared reading and control spacing stays consistent on every page', async 
       add('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=hidden]),select,textarea', 'paddingTop', 12);
       add('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=hidden]),select,textarea', 'paddingLeft', 16);
       add('.button,.btn,.cv-print-button,.project-action,.project-open a,form button,.toolbar button,.actions button', 'paddingTop', 12);
-      add('.section,.essay-section,.research-section,.code-page-section,.project-row', 'paddingTop', Math.min(96, Math.max(64, innerWidth * .07)));
+      add('.section,.essay-section,.research-section,.code-page-section,.project-row', 'paddingTop', personal ? 32 : Math.min(96, Math.max(64, innerWidth * .07)));
       return { checks, overflow: document.documentElement.scrollWidth - innerWidth, loaded: [...document.styleSheets].some(s => s.href?.includes('/spacing.css')) };
     });
     expect(result.loaded, file).toBe(true);

@@ -12,21 +12,21 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css?v=20261020-1">
   <link rel="stylesheet" href="assets/css/research-program.css?v=20261020-1">
-  <link rel="stylesheet" href="assets/css/hero-contact-rail.css?v=20261020-1">
-  <link rel="stylesheet" href="assets/css/homepage-research.css?v=20261020-1">
   <link rel="stylesheet" href="assets/css/anticipatory-explorer.css?v=20261020-1">
   <script defer src="assets/js/research-program-data.js?v=20261006-1"></script>
   <script defer src="assets/js/research-program-core.js?v=metadata-1"></script>
   <script defer src="assets/js/main.js?v=20261006-1"></script>
-  <script defer src="assets/js/home-hero.js?v=20261006-1"></script>
+  <script defer src="assets/js/home-hero.js?v=20261024-1"></script>
   <script defer src="assets/js/anticipatory-explorer.js?v=unified-2"></script>
   <link rel="stylesheet" href="assets/css/typography.css?v=20261023-1">
 <link rel="stylesheet" href="assets/css/type-scale.css?v=20261024-1">
 <link rel="stylesheet" href="assets/css/spacing.css?v=20261024-1">
+<link rel="stylesheet" href="assets/css/academic-layout.css?v=20261024-1">
 </head>
 <body data-page="index">
   <a class="skip-link" href="#content">Skip to content</a>
 
+<div class="site-banner" aria-label="Website image banner"><img src="assets/images/site-banner.jpg" width="1600" height="240" alt="" decoding="async" fetchpriority="high"></div>
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="John S. Lystad home">
@@ -47,43 +47,15 @@
 </header>
 
 <main id="content">
-  <div class="site-shell">
+  <div class="site-shell academic-home">
 
-    <section class="hero">
-      <div class="hero-profile reveal">
-        <figure class="hero-headshot" aria-label="Portrait of John S. Lystad">
-          <div class="headshot-frame">
-            <div class="headshot-fallback" aria-hidden="true">
-              <span>JSL</span>
-            </div>
-            <picture>
-              <source type="image/webp" srcset="assets/images/headshot-480.webp 480w, assets/images/headshot-960.webp 960w" sizes="(max-width: 640px) 180px, 220px">
-              <img class="headshot-image" src="assets/images/headshot.jpeg" width="1070" height="1338" alt="Portrait of John S. Lystad" fetchpriority="high" decoding="async">
-            </picture>
-            <span class="headshot-corner corner-tl" aria-hidden="true"></span>
-            <span class="headshot-corner corner-tr" aria-hidden="true"></span>
-            <span class="headshot-corner corner-bl" aria-hidden="true"></span>
-            <span class="headshot-corner corner-br" aria-hidden="true"></span>
-          </div>
-        </figure>
-
-        <div class="hero-identity">
-          <p class="kicker">Statistician · Computational Scientist</p>
-          <h1>John S.<br><span class="surname">Lystad</span></h1>
-        </div>
-
-        <div class="hero-details">
-          <p class="hero-lede">
-            I develop and employ <strong>statistical and computational methods</strong> for problems where the data is imperfect and errors carry real consequences. My research emphasizes <strong>unsupervised learning methods</strong>, <strong>uncovering latent structure</strong>, <strong>missing and messy data</strong>, <strong>dimension reduction and clustering</strong>, and <strong>anticipatory forecasting</strong>, with applications to human security, emerging threats, humanitarian crises, political violence, and climate risk. Across these domains, my approach is to recover defensible, nonrandom structure from imperfect data, quantify uncertainty, and derive inferences that are useful for forecasting emerging danger and intervening before the risk intensifies.
-          </p>
-
-          <a class="hero-note hero-note-link" href="https://github.com/LystadJS/project-ai-governance-non-proliferation" target="_blank" rel="noopener noreferrer" aria-label="Current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation — view active project on GitHub">
-            <span class="prompt">&gt;</span>
-            <span>current inquiry: open-source artificial intelligence and autonomous weapon non-proliferation<span class="console-cursor" aria-hidden="true">█</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
+<aside class="academic-profile" aria-label="About John S. Lystad">
+      <picture class="profile-photo"><source type="image/webp" srcset="assets/images/headshot-480.webp 480w, assets/images/headshot-960.webp 960w" sizes="(max-width: 700px) 120px, 220px"><img class="headshot-image" src="assets/images/headshot.jpeg" width="1070" height="1338" alt="Portrait of John S. Lystad" decoding="async"></picture>
+      <div class="profile-identity"><h1>John S. Lystad</h1><p>Statistics · Computational methods · Social science</p><p>M.S. candidate<br>New York University</p></div>
+      <nav class="profile-pages" aria-label="Portfolio destinations"><a href="about.html">About</a><a href="research.html">Research &amp; Applied Work</a><a href="code.html">Code &amp; Development</a><a href="cv.html">Curriculum vitae</a></nav>
+      <nav class="hero-contact-rail profile-contact" aria-label="Profile and contact links"><a href="mailto:jl17842@nyu.edu">jl17842@nyu.edu</a><a href="mailto:lystadjs@gmail.com">lystadjs@gmail.com</a><a href="https://github.com/LystadJS">GitHub</a><a href="https://gist.github.com/LystadJS">GitHub Gists</a><a href="https://linkedin.com/LystadJS">LinkedIn</a></nav>
+    </aside>
+    <div class="academic-content"><section class="home-introduction" aria-label="Introduction"><p class="hero-lede">I develop and employ statistical and computational methods for problems where the data is imperfect and errors carry real consequences. My research emphasizes unsupervised learning methods, uncovering latent structure, missing and messy data, dimension reduction and clustering, and anticipatory forecasting, with applications to human security, emerging threats, humanitarian crises, political violence, and climate risk. Across these domains, my approach is to recover defensible, nonrandom structure from imperfect data, quantify uncertainty, and derive inferences that are useful for forecasting emerging danger and intervening before the risk intensifies.</p><p class="current-work">Current work: <a href="https://github.com/LystadJS/project-ai-governance-non-proliferation">open-source AI and autonomous weapon non-proliferation</a>.</p></section>
 
     <!-- Anticipatory research direction. All styles and interactions are local to this block. -->
     <div class="anticipatory-home" id="anticipatory-science">
@@ -332,6 +304,7 @@
         </div>
       </div>
     </section>
+    </div>
   </div>
 </main>
 

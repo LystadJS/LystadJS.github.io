@@ -23,7 +23,7 @@ test('section rhythm is identical across pages and responsive widths', async ({ 
   page.on('pageerror', error => errors.push(error.message));
   for (const width of widths) {
     await page.setViewportSize({ width, height: 1000 });
-    const expected = Math.min(96, Math.max(64, width * 0.07));
+    const expected = 32;
     for (const [name, selector] of Object.entries(paths)) {
       await page.goto(`/${name}.html`, { waitUntil: 'load' });
       const geometry = await page.locator(selector).evaluateAll(elements => elements.map(element => {
@@ -35,7 +35,7 @@ test('section rhythm is identical across pages and responsive widths', async ({ 
       for (const section of geometry) {
         expect(Math.abs(section.top - expected)).toBeLessThan(0.1);
         expect(Math.abs(section.bottom - expected)).toBeLessThan(0.1);
-        expect(section.gap).toBe(width <= 780 ? 32 : 48);
+        expect(section.gap).toBe(24);
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${name} at ${width}`).toBeLessThanOrEqual(1);
       await expect(page.locator('.site-nav a[aria-current="page"]')).toHaveCount(1);

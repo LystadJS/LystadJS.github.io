@@ -37,6 +37,16 @@ test('photographic banner and profile layout work across desktop and mobile widt
         if (width > 700) expect(profile.x + profile.width).toBeLessThan(content.x);
         else expect(profile.y + profile.height).toBeLessThanOrEqual(content.y);
         await expect(page.locator('.profile-contact a')).toHaveCount(5);
+        const cards = page.locator('.profile-pages .profile-page-card');
+        await expect(cards).toHaveCount(3);
+        for (const card of await cards.all()) {
+          await expect(card.locator('svg')).toHaveCount(1);
+          await expect(card.locator('strong')).toBeVisible();
+          await expect(card.locator('small')).toBeVisible();
+          const bounds = await card.boundingBox();
+          expect(bounds.x).toBeGreaterThanOrEqual(profile.x);
+          expect(bounds.x + bounds.width).toBeLessThanOrEqual(profile.x + profile.width + 1);
+        }
         await expect(page.locator('.hero-practice-index,.console-cursor')).toHaveCount(0);
         if ([390,1440].includes(width)) await page.screenshot({ path: info.outputPath(`home-${width}.png`) });
       }
@@ -51,6 +61,10 @@ test('profile, contact details and navigation are available without JavaScript',
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('.academic-profile h1')).toHaveText('John S. Lystad');
   await expect(page.locator('.profile-pages a')).toHaveCount(4);
+  await expect(page.locator('.profile-page-card')).toHaveCount(3);
+  for (const href of ['research.html', 'code.html', 'cv.html']) {
+    await expect(page.locator(`.profile-page-card[href="${href}"]`)).toBeVisible();
+  }
   await expect(page.locator('.profile-contact a[href="mailto:jl17842@nyu.edu"]')).toBeVisible();
   await expect(page.locator('.profile-contact a[href="https://gist.github.com/LystadJS"]')).toBeVisible();
   await context.close();

@@ -15,7 +15,7 @@ test('photographic banner and profile layout work across desktop and mobile widt
       await expect(banner).toBeVisible();
       const box = await banner.boundingBox();
       expect(box.width).toBe(width);
-      expect(box.height).toBeCloseTo(Math.min(560, Math.max(240, width * 0.4)), 1);
+      expect(box.height).toBeCloseTo(file === 'index.html' ? 1000 : Math.min(460, Math.max(210, width * 0.32)), 1);
       const header = page.locator('.site-header');
       expect((await header.boundingBox()).y).toBe(0);
       const alpha = await header.evaluate(e => parseFloat(getComputedStyle(e).backgroundColor.split(',').at(-1)));
@@ -29,7 +29,15 @@ test('photographic banner and profile layout work across desktop and mobile widt
       const dimensions = await image.evaluate(e => ({ width: e.naturalWidth, height: e.naturalHeight }));
       expect(dimensions.width / dimensions.height).toBeCloseTo(1.5, 2);
       await expect.poll(() => image.evaluate(e => e.currentSrc)).toContain('site-banner-enhanced-');
-      await expect(image).toHaveCSS('object-position', '50% 100%');
+      if (file === 'index.html') {
+        await expect(page.locator('.banner-title')).toHaveText('John S. Lystad');
+        const title = await page.locator('.banner-title').boundingBox();
+        expect(title.y).toBeGreaterThan(box.y + box.height * .1);
+        expect(title.y + title.height).toBeLessThan(box.y + box.height * .5);
+      } else {
+        const crop = await image.boundingBox();
+        expect(Math.abs(crop.y + crop.height * .82 - box.y - box.height)).toBeLessThan(1);
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), `${file} at ${width}`).toBeLessThanOrEqual(1);
       if (file === 'index.html') {
         const profile = await page.locator('.academic-profile').boundingBox();
@@ -61,7 +69,8 @@ test('profile, contact details and navigation are available without JavaScript',
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4173/');
-  await expect(page.locator('.academic-profile h1')).toHaveText('John S. Lystad');
+  await expect(page.locator('.banner-title')).toHaveText('John S. Lystad');
+  await expect(page.locator('.academic-profile h2')).toHaveText('John S. Lystad');
   await expect(page.locator('.profile-pages a')).toHaveCount(4);
   await expect(page.locator('.profile-page-card')).toHaveCount(3);
   for (const href of ['research.html', 'code.html', 'cv.html']) {
@@ -71,6 +80,22 @@ test('profile, contact details and navigation are available without JavaScript',
   await expect(page.locator('.profile-contact a[href="mailto:jl17842@nyu.edu"]')).toBeVisible();
   await expect(page.locator('.profile-contact a[href="https://gist.github.com/LystadJS"]')).toBeVisible();
   await context.close();
+});
+
+test('homepage content fades into view on scroll and respects reduced motion', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop-1440', 'Owns motion preference scenarios.');
+  await page.route('https://**/*', route => route.abort());
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const introduction = page.locator('.home-introduction');
+  await expect(introduction).toHaveCSS('opacity', '0');
+  await page.locator('.banner-scroll').click();
+  await expect(introduction).toHaveCSS('opacity', '1');
+  await expect(introduction).not.toHaveClass(/reveal-pending/);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(introduction).toHaveCSS('opacity', '1');
+  await expect(introduction).not.toHaveClass(/reveal-pending/);
 });
 
 

@@ -75,7 +75,7 @@ test('reveals and native page changes preserve content and keyboard navigation',
   await expect(page.locator('body')).toHaveCSS('opacity', '1');
   await page.goBack();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator('.academic-profile h1')).toBeVisible();
+  await expect(page.locator('.academic-profile h2')).toBeVisible();
   await expect(page.locator('body')).toHaveCSS('opacity', '1');
 });
 
@@ -86,7 +86,7 @@ test('no-JavaScript and reduced-motion visitors keep visible, usable pages', asy
   await context.route('https://**/*', route => route.abort());
   const page = await context.newPage();
   await page.goto('/');
-  await expect(page.locator('.academic-profile h1')).toBeVisible();
+  await expect(page.locator('.academic-profile h2')).toBeVisible();
   await expect(page.locator('#research-program')).toHaveCSS('opacity', '1');
   await expect(page.locator('.profile-page-card')).toHaveCount(3);
   await context.close();

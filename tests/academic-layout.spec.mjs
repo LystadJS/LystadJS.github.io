@@ -30,6 +30,7 @@ test('photographic banner and profile layout work across desktop and mobile widt
       expect(dimensions.width / dimensions.height).toBeCloseTo(1.5, 2);
       await expect.poll(() => image.evaluate(e => e.currentSrc)).toContain('site-banner-enhanced-');
       if (file === 'index.html') {
+        await expect.poll(() => image.evaluate(e => e.currentSrc)).toMatch(/site-banner-enhanced-(1920|3840)\.webp$/);
         await expect(page.locator('.banner-title')).toHaveText('John S. Lystad');
         const title = await page.locator('.banner-title').boundingBox();
         expect(title.y).toBeGreaterThan(box.y + box.height * .1);

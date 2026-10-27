@@ -1,5 +1,7 @@
 # Banner crop and homepage introduction
 
+The photograph's bottom 24–48px gently fades to transparency, revealing the actual page background. The title and scroll link remain outside the image mask and stay fully visible.
+
 Interior personal pages use a shorter banner: `clamp(210px, 32vw, 460px)`, reduced from `clamp(240px, 40vw, 560px)`. The image is anchored at 82% of its height, the bottom of the hand in the current silhouette photograph. This removes the foreground below the hand and reveals more of the sky. The responsive enhanced images and original JPEG fallback are retained, without modifying the photograph.
 
 Only `body[data-page="index"]` uses a full-screen banner (`100svh`, with `100vh` fallback). Its responsive image sizes account for viewport height as well as width, keeping the tall mobile crop sharp. Its navigation overlays the image and remains fixed during scrolling. The page H1 appears over the night sky; the sidebar's repeated name is an H2. The title retains the shared EB Garamond display scale.

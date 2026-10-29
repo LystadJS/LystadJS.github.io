@@ -26,10 +26,6 @@ body[data-page="about"] :is(.about-hero-title, .about-hero-copy) {
   padding-left: 0;
 }
 
-body[data-page="about"] .about-section-nav {
-  padding-block: 2rem;
-}
-
 body[data-page="research"] .research-layout,
 body[data-page="code"] .code-page-layout {
   padding: 0;

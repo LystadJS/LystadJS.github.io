@@ -4,94 +4,10 @@ body[data-page="about"] main {
   overflow: hidden;
 }
 
-body[data-page="about"] .essay-index,
-    body[data-page="about"] .photo-label {
+body[data-page="about"] .essay-index {
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: .1em;
-}
-
-body[data-page="about"] .about-section-nav a {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: .7rem;
-  align-items: baseline;
-  min-width: 0;
-  padding: .9rem .8rem .86rem 0;
-  color: #9b9099;
-  border-right: 1px solid rgba(74,53,71,.42);
-  text-decoration: none;
-  transition: color 150ms ease, background 150ms ease;
-}
-
-body[data-page="about"] .about-section-nav a + a {
-  padding-left: .9rem;
-}
-
-body[data-page="about"] .about-section-nav a:last-child {
-  border-right: 0;
-}
-
-body[data-page="about"] .about-section-nav a:hover,
-    body[data-page="about"] .about-section-nav a:focus-visible {
-  color: #d3c7cf;
-}
-
-body[data-page="about"] .about-section-nav a:hover span,
-    body[data-page="about"] .about-section-nav a:focus-visible span {
-  color: var(--crimson-bright);
-}
-
-body[data-page="about"] .photo-placeholder {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid var(--line-bright);
-}
-
-body[data-page="about"] .photo-placeholder::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  z-index: 2;
-  border: 1px solid rgba(221,204,183,.10);
-  pointer-events: none;
-}
-
-body[data-page="about"] .photo-placeholder::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 46%, rgba(7,7,9,.34) 100%);
-}
-
-body[data-page="about"] .photo-placeholder.portrait {
-  aspect-ratio: 4 / 5;
-  max-width: 360px;
-  justify-self: end;
-}
-
-body[data-page="about"] .photo-placeholder.landscape {
-  aspect-ratio: 16 / 10;
-}
-
-body[data-page="about"] .photo-placeholder.wide {
-  aspect-ratio: 16 / 7;
-}
-
-body[data-page="about"] .photo-label {
-  position: relative;
-  z-index: 3;
-  padding: .5rem .65rem;
-  color: #746a75;
-  background: rgba(7,7,9,.74);
-  font-size: .54rem;
-  text-align: center;
 }
 
 body[data-page="about"] .essay-heading-copy {
@@ -105,26 +21,6 @@ body[data-page="about"] .military-layout {
 
 body[data-page="about"] .military-primary {
   min-width: 0;
-}
-
-@media (max-width: 900px) {
-  body[data-page="about"] .about-section-nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  body[data-page="about"] .about-section-nav a {
-    gap: .48rem;
-    padding-top: .78rem;
-    padding-bottom: .74rem;
-  }
-  body[data-page="about"] .about-section-nav a + a {
-    padding-left: .65rem;
-  }
-  body[data-page="about"] .about-section-nav strong {
-    font-size: .55rem;
-  }
 }
 
 body[data-page="about"] .career-timeline {
@@ -848,8 +744,7 @@ body[data-page="about"] .timeline-filter-defs {
   pointer-events: none;
 }
 
-body[data-page="about"] .military-photo figcaption,
-    body[data-page="about"] .life-photo figcaption {
+body[data-page="about"] .military-photo figcaption {
   margin-top: .55rem;
   color: #7f7480;
   font-family: var(--mono);
@@ -882,422 +777,6 @@ body[data-page="about"] .military-photo-frame.landscape {
 
 body[data-page="about"] .military-photo-frame.landscape img {
   object-position: center center;
-}
-
-body[data-page="about"] .mountain-ascent {
-  margin: 0;
-}
-
-body[data-page="about"] .mountain-ascent-header {
-  display: grid;
-  grid-template-columns: minmax(190px, .65fr) minmax(0, 1.35fr);
-  gap: clamp(1.2rem, 3vw, 2.4rem);
-  align-items: end;
-  border-bottom: 1px solid rgba(74,53,71,.62);
-}
-
-body[data-page="about"] .mountain-ascent-kicker {
-  margin: 0 0 .3rem;
-  font-family: var(--mono);
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .mountain-ascent-header h3 {
-  margin: 0;
-  font-family: var(--sans);
-  font-size: clamp(1.85rem, 3.4vw, 2.7rem);
-  font-weight: 600;
-  line-height: .95;
-}
-
-body[data-page="about"] .mountain-ascent-deck {
-  max-width: 66ch;
-  margin: 0;
-}
-
-body[data-page="about"] .mountain-ascent-stage {
-  position: relative;
-  min-height: 500px;
-  overflow: visible;
-}
-
-body[data-page="about"] .mountain-ascent-scroll {
-  overflow: visible;
-}
-
-body[data-page="about"] .mountain-ascent-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-body[data-page="about"] .mountain-guide {
-  stroke: rgba(255,255,255,.024);
-  stroke-width: 1;
-  stroke-dasharray: 3 8;
-  vector-effect: non-scaling-stroke;
-}
-
-body[data-page="about"] .mountain-guide-label {
-  fill: #665d67;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .045em;
-}
-
-body[data-page="about"] .mountain-silhouette {
-  fill: url(#mountain-silhouette-gradient);
-  stroke: none;
-}
-
-body[data-page="about"] .mountain-peak-relief {
-  opacity: .82;
-  pointer-events: none;
-}
-
-body[data-page="about"] .mountain-peak-relief-fill {
-  fill: rgba(34,26,35,.88);
-  stroke: none;
-}
-
-body[data-page="about"] .mountain-peak-relief-ridge {
-  fill: none;
-  stroke: rgba(215,197,208,.78);
-  stroke-width: 1.35;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-
-body[data-page="about"] .mountain-peak-relief--signature {
-  opacity: .96;
-}
-
-body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-fill {
-  fill: rgba(48,36,47,.92);
-}
-
-body[data-page="about"] .mountain-peak-relief--signature .mountain-peak-relief-ridge {
-  stroke: rgba(232,215,225,.88);
-  stroke-width: 1.6;
-}
-
-body[data-page="about"] .mountain-peak-relief--back {
-  opacity: .72;
-}
-
-body[data-page="about"] .mountain-peak-relief--back .mountain-peak-relief-ridge {
-  stroke: rgba(210,193,204,.64);
-}
-
-body[data-page="about"] .mountain-peak-relief--denali {
-  opacity: .62;
-}
-
-body[data-page="about"] .mountain-peak-relief--toubkal {
-  opacity: .70;
-}
-
-body[data-page="about"] .mountain-peak-relief--fuji {
-  opacity: .78;
-}
-
-body[data-page="about"] .mountain-peak-relief--mid {
-  opacity: .84;
-}
-
-body[data-page="about"] .mountain-peak-relief--front {
-  opacity: .98;
-}
-
-body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-fill {
-  fill: rgba(27,21,28,.96);
-}
-
-body[data-page="about"] .mountain-peak-relief--front .mountain-peak-relief-ridge {
-  stroke: rgba(232,219,227,.94);
-  stroke-width: 1.55;
-}
-
-body[data-page="about"] .mountain-peak-relief--denali .mountain-peak-relief-fill {
-  fill: url(#mountain-silhouette-gradient);
-}
-
-body[data-page="about"] .mountain-profile-label {
-  fill: #d7cbd2;
-  font-family: var(--sans);
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -.01em;
-}
-
-body[data-page="about"] .mountain-profile-label.is-goal {
-  fill: #e1d3b4;
-}
-
-body[data-page="about"] .mountain-profile-meta {
-  fill: #837783;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .07em;
-}
-
-body[data-page="about"] .mountain-profile-meta.is-goal {
-  fill: #a79677;
-}
-
-body[data-page="about"] .mountain-waypoint {
-  cursor: pointer;
-  outline: none;
-}
-
-body[data-page="about"] .mountain-waypoint-hit {
-  fill: transparent;
-  stroke: none;
-}
-
-body[data-page="about"] .mountain-waypoint-ring {
-  fill: #0b090d;
-  stroke: rgba(194,181,190,.72);
-  stroke-width: 1.4;
-  vector-effect: non-scaling-stroke;
-  transition: fill 140ms ease, stroke 140ms ease, transform 140ms ease;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-body[data-page="about"] .mountain-waypoint-core {
-  fill: rgba(157,48,77,.9);
-  transition: transform 140ms ease, fill 140ms ease;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-body[data-page="about"] .mountain-waypoint:hover .mountain-waypoint-ring,
-    body[data-page="about"] .mountain-waypoint:focus-visible .mountain-waypoint-ring,
-    body[data-page="about"] .mountain-waypoint.is-active .mountain-waypoint-ring {
-  fill: #171017;
-  stroke: #d7cbd3;
-  transform: scale(1.22);
-}
-
-body[data-page="about"] .mountain-waypoint:hover .mountain-waypoint-core,
-    body[data-page="about"] .mountain-waypoint:focus-visible .mountain-waypoint-core,
-    body[data-page="about"] .mountain-waypoint.is-active .mountain-waypoint-core {
-  fill: #bf3152;
-  transform: scale(1.12);
-}
-
-body[data-page="about"] .mountain-waypoint.is-goal .mountain-waypoint-ring {
-  stroke: rgba(206,177,126,.88);
-  stroke-width: 1.8;
-}
-
-body[data-page="about"] .mountain-waypoint.is-goal .mountain-waypoint-core {
-  fill: #c4a268;
-}
-
-body[data-page="about"] .mountain-goal-halo {
-  fill: none;
-  stroke: rgba(196,162,104,.26);
-  stroke-width: 1.2;
-  stroke-dasharray: 3 4;
-  vector-effect: non-scaling-stroke;
-}
-
-body[data-page="about"] .mountain-popover {
-  position: absolute;
-  z-index: 12;
-  width: min(270px, calc(100% - 1rem));
-  overflow: hidden;
-  border: 1px solid rgba(91,68,84,.9);
-  border-radius: 10px;
-  background: rgba(15,11,16,.98);
-  box-shadow: 0 18px 38px rgba(0,0,0,.38);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(7px);
-  pointer-events: none;
-  transition: opacity 150ms ease-out, transform 150ms ease-out, visibility 150ms linear;
-}
-
-body[data-page="about"] .mountain-popover.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-body[data-page="about"] .mountain-popover-close {
-  position: absolute;
-  z-index: 2;
-  top: 7px;
-  right: 8px;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: 1px solid rgba(218,203,212,.22);
-  border-radius: 50%;
-  background: rgba(11,9,13,.72);
-  color: #cfc3cb;
-  font: 400 1rem/1 var(--sans);
-  cursor: pointer;
-}
-
-body[data-page="about"] .mountain-popover-close:hover,
-    body[data-page="about"] .mountain-popover-close:focus-visible {
-  border-color: rgba(218,203,212,.48);
-  color: #efe4ea;
-  outline: none;
-}
-
-body[data-page="about"] .mountain-popover-media {
-  position: relative;
-  height: 138px;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(74,53,71,.62);
-  background: radial-gradient(circle at 68% 26%, rgba(126,92,117,.18), transparent 32%),
-        linear-gradient(145deg, #241b25 0%, #151117 54%, #0c0a0d 100%);
-}
-
-body[data-page="about"] .mountain-popover-media img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-body[data-page="about"] .mountain-popover-placeholder {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #6f6570;
-  font-family: var(--mono);
-  font-size: .55rem;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .mountain-popover-placeholder::before {
-  content: "";
-  position: absolute;
-  left: 14%;
-  right: 14%;
-  bottom: 20%;
-  height: 44%;
-  background: linear-gradient(137deg, transparent 0 24%, rgba(130,112,126,.14) 24% 50%, transparent 50%),
-        linear-gradient(43deg, transparent 0 35%, rgba(102,86,99,.16) 35% 61%, transparent 61%);
-  clip-path: polygon(0 100%, 25% 42%, 42% 69%, 64% 18%, 100% 100%);
-}
-
-body[data-page="about"] .mountain-popover-placeholder span {
-  position: relative;
-  z-index: 1;
-}
-
-body[data-page="about"] .mountain-popover-body {
-  padding: .82rem .9rem .9rem;
-}
-
-body[data-page="about"] .mountain-popover-type {
-  display: block;
-  margin-bottom: .25rem;
-  color: #8b7e88;
-  font-family: var(--mono);
-  font-size: .52rem;
-  letter-spacing: .075em;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .mountain-popover-name {
-  display: block;
-  color: #e3d8df;
-  font-family: var(--sans);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-body[data-page="about"] .mountain-popover-location {
-  display: block;
-  margin-top: .22rem;
-  color: #948793;
-  font-size: .72rem;
-  line-height: 1.25;
-}
-
-body[data-page="about"] .mountain-popover-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .8rem;
-  margin: .75rem 0 0;
-}
-
-body[data-page="about"] .mountain-popover-meta div {
-  min-width: 0;
-  padding-top: .48rem;
-  border-top: 1px solid rgba(74,53,71,.54);
-}
-
-body[data-page="about"] .mountain-popover-meta dt {
-  margin: 0;
-  color: #716772;
-  font-family: var(--mono);
-  font-size: .49rem;
-  letter-spacing: .075em;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .mountain-popover-meta dd {
-  margin: .2rem 0 0;
-  color: #cfc4cb;
-  font-size: .75rem;
-  line-height: 1.2;
-}
-
-body[data-page="about"] .mountain-popover-note {
-  margin: .7rem 0 0;
-  color: #a89da5;
-  font-size: .69rem;
-  line-height: 1.42;
-}
-
-body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-
-body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-thumb {
-  background: rgba(111,91,106,.42);
-  border-radius: 999px;
-}
-
-body[data-page="about"] .mountain-ascent-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body[data-page="about"] .mountain-ascent-caption {
-  margin-top: .5rem;
-  color: #746b74;
-  font-family: var(--mono);
-  font-size: .5rem;
-  line-height: 1.55;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-
-body[data-page="about"] .life-photo-grid {
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  align-items: start;
-}
-
-body[data-page="about"] .life-photo {
-  margin: 0;
 }
 
 body[data-page="about"] .timeline-sr-only {
@@ -1587,10 +1066,6 @@ body[data-page="about"] .timeline-noscript-list span {
   body[data-page="about"] .military-layout {
     grid-template-columns: 1fr;
   }
-  body[data-page="about"] .photo-placeholder.portrait {
-    justify-self: start;
-    width: min(330px, 82vw);
-  }
   body[data-page="about"] .military-media {
     max-width: 420px;
     justify-self: start;
@@ -1628,36 +1103,12 @@ body[data-page="about"] .timeline-noscript-list span {
   body[data-page="about"] .training-event[data-event-id="cwic"] .qualification-icon {
     top: 49px;
   }
-  body[data-page="about"] .life-photo-grid {
-    grid-template-columns: 1fr;
-  }
   body[data-page="about"] .timeline-noscript-list {
     grid-template-columns: 1fr;
   }
   body[data-page="about"] .timeline-noscript-list li,
       body[data-page="about"] .timeline-noscript-list li:nth-child(odd) {
     padding-right: 0;
-  }
-  body[data-page="about"] .mountain-ascent-stage {
-    min-height: 402px;
-    overflow: visible;
-  }
-  body[data-page="about"] .mountain-ascent-scroll {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  body[data-page="about"] .mountain-ascent-svg {
-    width: auto;
-    height: 370px;
-    max-width: none;
-  }
-  body[data-page="about"] .mountain-profile-label,
-      body[data-page="about"] .mountain-profile-meta {
-    display: none;
   }
 }
 
@@ -1692,85 +1143,6 @@ body[data-page="about"] {
     rgba(13,11,16,.72);
 }
 
-body[data-page="about"] .about-section-nav {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: .7rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 0;
-}
-
-body[data-page="about"] .about-section-nav a,
-body[data-page="about"] .about-section-nav a + a {
-  position: relative;
-  display: grid;
-  grid-template-columns: 30px minmax(0, 1fr);
-  gap: .7rem;
-  align-items: center;
-  min-height: 82px;
-  padding: .85rem 2.1rem .85rem .78rem;
-  border: 1px solid rgba(74,53,71,.72);
-  background: var(--about-panel-bg);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
-  color: inherit;
-  transition: transform 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease,
-    box-shadow 160ms ease;
-}
-
-body[data-page="about"] .about-section-nav a::after {
-  content: "→";
-  position: absolute;
-  right: .78rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #6f6370;
-  font-family: var(--mono);
-  font-size: .86rem;
-  transition: transform 160ms ease, color 160ms ease;
-}
-
-body[data-page="about"] .about-section-nav a:hover,
-body[data-page="about"] .about-section-nav a:focus-visible {
-  transform: translateY(-2px);
-  border-color: rgba(191,49,82,.48);
-  background: radial-gradient(circle at 15% 20%, rgba(101,69,126,.13), transparent 54%),
-    linear-gradient(90deg, rgba(141,23,50,.055), transparent 76%),
-    rgba(16,12,19,.74);
-  box-shadow: 0 10px 30px rgba(0,0,0,.18),
-    inset 0 0 0 1px rgba(255,255,255,.018);
-  outline: none;
-}
-
-body[data-page="about"] .about-section-nav a:hover::after,
-body[data-page="about"] .about-section-nav a:focus-visible::after {
-  transform: translate(2px, -50%);
-  color: var(--paper);
-}
-
-body[data-page="about"] .about-section-nav span {
-  color: var(--crimson-bright);
-  font-family: var(--mono);
-  font-size: .58rem;
-  line-height: 1;
-  letter-spacing: .1em;
-}
-
-body[data-page="about"] .about-section-nav strong {
-  overflow: visible;
-  color: #ded4dc;
-  font-family: var(--sans);
-  font-size: 1.08rem;
-  line-height: 1.06;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-overflow: clip;
-  text-transform: none;
-  white-space: normal;
-}
-
 /* Section rhythm follows the index page's shared .section/.section-header system. */
 
 body[data-page="about"] .essay-index {
@@ -1793,15 +1165,6 @@ body[data-page="about"] .essay-heading h2 {
   letter-spacing: -.035em;
 }
 
-body[data-page="about"] .essay-deck {
-  max-width: 750px;
-  margin: 1rem 0 0;
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: .94rem;
-  line-height: 1.68;
-}
-
 body[data-page="about"] .service-meta {
   margin: .9rem 0 0;
   color: #8f8290;
@@ -1813,10 +1176,9 @@ body[data-page="about"] .service-meta {
   text-transform: uppercase;
 }
 
-/* Reusable About panels now use the same surface recipe as index destination cards. */
+/* The military panel uses the same surface recipe as index destination cards. */
 
-body[data-page="about"] .military-primary,
-body[data-page="about"] .mountain-ascent {
+body[data-page="about"] .military-primary {
   border: 1px solid var(--line);
   background: var(--about-panel-bg);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
@@ -1849,58 +1211,6 @@ body[data-page="about"] .career-timeline {
     rgba(10,8,12,.58);
 }
 
-/* Mountaineering visualization remains the focal object, but sits on a homepage-consistent instrument surface. */
-
-body[data-page="about"] .mountain-ascent {
-  padding: clamp(1rem, 2vw, 1.35rem);
-}
-
-body[data-page="about"] .mountain-ascent-header {
-  margin-bottom: .9rem;
-  padding-bottom: .9rem;
-  border-bottom-color: var(--line);
-}
-
-body[data-page="about"] .mountain-ascent-kicker {
-  color: var(--crimson-bright);
-  font-size: .58rem;
-  letter-spacing: .1em;
-}
-
-body[data-page="about"] .mountain-ascent-header h3 {
-  color: #ded4dc;
-}
-
-body[data-page="about"] .mountain-ascent-deck {
-  color: var(--muted);
-  font-size: .86rem;
-  line-height: 1.6;
-}
-
-body[data-page="about"] .travel-note {
-  max-width: 820px;
-  margin: 1.35rem 0 0;
-  padding: .15rem 0 .15rem 1rem;
-  border-left: 1px solid rgba(191,49,82,.38);
-  color: #9f929e;
-  font-size: .86rem;
-  line-height: 1.68;
-}
-
-body[data-page="about"] .life-photo-grid {
-  gap: .7rem;
-  margin-top: 1.35rem;
-}
-
-body[data-page="about"] .photo-placeholder {
-  border-color: var(--line);
-  background: radial-gradient(circle at 20% 18%, rgba(101,69,126,.09), transparent 52%),
-    linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004)),
-    rgba(13,11,16,.72);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
-}
-
-body[data-page="about"] .life-photo figcaption,
 body[data-page="about"] .military-photo figcaption {
   margin-top: .48rem;
   color: #6f6470;
@@ -1911,15 +1221,11 @@ body[data-page="about"] .military-photo figcaption {
   text-transform: uppercase;
 }
 
-body[data-page="about"] #military-title,
-body[data-page="about"] #outside-title {
+body[data-page="about"] #military-title {
   scroll-margin-top: 110px;
 }
 
 @media (max-width: 980px) {
-  body[data-page="about"] .about-section-nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
   body[data-page="about"] .military-layout {
     grid-template-columns: 1fr;
   }
@@ -1929,31 +1235,12 @@ body[data-page="about"] #outside-title {
 }
 
 @media (max-width: 640px) {
-  body[data-page="about"] .about-section-nav {
-    grid-template-columns: 1fr;
-    gap: .5rem;
-  }
-  body[data-page="about"] .about-section-nav a,
-  body[data-page="about"] .about-section-nav a + a {
-    min-height: 72px;
-  }
-  body[data-page="about"] .military-primary,
-  body[data-page="about"] .mountain-ascent {
+  body[data-page="about"] .military-primary {
     padding: 1rem;
   }
   body[data-page="about"] .career-timeline {
     padding-left: .2rem;
     padding-right: .2rem;
-  }
-  body[data-page="about"] .mountain-ascent-header {
-    grid-template-columns: 1fr;
-    gap: .6rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body[data-page="about"] .about-section-nav a {
-    transition: none !important;
   }
 }
 

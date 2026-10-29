@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const ROOT = new URL('../', import.meta.url);
 const paths = { about: '.essay-section', research: '.research-section', code: '.code-page-section' };
+const sectionCounts = { index: 2, about: 1, research: 3, code: 3 };
 const widths = [320, 390, 600, 768, 780, 900, 980, 1024, 1440, 1920];
 const registryPattern = '**/research-registry/main/dist/research-registry.json';
 
@@ -31,7 +32,7 @@ test('section rhythm is identical across pages and responsive widths', async ({ 
         const heading = element.querySelector('.essay-heading,.research-section-heading,.code-section-heading,.dm-header');
         return { top: parseFloat(css.paddingTop), bottom: parseFloat(css.paddingBottom), gap: parseFloat(getComputedStyle(heading).marginBottom) };
       }));
-      expect(geometry.length).toBeGreaterThan(1);
+      expect(geometry).toHaveLength(sectionCounts[name]);
       for (const section of geometry) {
         expect(Math.abs(section.top - expected)).toBeLessThan(0.1);
         expect(Math.abs(section.bottom - expected)).toBeLessThan(0.1);
@@ -261,7 +262,7 @@ test('number-only section indexes match their headings at every responsive width
           textRight: Math.max(...[...textRange.getClientRects()].map(rect => rect.right)), headingRight: headingBox.right
         };
       }));
-      expect(indexes).toHaveLength(['index', 'about'].includes(name) ? 2 : 3);
+      expect(indexes).toHaveLength(sectionCounts[name]);
       for (const index of indexes) {
         expect(index.text).toMatch(/^\d{2}$/);
         expect(index.size).toBe(index.headingSize);

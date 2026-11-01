@@ -1652,9 +1652,3 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education .cv-degree-university,
 #education .cv-degree-concentration { font-family: var(--sans); line-height: 1.4; }
 #education .cv-degree-department { font-family: var(--mono); line-height: 1.5; }
-@layer spacing {
-  /* Keep the degree, institution and department together as one heading group. */
-  #education .cv-degree-title,
-  #education .cv-degree-university { margin-block: 0 4pt !important; }
-  #education .cv-degree-department { margin-block: 0 !important; }
-}

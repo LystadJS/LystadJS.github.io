@@ -18,8 +18,8 @@ test('every page shares five text sizes and consistent semantic roles', async ({
         return [role, parseFloat(getComputedStyle(probe).fontSize)];
       })); probe.remove();
       const elements = [...document.querySelectorAll('body *')].filter(e => e.namespaceURI === 'http://www.w3.org/1999/xhtml' && [...e.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()));
-      // The NYU entry intentionally uses the requested 10:9:6 hierarchy at the shared subheading size.
-      const degreeRoles = { 'cv-degree-title': 10, 'cv-degree-university': 9, 'cv-degree-department': 6, 'cv-degree-concentration': 9 };
+      // Education intentionally uses the requested 10:9:6 hierarchy at the shared subheading size.
+      const degreeRoles = { 'cv-degree-title': 10, 'cv-degree-university': 9, 'cv-degree-department': 6, 'cv-degree-concentration': 9, 'cv-degree-detail': 9 };
       const degreeSizes = elements.filter(e => Object.keys(degreeRoles).some(role => e.classList.contains(role)))
         .map(e => ({ points: degreeRoles[Object.keys(degreeRoles).find(role => e.classList.contains(role))], size: parseFloat(getComputedStyle(e).fontSize) }));
       const sizes = [...new Set(elements.filter(e => !Object.keys(degreeRoles).some(role => e.classList.contains(role))).map(e => parseFloat(getComputedStyle(e).fontSize)))];
@@ -28,7 +28,7 @@ test('every page shares five text sizes and consistent semantic roles', async ({
       return { tokens, sizes, roles, degreeSizes };
     });
     for (const degree of result.degreeSizes) expect(degree.size).toBeCloseTo(result.tokens.subheading * degree.points / 10, 1);
-    if (file === 'cv.html') expect(result.degreeSizes).toHaveLength(4);
+    if (file === 'cv.html') expect(result.degreeSizes).toHaveLength(23);
     const allowed = Object.values(result.tokens);
     expect(result.sizes.filter(size => !allowed.some(v => Math.abs(v - size) < .02)), `${file}: sizes outside the shared scale`).toEqual([]);
     for (const { selector, size } of result.roles) {

@@ -65,7 +65,15 @@ test('reveals and native page changes preserve content and keyboard navigation',
   await expect(section).toHaveCSS('opacity', '1');
   await expect(section).not.toHaveClass(/reveal-pending/);
 
-  const about = page.locator('.profile-pages a[href="about.html"]');
+  // About lives in the header. Exercise the collapsed menu with the keyboard
+  // too, so this navigation check remains meaningful at mobile widths.
+  const menu = page.locator('.menu-toggle');
+  if (await menu.isVisible()) {
+    await menu.focus();
+    await menu.press('Enter');
+    await expect(menu).toHaveAttribute('aria-expanded', 'true');
+  }
+  const about = page.locator('.site-nav a[href="about.html"]');
   await about.scrollIntoViewIfNeeded();
   await about.focus();
   await expect(about).toBeFocused();

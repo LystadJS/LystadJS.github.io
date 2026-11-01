@@ -23,7 +23,9 @@ test('shared reading and control spacing stays consistent on every page', async 
       const personal = !!document.body.dataset.page;
       const heading = personal ? 24 : innerWidth <= 780 ? 32 : 48;
       add('h1:not(.masthead h1):not(.un-banner-copy h1)', 'marginBottom', card);
-      add('h3,h4,h5,h6', 'marginBottom', 16);
+      add('h3:not(.cv-degree-title),h4,h5,h6', 'marginBottom', 16);
+      add('#education .cv-degree-title,#education .cv-degree-university', 'marginBottom', 4);
+      add('#education .cv-degree-department', 'marginBottom', 0);
       add('main > p:not([class]),.hero-lede,.about-summary,.rp-summary > p', 'marginBottom', 16);
       add('.section-header,.essay-heading,.research-section-heading,.code-section-heading,.dm-header', 'marginBottom', heading);
       add('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=hidden]),select,textarea', 'paddingTop', 12);

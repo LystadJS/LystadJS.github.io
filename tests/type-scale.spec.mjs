@@ -18,11 +18,17 @@ test('every page shares five text sizes and consistent semantic roles', async ({
         return [role, parseFloat(getComputedStyle(probe).fontSize)];
       })); probe.remove();
       const elements = [...document.querySelectorAll('body *')].filter(e => e.namespaceURI === 'http://www.w3.org/1999/xhtml' && [...e.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()));
-      const sizes = [...new Set(elements.map(e => parseFloat(getComputedStyle(e).fontSize)))];
+      // The NYU entry intentionally uses the requested 10/9/6pt hierarchy.
+      const degreeRoles = { 'cv-degree-title': 10, 'cv-degree-university': 9, 'cv-degree-department': 6, 'cv-degree-concentration': 9 };
+      const degreeSizes = elements.filter(e => Object.keys(degreeRoles).some(role => e.classList.contains(role)))
+        .map(e => ({ points: degreeRoles[Object.keys(degreeRoles).find(role => e.classList.contains(role))], size: parseFloat(getComputedStyle(e).fontSize) }));
+      const sizes = [...new Set(elements.filter(e => !Object.keys(degreeRoles).some(role => e.classList.contains(role))).map(e => parseFloat(getComputedStyle(e).fontSize)))];
       // CV section labels retain their compact visual role while using semantic headings.
-      const roles = ['h1','h2:not(.cv-section-label)','.cv-section-label','h3','h4','h5','h6','button','input','select','textarea','[data-section-index]','.kicker','.page-index-card span','figcaption','.service-meta','.rp-figure-type'].flatMap(selector => [...document.querySelectorAll(selector)].map(e => ({ selector, size: parseFloat(getComputedStyle(e).fontSize) })));
-      return { tokens, sizes, roles };
+      const roles = ['h1','h2:not(.cv-section-label)','.cv-section-label','h3','h4','h5','h6','button','input','select','textarea','[data-section-index]','.kicker','.page-index-card span','figcaption','.service-meta','.rp-figure-type'].flatMap(selector => [...document.querySelectorAll(selector)].filter(e => !e.classList.contains('cv-degree-title')).map(e => ({ selector, size: parseFloat(getComputedStyle(e).fontSize) })));
+      return { tokens, sizes, roles, degreeSizes };
     });
+    for (const degree of result.degreeSizes) expect(degree.size).toBeCloseTo(degree.points * 96 / 72, 1);
+    if (file === 'cv.html') expect(result.degreeSizes).toHaveLength(4);
     const allowed = Object.values(result.tokens);
     expect(result.sizes.filter(size => !allowed.some(v => Math.abs(v - size) < .02)), `${file}: sizes outside the shared scale`).toEqual([]);
     for (const { selector, size } of result.roles) {

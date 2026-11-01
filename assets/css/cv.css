@@ -1639,3 +1639,16 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   .cv-section { display: block; }
   .cv-section-label { margin-bottom: 1rem; }
 }
+
+/* Requested point-size hierarchy for the NYU degree, on screen and in print.
+   Use the shared layer so these explicit roles override the global size reset. */
+@layer type-scale {
+  #education .cv-degree-title { font-size: 10pt !important; }
+  #education .cv-degree-university,
+  #education .cv-degree-concentration { font-size: 9pt !important; }
+  #education .cv-degree-department { font-size: 6pt !important; }
+}
+#education .cv-degree-title,
+#education .cv-degree-university,
+#education .cv-degree-concentration { font-family: var(--sans); line-height: 1.4; }
+#education .cv-degree-department { font-family: var(--mono); line-height: 1.5; }

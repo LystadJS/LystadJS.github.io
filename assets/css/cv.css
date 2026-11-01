@@ -1655,27 +1655,38 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education .cv-degree-concentration { font-family: var(--sans); line-height: 1.4; }
 #education .cv-degree-department { font-family: var(--mono); line-height: 1.5; }
 
-/* A compact, degree-first timeline. Each marker belongs to one qualification. */
+/* One shared timeline stays solid between qualifications and fades only below
+   the final entry. The date rail reserves room without squeezing long years. */
+#education .cv-education-timeline {
+  --education-date-width: 4.5rem;
+  position: relative;
+  padding-bottom: 24px;
+}
+#education .cv-education-timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--education-date-width) + 11px);
+  top: 12px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(150,83,107,.65) calc(100% - 24px), transparent);
+  pointer-events: none;
+}
 #education .cv-education-entry {
-  padding: 0 0 24px 24px;
+  display: grid;
+  grid-template-columns: var(--education-date-width) minmax(0, 1fr);
+  column-gap: 24px;
+  padding: 0 0 24px;
   border: 0;
 }
 #education .cv-education-entry + .cv-education-entry { padding-top: 0; }
 #education .cv-education-entry:last-child { padding-bottom: 0; }
-#education .cv-education-entry::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 12px;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(150,83,107,.65), rgba(74,53,71,.12));
-  pointer-events: none;
-}
+#education .cv-education-date { align-self: start; padding-top: 4px; }
+#education .cv-education-date span { white-space: nowrap; }
 #education .cv-education-entry::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: calc(var(--education-date-width) + 8px);
   top: 10px;
   width: 7px;
   height: 7px;
@@ -1698,5 +1709,11 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 }
 @media print {
   #education .cv-education-entry { break-inside: avoid; }
-  #education .cv-education-entry::after { background: linear-gradient(#999, #eee); }
+  #education .cv-education-timeline::before { background: linear-gradient(to bottom, #999 calc(100% - 24px), transparent); }
+}
+
+@media (max-width: 700px) {
+  #education .cv-education-timeline { --education-date-width: 3.5rem; }
+  #education .cv-org-header { grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; }
+  #education .cv-org-logo { width: 40px; height: 40px; }
 }

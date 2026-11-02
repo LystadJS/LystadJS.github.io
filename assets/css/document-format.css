@@ -312,3 +312,40 @@ body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
   .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) :is(span, em, strong, i, a) {
   color: inherit !important;
 }
+
+/* Bounded disclosure: one readable column, independent of the timeline rail. */
+body[data-page="cv"] #selected-projects .cv-disclosure {
+  display: block;
+  box-sizing: border-box;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--line-bright, #49333e);
+  border-left: 3px solid var(--document-accent);
+  background: rgba(191,49,82,.055);
+}
+body[data-page] main :is(.document-copy, .rp-summary p, .cv-bullets li) {
+  line-height: 1.55;
+}
+body[data-page] main :is(h3.document-title, h4.document-title) {
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+body[data-page] main .document-section-title { line-height: 1.12; }
+body[data-page="cv"] .cv-toc a { padding-block: .35rem; }
+@layer type-scale {
+  @media screen {
+    body[data-page] main h3.document-title { font-size: var(--type-subheading) !important; }
+    body[data-page] main h4.document-title { font-size: var(--type-minor-heading) !important; }
+    body[data-page="cv"] .cv-document-disciplines { font-size: var(--type-meta) !important; }
+  }
+}
+@layer spacing {
+  body[data-page="cv"] #selected-projects .cv-disclosure p { margin-block: 0 !important; }
+}
+@media print {
+  body[data-page="cv"] #selected-projects .cv-disclosure {
+    background: transparent;
+    border-color: #aaa;
+    border-left-color: var(--document-accent);
+  }
+}

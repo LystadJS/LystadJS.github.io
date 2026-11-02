@@ -2,11 +2,12 @@
 @layer type-scale {
  @media screen {
   :root {
-    --type-body: var(--reading, 1rem);
-    --type-meta: calc(var(--type-body) * .75);
+    --type-body: clamp(1rem, .96rem + .18vw, 1.0625rem);
+    --type-meta: .875rem;
+    --type-minor-heading: calc(var(--type-body) * 1.125);
     --type-subheading: calc(var(--type-body) * 1.25);
-    --type-section: clamp(calc(var(--type-body) * 2), 2.777778vw, calc(var(--type-body) * 2.5));
-    --type-display: clamp(calc(var(--type-body) * 3), 4.444444vw, calc(var(--type-body) * 4));
+    --type-section: clamp(calc(var(--type-body) * 2), 2.4vw, calc(var(--type-body) * 2.25));
+    --type-display: clamp(calc(var(--type-body) * 2.5), 4vw, calc(var(--type-body) * 3.5));
   }
 
   /* Inherit through spans/links rather than creating smaller nested variants.

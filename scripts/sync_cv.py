@@ -25,8 +25,8 @@ def citation(s):
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
     return '<p class="cv-source-citation document-muted">'+s+'</p>'
 def render(document,data):
-    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-markers',document)
-    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-markers',document)
+    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-readability',document)
+    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-readability',document)
     logos={m[1]:m[0] for m in re.finditer(r'<div class="cv-org-logo"[^>]*data-logo="([^"]+)"[^>]*>[\s\S]*?</div>',document)}
     def attrs(g,i):
         record=data[g][i]
@@ -69,7 +69,7 @@ def render(document,data):
     if not start:raise ValueError('Missing CV sections')
     end=document.index('\n    </article>\n  </div>\n</main>',start.start())
     document=document[:start.start()]+'\n\n      '.join(blocks)+'\n'+document[end:]
-    links='\n'.join('          <a href="#'+sid+'"'+(' class="active"' if i==0 else '')+'>'+esc(title)+'</a>' for i,(sid,title,_) in enumerate(SECTIONS))
+    links='          <a href="#profile" class="active">Overview</a>\n'+'\n'.join('          <a href="#'+sid+'"'+'>'+esc(title)+'</a>' for i,(sid,title,_) in enumerate(SECTIONS))
     return re.sub(r'(<nav class="cv-toc" aria-label="CV sections">)[\s\S]*?(</nav>)',lambda m:m[1]+'\n'+links+'\n        '+m[2],document)
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--check',action='store_true');args=parser.parse_args()

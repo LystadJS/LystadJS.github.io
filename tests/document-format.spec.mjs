@@ -48,3 +48,24 @@ test('shared headings, list colors, and compact CV flow', async ({ page }, info)
   await page.locator('#education').screenshot({path:info.outputPath('education-format.png')});
   await page.locator('#academic-experience').screenshot({path:info.outputPath('academic-format.png')});
 });
+
+test('ongoing timeline markers are filled and eyebrows stay red and compact',async({page})=>{
+  await page.goto('/cv.html');
+  const markers=await page.locator('.cv-timeline-entry').evaluateAll(items=>items.map(e=>{
+    const s=getComputedStyle(e,'::before');
+    return {current:e.dataset.current,border:s.borderTopColor,fill:s.backgroundColor,shadow:s.boxShadow};
+  }));
+  expect(markers.filter(m=>m.current==='true')).toHaveLength(11);
+  for(const m of markers){
+    expect(m.border).toBe('rgb(191, 49, 82)');
+    expect(m.fill).toBe(m.current==='true'?'rgb(191, 49, 82)':'rgb(7, 7, 9)');
+    expect(m.shadow).toBe('none');
+  }
+  const eyebrows=await page.locator('.cv-entry-kicker').evaluateAll(items=>items.map(e=>{
+    const s=getComputedStyle(e);return {color:s.color,bottom:s.marginBottom};
+  }));
+  expect(eyebrows.length).toBeGreaterThan(0);
+  expect(eyebrows.every(e=>e.color==='rgb(191, 49, 82)'&&e.bottom==='4px')).toBe(true);
+  await page.goto('/research.html');
+  expect(await page.locator('.research-timeline-entry[data-current="true"]').count()).toBe(2);
+});

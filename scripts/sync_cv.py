@@ -25,10 +25,13 @@ def citation(s):
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
     return '<p class="cv-source-citation document-muted">'+s+'</p>'
 def render(document,data):
-    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-source-sync2',document)
-    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-source-sync2',document)
+    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-markers',document)
+    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-markers',document)
     logos={m[1]:m[0] for m in re.finditer(r'<div class="cv-org-logo"[^>]*data-logo="([^"]+)"[^>]*>[\s\S]*?</div>',document)}
-    def attrs(g,i):return ' data-cv-group="'+g+'" data-cv-index="'+str(i)+'"'
+    def attrs(g,i):
+        record=data[g][i]
+        current=record.get('current',False) or bool(re.search(r'\b(?:Present|In Progress|In Development)\b',record.get('date',''),re.I))
+        return ' data-cv-group="'+g+'" data-cv-index="'+str(i)+'" data-current="'+str(current).lower()+'"'
     def standard(r,g,i):
         cls='cv-entry cv-timeline-entry'+(' cv-role-timeline-entry' if g=='military' else '')
         c=p(r['label'],'cv-entry-kicker document-muted') if r.get('label') else ''

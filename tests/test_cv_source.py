@@ -13,7 +13,7 @@ class Records(HTMLParser):
         a=dict(attrs)
         if tag=='article' and 'data-cv-group' in a:
             self.current=(a['data-cv-group'],int(a['data-cv-index']))
-            self.records[self.current]={'text':[],'bullets':[]}
+            self.records[self.current]={'text':[],'bullets':[],'current':a.get('data-current')}
         if tag=='div' and self.current is not None and 'cv-timeline-date' in a.get('class','').split():
             self.records[self.current]['date_label']=a.get('aria-label','')
         if tag=='li' and self.current is not None:self.bullet=[]
@@ -41,6 +41,12 @@ class PhysicalCV(unittest.TestCase):
                 text=''.join(rendered['text'])
                 for key in ['title','school','organization','subtitle','concentration','citation','label']:
                     if record.get(key):self.assertIn(record[key],text,(group,i,key))
+    def test_ongoing_entries_are_distinct_from_completed_entries(self):
+        parsed=Records(self.page)
+        expected={('education',0),('scholarly',0),('scholarly',1),('scholarly',2),('applied',0),('applied',1),('technical',0),('technical',1),('academic',0),('professional',0),('military',0)}
+        actual={key for key,value in parsed.records.items() if value['current']=='true'}
+        self.assertEqual(actual,expected)
+        self.assertTrue(all(value['current'] in ('true','false') for value in parsed.records.values()))
     def test_regeneration_is_idempotent(self):
         self.assertEqual(sync.render(self.page,self.data),self.page)
     def test_physical_titles_and_removed_website_only_content(self):

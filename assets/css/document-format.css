@@ -264,3 +264,51 @@ body[data-page] main :is(.cv-section, .section, .essay-section, .research-sectio
 }
 body[data-page="cv"] .cv-document-header { border-bottom: 0; }
 
+
+/* All timeline markers share the same accent; ongoing entries alone are filled. */
+#education .cv-education-entry::before,
+body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)::before {
+  border-color: var(--document-accent);
+  background: var(--bg, #fff);
+  box-shadow: none;
+}
+#education .cv-education-entry[data-current="true"]::before,
+body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)[data-current="true"]::before {
+  background: var(--document-accent);
+}
+@media print {
+  #education .cv-education-entry::before,
+  body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)::before {
+    background: white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  #education .cv-education-entry[data-current="true"]::before,
+  body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)[data-current="true"]::before {
+    background: var(--document-accent);
+  }
+}
+/* Keep the eyebrow attached to its title; date/status rails retain their gray. */
+body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
+  .research-kicker, .research-eyebrow, .project-kicker, .rpm-detail-kicker,
+  .dm-status, .empirical-panel-kicker, .rp-kicker, .about-direction-kicker,
+  .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) {
+  color: var(--document-accent) !important;
+  line-height: 1.3;
+}
+@layer spacing {
+  body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
+    .research-kicker, .research-eyebrow, .project-kicker, .rpm-detail-kicker,
+    .dm-status, .empirical-panel-kicker, .rp-kicker, .about-direction-kicker,
+  .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) {
+    margin-block: 0 4px !important;
+    padding-block: 0;
+  }
+}
+
+body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
+  .research-kicker, .research-eyebrow, .project-kicker, .rpm-detail-kicker,
+  .dm-status, .empirical-panel-kicker, .rp-kicker, .about-direction-kicker,
+  .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) :is(span, em, strong, i, a) {
+  color: inherit !important;
+}

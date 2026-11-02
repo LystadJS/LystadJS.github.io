@@ -160,7 +160,7 @@ body[data-page] :is(.cv-timeline-date, .document-timeline-date, .cv-timeline .cv
 body[data-page] .cv-timeline-date > span { white-space: normal; }
 body[data-page] .cv-timeline .cv-entry-rail::after,
 body[data-page] .cv-timeline .cv-entry-marker { display: none; }
-body[data-page] .cv-timeline .cv-entry-type { padding-right: 0; }
+body[data-page] .cv-timeline .cv-entry-type { padding: 0; }
 body[data-page] .cv-timeline-entry > :is(.cv-org-main, .cv-entry-content, .cv-timeline-role-body),
 body[data-page] .document-timeline-entry > .rp-grid { grid-column: 2; min-width: 0; }
 body[data-page="cv"] .cv-timeline .cv-timeline-role-body {
@@ -246,6 +246,7 @@ body[data-page="cv"] .cv-timeline .cv-entry-rail .cv-side-button {
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
+  margin: .65rem 0 0;
   padding-inline: .2rem;
 }
 

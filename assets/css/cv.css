@@ -70,33 +70,20 @@ body[data-page="cv"] main {
   top: 96px;
   align-self: start;
   height: max-content;
-  max-height: calc(100vh - 120px);
+  max-height: none;
 }
 
 
 .cv-sidebar-inner {
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(146,112,172,.35) transparent;
+  max-height: none;
+  overflow: visible;
 }
 
 
-.cv-sidebar-inner::-webkit-scrollbar {
-  width: 5px;
-}
 
 
-.cv-sidebar-inner::-webkit-scrollbar-thumb {
-  background: rgba(146,112,172,.30);
-  border-radius: 999px;
-}
 
 
-.cv-sidebar-inner::-webkit-scrollbar-track {
-  background: transparent;
-}
 
 
 .cv-sidebar h2 {
@@ -178,7 +165,7 @@ body[data-page="cv"] main {
   gap: 2rem;
   align-items: end;
   padding: 0 0 3rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
 }
 
 
@@ -209,7 +196,7 @@ body[data-page="cv"] main {
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding: 3.7rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
 }
 
 
@@ -1863,3 +1850,55 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 
 /* Only the Education markers receive the accent color. */
 #education .cv-bullets li::before { color: var(--crimson-bright); }
+
+/* The complete CV contents list fits without an internal scroll region. */
+.cv-sidebar { top: 80px; max-height: none; }
+.cv-sidebar-inner { max-height: none; overflow: visible; }
+.cv-toc { display: grid; border: 0; }
+.cv-toc a {
+  padding: .45rem .4rem .45rem 1rem;
+  border: 0;
+  font-family: var(--sans);
+  line-height: 1.3;
+  letter-spacing: 0;
+  white-space: normal;
+  min-width: 0;
+}
+.cv-sidebar-actions { gap: .25rem; margin-top: .65rem; }
+@layer type-scale {
+  body[data-page="cv"] .cv-toc a,
+  body[data-page="cv"] .cv-sidebar-actions a { font-size: var(--type-meta, .75rem) !important; }
+  body[data-page="cv"] .cv-source-citation { font-size: var(--type-meta, .75rem) !important; }
+}
+.cv-source-citation { margin-top: .5rem; line-height: 1.5; }
+.cv-repository-link { margin: .3rem 0; }
+.cv-repository-link a { color: var(--paper); text-decoration: underline; text-underline-offset: .2em; }
+.cv-training-awards { margin: 1rem 0 0 calc(4.5rem + 24px); }
+.cv-training-awards h4 { margin-top: 1rem; }
+.cv-military-identity { margin: 0 0 1rem calc(4.5rem + 24px); }
+#skills .cv-skill-domains { gap: 1.25rem; }
+#skills .cv-skill-domain { border: 0; padding: 0; }
+#selected-projects .cv-disclosure { display: block; padding: 0; border: 0; background: none; margin: 0 0 1rem; }
+@media (min-width: 901px) and (max-height: 600px) {
+  .cv-sidebar { top: 72px; }
+  .cv-toc a { padding-block: .3rem; }
+  .cv-sidebar-actions { margin-top: .4rem; gap: .15rem; }
+}
+@media (min-width: 901px) and (max-height: 450px) {
+  .cv-toc a { padding-block: .15rem; }
+}
+@media (max-width: 900px) {
+  .cv-sidebar { position: static; height: auto; max-height: none; }
+  .cv-sidebar-inner { max-height: none; overflow: visible; }
+  .cv-toc {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .35rem .6rem;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+  }
+  .cv-toc a { padding: .4rem; border: 0; }
+  .cv-sidebar-actions { gap: .6rem; }
+}
+

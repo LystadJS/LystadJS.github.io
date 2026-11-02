@@ -1,0 +1,401 @@
+{
+  "education": [
+    {
+      "date": "2025 – Present",
+      "title": "M.S., Applied Statistics and Computational Social Science",
+      "school": "New York University",
+      "concentration": "Concentration in Computational Methods",
+      "bullets": [],
+      "logo": "new-york-university"
+    },
+    {
+      "date": "2023 – 2025",
+      "title": "Non-Degree Program",
+      "school": "American Military University",
+      "bullets": [
+        "Coursework in Calculus, Linear Algebra, and Computer Science"
+      ],
+      "logo": "american-military-university"
+    },
+    {
+      "date": "2018 – 2022",
+      "title": "B.A., International Affairs",
+      "school": "Florida State University",
+      "concentration": "Concentration in Middle East Studies",
+      "bullets": [
+        "Certificate in U.S. Intelligence Studies"
+      ],
+      "logo": "florida-state-university"
+    },
+    {
+      "date": "2018 – 2022",
+      "title": "B.S., Sociology",
+      "school": "Florida State University",
+      "bullets": [],
+      "logo": "florida-state-university"
+    }
+  ],
+  "scholarly": [
+    {
+      "date": "In Progress",
+      "title": "“ Apocalyptic and Eschatological Speech as a Predictor of Violence by The Islamic State and its Associated Movement ”",
+      "label": "UNPUBLISHED WORK-IN-PROGRESS",
+      "bullets": [
+        "Investigates the relationship between increases in"
+      ],
+      "citation": "Lystad, J. S. (In Progress). “Apocalyptic and Eschatological Speech as a Predictor of Violence by The Islamic State and its Associated Movement"
+    },
+    {
+      "date": "In Progress",
+      "title": "“ The Caliphate’s Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq ”",
+      "label": "UNPUBLISHED WORK-IN-PROGRESS",
+      "bullets": [
+        "Investigates the relationship between ethnosectarian population composition and the geographic distribution of Islamic State insurgent violence in Iraq. The research examines how local demographic characteristics correspond to patterns of militant targeting, with an emphasis on spatial variation, systematic comparison, and the identification of potentially meaningful relationships between population composition and insurgent behavior."
+      ],
+      "citation": "Lystad, J. S. (In Progress). “The Caliphate’s Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq.”"
+    },
+    {
+      "date": "In Progress",
+      "title": "“ Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism ”",
+      "label": "UNPUBLISHED WORK-IN-PROGRESS",
+      "bullets": [
+        "Implemented missing data methods to address missingness in the Global Terrorism Database (GTD) and evaluate how incomplete observations may affect inferences about the lethality of suicide attacks associated with the Islamic State."
+      ],
+      "citation": "Lystad, J. S. (In Progress). “Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism”"
+    },
+    {
+      "date": "2022",
+      "title": "“ Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency: 1999 – 2019 ”",
+      "label": "PEER-REVIEWED · HONORS THESIS",
+      "bullets": [
+        "A longitudinal analysis of the Islamic State and its Associated Movement across two decades in more than 20 countries, investigating variation in attack and targeting behavior across time and geography, using attack data from the Global Terrorism Database (GTD) and identity behavior from official ISAM records."
+      ],
+      "citation": "Lystad, J. S. (2022). Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency: 1999 – 2019. [Honors thesis, Florida State University]. FSU DigiNole Repository. https://repository.lib.fsu.edu/islandora/object/fsu:802361."
+    },
+    {
+      "date": "2020",
+      "title": "“ The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa ”",
+      "label": "PEER-REVIEWED",
+      "bullets": [
+        "Investigated the relationship between climate-related environmental pressures and the conditions that facilitate terrorist network development across the MENA region. The researched outcome combined analysis of environmental change, political instability, and military organizational dynamics to examine potential pathways through which socioeconomic vulnerability and resource scarcity intersect with extremist activity."
+      ],
+      "citation": "Lystad, J. S. (2020). “The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa.” The Owl — Florida State University’s Undergraduate Research Journal, 10(1), 61–80. https://journals.flvc.org/owl/article/view/119038/129613."
+    }
+  ],
+  "applied": [
+    {
+      "date": "In Progress",
+      "title": "“ Detecting Emerging Threats to UN Peacekeepers from Latent Structure Discovery ”",
+      "label": "WHITE PAPER · U.S. MISSION TO THE UNITED NATIONS",
+      "bullets": [
+        "Using unsupervised learning methods, investigates whether latent patterns in multidimensional security data can help identify emerging threats to United Nations peacekeeping personnel. The research makes use of open-source data on peacekeeping activities and attack data to detect relationships and potential threat indicators that may be obscured in conventional descriptive analysis."
+      ],
+      "citation": "Lystad, J. S. (In Progress). Detecting Emerging Threats to UN Peacekeepers from Latent Structure Discovery [White Paper]. U.S. Mission to the United Nations."
+    },
+    {
+      "date": "In Progress",
+      "title": "“ Discovering Latent Data Patterns in UN General Assembly & Security Council Voting Behavior: 2000 - 2026 ”",
+      "label": "WHITE PAPER · U.S. MISSION TO THE UNITED NATIONS",
+      "bullets": [
+        "Using longitudinal analysis of United Nations General Assembly and Security Council voting records, investigates the underlying structure of diplomatic alignment across time. This project explores multivariate pattern discovery and dimension reduction to characterize similarities among states, identify potential voting blocs, and examine change in diplomatic relationships over time."
+      ],
+      "citation": "Lystad, J. S. (2026). Discovering Latent Data Patterns in UN General Assembly and Security Council Voting Behavior: 2000 – 2026. [White Paper]. U.S. Mission to the United Nations. Available upon request."
+    },
+    {
+      "date": "2026",
+      "title": "“ Emerging Trends in Global AI Regulation & AI Proliferation ”",
+      "label": "WHITE PAPER · U.S. MISSION TO THE UNITED NATIONS",
+      "bullets": [
+        "Using clustering and diffusion analysis, conducted a systematic assessment of international AI governance frameworks, focusing on the proliferation of advanced AI capabilities and how governments and multinational organizations reacted through regulatory measures. The analysis synthesizes policy developments, institutional approaches, and emerging risks of AI to assess governance gaps, competing regulatory strategies, and potential mechanisms for limiting the acquisition or misuse of high-risk AI capabilities."
+      ],
+      "citation": "Lystad, J. S. (2026). Emerging Trends in Global AI Regulation & AI Proliferation [White Paper]. U.S. Mission to the United Nations. Available upon request."
+    },
+    {
+      "date": "2024",
+      "title": "“ The 11th Airborne Division Operator’s Guide to Radio Communication Operations in the Arctic ”",
+      "label": "TECHNICAL HANDBOOK · U.S. DEPARTMENT OF DEFENSE",
+      "bullets": [
+        "Developed for Brigadier General Bruke, Deputy Commanding General of the 11th Airborne Division, established standards and TTPs for operating and maintaining tactical radio communications systems under Arctic environmental conditions. The handbook synthesized years of experience from operators, as well as data from experiments and technical equipment specifications to inform operators and improve the reliability of critical systems in austere environments."
+      ],
+      "citation": "Lystad, J. S. (2025). The 11th Airborne Division Operator’s Guide to Rdio Communication Operations in the Arctic. U.S. Department of Defense."
+    },
+    {
+      "date": "2024",
+      "title": "“ Assessing the Effects of Extreme Cold Weather on Communications Hardware Battery Life: BB-2590/U, BB-5590/U, RF-2525/U, and BT-70716BE ”",
+      "label": "TECHNICAL REPORT · U.S. DEPARTMENT OF DEFENSE",
+      "bullets": [
+        "Evaluated the effects of extreme cold on the operational performance and endurance of four military communications battery models. The assessment systematically compared battery life under differing Arctic operating conditions, in order to better inform leadership and operators on project battery life and the constraints that the environment imposes on equipment reliability and operational capabilities."
+      ],
+      "citation": "Lystad, J. S. (2024). Assessing the Effects of Extreme Cold Weather on Communications Hardware Battery Life: BB-2590/U, BB-5590/U, RF-2525/U, and BT-70716BE. U.S. Department of Defense."
+    },
+    {
+      "date": "2024",
+      "title": "“ Adapting Radio-Telephone Operations for Arctic and Extreme Cold Weather Environments ”",
+      "label": "TECHNICAL REPORT · U.S. DEPARTMENT OF DEFENSE",
+      "bullets": [
+        "Outlined the technical and operational challenges of maintaining reliable communications in Arctic environments, where extreme temperatures and environmental exposure degrade system performance. The report evaluates communications procedures and equipment limitations to develop operational adaptations grounded in environmental constraints."
+      ],
+      "citation": "Lystad, J. S. (2024). Adapting Radio-Telephone Operations for Arctic and Extreme Cold Weather Environments. U.S. Department of Defense."
+    }
+  ],
+  "disclosure": "Selected projects are unclassified, open-source, and free of sensitive, restricted, or non-public operational data. Data and manuscripts are available upon request.",
+  "technical": [
+    {
+      "date": "In Development",
+      "title": "driftmapR",
+      "label": "R PACKAGE",
+      "bullets": [
+        "Develops statistical methods for comparing repeated low-dimensional representations of complex datasets, distinguishing changes in coordinate position from meaningful changes in underlying data structure. The package emphasizes uncertainty quantification, structural comparability, and the methodological reliability of longitudinal analyses using dimension-reduction techniques."
+      ],
+      "repository": "Repository ↗",
+      "repository_url": "https://github.com/LystadJS/draftmapR"
+    },
+    {
+      "date": "In Development",
+      "title": "‘transcripts.un.org’ Latent Data Discovery Software",
+      "label": "R · PYTHON · JAVASCRIPT",
+      "bullets": [
+        "Develops an integrated computational research environment for collecting, organizing, analyzing, and summarizing United Nations transcripts through source-linked document review, cluster analysis, and dimension reduction techniques. The software incorporates stability diagnostics and traceable source documentation to support reproducible exploratory analysis."
+      ],
+      "repository": "Repository ↗",
+      "repository_url": "https://github.com/LystadJS/UNGA81-Transcript-Agent"
+    }
+  ],
+  "presentations": [
+    {
+      "date": "2021",
+      "title": "“ The Tactical Evolution of the Islamic State in Iraq and the Levant ”",
+      "subtitle": "2021 National Consortium for the Study of Terrorism and Responses to Terrorism (START) Annual Conference",
+      "bullets": [
+        "Outlined the"
+      ],
+      "citation": "Lystad, J. S (2021). The Tactical Evolution of the Islamic State in Iraq and the Levant [Paper Presentation]. 2021 National Consortium for the Study of Terrorism and Responses to Terrorism (START) Research Conference, Online."
+    },
+    {
+      "date": "2020",
+      "title": "“ On the Rationality Behind the Development of Terrorist Ideologies ”",
+      "subtitle": "2020 Florida State University Freedom and (In)Equality Symposium",
+      "bullets": [
+        "Outlined the"
+      ],
+      "citation": "Lystad, J. S., Kelsay, J., & Moret, R. (2020). On the Rationality Behind the Development of Terrorist Ideologies [Panel Presentation]. 2020 Florida State University Freedom and (In)Equality Symposium, Tallahassee, FL"
+    },
+    {
+      "date": "2019",
+      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden ”",
+      "subtitle": "2019 Florida State University Undergraduate Research Symposium",
+      "bullets": [
+        "O"
+      ],
+      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Florida State University Undergraduate Research Symposium, Tallahassee, FL"
+    },
+    {
+      "date": "2019",
+      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden ”",
+      "subtitle": "2019 Florida Undergraduate Research Conference",
+      "bullets": [
+        "Outlined the"
+      ],
+      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Florida Undergraduate Research Conference, Jacksonville, FL"
+    }
+  ],
+  "academic": [
+    {
+      "date": "Fall 2026 – Present",
+      "title": "Adjunct Instructor",
+      "school": "New York University",
+      "bullets": [
+        "APSTA-UE 1085: Basic Statistics I"
+      ],
+      "logo": "new-york-university"
+    }
+  ],
+  "professional": [
+    {
+      "date": "Jun 2026 – Present",
+      "organization": "U.S. Mission to the United Nations",
+      "subtitle": "U.S. Department of State",
+      "title": "Military Attaché",
+      "bullets": [
+        "Spearheaded an interagency task force on AI nonproliferation, developing policy options for U.S. Ambassadors Mike Waltz and Dan Negrea to constrain rogue states, violent non-state actors, and other malicious entities from acquiring, developing, or deploying AI capabilities that could enable weapons of mass destruction or automated lethal systems.",
+        "Develop and test experimental data science and statistical workflows in Palantir Foundry, Proving Ground, and Funhouse, integrating large, complex datasets to support quantitative analysis, modeling, and evidence-based assessment of emerging technology, international governance, and U.S. strategic policy questions.",
+        "Helped lead U.S. engagement on the UN Security Council’s “Food Under Fire” agenda, representing U.S. policy positions and delivering quantitative, data-driven analysis to support senior-level deliberations on conflict-driven food insecurity, humanitarian access, and civilian protection.",
+        "Applied computational statistics, machine learning, and advanced quantitative methods to translate complex data into actionable analysis for U.S. negotiators, diplomats, and policymakers, informing courses of action to advance U.S. Mission objectives across the multilateral system."
+      ],
+      "logo": "state-department"
+    },
+    {
+      "date": "May 2021 – Feb 2022",
+      "organization": "National Consortium for the Study of Terrorism and Responses to Terrorism (START)",
+      "subtitle": "University of Maryland · U.S. Department of Homeland Security",
+      "title": "Counterterrorism Researcher",
+      "bullets": [
+        "Conducted systematic open-source research on terrorist and extremist incidents, organizations, weapons, tactics, targets, and operational outcomes.",
+        "Collected, coded, validated, and synthesized structured data to support comparative analysis of terrorism, targeted violence, and emerging security threats.",
+        "Analyzed patterns in weapon selection, tactical adaptation, ideology, geography, organizational behavior, and attack outcomes across incidents and actors.",
+        "Applied consistent research methodologies and coding standards to complex, incomplete, and sometimes conflicting open-source information, supporting reliable longitudinal and cross-case analysis.",
+        "Contributed to interdisciplinary research examining how violent organizations adapt to changing political, technological, and security environments.",
+        "Produced research and analytical outputs that strengthened experience in open-source intelligence, quantitative security analysis, structured data development, and evidence-based assessment of international security challenges."
+      ],
+      "logo": "start"
+    },
+    {
+      "date": "Sep 2018 – May 2019",
+      "organization": "Florida State University",
+      "subtitle": "Department of Religion",
+      "title": "Research Assistant",
+      "bullets": [
+        "Supported faculty research on how ideology, institutions, and political movements shape efforts to produce large-scale political and institutional change under the guidance of Dr. John Kelsay.",
+        "Conducted comparative historical research examining how religious and ideological frameworks influenced political mobilization, organizational strategy, and political violence across different national and international contexts.",
+        "Analyzed the Irish Republican Brotherhood and the 1916 Easter Rising as a case study in the interaction among political ideology, religious identity, nationalism, and institutional change.",
+        "Researched al-Qaeda and Osama bin Laden as a comparative case examining how ideological narratives, transnational networks, and political grievances can shape non-state organizations and international security challenges.",
+        "Synthesized primary and secondary sources into structured research findings, developing an early foundation in comparative political analysis, international affairs, and policy-relevant research."
+      ],
+      "logo": "florida-state-university"
+    },
+    {
+      "date": "Aug 2018 – Nov 2021",
+      "organization": "Various Publications",
+      "subtitle": "",
+      "title": "Freelance Journalist",
+      "bullets": [
+        "Reported and wrote on public affairs, human rights, social issues, politics, community concerns, and international developments for a range of publications and audiences.",
+        "Conducted independent research using interviews, public records, open-source materials, government documents, and media reporting to investigate complex or sensitive topics.",
+        "Used Freedom of Information Act (FOIA) and other public-records processes to request, obtain, and analyze government records in support of reporting and fact-finding.",
+        "Covered issues involving vulnerable communities, institutional accountability, public policy, conflict, and social change, adapting research methods to different subject areas and reporting environments.",
+        "Developed and maintained sources, verified competing claims, and synthesized incomplete or conflicting information into clear, evidence-based reporting."
+      ],
+      "logo": "various-publications"
+    },
+    {
+      "date": "Feb 2020 – Aug 2020",
+      "organization": "Arabia Policy",
+      "subtitle": "",
+      "title": "Journalist",
+      "bullets": [
+        "Reported on conflict, security, and humanitarian developments across the Middle East and North Africa, with a focus on non-state armed groups, proxy conflict, and regional instability.",
+        "Conducted remote open-source research on ISIS activity, Houthi operations in Yemen, foreign mercenary involvement, and other conflict dynamics affecting regional security.",
+        "Monitored developments across fragmented and rapidly changing information environments, synthesizing reporting from local, regional, and international sources to assess emerging trends.",
+        "Analyzed the interaction among armed groups, state actors, foreign intervention, and humanitarian conditions in Yemen and other conflict-affected areas."
+      ],
+      "logo": "arabia-policy"
+    },
+    {
+      "date": "May 2019 – Aug 2019",
+      "organization": "Morocco World News",
+      "subtitle": "",
+      "title": "Journalist",
+      "bullets": [
+        "Reported on political, security, and humanitarian developments across North Africa, with a primary focus on Morocco, Algeria, the Libyan Civil War, and regional migration.",
+        "Conducted investigative and open-source research on reported arms deals and weapons transfers associated with the Libyan conflict, tracking actors, transactions, and regional security implications.",
+        "Reported directly on migrant and refugee communities in northern Morocco, developing sources and gathering first-hand information in politically sensitive environments subject to heightened official scrutiny.",
+        "Conducted source outreach, interviews, and field reporting across linguistic and cultural boundaries, using French and Arabic to support reporting and information collection."
+      ],
+      "logo": "morocco-world-news"
+    }
+  ],
+  "military": [
+    {
+      "title": "Officer Commissioning Candidate",
+      "milestones": [
+        "Lieutenant",
+        "May 2027",
+        "(Expected)"
+      ],
+      "bullets": [
+        "Integrated prior active-duty enlisted experience into officer development, peer mentorship, and practical problem-solving during team-based exercises.",
+        "Received extensive training through a structured leadership program emphasizing decision-making, planning, ethics, and team performance under time constraints and stressful conditions."
+      ]
+    },
+    {
+      "title": "Infantry Company Communications Chief",
+      "milestones": [
+        "Sergeant",
+        "Dec. 2024"
+      ],
+      "bullets": [
+        "Directed company-level tactical communications and served as the Commander’s primary radio-telephone operator, maintaining reliable command-and-control connectivity for senior leaders during operations.",
+        "Designed and implemented new tactical communications Standard Operating Procedures that improved communications reliability and interoperability across mortar, scout, sniper, medic, and headquarters elements during field and contingency operations.",
+        "Accounted for, maintained, and safeguarded more than $75 million in sensitive communications and mission-essential equipment, sustaining full accountability and operational readiness with no loss or security incidents.",
+        "Planned, configured, and troubleshot tactical communications networks across multiple subordinate elements, integrating radio systems, communications security procedures, and command-post capabilities to enable continuous information flow between battalion leadership and dispersed maneuver units."
+      ]
+    },
+    {
+      "title": "Infantry Squad Leader",
+      "milestones": [],
+      "bullets": [
+        "Led an Airborne Infantry squad in a rapid-response battalion, maintaining personnel, equipment, and operational readiness for worldwide combat and contingency deployment within 18 hours of notification.",
+        "Built and led the 11th Airborne Division’s highest-rated Indirect Fire Infantry Squad, driving standards in tactical proficiency, discipline, physical readiness, and team development that earned selection to represent the division at the 2024 International Best Mortar Competition.",
+        "Trained, mentored, and developed more than 25 Soldiers in tactical fundamentals, leadership, and professional development, preparing personnel for advanced military schools, increased responsibility, and follow-on leadership positions."
+      ]
+    },
+    {
+      "title": "Indirect Fire Infantryman",
+      "milestones": [
+        "Specialist",
+        "Apr. 2022",
+        "Private",
+        "Nov. 2021"
+      ],
+      "bullets": [
+        "Selected for and completed advanced infantry and cold-weather training, including Airborne School, the Cold Weather Leadership Course, Military Mountaineering Course, Infantry Mortar Leader Course, and Expert Infantryman Badge qualification, developing specialized expertise in airborne, alpine, arctic, and indirect-fire operations.",
+        "Contributed to the interagency Arctic Working Group, helping develop and evaluate solutions for employing indirect-fire systems in extreme cold-weather environments and improving operational effectiveness in Arctic conditions."
+      ]
+    }
+  ],
+  "badges": [
+    "Arctic Individual Skill Tab",
+    "Expert Infantryman Badge",
+    "Military Parachutist Badge & Airborne Individual Skill Tab",
+    "Military Mountaineering Badge"
+  ],
+  "awards": [
+    "Army Commendation Medal (2)",
+    "Army Achievement Medal (2)",
+    "Good Conduct Medal (1)",
+    "National Defense Service Medal (1)",
+    "Global War on Terrorism Service Medal (1)",
+    "Army Service Ribbon (1)"
+  ],
+  "skills": {
+    "Programming": [
+      "R",
+      "Python",
+      "SQL",
+      "Stan"
+    ],
+    "Software": [
+      "QGIS & ArcGIS",
+      "Microsoft Azure & Microsoft Office Suite",
+      "Large Language Models & Agentic Artificial Intelligence"
+    ],
+    "Methods": [
+      "Supervised & Unsupervised Learning",
+      "Bayesian and Causal Inference",
+      "Multilevel Models, Nested Data & Longitudinal Data",
+      "Missing- & Messy data Methods",
+      "Dimension Reduction",
+      "Spatial and Network Analysis",
+      "Cluster Analysis"
+    ],
+    "Languages": [
+      "English (Native)",
+      "Modern Standard Arabic (Advanced)",
+      "Levantine Arabic (Advanced)",
+      "French (Intermediate)"
+    ],
+    "Certifications": [
+      "Nationally Registered Emergency Medical Responder",
+      "Level 1 Combat Lifesaver",
+      "Level 1 Avalanche",
+      "Avalanche Search & Rescue"
+    ]
+  },
+  "_source": {
+    "filename": "Lystad, John - Curriculum Vitae(2).docx",
+    "notes": [
+      "Line wraps and superscript spacing normalized; original wording, unfinished text, and citation inconsistencies retained.",
+      "Military year ticks are clipped in the source preview. Only readable rank/date milestones are transcribed; previous website role date ranges are not carried forward."
+    ]
+  }
+}

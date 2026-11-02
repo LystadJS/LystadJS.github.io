@@ -1,0 +1,56 @@
+"""Check physical-CV transcription against the rendered website CV."""
+import importlib.util,json,re,unittest
+from pathlib import Path
+from html.parser import HTMLParser
+ROOT=Path(__file__).resolve().parents[1]
+spec=importlib.util.spec_from_file_location('sync_cv',ROOT/'scripts/sync_cv.py')
+sync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync)
+class Records(HTMLParser):
+    def __init__(self,text):
+        super().__init__(convert_charrefs=True)
+        self.records={};self.current=None;self.bullet=None;self.feed(text)
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if tag=='article' and 'data-cv-group' in a:
+            self.current=(a['data-cv-group'],int(a['data-cv-index']))
+            self.records[self.current]={'text':[],'bullets':[]}
+        if tag=='div' and self.current is not None and 'cv-timeline-date' in a.get('class','').split():
+            self.records[self.current]['date_label']=a.get('aria-label','')
+        if tag=='li' and self.current is not None:self.bullet=[]
+    def handle_data(self,data):
+        if self.current is not None:self.records[self.current]['text'].append(data)
+        if self.bullet is not None:self.bullet.append(data)
+    def handle_endtag(self,tag):
+        if tag=='li' and self.bullet is not None:
+            self.records[self.current]['bullets'].append(''.join(self.bullet));self.bullet=None
+        if tag=='article':self.current=None
+class PhysicalCV(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data=json.loads((ROOT/'assets/data/cv-source.json').read_text(encoding='utf-8'))
+        cls.page=(ROOT/'cv.html').read_text(encoding='utf-8')
+    def test_all_records_and_bullets_match_source(self):
+        parsed=Records(self.page)
+        groups=['education','scholarly','applied','technical','presentations','academic','professional','military']
+        self.assertEqual(len(parsed.records),32)
+        for group in groups:
+            for i,record in enumerate(self.data[group]):
+                rendered=parsed.records[(group,i)]
+                self.assertEqual(rendered['bullets'],record.get('bullets',[]),(group,i))
+                self.assertEqual(rendered['date_label'],record.get('date',' '.join(record.get('milestones',[]))),(group,i,'date'))
+                text=''.join(rendered['text'])
+                for key in ['title','school','organization','subtitle','concentration','citation','label']:
+                    if record.get(key):self.assertIn(record[key],text,(group,i,key))
+    def test_regeneration_is_idempotent(self):
+        self.assertEqual(sync.render(self.page,self.data),self.page)
+    def test_physical_titles_and_removed_website_only_content(self):
+        self.assertIn('Military Attaché',self.page)
+        self.assertIn('Adjunct Instructor',self.page)
+        self.assertIn('APSTA-UE 1085: Basic Statistics I',self.page)
+        self.assertIn('French (Intermediate)',self.page)
+        for old in ['GPA:','Diplomatic-Military Advisor','Graduate Employee Adjunct','id="overview"','id="volunteering"']:
+            self.assertNotIn(old,self.page)
+    def test_source_draft_fragments_are_preserved(self):
+        self.assertEqual(self.data['scholarly'][0]['bullets'],['Investigates the relationship between increases in'])
+        self.assertEqual([r['bullets'][0] for r in self.data['presentations']],['Outlined the','Outlined the','O','Outlined the'])
+if __name__=='__main__':unittest.main()

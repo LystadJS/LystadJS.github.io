@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""Render the website CV from the transcribed physical CV; --check never writes."""
+import argparse,html,json,re
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+SECTIONS=[
+ ('education','Education','education'),('research-portfolio','Scholarly Work & Publications','scholarly'),
+ ('selected-projects','Applied Research & White Papers','applied'),('technical-work','Technical Development & Software','technical'),
+ ('presentations','Presentations','presentations'),('academic-experience','Academic Appointments','academic'),
+ ('professional-work','Professional Experience','professional'),('military-service','Military Service','military'),
+ ('skills','Technical & Computational Skills','skills')]
+def esc(s):return html.escape(s,quote=True)
+def p(s,cls='document-muted'):return '<p class="'+cls+'">'+esc(s)+'</p>'
+def bullets(values):return '<ul class="cv-bullets document-list">'+''.join('<li>'+esc(v)+'</li>' for v in values)+'</ul>' if values else ''
+def rail(r,education=False):
+    cls='cv-role-meta cv-education-date cv-timeline-date' if education else 'cv-entry-rail cv-timeline-date'
+    parts=r.get('milestones')
+    if parts is None:
+        parts=r['date'].split(' – ',1)
+        if len(parts)==2:parts[1]='– '+parts[1]
+    label=r.get('date',' '.join(parts))
+    return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+''.join('<span>'+esc(v)+'</span>' for v in parts)+'</div>'
+def citation(s):
+    s=esc(s)
+    s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
+    return '<p class="cv-source-citation document-muted">'+s+'</p>'
+def render(document,data):
+    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-source-sync',document)
+    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-source-sync',document)
+    logos={m[1]:m[0] for m in re.finditer(r'<div class="cv-org-logo"[^>]*data-logo="([^"]+)"[^>]*>[\s\S]*?</div>',document)}
+    def attrs(g,i):return ' data-cv-group="'+g+'" data-cv-index="'+str(i)+'"'
+    def standard(r,g,i):
+        cls='cv-entry cv-timeline-entry'+(' cv-role-timeline-entry' if g=='military' else '')
+        c=p(r['label'],'cv-entry-kicker document-muted') if r.get('label') else ''
+        level='h4' if g=='military' else 'h3'
+        c+='<'+level+' class="document-title">'+esc(r['title'])+'</'+level+'>'
+        if r.get('subtitle'):c+=p(r['subtitle'])
+        if r.get('repository'):c+='<p class="cv-repository-link"><a href="'+esc(r['repository_url'])+'">'+esc(r['repository'])+'</a></p>'
+        c+=bullets(r.get('bullets',[]))
+        if r.get('citation'):c+=citation(r['citation'])
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r)+'<div class="cv-entry-content">'+c+'</div></article>'
+    def institution(r,g,i):
+        ed=g=='education'
+        c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
+        if r.get('concentration'):c+=p(r['concentration'],'cv-degree-concentration document-muted')
+        if r.get('school'):c+=p(r['school'],'cv-degree-university document-copy')
+        if r.get('subtitle'):c+=p(r['subtitle'],'cv-org-context document-muted')
+        header='<header class="cv-org-header"><div>'+c+'</div></header>'
+        details=bullets(r['bullets'])
+        if r.get('organization'):details='<div class="cv-role cv-timeline-role-body"><div class="cv-role-heading"><div><h4 class="document-title">'+esc(r['title'])+'</h4></div></div>'+details+'</div>'
+        cls='cv-org-entry cv-timeline-entry'+(' cv-education-entry' if ed else '')
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,ed)+'<div class="cv-org-main">'+header+logos.get(r.get('logo'),'')+details+'</div></article>'
+    blocks=[]
+    for sid,title,g in SECTIONS:
+        if g=='skills':
+            c='<div class="cv-skill-domains">'+''.join('<section class="cv-skill-domain"><h3 class="document-title">'+esc(k)+':</h3>'+bullets(v)+'</section>' for k,v in data['skills'].items())+'</div>'
+        else:
+            entries=''.join(institution(r,g,i) if g in ['education','academic','professional'] else standard(r,g,i) for i,r in enumerate(data[g]))
+            c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else '')+'">'+entries+'</div>'
+            if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
+            if g=='military':
+                c='<div class="cv-military-identity"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
+                c+='<div class="cv-training-awards"><h3 class="document-title">Specialized Training and Awards</h3><h4 class="document-title">Special Skills Badges</h4>'+bullets(data['badges'])+'<h4 class="document-title">Awards</h4>'+bullets(data['awards'])+'</div>'
+        blocks.append('<section class="cv-section" id="'+sid+'"><h2 class="cv-section-label document-section-title">'+esc(title)+'</h2><div class="cv-section-body">'+c+'</div></section>')
+    start=re.search(r'<section class="cv-section" id="[^"]+">',document)
+    if not start:raise ValueError('Missing CV sections')
+    end=document.index('\n    </article>\n  </div>\n</main>',start.start())
+    document=document[:start.start()]+'\n\n      '.join(blocks)+'\n'+document[end:]
+    links='\n'.join('          <a href="#'+sid+'"'+(' class="active"' if i==0 else '')+'>'+esc(title)+'</a>' for i,(sid,title,_) in enumerate(SECTIONS))
+    return re.sub(r'(<nav class="cv-toc" aria-label="CV sections">)[\s\S]*?(</nav>)',lambda m:m[1]+'\n'+links+'\n        '+m[2],document)
+def main():
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--check',action='store_true');args=parser.parse_args()
+    data=json.loads((ROOT/'assets/data/cv-source.json').read_text(encoding='utf-8'))
+    path=ROOT/'cv.html';current=path.read_text(encoding='utf-8');result=render(current,data)
+    if args.check:
+        if result!=current:raise SystemExit('CV is out of sync with cv-source.json')
+        print('CV matches its transcribed source.')
+    else:path.write_text(result,encoding='utf-8',newline='');print('CV synchronized.')
+if __name__=='__main__':main()

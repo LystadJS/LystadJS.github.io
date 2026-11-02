@@ -256,3 +256,11 @@ body[data-page="research"] main .rp-summary p { color: var(--document-primary); 
 @media (max-width: 700px) {
   #education .cv-education-timeline { --education-date-width: 4.5rem; }
 }
+
+/* Heading fade rules replace the older full-width section borders. */
+body[data-page] main :is(.cv-section, .section, .essay-section, .research-section, .code-page-section) {
+  border-top: 0;
+  border-bottom: 0;
+}
+body[data-page="cv"] .cv-document-header { border-bottom: 0; }
+

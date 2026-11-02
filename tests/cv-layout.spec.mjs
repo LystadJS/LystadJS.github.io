@@ -56,3 +56,20 @@ test('CV navigation follows document order and disclosure stays inside applied w
   await page.emulateMedia({ media: 'print' });
   expect(await sections.first().evaluate(el => getComputedStyle(el).breakInside)).toBe('auto');
 });
+
+test('CV follows printed order and downstream groups share a date rail', async ({page}) => {
+  await page.goto('/cv.html');
+  const expected=['education','research-portfolio','selected-projects','technical-work','presentations','academic-experience','professional-work','military-service','skills','volunteering','overview'];
+  expect(await page.locator('.cv-document > .cv-section').evaluateAll(items=>items.map(e=>e.id))).toEqual(expected);
+  expect(await page.locator('.cv-toc a').evaluateAll(items=>items.map(e=>e.hash.slice(1)))).toEqual(expected);
+  expect(await page.locator('#academic-experience .cv-org-entry').count()).toBe(1);
+  expect(await page.locator('#professional-work .cv-org-entry').count()).toBe(6);
+  expect(await page.locator('#military-service .cv-role-timeline-entry').count()).toBe(4);
+  const rails=await page.locator('.cv-timeline-entry').evaluateAll(items=>items.map(el=>{
+    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date');
+    const content=el.querySelector(':scope > .cv-org-main, :scope > .cv-entry-content, :scope > .cv-timeline-role-body');
+    return {rail:rail?.getBoundingClientRect().right,content:content?.getBoundingClientRect().left};
+  }));
+  expect(rails.every(r=>Number.isFinite(r.rail)&&r.rail<r.content)).toBe(true);
+  expect(await page.locator('.cv-timeline .cv-role-heading > .cv-role-meta').count()).toBe(0);
+});

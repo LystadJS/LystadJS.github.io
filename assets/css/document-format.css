@@ -228,8 +228,8 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
   body[data-page] .cv-timeline .cv-role-heading .document-muted { margin-block: 0 !important; }
 }
 @media (max-width: 700px) {
-  body[data-page] :is(.cv-timeline, .document-timeline) { --timeline-date-width: 3.5rem; }
-  body[data-page="cv"] .cv-timeline-organization > .cv-org-main { margin-left: calc(3.5rem + 24px); }
+  body[data-page] :is(.cv-timeline, .document-timeline) { --timeline-date-width: 4.5rem; }
+  body[data-page="cv"] .cv-timeline-organization > .cv-org-main { margin-left: calc(4.5rem + 24px); }
   body[data-page="research"] .research-timeline-entry .rp-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media print {
@@ -251,3 +251,7 @@ body[data-page="cv"] .cv-timeline .cv-entry-rail .cv-side-button {
 
 /* Generated academic abstracts retain their source-owned markup. */
 body[data-page="research"] main .rp-summary p { color: var(--document-primary); }
+
+@media (max-width: 700px) {
+  #education .cv-education-timeline { --education-date-width: 4.5rem; }
+}

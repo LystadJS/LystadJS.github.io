@@ -240,3 +240,14 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
   }
   body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)::before { background: white; }
 }
+
+/* Resource labels must fit the shared rail at the smallest breakpoint. */
+body[data-page="cv"] .cv-timeline .cv-entry-rail .cv-side-button {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: .2rem;
+}
+
+/* Generated academic abstracts retain their source-owned markup. */
+body[data-page="research"] main .rp-summary p { color: var(--document-primary); }

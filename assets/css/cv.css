@@ -1645,15 +1645,13 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 @layer type-scale {
   #education .cv-degree-title { font-size: var(--type-subheading, 15pt) !important; }
   #education .cv-degree-university,
-  #education .cv-degree-detail,
-#education .cv-degree-concentration { font-size: calc(var(--type-subheading, 15pt) * .9) !important; }
-  #education .cv-degree-department { font-size: calc(var(--type-subheading, 15pt) * .6) !important; }
+  #education .cv-degree-detail { font-size: calc(var(--type-subheading, 15pt) * .9) !important; }
+  #education .cv-degree-concentration { font-size: calc(var(--type-subheading, 15pt) * .6) !important; }
 }
 #education .cv-degree-title,
 #education .cv-degree-university,
-#education .cv-degree-detail,
-#education .cv-degree-concentration { font-family: var(--sans); line-height: 1.4; }
-#education .cv-degree-department { font-family: var(--mono); line-height: 1.5; }
+#education .cv-degree-detail { font-family: var(--sans); line-height: 1.4; }
+#education .cv-degree-concentration { font-family: var(--mono); line-height: 1.5; }
 
 /* One shared timeline stays solid between qualifications and fades only below
    the final entry. The date rail reserves room without squeezing long years. */
@@ -1697,15 +1695,15 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   z-index: 1;
 }
 #education .cv-org-featured::before { background: #6f162b; border-color: var(--crimson-bright); }
-#education .cv-org-header { margin-bottom: 8px; gap: 12px; }
+#education .cv-org-header { margin-bottom: 4px; gap: 12px; }
 #education .cv-bullets { margin: 0 0 8px; }
 #education .cv-bullets li { margin-bottom: 4px; line-height: 1.4; }
 #education .cv-role-meta { justify-items: start; text-align: left; gap: 2px; }
 @layer spacing {
   /* Override the site's paragraph spacing only inside education heading groups. */
   #education .cv-degree-title,
-  #education .cv-degree-university { margin-block: 0 4px !important; }
-  #education .cv-degree-department { margin-block: 0 !important; }
+  #education .cv-degree-concentration { margin-block: 0 4px !important; }
+  #education .cv-degree-university { margin-block: 0 !important; }
 }
 @media print {
   #education .cv-education-entry { break-inside: avoid; }

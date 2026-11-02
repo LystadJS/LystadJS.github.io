@@ -1902,3 +1902,5 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   .cv-sidebar-actions { gap: .6rem; }
 }
 
+
+.cv-timeline-date .cv-timeline-year { margin-block: .45rem .15rem; opacity: .8; }

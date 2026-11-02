@@ -300,7 +300,8 @@
       "milestones": [
         "Lieutenant",
         "May 2027",
-        "(Expected)"
+        "(Expected)",
+        "2026"
       ],
       "bullets": [
         "Integrated prior active-duty enlisted experience into officer development, peer mentorship, and practical problem-solving during team-based exercises.",
@@ -310,8 +311,10 @@
     {
       "title": "Infantry Company Communications Chief",
       "milestones": [
+        "2025",
         "Sergeant",
-        "Dec. 2024"
+        "Dec. 2024",
+        "2024"
       ],
       "bullets": [
         "Directed company-level tactical communications and served as the Commander’s primary radio-telephone operator, maintaining reliable command-and-control connectivity for senior leaders during operations.",
@@ -322,7 +325,9 @@
     },
     {
       "title": "Infantry Squad Leader",
-      "milestones": [],
+      "milestones": [
+        "2023"
+      ],
       "bullets": [
         "Led an Airborne Infantry squad in a rapid-response battalion, maintaining personnel, equipment, and operational readiness for worldwide combat and contingency deployment within 18 hours of notification.",
         "Built and led the 11th Airborne Division’s highest-rated Indirect Fire Infantry Squad, driving standards in tactical proficiency, discipline, physical readiness, and team development that earned selection to represent the division at the 2024 International Best Mortar Competition.",
@@ -334,6 +339,7 @@
       "milestones": [
         "Specialist",
         "Apr. 2022",
+        "2022",
         "Private",
         "Nov. 2021"
       ],
@@ -393,9 +399,17 @@
   },
   "_source": {
     "filename": "Lystad, John - Curriculum Vitae(2).docx",
+    "sha256": "59346b7df15670f77ab9a8919831c45cca389788accc75156f2fa909e169f679",
+    "military_year_ticks": [
+      "2026",
+      "2025",
+      "2024",
+      "2023",
+      "2022"
+    ],
     "notes": [
-      "Line wraps and superscript spacing normalized; original wording, unfinished text, and citation inconsistencies retained.",
-      "Military year ticks are clipped in the source preview. Only readable rank/date milestones are transcribed; previous website role date ranges are not carried forward."
+      "Verified directly against the original DOCX XML; line wraps and superscript spacing normalized.",
+      "Unfinished source wording and citation date inconsistencies are retained verbatim."
     ]
   }
 }

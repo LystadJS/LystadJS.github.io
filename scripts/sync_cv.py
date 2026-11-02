@@ -19,14 +19,14 @@ def rail(r,education=False):
         parts=r['date'].split(' – ',1)
         if len(parts)==2:parts[1]='– '+parts[1]
     label=r.get('date',' '.join(parts))
-    return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+''.join('<span>'+esc(v)+'</span>' for v in parts)+'</div>'
+    return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+''.join('<span'+(' class="cv-timeline-year"' if 'milestones' in r and re.fullmatch(r'20[0-9]{2}',v) else '')+'>'+esc(v)+'</span>' for v in parts)+'</div>'
 def citation(s):
     s=esc(s)
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
     return '<p class="cv-source-citation document-muted">'+s+'</p>'
 def render(document,data):
-    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-source-sync',document)
-    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-source-sync',document)
+    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-source-sync2',document)
+    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-source-sync2',document)
     logos={m[1]:m[0] for m in re.finditer(r'<div class="cv-org-logo"[^>]*data-logo="([^"]+)"[^>]*>[\s\S]*?</div>',document)}
     def attrs(g,i):return ' data-cv-group="'+g+'" data-cv-index="'+str(i)+'"'
     def standard(r,g,i):

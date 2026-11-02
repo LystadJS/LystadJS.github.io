@@ -1745,8 +1745,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education :is(.cv-section-label, .cv-degree-title, .cv-degree-university, .cv-org-logo-fallback) {
   color: var(--education-text);
 }
-#education :is(.cv-degree-concentration, .cv-role-meta, .cv-bullets li),
-#education .cv-bullets li::before {
+#education :is(.cv-degree-concentration, .cv-role-meta, .cv-bullets li) {
   color: var(--education-muted);
 }
 #education .cv-section-label {
@@ -1861,3 +1860,6 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 @layer spacing {
   #education > .cv-section-label { margin-block: 0 !important; }
 }
+
+/* Only the Education markers receive the accent color. */
+#education .cv-bullets li::before { color: var(--crimson-bright); }

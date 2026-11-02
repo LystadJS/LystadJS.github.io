@@ -1,0 +1,103 @@
+/* Shared editorial formatting for the portfolio, CV, and research notes.
+   Semantic classes leave navigation, data graphics, and application UI alone. */
+body[data-page] {
+  --document-primary: var(--paper, var(--ink, #eee5d9));
+  --document-secondary: var(--muted);
+  --document-accent: var(--crimson-bright, var(--red, #bf3152));
+}
+body[data-page] main .document-section-title {
+  display: block;
+  min-width: 0;
+  max-width: none;
+  color: var(--document-primary);
+  font-family: var(--serif) !important;
+  line-height: 1.05;
+  letter-spacing: -.035em;
+  text-transform: none;
+}
+body[data-page] main .document-section-title::before { content: none; }
+body[data-page] main .document-section-title::after {
+  content: "";
+  position: static;
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: .5rem;
+  background: linear-gradient(to right, var(--document-accent), var(--bg, #fff));
+  transform: none;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+body[data-page] main :is(.document-title, .document-copy) {
+  color: var(--document-primary) !important;
+}
+body[data-page] main :is(.document-muted, .document-list > li) {
+  color: var(--document-secondary) !important;
+}
+body[data-page] main ul.document-list > li::marker,
+body[data-page] main :is(.cv-bullets, .rpm-detail-list) > li::before {
+  color: var(--document-accent);
+}
+body[data-page] main .rpm-detail-list > li::before { background: var(--document-accent); }
+body[data-page] main .document-list > li { line-height: 1.4; }
+body[data-page] main .document-list:empty { display: none; }
+body[data-page] main :is(.cv-role-meta, .cv-entry-type, .cv-entry-meta,
+  .cv-org-meta, .cv-technical-citation, .cv-tags, .cv-contact-block small) {
+  color: var(--document-secondary);
+}
+@layer type-scale {
+  body[data-page] main h2.document-section-title { font-size: var(--type-section, 2rem) !important; }
+}
+@layer spacing {
+  body[data-page] main .document-section-title { margin-block: 0 1rem !important; }
+  body[data-page] .cv-section > .document-section-title { margin-block: 0 !important; }
+  body[data-page] main .document-title:has(+ .document-muted, + .document-list),
+  body[data-page] .cv-org-header .document-title,
+  body[data-page] .cv-role-heading .document-title { margin-block: 0 2px !important; }
+  body[data-page] main .document-title + .document-muted { margin-block: 0 !important; }
+  body[data-page] main .document-list { margin-block: .25rem 0 !important; }
+  body[data-page] main .document-muted + .document-list { margin-block-start: 0 !important; }
+  body[data-page] .cv-entry-content > .document-title { margin-block-end: 4px !important; }
+  body[data-page] .cv-org-header .document-muted { margin-block: 0 !important; }
+}
+/* A shared compact text flow throughout the CV, independent of logo height. */
+body[data-page="cv"] .cv-section { gap: 1rem; }
+body[data-page="cv"] .cv-org-main {
+  --cv-logo-size: 76px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--cv-logo-size);
+  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
+  column-gap: 12px;
+  align-content: start;
+  align-items: start;
+}
+body[data-page="cv"] .cv-org-main > .cv-org-header {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+body[data-page="cv"] .cv-org-main > .cv-org-logo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: var(--cv-logo-size);
+  height: var(--cv-logo-size);
+}
+body[data-page="cv"] .cv-org-main > :is(.cv-role, .cv-bullets) {
+  grid-column: 1;
+  align-self: start;
+}
+body[data-page="cv"] .cv-role .cv-bullets { margin-top: .25rem; }
+body[data-page="cv"] .cv-bullets li { margin: 0; padding-block: .15rem; }
+body[data-page="cv"] .cv-bullets li:first-child { padding-top: 0; }
+body[data-page="cv"] .cv-bullets li:last-child { padding-bottom: 0; }
+@media (max-width: 900px) {
+  body[data-page="cv"] .cv-org-main { --cv-logo-size: 62px; }
+}
+@media (max-width: 700px) {
+  body[data-page="cv"] .cv-org-main { --cv-logo-size: 40px; column-gap: 8px; }
+}
+@media print {
+  body[data-page] { --document-primary: #171217; --document-secondary: #666; }
+}

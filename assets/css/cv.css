@@ -1695,14 +1695,34 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   z-index: 1;
 }
 #education .cv-org-featured::before { background: #6f162b; border-color: var(--crimson-bright); }
-#education .cv-org-header { margin-bottom: 4px; gap: 12px; }
-#education .cv-bullets { margin: 0 0 8px; }
-#education .cv-bullets li { margin-bottom: 4px; line-height: 1.4; }
+/* Logos span the text rows without creating blank space above the bullets. */
+#education .cv-org-main {
+  --education-logo-size: 76px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--education-logo-size);
+  grid-template-rows: min-content 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+#education .cv-org-header { grid-column: 1; grid-row: 1; display: block; margin: 0; }
+#education .cv-org-main > .cv-org-logo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: var(--education-logo-size);
+  height: var(--education-logo-size);
+}
+#education .cv-bullets { grid-column: 1; grid-row: 2; margin: 0; align-self: start; }
+#education .cv-bullets li { margin: 0; padding-block: .15rem; line-height: 1.4; }
+#education .cv-bullets li:first-child { padding-top: 0; }
+#education .cv-bullets li:last-child { padding-bottom: 0; }
+@media (max-width: 900px) {
+  #education .cv-org-main { --education-logo-size: 62px; }
+}
 #education .cv-role-meta { justify-items: start; text-align: left; gap: 2px; }
 @layer spacing {
   /* Override the site's paragraph spacing only inside education heading groups. */
   #education .cv-degree-title,
-  #education .cv-degree-concentration { margin-block: 0 4px !important; }
+  #education .cv-degree-concentration { margin-block: 0 2px !important; }
   #education .cv-degree-university { margin-block: 0 !important; }
 }
 @media print {
@@ -1712,24 +1732,25 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 
 @media (max-width: 700px) {
   #education .cv-education-timeline { --education-date-width: 3.5rem; }
-  #education .cv-org-header { grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; }
+  #education .cv-org-main { --education-logo-size: 40px; column-gap: 8px; }
   #education .cv-org-logo { width: 40px; height: 40px; }
 }
 
-/* Education uses one text tone and the shared serif section-heading scale. */
+/* Education text roles and the shared serif section-heading scale. */
 #education {
   --education-text: var(--paper);
+  --education-muted: var(--muted);
   color: var(--education-text);
 }
-#education :is(.cv-section-label, .cv-degree-title, .cv-degree-university,
-  .cv-degree-concentration, .cv-degree-detail, .cv-role-meta,
-  .cv-org-logo-fallback) {
+#education :is(.cv-section-label, .cv-degree-title, .cv-degree-university, .cv-org-logo-fallback) {
   color: var(--education-text);
+}
+#education :is(.cv-degree-concentration, .cv-role-meta, .cv-bullets li),
+#education .cv-bullets li::before {
+  color: var(--education-muted);
 }
 #education .cv-section-label {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: block;
   min-width: 0;
   font-family: var(--serif);
   font-weight: 600;
@@ -1740,18 +1761,18 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education .cv-section-label::before { content: none; }
 #education .cv-section-label::after {
   content: "";
-  flex: 1;
-  min-width: 1rem;
+  display: block;
+  width: 100%;
   height: 1px;
-  background: linear-gradient(to right, var(--line-bright), transparent);
+  margin-top: .5rem;
+  background: linear-gradient(to right, var(--crimson-bright), var(--bg));
 }
 @layer type-scale {
   #education .cv-section-label { font-size: var(--type-section, 2rem) !important; }
 }
 @media print {
-  #education { --education-text: #171217; }
+  #education { --education-text: #171217; --education-muted: #666; }
   #education .cv-section-label::after {
-    background: linear-gradient(to right, #999, transparent);
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -1833,4 +1854,10 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   .cv-document-header h2 { font-size: 26pt; }
   .cv-document-header .cv-document-disciplines { font-size: 8pt; }
   .cv-document-header .cv-contact-block { font-size: 9pt; }
+}
+
+/* One gap below the heading rule; no additional heading margin. */
+#education { gap: 1rem; }
+@layer spacing {
+  #education > .cv-section-label { margin-block: 0 !important; }
 }

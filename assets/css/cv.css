@@ -1715,3 +1715,44 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   #education .cv-org-header { grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; }
   #education .cv-org-logo { width: 40px; height: 40px; }
 }
+
+/* Education uses one text tone and the shared serif section-heading scale. */
+#education {
+  --education-text: var(--paper);
+  color: var(--education-text);
+}
+#education :is(.cv-section-label, .cv-degree-title, .cv-degree-university,
+  .cv-degree-concentration, .cv-degree-detail, .cv-role-meta,
+  .cv-org-logo-fallback) {
+  color: var(--education-text);
+}
+#education .cv-section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: .95;
+  letter-spacing: -.035em;
+  text-transform: none;
+}
+#education .cv-section-label::before { content: none; }
+#education .cv-section-label::after {
+  content: "";
+  flex: 1;
+  min-width: 1rem;
+  height: 1px;
+  background: linear-gradient(to right, var(--line-bright), transparent);
+}
+@layer type-scale {
+  #education .cv-section-label { font-size: var(--type-section, 2rem) !important; }
+}
+@media print {
+  #education { --education-text: #171217; }
+  #education .cv-section-label::after {
+    background: linear-gradient(to right, #999, transparent);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

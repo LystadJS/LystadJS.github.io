@@ -72,4 +72,5 @@ test('CV follows printed order and downstream groups share a date rail', async (
   }));
   expect(rails.every(r=>Number.isFinite(r.rail)&&r.rail<r.content)).toBe(true);
   expect(await page.locator('.cv-timeline .cv-role-heading > .cv-role-meta').count()).toBe(0);
+  expect(await page.locator('.cv-org-header .cv-role, .cv-org-header .cv-org-logo').count()).toBe(0);
 });

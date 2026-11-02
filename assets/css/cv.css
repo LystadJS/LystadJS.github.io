@@ -1756,3 +1756,81 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
     -webkit-print-color-adjust: exact;
   }
 }
+
+/* Printed-CV masthead: identity and disciplines left; aligned contact rows right. */
+.cv-document-header {
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 1.5rem;
+  align-items: stretch;
+  padding-bottom: 1.5rem;
+}
+.cv-document-identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-width: 0;
+}
+.cv-document-header h2 {
+  margin: 0;
+  max-width: none;
+  color: var(--paper);
+  font-family: var(--serif);
+  line-height: 1.05;
+  letter-spacing: -.025em;
+}
+.cv-document-disciplines {
+  color: var(--paper);
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.cv-document-header .cv-contact-block {
+  align-content: start;
+  justify-items: stretch;
+  gap: .3rem;
+  color: var(--paper);
+  font-family: var(--sans);
+  line-height: 1.4;
+}
+.cv-contact-block a {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  align-items: center;
+  gap: .5rem;
+  text-align: left;
+}
+.cv-contact-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+.cv-contact-block a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.cv-contact-block a:focus-visible { outline: 2px solid var(--electric); outline-offset: 4px; }
+#education .cv-section-label { font-family: var(--serif) !important; }
+@layer type-scale {
+  .cv-document-header h2 { font-size: var(--type-section, 2.5rem) !important; }
+  .cv-document-header .cv-document-disciplines,
+  .cv-document-header .cv-contact-block { font-size: var(--type-meta, .75rem) !important; }
+}
+@layer spacing {
+  .cv-document-header h2,
+  .cv-document-header .cv-document-disciplines { margin-block: 0 !important; }
+}
+@media (max-width: 700px) {
+  .cv-document-header { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .cv-document-identity { gap: .75rem; }
+  .cv-document-header .cv-contact-block { justify-self: start; max-width: 100%; }
+  .cv-contact-block span { overflow-wrap: anywhere; }
+}
+@media print {
+  .cv-document-header { display: grid; grid-template-columns: minmax(0, 1fr) max-content; }
+  .cv-document-header h2,
+  .cv-document-header .cv-document-disciplines,
+  .cv-document-header .cv-contact-block { color: #171217; }
+  .cv-document-header h2 { font-size: 26pt; }
+  .cv-document-header .cv-document-disciplines { font-size: 8pt; }
+  .cv-document-header .cv-contact-block { font-size: 9pt; }
+}

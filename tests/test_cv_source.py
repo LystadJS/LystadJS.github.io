@@ -56,7 +56,7 @@ class PhysicalCV(unittest.TestCase):
         self.assertIn('French (Intermediate)',self.page)
         for old in ['GPA:','Diplomatic-Military Advisor','Graduate Employee Adjunct','id="overview"','id="volunteering"']:
             self.assertNotIn(old,self.page)
-    def test_source_draft_fragments_are_preserved(self):
-        self.assertEqual(self.data['scholarly'][0]['bullets'],['Investigates the relationship between increases in'])
-        self.assertEqual([r['bullets'][0] for r in self.data['presentations']],['Outlined the','Outlined the','O','Outlined the'])
+    def test_revised_source_and_incomplete_presentation_notes(self):
+        self.assertIn('al-Naba', self.data['scholarly'][0]['bullets'][0])
+        self.assertTrue(all(not record['bullets'] for record in self.data['presentations']))
 if __name__=='__main__':unittest.main()

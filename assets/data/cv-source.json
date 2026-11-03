@@ -10,10 +10,10 @@
     },
     {
       "date": "2023 – 2025",
-      "title": "Non-Degree Program",
+      "title": "Non-Degree Coursework",
       "school": "American Military University",
       "bullets": [
-        "Coursework in Calculus, Linear Algebra, and Computer Science"
+        "Coursework in Multivariate Calculus, Linear Algebra, and Computer Science"
       ],
       "logo": "american-military-university"
     },
@@ -41,34 +41,34 @@
       "title": "“ Apocalyptic and Eschatological Speech as a Predictor of Violence by The Islamic State and its Associated Movement ”",
       "label": "UNPUBLISHED WORK-IN-PROGRESS",
       "bullets": [
-        "Investigates the relationship between increases in"
+        "Collected and analyzed publications affiliated with the Islamic State and its Associated Movement, including al-Naba, Dabiq, and Rumiyah, to measure apocalyptic and eschatological messaging. Further statistical modeling assessed whether changes in messaging precede surges in Islamic State-associated violence and evaluated whether it was possible to improve forecasts beyond those based on recent violence overall propaganda output alone."
       ],
-      "citation": "Lystad, J. S. (In Progress). “Apocalyptic and Eschatological Speech as a Predictor of Violence by The Islamic State and its Associated Movement"
+      "citation": "Lystad, J. S. (In Progress). “Apocalyptic and Eschatological Speech as a Predictor of Violence by the Islamic State and its Associated Movement.”"
     },
     {
       "date": "In Progress",
       "title": "“ The Caliphate’s Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq ”",
       "label": "UNPUBLISHED WORK-IN-PROGRESS",
       "bullets": [
-        "Investigates the relationship between ethnosectarian population composition and the geographic distribution of Islamic State insurgent violence in Iraq. The research examines how local demographic characteristics correspond to patterns of militant targeting, with an emphasis on spatial variation, systematic comparison, and the identification of potentially meaningful relationships between population composition and insurgent behavior."
+        "Investigated how district-level Ethnosectarian composition relates to Islamic State-linked attack frequency and target selection in Iraq. Used Global Terrorism Database records, spatial demographic data and LandScan population estimates to construct a district-month panel, and examined target-selection variation in civilian, security, and religious targeting across phases of the Islamic State insurgency."
       ],
       "citation": "Lystad, J. S. (In Progress). “The Caliphate’s Target Map: Ethnosectarian Composition and Insurgent Violence in Iraq.”"
     },
     {
       "date": "In Progress",
-      "title": "“ Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism ”",
+      "title": "“ Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Violence ”",
       "label": "UNPUBLISHED WORK-IN-PROGRESS",
       "bullets": [
-        "Implemented missing data methods to address missingness in the Global Terrorism Database (GTD) and evaluate how incomplete observations may affect inferences about the lethality of suicide attacks associated with the Islamic State."
+        "Examined the association between suicide attacks and fatalities in 16,227 Islamic State-linked violent incidents across 46 countries from 1994 to 2021. Compared complete-case analysis, weighting, and single- and multiple- imputation approaches to assess sensitivity to missing casualty data, finding a consistently positive adjusted associated across methods."
       ],
-      "citation": "Lystad, J. S. (In Progress). “Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism”"
+      "citation": "Lystad, J. S. (In Progress). “Estimating Lethality Under Missing Casualty Data: Suicide Attacks in Islamic State-Linked Terrorism.”"
     },
     {
       "date": "2022",
       "title": "“ Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency: 1999 – 2019 ”",
-      "label": "PEER-REVIEWED · HONORS THESIS",
+      "label": "HONORS THESIS",
       "bullets": [
-        "A longitudinal analysis of the Islamic State and its Associated Movement across two decades in more than 20 countries, investigating variation in attack and targeting behavior across time and geography, using attack data from the Global Terrorism Database (GTD) and identity behavior from official ISAM records."
+        "Using Global Terrorism Database records and comparative organizational analysis, examined strategic and tactical cohesion across the Islamic State and its regional affiliates. Developed a nine-indicator framework for assessing affiliates’ ties to central Islamic State leadership and identified variation in tactical preferences and target selection across affiliates."
       ],
       "citation": "Lystad, J. S. (2022). Vanguards of Terror: The Strategic and Tactical Orientation and Cohesion of the Islamic State Insurgency: 1999 – 2019. [Honors thesis, Florida State University]. FSU DigiNole Repository. https://repository.lib.fsu.edu/islandora/object/fsu:802361."
     },
@@ -77,7 +77,7 @@
       "title": "“ The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa ”",
       "label": "PEER-REVIEWED",
       "bullets": [
-        "Investigated the relationship between climate-related environmental pressures and the conditions that facilitate terrorist network development across the MENA region. The researched outcome combined analysis of environmental change, political instability, and military organizational dynamics to examine potential pathways through which socioeconomic vulnerability and resource scarcity intersect with extremist activity."
+        "Combined NASA global climate-model projects with historical records of Islamic State and al-Qaeda recruitment to examine how environmental conditions and change may facilitate terrorist network development in selected countries in the Middle East and North Africa. Compared projected temperature, precipitation, and evaporation under alternative climate conditions and examined pathways linking environmental stress, resource scarcity, government capacity, and recruitment."
       ],
       "citation": "Lystad, J. S. (2020). “The Effects of Climate Change on the Development of Terrorist Networks in the Middle East and North Africa.” The Owl — Florida State University’s Undergraduate Research Journal, 10(1), 61–80. https://journals.flvc.org/owl/article/view/119038/129613."
     }
@@ -88,7 +88,7 @@
       "title": "“ Detecting Emerging Threats to UN Peacekeepers from Latent Structure Discovery ”",
       "label": "WHITE PAPER · U.S. MISSION TO THE UNITED NATIONS",
       "bullets": [
-        "Using unsupervised learning methods, investigates whether latent patterns in multidimensional security data can help identify emerging threats to United Nations peacekeeping personnel. The research makes use of open-source data on peacekeeping activities and attack data to detect relationships and potential threat indicators that may be obscured in conventional descriptive analysis."
+        "Used unsupervised learning to examine patterns in attacks on UN Peacekeepers and their relationship to missions’ effectiveness in reducing violence. Integrated open-source attack and mission data to explore potential indicators of emerging threats and conditions associated with reductions in violence."
       ],
       "citation": "Lystad, J. S. (In Progress). Detecting Emerging Threats to UN Peacekeepers from Latent Structure Discovery [White Paper]. U.S. Mission to the United Nations."
     },
@@ -97,9 +97,9 @@
       "title": "“ Discovering Latent Data Patterns in UN General Assembly & Security Council Voting Behavior: 2000 - 2026 ”",
       "label": "WHITE PAPER · U.S. MISSION TO THE UNITED NATIONS",
       "bullets": [
-        "Using longitudinal analysis of United Nations General Assembly and Security Council voting records, investigates the underlying structure of diplomatic alignment across time. This project explores multivariate pattern discovery and dimension reduction to characterize similarities among states, identify potential voting blocs, and examine change in diplomatic relationships over time."
+        "Analyzed UN General Assembly and Security Council voting records from 2000 to 2026 to discover latent patterns of diplomatic alignment and track changes in states’ voting alignments. Combined dimension reduction and cluster analysis with predictive modeling to identify voting blocs and assess whether historical voting patterns can predict subsequent votes."
       ],
-      "citation": "Lystad, J. S. (2026). Discovering Latent Data Patterns in UN General Assembly and Security Council Voting Behavior: 2000 – 2026. [White Paper]. U.S. Mission to the United Nations. Available upon request."
+      "citation": "Lystad, J. S. (In Progress). Discovering Latent Data Patterns in UN General Assembly and Security Council Voting Behavior: 2000 – 2026. [White Paper]. U.S. Mission to the United Nations."
     },
     {
       "date": "2026",
@@ -166,37 +166,29 @@
       "date": "2021",
       "title": "“ The Tactical Evolution of the Islamic State in Iraq and the Levant ”",
       "subtitle": "2021 National Consortium for the Study of Terrorism and Responses to Terrorism (START) Annual Conference",
-      "bullets": [
-        "Outlined the"
-      ],
+      "bullets": [],
       "citation": "Lystad, J. S (2021). The Tactical Evolution of the Islamic State in Iraq and the Levant [Paper Presentation]. 2021 National Consortium for the Study of Terrorism and Responses to Terrorism (START) Research Conference, Online."
     },
     {
       "date": "2020",
       "title": "“ On the Rationality Behind the Development of Terrorist Ideologies ”",
       "subtitle": "2020 Florida State University Freedom and (In)Equality Symposium",
-      "bullets": [
-        "Outlined the"
-      ],
+      "bullets": [],
       "citation": "Lystad, J. S., Kelsay, J., & Moret, R. (2020). On the Rationality Behind the Development of Terrorist Ideologies [Panel Presentation]. 2020 Florida State University Freedom and (In)Equality Symposium, Tallahassee, FL"
     },
     {
       "date": "2019",
-      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden ”",
-      "subtitle": "2019 Florida State University Undergraduate Research Symposium",
-      "bullets": [
-        "O"
-      ],
-      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Florida State University Undergraduate Research Symposium, Tallahassee, FL"
+      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of Revolutionary Violence by John Brown, Pádraig Pearse & Usama bin Laden ”",
+      "subtitle": "2019 Undergraduate Research Symposium",
+      "bullets": [],
+      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of Revolutionary Violence by John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Undergraduate Research Symposium, Tallahassee, FL"
     },
     {
       "date": "2019",
-      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden ”",
+      "title": "“ ‘I Bring not Peace, but a Sword’: The Religious Dimension of Revolutionary Violence by John Brown, Pádraig Pearse & Usama bin Laden ”",
       "subtitle": "2019 Florida Undergraduate Research Conference",
-      "bullets": [
-        "Outlined the"
-      ],
-      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of the Revolutionary Violence of John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Florida Undergraduate Research Conference, Jacksonville, FL"
+      "bullets": [],
+      "citation": "Kelsay, J., Lystad, J. S., Parkin, P., & Johnson, M. (2019). ‘I Bring not Peace, but a Sword’: The Religious Dimension of Revolutionary Violence by John Brown, Pádraig Pearse & Usama bin Laden [Poster Presentation]. 2019 Florida Undergraduate Research Conference, Jacksonville, FL"
     }
   ],
   "academic": [
@@ -300,7 +292,7 @@
       "milestones": [
         "Lieutenant",
         "May 2027",
-        "(Expected)",
+        "(Anticipated)",
         "2026"
       ],
       "bullets": [
@@ -399,8 +391,8 @@
     ]
   },
   "_source": {
-    "filename": "Lystad, John - Curriculum Vitae(2).docx",
-    "sha256": "59346b7df15670f77ab9a8919831c45cca389788accc75156f2fa909e169f679",
+    "filename": "Lystad, John - Curriculum Vitae.docx",
+    "sha256": "bf8ae1767af1087364916ab5f518801a3d32bb6dbb2b5fccac4ffb39255d0d53",
     "military_year_ticks": [
       "2026",
       "2025",
@@ -410,7 +402,7 @@
     ],
     "notes": [
       "Verified directly against the original DOCX XML; line wraps and superscript spacing normalized.",
-      "Unfinished source wording and citation date inconsistencies are retained verbatim."
+      "Incomplete presentation descriptions omitted. Citation dates follow the source."
     ]
   }
 }

@@ -349,3 +349,18 @@ body[data-page="cv"] .cv-toc a { padding-block: .35rem; }
     border-left-color: var(--document-accent);
   }
 }
+
+@media screen {
+  body[data-page="cv"] {
+    --cv-cream: #eee5d9;
+    --paper: #e5e4df;
+    --document-primary: var(--paper);
+    --document-secondary: #bcbcb6;
+  }
+  body[data-page="cv"] main .document-list > li {
+    color: var(--document-primary) !important;
+  }
+  body[data-page="cv"] main :is(h1, h2, h3, h4, strong, em) {
+    color: var(--cv-cream) !important;
+  }
+}

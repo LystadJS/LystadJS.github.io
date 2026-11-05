@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 98f96867ca6cb1740c442760a06373796959b32c
+  SOURCE_COMMIT: bc3ae5847d6dfb4a97576370ee5a64ba310d9e9f
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.37.0'
+          assert release['browser_engine']=='browser-descriptive-1.38.0'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'
@@ -107,7 +107,7 @@ jobs:
           must=['index.html','latent.html','release.json',
             'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
-            'reporting-date.js','meeting-picker.js']
+            'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))

@@ -1923,14 +1923,15 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   }
 }
 
-/* Full-height, spatially faded school artwork; FSU shares one group. */
+/* School identity is a decorative background, never a text column. */
 #education .cv-school-group {
+  --school-color: #57068c;
   position: relative;
   isolation: isolate;
-  padding-right: 28%;
-  padding-bottom: 24px;
-  min-height: 110px;
+  padding: 0 0 24px;
 }
+#education .cv-school-group:has(img[src*="american-military-university"]) { --school-color: #ffc600; }
+#education .cv-school-group:has(img[src*="florida-state-university"]) { --school-color: #782f40; }
 #education .cv-school-group:last-child { padding-bottom: 0; }
 #education .cv-school-group .cv-org-main {
   display: block;
@@ -1940,29 +1941,26 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education .cv-school-group .cv-education-entry:last-of-type { padding-bottom: 0; }
 #education .cv-school-art {
   position: absolute;
-  inset: 0 0 24px auto;
-  width: 30%;
+  inset: 0 0 24px;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  display: flex;
-  justify-content: flex-end;
+  background: linear-gradient(to right, transparent 25%, color-mix(in srgb, var(--school-color) 16%, transparent));
 }
 #education .cv-school-group:last-child .cv-school-art { bottom: 0; }
 #education .cv-school-art img {
+  position: absolute;
+  inset: 0 0 0 auto;
   display: block;
-  mask-image: linear-gradient(to right, transparent, #000 80%);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 80%);
-  width: auto;
-  max-width: 100%;
+  width: 36%;
+  max-width: none;
   height: 100%;
   object-fit: contain;
   object-position: right center;
+  mask-image: linear-gradient(to right, transparent, #000 80%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 80%);
   filter: none;
-  opacity: 1;
-}
-@media (max-width: 700px) {
-  #education .cv-school-group { padding-right: 22%; }
-  #education .cv-school-art { width: 24%; }
+  opacity: .18;
 }
 @media print {
   #education .cv-school-group { break-inside: avoid; }

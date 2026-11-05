@@ -25,8 +25,7 @@ def citation(s):
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
     return '<p class="cv-source-citation document-muted">'+s+'</p>'
 def render(document,data):
-    document=re.sub(r'(assets/css/cv\.css\?v=)[^"]+',r'\g<1>20261102-readability',document)
-    document=re.sub(r'(assets/css/document-format\.css\?v=)[^"]+',r'\g<1>20261102-readability',document)
+    # Content regeneration preserves the presentation versions selected by the page.
     logos={m[1]:m[0] for m in re.finditer(r'<div class="cv-org-logo"[^>]*data-logo="([^"]+)"[^>]*>[\s\S]*?</div>',document)}
     def attrs(g,i):
         record=data[g][i]

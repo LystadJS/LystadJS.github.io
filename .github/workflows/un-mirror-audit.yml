@@ -214,7 +214,8 @@ jobs:
     name: Verify deployed comparison and meeting workflows
     needs: [audit, live_research]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # Playwright 1.57 supports Ubuntu 24.04, not the 26.04 latest image.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7

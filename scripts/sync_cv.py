@@ -51,13 +51,19 @@ def render(document,data):
         details=bullets(r['bullets'])
         if r.get('organization'):details='<div class="cv-role cv-timeline-role-body"><div class="cv-role-heading"><div><h4 class="document-title">'+esc(r['title'])+'</h4></div></div>'+details+'</div>'
         cls='cv-org-entry cv-timeline-entry'+(' cv-education-entry' if ed else '')
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,ed)+'<div class="cv-org-main">'+header+logos.get(r.get('logo'),'')+details+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,ed)+'<div class="cv-org-main">'+header+('' if ed else logos.get(r.get('logo'),''))+details+'</div></article>'
     blocks=[]
     for sid,title,g in SECTIONS:
         if g=='skills':
             c='<div class="cv-skill-domains">'+''.join('<section class="cv-skill-domain"><h3 class="document-title">'+esc(k)+':</h3>'+bullets(v)+'</section>' for k,v in data['skills'].items())+'</div>'
         else:
             entries=''.join(institution(r,g,i) if g in ['education','academic','professional'] else standard(r,g,i) for i,r in enumerate(data[g]))
+            if g=='education':
+                groups=[]
+                for i,r in enumerate(data[g]):
+                    if not groups or groups[-1][0]!=r['logo']:groups.append((r['logo'],[]))
+                    groups[-1][1].append(institution(r,g,i))
+                entries=''.join('<div class="cv-school-group">'+''.join(items)+'<div class="cv-school-art" aria-hidden="true"><img src="assets/images/experience/'+esc(logo)+'.png" alt="" decoding="async"></div></div>' for logo,items in groups)
             c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else '')+'">'+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':

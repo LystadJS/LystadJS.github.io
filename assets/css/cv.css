@@ -1922,3 +1922,46 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
     opacity: 1;
   }
 }
+
+/* Full-height, spatially faded school artwork; FSU shares one group. */
+#education .cv-school-group {
+  position: relative;
+  isolation: isolate;
+  padding-right: 28%;
+  padding-bottom: 24px;
+  min-height: 110px;
+}
+#education .cv-school-group:last-child { padding-bottom: 0; }
+#education .cv-school-group .cv-org-main {
+  display: block;
+  min-width: 0;
+}
+#education .cv-school-group .cv-education-entry { z-index: 1; }
+#education .cv-school-group .cv-education-entry:last-of-type { padding-bottom: 0; }
+#education .cv-school-art {
+  position: absolute;
+  inset: 0 0 24px auto;
+  width: 30%;
+  pointer-events: none;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 65%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 65%);
+}
+#education .cv-school-group:last-child .cv-school-art { bottom: 0; }
+#education .cv-school-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  filter: none;
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  #education .cv-school-group { padding-right: 22%; }
+  #education .cv-school-art { width: 24%; }
+}
+@media print {
+  #education .cv-school-group { break-inside: avoid; }
+  #education .cv-school-art { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

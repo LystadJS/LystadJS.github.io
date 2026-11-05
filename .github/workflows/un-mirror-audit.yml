@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: ce69048ca0c6aecd948a8a3a6c645ce894f21ab8
+  SOURCE_COMMIT: 98f96867ca6cb1740c442760a06373796959b32c
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -39,6 +39,7 @@ jobs:
           assert 'meeting-quick-reader.js' in manifest['files']
           assert 'position-comparison.js' in manifest['files']
           assert 'position-view.js' in manifest['files']
+          assert 'reporting-date.js' in manifest['files']
           # Research release is an explicit allowlist of synthetic-only browser
           # assets; no source work, model weights, tests or hidden review data.
           for name in (
@@ -58,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.36.0'
+          assert release['browser_engine']=='browser-descriptive-1.37.0'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'
@@ -105,7 +106,8 @@ jobs:
           files=original['files']
           must=['index.html','latent.html','release.json',
             'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
-            'meeting-quick-reader.js']
+            'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
+            'reporting-date.js','meeting-picker.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -232,6 +234,7 @@ jobs:
         run: |
           node source/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
           node source/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
+          node source/tools/test_daily_collection_ui.cjs https://lystadjs.github.io/un/transcript-agent/ work/live-daily-validation
       - name: Require actual live meeting inventory and selected-meeting collection
         env:
           REQUIRE_LIVE_MEETING: '1'
@@ -244,4 +247,5 @@ jobs:
             live-UN-source.json
             live-browser-validation
             live-picker-validation
+            work/live-daily-validation
           retention-days: 14

@@ -12,14 +12,27 @@ SECTIONS=[
 def esc(s):return html.escape(s,quote=True)
 def p(s,cls='document-muted'):return '<p class="'+cls+'">'+esc(s)+'</p>'
 def bullets(values):return '<ul class="cv-bullets document-list">'+''.join('<li>'+esc(v)+'</li>' for v in values)+'</ul>' if values else ''
-def rail(r,education=False):
+def rail(r,education=False,project_key=None):
     cls='cv-role-meta cv-education-date cv-timeline-date' if education else 'cv-entry-rail cv-timeline-date'
     parts=r.get('milestones')
     if parts is None:
-        parts=r['date'].split(' – ',1)
-        if len(parts)==2:parts[1]='– '+parts[1]
+        parts=re.split(r'\s+[–—]\s+',r['date'],maxsplit=1)
+        if len(parts)==2:parts[0]+=' —'
     label=r.get('date',' '.join(parts))
-    return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+''.join('<span'+(' class="cv-timeline-year"' if 'milestones' in r and re.fullmatch(r'20[0-9]{2}',v) else '')+'>'+esc(v)+'</span>' for v in parts)+'</div>'
+    rank_assets={'Sergeant':'sgt','Specialist':'spc','Private':'pv2'}
+    spans=''
+    for v in parts:
+        span_cls='cv-timeline-year' if 'milestones' in r and re.fullmatch(r'20[0-9]{2}',v) else 'cv-date-line' if 'milestones' not in r else 'cv-milestone-line'
+        image='<img class="cv-rank-mark" src="assets/images/about/military/rank-'+rank_assets[v]+'.svg" alt="" width="20" height="28" decoding="async">' if 'milestones' in r and v in rank_assets else ''
+        spans+='<span class="'+span_cls+'">'+image+esc(v)+'</span>'
+    action=''
+    if project_key is not None:
+        attrs=' class="cv-side-button cv-project-button" data-project-key="'+esc(project_key)+'"'
+        if r.get('project_url'):
+            action='<a'+attrs+' href="'+esc(r['project_url'])+'" aria-label="View project: '+esc(r['title'])+'">Project ↗</a>'
+        else:
+            action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
+    return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
 def citation(s):
     s=esc(s)
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
@@ -38,9 +51,13 @@ def render(document,data):
         c+='<'+level+' class="document-title">'+esc(r['title'])+'</'+level+'>'
         if r.get('subtitle'):c+=p(r['subtitle'])
         if r.get('repository'):c+='<p class="cv-repository-link"><a href="'+esc(r['repository_url'])+'">'+esc(r['repository'])+'</a></p>'
+        if g=='military':
+            unit_file='army-officer-candidate.webp' if i==0 else 'army-infantry-unit.png'
+            unit_label='U.S. Army Cadet Command insignia' if i==0 else '11th Airborne Division insignia'
+            c+='<img class="cv-military-unit-mark" src="assets/images/experience/'+unit_file+'" alt="'+unit_label+'" width="68" height="96" loading="lazy" decoding="async">'
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r)+'<div class="cv-entry-content">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None)+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
@@ -67,7 +84,7 @@ def render(document,data):
             c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else '')+'">'+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
-                c='<div class="cv-military-identity"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
+                c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
                 c+='<div class="cv-training-awards"><h3 class="document-title">Specialized Training and Awards</h3><h4 class="document-title">Special Skills Badges</h4>'+bullets(data['badges'])+'<h4 class="document-title">Awards</h4>'+bullets(data['awards'])+'</div>'
         blocks.append('<section class="cv-section" id="'+sid+'"><h2 class="cv-section-label document-section-title">'+esc(title)+'</h2><div class="cv-section-body">'+c+'</div></section>')
     start=re.search(r'<section class="cv-section" id="[^"]+">',document)

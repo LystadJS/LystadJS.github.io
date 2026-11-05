@@ -1971,3 +1971,85 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   #education .cv-school-group { break-inside: avoid; }
   #education .cv-school-art { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
+
+/* Two-line date ranges and configurable project links in the date rail. */
+body[data-page="cv"] .cv-section .cv-timeline { --timeline-date-width: 6.25rem; }
+body[data-page="cv"] #education .cv-education-timeline { --education-date-width: 6.25rem; }
+body[data-page="cv"] .cv-timeline-date > .cv-date-line {
+  display: block;
+  white-space: nowrap;
+}
+body[data-page="cv"] .cv-project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: .7rem;
+  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: 0;
+}
+body[data-page="cv"] .cv-project-button:disabled {
+  cursor: default;
+  opacity: .65;
+}
+body[data-page="cv"] .cv-project-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line-bright);
+}
+body[data-page="cv"] :is(.cv-military-identity, .cv-training-awards) {
+  margin-left: calc(6.25rem + 24px);
+}
+@media print {
+  body[data-page="cv"] .cv-project-button:disabled { display: none; }
+}
+
+/* Retained Army, unit and enlisted-rank artwork from earlier CV layouts. */
+body[data-page="cv"] .cv-military-identity {
+  position: relative;
+  min-height: 58px;
+  padding-right: 78px;
+}
+body[data-page="cv"] .cv-army-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+body[data-page="cv"] .cv-military-entry-content {
+  position: relative;
+  padding-right: 88px;
+}
+body[data-page="cv"] .cv-military-unit-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 68px;
+  height: 96px;
+  object-fit: contain;
+}
+body[data-page="cv"] .cv-rank-mark {
+  display: block;
+  width: 20px;
+  height: 28px;
+  object-fit: contain;
+  margin: .3rem 0;
+}
+@media (max-width: 700px) {
+  body[data-page="cv"] .cv-military-entry-content { padding-right: 0; }
+  body[data-page="cv"] .cv-military-unit-mark {
+    position: static;
+    float: right;
+    width: 44px;
+    height: 64px;
+    margin: .25rem 0 .5rem .75rem;
+  }
+}
+
+body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
+  white-space: nowrap;
+  font-size: .7rem;
+}

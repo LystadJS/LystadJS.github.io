@@ -63,7 +63,7 @@ def render(document,data):
                 for i,r in enumerate(data[g]):
                     if not groups or groups[-1][0]!=r['logo']:groups.append((r['logo'],[]))
                     groups[-1][1].append(institution(r,g,i))
-                entries=''.join('<div class="cv-school-group">'+''.join(items)+'<div class="cv-school-art" aria-hidden="true"><img src="assets/images/experience/'+esc(logo)+'.png" alt="" decoding="async"></div></div>' for logo,items in groups)
+                entries=''.join('<div class="cv-school-group">'+''.join(items)+'<div class="cv-school-art" aria-hidden="true"><img src="assets/images/experience/'+esc(logo)+('.png' if logo=='florida-state-university' else '-color.svg')+'" alt="" decoding="async"></div></div>' for logo,items in groups)
             c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else '')+'">'+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
@@ -85,3 +85,4 @@ def main():
         print('CV matches its transcribed source.')
     else:path.write_text(result,encoding='utf-8',newline='');print('CV synchronized.')
 if __name__=='__main__':main()
+

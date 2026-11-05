@@ -1870,7 +1870,13 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   body[data-page="cv"] .cv-sidebar-actions a { font-size: var(--type-meta, .75rem) !important; }
   body[data-page="cv"] .cv-source-citation { font-size: var(--type-meta, .75rem) !important; }
 }
-.cv-source-citation { margin-top: .5rem; line-height: 1.5; }
+/* Original Word CV: 432 twips = 0.3 inch hanging indent. */
+.cv-source-citation {
+  margin-top: .5rem;
+  line-height: 1.5;
+  padding-inline-start: .3in;
+  text-indent: -.3in;
+}
 .cv-repository-link { margin: .3rem 0; }
 .cv-repository-link a { color: var(--paper); text-decoration: underline; text-underline-offset: .2em; }
 .cv-training-awards { margin: 1rem 0 0 calc(4.5rem + 24px); }

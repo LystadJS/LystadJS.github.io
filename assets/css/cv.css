@@ -1913,3 +1913,12 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
     }
   }
 }
+
+/* One muted color for the masthead disciplines and every CV date rail. */
+@media screen {
+  body[data-page="cv"] main :is(.cv-document-disciplines, .cv-timeline-date, .cv-role-meta, time),
+  body[data-page="cv"] main :is(.cv-timeline-date, .cv-role-meta, time) * {
+    color: var(--muted) !important;
+    opacity: 1;
+  }
+}

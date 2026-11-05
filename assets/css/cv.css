@@ -1930,7 +1930,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   isolation: isolate;
   padding: 0 0 24px;
 }
-#education .cv-school-group:has(img[src*="american-military-university"]) { --school-color: #ffc600; }
+#education .cv-school-group:has(img[src*="american-military-university"]) { --school-color: #004c97; }
 #education .cv-school-group:has(img[src*="florida-state-university"]) { --school-color: #782f40; }
 #education .cv-school-group:last-child { padding-bottom: 0; }
 #education .cv-school-group .cv-org-main {
@@ -1941,26 +1941,25 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 #education .cv-school-group .cv-education-entry:last-of-type { padding-bottom: 0; }
 #education .cv-school-art {
   position: absolute;
-  inset: 0 0 24px;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: linear-gradient(to right, transparent 25%, color-mix(in srgb, var(--school-color) 16%, transparent));
+  background: linear-gradient(to right, transparent 25%, color-mix(in srgb, var(--school-color) 24%, transparent));
 }
-#education .cv-school-group:last-child .cv-school-art { bottom: 0; }
 #education .cv-school-art img {
   position: absolute;
   inset: 0 0 0 auto;
   display: block;
-  width: 36%;
-  max-width: none;
+  width: auto;
+  max-width: 36%;
   height: 100%;
   object-fit: contain;
   object-position: right center;
-  mask-image: linear-gradient(to right, transparent, #000 80%);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 80%);
+  mask-image: linear-gradient(to right, transparent, #000 45%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 45%);
   filter: none;
-  opacity: .18;
+  opacity: .25;
 }
 @media print {
   #education .cv-school-group { break-inside: avoid; }

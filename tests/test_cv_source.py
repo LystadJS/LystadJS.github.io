@@ -49,6 +49,9 @@ class PhysicalCV(unittest.TestCase):
         self.assertTrue(all(value['current'] in ('true','false') for value in parsed.records.values()))
     def test_regeneration_is_idempotent(self):
         self.assertEqual(sync.render(self.page,self.data),self.page)
+    def test_regeneration_preserves_stylesheet_versions(self):
+        page=re.sub(r'(assets/css/(?:cv|document-format)\.css\?v=)[^"]+',r'\g<1>future-presentation',self.page)
+        self.assertEqual(sync.render(page,self.data),page)
     def test_physical_titles_and_removed_website_only_content(self):
         self.assertIn('Military Attaché',self.page)
         self.assertIn('Adjunct Instructor',self.page)

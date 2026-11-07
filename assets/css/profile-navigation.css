@@ -19,7 +19,7 @@ body[data-page="index"] .academic-profile .profile-pages {
 .profile-pages .profile-page-card:hover,
 .profile-pages .profile-page-card:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(87,38,48,.65);
+  border-color: rgba(156,56,70,.65);
   background: rgba(27,29,32,.8);
   text-decoration: none;
 }

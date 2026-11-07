@@ -1,13 +1,13 @@
 /* Site baseline palette (2026-11-07). Visual balance targets, not pixel quotas:
    canvas 70%, panels 16%, primary text 8%, secondary text 3%,
-   dried blood 2%, steel/plum 0.5% each.
+   Blackened Oxblood 2%, steel/plum 0.5% each.
    Keep dark accents ornamental; readable links and focus use lighter colors. */
 :root {
   --color-canvas: #090B0D;
   --color-panel: #1B1D20;
   --color-text: #EEE9E0;
   --color-muted: #B0AAA4;
-  --color-accent: #572630;
+  --color-accent: #9C3846;
   --color-steel: #8EA4AD;
   --color-line: #574248;
 
@@ -50,7 +50,7 @@ body {
   color: var(--paper);
   background:
     radial-gradient(circle at 85% 8%, rgba(87,66,72,.16), transparent 28rem),
-    radial-gradient(circle at 12% 34%, rgba(87,38,48,.14), transparent 31rem),
+    radial-gradient(circle at 12% 34%, rgba(156,56,70,.14), transparent 31rem),
     linear-gradient(rgba(238,233,224,.012) 1px, transparent 1px),
     linear-gradient(90deg, rgba(238,233,224,.012) 1px, transparent 1px),
     var(--bg);
@@ -141,14 +141,14 @@ button, input, textarea, select { font: inherit; }
   background:
     radial-gradient(
       circle at center,
-      rgba(87,38,48,.10),
+      rgba(156,56,70,.10),
       transparent 58%
     ),
     linear-gradient(
       145deg,
       rgba(238,233,224,.035),
       rgba(87,66,72,.06) 45%,
-      rgba(87,38,48,.08)
+      rgba(156,56,70,.08)
     ),
     var(--color-panel);
 
@@ -158,8 +158,8 @@ button, input, textarea, select { font: inherit; }
     inset 0 0 18px rgba(0,0,0,.42),
 
     /* faint oxblood leakage around the plate */
-    0 0 7px rgba(87,38,48,.16),
-    0 0 18px rgba(87,38,48,.08);
+    0 0 7px rgba(156,56,70,.16),
+    0 0 18px rgba(156,56,70,.08);
 }
 
 /* etched inner border */
@@ -200,9 +200,9 @@ button, input, textarea, select { font: inherit; }
     1px 1px 0 rgba(238,233,224,.08),
 
     /* light leaking through engraving */
-    0 0 2px rgba(87,38,48,.75),
-    0 0 5px rgba(87,38,48,.52),
-    0 0 10px rgba(87,38,48,.30);
+    0 0 2px rgba(156,56,70,.75),
+    0 0 5px rgba(156,56,70,.52),
+    0 0 10px rgba(156,56,70,.30);
 }
 
 /* blurred light behind the engraved letters */
@@ -218,9 +218,9 @@ button, input, textarea, select { font: inherit; }
   filter: blur(4px);
 
   text-shadow:
-    0 0 5px rgba(87,38,48,.9),
-    0 0 11px rgba(87,38,48,.65),
-    0 0 18px rgba(87,38,48,.34);
+    0 0 5px rgba(156,56,70,.9),
+    0 0 11px rgba(156,56,70,.65),
+    0 0 18px rgba(156,56,70,.34);
 
   z-index: -1;
 }
@@ -265,7 +265,7 @@ button, input, textarea, select { font: inherit; }
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--color-text);
-  background: rgba(87,38,48,.18);
+  background: rgba(156,56,70,.18);
 }
 
 .site-nav a.active::after {
@@ -378,7 +378,7 @@ main { overflow: clip; }
   isolation: isolate;
   border: 1px solid var(--color-line);
   background:
-    radial-gradient(circle at 50% 38%, rgba(87,38,48,.13), transparent 52%),
+    radial-gradient(circle at 50% 38%, rgba(156,56,70,.13), transparent 52%),
     linear-gradient(145deg, rgba(87,66,72,.10), rgba(27,29,32,.96));
   box-shadow:
     0 24px 65px rgba(0,0,0,.42),
@@ -457,8 +457,8 @@ main { overflow: clip; }
 .corner-tl {
   top: 13px;
   left: 13px;
-  border-top: 1px solid rgba(87,38,48,.70);
-  border-left: 1px solid rgba(87,38,48,.70);
+  border-top: 1px solid rgba(156,56,70,.70);
+  border-left: 1px solid rgba(156,56,70,.70);
 }
 
 .corner-tr {
@@ -478,8 +478,8 @@ main { overflow: clip; }
 .corner-br {
   right: 13px;
   bottom: 13px;
-  border-right: 1px solid rgba(87,38,48,.70);
-  border-bottom: 1px solid rgba(87,38,48,.70);
+  border-right: 1px solid rgba(156,56,70,.70);
+  border-bottom: 1px solid rgba(156,56,70,.70);
 }
 
 .hero-headshot figcaption {
@@ -554,7 +554,7 @@ main { overflow: clip; }
 .button-primary {
   background: linear-gradient(135deg, var(--color-accent), var(--color-line));
   border-color: var(--color-accent);
-  box-shadow: 0 12px 40px rgba(87,38,48,.2);
+  box-shadow: 0 12px 40px rgba(156,56,70,.2);
 }
 
 .button-secondary {
@@ -740,7 +740,7 @@ main { overflow: clip; }
   height: 7px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 10px rgba(87,38,48,.6);
+  box-shadow: 0 0 10px rgba(156,56,70,.6);
 }
 
 .console-status {
@@ -1015,7 +1015,7 @@ code {
   position: absolute;
   width: 180px;
   height: 180px;
-  border: 1px solid rgba(87,38,48,.13);
+  border: 1px solid rgba(156,56,70,.13);
   transform: rotate(45deg);
 }
 .contact-panel::before { left: -90px; top: -90px; }
@@ -1325,12 +1325,12 @@ code {
   color: var(--color-text);
   border-color: var(--color-accent);
   background:
-    linear-gradient(145deg, rgba(87,38,48,.085), rgba(87,66,72,.045)),
+    linear-gradient(145deg, rgba(156,56,70,.085), rgba(87,66,72,.045)),
     var(--panel);
   box-shadow:
     inset 0 0 0 1px rgba(238,233,224,.025),
     0 10px 28px rgba(0,0,0,.20),
-    0 0 14px rgba(87,38,48,.08);
+    0 0 14px rgba(156,56,70,.08);
 }
 
 .site-nav a[data-page="cv"]:hover {
@@ -1358,6 +1358,9 @@ code {
     outline-offset: 4px;
   }
   .section-index, .kicker, .eyebrow, .card-kicker, .meta-label {
-    color: var(--color-text);
+    color: var(--color-accent);
   }
 }
+
+/* Native list markers share the accent used by custom CV/research bullets. */
+ul > li::marker, ol > li::marker { color: var(--color-accent); }

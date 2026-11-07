@@ -38,14 +38,14 @@ body[data-page="index"] .hero-practice-links a::before{
   height:112px;
   border-radius:50%;
   pointer-events:none;
-  background:radial-gradient(circle,rgba(87,38,48,.10),transparent 70%);
+  background:radial-gradient(circle,rgba(156,56,70,.10),transparent 70%);
 }
 body[data-page="index"] .hero-practice-links a:hover,
 body[data-page="index"] .hero-practice-links a:focus-visible{
   padding-left:.75rem;
   transform:translateY(-2px);
-  border-color:rgba(87,38,48,.48);
-  background:radial-gradient(circle at 15% 20%,rgba(87,66,72,.13),transparent 54%),linear-gradient(90deg,rgba(87,38,48,.055),transparent 76%),rgba(27,29,32,.74);
+  border-color:rgba(156,56,70,.48);
+  background:radial-gradient(circle at 15% 20%,rgba(87,66,72,.13),transparent 54%),linear-gradient(90deg,rgba(156,56,70,.055),transparent 76%),rgba(27,29,32,.74);
   box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 0 0 1px rgba(238,233,224,.018);
   outline:none;
 }

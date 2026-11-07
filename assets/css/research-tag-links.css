@@ -18,13 +18,13 @@
 .research-tag-link:focus-visible {
   color: var(--paper);
   border-color: var(--line-bright);
-  background: rgba(255,255,255,.035);
+  background: rgba(213,200,177,.035);
   transform: translateY(-1px);
   outline: none;
 }
 
 #applied-research .research-tag-link:hover,
 #applied-research .research-tag-link:focus-visible {
-  border-color: rgba(146,112,172,.55);
-  background: rgba(101,69,126,.07);
+  border-color: rgba(87,66,72,.55);
+  background: rgba(87,66,72,.07);
 }

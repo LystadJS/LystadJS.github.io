@@ -16,7 +16,7 @@ body[data-page="research"] .st-subtitle {
   font-weight: 500;
 }
 body[data-page="research"] .st-tick {
-  fill: #b3a6b5;
+  fill: var(--color-text);
   font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
@@ -123,7 +123,7 @@ body[data-page="research"] :is(.st-controls,[data-target-panel])[hidden] {
   display: none;
 }
 body[data-page="research"] .rp-stat-figure .rp-figure-type {
-  color: #b3a6b5;
+  color: var(--color-muted);
 }
 body[data-page="research"] .st-scroll-hint {
   display: none;
@@ -277,7 +277,7 @@ body[data-page="research"] .rp-stat-figure .rp-data-table th:first-child {
   font-size: 14px;
 }
 #paper-vanguards .vg-note {
-  fill: #b3a6b5;
+  fill: var(--color-text);
   font-size: 13px;
 }
 #paper-vanguards .vg-baseline-text {

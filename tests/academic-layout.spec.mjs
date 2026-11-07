@@ -48,10 +48,15 @@ test('photographic banner and profile layout work across desktop and mobile widt
         await expect(page.locator('.profile-contact a')).toHaveCount(5);
         const cards = page.locator('.profile-pages .profile-page-card');
         await expect(cards).toHaveCount(3);
+        // The compact cards use a title and icon, without a subtitle row.
+        await expect(cards.locator('strong')).toHaveText([
+          'Research & Applied Work', 'Code & Development', 'Curriculum Vitae'
+        ]);
+        expect(await cards.evaluateAll(links => links.map(link => link.getAttribute('href'))))
+          .toEqual(['research.html', 'code.html', 'cv.html']);
         for (const card of await cards.all()) {
           await expect(card.locator('svg')).toHaveCount(1);
           await expect(card.locator('strong')).toBeVisible();
-          await expect(card.locator('small')).toBeVisible();
           const bounds = await card.boundingBox();
           expect(bounds.x).toBeGreaterThanOrEqual(profile.x);
           expect(bounds.x + bounds.width).toBeLessThanOrEqual(profile.x + profile.width + 1);
@@ -72,7 +77,8 @@ test('profile, contact details and navigation are available without JavaScript',
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('.banner-title')).toHaveText('John S. Lystad');
   await expect(page.locator('.academic-profile h2')).toHaveText('John S. Lystad');
-  await expect(page.locator('.profile-pages a')).toHaveCount(4);
+  await expect(page.locator('.profile-pages a')).toHaveCount(3);
+  await expect(page.locator('.site-nav a[href="about.html"]')).toBeVisible();
   await expect(page.locator('.profile-page-card')).toHaveCount(3);
   for (const href of ['research.html', 'code.html', 'cv.html']) {
     await expect(page.locator(`.profile-page-card[href="${href}"]`)).toBeVisible();

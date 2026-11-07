@@ -242,6 +242,10 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
 }
 
 /* Resource labels must fit the shared rail at the smallest breakpoint. */
+body[data-page="cv"] .cv-timeline .cv-entry-rail {
+  /* Long date text must wrap instead of enlarging the implicit grid column. */
+  grid-template-columns: minmax(0, 1fr);
+}
 body[data-page="cv"] .cv-timeline .cv-entry-rail .cv-side-button {
   min-width: 0;
   width: 100%;

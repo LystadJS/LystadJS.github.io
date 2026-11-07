@@ -3,7 +3,7 @@
 body[data-page] {
   --document-primary: var(--paper, var(--ink, var(--color-text)));
   --document-secondary: var(--muted);
-  --document-accent: var(--color-accent, var(--red, #572630));
+  --document-accent: var(--color-accent, var(--red, #9C3846));
 }
 body[data-page] main .document-section-title {
   display: block;
@@ -116,7 +116,7 @@ body[data-page] :is(.cv-timeline, .document-timeline)::before {
   top: 12px;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(87,38,48,.65) calc(100% - 24px), transparent);
+  background: linear-gradient(to bottom, rgba(156,56,70,.65) calc(100% - 24px), transparent);
   pointer-events: none;
 }
 body[data-page] :is(.cv-timeline-entry, .document-timeline-entry) {
@@ -340,8 +340,9 @@ body[data-page] :is(.cv-timeline-entry, .document-timeline-entry)[data-current="
 body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
   .research-kicker, .research-eyebrow, .project-kicker, .rpm-detail-kicker,
   .dm-status, .empirical-panel-kicker, .rp-kicker, .about-direction-kicker,
-  .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) {
-  color: var(--color-text, var(--document-accent)) !important;
+  .code-method-label, .ev-overline, .topline, .ae-section-index, .ae-overline,
+  .timeline-kicker, .timeline-noscript-kicker, .section-index, .meta-label):not(.document-timeline-date *) {
+  color: var(--document-accent) !important;
   line-height: 1.3;
 }
 @layer spacing {
@@ -369,7 +370,7 @@ body[data-page="cv"] #selected-projects .cv-disclosure {
   margin: 0 0 1.25rem;
   border: 1px solid var(--line-bright, var(--color-line));
   border-left: 3px solid var(--document-accent);
-  background: rgba(87,38,48,.055);
+  background: rgba(156,56,70,.055);
 }
 body[data-page] main :is(.document-copy, .rp-summary p, .cv-bullets li) {
   line-height: 1.55;

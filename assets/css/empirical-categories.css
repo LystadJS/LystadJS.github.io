@@ -83,7 +83,7 @@
 
 .empirical-filter-row--research .empirical-filter-row-buttons::before {
   background: var(--color-accent);
-  box-shadow: 0 0 7px rgba(87,38,48,.16);
+  box-shadow: 0 0 7px rgba(156,56,70,.16);
 }
 
 .empirical-filter-row--applied .empirical-filter-row-buttons::before {
@@ -149,8 +149,8 @@
 /* Academic research active state: existing oxblood standard. */
 .empirical-filter--research.is-active {
   color: var(--paper);
-  border-color: rgba(87,38,48,.42);
-  background: rgba(87,38,48,.12);
+  border-color: rgba(156,56,70,.42);
+  background: rgba(156,56,70,.12);
 }
 
 /* Applied Projects active state: UN blue. */

@@ -129,7 +129,7 @@
 #anticipatory-direction .ae-updated-path { fill: none; stroke: var(--ae-adapt); stroke-width: 2.35; stroke-dasharray: 8 5; stroke-linecap: round; }
 #anticipatory-direction .ae-now-point { fill: var(--color-text); stroke: var(--color-panel); stroke-width: 1.6; }
 #anticipatory-direction .ae-window {
-  fill: rgba(87,38,48,.055);
+  fill: rgba(156,56,70,.055);
   stroke: var(--ae-intervene);
   stroke-opacity: .46;
   stroke-dasharray: 4 5;
@@ -336,7 +336,7 @@
   overflow: auto;
   border: 1px solid rgba(176,170,164,.82);
   background:
-    linear-gradient(145deg, rgba(87,66,72,.08), rgba(87,38,48,.035)),
+    linear-gradient(145deg, rgba(87,66,72,.08), rgba(156,56,70,.035)),
     rgba(27,29,32,.97);
   box-shadow: 0 18px 50px rgba(0,0,0,.42);
   backdrop-filter: blur(8px);
@@ -530,9 +530,9 @@ body[data-page="index"] #correspondence {
 }
 
 #anticipatory-direction .ae-popup-method.is-focus {
-  border-color: rgba(87,38,48,.58);
+  border-color: rgba(156,56,70,.58);
   background:
-    linear-gradient(90deg, rgba(87,38,48,.09), transparent 78%),
+    linear-gradient(90deg, rgba(156,56,70,.09), transparent 78%),
     rgba(27,29,32,.78);
   color: var(--color-text);
 }
@@ -540,9 +540,9 @@ body[data-page="index"] #correspondence {
 #anticipatory-direction .ae-popup-method:hover,
 #anticipatory-direction .ae-popup-method:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(87,38,48,.66);
+  border-color: rgba(156,56,70,.66);
   background:
-    linear-gradient(90deg, rgba(87,38,48,.13), transparent 80%),
+    linear-gradient(90deg, rgba(156,56,70,.13), transparent 80%),
     rgba(27,29,32,.88);
   color: var(--ae-ink);
   outline: none;

@@ -6,7 +6,7 @@ body[data-page="index"] .home-introduction .current-work {
   padding: .48rem .62rem;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: var(--muted);
+  color: var(--color-accent);
   text-decoration: none;
   cursor: pointer;
   transition: color 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
@@ -14,18 +14,21 @@ body[data-page="index"] .home-introduction .current-work {
 .current-work .current-work-copy { min-width: 0; overflow-wrap: anywhere; }
 body[data-page="index"] .home-introduction .current-work:hover,
 body[data-page="index"] .home-introduction .current-work:focus-visible {
-  color: var(--paper);
-  background: linear-gradient(90deg, rgba(87,38,48,.11), rgba(87,38,48,.025) 72%, transparent);
-  border-color: rgba(87,38,48,.4);
-  box-shadow: inset 2px 0 0 var(--crimson-bright);
+  color: var(--color-accent);
+  background: linear-gradient(90deg, rgba(156,56,70,.11), rgba(156,56,70,.025) 72%, transparent);
+  border-color: rgba(156,56,70,.4);
+  box-shadow: inset 2px 0 0 var(--color-accent);
   text-decoration: none;
 }
 body[data-page="index"] .home-introduction .current-work:focus-visible {
   outline: 2px solid var(--electric);
   outline-offset: 3px;
 }
-.current-work:hover .prompt, .current-work:focus-visible .prompt { color: var(--paper); }
+.current-work:hover .prompt, .current-work:focus-visible .prompt { color: var(--color-accent); }
 @media (prefers-reduced-motion: reduce) {
   body[data-page="index"] .home-introduction .current-work { transition: none; }
   .current-work .console-cursor { animation: none !important; opacity: 1; }
 }
+
+/* Keep the command prompt and blinking cursor on the same accent as the text. */
+body[data-page="index"] .home-introduction .current-work :is(.prompt, .console-cursor) { color: var(--color-accent); }

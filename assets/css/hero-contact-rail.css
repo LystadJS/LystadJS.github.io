@@ -154,8 +154,8 @@ body[data-page="index"] .hero-practice-links a:first-child {
 body[data-page="index"] .hero-practice-links a:hover,
 body[data-page="index"] .hero-practice-links a:focus-visible {
   padding-left: .4rem;
-  border-bottom-color: rgba(87,38,48,.42);
-  background: linear-gradient(90deg, rgba(87,38,48,.055), transparent 72%);
+  border-bottom-color: rgba(156,56,70,.42);
+  background: linear-gradient(90deg, rgba(156,56,70,.055), transparent 72%);
   outline: none;
 }
 
@@ -239,10 +239,10 @@ body[data-page="index"] .hero-contact-link[data-brand="linkedin"] svg {
 body[data-page="index"] .hero-contact-link:hover,
 body[data-page="index"] .hero-contact-link:focus-visible {
   color: rgba(238,233,224,.96);
-  border-color: rgba(87,38,48,.42);
-  background: rgba(87,38,48,.055);
+  border-color: rgba(156,56,70,.42);
+  background: rgba(156,56,70,.055);
   transform: translateX(-2px);
-  box-shadow: 0 0 16px rgba(87,38,48,.10);
+  box-shadow: 0 0 16px rgba(156,56,70,.10);
   outline: none;
 }
 
@@ -280,7 +280,7 @@ body[data-page="index"] .hero-contact-link::after {
   top: 9px;
   bottom: 9px;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(87,38,48,.24), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(156,56,70,.24), transparent);
   opacity: 0;
   transition: opacity 160ms ease;
 }
@@ -454,8 +454,8 @@ body[data-page="index"] .hero-note-link {
 body[data-page="index"] .hero-note-link:hover,
 body[data-page="index"] .hero-note-link:focus-visible {
   color: var(--paper);
-  background: linear-gradient(90deg, rgba(87,38,48,.11), rgba(87,38,48,.025) 72%, transparent);
-  border-color: rgba(87,38,48,.22);
+  background: linear-gradient(90deg, rgba(156,56,70,.11), rgba(156,56,70,.025) 72%, transparent);
+  border-color: rgba(156,56,70,.22);
   box-shadow: inset 2px 0 0 var(--crimson-bright);
   outline: none;
 }

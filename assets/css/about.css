@@ -79,7 +79,7 @@ body[data-page="about"] .timeline-line.projected {
   height: 1px;
   background: repeating-linear-gradient(
         90deg,
-        rgba(87,38,48,.72) 0 4px,
+        rgba(156,56,70,.72) 0 4px,
         transparent 4px 8px
       );
 }
@@ -301,8 +301,8 @@ body[data-page="about"] .current-day-marker {
   border-radius: 50%;
   background: var(--crimson);
   box-shadow: 0 0 0 4px var(--color-panel),
-        0 0 0 6px rgba(87,38,48,.22),
-        0 0 10px rgba(87,38,48,.16);
+        0 0 0 6px rgba(156,56,70,.22),
+        0 0 10px rgba(156,56,70,.16);
   transform: translateX(-50%);
   pointer-events: none;
   transition: opacity 150ms ease-out, filter 150ms ease-out;
@@ -410,7 +410,7 @@ body[data-page="about"] .rank-event:hover .rank-event-detail,
 }
 
 body[data-page="about"] .rank-event:focus-visible {
-  outline: 1px solid rgba(87,38,48,.72);
+  outline: 1px solid rgba(156,56,70,.72);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -531,7 +531,7 @@ body[data-page="about"] .unit-event:hover .unit-event-label,
 }
 
 body[data-page="about"] .unit-event:focus-visible {
-  outline: 1px solid rgba(87,38,48,.72);
+  outline: 1px solid rgba(156,56,70,.72);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -553,7 +553,7 @@ body[data-page="about"] .unit-event.commissioning-transition::after {
   top: 75px;
   width: 25px;
   height: 1px;
-  background: rgba(87,38,48,.8);
+  background: rgba(156,56,70,.8);
   transform: rotate(50deg);
   transform-origin: left center;
   pointer-events: none;
@@ -582,7 +582,7 @@ body[data-page="about"] .future-service-continuation {
   width: var(--timeline-edge-extension);
   background: repeating-linear-gradient(
         90deg,
-        rgba(87,38,48,.72) 0 4px,
+        rgba(156,56,70,.72) 0 4px,
         transparent 4px 8px
       );
   -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
@@ -608,7 +608,7 @@ body[data-page="about"] .training-event::before {
   width: 14px;
   height: 14px;
   margin: 3px;
-  border: 1px solid rgba(87,38,48,.8);
+  border: 1px solid rgba(156,56,70,.8);
   border-radius: 50%;
   background: var(--color-panel);
   box-shadow: 0 0 0 3px rgba(27,29,32,.92);
@@ -874,7 +874,7 @@ body[data-page="about"] .timeline-noscript-list span {
       body[data-page="about"] .future-service-continuation {
     background: repeating-linear-gradient(
           90deg,
-          rgba(87,38,48,.94) 0 4px,
+          rgba(156,56,70,.94) 0 4px,
           transparent 4px 8px
         );
   }
@@ -899,8 +899,8 @@ body[data-page="about"] .timeline-noscript-list span {
   body[data-page="about"] .current-day-marker {
     border-color: var(--color-line);
     box-shadow: 0 0 0 4px var(--color-panel),
-          0 0 0 7px rgba(87,38,48,.38),
-          0 0 12px rgba(87,38,48,.28);
+          0 0 0 7px rgba(156,56,70,.38),
+          0 0 12px rgba(156,56,70,.28);
   }
   body[data-page="about"] .service-flow {
     opacity: .42;
@@ -1255,7 +1255,7 @@ body[data-page="about"] .military-photo-frame {
   overflow: hidden;
   isolation: isolate;
   border: 1px solid var(--color-line);
-  background: radial-gradient(circle at 50% 38%, rgba(87,38,48,.12), transparent 54%),
+  background: radial-gradient(circle at 50% 38%, rgba(156,56,70,.12), transparent 54%),
     linear-gradient(145deg, rgba(87,66,72,.09), rgba(27,29,32,.96));
   box-shadow: 0 24px 65px rgba(0,0,0,.38),
     inset 0 0 0 5px var(--color-panel),
@@ -1271,7 +1271,7 @@ body[data-page="about"] .military-photo-frame::before {
   background: linear-gradient(to bottom, rgba(9,11,13,.01), rgba(9,11,13,.035) 54%, rgba(9,11,13,.30)),
     radial-gradient(ellipse at center, transparent 46%, rgba(9,11,13,.36) 100%);
   box-shadow: inset 0 0 56px rgba(0,0,0,.30),
-    inset 0 -18px 42px rgba(87,38,48,.035);
+    inset 0 -18px 42px rgba(156,56,70,.035);
 }
 
 body[data-page="about"] .military-photo-frame::after {
@@ -1642,7 +1642,7 @@ body[data-page="about"] .about-portrait-frame {
   overflow: hidden;
   isolation: isolate;
   border: 1px solid var(--color-line);
-  background: radial-gradient(circle at 50% 38%, rgba(87,38,48,.13), transparent 52%),
+  background: radial-gradient(circle at 50% 38%, rgba(156,56,70,.13), transparent 52%),
     linear-gradient(145deg, rgba(87,66,72,.10), rgba(27,29,32,.96));
   box-shadow: 0 24px 65px rgba(0,0,0,.42),
     inset 0 0 0 5px var(--color-panel),
@@ -1698,7 +1698,7 @@ body[data-page="about"] .about-direction {
   margin-top: 1.2rem;
   padding: 1rem 1.15rem 1.05rem 1.25rem;
   border: 1px solid rgba(87,66,72,.72);
-  border-left: 2px solid rgba(87,38,48,.72);
+  border-left: 2px solid rgba(156,56,70,.72);
   background: radial-gradient(circle at 12% 18%, rgba(87,66,72,.10), transparent 48%),
     linear-gradient(120deg, rgba(238,233,224,.018), transparent 62%),
     rgba(27,29,32,.64);
@@ -1716,7 +1716,7 @@ body[data-page="about"] .about-direction::before {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(87,38,48,.72) 18%,
+    rgba(156,56,70,.72) 18%,
     rgba(87,66,72,.54) 82%,
     transparent
   );

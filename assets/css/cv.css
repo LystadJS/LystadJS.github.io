@@ -127,14 +127,14 @@ body[data-page="cv"] main {
 .cv-toc a:hover,
 .cv-toc a.active {
   color: var(--color-text);
-  background: rgba(87,38,48,.18);
+  background: rgba(156,56,70,.18);
 }
 
 
 .cv-toc a.active::before {
   border-color: var(--color-accent);
   background: var(--crimson);
-  box-shadow: 0 0 7px rgba(87,38,48,.38);
+  box-shadow: 0 0 7px rgba(156,56,70,.38);
 }
 
 
@@ -270,7 +270,7 @@ body[data-page="cv"] main {
   border: 1px solid var(--color-accent);
   border-radius: 50%;
   background: var(--color-panel);
-  box-shadow: 0 0 6px rgba(87,38,48,.22);
+  box-shadow: 0 0 6px rgba(156,56,70,.22);
 }
 
 
@@ -405,7 +405,7 @@ body[data-page="cv"] main {
   padding: .38rem .58rem;
   border: 1px solid var(--line-bright);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.11), rgba(87,66,72,.07)),
+    linear-gradient(135deg, rgba(156,56,70,.11), rgba(87,66,72,.07)),
     rgba(27,29,32,.78);
   color: var(--color-text);
   font-family: var(--mono);
@@ -427,11 +427,11 @@ body[data-page="cv"] main {
   color: var(--paper);
   border-color: var(--color-accent);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.22), rgba(87,66,72,.10)),
+    linear-gradient(135deg, rgba(156,56,70,.22), rgba(87,66,72,.10)),
     var(--color-panel);
   box-shadow:
-    0 0 8px rgba(87,38,48,.14),
-    inset 0 0 10px rgba(87,38,48,.06);
+    0 0 8px rgba(156,56,70,.14),
+    inset 0 0 10px rgba(156,56,70,.06);
   transform: translateX(2px);
   outline: none;
 }
@@ -465,7 +465,7 @@ body[data-page="cv"] main {
   padding: .95rem 1rem;
   border: 1px solid var(--line);
   background:
-    linear-gradient(145deg, rgba(87,38,48,.03), rgba(87,66,72,.018)),
+    linear-gradient(145deg, rgba(156,56,70,.03), rgba(87,66,72,.018)),
     rgba(27,29,32,.58);
   transition:
     border-color 160ms ease,
@@ -479,11 +479,11 @@ body[data-page="cv"] main {
 .cv-technical-hub:focus-visible {
   border-color: var(--color-accent);
   background:
-    linear-gradient(145deg, rgba(87,38,48,.09), rgba(87,66,72,.035)),
+    linear-gradient(145deg, rgba(156,56,70,.09), rgba(87,66,72,.035)),
     rgba(27,29,32,.78);
   box-shadow:
-    0 0 10px rgba(87,38,48,.08),
-    inset 0 0 12px rgba(87,38,48,.035);
+    0 0 10px rgba(156,56,70,.08),
+    inset 0 0 12px rgba(156,56,70,.035);
   transform: translateY(-1px);
   outline: none;
 }
@@ -689,7 +689,7 @@ body[data-page="cv"] main {
   padding: .4rem .62rem;
   border: 1px solid var(--line-bright);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.07), rgba(87,66,72,.035)),
+    linear-gradient(135deg, rgba(156,56,70,.07), rgba(87,66,72,.035)),
     rgba(27,29,32,.62);
   color: var(--color-text);
   font-family: var(--mono);
@@ -710,7 +710,7 @@ body[data-page="cv"] main {
   color: var(--paper);
   border-color: var(--color-accent);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.16), rgba(87,66,72,.06)),
+    linear-gradient(135deg, rgba(156,56,70,.16), rgba(87,66,72,.06)),
     rgba(27,29,32,.82);
   transform: translateX(1px);
   outline: none;
@@ -850,7 +850,7 @@ body[data-page="cv"] main {
   border-color: rgba(87,66,72,.95);
   color: var(--color-muted);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.035), rgba(87,66,72,.025)),
+    linear-gradient(135deg, rgba(156,56,70,.035), rgba(87,66,72,.025)),
     rgba(238,233,224,.008);
   transition:
     color 160ms ease,
@@ -876,11 +876,11 @@ body[data-page="cv"] main {
   color: var(--paper);
   border-color: var(--color-accent);
   background:
-    linear-gradient(135deg, rgba(87,38,48,.13), rgba(87,66,72,.06)),
+    linear-gradient(135deg, rgba(156,56,70,.13), rgba(87,66,72,.06)),
     rgba(27,29,32,.92);
   box-shadow:
-    0 0 8px rgba(87,38,48,.10),
-    inset 0 0 9px rgba(87,38,48,.045);
+    0 0 8px rgba(156,56,70,.10),
+    inset 0 0 9px rgba(156,56,70,.045);
   transform: translateY(-1px);
   outline: none;
 }
@@ -965,7 +965,7 @@ body[data-page="cv"] main {
   justify-self: end;
   border: 1px solid var(--color-line);
   background:
-    radial-gradient(circle at 50% 40%, rgba(87,38,48,.08), transparent 65%),
+    radial-gradient(circle at 50% 40%, rgba(156,56,70,.08), transparent 65%),
     rgba(27,29,32,.9);
   box-shadow:
     inset 0 0 0 4px var(--color-panel),
@@ -988,8 +988,8 @@ body[data-page="cv"] main {
 .cv-org-logo::before {
   left: 8px;
   top: 8px;
-  border-left: 1px solid rgba(87,38,48,.58);
-  border-top: 1px solid rgba(87,38,48,.58);
+  border-left: 1px solid rgba(156,56,70,.58);
+  border-top: 1px solid rgba(156,56,70,.58);
 }
 
 
@@ -1054,14 +1054,14 @@ body[data-page="cv"] main {
   border: 1px solid var(--color-accent);
   border-radius: 50%;
   background: var(--color-panel);
-  box-shadow: 0 0 6px rgba(87,38,48,.22);
+  box-shadow: 0 0 6px rgba(156,56,70,.22);
 }
 
 
 .cv-org-featured .cv-role::before {
   border-color: var(--color-accent);
   background: var(--color-accent);
-  box-shadow: 0 0 9px rgba(87,38,48,.36);
+  box-shadow: 0 0 9px rgba(156,56,70,.36);
 }
 
 
@@ -1161,7 +1161,7 @@ body[data-page="cv"] main {
   justify-self: end;
   border: 1px solid rgba(87,66,72,.82);
   background:
-    radial-gradient(circle at 50% 40%, rgba(87,38,48,.07), transparent 68%),
+    radial-gradient(circle at 50% 40%, rgba(156,56,70,.07), transparent 68%),
     rgba(27,29,32,.86);
   box-shadow:
     inset 0 0 0 3px var(--color-panel),
@@ -1654,7 +1654,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   top: 12px;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(87,38,48,.65) calc(100% - 24px), transparent);
+  background: linear-gradient(to bottom, rgba(156,56,70,.65) calc(100% - 24px), transparent);
   pointer-events: none;
 }
 #education .cv-education-entry {
@@ -1678,7 +1678,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   border: 1px solid var(--color-accent);
   border-radius: 50%;
   background: var(--color-panel);
-  box-shadow: 0 0 6px rgba(87,38,48,.22);
+  box-shadow: 0 0 6px rgba(156,56,70,.22);
   z-index: 1;
 }
 #education .cv-org-featured::before { background: var(--color-accent); border-color: var(--color-accent); }
@@ -1849,7 +1849,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 }
 
 /* Only the Education markers receive the accent color. */
-#education .cv-bullets li::before { color: var(--crimson-bright); }
+#education .cv-bullets li::before { color: var(--color-accent); }
 
 /* The complete CV contents list fits without an internal scroll region. */
 .cv-sidebar { top: 80px; max-height: none; }

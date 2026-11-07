@@ -29,9 +29,13 @@ test('CV and all navigation links fit without internal scrolling', async ({ page
     expect(geometry.sans).toContain('Atkinson Hyperlegible');
     expect(geometry.mono).toContain('Atkinson Hyperlegible');
     // Resource labels must stay in their date rail rather than cover a title.
-    expect(await page.locator('.cv-entry-rail .cv-side-button').evaluateAll(items => items.every(item =>
-      item.getBoundingClientRect().right <= item.closest('.cv-entry-rail').getBoundingClientRect().right + 1
-    )), `resource label at ${width}px`).toBe(true);
+    expect(await page.locator('.cv-entry-rail .cv-side-button').evaluateAll(items => items.every(item => {
+      const label_bounds = item.getBoundingClientRect();
+      const rail_bounds = item.closest('.cv-entry-rail').getBoundingClientRect();
+      return label_bounds.left >= rail_bounds.left - 1 &&
+        label_bounds.right <= rail_bounds.right + 1 &&
+        item.scrollWidth <= item.clientWidth + 1;
+    })), `resource label at ${width}px`).toBe(true);
     const toc = page.locator('.cv-toc');
     expect(await toc.evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBe(true);
     const inner = page.locator('.cv-sidebar-inner');
@@ -43,9 +47,14 @@ test('CV and all navigation links fit without internal scrolling', async ({ page
 test('CV navigation follows document order and disclosure stays inside applied work', async ({ page }) => {
   await page.goto('/cv.html');
   const sections = page.locator('.cv-document > .cv-section');
+  // Overview targets the document header, which precedes the content sections.
+  const overview_link = page.locator('.cv-toc a').first();
+  await expect(overview_link).toHaveText('Overview');
+  await expect(overview_link).toHaveAttribute('href', '#profile');
+  await expect(page.locator('.cv-document > header#profile')).toHaveCount(1);
   const targets = await page.locator('.cv-toc a').evaluateAll(links => links.map(a => a.hash.slice(1)));
-  expect(await sections.evaluateAll(items => items.map(item => item.id))).toEqual(targets);
-  expect(await sections.locator(':scope > h2').allTextContents()).toEqual(await page.locator('.cv-toc a').allTextContents());
+  expect(await sections.evaluateAll(items => items.map(item => item.id))).toEqual(targets.slice(1));
+  expect(await sections.locator(':scope > h2').allTextContents()).toEqual((await page.locator('.cv-toc a').allTextContents()).slice(1));
   await expect(page.locator('#selected-projects > .cv-section-body > .cv-disclosure')).toHaveCount(1);
   await expect(page.locator('#skills .cv-skill-domain')).toHaveCount(5);
   await expect(page.locator('.cv-technical-ledger')).toHaveCount(0);
@@ -57,7 +66,7 @@ test('CV follows printed order and downstream groups share a date rail', async (
   await page.goto('/cv.html');
   const expected=['education','research-portfolio','selected-projects','technical-work','presentations','academic-experience','professional-work','military-service' ,'skills'];
   expect(await page.locator('.cv-document > .cv-section').evaluateAll(items=>items.map(e=>e.id))).toEqual(expected);
-  expect(await page.locator('.cv-toc a').evaluateAll(items=>items.map(e=>e.hash.slice(1)))).toEqual(expected);
+  expect(await page.locator('.cv-toc a').evaluateAll(items=>items.map(e=>e.hash.slice(1)))).toEqual(['profile', ...expected]);
   expect(await page.locator('#academic-experience .cv-org-entry').count()).toBe(1);
   expect(await page.locator('#professional-work .cv-org-entry').count()).toBe(6);
   expect(await page.locator('#military-service .cv-role-timeline-entry').count()).toBe(4);

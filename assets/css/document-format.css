@@ -270,7 +270,7 @@ body[data-page="cv"] .cv-quoted-title {
   padding-inline: .65em;
 }
 body[data-page="cv"] .cv-title-quote {
-  color: var(--color-text);
+  color: var(--color-accent);
   font-family: var(--serif);
   font-weight: 400;
 }

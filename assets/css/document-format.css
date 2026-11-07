@@ -253,10 +253,12 @@ body[data-page="cv"] .cv-timeline .cv-bullets > li::before {
   text-indent: 0;
 }
 
-/* Project descriptions keep their first-line edge; continuation lines step in. */
+/* Project and position descriptions retain their first-line edge; wrapped lines step in. */
 body[data-page="cv"] .cv-timeline :is(
   [data-cv-group="scholarly"], [data-cv-group="applied"],
-  [data-cv-group="technical"], [data-cv-group="presentations"]
+  [data-cv-group="technical"], [data-cv-group="presentations"],
+  [data-cv-group="academic"], [data-cv-group="professional"],
+  [data-cv-group="military"]
 ) .cv-bullets > li {
   padding-inline-start: 2em;
   text-indent: -.65em;

@@ -70,7 +70,7 @@ body[data-page="research"] .rp-copy .tag {
 }
 body[data-page="research"] .rp-copy .tag:hover {
   color: var(--paper);
-  border-color: var(--violet-bright);
+  border-color: var(--color-line);
 }
 body[data-page="research"] .rp-resources {
   display: grid;
@@ -105,7 +105,7 @@ body[data-page="research"] .rp-resource-arrow {
   flex: none;
 }
 body[data-page="research"] a.rp-resource:hover {
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   color: var(--paper);
   background: var(--panel-raised);
 }
@@ -128,7 +128,7 @@ body[data-page="research"] .research-figure {
   margin: 0;
   border: 1px solid var(--line);
   background: var(--research-panel-bg);
-  box-shadow: inset 0 0 0 1px rgba(213,200,177,.012);
+  box-shadow: inset 0 0 0 1px rgba(238,233,224,.012);
 }
 body[data-page="research"] .rp-figure-bar {
   display: flex;

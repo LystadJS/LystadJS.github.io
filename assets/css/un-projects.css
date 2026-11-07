@@ -39,8 +39,8 @@
 .empirical-explorer.is-un-mode {
   border-color: rgba(0,158,219,.28);
   background:
-    linear-gradient(145deg, rgba(213,200,177,.015), rgba(0,111,154,.035) 44%, rgba(0,158,219,.055)),
-    rgba(32,33,36,.76);
+    linear-gradient(145deg, rgba(238,233,224,.015), rgba(0,111,154,.035) 44%, rgba(0,158,219,.055)),
+    rgba(27,29,32,.76);
 }
 
 .empirical-explorer.is-un-mode .empirical-toolbar {
@@ -57,7 +57,7 @@
   border-right-color: rgba(0,158,219,.18);
   background:
     radial-gradient(circle at 50% 42%, rgba(0,158,219,.105), transparent 55%),
-    rgba(32,33,36,.50);
+    rgba(27,29,32,.50);
 }
 
 .empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--un-scope {
@@ -72,7 +72,7 @@
 
 .empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--un-specific {
   fill: #009edb !important;
-  stroke: rgba(213,200,177,.58) !important;
+  stroke: rgba(238,233,224,.58) !important;
   stroke-width: .72 !important;
   opacity: .98;
   cursor: pointer;
@@ -81,7 +81,7 @@
 
 .empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--preview {
   fill: #43c0ed !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   stroke-width: 1 !important;
   transform: scale(1.045);
   filter:
@@ -92,7 +92,7 @@
 
 .empirical-explorer.is-un-mode .empirical-map .jvm-region.empirical-region--selected {
   fill: #58c7ef !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   stroke-width: 1.1 !important;
   transform: scale(1.055);
   filter:
@@ -102,13 +102,13 @@
 }
 
 .empirical-explorer.is-un-mode .empirical-map .jvm-region:focus-visible {
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   filter: drop-shadow(0 0 8px rgba(0,158,219,.55));
 }
 
 .empirical-explorer.is-un-mode .empirical-panel {
   background:
-    linear-gradient(180deg, rgba(8,34,45,.93), rgba(32,33,36,.95));
+    linear-gradient(180deg, rgba(8,34,45,.93), rgba(27,29,32,.95));
   scrollbar-color: rgba(0,158,219,.55) transparent;
 }
 

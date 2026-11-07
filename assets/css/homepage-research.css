@@ -3,7 +3,7 @@ body[data-page="index"]{
   --home-method:var(--electric);
   --home-application:var(--crimson-bright);
   --home-project:var(--color-text);
-  --home-gold:var(--color-brass);
+  --home-gold:var(--color-text);
 }
 
 @media (min-width:981px){
@@ -25,8 +25,8 @@ body[data-page="index"] .hero-practice-links a:first-child{
   gap:.72rem;
   padding:.85rem .78rem;
   border:1px solid rgba(87,66,72,.72);
-  background:radial-gradient(circle at 12% 20%,rgba(87,66,72,.09),transparent 52%),linear-gradient(120deg,rgba(213,200,177,.018),transparent 62%),rgba(32,33,36,.58);
-  box-shadow:inset 0 0 0 1px rgba(213,200,177,.012);
+  background:radial-gradient(circle at 12% 20%,rgba(87,66,72,.09),transparent 52%),linear-gradient(120deg,rgba(238,233,224,.018),transparent 62%),rgba(27,29,32,.58);
+  box-shadow:inset 0 0 0 1px rgba(238,233,224,.012);
   overflow:hidden;
   transition:transform 160ms ease,border-color 160ms ease,background 160ms ease,box-shadow 160ms ease;
 }
@@ -45,8 +45,8 @@ body[data-page="index"] .hero-practice-links a:focus-visible{
   padding-left:.75rem;
   transform:translateY(-2px);
   border-color:rgba(87,38,48,.48);
-  background:radial-gradient(circle at 15% 20%,rgba(87,66,72,.13),transparent 54%),linear-gradient(90deg,rgba(87,38,48,.055),transparent 76%),rgba(32,33,36,.74);
-  box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 0 0 1px rgba(213,200,177,.018);
+  background:radial-gradient(circle at 15% 20%,rgba(87,66,72,.13),transparent 54%),linear-gradient(90deg,rgba(87,38,48,.055),transparent 76%),rgba(27,29,32,.74);
+  box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 0 0 1px rgba(238,233,224,.018);
   outline:none;
 }
 body[data-page="index"] .hero-practice-card-copy{min-width:0;}
@@ -133,7 +133,7 @@ body[data-page="index"] .hero-practice-icon .mini-gold{fill:var(--color-panel);s
     gap:.45rem;
     padding:.9rem 0 0;
     border-left:0;
-    border-top:1px solid rgba(150,149,143,.18);
+    border-top:1px solid rgba(176,170,164,.18);
   }
   body[data-page="index"] .hero-contact-link{width:34px;height:34px;}
   body[data-page="index"] .hero-contact-link:hover,

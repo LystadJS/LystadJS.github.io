@@ -18,7 +18,7 @@
 .research-tag-link:focus-visible {
   color: var(--paper);
   border-color: var(--line-bright);
-  background: rgba(213,200,177,.035);
+  background: rgba(238,233,224,.035);
   transform: translateY(-1px);
   outline: none;
 }

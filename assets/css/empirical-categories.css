@@ -23,7 +23,7 @@
 
 .empirical-filter-row + .empirical-filter-row {
   padding-top: .48rem;
-  border-top: 1px solid rgba(213,200,177,.035);
+  border-top: 1px solid rgba(238,233,224,.035);
 }
 
 /* The former far-left row identifiers are intentionally hidden.
@@ -82,7 +82,7 @@
 }
 
 .empirical-filter-row--research .empirical-filter-row-buttons::before {
-  background: var(--crimson-bright);
+  background: var(--color-accent);
   box-shadow: 0 0 7px rgba(87,38,48,.16);
 }
 
@@ -184,8 +184,8 @@
 .empirical-explorer.is-army-mode {
   border-color: rgba(104,116,50,.40);
   background:
-    linear-gradient(145deg, rgba(213,200,177,.014), rgba(75,83,32,.045) 45%, rgba(91,100,41,.065)),
-    rgba(32,33,36,.79);
+    linear-gradient(145deg, rgba(238,233,224,.014), rgba(75,83,32,.045) 45%, rgba(91,100,41,.065)),
+    rgba(27,29,32,.79);
 }
 
 .empirical-explorer.is-army-mode .empirical-toolbar {
@@ -202,7 +202,7 @@
   border-right-color: rgba(104,116,50,.22);
   background:
     radial-gradient(circle at 50% 42%, rgba(75,83,32,.12), transparent 55%),
-    rgba(32,33,36,.52);
+    rgba(27,29,32,.52);
 }
 
 .empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--category-active {
@@ -216,7 +216,7 @@
 
 .empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--preview {
   fill: #6c782f !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   filter:
     drop-shadow(0 3px 3px rgba(0,0,0,.58))
     drop-shadow(0 0 8px rgba(105,118,48,.44));
@@ -224,14 +224,14 @@
 
 .empirical-explorer.is-army-mode .empirical-map .jvm-region.empirical-region--selected {
   fill: #7d8939 !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   filter:
     drop-shadow(0 4px 5px rgba(0,0,0,.62))
     drop-shadow(0 0 10px rgba(104,116,50,.50));
 }
 
 .empirical-explorer.is-army-mode .empirical-panel {
-  background: linear-gradient(180deg, rgba(32,33,36,.94), rgba(32,33,36,.96));
+  background: linear-gradient(180deg, rgba(27,29,32,.94), rgba(27,29,32,.96));
   scrollbar-color: rgba(104,116,50,.60) transparent;
 }
 
@@ -259,8 +259,8 @@
 .empirical-explorer.is-journalism-mode {
   border-color: rgba(35,69,104,.42);
   background:
-    linear-gradient(145deg, rgba(213,200,177,.014), rgba(25,55,88,.05) 45%, rgba(31,66,102,.075)),
-    rgba(32,33,36,.80);
+    linear-gradient(145deg, rgba(238,233,224,.014), rgba(25,55,88,.05) 45%, rgba(31,66,102,.075)),
+    rgba(27,29,32,.80);
 }
 
 .empirical-explorer.is-journalism-mode .empirical-toolbar {
@@ -277,7 +277,7 @@
   border-right-color: rgba(35,69,104,.22);
   background:
     radial-gradient(circle at 50% 42%, rgba(25,55,88,.13), transparent 55%),
-    rgba(32,33,36,.53);
+    rgba(27,29,32,.53);
 }
 
 .empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--category-active {
@@ -291,7 +291,7 @@
 
 .empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--preview {
   fill: #2b557d !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   filter:
     drop-shadow(0 3px 3px rgba(0,0,0,.58))
     drop-shadow(0 0 8px rgba(48,91,132,.44));
@@ -299,14 +299,14 @@
 
 .empirical-explorer.is-journalism-mode .empirical-map .jvm-region.empirical-region--selected {
   fill: #376b9a !important;
-  stroke: var(--color-text) !important;
+  stroke: var(--color-steel) !important;
   filter:
     drop-shadow(0 4px 5px rgba(0,0,0,.62))
     drop-shadow(0 0 10px rgba(48,91,132,.50));
 }
 
 .empirical-explorer.is-journalism-mode .empirical-panel {
-  background: linear-gradient(180deg, rgba(12,30,48,.95), rgba(32,33,36,.96));
+  background: linear-gradient(180deg, rgba(12,30,48,.95), rgba(27,29,32,.96));
   scrollbar-color: rgba(48,91,132,.62) transparent;
 }
 

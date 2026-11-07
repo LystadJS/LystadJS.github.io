@@ -108,11 +108,11 @@ body[data-page="research"] .st-controls button {
   cursor: pointer;
 }
 body[data-page="research"] .st-controls button:hover {
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
 }
 body[data-page="research"] .st-controls button[aria-pressed="true"] {
   background: var(--panel-raised);
-  border-color: var(--violet-bright);
+  border-color: var(--color-line);
   box-shadow: inset 0 -2px var(--violet-bright);
 }
 body[data-page="research"] :is(.st-controls button,.st-scroll,.rp-data-table):focus-visible {

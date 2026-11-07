@@ -242,6 +242,38 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
 }
 
 /* Resource labels must fit the shared rail at the smallest breakpoint. */
+/* Description markers sit in a gutter; every wrapped line shares the text edge. */
+body[data-page="cv"] .cv-timeline .cv-bullets > li {
+  padding-inline-start: 1.35em;
+  text-indent: 0;
+}
+body[data-page="cv"] .cv-timeline .cv-bullets > li::before {
+  inset-inline-start: 0;
+  width: 1em;
+}
+
+/* Reserve room for real quotation marks without letting them set the text edge. */
+body[data-page="cv"] .cv-quoted-title {
+  position: relative;
+  padding-inline: .65em;
+}
+body[data-page="cv"] .cv-title-quote {
+  color: var(--color-brass);
+  font-family: var(--serif);
+  font-weight: 400;
+}
+body[data-page="cv"] .cv-title-quote-open {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+}
+body[data-page="cv"] .cv-title-ending { white-space: nowrap; }
+body[data-page="cv"] .cv-title-quote-close {
+  display: inline-block;
+  width: 0;
+  white-space: pre;
+}
+
 body[data-page="cv"] .cv-timeline .cv-entry-rail {
   /* Long date text must wrap instead of enlarging the implicit grid column. */
   grid-template-columns: minmax(0, 1fr);

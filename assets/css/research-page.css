@@ -5,7 +5,7 @@ body[data-page="research"] .research-section-label::before {
   content: "◇";
   display: inline-block;
   margin-right: .52rem;
-  color: var(--color-link);
+  color: var(--color-text);
   font-size: .82em;
   line-height: 1;
   transform: translateY(-.02em);
@@ -30,8 +30,8 @@ body[data-page="research"] .research-page-hero p:not(.kicker) {
 body[data-page="research"] {
   --research-panel-bg:
     radial-gradient(circle at 12% 20%, rgba(87,66,72,.08), transparent 48%),
-    linear-gradient(145deg, rgba(213,200,177,.018), rgba(213,200,177,.004)),
-    rgba(32,33,36,.72);
+    linear-gradient(145deg, rgba(238,233,224,.018), rgba(238,233,224,.004)),
+    rgba(27,29,32,.72);
 }
 body[data-page="research"] main {
   overflow: visible;
@@ -78,7 +78,7 @@ body[data-page="research"] .page-index-card {
   border: 1px solid rgba(87,66,72,.72);
   background: var(--research-panel-bg);
   box-shadow:
-    inset 0 0 0 1px rgba(213,200,177,.012),
+    inset 0 0 0 1px rgba(238,233,224,.012),
     0 12px 32px rgba(0,0,0,.15);
 }
 body[data-page="research"] .page-index-card div {
@@ -173,10 +173,10 @@ body[data-page="research"] .cv-disclosure {
   border: 1px solid var(--line);
   border-left: 2px solid rgba(87,66,72,.62);
   background: var(--research-panel-bg);
-  box-shadow: inset 0 0 0 1px rgba(213,200,177,.01);
+  box-shadow: inset 0 0 0 1px rgba(238,233,224,.01);
 }
 body[data-page="research"] .cv-disclosure span {
-  color: var(--color-brass);
+  color: var(--color-text);
   font-family: var(--mono);
   font-size: .55rem;
   line-height: 1.4;
@@ -207,10 +207,10 @@ body[data-page="research"] .empirical-explorer {
   border-radius: 0;
   background:
     radial-gradient(circle at 14% 18%, rgba(87,66,72,.07), transparent 48%),
-    linear-gradient(145deg, rgba(213,200,177,.012), rgba(213,200,177,.002)),
-    rgba(32,33,36,.72);
+    linear-gradient(145deg, rgba(238,233,224,.012), rgba(238,233,224,.002)),
+    rgba(27,29,32,.72);
   box-shadow:
-    inset 0 0 0 1px rgba(213,200,177,.012),
+    inset 0 0 0 1px rgba(238,233,224,.012),
     0 20px 55px rgba(0,0,0,.20);
 }
 body[data-page="research"] .empirical-toolbar {

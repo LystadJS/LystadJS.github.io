@@ -12,7 +12,7 @@ body[data-page="index"] .site-header { position: fixed; width: 100%; }
 body[data-page="index"] .site-banner { height: 100vh; height: 100svh; }
 body[data-page="index"] .site-banner img { top: 0; height: 100%; min-height: 0; transform: none; object-position: 53% center; }
 .banner-title { position: absolute; top: 22%; left: max(32px, calc((100% - var(--max)) / 2)); max-width: calc(100% - 64px); color: var(--paper); text-shadow: 0 2px 16px rgba(0,0,0,.8); line-height: 1.05; }
-.banner-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: grid; place-items: center; width: 44px; height: 44px; color: var(--paper); border: 1px solid rgba(213,200,177,.45); background: rgba(18,20,22,.3); }
+.banner-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: grid; place-items: center; width: 44px; height: 44px; color: var(--paper); border: 1px solid rgba(238,233,224,.45); background: rgba(9,11,13,.3); }
 .banner-scroll:focus-visible { outline: 2px solid var(--electric); outline-offset: 4px; }
 .site-header {
   position: sticky;
@@ -28,7 +28,7 @@ body[data-page="index"] .site-banner img { top: 0; height: 100%; min-height: 0; 
   outline: 2px solid var(--electric);
   outline-offset: 3px;
 }
-.site-nav a:focus-visible { color: var(--paper); background: rgba(213,200,177,.025); }
+.site-nav a:focus-visible { color: var(--paper); background: rgba(238,233,224,.025); }
 .button:focus-visible { transform: translateY(-2px); border-color: var(--line-bright); }
 .academic-home { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 40px; align-items: start; padding-block: 32px; }
 .academic-profile { min-width: 0; }

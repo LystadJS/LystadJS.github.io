@@ -270,7 +270,7 @@ body[data-page="cv"] .cv-quoted-title {
   padding-inline: .65em;
 }
 body[data-page="cv"] .cv-title-quote {
-  color: var(--color-brass);
+  color: var(--color-text);
   font-family: var(--serif);
   font-weight: 400;
 }
@@ -341,7 +341,7 @@ body[data-page] main :is(.eyebrow, .kicker, .cv-entry-kicker, .card-kicker,
   .research-kicker, .research-eyebrow, .project-kicker, .rpm-detail-kicker,
   .dm-status, .empirical-panel-kicker, .rp-kicker, .about-direction-kicker,
   .code-method-label, .ev-overline, .topline):not(.document-timeline-date *) {
-  color: var(--color-brass, var(--document-accent)) !important;
+  color: var(--color-text, var(--document-accent)) !important;
   line-height: 1.3;
 }
 @layer spacing {
@@ -416,7 +416,7 @@ body[data-page="cv"] .cv-toc a { padding-block: .35rem; }
   body[data-page] main :is(.document-copy, .document-list, .document-muted,
     .cv-contact-block, .cv-sidebar-actions, .cv-source-citation, .cv-repository-link,
     .current-work) a {
-    color: var(--color-link, inherit);
+    color: var(--color-text, inherit);
     text-decoration: underline;
     text-underline-offset: .2em;
   }

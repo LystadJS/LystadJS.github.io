@@ -4,7 +4,7 @@
   content: "◇";
   display: inline-block;
   margin-right: .52rem;
-  color: var(--color-link);
+  color: var(--color-text);
   font-size: .82em;
   line-height: 1;
   transform: translateY(-.02em);
@@ -126,13 +126,13 @@ body[data-page="cv"] main {
 
 .cv-toc a:hover,
 .cv-toc a.active {
-  color: var(--color-link);
+  color: var(--color-text);
   background: rgba(87,38,48,.18);
 }
 
 
 .cv-toc a.active::before {
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background: var(--crimson);
   box-shadow: 0 0 7px rgba(87,38,48,.38);
 }
@@ -361,7 +361,7 @@ body[data-page="cv"] main {
   padding: .18rem .48rem;
   border: 1px solid var(--line);
   color: var(--color-muted);
-  background: rgba(213,200,177,.008);
+  background: rgba(238,233,224,.008);
   font-family: var(--mono);
   font-size: .54rem;
 }
@@ -406,7 +406,7 @@ body[data-page="cv"] main {
   border: 1px solid var(--line-bright);
   background:
     linear-gradient(135deg, rgba(87,38,48,.11), rgba(87,66,72,.07)),
-    rgba(32,33,36,.78);
+    rgba(27,29,32,.78);
   color: var(--color-text);
   font-family: var(--mono);
   font-size: .54rem;
@@ -425,7 +425,7 @@ body[data-page="cv"] main {
 .cv-entry-rail .cv-side-button:hover,
 .cv-entry-rail .cv-side-button:focus-visible {
   color: var(--paper);
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background:
     linear-gradient(135deg, rgba(87,38,48,.22), rgba(87,66,72,.10)),
     var(--color-panel);
@@ -466,7 +466,7 @@ body[data-page="cv"] main {
   border: 1px solid var(--line);
   background:
     linear-gradient(145deg, rgba(87,38,48,.03), rgba(87,66,72,.018)),
-    rgba(32,33,36,.58);
+    rgba(27,29,32,.58);
   transition:
     border-color 160ms ease,
     background 160ms ease,
@@ -477,10 +477,10 @@ body[data-page="cv"] main {
 
 .cv-technical-hub:hover,
 .cv-technical-hub:focus-visible {
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background:
     linear-gradient(145deg, rgba(87,38,48,.09), rgba(87,66,72,.035)),
-    rgba(32,33,36,.78);
+    rgba(27,29,32,.78);
   box-shadow:
     0 0 10px rgba(87,38,48,.08),
     inset 0 0 12px rgba(87,38,48,.035);
@@ -636,8 +636,8 @@ body[data-page="cv"] main {
   padding: 1rem;
   border: 1px solid rgba(87,66,72,.82);
   background:
-    linear-gradient(145deg, rgba(213,200,177,.012), rgba(87,66,72,.012)),
-    rgba(32,33,36,.52);
+    linear-gradient(145deg, rgba(238,233,224,.012), rgba(87,66,72,.012)),
+    rgba(27,29,32,.52);
 }
 
 
@@ -690,7 +690,7 @@ body[data-page="cv"] main {
   border: 1px solid var(--line-bright);
   background:
     linear-gradient(135deg, rgba(87,38,48,.07), rgba(87,66,72,.035)),
-    rgba(32,33,36,.62);
+    rgba(27,29,32,.62);
   color: var(--color-text);
   font-family: var(--mono);
   font-size: .52rem;
@@ -708,10 +708,10 @@ body[data-page="cv"] main {
 .cv-technical-link:hover,
 .cv-technical-link:focus-visible {
   color: var(--paper);
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background:
     linear-gradient(135deg, rgba(87,38,48,.16), rgba(87,66,72,.06)),
-    rgba(32,33,36,.82);
+    rgba(27,29,32,.82);
   transform: translateX(1px);
   outline: none;
 }
@@ -851,7 +851,7 @@ body[data-page="cv"] main {
   color: var(--color-muted);
   background:
     linear-gradient(135deg, rgba(87,38,48,.035), rgba(87,66,72,.025)),
-    rgba(213,200,177,.008);
+    rgba(238,233,224,.008);
   transition:
     color 160ms ease,
     border-color 160ms ease,
@@ -874,10 +874,10 @@ body[data-page="cv"] main {
 .cv-tags .cv-skill-tag:hover,
 .cv-tags .cv-skill-tag:focus-visible {
   color: var(--paper);
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background:
     linear-gradient(135deg, rgba(87,38,48,.13), rgba(87,66,72,.06)),
-    rgba(32,33,36,.92);
+    rgba(27,29,32,.92);
   box-shadow:
     0 0 8px rgba(87,38,48,.10),
     inset 0 0 9px rgba(87,38,48,.045);
@@ -966,10 +966,10 @@ body[data-page="cv"] main {
   border: 1px solid var(--color-line);
   background:
     radial-gradient(circle at 50% 40%, rgba(87,38,48,.08), transparent 65%),
-    rgba(32,33,36,.9);
+    rgba(27,29,32,.9);
   box-shadow:
     inset 0 0 0 4px var(--color-panel),
-    inset 0 0 0 5px rgba(166,139,100,.10),
+    inset 0 0 0 5px rgba(142,164,173,.10),
     0 12px 30px rgba(0,0,0,.22);
 }
 
@@ -1020,7 +1020,7 @@ body[data-page="cv"] main {
   z-index: 2;
   max-width: 60px;
   padding: .3rem;
-  color: rgba(213,200,177,.30);
+  color: rgba(238,233,224,.30);
   font-family: var(--sans);
   font-size: .82rem;
   line-height: 1;
@@ -1059,7 +1059,7 @@ body[data-page="cv"] main {
 
 
 .cv-org-featured .cv-role::before {
-  border-color: var(--crimson-bright);
+  border-color: var(--color-accent);
   background: var(--color-accent);
   box-shadow: 0 0 9px rgba(87,38,48,.36);
 }
@@ -1162,10 +1162,10 @@ body[data-page="cv"] main {
   border: 1px solid rgba(87,66,72,.82);
   background:
     radial-gradient(circle at 50% 40%, rgba(87,38,48,.07), transparent 68%),
-    rgba(32,33,36,.86);
+    rgba(27,29,32,.86);
   box-shadow:
     inset 0 0 0 3px var(--color-panel),
-    inset 0 0 0 4px rgba(166,139,100,.08);
+    inset 0 0 0 4px rgba(142,164,173,.08);
 }
 
 
@@ -1198,7 +1198,7 @@ body[data-page="cv"] main {
   z-index: 2;
   max-width: 48px;
   padding: .2rem;
-  color: rgba(213,200,177,.26);
+  color: rgba(238,233,224,.26);
   font-family: var(--sans);
   font-size: .66rem;
   line-height: 1;
@@ -1681,7 +1681,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   box-shadow: 0 0 6px rgba(87,38,48,.22);
   z-index: 1;
 }
-#education .cv-org-featured::before { background: var(--color-accent); border-color: var(--crimson-bright); }
+#education .cv-org-featured::before { background: var(--color-accent); border-color: var(--color-accent); }
 /* Logos span the text rows without creating blank space above the bullets. */
 #education .cv-org-main {
   --education-logo-size: 76px;
@@ -1751,7 +1751,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   width: 100%;
   height: 1px;
   margin-top: .5rem;
-  background: linear-gradient(to right, var(--crimson-bright), var(--bg));
+  background: linear-gradient(to right, var(--color-accent), var(--bg));
 }
 @layer type-scale {
   #education .cv-section-label { font-size: var(--type-section, 2rem) !important; }

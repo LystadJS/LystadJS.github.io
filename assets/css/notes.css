@@ -3,5 +3,5 @@
 .note-content h1 { font: 600 clamp(2.8rem, 6vw, 5rem)/1.05 var(--serif); margin: 0 0 1.5rem; }
 .note-content h2 { font: 600 2rem/1.15 var(--serif); margin-top: 2rem; }
 .note-content p, .note-content li { color: var(--paper-soft); }
-.note-content a { border-bottom: 1px solid var(--violet-bright); }
+.note-content a { border-bottom: 1px solid var(--color-line); }
 .note-content a:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }

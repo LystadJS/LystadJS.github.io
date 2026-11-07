@@ -250,6 +250,16 @@ body[data-page="cv"] .cv-timeline .cv-bullets > li {
 body[data-page="cv"] .cv-timeline .cv-bullets > li::before {
   inset-inline-start: 0;
   width: 1em;
+  text-indent: 0;
+}
+
+/* Project descriptions keep their first-line edge; continuation lines step in. */
+body[data-page="cv"] .cv-timeline :is(
+  [data-cv-group="scholarly"], [data-cv-group="applied"],
+  [data-cv-group="technical"], [data-cv-group="presentations"]
+) .cv-bullets > li {
+  padding-inline-start: 2em;
+  text-indent: -.65em;
 }
 
 /* Reserve room for real quotation marks without letting them set the text edge. */

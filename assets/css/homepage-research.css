@@ -2,8 +2,8 @@
 body[data-page="index"]{
   --home-method:var(--electric);
   --home-application:var(--crimson-bright);
-  --home-project:#d8ccd5;
-  --home-gold:#b7a176;
+  --home-project:var(--color-text);
+  --home-gold:var(--color-brass);
 }
 
 @media (min-width:981px){
@@ -24,9 +24,9 @@ body[data-page="index"] .hero-practice-links a:first-child{
   align-items:center;
   gap:.72rem;
   padding:.85rem .78rem;
-  border:1px solid rgba(74,53,71,.72);
-  background:radial-gradient(circle at 12% 20%,rgba(101,69,126,.09),transparent 52%),linear-gradient(120deg,rgba(255,255,255,.018),transparent 62%),rgba(13,11,16,.58);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.012);
+  border:1px solid rgba(87,66,72,.72);
+  background:radial-gradient(circle at 12% 20%,rgba(87,66,72,.09),transparent 52%),linear-gradient(120deg,rgba(213,200,177,.018),transparent 62%),rgba(32,33,36,.58);
+  box-shadow:inset 0 0 0 1px rgba(213,200,177,.012);
   overflow:hidden;
   transition:transform 160ms ease,border-color 160ms ease,background 160ms ease,box-shadow 160ms ease;
 }
@@ -38,21 +38,21 @@ body[data-page="index"] .hero-practice-links a::before{
   height:112px;
   border-radius:50%;
   pointer-events:none;
-  background:radial-gradient(circle,rgba(141,23,50,.10),transparent 70%);
+  background:radial-gradient(circle,rgba(87,38,48,.10),transparent 70%);
 }
 body[data-page="index"] .hero-practice-links a:hover,
 body[data-page="index"] .hero-practice-links a:focus-visible{
   padding-left:.75rem;
   transform:translateY(-2px);
-  border-color:rgba(191,49,82,.48);
-  background:radial-gradient(circle at 15% 20%,rgba(101,69,126,.13),transparent 54%),linear-gradient(90deg,rgba(141,23,50,.055),transparent 76%),rgba(16,12,19,.74);
-  box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 0 0 1px rgba(255,255,255,.018);
+  border-color:rgba(87,38,48,.48);
+  background:radial-gradient(circle at 15% 20%,rgba(87,66,72,.13),transparent 54%),linear-gradient(90deg,rgba(87,38,48,.055),transparent 76%),rgba(32,33,36,.74);
+  box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 0 0 1px rgba(213,200,177,.018);
   outline:none;
 }
 body[data-page="index"] .hero-practice-card-copy{min-width:0;}
 body[data-page="index"] .hero-practice-links strong{
   margin:0;
-  color:#ded4dc;
+  color:var(--color-text);
   font-family:var(--serif);
   font-size:1.08rem;
   line-height:1.06;
@@ -60,7 +60,7 @@ body[data-page="index"] .hero-practice-links strong{
 }
 body[data-page="index"] .hero-practice-links small{
   margin-top:.26rem;
-  color:#8f8290;
+  color:var(--color-muted);
   font-family:var(--mono);
   font-size:.52rem;
   line-height:1.42;
@@ -69,7 +69,7 @@ body[data-page="index"] .hero-practice-links small{
 body[data-page="index"] .hero-practice-arrow{
   position:relative;
   z-index:1;
-  color:#6f6370;
+  color:var(--color-muted);
   font-family:var(--mono);
   font-size:.86rem;
   transition:transform 160ms ease,color 160ms ease;
@@ -86,11 +86,11 @@ body[data-page="index"] .hero-practice-icon{
   height:46px;
   display:block;
 }
-body[data-page="index"] .hero-practice-icon .mini-edge{stroke:#4b3d4a;stroke-width:1.1;}
-body[data-page="index"] .hero-practice-icon .mini-method{fill:#0d0b10;stroke:var(--home-method);stroke-width:1.25;}
-body[data-page="index"] .hero-practice-icon .mini-app{fill:#120e15;stroke:var(--home-application);stroke-width:1.25;}
+body[data-page="index"] .hero-practice-icon .mini-edge{stroke:var(--color-line);stroke-width:1.1;}
+body[data-page="index"] .hero-practice-icon .mini-method{fill:var(--color-panel);stroke:var(--home-method);stroke-width:1.25;}
+body[data-page="index"] .hero-practice-icon .mini-app{fill:var(--color-panel);stroke:var(--home-application);stroke-width:1.25;}
 body[data-page="index"] .hero-practice-icon .mini-project{fill:var(--home-project);stroke:var(--home-project);}
-body[data-page="index"] .hero-practice-icon .mini-gold{fill:#0d0b10;stroke:var(--home-gold);stroke-width:1.25;}
+body[data-page="index"] .hero-practice-icon .mini-gold{fill:var(--color-panel);stroke:var(--home-gold);stroke-width:1.25;}
 
 @media (max-width:980px){
   body[data-page="index"] .hero-practice-index{padding-left:0;}
@@ -133,7 +133,7 @@ body[data-page="index"] .hero-practice-icon .mini-gold{fill:#0d0b10;stroke:var(-
     gap:.45rem;
     padding:.9rem 0 0;
     border-left:0;
-    border-top:1px solid rgba(145,132,147,.18);
+    border-top:1px solid rgba(150,149,143,.18);
   }
   body[data-page="index"] .hero-contact-link{width:34px;height:34px;}
   body[data-page="index"] .hero-contact-link:hover,

@@ -15,8 +15,8 @@ body[data-page="index"] .home-introduction .current-work {
 body[data-page="index"] .home-introduction .current-work:hover,
 body[data-page="index"] .home-introduction .current-work:focus-visible {
   color: var(--paper);
-  background: linear-gradient(90deg, rgba(141, 23, 50, .11), rgba(141, 23, 50, .025) 72%, transparent);
-  border-color: rgba(191, 49, 82, .4);
+  background: linear-gradient(90deg, rgba(87,38,48,.11), rgba(87,38,48,.025) 72%, transparent);
+  border-color: rgba(87,38,48,.4);
   box-shadow: inset 2px 0 0 var(--crimson-bright);
   text-decoration: none;
 }

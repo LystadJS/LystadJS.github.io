@@ -10,8 +10,8 @@
 .empirical-explorer.is-un-mode
 .empirical-map
 .jvm-region.empirical-region--un-scope:not(.empirical-region--un-specific) {
-  fill: #211b23 !important;
-  stroke: #3c303d !important;
+  fill: var(--color-panel) !important;
+  stroke: var(--color-line) !important;
   stroke-width: .45 !important;
   opacity: .68;
   cursor: default;

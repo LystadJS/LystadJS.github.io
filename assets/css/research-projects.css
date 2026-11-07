@@ -40,7 +40,7 @@ body[data-page="research"] .research-project[data-kind="applied"] .card-kicker {
 }
 body[data-page="research"] .rp-copy h3 {
   margin: 0;
-  color: #ded4dc;
+  color: var(--color-text);
   font: 600 clamp(1.9rem, 2.9vw, 2.4rem)/1.07 var(--serif);
   letter-spacing: -.02em;
   overflow-wrap: break-word;
@@ -48,7 +48,7 @@ body[data-page="research"] .rp-copy h3 {
 body[data-page="research"] .rp-summary p {
   max-width: 58ch;
   margin: 1.15rem 0 0;
-  color: #ada0ad;
+  color: var(--color-muted);
   font: 400 .94rem/1.75 var(--sans);
 }
 body[data-page="research"] .rp-copy .meta {
@@ -64,7 +64,7 @@ body[data-page="research"] .rp-copy .tag {
   padding: .22rem .5rem;
   border: 1px solid var(--line-bright);
   background: var(--research-panel-bg);
-  color: #a99cab;
+  color: var(--color-muted);
   font: 400 .62rem/1.4 var(--mono);
   letter-spacing: .025em;
 }
@@ -86,7 +86,7 @@ body[data-page="research"] .rp-resource {
   justify-content: space-between;
   gap: .75rem;
   padding: .7rem .9rem;
-  color: #ded4dc;
+  color: var(--color-text);
   background: var(--research-panel-bg);
   border: 1px solid var(--line-bright);
   text-decoration: none;
@@ -96,7 +96,7 @@ body[data-page="research"] .rp-resource {
 body[data-page="research"] .rp-resource small {
   display: block;
   margin-top: .35rem;
-  color: #a99cab;
+  color: var(--color-muted);
   font: 400 .67rem/1.4 var(--sans);
 }
 body[data-page="research"] .rp-resource-arrow {
@@ -112,7 +112,7 @@ body[data-page="research"] a.rp-resource:hover {
 body[data-page="research"] .rp-resource.is-unavailable {
   border-style: dashed;
   border-color: var(--line);
-  color: #ada0ad;
+  color: var(--color-muted);
 }
 body[data-page="research"] .rp-resource.is-unavailable .rp-resource-arrow {
   color: var(--muted);
@@ -128,7 +128,7 @@ body[data-page="research"] .research-figure {
   margin: 0;
   border: 1px solid var(--line);
   background: var(--research-panel-bg);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.012);
+  box-shadow: inset 0 0 0 1px rgba(213,200,177,.012);
 }
 body[data-page="research"] .rp-figure-bar {
   display: flex;
@@ -142,7 +142,7 @@ body[data-page="research"] .rp-figure-bar {
   font: 500 .78rem/1.4 var(--sans);
 }
 body[data-page="research"] .rp-figure-type {
-  color: #a99cab;
+  color: var(--color-muted);
   font: 400 .6rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: .07em;
@@ -161,7 +161,7 @@ body[data-page="research"] .research-figure svg {
 body[data-page="research"] .research-figure figcaption {
   padding: .85rem 1rem;
   border-top: 1px solid var(--line);
-  color: #a99cab;
+  color: var(--color-muted);
   font: 400 .77rem/1.6 var(--sans);
 }
 /* Reusable drawing primitives use the same crimson, violet, and paper tokens. */
@@ -174,7 +174,7 @@ body[data-page="research"] .rp-label {
   font-weight: 500;
 }
 body[data-page="research"] .rp-note {
-  fill: #b3a6b5;
+  fill: var(--color-text);
   font-size: 18px;
 }
 body[data-page="research"] .rp-small {
@@ -339,7 +339,7 @@ body[data-page="research"] .rp-ai .zero-guide {
   stroke-dasharray: 3 5;
 }
 body[data-page="research"] .rp-ai .axis-title {
-  fill: #b3a6b5;
+  fill: var(--color-text);
   font: 400 16px var(--sans);
 }
 body[data-page="research"] .rp-ai .process-point circle {
@@ -372,7 +372,7 @@ body[data-page="research"] .rp-figure-data summary:hover {
 body[data-page="research"] .rp-data-content {
   padding: 0 1rem 1rem;
   font: 400 .77rem/1.6 var(--sans);
-  color: #b3a6b5;
+  color: var(--color-muted);
 }
 body[data-page="research"] .rp-data-content a {
   text-decoration: underline;

@@ -32,7 +32,7 @@
 .empirical-tags .empirical-tag-link:focus-visible {
   color: var(--paper);
   border-color: var(--line-bright);
-  background: rgba(255,255,255,.035);
+  background: rgba(213,200,177,.035);
   transform: translateY(-1px);
   outline: none;
 }

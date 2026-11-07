@@ -12,6 +12,20 @@ SECTIONS=[
 def esc(s):return html.escape(s,quote=True)
 def p(s,cls='document-muted'):return '<p class="'+cls+'">'+esc(s)+'</p>'
 def bullets(values):return '<ul class="cv-bullets document-list">'+''.join('<li>'+esc(v)+'</li>' for v in values)+'</ul>' if values else ''
+
+def project_heading(title, level):
+    """Keep source punctuation as real text while hanging quotes outside the title."""
+    quoted = re.fullmatch(r'([“"]\s*)(.*?)(\s*[”"])', title)
+    if not quoted:
+        return '<'+level+' class="document-title">'+esc(title)+'</'+level+'>'
+    opening, text, closing = quoted.groups()
+    # Keep the closing quote attached to the last word when the title wraps.
+    prefix, separator, last_word = text.rpartition(' ')
+    return ('<'+level+' class="document-title cv-quoted-title">'
+            '<span class="cv-title-quote cv-title-quote-open">'+esc(opening)+'</span>'
+            +esc(prefix+separator)+'<span class="cv-title-ending">'+esc(last_word)
+            +'<span class="cv-title-quote cv-title-quote-close">'+esc(closing)+'</span>'
+            '</span></'+level+'>')
 def rail(r,education=False,project_key=None):
     cls='cv-role-meta cv-education-date cv-timeline-date' if education else 'cv-entry-rail cv-timeline-date'
     parts=r.get('milestones')
@@ -48,7 +62,7 @@ def render(document,data):
         cls='cv-entry cv-timeline-entry'+(' cv-role-timeline-entry' if g=='military' else '')
         c=p(r['label'],'cv-entry-kicker document-muted') if r.get('label') else ''
         level='h4' if g=='military' else 'h3'
-        c+='<'+level+' class="document-title">'+esc(r['title'])+'</'+level+'>'
+        c+=project_heading(r['title'], level)
         if r.get('subtitle'):c+=p(r['subtitle'])
         if r.get('repository'):c+='<p class="cv-repository-link"><a href="'+esc(r['repository_url'])+'">'+esc(r['repository'])+'</a></p>'
         if g=='military':

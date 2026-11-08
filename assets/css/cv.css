@@ -2153,3 +2153,6 @@ body[data-page="cv"] .cv-role-number { display: inline-block; position: relative
   body[data-page="cv"] .cv-service-scale > .cv-role-point,
   body[data-page="cv"] .cv-role-number { font-size: .625rem !important; line-height: 1 !important; }
 }
+
+/* Ongoing service uses the same filled accent treatment as current positions. */
+body[data-page="cv"] .cv-service-scale > .cv-role-point[data-current="true"] { background: var(--color-accent); color: var(--color-text); }

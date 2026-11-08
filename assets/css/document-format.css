@@ -247,12 +247,24 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
 body[data-page="cv"] #education .cv-degree-title { font-weight: 700; }
 body[data-page="cv"] #education .cv-coursework-entry .cv-degree-title {
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
 }
 body[data-page="cv"] #education .cv-coursework-entry .cv-bullets > li {
   font-style: italic;
 }
 body[data-page="cv"] #education .cv-degree-university {
+  color: var(--document-secondary) !important;
+}
+
+/* Position titles lead the hierarchy; organizations use the date/metadata color. */
+body[data-page="cv"] main :is([data-cv-group="academic"], [data-cv-group="professional"])
+  .cv-role-heading .document-title,
+body[data-page="cv"] main [data-cv-group="military"] .cv-entry-content > .document-title {
+  font-weight: 700;
+}
+body[data-page="cv"] main :is([data-cv-group="academic"], [data-cv-group="professional"])
+  .cv-org-header .document-title,
+body[data-page="cv"] main .cv-military-identity > .document-title {
   color: var(--document-secondary) !important;
 }
 

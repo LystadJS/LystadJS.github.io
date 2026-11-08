@@ -2309,3 +2309,8 @@ body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
 @layer type-scale {
   body[data-page="cv"] .cv-annual-group { font-size: .7rem !important; }
 }
+
+/* Emphasize annual ticks; rank-specific dates retain their normal weight. */
+body[data-page="cv"] .cv-service-year { font-weight: 700; }
+/* Restore compression dashes alongside grouped insignia without moving them. */
+body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content: ""; }

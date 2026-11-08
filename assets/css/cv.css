@@ -2312,8 +2312,7 @@ body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
 
 /* Emphasize annual ticks; rank-specific dates retain their normal weight. */
 body[data-page="cv"] .cv-service-year { font-weight: 700; }
-/* Restore compression dashes alongside grouped insignia without moving them. */
-body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content: ""; }
+/* Insignia groups do not imply compressed time; their spine stays solid. */
 
 /* All annual labels sit left of the spine; reserve their own compact row
    above a promotion pair so neither the date nor insignia is displaced sideways. */
@@ -2348,3 +2347,20 @@ body[data-page="cv"] .cv-unit-gap-between { min-height: 4px; }
 body[data-page="cv"] .cv-service-unit { flex-shrink: 0; }
 /* Match the shared timeline's 1px spine, including compressed portions. */
 body[data-page="cv"] .cv-service-insignia::before { left: 56px; width: 1px; }
+
+/* Only event-free annual intervals collapse to a single label row. Extend the
+   cue to the preceding year tick, including the existing 24px inter-role gap. */
+body[data-page="cv"] .cv-compressed-year::before {
+  content: ""; position: absolute; left: 56px; width: 1px;
+  top: -8.4px; bottom: 50%; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
+}
+body[data-page="cv"] .cv-compressed-year:first-child::before { top: -32.4px; }
+/* Role points align with title lines; start dates stay in source metadata. */
+body[data-page="cv"] .cv-role-point {
+  position: absolute; left: 53px; top: .65em; z-index: 2;
+  width: 7px; height: 7px; box-sizing: border-box;
+  border: 1px solid var(--color-accent); border-radius: 50%;
+  background: var(--color-canvas);
+}
+body[data-page="cv"] [data-current="true"] > .cv-role-point { background: var(--color-accent); }

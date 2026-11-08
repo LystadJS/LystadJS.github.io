@@ -2324,7 +2324,7 @@ body[data-page="cv"] .cv-annual-group > .cv-service-year {
   position: relative;
   left: 0;
   top: auto;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 body[data-page="cv"] .cv-annual-group > .cv-service-year::after { left: 100%; right: auto; }
 /* Use available height beside each description to approximate promotion month.

@@ -1874,7 +1874,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 .cv-training-awards { margin: 1rem 0 0 calc(4.5rem + 24px); }
 .cv-training-awards h4 { margin-top: 1rem; }
 .cv-military-identity { margin: 0 0 1rem calc(4.5rem + 24px); }
-#skills .cv-skill-domains { gap: 1.25rem; }
+#skills .cv-skill-domains { gap: 24px; }
 #skills .cv-skill-domain { border: 0; padding: 0; }
 #selected-projects .cv-disclosure { display: block; padding: 0; border: 0; background: none; margin: 0 0 1rem; }
 @media (min-width: 901px) and (max-height: 600px) {

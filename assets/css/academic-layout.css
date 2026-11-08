@@ -94,37 +94,3 @@ body[data-page="index"] #anticipatory-direction .ae-layout { grid-template-colum
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none !important; }
 }
-
-/* A modest, proportional 8% increase confined to the shared header. */
-@media screen {
-  .site-header {
-    --header-scale: 1.08;
-    --type-body: clamp(1.08rem, 1.0368rem + .1944vw, 1.1475rem);
-    --type-meta: .945rem;
-    --type-subheading: calc(var(--type-body) * 1.25);
-  }
-  .site-header .header-inner {
-    --max: 1274.4px; /* Original 1180px content width scaled by the same 8%. */
-    min-height: calc(64px * var(--header-scale));
-  }
-  .site-header .brand { gap: calc(.85rem * var(--header-scale)); }
-  .site-header .brand-sigil {
-    width: calc(46px * var(--header-scale));
-    height: calc(46px * var(--header-scale));
-    flex-shrink: 0;
-  }
-  .site-header .brand-sigil::before { inset: calc(5px * var(--header-scale)); }
-  .site-header .menu-toggle {
-    width: calc(42px * var(--header-scale));
-    height: calc(42px * var(--header-scale));
-    flex-shrink: 0;
-  }
-  .site-header .menu-toggle span,
-  .site-header .menu-toggle span::before,
-  .site-header .menu-toggle span::after {
-    width: calc(18px * var(--header-scale));
-    height: calc(1px * var(--header-scale));
-  }
-  .site-header .menu-toggle span::before { top: calc(-6px * var(--header-scale)); }
-  .site-header .menu-toggle span::after { top: calc(6px * var(--header-scale)); }
-}

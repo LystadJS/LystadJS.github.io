@@ -2183,3 +2183,21 @@ body[data-page="cv"] .cv-service-year-group:has(> .cv-service-year-events > .cv-
 
 /* The Army identity introduces the full section above the timeline. */
 body[data-page="cv"] .cv-military-identity { margin-left: 0; }
+
+/* Keep the Army emblem and identity together above the service timeline. */
+body[data-page="cv"] .cv-military-identity {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding-right: 0;
+}
+body[data-page="cv"] .cv-military-identity > .cv-army-mark {
+  position: static;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+body[data-page="cv"] .cv-military-identity > :is(h3, p) { grid-column: 2; }
+@layer spacing {
+  body[data-page="cv"] .cv-military-identity > :is(h3, p) { margin-block: 0 !important; }
+}

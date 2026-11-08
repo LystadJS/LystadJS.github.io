@@ -99,6 +99,20 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await page.goto('/cv.html');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.cv-service-scale')).toHaveCount(1);
+    await expect(page.locator('.cv-today-marker')).toBeVisible();
+    await expect(page.locator('.cv-today-marker')).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/);
+    await expect(page.locator('.cv-future-arrow')).toHaveAttribute('aria-label', 'Future');
+    // Check actual text fragments and circle bounds, including the new date tick.
+    const overlaps = await page.locator('.cv-service-scale').evaluate(root => {
+      const nodes = [...root.querySelectorAll('.cv-role-point,.cv-today-marker,.cv-service-year,.cv-service-event img,.cv-service-event time,.cv-service-event > span')];
+      const boxes = nodes.flatMap((e, index) => {
+        const range = document.createRange(); range.selectNodeContents(e);
+        const rects = e.matches('img,.cv-role-point,.cv-today-marker') ? [e.getBoundingClientRect()] : [...range.getClientRects()];
+        return rects.map(r => ({index,left:r.left,right:r.right,top:r.top,bottom:r.bottom}));
+      });
+      return boxes.some((a,i) => boxes.slice(i+1).some(b => a.index!==b.index && Math.min(a.right,b.right)-Math.max(a.left,b.left)>.5 && Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>.5));
+    });
+    expect(overlaps).toBe(false);
     const spine = await page.evaluate(() => {
       const military = getComputedStyle(document.querySelector('.cv-service-scale'), '::before');
       const professional = getComputedStyle(document.querySelector('#professional-work .cv-timeline'), '::before');

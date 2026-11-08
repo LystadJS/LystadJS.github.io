@@ -38,8 +38,7 @@
   });
 })();
 
-/* Place role points on the same piecewise year scale as the annual ticks.
-   Reading rendered ticks also accounts for compressed intervals and wrapping. */
+/* Position role starts and today on the shared annual scale after resizing. */
 (() => {
   const timeline = document.querySelector('.cv-service-scale');
   if (!timeline) return;
@@ -48,6 +47,24 @@
       const box = label.getBoundingClientRect();
       return [Number(label.textContent), box.top + box.height / 2];
     }));
+    // Use the portfolio owner's time zone so the date is consistent for visitors.
+    const today = timeline.querySelector('.cv-today-marker');
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date());
+    const date_part = type => Number(parts.find(part => part.type === type).value);
+    const year = date_part('year'), month = date_part('month'), day = date_part('day');
+    const january = years.get(year);
+    const step = years.get(2026) - years.get(2027);
+    // The upper edge represents January of the year after the highest tick.
+    const next_january = years.get(year + 1) ?? (january - step);
+    if (today && january !== undefined) {
+      const days_in_month = new Date(year, month, 0).getDate();
+      const fraction = (month - 1 + (day - 1) / days_in_month) / 12;
+      today.style.top = (january + (next_january - january) * fraction - timeline.getBoundingClientRect().top) + 'px';
+      today.dateTime = year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+      today.title = 'Today: ' + today.dateTime;
+      today.setAttribute('aria-label', today.title);
+      today.hidden = false;
+    }
     timeline.querySelectorAll('.cv-role-point').forEach(point => {
       const [year, month] = point.dataset.startDate.split('-').map(Number);
       const january = years.get(year);
@@ -62,4 +79,7 @@
   position_role_points();
   document.fonts.ready.then(position_role_points);
   new ResizeObserver(position_role_points).observe(timeline);
+  // Refresh on return to the page as well as while it remains open overnight.
+  document.addEventListener("visibilitychange", position_role_points);
+  setInterval(position_role_points, 60000);
 })();

@@ -1990,56 +1990,15 @@ body[data-page="cv"] .cv-project-button:disabled:hover {
   box-shadow: none;
   border-color: var(--line-bright);
 }
-body[data-page="cv"] :is(.cv-military-identity, .cv-training-awards) {
-  margin-left: calc(6.25rem + 24px);
-}
+
 @media print {
   body[data-page="cv"] .cv-project-button:disabled { display: none; }
 }
 
-/* Retained Army, unit and enlisted-rank artwork from earlier CV layouts. */
-body[data-page="cv"] .cv-military-identity {
-  position: relative;
-  min-height: 58px;
-  padding-right: 78px;
-}
-body[data-page="cv"] .cv-army-mark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-}
-body[data-page="cv"] .cv-military-entry-content {
-  position: relative;
-  padding-right: 88px;
-}
-body[data-page="cv"] .cv-military-unit-mark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 68px;
-  height: 96px;
-  object-fit: contain;
-}
-body[data-page="cv"] .cv-rank-mark {
-  display: block;
-  width: 20px;
-  height: 28px;
-  object-fit: contain;
-  margin: .3rem 0;
-}
-@media (max-width: 700px) {
-  body[data-page="cv"] .cv-military-entry-content { padding-right: 0; }
-  body[data-page="cv"] .cv-military-unit-mark {
-    position: static;
-    float: right;
-    width: 44px;
-    height: 64px;
-    margin: .25rem 0 .5rem .75rem;
-  }
-}
+/* Army identity artwork retained above the service scale. */
+body[data-page="cv"] .cv-military-identity { position: relative; min-height: 58px; }
+body[data-page="cv"] .cv-army-mark { width: 58px; height: 58px; object-fit: contain; }
+body[data-page="cv"] .cv-military-entry-content { position: relative; }
 
 body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
   white-space: nowrap;
@@ -2085,38 +2044,6 @@ body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
 body[data-page="cv"] .cv-document-header :is(.cv-document-disciplines, .cv-contact-block, .cv-contact-block a, .cv-contact-block span) {
   font-family: var(--mono);
 }
-/* Each military rail shares its position's row and the standard CV timeline spine. */
-body[data-page="cv"] .cv-service-timeline {
-  grid-column: 1; align-self: start; display: flex; flex-direction: column;
-  gap: 6px; width: 100%; padding: 4px 0 0; margin: 0; list-style: none;
-  color: var(--color-muted); font-family: var(--sans); line-height: 1.35;
-}
-body[data-page="cv"] .cv-service-year-group { margin: 0; padding: 0; list-style: none; }
-body[data-page="cv"] .cv-service-year { position: relative; display: block; font-family: var(--mono); line-height: 1.5; }
-body[data-page="cv"] .cv-service-year::after {
-  content: ""; position: absolute; left: 100%; top: 50%; width: 12px; height: 1px; background: var(--color-line);
-}
-body[data-page="cv"] .cv-service-year-events {
-  display: flex; flex-direction: column; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none;
-}
-body[data-page="cv"] .cv-service-event {
-  display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 4px;
-  align-items: start; margin: 0; padding: 0; overflow-wrap: anywhere;
-}
-body[data-page="cv"] .cv-service-event img {
-  grid-column: 1; grid-row: 1 / span 3; width: 28px; height: 36px; object-fit: contain;
-}
-body[data-page="cv"] .cv-service-event :is(time, span) { grid-column: 2; }
-body[data-page="cv"] .cv-service-event time { white-space: nowrap; }
-body[data-page="cv"] .cv-military-timeline .cv-military-entry-content { padding-right: 0; }
-@layer type-scale {
-  body[data-page="cv"] .cv-service-timeline,
-  body[data-page="cv"] .cv-service-year-group,
-  body[data-page="cv"] .cv-service-event,
-  body[data-page="cv"] .cv-service-event time { font-size: .7rem !important; }
-  body[data-page="cv"] .cv-service-event .cv-milestone-note { font-size: .6rem !important; }
-}
-body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
 /* Match the print CV's artwork/text pairing without altering the original image.
    The transparent source contains tabs at the top, ribbons in the middle,
    and parachutist/mountaineering badges at the bottom. */
@@ -2148,39 +2075,6 @@ body[data-page="cv"] .cv-art-ribbons img { transform: translateY(-48.09%); }
   body[data-page="cv"] .cv-award-group { grid-template-columns: 88px minmax(0, 1fr); gap: 8px; }
 }
 
-/* Only Military Service uses a split rail. Moving its spine left makes room
-   for unit changes on the right without shifting the description column. */
-body[data-page="cv"] #military-service .cv-military-timeline {
-  --timeline-date-width: 112px;
-  --timeline-gap: 12px;
-}
-body[data-page="cv"] #military-service .cv-military-timeline::before { left: 56px; }
-body[data-page="cv"] #military-service .cv-timeline-entry::before { left: 53px; }
-body[data-page="cv"] .cv-service-year { width: 52px; text-align: center; }
-body[data-page="cv"] .cv-service-year::after { width: 4px; }
-body[data-page="cv"] .cv-service-event {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 52px;
-  text-align: center;
-}
-body[data-page="cv"] .cv-service-event img { margin-bottom: 2px; }
-body[data-page="cv"] .cv-service-unit { align-self: flex-end; }
-/* Keep short rank names intact without changing their font size. */
-body[data-page="cv"] .cv-service-event > span:not(.cv-milestone-note) { overflow-wrap: normal; }
-
-/* A year with only a unit change can share its row with the right-hand insignia. */
-body[data-page="cv"] .cv-service-year-group:has(> .cv-service-year-events > .cv-service-unit:only-child) {
-  display: grid;
-  grid-template-columns: 52px 52px;
-  column-gap: 8px;
-  align-items: start;
-}
-body[data-page="cv"] .cv-service-year-group:has(> .cv-service-year-events > .cv-service-unit:only-child) > .cv-service-year-events {
-  margin-top: 0;
-}
-
 /* The Army identity introduces the full section above the timeline. */
 body[data-page="cv"] .cv-military-identity { margin-left: 0; }
 
@@ -2201,209 +2095,61 @@ body[data-page="cv"] .cv-military-identity > :is(h3, p) { grid-column: 2; }
 @layer spacing {
   body[data-page="cv"] .cv-military-identity > :is(h3, p) { margin-block: 0 !important; }
 }
-@layer type-scale {
-  body[data-page="cv"] .cv-service-year.cv-role-start { font-size: .7rem !important; }
-}
-/* Share the actual start-date row with the title. Later milestones sit above it,
-   retaining chronological order without relying on fixed pixel offsets. */
-body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry {
-  grid-template-rows: min-content auto;
-}
-body[data-page="cv"] .cv-service-timeline {
-  display: grid;
-  grid-row: 1 / span 2;
-  grid-template-rows: subgrid;
-  align-self: stretch;
-  gap: 0;
-  padding-top: 0;
-}
-body[data-page="cv"] .cv-service-before-start { grid-row: 1; padding: 0; margin: 0; list-style: none; }
-body[data-page="cv"] .cv-service-before-start > ol {
-  display: flex; flex-direction: column; gap: 6px;
-  margin: 0; padding: 0 0 8px; list-style: none;
-}
-body[data-page="cv"] .cv-service-before-start > ol:empty { padding: 0; }
-body[data-page="cv"] .cv-service-from-start { grid-row: 2; align-self: start; }
-body[data-page="cv"] .cv-military-timeline .cv-entry-content { grid-row: 2; }
-body[data-page="cv"] #military-service .cv-timeline-entry::before { content: none; }
-body[data-page="cv"] .cv-service-from-start::before {
-  content: ""; position: absolute; left: 53px; top: 6px;
-  width: 7px; height: 7px; box-sizing: border-box;
-  border: 1px solid var(--color-accent); border-radius: 50%; background: var(--color-canvas);
-}
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-from-start::before { background: var(--color-accent); }
-body[data-page="cv"] #military-service .cv-military-timeline > .cv-timeline-entry::before { display: none; }
-body[data-page="cv"] .cv-service-from-start { position: relative; }
-body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry { row-gap: 0; }
 
-/* Compress only the dated segments above start anchors. The first insignia and
-   its year share a row on opposite sides, preserving promotion/unit placement. */
-body[data-page="cv"] .cv-service-before-start > ol { gap: 2px; padding-bottom: 4px; }
-body[data-page="cv"] .cv-service-before-start .cv-service-year-events { margin-top: 0; gap: 2px; }
-body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) {
-  position: relative;
-  display: block;
+/* Independent military scale: one equal-height slot per year, with promotion
+   pairs left of the shared spine and unit insignia to its right. */
+body[data-page="cv"] .cv-independent-service { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
+body[data-page="cv"] .cv-service-scale { position: relative; min-height: 650px; }
+/* All other spine properties, including its 1px width and fade, are shared. */
+body[data-page="cv"] #military-service .cv-service-scale::before { left: 56px; }
+body[data-page="cv"] .cv-service-timeline {
+  display: flex; flex-direction: column; height: 100%; width: 100%;
+  margin: 0; padding: 0; list-style: none; gap: 0;
+  color: var(--color-muted); font-family: var(--sans); line-height: 1.35;
 }
-body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-promotion:first-child) > .cv-service-year {
-  left: 60px;
-}
-body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-promotion:first-child) > .cv-service-year::after {
-  left: auto;
-  right: 100%;
-}
-/* Mask the solid spine only over compressed intervals, then draw its dashes. */
-body[data-page="cv"] .cv-service-before-start { position: relative; }
-body[data-page="cv"] .cv-service-before-start:has(> ol > li)::before {
-  content: "";
-  position: absolute;
-  left: 55.5px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  z-index: 1;
-  pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
-}
-/* Compact, parallel insignia columns leave the shared 24px entry rhythm intact.
-   Unit badges indicate association with the role, not an exact assignment date. */
-body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry { grid-template-rows: auto; }
-body[data-page="cv"] .cv-service-timeline { display: block; grid-row: 1; align-self: start; }
-body[data-page="cv"] .cv-military-timeline .cv-entry-content { grid-row: 1; }
-body[data-page="cv"] .cv-service-insignia {
-  position: relative; display: grid; grid-template-columns: 52px 52px;
-  gap: 8px; margin: 4px 0 0; padding: 0; list-style: none;
-}
+body[data-page="cv"] .cv-annual-group { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; margin: 0; padding: 0; list-style: none; }
+body[data-page="cv"] .cv-service-year { position: relative; display: block; width: 52px; margin-top: auto; text-align: center; font-family: var(--mono); font-weight: 700; line-height: 1.5; }
+body[data-page="cv"] .cv-service-year::after { content: ""; position: absolute; left: 100%; top: 50%; width: 4px; height: 1px; background: var(--color-line); }
+body[data-page="cv"] .cv-service-insignia { position: relative; display: grid; grid-template-columns: 52px 52px; gap: 8px; flex: 1 0 auto; min-height: 0; margin: 0; padding: 0; list-style: none; }
 body[data-page="cv"] .cv-service-column,
 body[data-page="cv"] .cv-service-column > ol { margin: 0; padding: 0; list-style: none; }
-body[data-page="cv"] .cv-service-column > ol { display: flex; flex-direction: column; gap: 4px; }
-body[data-page="cv"] .cv-service-insignia::before {
-  content: ""; position: absolute; left: 55.5px; top: 0; bottom: 0; width: 2px;
-  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
-}
-body[data-page="cv"] .cv-service-timeline > .cv-role-start::before {
-  content: ""; position: absolute; left: 53px; top: 6px; width: 7px; height: 7px;
-  box-sizing: border-box; border: 1px solid var(--color-accent); border-radius: 50%; background: var(--color-canvas);
-}
-body[data-page="cv"] [data-current="true"] .cv-service-timeline > .cv-role-start::before { background: var(--color-accent); }
-/* Annual ticks replace position-date anchors and compression dashes. */
-body[data-page="cv"] .cv-annual-timeline { margin: 0; padding: 0; list-style: none; }
-body[data-page="cv"] .cv-annual-group { position: relative; list-style: none; margin: 0; padding: 0; }
-body[data-page="cv"] .cv-annual-timeline .cv-service-insignia { margin-top: 0; }
-body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content: none; }
-body[data-page="cv"] .cv-year-promotion-only > .cv-service-year { position: absolute; left: 60px; top: 0; }
-body[data-page="cv"] .cv-year-promotion-only > .cv-service-year::after { left: auto; right: 100%; }
-body[data-page="cv"] .cv-year-unit-only > .cv-service-year { position: absolute; left: 0; top: 0; }
-body[data-page="cv"] .cv-service-promotion {
-  display: grid; grid-template-columns: 20px 28px; column-gap: 4px;
-  align-items: center;
-}
+body[data-page="cv"] .cv-service-column > ol { display: block; height: 100%; }
+body[data-page="cv"] .cv-service-event { display: flex; flex-direction: column; align-items: center; width: 52px; text-align: center; margin: 0; padding: 0; overflow-wrap: anywhere; }
+body[data-page="cv"] .cv-service-event img { object-fit: contain; margin-bottom: 2px; }
+body[data-page="cv"] .cv-service-event > span:not(.cv-milestone-note) { overflow-wrap: normal; }
+body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
+/* Month placement stays inside each annual slot, reserving room for labels. */
+body[data-page="cv"] .cv-service-promotion { display: grid; grid-template-columns: 20px 28px; column-gap: 4px; position: relative; top: var(--promotion-position); transform: translateY(calc(-1 * var(--promotion-position))); }
 body[data-page="cv"] .cv-service-promotion img { grid-row: 1; width: 20px; height: 28px; margin: 0; }
 body[data-page="cv"] .cv-service-promotion time { grid-column: 2; white-space: normal; text-align: left; }
 body[data-page="cv"] .cv-service-promotion > span { grid-column: 1 / span 2; }
-body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
-@layer type-scale {
-  body[data-page="cv"] .cv-annual-group { font-size: .7rem !important; }
-}
-
-/* Emphasize annual ticks; rank-specific dates retain their normal weight. */
-body[data-page="cv"] .cv-service-year { font-weight: 700; }
-/* Insignia groups do not imply compressed time; their spine stays solid. */
-
-/* All annual labels sit left of the spine; reserve their own compact row
-   above a promotion pair so neither the date nor insignia is displaced sideways. */
-body[data-page="cv"] .cv-year-promotion-only > .cv-service-year { position: relative; left: 0; top: auto; }
-body[data-page="cv"] .cv-year-promotion-only > .cv-service-year::after { left: 100%; right: auto; }
-/* In reverse chronology, the year tick is the lower boundary of its events. */
-body[data-page="cv"] .cv-annual-group > .cv-service-year {
-  position: relative;
-  left: 0;
-  top: auto;
-  line-height: 1.5;
-}
-body[data-page="cv"] .cv-annual-group > .cv-service-year::after { left: 100%; right: auto; }
-/* Use available height beside each description to approximate promotion month.
-   The label's full height stays inside its year, with no extra entry spacing. */
-body[data-page="cv"] .cv-annual-timeline { display: flex; flex-direction: column; align-self: stretch; height: 100%; }
-body[data-page="cv"] .cv-annual-group { display: flex; flex-direction: column; flex: 0 0 auto; }
-body[data-page="cv"] .cv-annual-group:has(.cv-service-insignia) { flex: 1 0 auto; }
-body[data-page="cv"] .cv-annual-timeline .cv-service-insignia { flex: 1 0 auto; }
-body[data-page="cv"] .cv-service-column > ol { display: block; height: 100%; }
-body[data-page="cv"] .cv-service-column > ol > .cv-service-event + .cv-service-event { margin-top: 4px; }
-body[data-page="cv"] .cv-service-promotion {
-  position: relative;
-  top: var(--promotion-position);
-  transform: translateY(calc(-1 * var(--promotion-position)));
-}
-/* Flexible gaps approximate unit months without letting adjacent badges overlap.
-   The minimum between-badge gap matches the prior compact stack. */
 body[data-page="cv"] .cv-service-column > .cv-unit-events { display: flex; flex-direction: column; gap: 0; }
 body[data-page="cv"] .cv-unit-gap { flex-basis: 0; min-height: 0; margin: 0; padding: 0; list-style: none; }
 body[data-page="cv"] .cv-unit-gap-between { min-height: 4px; }
-body[data-page="cv"] .cv-service-unit { flex-shrink: 0; }
-/* Match the shared timeline's 1px spine, including compressed portions. */
-body[data-page="cv"] .cv-service-insignia::before { left: 56px; width: 1px; }
-
-/* Only event-free annual intervals collapse to a single label row. Extend the
-   cue to the preceding year tick, including the existing 24px inter-role gap. */
-body[data-page="cv"] .cv-compressed-year::before {
-  content: ""; position: absolute; left: 56px; width: 1px;
-  top: -8.4px; bottom: 50%; pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
-}
-body[data-page="cv"] .cv-compressed-year:first-child::before { top: -32.4px; }
-/* Role points use rendered year ticks; start dates stay in source metadata. */
-body[data-page="cv"] .cv-role-point {
-  position: absolute; left: 53px; top: .65em; z-index: 2; transform: translateY(-50%);
-  width: 7px; height: 7px; box-sizing: border-box;
-  border: 1px solid var(--color-accent); border-radius: 50%;
-  background: var(--color-canvas);
-}
-body[data-page="cv"] [data-current="true"] > .cv-role-point { background: var(--color-accent); }
-
-/* Equal-year scale beside an independently spaced role list. */
-body[data-page="cv"] .cv-independent-service { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
-body[data-page="cv"] .cv-service-scale { position: relative; min-height: 650px; }
-/* Share the standard timeline spine; only its horizontal position differs. */
-body[data-page="cv"] #military-service .cv-service-scale::before { left: 56px; }
-body[data-page="cv"] .cv-service-scale .cv-annual-group { flex: 1 1 0; min-height: 0; }
-body[data-page="cv"] .cv-service-scale .cv-service-year { margin-top: auto; }
-body[data-page="cv"] .cv-service-scale .cv-service-insignia { min-height: 0; }
+body[data-page="cv"] .cv-service-unit { flex-shrink: 0; align-self: flex-end; }
+body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
+/* Descriptions keep the standard entry padding, without a second rail. */
 body[data-page="cv"] #military-service .cv-role-list { margin: 0; padding: 0; }
-body[data-page="cv"] #military-service .cv-role-list::before { content: none; }
+body[data-page="cv"] #military-service .cv-role-list::before,
+body[data-page="cv"] #military-service .cv-role-list > .cv-timeline-entry::before { content: none; }
 body[data-page="cv"] #military-service .cv-role-list > .cv-timeline-entry { display: block; padding-left: 0; }
+body[data-page="cv"] .cv-military-entry-content { padding-right: 0; }
+/* Numbered circles use the shared marker treatment, with enough room for a
+   10px digit. Positioning changes neither the year scale nor description flow. */
 body[data-page="cv"] .cv-service-scale > .cv-role-point {
-  left: 49px; width: 15px; height: 15px; display: grid; place-items: center;
-  font: 10px/1 var(--mono); text-decoration: none; color: var(--color-text);
-  background: var(--color-canvas); border-color: var(--color-accent);
+  position: absolute; left: 49px; top: .65em; transform: translateY(-50%); z-index: 2;
+  display: grid; place-items: center; width: 15px; height: 15px; box-sizing: border-box;
+  border: 1px solid var(--document-accent); border-radius: 50%;
+  background: var(--bg); color: var(--color-accent); text-decoration: none;
+  font-family: var(--mono); font-weight: 400;
 }
-body[data-page="cv"] .cv-role-number { color: var(--color-accent); font-family: var(--mono); }
-
-@layer type-scale { body[data-page="cv"] .cv-service-scale > .cv-role-point { font-size: .7rem !important; line-height: 1 !important; } }
-
-/* Quiet matching reference numbers; title references follow the title text. */
-body[data-page="cv"] .cv-service-scale > .cv-role-point,
-body[data-page="cv"] .cv-role-number {
-  color: var(--color-muted); font-family: var(--mono); font-weight: 400;
-  border: 0; border-radius: 0;
-}
-body[data-page="cv"] .cv-service-scale > .cv-role-point { left: 50px; width: 13px; height: 13px; }
-body[data-page="cv"] .cv-role-number { display: inline-block; margin-left: .3em; vertical-align: baseline; }
+body[data-page="cv"] .cv-role-number { display: inline-block; position: relative; top: -.5em; margin-left: .3em; vertical-align: baseline; color: var(--color-accent); font-family: var(--mono); font-weight: 400; }
 @layer type-scale {
+  body[data-page="cv"] .cv-service-timeline,
+  body[data-page="cv"] .cv-annual-group,
+  body[data-page="cv"] .cv-service-event,
+  body[data-page="cv"] .cv-service-event time { font-size: .7rem !important; }
+  body[data-page="cv"] .cv-service-event .cv-milestone-note { font-size: .6rem !important; }
   body[data-page="cv"] .cv-service-scale > .cv-role-point,
   body[data-page="cv"] .cv-role-number { font-size: .625rem !important; line-height: 1 !important; }
 }
-
-/* Title references read as superscripts without changing the heading line box. */
-body[data-page="cv"] .cv-role-number {
-  position: relative;
-  top: -.5em;
-  color: var(--color-accent);
-}
-
-/* Match timeline references to the accent-colored title superscripts. */
-body[data-page="cv"] .cv-service-scale > .cv-role-point { color: var(--color-accent); }

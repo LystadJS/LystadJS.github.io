@@ -2201,3 +2201,6 @@ body[data-page="cv"] .cv-military-identity > :is(h3, p) { grid-column: 2; }
 @layer spacing {
   body[data-page="cv"] .cv-military-identity > :is(h3, p) { margin-block: 0 !important; }
 }
+@layer type-scale {
+  body[data-page="cv"] .cv-service-year.cv-role-start { font-size: .7rem !important; }
+}

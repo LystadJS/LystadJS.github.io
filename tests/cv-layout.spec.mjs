@@ -100,9 +100,11 @@ test('military chronology keeps dated insignia readable and clear of description
     await page.goto('/cv.html');
     await page.evaluate(() => document.fonts.ready);
     const rail = page.locator('.cv-service-timeline');
+    await expect(page.locator('[data-cv-group="military"] h4')).toHaveText(['Indirect Fire Infantryman', 'Infantry Company Communications Chief', 'Infantry Squad Leader', 'Officer Commissioning Candidate']);
+    expect(await rail.locator('.cv-role-start').evaluateAll(es => es.map(e => e.dateTime))).toEqual(['2021-11', '2023-05', '2024-01', '2025-07']);
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
-    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
+    await expect(rail.locator('.cv-service-year')).toHaveText(['Nov. 2021', '2022', 'May 2023', 'Jan. 2024', 'Jul. 2025', '2026', '2027']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
@@ -125,7 +127,7 @@ test('military chronology keeps dated insignia readable and clear of description
     expect(geometry.aligned).toBe(true);
     expect(geometry.width).toBe(112);
     expect(geometry.split).toBe(true);
-    expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
+    expect(geometry.dates).toEqual([...geometry.dates].sort());
     expect(geometry.imagesLoaded).toBe(true);
     expect(geometry.fits).toBe(true);
     expect(geometry.clear).toBe(true);

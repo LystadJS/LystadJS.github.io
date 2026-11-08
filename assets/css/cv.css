@@ -2290,3 +2290,22 @@ body[data-page="cv"] .cv-service-timeline > .cv-role-start::before {
   box-sizing: border-box; border: 1px solid var(--color-accent); border-radius: 50%; background: var(--color-canvas);
 }
 body[data-page="cv"] [data-current="true"] .cv-service-timeline > .cv-role-start::before { background: var(--color-accent); }
+/* Annual ticks replace position-date anchors and compression dashes. */
+body[data-page="cv"] .cv-annual-timeline { margin: 0; padding: 0; list-style: none; }
+body[data-page="cv"] .cv-annual-group { position: relative; list-style: none; margin: 0; padding: 0; }
+body[data-page="cv"] .cv-annual-timeline .cv-service-insignia { margin-top: 0; }
+body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content: none; }
+body[data-page="cv"] .cv-year-promotion-only > .cv-service-year { position: absolute; left: 60px; top: 0; }
+body[data-page="cv"] .cv-year-promotion-only > .cv-service-year::after { left: auto; right: 100%; }
+body[data-page="cv"] .cv-year-unit-only > .cv-service-year { position: absolute; left: 0; top: 0; }
+body[data-page="cv"] .cv-service-promotion {
+  display: grid; grid-template-columns: 20px 28px; column-gap: 4px;
+  align-items: center;
+}
+body[data-page="cv"] .cv-service-promotion img { grid-row: 1; width: 20px; height: 28px; margin: 0; }
+body[data-page="cv"] .cv-service-promotion time { grid-column: 2; white-space: normal; text-align: left; }
+body[data-page="cv"] .cv-service-promotion > span { grid-column: 1 / span 2; }
+body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
+@layer type-scale {
+  body[data-page="cv"] .cv-annual-group { font-size: .7rem !important; }
+}

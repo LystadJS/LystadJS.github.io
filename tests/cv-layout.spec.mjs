@@ -101,17 +101,17 @@ test('military chronology keeps dated insignia readable and clear of description
     await page.evaluate(() => document.fonts.ready);
     const rail = page.locator('.cv-service-timeline');
     await expect(page.locator('[data-cv-group="military"] h4')).toHaveText(['Officer Commissioning Candidate', 'Infantry Squad Leader', 'Infantry Company Communications Chief', 'Indirect Fire Infantryman']);
-    expect(await rail.locator('.cv-role-start').evaluateAll(es => es.map(e => e.dateTime))).toEqual(['2025-07', '2024-01', '2023-05', '2021-11']);
+    await expect(rail.locator(".cv-role-start")).toHaveCount(0);
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
-    await expect(rail.locator('.cv-service-year')).toHaveText(['Jul. 2025', 'Jan. 2024', 'May 2023', 'Nov. 2021']);
+    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
     await expect(rail.locator('.cv-service-unit time')).toHaveCount(0);
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];
       return {
-        aligned: Math.abs(el.querySelector('.cv-role-start').getBoundingClientRect().top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
+        aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
         rowFitsCopy: bounds.height <= el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().height + 1,
         entryPadding: getComputedStyle(el.parentElement).paddingBottom,

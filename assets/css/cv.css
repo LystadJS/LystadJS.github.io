@@ -2171,3 +2171,39 @@ body[data-page="cv"] .cv-service-event { font-family: var(--sans); }
   body[data-page="cv"] .cv-service-event .cv-milestone-note { font-size: .6rem !important; }
 }
 body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
+/* Annual ticks keep empty years visible; each dated insignia stays in its year. */
+body[data-page="cv"] #military-service .cv-military-timeline { min-height: 1040px; }
+body[data-page="cv"] .cv-service-year-group { position: relative; margin: 0; padding: 0; list-style: none; }
+body[data-page="cv"] .cv-service-year {
+  position: relative;
+  display: block;
+  width: 3rem;
+  margin: 0 auto;
+  background: var(--color-canvas);
+  color: var(--color-muted);
+  text-align: center;
+  font-family: var(--mono);
+  line-height: 1.5;
+}
+body[data-page="cv"] .cv-service-year::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background: var(--color-line);
+}
+body[data-page="cv"] .cv-service-year-events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+body[data-page="cv"] .cv-service-event img { margin-bottom: 2px; }
+body[data-page="cv"] .cv-service-event time { white-space: nowrap; }
+@layer type-scale {
+  body[data-page="cv"] .cv-service-year-group { font-size: .7rem !important; }
+}

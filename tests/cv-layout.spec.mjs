@@ -102,10 +102,11 @@ test('military chronology keeps dated insignia readable and clear of description
     const rail = page.locator('.cv-service-timeline');
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
+    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
     const geometry = await rail.evaluate(el => {
       const bounds = el.getBoundingClientRect();
-      const events = [...el.children];
+      const events = [...el.querySelectorAll(".cv-service-event")];
       return {
         dates: events.map(e => e.querySelector('time').dateTime),
         imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),

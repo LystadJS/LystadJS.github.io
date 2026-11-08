@@ -2261,11 +2261,11 @@ body[data-page="cv"] .cv-service-before-start { position: relative; }
 body[data-page="cv"] .cv-service-before-start:has(> ol > li)::before {
   content: "";
   position: absolute;
-  left: 56px;
+  left: 55.5px;
   top: 0;
   bottom: 0;
-  width: 1px;
+  width: 2px;
   z-index: 1;
   pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 5px, transparent 5px 10px), var(--color-canvas);
+  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
 }

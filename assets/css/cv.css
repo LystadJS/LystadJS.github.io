@@ -2123,8 +2123,8 @@ body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
 body[data-page="cv"] .cv-training-awards { margin-left: 0; }
 body[data-page="cv"] .cv-award-group {
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: 184px minmax(0, 1fr);
+  gap: 12px;
   align-items: start;
   margin-top: 24px;
 }
@@ -2145,5 +2145,27 @@ body[data-page="cv"] .cv-art-badges img { transform: translateY(-68.764%); }
 body[data-page="cv"] .cv-art-ribbons { aspect-ratio: 423 / 82; }
 body[data-page="cv"] .cv-art-ribbons img { transform: translateY(-48.09%); }
 @media (max-width: 700px) {
-  body[data-page="cv"] .cv-award-group { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; }
+  body[data-page="cv"] .cv-award-group { grid-template-columns: 88px minmax(0, 1fr); gap: 8px; }
 }
+
+/* Only Military Service uses a split rail. Moving its spine left makes room
+   for unit changes on the right without shifting the description column. */
+body[data-page="cv"] #military-service .cv-military-timeline {
+  --timeline-date-width: 112px;
+  --timeline-gap: 12px;
+}
+body[data-page="cv"] #military-service .cv-military-timeline::before { left: 56px; }
+body[data-page="cv"] #military-service .cv-timeline-entry::before { left: 53px; }
+body[data-page="cv"] .cv-service-year { width: 52px; text-align: center; }
+body[data-page="cv"] .cv-service-year::after { width: 4px; }
+body[data-page="cv"] .cv-service-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 52px;
+  text-align: center;
+}
+body[data-page="cv"] .cv-service-event img { margin-bottom: 2px; }
+body[data-page="cv"] .cv-service-unit { align-self: flex-end; }
+/* Keep short rank names intact without changing their font size. */
+body[data-page="cv"] .cv-service-event > span:not(.cv-milestone-note) { overflow-wrap: normal; }

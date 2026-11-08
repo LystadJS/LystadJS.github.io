@@ -1907,7 +1907,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 @layer type-scale {
   @media screen {
     body[data-page="cv"] .cv-document-header .cv-contact-block {
-      font-size: .9375rem !important;
+      font-size: 1.0125rem !important;
     }
   }
 }
@@ -1944,14 +1944,14 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   pointer-events: none;
   overflow: hidden;
   --school-tint: color-mix(in srgb, var(--school-color) 24%, transparent);
-  background: linear-gradient(to right, transparent 25%, var(--school-tint) 76%);
+  background: linear-gradient(to right, transparent 25%, var(--school-tint) 65%, var(--school-tint) 76%, transparent 100%);
 }
 #education .cv-school-art img {
   position: absolute;
   inset-block: 0;
-  right: 12%;
+  right: 10%;
   margin-block: auto;
-  transform: translateX(50%);
+  transform: none;
   display: block;
   width: min(4.75rem, calc(24% - 1rem));
   height: min(4.75rem, calc(100% - 1rem));
@@ -2044,4 +2044,27 @@ body[data-page="cv"] .cv-rank-mark {
 body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
   white-space: nowrap;
   font-size: .7rem;
+}
+
+/* Enlarge only the CV identity/contact block, leaving site navigation unchanged. */
+@media screen {
+  .cv-document-header {
+    --type-meta: .945rem;
+    --type-section: clamp(calc(var(--type-body) * 2.16), 2.592vw, calc(var(--type-body) * 2.43));
+  }
+  .cv-document-header .cv-contact-block a { grid-template-columns: 1.08rem minmax(0, 1fr); gap: .54rem; }
+  .cv-document-header .cv-contact-icon { width: 1.08rem; height: 1.08rem; }
+}
+/* Reserve a quiet logo area so the decorative art cannot sit behind degree text. */
+@media (min-width: 701px) {
+  #education .cv-school-group .cv-org-main { padding-right: calc(10% + 6.5rem); }
+}
+@media (max-width: 700px) {
+  #education .cv-school-group,
+  #education .cv-school-group:last-child { padding-bottom: 5.5rem; }
+  #education .cv-school-art img {
+    inset-block: auto 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }

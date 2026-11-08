@@ -110,6 +110,7 @@ test('military chronology keeps dated insignia readable and clear of description
       return {
         aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
+        split: events.every(e => { const r=e.getBoundingClientRect(); const spine=bounds.left+56; return e.classList.contains("cv-service-unit") ? r.left>spine : r.right<spine; }),
         dates: events.map(e => e.querySelector('time').dateTime),
         imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),
         fits: events.every((e, i) => {
@@ -122,7 +123,8 @@ test('military chronology keeps dated insignia readable and clear of description
     }));
     for (const geometry of geometries) {
     expect(geometry.aligned).toBe(true);
-    expect(geometry.width).toBe(100);
+    expect(geometry.width).toBe(112);
+    expect(geometry.split).toBe(true);
     expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
     expect(geometry.imagesLoaded).toBe(true);
     expect(geometry.fits).toBe(true);

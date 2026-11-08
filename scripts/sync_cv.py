@@ -72,6 +72,8 @@ def military_timeline(events, record):
                 month=int(event['datetime'][5:7])
                 position=' style="--promotion-position: '+str(round((12-month)/11*100,2))+'%"' if kind=='promotion' else ''
                 alignment=' data-align-promotion="'+esc(event['align_promotion'])+'"' if event.get('align_promotion') else ''
+                if event.get('align_role'):
+                    alignment+=' data-align-role="'+esc(event['align_role'])+'"'
                 items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+alignment+'>'
                     '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')

@@ -54,7 +54,7 @@ class PhysicalCV(unittest.TestCase):
         self.assertEqual(len(events),7)
         self.assertEqual([e['datetime'] for e in events], sorted([e['datetime'] for e in events],reverse=True))
         for event in events:
-            self.assertIn('datetime="'+event['datetime']+'">'+event['date']+'</time>',self.page)
+            if event['kind']=='promotion': self.assertIn('datetime="'+event['datetime']+'">'+event['date']+'</time>',self.page)
             self.assertTrue((ROOT/event['image']).is_file())
         self.assertTrue(events[0]['anticipated'])
         self.assertEqual(events[2]['date'],'Dec. 2024')

@@ -107,6 +107,20 @@ test('military chronology keeps dated insignia readable and clear of description
     await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
     await expect(rail.locator('.cv-service-unit time')).toHaveCount(0);
+    // Font ink can exceed a CSS line box: test rendered text fragments, not just containers.
+    const collisions = await page.locator('.cv-military-timeline').evaluate(root => {
+      const nodes = [...root.querySelectorAll('.cv-service-year, .cv-service-event img, .cv-service-event time, .cv-service-event > span')];
+      const boxes = nodes.flatMap((e, index) => {
+        const range = document.createRange();
+        range.selectNodeContents(e);
+        const rects = e.matches('img') ? [e.getBoundingClientRect()] : [...range.getClientRects()];
+        return rects.map(r => ({ index, text: e.textContent || e.getAttribute('src'), left: r.left, right: r.right, top: r.top, bottom: r.bottom }));
+      });
+      return boxes.flatMap((a, i) => boxes.slice(i + 1).filter(b => a.index !== b.index
+        && Math.min(a.right, b.right) - Math.max(a.left, b.left) > .5
+        && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > .5).map(b => [a.text, b.text]));
+    });
+    expect(collisions).toEqual([]);
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];

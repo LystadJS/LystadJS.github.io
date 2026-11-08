@@ -71,7 +71,7 @@ test('CV follows printed order and downstream groups share a date rail', async (
   expect(await page.locator('#professional-work .cv-org-entry').count()).toBe(6);
   expect(await page.locator('#military-service .cv-role-timeline-entry').count()).toBe(4);
   const rails=await page.locator('.cv-timeline-entry').evaluateAll(items=>items.map(el=>{
-    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date');
+    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date') || el.parentElement.querySelector('.cv-service-timeline');
     const content=el.querySelector(':scope > .cv-org-main, :scope > .cv-entry-content, :scope > .cv-timeline-role-body');
     return {rail:rail?.getBoundingClientRect().right,content:content?.getBoundingClientRect().left};
   }));
@@ -91,3 +91,36 @@ test('desktop contents list fits a short viewport and legacy rules are absent',a
   expect(borders.every(e=>e.top==='0px'&&e.bottom==='0px')).toBe(true);
 });
 
+
+test('military chronology keeps dated insignia readable and clear of descriptions', async ({ page }, info) => {
+  // One project owns this width matrix; avoid repeating the same browser checks.
+  test.skip(info.project.name !== 'desktop-1440');
+  for (const width of [320, 390, 768, 900, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/cv.html');
+    await page.evaluate(() => document.fonts.ready);
+    const rail = page.locator('.cv-service-timeline');
+    await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
+    await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
+    await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
+    const geometry = await rail.evaluate(el => {
+      const bounds = el.getBoundingClientRect();
+      const events = [...el.children];
+      return {
+        dates: events.map(e => e.querySelector('time').dateTime),
+        imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),
+        fits: events.every((e, i) => {
+          const r = e.getBoundingClientRect();
+          return r.left >= bounds.left && r.right <= bounds.right + 1 && r.bottom <= bounds.bottom + 1
+            && (!i || r.top >= events[i - 1].getBoundingClientRect().bottom);
+        }),
+        clear: [...el.parentElement.querySelectorAll('.cv-entry-content')].every(e => e.getBoundingClientRect().left > bounds.right),
+      };
+    });
+    expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
+    expect(geometry.imagesLoaded).toBe(true);
+    expect(geometry.fits).toBe(true);
+    expect(geometry.clear).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});

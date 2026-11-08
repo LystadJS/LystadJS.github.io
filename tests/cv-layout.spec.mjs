@@ -113,6 +113,10 @@ test('military chronology keeps dated insignia readable and clear of description
       return {
         aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
+        yearBoundaries: [...el.querySelectorAll('.cv-annual-group')].every(group => {
+          const tick=group.querySelector('.cv-service-year').getBoundingClientRect();
+          return [...group.querySelectorAll('.cv-service-event')].every(event => event.getBoundingClientRect().bottom <= tick.top + 1);
+        }),
         yearsLeft: [...el.querySelectorAll(".cv-service-year")].every(e => Math.abs(e.getBoundingClientRect().left - bounds.left) < 1 && getComputedStyle(e, "::after").left === "52px"),
         rowFitsCopy: bounds.height <= el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().height + 1,
         entryPadding: getComputedStyle(el.parentElement).paddingBottom,
@@ -130,6 +134,7 @@ test('military chronology keeps dated insignia readable and clear of description
     for (const geometry of geometries) {
     expect(geometry.aligned).toBe(true);
     expect(geometry.width).toBe(112);
+    expect(geometry.yearBoundaries).toBe(true);
     expect(geometry.yearsLeft).toBe(true);
     expect(geometry.rowFitsCopy).toBe(true);
     expect(["24px", "0px"]).toContain(geometry.entryPadding);

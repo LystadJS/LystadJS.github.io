@@ -65,8 +65,11 @@ def military_timeline(events, record):
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
             groups.append('<li class="cv-service-column"><ol>'+''.join(items)+'</ol></li>')
         layout=' cv-year-'+present[0]+'-only' if len(present)==1 else ''
-        years.append('<li class="cv-annual-group'+layout+'"><span class="cv-service-year">'+str(year)+'</span>'
-            +('<ol class="cv-service-insignia" aria-label="Promotions and units">'+''.join(groups)+'</ol>' if present else '')+'</li>')
+        # A descending timeline places dated events above the January boundary
+        # of their year (e.g. November 2021 above 2021, below 2022).
+        years.append('<li class="cv-annual-group'+layout+'">'
+            +('<ol class="cv-service-insignia" aria-label="Promotions and units">'+''.join(groups)+'</ol>' if present else '')
+            +'<span class="cv-service-year">'+str(year)+'</span></li>')
     return '<ol class="cv-service-timeline cv-annual-timeline">'+''.join(years)+'</ol>'
 
 def citation(s):

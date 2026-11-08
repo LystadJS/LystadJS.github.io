@@ -104,24 +104,24 @@ test('military chronology keeps dated insignia readable and clear of description
     expect(await rail.locator('.cv-role-start').evaluateAll(es => es.map(e => e.dateTime))).toEqual(['2025-07', '2024-01', '2023-05', '2021-11']);
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
-    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', 'Jul. 2025', '2024', 'Jan. 2024', 'May 2023', '2022', 'Nov. 2021']);
+    await expect(rail.locator('.cv-service-year')).toHaveText(['Jul. 2025', 'Jan. 2024', 'May 2023', 'Nov. 2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
-    const compressed = rail.locator('.cv-service-before-start:has(> ol > li)');
-    await expect(compressed).toHaveCount(3);
-    expect(await compressed.evaluateAll(es => es.every(e => getComputedStyle(e, '::before').backgroundImage.includes('repeating-linear-gradient') && e.getBoundingClientRect().height > 0))).toBe(true);
+    await expect(rail.locator('.cv-service-unit time')).toHaveCount(0);
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];
       return {
         aligned: Math.abs(el.querySelector('.cv-role-start').getBoundingClientRect().top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
+        rowFitsCopy: bounds.height <= el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().height + 1,
+        entryPadding: getComputedStyle(el.parentElement).paddingBottom,
         split: events.every(e => { const r=e.getBoundingClientRect(); const spine=bounds.left+56; return e.classList.contains("cv-service-unit") ? r.left>spine : r.right<spine; }),
-        dates: events.map(e => e.querySelector('time').dateTime),
+        dates: events.filter(e => e.querySelector('time')).map(e => e.querySelector('time').dateTime),
         imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),
         fits: events.every((e, i) => {
           const r = e.getBoundingClientRect();
           return r.left >= bounds.left && r.right <= bounds.right + 1 && r.bottom <= bounds.bottom + 1
-            && (!i || r.top >= events[i - 1].getBoundingClientRect().bottom);
+            && (!e.previousElementSibling || r.top >= e.previousElementSibling.getBoundingClientRect().bottom);
         }),
         clear: [...el.parentElement.querySelectorAll('.cv-entry-content')].every(e => e.getBoundingClientRect().left > bounds.right),
       };
@@ -129,6 +129,8 @@ test('military chronology keeps dated insignia readable and clear of description
     for (const geometry of geometries) {
     expect(geometry.aligned).toBe(true);
     expect(geometry.width).toBe(112);
+    expect(geometry.rowFitsCopy).toBe(true);
+    expect(["24px", "0px"]).toContain(geometry.entryPadding);
     expect(geometry.split).toBe(true);
     expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
     expect(geometry.imagesLoaded).toBe(true);

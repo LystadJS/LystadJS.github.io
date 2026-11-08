@@ -2368,7 +2368,8 @@ body[data-page="cv"] [data-current="true"] > .cv-role-point { background: var(--
 /* Equal-year scale beside an independently spaced role list. */
 body[data-page="cv"] .cv-independent-service { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
 body[data-page="cv"] .cv-service-scale { position: relative; min-height: 650px; }
-body[data-page="cv"] .cv-service-scale::before { content: ""; position: absolute; left: 56px; top: 0; bottom: 8.4px; width: 1px; background: var(--color-line); }
+/* Share the standard timeline spine; only its horizontal position differs. */
+body[data-page="cv"] #military-service .cv-service-scale::before { left: 56px; }
 body[data-page="cv"] .cv-service-scale .cv-annual-group { flex: 1 1 0; min-height: 0; }
 body[data-page="cv"] .cv-service-scale .cv-service-year { margin-top: auto; }
 body[data-page="cv"] .cv-service-scale .cv-service-insignia { min-height: 0; }

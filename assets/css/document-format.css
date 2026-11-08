@@ -112,7 +112,7 @@ body[data-page] :is(.cv-timeline, .document-timeline) {
   position: relative;
   padding-bottom: 24px;
 }
-body[data-page] :is(.cv-timeline, .document-timeline)::before {
+body[data-page] :is(.cv-timeline, .document-timeline, .cv-service-scale)::before {
   content: "";
   position: absolute;
   left: calc(var(--timeline-date-width) + 11px);

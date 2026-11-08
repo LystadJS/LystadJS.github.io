@@ -8,7 +8,7 @@ sync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync)
 class Records(HTMLParser):
     def __init__(self,text):
         super().__init__(convert_charrefs=True)
-        self.records={};self.current=None;self.bullet=None;self.feed(text)
+        self.records={};self.current=None;self.bullet=None;self.description_list=False;self.feed(text)
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if tag=='article' and 'data-cv-group' in a:
@@ -16,13 +16,15 @@ class Records(HTMLParser):
             self.records[self.current]={'text':[],'bullets':[],'current':a.get('data-current')}
         if tag=='div' and self.current is not None and 'cv-timeline-date' in a.get('class','').split():
             self.records[self.current]['date_label']=a.get('aria-label','')
-        if tag=='li' and self.current is not None:self.bullet=[]
+        if tag=='ul' and 'cv-bullets' in a.get('class','').split():self.description_list=True
+        if tag=='li' and self.current is not None and self.description_list:self.bullet=[]
     def handle_data(self,data):
         if self.current is not None:self.records[self.current]['text'].append(data)
         if self.bullet is not None:self.bullet.append(data)
     def handle_endtag(self,tag):
         if tag=='li' and self.bullet is not None:
             self.records[self.current]['bullets'].append(''.join(self.bullet));self.bullet=None
+        if tag=='ul':self.description_list=False
         if tag=='article':self.current=None
 class PhysicalCV(unittest.TestCase):
     @classmethod

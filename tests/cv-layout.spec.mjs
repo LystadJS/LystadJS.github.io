@@ -71,7 +71,7 @@ test('CV follows printed order and downstream groups share a date rail', async (
   expect(await page.locator('#professional-work .cv-org-entry').count()).toBe(6);
   expect(await page.locator('#military-service .cv-role-timeline-entry').count()).toBe(4);
   const rails=await page.locator('.cv-timeline-entry').evaluateAll(items=>items.map(el=>{
-    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date') || el.parentElement.querySelector('.cv-service-timeline');
+    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date, :scope > .cv-service-timeline') || el.parentElement.querySelector('.cv-service-timeline');
     const content=el.querySelector(':scope > .cv-org-main, :scope > .cv-entry-content, :scope > .cv-timeline-role-body');
     return {rail:rail?.getBoundingClientRect().right,content:content?.getBoundingClientRect().left};
   }));
@@ -104,10 +104,12 @@ test('military chronology keeps dated insignia readable and clear of description
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
     await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
-    const geometry = await rail.evaluate(el => {
+    const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];
       return {
+        aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
+        width: bounds.width,
         dates: events.map(e => e.querySelector('time').dateTime),
         imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),
         fits: events.every((e, i) => {
@@ -117,11 +119,15 @@ test('military chronology keeps dated insignia readable and clear of description
         }),
         clear: [...el.parentElement.querySelectorAll('.cv-entry-content')].every(e => e.getBoundingClientRect().left > bounds.right),
       };
-    });
+    }));
+    for (const geometry of geometries) {
+    expect(geometry.aligned).toBe(true);
+    expect(geometry.width).toBe(100);
     expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
     expect(geometry.imagesLoaded).toBe(true);
     expect(geometry.fits).toBe(true);
     expect(geometry.clear).toBe(true);
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });

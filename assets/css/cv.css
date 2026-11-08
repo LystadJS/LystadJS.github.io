@@ -2403,3 +2403,6 @@ body[data-page="cv"] .cv-role-number {
   top: -.5em;
   color: var(--color-accent);
 }
+
+/* Match timeline references to the accent-colored title superscripts. */
+body[data-page="cv"] .cv-service-scale > .cv-role-point { color: var(--color-accent); }

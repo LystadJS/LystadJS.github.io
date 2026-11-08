@@ -106,6 +106,14 @@ test('military chronology uses one equal-year scale and numbered role links', as
     });
     expect(spine).toEqual({ matches: true, left: '56px' });
     await expect(page.locator('.cv-role-point')).toHaveText(['1','2','3','4']);
+    const circles = await page.locator('.cv-role-point').evaluateAll(points => points.every(point => {
+      const style = getComputedStyle(point);
+      const reference = getComputedStyle(document.querySelector('#professional-work .cv-timeline-entry'), '::before');
+      return style.borderRadius === '50%' && style.borderTopWidth === reference.borderTopWidth
+        && style.borderTopColor === reference.borderTopColor && style.width === style.height
+        && style.fontSize === '10px';
+    }));
+    expect(circles).toBe(true);
     await expect(page.locator('.cv-role-number')).toHaveText(['1','2','3','4']);
     await expect(page.locator('.cv-service-unit time, .cv-compressed-year')).toHaveCount(0);
     await expect.poll(() => page.locator('.cv-service-scale').evaluate(root => {

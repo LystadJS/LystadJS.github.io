@@ -2072,3 +2072,16 @@ body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
 /* Tighten only the transition from the CV masthead into Education. */
 @media screen { body[data-page="cv"] .cv-document-header { padding-bottom: 1rem; } }
 @layer spacing { @media screen { body[data-page="cv"] #education.cv-section { padding-top: 1rem !important; } } }
+
+/* Tighten section transitions without changing entry spacing or the Education lead-in. */
+@layer spacing {
+  @media screen {
+    body[data-page="cv"] .cv-document > .cv-section + .cv-section {
+      padding-top: 1rem !important;
+    }
+  }
+}
+/* The CV masthead's supporting text uses the self-hosted monospace family. */
+body[data-page="cv"] .cv-document-header :is(.cv-document-disciplines, .cv-contact-block, .cv-contact-block a, .cv-contact-block span) {
+  font-family: var(--mono);
+}

@@ -47,12 +47,12 @@ def rail(r,education=False,project_key=None):
         else:
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
-def military_timeline(events, years):
+def military_timeline(events, record):
     """Keep each role's year markers and dated insignia in its own grid row."""
     groups=[]
-    for year in years:
+    for year in record['timeline_years']:
         items=[]
-        for event in events:
+        for event in sorted(events, key=lambda event: event['datetime']):
             if int(event['datetime'][:4]) != year:
                 continue
             note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
@@ -60,9 +60,12 @@ def military_timeline(events, years):
                 '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                 '<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>'
                 '<span>'+esc(event['label'])+'</span>'+note+'</li>')
-        groups.append('<li class="cv-service-year-group"><span class="cv-service-year">'+str(year)+'</span>'
+        # The first marker is the exact role start; later ticks retain annual context.
+        marker=('<time class="cv-service-year cv-role-start" datetime="'+esc(record['start_date'])+'">'+esc(record['date'])+'</time>'
+                if year == record['timeline_years'][0] else '<span class="cv-service-year">'+str(year)+'</span>')
+        groups.append('<li class="cv-service-year-group">'+marker
             +('<ol class="cv-service-year-events">'+''.join(items)+'</ol>' if items else '')+'</li>')
-    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(groups)+'</ol>'
+    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, earliest first">'+''.join(groups)+'</ol>'
 
 def citation(s):
     s=esc(s)
@@ -83,7 +86,7 @@ def render(document,data):
         if r.get('subtitle'):c+=p(r['subtitle'])
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+(military_timeline(data['military_timeline'],r['timeline_years']) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+(military_timeline(data['military_timeline'],r) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'

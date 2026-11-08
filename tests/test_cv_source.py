@@ -45,7 +45,7 @@ class PhysicalCV(unittest.TestCase):
                     if record.get(key):self.assertIn(record[key],text,(group,i,key))
     def test_ongoing_entries_are_distinct_from_completed_entries(self):
         parsed=Records(self.page)
-        expected={('education',0),('scholarly',0),('scholarly',1),('scholarly',2),('applied',0),('applied',1),('technical',0),('technical',1),('academic',0),('professional',0),('military',0)}
+        expected={('education',0),('scholarly',0),('scholarly',1),('scholarly',2),('applied',0),('applied',1),('technical',0),('technical',1),('academic',0),('professional',0),('military',3)}
         actual={key for key,value in parsed.records.items() if value['current']=='true'}
         self.assertEqual(actual,expected)
         self.assertTrue(all(value['current'] in ('true','false') for value in parsed.records.values()))

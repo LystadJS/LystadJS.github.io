@@ -99,6 +99,12 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await page.goto('/cv.html');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.cv-service-scale')).toHaveCount(1);
+    const spine = await page.evaluate(() => {
+      const military = getComputedStyle(document.querySelector('.cv-service-scale'), '::before');
+      const professional = getComputedStyle(document.querySelector('#professional-work .cv-timeline'), '::before');
+      return { matches: military.backgroundImage === professional.backgroundImage && military.width === professional.width && military.top === professional.top, left: military.left };
+    });
+    expect(spine).toEqual({ matches: true, left: '56px' });
     await expect(page.locator('.cv-role-point')).toHaveText(['1','2','3','4']);
     await expect(page.locator('.cv-role-number')).toHaveText(['1','2','3','4']);
     await expect(page.locator('.cv-service-unit time, .cv-compressed-year')).toHaveCount(0);

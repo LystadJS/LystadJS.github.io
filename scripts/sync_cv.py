@@ -138,7 +138,7 @@ def render(document,data):
                 # One equal-year rail spans the complete, independently spaced list.
                 service_rail=military_timeline(data['military_timeline'], {'timeline_years': list(range(2027,2020,-1))})
                 points=''.join('<a class="cv-role-point" data-current="'+str(r.get('current',False)).lower()+'" href="#military-role-'+str(i+1)+'" data-start-date="'+esc(r['start_date'])+'" aria-label="Role '+str(i+1)+': '+esc(r['title'])+'">'+str(i+1)+'</a>' for i,r in enumerate(data['military']))
-                c='<div class="cv-independent-service"><div class="cv-service-scale">'+service_rail+points+'</div><div class="cv-military-timeline cv-role-list">'+entries+'</div></div>'
+                c='<div class="cv-independent-service"><div class="cv-service-scale">'+service_rail+points+'<time class="cv-today-marker" hidden>Today</time><span class="cv-future-arrow" role="img" aria-label="Future"></span></div><div class="cv-military-timeline cv-role-list">'+entries+'</div></div>'
                 c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
                 # Reuse the print CV's original artwork; CSS reveals each relevant area.
                 artwork='<img src="assets/images/about/military/print-cv-badges-ribbons.png" alt="" width="423" height="445" decoding="async">'

@@ -263,8 +263,7 @@ body[data-page="cv"] main [data-cv-group="academic"] .cv-org-header .document-ti
 body[data-page="cv"] main [data-cv-group="military"] .cv-entry-content > .document-title {
   font-weight: 700;
 }
-body[data-page="cv"] main :is([data-cv-group="academic"], [data-cv-group="professional"])
-  .cv-org-header .document-title,
+body[data-page="cv"] main [data-cv-group="professional"] .cv-org-header .document-title,
 body[data-page="cv"] main .cv-military-identity > .document-title {
   color: var(--document-secondary) !important;
 }

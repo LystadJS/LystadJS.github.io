@@ -48,20 +48,26 @@ def rail(r,education=False,project_key=None):
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
 def military_timeline(events, record):
-    """Compact supporting insignia beside each role; unit placement is approximate."""
-    groups=[]
-    for kind in ['promotion','unit']:
-        items=[]
-        selected=[e for e in events if e['kind']==kind and int(e['datetime'][:4]) in record['timeline_years']]
-        for event in sorted(selected,key=lambda e:e['datetime'],reverse=True):
-            note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
-            date='<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>' if kind=='promotion' else ''
-            items.append('<li class="cv-service-event cv-service-'+kind+'">'
-                '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
-                +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
-        groups.append('<li class="cv-service-column"><ol>'+''.join(items)+'</ol></li>')
-    marker='<time class="cv-service-year cv-role-start" datetime="'+esc(record['start_date'])+'">'+esc(record['date'])+'</time>'
-    return '<div class="cv-service-timeline">'+marker+'<ol class="cv-service-insignia" aria-label="Promotions and units during this position">'+''.join(groups)+'</ol></div>'
+    """Annual ticks with compact promotion/date pairs and undated unit badges."""
+    years=[]
+    for year in record['timeline_years']:
+        groups=[]
+        present=[]
+        for kind in ['promotion','unit']:
+            items=[]
+            selected=[e for e in events if e['kind']==kind and int(e['datetime'][:4])==year]
+            if selected: present.append(kind)
+            for event in sorted(selected,key=lambda e:e['datetime'],reverse=True):
+                note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
+                date='<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>' if kind=='promotion' else ''
+                items.append('<li class="cv-service-event cv-service-'+kind+'">'
+                    '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
+                    +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
+            groups.append('<li class="cv-service-column"><ol>'+''.join(items)+'</ol></li>')
+        layout=' cv-year-'+present[0]+'-only' if len(present)==1 else ''
+        years.append('<li class="cv-annual-group'+layout+'"><span class="cv-service-year">'+str(year)+'</span>'
+            +('<ol class="cv-service-insignia" aria-label="Promotions and units">'+''.join(groups)+'</ol>' if present else '')+'</li>')
+    return '<ol class="cv-service-timeline cv-annual-timeline">'+''.join(years)+'</ol>'
 
 def citation(s):
     s=esc(s)

@@ -131,3 +131,26 @@ test('military chronology keeps dated insignia readable and clear of description
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+test('training artwork stays beside its corresponding badge and award lists', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop-1440');
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/cv.html');
+    const groups = page.locator('.cv-award-group');
+    await expect(groups.locator('h4')).toHaveText(['Special Skills Badges', 'Awards']);
+    await expect(groups.nth(0).locator('li')).toHaveCount(4);
+    await expect(groups.nth(1).locator('li')).toHaveCount(6);
+    const layout = await groups.evaluateAll(items => items.map(e => {
+      const art = e.querySelector('.cv-award-art').getBoundingClientRect();
+      const copy = e.querySelector('.cv-award-copy').getBoundingClientRect();
+      return {
+        separated: art.right < copy.left,
+        aligned: Math.abs(art.top - copy.top) < 1,
+        loaded: [...e.querySelectorAll('img')].every(img => img.complete && img.naturalWidth === 423),
+      };
+    }));
+    expect(layout.every(e => e.separated && e.aligned && e.loaded)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});

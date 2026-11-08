@@ -2117,3 +2117,33 @@ body[data-page="cv"] .cv-military-timeline .cv-military-entry-content { padding-
   body[data-page="cv"] .cv-service-event .cv-milestone-note { font-size: .6rem !important; }
 }
 body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
+/* Match the print CV's artwork/text pairing without altering the original image.
+   The transparent source contains tabs at the top, ribbons in the middle,
+   and parachutist/mountaineering badges at the bottom. */
+body[data-page="cv"] .cv-training-awards { margin-left: 0; }
+body[data-page="cv"] .cv-award-group {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 24px;
+}
+body[data-page="cv"] .cv-award-copy { min-width: 0; }
+body[data-page="cv"] .cv-award-art { display: grid; gap: 8px; }
+body[data-page="cv"] .cv-award-art > div { position: relative; overflow: hidden; }
+body[data-page="cv"] .cv-award-art img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+body[data-page="cv"] .cv-art-tabs { aspect-ratio: 423 / 210; }
+body[data-page="cv"] .cv-art-badges { aspect-ratio: 423 / 139; }
+body[data-page="cv"] .cv-art-badges img { transform: translateY(-68.764%); }
+body[data-page="cv"] .cv-art-ribbons { aspect-ratio: 423 / 82; }
+body[data-page="cv"] .cv-art-ribbons img { transform: translateY(-48.09%); }
+@media (max-width: 700px) {
+  body[data-page="cv"] .cv-award-group { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; }
+}

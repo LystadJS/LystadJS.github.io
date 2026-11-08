@@ -17,3 +17,5 @@ These local copies are used by `about.html` so the page does not depend on third
 Most U.S. Army-produced graphics in this set are public-domain U.S. Government works. The Infantry School SVG is published on Wikimedia Commons under CC BY-SA 4.0; retain this source note with the localized asset set.
 
 `rank-2lt.svg` is a locally authored vector rendering of the single gold bar used for second lieutenant, shown only for the anticipated commission in the CV timeline.
+
+`print-cv-badges-ribbons.png` is the original transparent artwork extracted from page 6 of `assets/cv/John-S-Lystad-CV.pdf` (Image1059), converted losslessly from its embedded JPEG 2000 representation to PNG. CSS displays the badge and ribbon portions beside their corresponding lists.

@@ -57,7 +57,13 @@ def military_timeline(events, record):
             items=[]
             selected=[e for e in events if e['kind']==kind and int(e['datetime'][:4])==year]
             if selected: present.append(kind)
-            for event in sorted(selected,key=lambda e:e['datetime'],reverse=True):
+            previous_month=12
+            ordered=sorted(selected,key=lambda e:e['datetime'],reverse=True)
+            for index,event in enumerate(ordered):
+                if kind=='unit':
+                    gap=previous_month-int(event['datetime'][5:7])
+                    items.append('<li class="cv-unit-gap'+(' cv-unit-gap-between' if index else '')+'" aria-hidden="true" style="flex-grow: '+str(gap)+'"></li>')
+                    previous_month=int(event['datetime'][5:7])
                 note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
                 date='<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>' if kind=='promotion' else ''
                 # December sits near the upper boundary; January near the lower.
@@ -66,7 +72,9 @@ def military_timeline(events, record):
                 items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+'>'
                     '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
-            groups.append('<li class="cv-service-column"><ol>'+''.join(items)+'</ol></li>')
+            if kind=='unit' and ordered:
+                items.append('<li class="cv-unit-gap" aria-hidden="true" style="flex-grow: '+str(previous_month-1)+'"></li>')
+            groups.append('<li class="cv-service-column"><ol'+(' class="cv-unit-events"' if kind=='unit' else '')+'>'+''.join(items)+'</ol></li>')
         layout=' cv-year-'+present[0]+'-only' if len(present)==1 else ''
         # A descending timeline places dated events above the January boundary
         # of their year (e.g. November 2021 above 2021, below 2022).

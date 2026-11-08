@@ -1907,7 +1907,7 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
 @layer type-scale {
   @media screen {
     body[data-page="cv"] .cv-document-header .cv-contact-block {
-      font-size: 1.0125rem !important;
+      font-size: 1.0935rem !important;
     }
   }
 }
@@ -2049,11 +2049,11 @@ body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
 /* Enlarge only the CV identity/contact block, leaving site navigation unchanged. */
 @media screen {
   .cv-document-header {
-    --type-meta: .945rem;
-    --type-section: clamp(calc(var(--type-body) * 2.16), 2.592vw, calc(var(--type-body) * 2.43));
+    --type-meta: 1.0206rem;
+    --type-section: clamp(calc(var(--type-body) * 2.3328), 2.79936vw, calc(var(--type-body) * 2.6244));
   }
-  .cv-document-header .cv-contact-block a { grid-template-columns: 1.08rem minmax(0, 1fr); gap: .54rem; }
-  .cv-document-header .cv-contact-icon { width: 1.08rem; height: 1.08rem; }
+  .cv-document-header .cv-contact-block a { grid-template-columns: 1.1664rem minmax(0, 1fr); gap: .5832rem; }
+  .cv-document-header .cv-contact-icon { width: 1.1664rem; height: 1.1664rem; }
 }
 /* Reserve a quiet logo area so the decorative art cannot sit behind degree text. */
 @media (min-width: 701px) {
@@ -2068,3 +2068,7 @@ body[data-page="cv"] .cv-timeline-date > .cv-milestone-line {
     height: 3.5rem;
   }
 }
+
+/* Tighten only the transition from the CV masthead into Education. */
+@media screen { body[data-page="cv"] .cv-document-header { padding-bottom: 1rem; } }
+@layer spacing { @media screen { body[data-page="cv"] #education.cv-section { padding-top: 1rem !important; } } }

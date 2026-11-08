@@ -101,7 +101,7 @@ def render(document,data):
         level='h4' if g=='military' else 'h3'
         c+=project_heading(r['title'], level)
         if g=='military':
-            c=c.replace('<h4 class="document-title">', '<h4 class="document-title" id="military-role-'+str(i+1)+'"><span class="cv-role-number">'+str(i+1)+'</span> ')
+            c=c.replace('<h4 class="document-title">', '<h4 class="document-title" id="military-role-'+str(i+1)+'">').replace('</h4>', ' <span class="cv-role-number" aria-label="Role '+str(i+1)+'">'+str(i+1)+'</span></h4>')
         if r.get('subtitle'):c+=p(r['subtitle'])
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])

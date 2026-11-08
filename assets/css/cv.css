@@ -2383,3 +2383,16 @@ body[data-page="cv"] .cv-service-scale > .cv-role-point {
 body[data-page="cv"] .cv-role-number { color: var(--color-accent); font-family: var(--mono); }
 
 @layer type-scale { body[data-page="cv"] .cv-service-scale > .cv-role-point { font-size: .7rem !important; line-height: 1 !important; } }
+
+/* Quiet matching reference numbers; title references follow the title text. */
+body[data-page="cv"] .cv-service-scale > .cv-role-point,
+body[data-page="cv"] .cv-role-number {
+  color: var(--color-muted); font-family: var(--mono); font-weight: 400;
+  border: 0; border-radius: 0;
+}
+body[data-page="cv"] .cv-service-scale > .cv-role-point { left: 50px; width: 13px; height: 13px; }
+body[data-page="cv"] .cv-role-number { display: inline-block; margin-left: .3em; vertical-align: baseline; }
+@layer type-scale {
+  body[data-page="cv"] .cv-service-scale > .cv-role-point,
+  body[data-page="cv"] .cv-role-number { font-size: .625rem !important; line-height: 1 !important; }
+}

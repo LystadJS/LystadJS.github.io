@@ -47,14 +47,8 @@ def rail(r,education=False,project_key=None):
         else:
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
-def military_timeline(events):
-    """Group milestones by year, keeping each insignia beside its own date.
-
-    Years without events still get a tick. Groups expand to fit their labels,
-    so the rail remains readable rather than implying a proportional scale.
-    """
-    years=range(max(int(e['datetime'][:4]) for e in events),
-                min(int(e['datetime'][:4]) for e in events)-1,-1)
+def military_timeline(events, years):
+    """Keep each role's year markers and dated insignia in its own grid row."""
     groups=[]
     for year in years:
         items=[]
@@ -89,7 +83,7 @@ def render(document,data):
         if r.get('subtitle'):c+=p(r['subtitle'])
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+('' if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+(military_timeline(data['military_timeline'],r['timeline_years']) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
@@ -115,7 +109,7 @@ def render(document,data):
                     if not groups or groups[-1][0]!=r['logo']:groups.append((r['logo'],[]))
                     groups[-1][1].append(institution(r,g,i))
                 entries=''.join('<div class="cv-school-group">'+''.join(items)+'<div class="cv-school-art" aria-hidden="true"><img src="assets/images/experience/'+esc(logo)+('.png' if logo=='florida-state-university' else '-color.svg')+'" alt="" decoding="async"></div></div>' for logo,items in groups)
-            c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else ' cv-military-timeline' if g=='military' else '')+'">'+(military_timeline(data['military_timeline']) if g=='military' else '')+entries+'</div>'
+            c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else ' cv-military-timeline' if g=='military' else '')+'">'+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
                 c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c

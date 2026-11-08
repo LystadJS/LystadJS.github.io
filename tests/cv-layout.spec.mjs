@@ -99,6 +99,11 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await page.goto('/cv.html');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.cv-service-scale')).toHaveCount(1);
+    await expect.poll(() => page.evaluate(() => {
+      const unit=document.querySelector('[data-align-promotion="2021-11"] img').getBoundingClientRect();
+      const rank=document.querySelector('.cv-service-promotion time[datetime="2021-11"]').parentElement.querySelector('img').getBoundingClientRect();
+      return Math.abs(unit.top+unit.height/2-rank.top-rank.height/2);
+    })).toBeLessThan(1);
     await expect(page.locator('.cv-today-marker')).toBeVisible();
     await expect(page.locator('.cv-today-marker')).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/);
     await expect(page.locator('.cv-future-arrow')).toHaveAttribute('aria-label', 'Future');

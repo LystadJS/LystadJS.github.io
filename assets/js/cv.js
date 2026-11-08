@@ -73,8 +73,8 @@
       const promotion = timeline.querySelector('.cv-service-promotion time[datetime="' + unit.dataset.alignPromotion + '"]');
       if (!promotion) return;
       unit.style.transform = '';
-      const badge = unit.querySelector('img').getBoundingClientRect();
-      const rank = promotion.parentElement.querySelector('img').getBoundingClientRect();
+      const badge = unit.querySelector('.cv-insignia-art').getBoundingClientRect();
+      const rank = promotion.parentElement.querySelector('.cv-insignia-art').getBoundingClientRect();
       unit.style.transform = 'translateY(' + (rank.top + rank.height / 2 - badge.top - badge.height / 2) + 'px)';
     });
     timeline.querySelectorAll('.cv-role-point').forEach(point => {
@@ -92,7 +92,7 @@
       const point = timeline.querySelector('.cv-role-point[data-start-date="' + unit.dataset.alignRole + '"]');
       if (!point) return;
       unit.style.transform = '';
-      const badge = unit.querySelector('img').getBoundingClientRect();
+      const badge = unit.querySelector('.cv-insignia-art').getBoundingClientRect();
       const circle = point.getBoundingClientRect();
       unit.style.transform = 'translateY(' + (circle.top + circle.height / 2 - badge.top - badge.height / 2) + 'px)';
     });

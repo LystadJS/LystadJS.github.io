@@ -411,7 +411,13 @@
       "date": "May 2027",
       "datetime": "2027-05",
       "anticipated": true,
-      "image": "assets/images/about/military/rank-2lt.svg"
+      "image": "assets/images/about/military/rank-2lt.svg",
+      "artwork_bounds": {
+        "left": 0.225,
+        "top": 0.025,
+        "width": 0.55,
+        "height": 1.546
+      }
     },
     {
       "kind": "unit",
@@ -419,44 +425,80 @@
       "date": "Jul. 2025",
       "datetime": "2025-07",
       "image": "assets/images/about/military/usacc.svg",
-      "align_role": "2025-07"
+      "align_role": "2025-07",
+      "artwork_bounds": {
+        "left": 0.016,
+        "top": 0.012,
+        "width": 0.968,
+        "height": 1.332
+      }
     },
     {
       "kind": "promotion",
       "label": "Sergeant",
       "date": "Dec. 2024",
       "datetime": "2024-12",
-      "image": "assets/images/about/military/rank-sgt.svg"
+      "image": "assets/images/about/military/rank-sgt.svg",
+      "artwork_bounds": {
+        "left": 0,
+        "top": 0,
+        "width": 1,
+        "height": 1.333
+      }
     },
     {
       "kind": "unit",
-      "label": "11th Airborne",
+      "label": "11th Airborne Division",
       "date": "Nov. 2022",
       "datetime": "2022-11",
-      "image": "assets/images/about/military/11th-airborne-division.png"
+      "image": "assets/images/about/military/11th-airborne-division.png",
+      "artwork_bounds": {
+        "left": 0.031,
+        "top": 0.03,
+        "width": 0.938,
+        "height": 1.733
+      }
     },
     {
       "kind": "promotion",
       "label": "Specialist",
       "date": "Apr. 2022",
       "datetime": "2022-04",
-      "image": "assets/images/about/military/rank-spc.svg"
+      "image": "assets/images/about/military/rank-spc.svg",
+      "artwork_bounds": {
+        "left": 0,
+        "top": 0,
+        "width": 0.998,
+        "height": 1.172
+      }
     },
     {
       "kind": "unit",
-      "label": "198th Infantry",
+      "label": "198th Infantry Division",
       "date": "Apr. 2022",
       "datetime": "2022-04",
       "image": "assets/images/about/military/198th-infantry-brigade.svg",
       "display_datetime": "2021-11",
-      "align_promotion": "2021-11"
+      "align_promotion": "2021-11",
+      "artwork_bounds": {
+        "left": 0,
+        "top": 0,
+        "width": 1,
+        "height": 1.471
+      }
     },
     {
       "kind": "promotion",
       "label": "Private",
       "date": "Nov. 2021",
       "datetime": "2021-11",
-      "image": "assets/images/about/military/rank-pv2.svg"
+      "image": "assets/images/about/military/rank-pv2.svg",
+      "artwork_bounds": {
+        "left": 0,
+        "top": 0.001,
+        "width": 1,
+        "height": 0.967
+      }
     }
   ]
 }

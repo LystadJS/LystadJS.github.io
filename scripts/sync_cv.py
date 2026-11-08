@@ -48,18 +48,27 @@ def rail(r,education=False,project_key=None):
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
 def military_timeline(events):
-    """Separate rank and unit milestones around one continuous, reverse-chronological rail.
+    """Group milestones by year, keeping each insignia beside its own date.
 
-    Markers are spaced for legibility rather than implying a proportional time scale.
+    Years without events still get a tick. Groups expand to fit their labels,
+    so the rail remains readable rather than implying a proportional scale.
     """
-    items=[]
-    for event in events:
-        note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
-        items.append('<li class="cv-service-event cv-service-'+esc(event['kind'])+'">'
-            '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
-            '<span>'+esc(event['label'])+'</span><time datetime="'+esc(event['datetime'])+'">'
-            +esc(event['date'])+'</time>'+note+'</li>')
-    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(items)+'</ol>'
+    years=range(max(int(e['datetime'][:4]) for e in events),
+                min(int(e['datetime'][:4]) for e in events)-1,-1)
+    groups=[]
+    for year in years:
+        items=[]
+        for event in events:
+            if int(event['datetime'][:4]) != year:
+                continue
+            note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
+            items.append('<li class="cv-service-event cv-service-'+esc(event['kind'])+'">'
+                '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
+                '<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>'
+                '<span>'+esc(event['label'])+'</span>'+note+'</li>')
+        groups.append('<li class="cv-service-year-group"><span class="cv-service-year">'+str(year)+'</span>'
+            +('<ol class="cv-service-year-events">'+''.join(items)+'</ol>' if items else '')+'</li>')
+    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(groups)+'</ol>'
 
 def citation(s):
     s=esc(s)

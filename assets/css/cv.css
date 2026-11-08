@@ -2319,3 +2319,11 @@ body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content:
    above a promotion pair so neither the date nor insignia is displaced sideways. */
 body[data-page="cv"] .cv-year-promotion-only > .cv-service-year { position: relative; left: 0; top: auto; }
 body[data-page="cv"] .cv-year-promotion-only > .cv-service-year::after { left: 100%; right: auto; }
+/* In reverse chronology, the year tick is the lower boundary of its events. */
+body[data-page="cv"] .cv-annual-group > .cv-service-year {
+  position: relative;
+  left: 0;
+  top: auto;
+  line-height: 1.2;
+}
+body[data-page="cv"] .cv-annual-group > .cv-service-year::after { left: 100%; right: auto; }

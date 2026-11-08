@@ -284,17 +284,32 @@
   ],
   "military": [
     {
-      "title": "Indirect Fire Infantryman",
+      "title": "Officer Commissioning Candidate",
       "bullets": [
-        "Selected for and completed advanced infantry and cold-weather training, including Airborne School, the Cold Weather Leadership Course, Military Mountaineering Course, Infantry Mortar Leader Course, and Expert Infantryman Badge qualification, developing specialized expertise in airborne, alpine, arctic, and indirect-fire operations.",
-        "Contributed to the interagency Arctic Working Group, helping develop and evaluate solutions for employing indirect-fire systems in extreme cold-weather environments and improving operational effectiveness in Arctic conditions."
+        "Integrated prior active-duty enlisted experience into officer development, peer mentorship, and practical problem-solving during team-based exercises.",
+        "Received extensive training through a structured leadership program emphasizing decision-making, planning, ethics, and team performance under time constraints and stressful conditions."
+      ],
+      "current": true,
+      "timeline_years": [
+        2027,
+        2026,
+        2025
+      ],
+      "start_date": "2025-07",
+      "date": "Jul. 2025"
+    },
+    {
+      "title": "Infantry Squad Leader",
+      "bullets": [
+        "Led an Airborne Infantry squad in a rapid-response battalion, maintaining personnel, equipment, and operational readiness for worldwide combat and contingency deployment within 18 hours of notification.",
+        "Built and led the 11th Airborne Division’s highest-rated Indirect Fire Infantry Squad, driving standards in tactical proficiency, discipline, physical readiness, and team development that earned selection to represent the division at the 2024 International Best Mortar Competition.",
+        "Trained, mentored, and developed more than 25 Soldiers in tactical fundamentals, leadership, and professional development, preparing personnel for advanced military schools, increased responsibility, and follow-on leadership positions."
       ],
       "timeline_years": [
-        2021,
-        2022
+        2024
       ],
-      "start_date": "2021-11",
-      "date": "Nov. 2021"
+      "start_date": "2024-01",
+      "date": "Jan. 2024"
     },
     {
       "title": "Infantry Company Communications Chief",
@@ -311,32 +326,17 @@
       "date": "May 2023"
     },
     {
-      "title": "Infantry Squad Leader",
+      "title": "Indirect Fire Infantryman",
       "bullets": [
-        "Led an Airborne Infantry squad in a rapid-response battalion, maintaining personnel, equipment, and operational readiness for worldwide combat and contingency deployment within 18 hours of notification.",
-        "Built and led the 11th Airborne Division’s highest-rated Indirect Fire Infantry Squad, driving standards in tactical proficiency, discipline, physical readiness, and team development that earned selection to represent the division at the 2024 International Best Mortar Competition.",
-        "Trained, mentored, and developed more than 25 Soldiers in tactical fundamentals, leadership, and professional development, preparing personnel for advanced military schools, increased responsibility, and follow-on leadership positions."
+        "Selected for and completed advanced infantry and cold-weather training, including Airborne School, the Cold Weather Leadership Course, Military Mountaineering Course, Infantry Mortar Leader Course, and Expert Infantryman Badge qualification, developing specialized expertise in airborne, alpine, arctic, and indirect-fire operations.",
+        "Contributed to the interagency Arctic Working Group, helping develop and evaluate solutions for employing indirect-fire systems in extreme cold-weather environments and improving operational effectiveness in Arctic conditions."
       ],
       "timeline_years": [
-        2024
+        2022,
+        2021
       ],
-      "start_date": "2024-01",
-      "date": "Jan. 2024"
-    },
-    {
-      "title": "Officer Commissioning Candidate",
-      "bullets": [
-        "Integrated prior active-duty enlisted experience into officer development, peer mentorship, and practical problem-solving during team-based exercises.",
-        "Received extensive training through a structured leadership program emphasizing decision-making, planning, ethics, and team performance under time constraints and stressful conditions."
-      ],
-      "current": true,
-      "timeline_years": [
-        2025,
-        2026,
-        2027
-      ],
-      "start_date": "2025-07",
-      "date": "Jul. 2025"
+      "start_date": "2021-11",
+      "date": "Nov. 2021"
     }
   ],
   "badges": [

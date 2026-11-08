@@ -2180,3 +2180,6 @@ body[data-page="cv"] .cv-service-year-group:has(> .cv-service-year-events > .cv-
 body[data-page="cv"] .cv-service-year-group:has(> .cv-service-year-events > .cv-service-unit:only-child) > .cv-service-year-events {
   margin-top: 0;
 }
+
+/* The Army identity introduces the full section above the timeline. */
+body[data-page="cv"] .cv-military-identity { margin-left: 0; }

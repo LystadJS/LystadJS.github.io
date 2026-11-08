@@ -61,7 +61,10 @@
       const fraction = (month - 1 + (day - 1) / days_in_month) / 12;
       today.style.top = (january + (next_january - january) * fraction - timeline.getBoundingClientRect().top) + 'px';
       today.dateTime = year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
-      today.title = 'Today: ' + today.dateTime;
+      // A short stacked date fits the unit side of the rail without widening it.
+      const month_label = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(new Date(Date.UTC(year, month - 1, day)));
+      today.textContent = month_label + ' ' + day + '\n' + year;
+      today.title = 'Current date: ' + today.dateTime;
       today.setAttribute('aria-label', today.title);
       today.hidden = false;
     }

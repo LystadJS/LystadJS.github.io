@@ -2157,18 +2157,19 @@ body[data-page="cv"] .cv-role-number { display: inline-block; position: relative
 /* Ongoing service uses the same filled accent treatment as current positions. */
 body[data-page="cv"] .cv-service-scale > .cv-role-point[data-current="true"] { background: var(--color-accent); color: var(--color-text); }
 
-/* Today is a separate tick; the upward arrow follows the reverse chronology. */
+/* The current date uses a point; the arrow follows the reverse chronology. */
 body[data-page="cv"] .cv-today-marker {
   position: absolute; left: 64px; transform: translateY(-50%); z-index: 2;
-  color: var(--color-text); font-family: var(--mono); white-space: nowrap;
+  color: var(--color-text); font-family: var(--mono); white-space: pre;
 }
 body[data-page="cv"] .cv-today-marker::before {
-  content: ""; position: absolute; left: -12px; top: 50%; width: 9px; height: 1px;
+  content: ""; position: absolute; left: -10px; top: 50%; width: 5px; height: 5px;
+  transform: translateY(-50%); border-radius: 50%;
   background: var(--color-text);
 }
 body[data-page="cv"] .cv-future-arrow {
-  position: absolute; left: 53px; top: 12px; width: 6px; height: 6px;
-  border-left: 1px solid rgba(156,56,70,.65); border-top: 1px solid rgba(156,56,70,.65);
+  position: absolute; left: 52px; top: 12px; width: 8px; height: 8px;
+  border-left: 1px solid var(--color-accent); border-top: 1px solid var(--color-accent);
   transform: rotate(45deg); box-sizing: border-box;
 }
 @layer type-scale { body[data-page="cv"] .cv-today-marker { font-size: .625rem !important; line-height: 1 !important; } }

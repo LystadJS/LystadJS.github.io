@@ -2327,3 +2327,16 @@ body[data-page="cv"] .cv-annual-group > .cv-service-year {
   line-height: 1.2;
 }
 body[data-page="cv"] .cv-annual-group > .cv-service-year::after { left: 100%; right: auto; }
+/* Use available height beside each description to approximate promotion month.
+   The label's full height stays inside its year, with no extra entry spacing. */
+body[data-page="cv"] .cv-annual-timeline { display: flex; flex-direction: column; align-self: stretch; height: 100%; }
+body[data-page="cv"] .cv-annual-group { display: flex; flex-direction: column; flex: 0 0 auto; }
+body[data-page="cv"] .cv-annual-group:has(.cv-service-insignia) { flex: 1 0 auto; }
+body[data-page="cv"] .cv-annual-timeline .cv-service-insignia { flex: 1 0 auto; }
+body[data-page="cv"] .cv-service-column > ol { display: block; height: 100%; }
+body[data-page="cv"] .cv-service-column > ol > .cv-service-event + .cv-service-event { margin-top: 4px; }
+body[data-page="cv"] .cv-service-promotion {
+  position: relative;
+  top: var(--promotion-position);
+  transform: translateY(calc(-1 * var(--promotion-position)));
+}

@@ -60,7 +60,10 @@ def military_timeline(events, record):
             for event in sorted(selected,key=lambda e:e['datetime'],reverse=True):
                 note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
                 date='<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>' if kind=='promotion' else ''
-                items.append('<li class="cv-service-event cv-service-'+kind+'">'
+                # December sits near the upper boundary; January near the lower.
+                month=int(event['datetime'][5:7])
+                position=' style="--promotion-position: '+str(round((12-month)/11*100,2))+'%"' if kind=='promotion' else ''
+                items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+'>'
                     '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
             groups.append('<li class="cv-service-column"><ol>'+''.join(items)+'</ol></li>')

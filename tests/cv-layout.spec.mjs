@@ -113,6 +113,12 @@ test('military chronology keeps dated insignia readable and clear of description
       return {
         aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
+        monthsAligned: events.filter(e => e.classList.contains('cv-service-promotion')).every(e => {
+          const month=Number(e.querySelector('time').dateTime.slice(5,7));
+          const box=e.getBoundingClientRect(), slot=e.parentElement.getBoundingClientRect();
+          const expected=(slot.height-box.height)*(12-month)/11;
+          return Math.abs(box.top-slot.top-expected)<1;
+        }),
         yearBoundaries: [...el.querySelectorAll('.cv-annual-group')].every(group => {
           const tick=group.querySelector('.cv-service-year').getBoundingClientRect();
           return [...group.querySelectorAll('.cv-service-event')].every(event => event.getBoundingClientRect().bottom <= tick.top + 1);
@@ -134,6 +140,7 @@ test('military chronology keeps dated insignia readable and clear of description
     for (const geometry of geometries) {
     expect(geometry.aligned).toBe(true);
     expect(geometry.width).toBe(112);
+    expect(geometry.monthsAligned).toBe(true);
     expect(geometry.yearBoundaries).toBe(true);
     expect(geometry.yearsLeft).toBe(true);
     expect(geometry.rowFitsCopy).toBe(true);

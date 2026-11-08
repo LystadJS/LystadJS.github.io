@@ -141,24 +141,20 @@
   "disclosure": "Selected projects are unclassified, open-source, and free of sensitive, restricted, or non-public operational data. Data and manuscripts are available upon request.",
   "technical": [
     {
-      "date": "In Development",
+      "date": "In Progress",
       "title": "driftmapR",
       "label": "R PACKAGE",
       "bullets": [
         "When high-dimensional data are mapped into fewer dimensions at successive time points, coordinates can shift even if the underlying relationships remain stable. I am developing driftmapR to compare repeated representations and quantify uncertainty about which changes reflect shifts in data structure. The package is designed to help researchers judge which apparent changes warrant interpretation in a longitudinal analysis."
-      ],
-      "repository": "Repository ↗",
-      "repository_url": "https://github.com/LystadJS/draftmapR"
+      ]
     },
     {
-      "date": "In Development",
+      "date": "In Progress",
       "title": "‘transcripts.un.org’ Latent Data Discovery Software",
       "label": "R · PYTHON · JAVASCRIPT",
       "bullets": [
         "Researchers comparing UN transcripts need to know whether recurring themes are stable and which passages support them. I am developing software that organizes transcripts and combines clustering, dimension reduction, and source-linked review to investigate patterns across meetings. Researchers can trace summaries back to their source documents and use stability diagnostics to assess how consistently themes appear."
-      ],
-      "repository": "Repository ↗",
-      "repository_url": "https://github.com/LystadJS/UNGA81-Transcript-Agent"
+      ]
     }
   ],
   "presentations": [

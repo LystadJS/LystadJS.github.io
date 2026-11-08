@@ -1653,7 +1653,6 @@ body[data-page="cv"] .cv-technical-link.is-unlinked { font-size: .6rem; }
   left: calc(var(--education-date-width) + 11px);
   top: 12px;
   bottom: 0;
-  width: 1px;
   background: linear-gradient(to bottom, rgba(156,56,70,.65) calc(100% - 24px), transparent);
   pointer-events: none;
 }

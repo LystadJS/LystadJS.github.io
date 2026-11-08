@@ -2356,9 +2356,9 @@ body[data-page="cv"] .cv-compressed-year::before {
   background: repeating-linear-gradient(to bottom, var(--color-accent) 0 6px, transparent 6px 10px), var(--color-canvas);
 }
 body[data-page="cv"] .cv-compressed-year:first-child::before { top: -32.4px; }
-/* Role points align with title lines; start dates stay in source metadata. */
+/* Role points use rendered year ticks; start dates stay in source metadata. */
 body[data-page="cv"] .cv-role-point {
-  position: absolute; left: 53px; top: .65em; z-index: 2;
+  position: absolute; left: 53px; top: .65em; z-index: 2; transform: translateY(-50%);
   width: 7px; height: 7px; box-sizing: border-box;
   border: 1px solid var(--color-accent); border-radius: 50%;
   background: var(--color-canvas);

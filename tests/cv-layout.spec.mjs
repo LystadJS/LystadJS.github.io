@@ -103,6 +103,18 @@ test('military chronology keeps dated insignia readable and clear of description
     await expect(page.locator('[data-cv-group="military"] h4')).toHaveText(['Officer Commissioning Candidate', 'Infantry Squad Leader', 'Infantry Company Communications Chief', 'Indirect Fire Infantryman']);
     await expect(rail.locator(".cv-role-start")).toHaveCount(0);
     await expect(page.locator('.cv-role-point')).toHaveCount(4);
+    // Check all starts against the rendered January boundaries at every width.
+    await expect.poll(() => page.locator('.cv-military-timeline').evaluate(root => {
+      const years = new Map([...root.querySelectorAll('.cv-service-year')].map(e => {
+        const r = e.getBoundingClientRect(); return [Number(e.textContent), r.top + r.height / 2];
+      }));
+      return [...root.querySelectorAll('.cv-role-point')].every(point => {
+        const [year, month] = point.dataset.startDate.split('-').map(Number);
+        const expected = years.get(year) + (years.get(year + 1) - years.get(year)) * (month - 1) / 12;
+        const rect = point.getBoundingClientRect();
+        return Math.abs(rect.top + rect.height / 2 - expected) < 1;
+      });
+    })).toBe(true);
     await expect(page.locator('.cv-role-point')).toHaveText(['', '', '', '']);
     await expect(rail.locator('.cv-compressed-year > .cv-service-year')).toHaveText(['2026', '2023']);
     const solidGroups = await rail.locator('.cv-service-insignia').evaluateAll(items => items.every(e => getComputedStyle(e, '::before').content === 'none'));

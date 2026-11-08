@@ -100,13 +100,13 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.cv-service-scale')).toHaveCount(1);
     await expect.poll(() => page.evaluate(() => {
-      const unit=document.querySelector('[data-align-role="2025-07"] img').getBoundingClientRect();
+      const unit=document.querySelector('[data-align-role="2025-07" ] .cv-insignia-art').getBoundingClientRect();
       const circle=document.querySelector('.cv-role-point[data-start-date="2025-07"]').getBoundingClientRect();
       return Math.abs(unit.top+unit.height/2-circle.top-circle.height/2);
     })).toBeLessThan(1);
     await expect.poll(() => page.evaluate(() => {
-      const unit=document.querySelector('[data-align-promotion="2021-11"] img').getBoundingClientRect();
-      const rank=document.querySelector('.cv-service-promotion time[datetime="2021-11"]').parentElement.querySelector('img').getBoundingClientRect();
+      const unit=document.querySelector('[data-align-promotion="2021-11" ] .cv-insignia-art').getBoundingClientRect();
+      const rank=document.querySelector('.cv-service-promotion time[datetime="2021-11"]').parentElement.querySelector('.cv-insignia-art').getBoundingClientRect();
       return Math.abs(unit.top+unit.height/2-rank.top-rank.height/2);
     })).toBeLessThan(1);
     await expect(page.locator('.cv-today-marker')).toBeVisible();
@@ -114,10 +114,10 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await expect(page.locator('.cv-future-arrow')).toHaveAttribute('aria-label', 'Future');
     // Check actual text fragments and circle bounds, including the new date tick.
     const overlaps = await page.locator('.cv-service-scale').evaluate(root => {
-      const nodes = [...root.querySelectorAll('.cv-role-point,.cv-today-marker,.cv-service-year,.cv-service-event img,.cv-service-event time,.cv-service-event > span')];
+      const nodes = [...root.querySelectorAll('.cv-role-point,.cv-today-marker,.cv-service-year,.cv-insignia-art,.cv-service-event time,.cv-service-event > span:not(.cv-insignia-art)')];
       const boxes = nodes.flatMap((e, index) => {
         const range = document.createRange(); range.selectNodeContents(e);
-        const rects = e.matches('img,.cv-role-point,.cv-today-marker') ? [e.getBoundingClientRect()] : [...range.getClientRects()];
+        const rects = e.matches('.cv-insignia-art,.cv-role-point,.cv-today-marker') ? [e.getBoundingClientRect()] : [...range.getClientRects()];
         return rects.map(r => ({index,left:r.left,right:r.right,top:r.top,bottom:r.bottom}));
       });
       return boxes.some((a,i) => boxes.slice(i+1).some(b => a.index!==b.index && Math.min(a.right,b.right)-Math.max(a.left,b.left)>.5 && Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>.5));

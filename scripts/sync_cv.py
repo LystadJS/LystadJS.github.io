@@ -74,8 +74,11 @@ def military_timeline(events, record):
                 alignment=' data-align-promotion="'+esc(event['align_promotion'])+'"' if event.get('align_promotion') else ''
                 if event.get('align_role'):
                     alignment+=' data-align-role="'+esc(event['align_role'])+'"'
+                # Measured alpha bounds remove internal padding without altering the asset.
+                bounds=event['artwork_bounds']
+                art_style='height: '+str(24*bounds['height']/bounds['width'])+'px; --art-width: '+str(100/bounds['width'])+'%; --art-left: '+str(-24*bounds['left']/bounds['width'])+'px; --art-top: '+str(-24*bounds['top']/bounds['width'])+'px'
                 items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+alignment+'>'
-                    '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
+                    '<span class="cv-insignia-art" style="'+art_style+'"><img src="'+esc(event['image'])+'" alt="" decoding="async"></span>'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
             if kind=='unit' and ordered:
                 items.append('<li class="cv-unit-gap" aria-hidden="true" style="flex-grow: '+str(previous_month-1)+'"></li>')

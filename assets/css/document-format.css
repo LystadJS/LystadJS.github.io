@@ -243,6 +243,19 @@ body[data-page="research"] .research-timeline-entry .rp-copy { padding-top: 0; }
 }
 
 /* Resource labels must fit the shared rail at the smallest breakpoint. */
+/* Distinguish earned/current degrees, non-degree study, and university metadata. */
+body[data-page="cv"] #education .cv-degree-title { font-weight: 700; }
+body[data-page="cv"] #education .cv-coursework-entry .cv-degree-title {
+  font-style: italic;
+  font-weight: 400;
+}
+body[data-page="cv"] #education .cv-coursework-entry .cv-bullets > li {
+  font-style: italic;
+}
+body[data-page="cv"] #education .cv-degree-university {
+  color: var(--document-secondary) !important;
+}
+
 /* Description markers sit in a gutter; every wrapped line shares the text edge. */
 body[data-page="cv"] .cv-timeline .cv-bullets > li {
   padding-inline-start: 1.35em;

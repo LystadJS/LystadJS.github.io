@@ -2173,3 +2173,9 @@ body[data-page="cv"] .cv-future-arrow {
   transform: rotate(45deg); box-sizing: border-box;
 }
 @layer type-scale { body[data-page="cv"] .cv-today-marker { font-size: .625rem !important; line-height: 1 !important; } }
+
+/* Close the visual gaps around the reduced Lieutenant bar while retaining its
+   original layout slot, so the annual scale and other insignia do not move. */
+body[data-page="cv"] .cv-service-promotion:has(.cv-milestone-note) time { transform: translateX(-4px); }
+body[data-page="cv"] .cv-service-promotion:has(.cv-milestone-note) > span:not(.cv-insignia-art) { position: relative; top: -14px; }
+body[data-page="cv"] .cv-service-promotion .cv-milestone-note { color: var(--color-accent); }

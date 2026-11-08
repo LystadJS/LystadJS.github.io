@@ -76,6 +76,10 @@ def military_timeline(events, record):
                 items.append('<li class="cv-unit-gap" aria-hidden="true" style="flex-grow: '+str(previous_month-1)+'"></li>')
             groups.append('<li class="cv-service-column"><ol'+(' class="cv-unit-events"' if kind=='unit' else '')+'>'+''.join(items)+'</ol></li>')
         layout=' cv-year-'+present[0]+'-only' if len(present)==1 else ''
+        # Event-free years collapse to a label row; only these short intervals
+        # need a time-compression cue. Insignia-filled years remain solid.
+        if not present:
+            layout+=' cv-compressed-year'
         # A descending timeline places dated events above the January boundary
         # of their year (e.g. November 2021 above 2021, below 2022).
         years.append('<li class="cv-annual-group'+layout+'">'
@@ -102,7 +106,7 @@ def render(document,data):
         if r.get('subtitle'):c+=p(r['subtitle'])
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+(military_timeline(data['military_timeline'],r) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+('<span class="cv-role-point" data-start-date="'+esc(r['start_date'])+'" aria-hidden="true"></span>' if g=='military' else '')+(military_timeline(data['military_timeline'],r) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'

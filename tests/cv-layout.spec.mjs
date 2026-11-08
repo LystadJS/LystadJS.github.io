@@ -102,6 +102,11 @@ test('military chronology keeps dated insignia readable and clear of description
     const rail = page.locator('.cv-service-timeline');
     await expect(page.locator('[data-cv-group="military"] h4')).toHaveText(['Officer Commissioning Candidate', 'Infantry Squad Leader', 'Infantry Company Communications Chief', 'Indirect Fire Infantryman']);
     await expect(rail.locator(".cv-role-start")).toHaveCount(0);
+    await expect(page.locator('.cv-role-point')).toHaveCount(4);
+    await expect(page.locator('.cv-role-point')).toHaveText(['', '', '', '']);
+    await expect(rail.locator('.cv-compressed-year > .cv-service-year')).toHaveText(['2026', '2023']);
+    const solidGroups = await rail.locator('.cv-service-insignia').evaluateAll(items => items.every(e => getComputedStyle(e, '::before').content === 'none'));
+    expect(solidGroups).toBe(true);
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
     await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);

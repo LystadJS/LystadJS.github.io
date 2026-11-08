@@ -76,12 +76,14 @@ def render(document,data):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
         if r.get('concentration'):c+=p(r['concentration'],'cv-degree-concentration document-muted')
-        if r.get('school'):c+=p(r['school'],'cv-degree-university document-copy')
+        if r.get('school'):c+=p(r['school'],'cv-degree-university document-muted')
         if r.get('subtitle'):c+=p(r['subtitle'],'cv-org-context document-muted')
         header='<header class="cv-org-header"><div>'+c+'</div></header>'
         details=bullets(r['bullets'])
         if r.get('organization'):details='<div class="cv-role cv-timeline-role-body"><div class="cv-role-heading"><div><h4 class="document-title">'+esc(r['title'])+'</h4></div></div>'+details+'</div>'
         cls='cv-org-entry cv-timeline-entry'+(' cv-education-entry' if ed else '')
+        # Non-degree study has its own typography without changing source wording.
+        if ed and r['title']=='Non-Degree Coursework':cls+=' cv-coursework-entry'
         return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,ed)+'<div class="cv-org-main">'+header+('' if ed else logos.get(r.get('logo'),''))+details+'</div></article>'
     blocks=[]
     for sid,title,g in SECTIONS:

@@ -100,6 +100,11 @@ test('military chronology uses one equal-year scale and numbered role links', as
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.cv-service-scale')).toHaveCount(1);
     await expect.poll(() => page.evaluate(() => {
+      const unit=document.querySelector('[data-align-role="2025-07"] img').getBoundingClientRect();
+      const circle=document.querySelector('.cv-role-point[data-start-date="2025-07"]').getBoundingClientRect();
+      return Math.abs(unit.top+unit.height/2-circle.top-circle.height/2);
+    })).toBeLessThan(1);
+    await expect.poll(() => page.evaluate(() => {
       const unit=document.querySelector('[data-align-promotion="2021-11"] img').getBoundingClientRect();
       const rank=document.querySelector('.cv-service-promotion time[datetime="2021-11"]').parentElement.querySelector('img').getBoundingClientRect();
       return Math.abs(unit.top+unit.height/2-rank.top-rank.height/2);

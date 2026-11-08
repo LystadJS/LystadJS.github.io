@@ -418,7 +418,8 @@
       "label": "USACC",
       "date": "Jul. 2025",
       "datetime": "2025-07",
-      "image": "assets/images/about/military/usacc.svg"
+      "image": "assets/images/about/military/usacc.svg",
+      "align_role": "2025-07"
     },
     {
       "kind": "promotion",

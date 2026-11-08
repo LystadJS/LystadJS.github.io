@@ -87,6 +87,15 @@
       const entry_top = point.parentElement.getBoundingClientRect().top;
       point.style.top = (position - entry_top) + 'px';
     });
+    // Match a unit badge to its role circle after the date-based circle positions settle.
+    timeline.querySelectorAll('[data-align-role]').forEach(unit => {
+      const point = timeline.querySelector('.cv-role-point[data-start-date="' + unit.dataset.alignRole + '"]');
+      if (!point) return;
+      unit.style.transform = '';
+      const badge = unit.querySelector('img').getBoundingClientRect();
+      const circle = point.getBoundingClientRect();
+      unit.style.transform = 'translateY(' + (circle.top + circle.height / 2 - badge.top - badge.height / 2) + 'px)';
+    });
   };
   position_role_points();
   document.fonts.ready.then(position_role_points);

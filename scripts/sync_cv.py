@@ -52,7 +52,7 @@ def military_timeline(events, record):
     groups=[]
     for year in record['timeline_years']:
         items=[]
-        for event in sorted(events, key=lambda event: event['datetime']):
+        for event in sorted(events, key=lambda event: event['datetime'], reverse=True):
             if int(event['datetime'][:4]) != year:
                 continue
             note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
@@ -60,12 +60,12 @@ def military_timeline(events, record):
                 '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                 '<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>'
                 '<span>'+esc(event['label'])+'</span>'+note+'</li>')
-        # The first marker is the exact role start; later ticks retain annual context.
+        # Show the exact start month in its year; other ticks retain annual context.
         marker=('<time class="cv-service-year cv-role-start" datetime="'+esc(record['start_date'])+'">'+esc(record['date'])+'</time>'
-                if year == record['timeline_years'][0] else '<span class="cv-service-year">'+str(year)+'</span>')
+                if year == int(record['start_date'][:4]) else '<span class="cv-service-year">'+str(year)+'</span>')
         groups.append('<li class="cv-service-year-group">'+marker
             +('<ol class="cv-service-year-events">'+''.join(items)+'</ol>' if items else '')+'</li>')
-    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, earliest first">'+''.join(groups)+'</ol>'
+    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(groups)+'</ol>'
 
 def citation(s):
     s=esc(s)

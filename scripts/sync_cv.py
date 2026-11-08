@@ -77,6 +77,9 @@ def military_timeline(events, record):
                 # Measured alpha bounds remove internal padding without altering the asset.
                 bounds=event['artwork_bounds']
                 art_style='height: '+str(24*bounds['height']/bounds['width'])+'px; --art-width: '+str(100/bounds['width'])+'%; --art-left: '+str(-24*bounds['left']/bounds['width'])+'px; --art-top: '+str(-24*bounds['top']/bounds['width'])+'px'
+                # Scale the artwork around its center without moving dates or timeline slots.
+                if event.get('artwork_scale'):
+                    art_style+='; transform: scale('+str(event['artwork_scale'])+')'
                 items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+alignment+'>'
                     '<span class="cv-insignia-art" style="'+art_style+'"><img src="'+esc(event['image'])+'" alt="" decoding="async"></span>'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')

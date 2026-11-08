@@ -417,7 +417,8 @@
         "top": 0.025,
         "width": 0.55,
         "height": 1.546
-      }
+      },
+      "artwork_scale": 0.5
     },
     {
       "kind": "unit",

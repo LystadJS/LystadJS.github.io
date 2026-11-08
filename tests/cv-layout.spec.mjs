@@ -106,6 +106,9 @@ test('military chronology keeps dated insignia readable and clear of description
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
     await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', 'Jul. 2025', '2024', 'Jan. 2024', 'May 2023', '2022', 'Nov. 2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
+    const compressed = rail.locator('.cv-service-before-start:has(> ol > li)');
+    await expect(compressed).toHaveCount(3);
+    expect(await compressed.evaluateAll(es => es.every(e => getComputedStyle(e, '::before').backgroundImage.includes('repeating-linear-gradient') && e.getBoundingClientRect().height > 0))).toBe(true);
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];

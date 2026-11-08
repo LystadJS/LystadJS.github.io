@@ -37,7 +37,7 @@ class PhysicalCV(unittest.TestCase):
             for i,record in enumerate(self.data[group]):
                 rendered=parsed.records[(group,i)]
                 self.assertEqual(rendered['bullets'],record.get('bullets',[]),(group,i))
-                self.assertEqual(rendered['date_label'],record.get('date',' '.join(record.get('milestones',[]))),(group,i,'date'))
+                if group != 'military': self.assertEqual(rendered['date_label'],record.get('date',' '.join(record.get('milestones',[]))),(group,i,'date'))
                 text=''.join(rendered['text'])
                 for key in ['title','school','organization','subtitle','concentration','citation','label']:
                     if record.get(key):self.assertIn(record[key],text,(group,i,key))
@@ -47,6 +47,17 @@ class PhysicalCV(unittest.TestCase):
         actual={key for key,value in parsed.records.items() if value['current']=='true'}
         self.assertEqual(actual,expected)
         self.assertTrue(all(value['current'] in ('true','false') for value in parsed.records.values()))
+    def test_military_timeline_preserves_dated_events(self):
+        events=self.data['military_timeline']
+        self.assertEqual(len(events),7)
+        self.assertEqual([e['datetime'] for e in events], sorted([e['datetime'] for e in events],reverse=True))
+        for event in events:
+            self.assertIn('datetime="'+event['datetime']+'">'+event['date']+'</time>',self.page)
+            self.assertTrue((ROOT/event['image']).is_file())
+        self.assertTrue(events[0]['anticipated'])
+        self.assertEqual(events[2]['date'],'Dec. 2024')
+        self.assertEqual(events[4]['date'],'Apr. 2022')
+
     def test_regeneration_is_idempotent(self):
         self.assertEqual(sync.render(self.page,self.data),self.page)
     def test_regeneration_preserves_stylesheet_versions(self):

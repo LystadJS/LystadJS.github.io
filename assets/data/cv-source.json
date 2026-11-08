@@ -398,7 +398,60 @@
     ],
     "notes": [
       "Verified directly against the original DOCX XML; line wraps and superscript spacing normalized.",
-      "Incomplete presentation descriptions omitted. Citation dates follow the source."
+      "Incomplete presentation descriptions omitted. Citation dates follow the source.",
+      "Military timeline promotion dates follow the print CV (including Specialist, Apr. 2022); dated unit changes follow the existing About-page service timeline."
     ]
-  }
+  },
+  "military_timeline": [
+    {
+      "kind": "promotion",
+      "label": "Lieutenant",
+      "date": "May 2027",
+      "datetime": "2027-05",
+      "anticipated": true,
+      "image": "assets/images/about/military/rank-2lt.svg"
+    },
+    {
+      "kind": "unit",
+      "label": "Cadet Command",
+      "date": "Jul. 2025",
+      "datetime": "2025-07",
+      "image": "assets/images/about/military/usacc.svg"
+    },
+    {
+      "kind": "promotion",
+      "label": "Sergeant",
+      "date": "Dec. 2024",
+      "datetime": "2024-12",
+      "image": "assets/images/about/military/rank-sgt.svg"
+    },
+    {
+      "kind": "unit",
+      "label": "11th Airborne",
+      "date": "Nov. 2022",
+      "datetime": "2022-11",
+      "image": "assets/images/about/military/11th-airborne-division.png"
+    },
+    {
+      "kind": "promotion",
+      "label": "Specialist",
+      "date": "Apr. 2022",
+      "datetime": "2022-04",
+      "image": "assets/images/about/military/rank-spc.svg"
+    },
+    {
+      "kind": "unit",
+      "label": "198th Infantry",
+      "date": "Apr. 2022",
+      "datetime": "2022-04",
+      "image": "assets/images/about/military/198th-infantry-brigade.svg"
+    },
+    {
+      "kind": "promotion",
+      "label": "Private",
+      "date": "Nov. 2021",
+      "datetime": "2021-11",
+      "image": "assets/images/about/military/rank-pv2.svg"
+    }
+  ]
 }

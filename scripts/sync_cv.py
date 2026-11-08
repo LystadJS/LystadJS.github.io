@@ -47,6 +47,20 @@ def rail(r,education=False,project_key=None):
         else:
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
+def military_timeline(events):
+    """Separate rank and unit milestones around one continuous, reverse-chronological rail.
+
+    Markers are spaced for legibility rather than implying a proportional time scale.
+    """
+    items=[]
+    for event in events:
+        note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
+        items.append('<li class="cv-service-event cv-service-'+esc(event['kind'])+'">'
+            '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
+            '<span>'+esc(event['label'])+'</span><time datetime="'+esc(event['datetime'])+'">'
+            +esc(event['date'])+'</time>'+note+'</li>')
+    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(items)+'</ol>'
+
 def citation(s):
     s=esc(s)
     s=re.sub(r'https?://[^\s<]+',lambda m:'<a href="'+m[0].rstrip('.')+'">'+m[0].rstrip('.')+'</a>'+('.' if m[0].endswith('.') else ''),s)
@@ -64,13 +78,9 @@ def render(document,data):
         level='h4' if g=='military' else 'h3'
         c+=project_heading(r['title'], level)
         if r.get('subtitle'):c+=p(r['subtitle'])
-        if g=='military':
-            unit_file='army-officer-candidate.webp' if i==0 else 'army-infantry-unit.png'
-            unit_label='U.S. Army Cadet Command insignia' if i==0 else '11th Airborne Division insignia'
-            c+='<img class="cv-military-unit-mark" src="assets/images/experience/'+unit_file+'" alt="'+unit_label+'" width="68" height="96" loading="lazy" decoding="async">'
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None)+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+('' if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
@@ -96,7 +106,7 @@ def render(document,data):
                     if not groups or groups[-1][0]!=r['logo']:groups.append((r['logo'],[]))
                     groups[-1][1].append(institution(r,g,i))
                 entries=''.join('<div class="cv-school-group">'+''.join(items)+'<div class="cv-school-art" aria-hidden="true"><img src="assets/images/experience/'+esc(logo)+('.png' if logo=='florida-state-university' else '-color.svg')+'" alt="" decoding="async"></div></div>' for logo,items in groups)
-            c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else '')+'">'+entries+'</div>'
+            c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else ' cv-military-timeline' if g=='military' else '')+'">'+(military_timeline(data['military_timeline']) if g=='military' else '')+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
                 c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c

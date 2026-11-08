@@ -104,13 +104,13 @@ test('military chronology keeps dated insignia readable and clear of description
     expect(await rail.locator('.cv-role-start').evaluateAll(es => es.map(e => e.dateTime))).toEqual(['2025-07', '2024-01', '2023-05', '2021-11']);
     await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
     await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
-    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', 'Jul. 2025', 'Jan. 2024', 'May 2023', '2022', 'Nov. 2021']);
+    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', 'Jul. 2025', '2024', 'Jan. 2024', 'May 2023', '2022', 'Nov. 2021']);
     await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
     const geometries = await rail.evaluateAll(rails => rails.map(el => {
       const bounds = el.getBoundingClientRect();
       const events = [...el.querySelectorAll(".cv-service-event")];
       return {
-        aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
+        aligned: Math.abs(el.querySelector('.cv-role-start').getBoundingClientRect().top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
         width: bounds.width,
         split: events.every(e => { const r=e.getBoundingClientRect(); const spine=bounds.left+56; return e.classList.contains("cv-service-unit") ? r.left>spine : r.right<spine; }),
         dates: events.map(e => e.querySelector('time').dateTime),

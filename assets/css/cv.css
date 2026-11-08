@@ -2204,3 +2204,34 @@ body[data-page="cv"] .cv-military-identity > :is(h3, p) { grid-column: 2; }
 @layer type-scale {
   body[data-page="cv"] .cv-service-year.cv-role-start { font-size: .7rem !important; }
 }
+/* Share the actual start-date row with the title. Later milestones sit above it,
+   retaining chronological order without relying on fixed pixel offsets. */
+body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry {
+  grid-template-rows: min-content auto;
+}
+body[data-page="cv"] .cv-service-timeline {
+  display: grid;
+  grid-row: 1 / span 2;
+  grid-template-rows: subgrid;
+  align-self: stretch;
+  gap: 0;
+  padding-top: 0;
+}
+body[data-page="cv"] .cv-service-before-start { grid-row: 1; padding: 0; margin: 0; list-style: none; }
+body[data-page="cv"] .cv-service-before-start > ol {
+  display: flex; flex-direction: column; gap: 6px;
+  margin: 0; padding: 0 0 8px; list-style: none;
+}
+body[data-page="cv"] .cv-service-before-start > ol:empty { padding: 0; }
+body[data-page="cv"] .cv-service-from-start { grid-row: 2; align-self: start; }
+body[data-page="cv"] .cv-military-timeline .cv-entry-content { grid-row: 2; }
+body[data-page="cv"] #military-service .cv-timeline-entry::before { content: none; }
+body[data-page="cv"] .cv-service-from-start::before {
+  content: ""; position: absolute; left: 53px; top: 6px;
+  width: 7px; height: 7px; box-sizing: border-box;
+  border: 1px solid var(--color-accent); border-radius: 50%; background: var(--color-canvas);
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-from-start::before { background: var(--color-accent); }
+body[data-page="cv"] #military-service .cv-military-timeline > .cv-timeline-entry::before { display: none; }
+body[data-page="cv"] .cv-service-from-start { position: relative; }
+body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry { row-gap: 0; }

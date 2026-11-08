@@ -48,24 +48,31 @@ def rail(r,education=False,project_key=None):
             action='<button'+attrs+' type="button" disabled aria-label="Project link not yet available: '+esc(r['title'])+'" title="Project link coming soon">Project ↗</button>'
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
 def military_timeline(events, record):
-    """Keep each role's year markers and dated insignia in its own grid row."""
-    groups=[]
-    for year in record['timeline_years']:
-        items=[]
-        for event in sorted(events, key=lambda event: event['datetime'], reverse=True):
-            if int(event['datetime'][:4]) != year:
-                continue
+    """Put later milestones above the start anchor shared with the position title."""
+    def event_list(items):
+        rendered=[]
+        for event in items:
             note='<span class="cv-milestone-note">(Anticipated)</span>' if event.get('anticipated') else ''
-            items.append('<li class="cv-service-event cv-service-'+esc(event['kind'])+'">'
+            rendered.append('<li class="cv-service-event cv-service-'+esc(event['kind'])+'">'
                 '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                 '<time datetime="'+esc(event['datetime'])+'">'+esc(event['date'])+'</time>'
                 '<span>'+esc(event['label'])+'</span>'+note+'</li>')
-        # Show the exact start month in its year; other ticks retain annual context.
-        marker=('<time class="cv-service-year cv-role-start" datetime="'+esc(record['start_date'])+'">'+esc(record['date'])+'</time>'
-                if year == int(record['start_date'][:4]) else '<span class="cv-service-year">'+str(year)+'</span>')
-        groups.append('<li class="cv-service-year-group">'+marker
-            +('<ol class="cv-service-year-events">'+''.join(items)+'</ol>' if items else '')+'</li>')
-    return '<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'+''.join(groups)+'</ol>'
+        return '<ol class="cv-service-year-events">'+''.join(rendered)+'</ol>' if rendered else ''
+
+    before=[]
+    at_start=[]
+    for year in record['timeline_years']:
+        items=sorted((e for e in events if int(e['datetime'][:4]) == year),
+                     key=lambda e:e['datetime'], reverse=True)
+        later=[e for e in items if e['datetime'] > record['start_date']]
+        if year > int(record['start_date'][:4]) or later:
+            before.append('<li class="cv-service-year-group"><span class="cv-service-year">'+str(year)+'</span>'+event_list(later)+'</li>')
+        at_start.extend(e for e in items if e['datetime'] <= record['start_date'])
+    marker='<time class="cv-service-year cv-role-start" datetime="'+esc(record['start_date'])+'">'+esc(record['date'])+'</time>'
+    # Two shared grid rows align the title to the actual date, not the rail's top.
+    return ('<ol class="cv-service-timeline" aria-label="Promotions and unit changes, newest first">'
+            '<li class="cv-service-before-start"><ol>'+''.join(before)+'</ol></li>'
+            '<li class="cv-service-from-start cv-service-year-group">'+marker+event_list(at_start)+'</li></ol>')
 
 def citation(s):
     s=esc(s)

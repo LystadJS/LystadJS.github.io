@@ -64,7 +64,6 @@ def render(document,data):
         level='h4' if g=='military' else 'h3'
         c+=project_heading(r['title'], level)
         if r.get('subtitle'):c+=p(r['subtitle'])
-        if r.get('repository'):c+='<p class="cv-repository-link"><a href="'+esc(r['repository_url'])+'">'+esc(r['repository'])+'</a></p>'
         if g=='military':
             unit_file='army-officer-candidate.webp' if i==0 else 'army-infantry-unit.png'
             unit_label='U.S. Army Cadet Command insignia' if i==0 else '11th Airborne Division insignia'

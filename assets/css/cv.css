@@ -2314,3 +2314,8 @@ body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
 body[data-page="cv"] .cv-service-year { font-weight: 700; }
 /* Restore compression dashes alongside grouped insignia without moving them. */
 body[data-page="cv"] .cv-annual-timeline .cv-service-insignia::before { content: ""; }
+
+/* All annual labels sit left of the spine; reserve their own compact row
+   above a promotion pair so neither the date nor insignia is displaced sideways. */
+body[data-page="cv"] .cv-year-promotion-only > .cv-service-year { position: relative; left: 0; top: auto; }
+body[data-page="cv"] .cv-year-promotion-only > .cv-service-year::after { left: 100%; right: auto; }

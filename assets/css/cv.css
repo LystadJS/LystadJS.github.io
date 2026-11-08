@@ -2236,30 +2236,36 @@ body[data-page="cv"] #military-service .cv-military-timeline > .cv-timeline-entr
 body[data-page="cv"] .cv-service-from-start { position: relative; }
 body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry { row-gap: 0; }
 
-/* Compact the future segment only: keep the anticipated commission beside its
-   year and the intervening year close, while the start-date row remains shared. */
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start > ol {
-  gap: 2px;
-  padding-bottom: 4px;
+/* Compress only the dated segments above start anchors. The first insignia and
+   its year share a row on opposite sides, preserving promotion/unit placement. */
+body[data-page="cv"] .cv-service-before-start > ol { gap: 2px; padding-bottom: 4px; }
+body[data-page="cv"] .cv-service-before-start .cv-service-year-events { margin-top: 0; gap: 2px; }
+body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) {
+  position: relative;
+  display: block;
 }
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-events {
-  margin-top: 0;
+body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) {
-  display: grid;
-  grid-template-columns: 52px 52px;
-  column-gap: 8px;
-  align-items: start;
+body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-promotion:first-child) > .cv-service-year {
+  left: 60px;
 }
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year {
-  grid-column: 2;
-  grid-row: 1;
-}
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year::after {
+body[data-page="cv"] .cv-service-before-start .cv-service-year-group:has(.cv-service-promotion:first-child) > .cv-service-year::after {
   left: auto;
   right: 100%;
 }
-body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-events {
-  grid-column: 1;
-  grid-row: 1;
+/* Mask the solid spine only over compressed intervals, then draw its dashes. */
+body[data-page="cv"] .cv-service-before-start { position: relative; }
+body[data-page="cv"] .cv-service-before-start:has(> ol > li)::before {
+  content: "";
+  position: absolute;
+  left: 56px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, var(--color-accent) 0 5px, transparent 5px 10px), var(--color-canvas);
 }

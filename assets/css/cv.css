@@ -2235,3 +2235,31 @@ body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-from-st
 body[data-page="cv"] #military-service .cv-military-timeline > .cv-timeline-entry::before { display: none; }
 body[data-page="cv"] .cv-service-from-start { position: relative; }
 body[data-page="cv"] .cv-military-timeline > .cv-timeline-entry { row-gap: 0; }
+
+/* Compact the future segment only: keep the anticipated commission beside its
+   year and the intervening year close, while the start-date row remains shared. */
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start > ol {
+  gap: 2px;
+  padding-bottom: 4px;
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-events {
+  margin-top: 0;
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) {
+  display: grid;
+  grid-template-columns: 52px 52px;
+  column-gap: 8px;
+  align-items: start;
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year {
+  grid-column: 2;
+  grid-row: 1;
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-group:has(.cv-service-event) > .cv-service-year::after {
+  left: auto;
+  right: 100%;
+}
+body[data-page="cv"] .cv-timeline-entry[data-current="true"] .cv-service-before-start .cv-service-year-events {
+  grid-column: 1;
+  grid-row: 1;
+}

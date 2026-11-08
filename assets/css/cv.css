@@ -2396,3 +2396,10 @@ body[data-page="cv"] .cv-role-number { display: inline-block; margin-left: .3em;
   body[data-page="cv"] .cv-service-scale > .cv-role-point,
   body[data-page="cv"] .cv-role-number { font-size: .625rem !important; line-height: 1 !important; }
 }
+
+/* Title references read as superscripts without changing the heading line box. */
+body[data-page="cv"] .cv-role-number {
+  position: relative;
+  top: -.5em;
+  color: var(--color-accent);
+}

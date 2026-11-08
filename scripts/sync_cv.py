@@ -76,10 +76,7 @@ def military_timeline(events, record):
                 items.append('<li class="cv-unit-gap" aria-hidden="true" style="flex-grow: '+str(previous_month-1)+'"></li>')
             groups.append('<li class="cv-service-column"><ol'+(' class="cv-unit-events"' if kind=='unit' else '')+'>'+''.join(items)+'</ol></li>')
         layout=' cv-year-'+present[0]+'-only' if len(present)==1 else ''
-        # Event-free years collapse to a label row; only these short intervals
-        # need a time-compression cue. Insignia-filled years remain solid.
-        if not present:
-            layout+=' cv-compressed-year'
+
         # A descending timeline places dated events above the January boundary
         # of their year (e.g. November 2021 above 2021, below 2022).
         years.append('<li class="cv-annual-group'+layout+'">'
@@ -103,10 +100,13 @@ def render(document,data):
         c=p(r['label'],'cv-entry-kicker document-muted') if r.get('label') else ''
         level='h4' if g=='military' else 'h3'
         c+=project_heading(r['title'], level)
+        if g=='military':
+            c=c.replace('<h4 class="document-title">', '<h4 class="document-title" id="military-role-'+str(i+1)+'"><span class="cv-role-number">'+str(i+1)+'</span> ')
         if r.get('subtitle'):c+=p(r['subtitle'])
         c+=bullets(r.get('bullets',[]))
         if r.get('citation'):c+=citation(r['citation'])
-        return '<article class="'+cls+'"'+attrs(g,i)+'>'+('<span class="cv-role-point" data-start-date="'+esc(r['start_date'])+'" aria-hidden="true"></span>' if g=='military' else '')+(military_timeline(data['military_timeline'],r) if g=='military' else rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None))+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+        return '<article class="'+cls+'"'+attrs(g,i)+'>'+(rail(r,project_key=g+'-'+str(i) if g in ['scholarly','applied','technical','presentations'] else None) if g!='military' else '')+'<div class="cv-entry-content'+(' cv-military-entry-content' if g=='military' else '')+'">'+c+'</div></article>'
+
     def institution(r,g,i):
         ed=g=='education'
         c='<h3 class="document-title'+(' cv-degree-title' if ed else '')+'">'+esc(r.get('organization',r['title']))+'</h3>'
@@ -135,6 +135,10 @@ def render(document,data):
             c='<div class="cv-timeline'+(' cv-education-timeline' if g=='education' else ' cv-military-timeline' if g=='military' else '')+'">'+entries+'</div>'
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
+                # One equal-year rail spans the complete, independently spaced list.
+                service_rail=military_timeline(data['military_timeline'], {'timeline_years': list(range(2027,2020,-1))})
+                points=''.join('<a class="cv-role-point" href="#military-role-'+str(i+1)+'" data-start-date="'+esc(r['start_date'])+'" aria-label="Role '+str(i+1)+': '+esc(r['title'])+'">'+str(i+1)+'</a>' for i,r in enumerate(data['military']))
+                c='<div class="cv-independent-service"><div class="cv-service-scale">'+service_rail+points+'</div><div class="cv-military-timeline cv-role-list">'+entries+'</div></div>'
                 c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
                 # Reuse the print CV's original artwork; CSS reveals each relevant area.
                 artwork='<img src="assets/images/about/military/print-cv-badges-ribbons.png" alt="" width="423" height="445" decoding="async">'

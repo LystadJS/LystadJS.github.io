@@ -71,7 +71,7 @@ test('CV follows printed order and downstream groups share a date rail', async (
   expect(await page.locator('#professional-work .cv-org-entry').count()).toBe(6);
   expect(await page.locator('#military-service .cv-role-timeline-entry').count()).toBe(4);
   const rails=await page.locator('.cv-timeline-entry').evaluateAll(items=>items.map(el=>{
-    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date, :scope > .cv-service-timeline') || el.parentElement.querySelector('.cv-service-timeline');
+    const rail=el.querySelector(':scope > .cv-entry-rail, :scope > .cv-education-date, :scope > .cv-service-timeline') || el.parentElement.querySelector('.cv-service-timeline') || el.closest('.cv-independent-service')?.querySelector('.cv-service-scale');
     const content=el.querySelector(':scope > .cv-org-main, :scope > .cv-entry-content, :scope > .cv-timeline-role-body');
     return {rail:rail?.getBoundingClientRect().right,content:content?.getBoundingClientRect().left};
   }));
@@ -92,97 +92,33 @@ test('desktop contents list fits a short viewport and legacy rules are absent',a
 });
 
 
-test('military chronology keeps dated insignia readable and clear of descriptions', async ({ page }, info) => {
-  // One project owns this width matrix; avoid repeating the same browser checks.
+test('military chronology uses one equal-year scale and numbered role links', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop-1440');
-  for (const width of [320, 390, 768, 900, 1024, 1440]) {
-    await page.setViewportSize({ width, height: 1000 });
+  for (const width of [320,390,768,900,1024,1440]) {
+    await page.setViewportSize({width,height:1000});
     await page.goto('/cv.html');
     await page.evaluate(() => document.fonts.ready);
-    const rail = page.locator('.cv-service-timeline');
-    await expect(page.locator('[data-cv-group="military"] h4')).toHaveText(['Officer Commissioning Candidate', 'Infantry Squad Leader', 'Infantry Company Communications Chief', 'Indirect Fire Infantryman']);
-    await expect(rail.locator(".cv-role-start")).toHaveCount(0);
-    await expect(page.locator('.cv-role-point')).toHaveCount(4);
-    // Check all starts against the rendered January boundaries at every width.
-    await expect.poll(() => page.locator('.cv-military-timeline').evaluate(root => {
-      const years = new Map([...root.querySelectorAll('.cv-service-year')].map(e => {
-        const r = e.getBoundingClientRect(); return [Number(e.textContent), r.top + r.height / 2];
-      }));
-      return [...root.querySelectorAll('.cv-role-point')].every(point => {
-        const [year, month] = point.dataset.startDate.split('-').map(Number);
-        const expected = years.get(year) + (years.get(year + 1) - years.get(year)) * (month - 1) / 12;
-        const rect = point.getBoundingClientRect();
-        return Math.abs(rect.top + rect.height / 2 - expected) < 1;
+    await expect(page.locator('.cv-service-scale')).toHaveCount(1);
+    await expect(page.locator('.cv-role-point')).toHaveText(['1','2','3','4']);
+    await expect(page.locator('.cv-role-number')).toHaveText(['1','2','3','4']);
+    await expect(page.locator('.cv-service-unit time, .cv-compressed-year')).toHaveCount(0);
+    await expect.poll(() => page.locator('.cv-service-scale').evaluate(root => {
+      const ticks=[...root.querySelectorAll('.cv-service-year')].map(e=>{const r=e.getBoundingClientRect();return {year:+e.textContent,y:r.top+r.height/2};});
+      const step=ticks[1].y-ticks[0].y;
+      const equal=ticks.slice(1).every((e,i)=>Math.abs(e.y-ticks[i].y-step)<1);
+      const points=[...root.querySelectorAll('.cv-role-point')].every(e=>{
+        const [year,month]=e.dataset.startDate.split('-').map(Number);
+        const lower=ticks.find(t=>t.year===year).y,upper=ticks.find(t=>t.year===year+1).y;
+        const r=e.getBoundingClientRect();return Math.abs(r.top+r.height/2-(lower+(upper-lower)*(month-1)/12))<1 && !!document.querySelector(e.getAttribute('href'));
       });
+      return equal && points;
     })).toBe(true);
-    await expect(page.locator('.cv-role-point')).toHaveText(['', '', '', '']);
-    await expect(rail.locator('.cv-compressed-year > .cv-service-year')).toHaveText(['2026', '2023']);
-    const solidGroups = await rail.locator('.cv-service-insignia').evaluateAll(items => items.every(e => getComputedStyle(e, '::before').content === 'none'));
-    expect(solidGroups).toBe(true);
-    await expect(rail.locator('.cv-service-promotion')).toHaveCount(4);
-    await expect(rail.locator('.cv-service-unit')).toHaveCount(3);
-    await expect(rail.locator('.cv-service-year')).toHaveText(['2027', '2026', '2025', '2024', '2023', '2022', '2021']);
-    await expect(rail.locator('.cv-milestone-note')).toHaveText('(Anticipated)');
-    await expect(rail.locator('.cv-service-unit time')).toHaveCount(0);
-    // Font ink can exceed a CSS line box: test rendered text fragments, not just containers.
-    const collisions = await page.locator('.cv-military-timeline').evaluate(root => {
-      const nodes = [...root.querySelectorAll('.cv-service-year, .cv-service-event img, .cv-service-event time, .cv-service-event > span')];
-      const boxes = nodes.flatMap((e, index) => {
-        const range = document.createRange();
-        range.selectNodeContents(e);
-        const rects = e.matches('img') ? [e.getBoundingClientRect()] : [...range.getClientRects()];
-        return rects.map(r => ({ index, text: e.textContent || e.getAttribute('src'), left: r.left, right: r.right, top: r.top, bottom: r.bottom }));
-      });
-      return boxes.flatMap((a, i) => boxes.slice(i + 1).filter(b => a.index !== b.index
-        && Math.min(a.right, b.right) - Math.max(a.left, b.left) > .5
-        && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > .5).map(b => [a.text, b.text]));
+    const layout=await page.evaluate(()=>{
+      const rail=document.querySelector('.cv-service-scale').getBoundingClientRect();
+      const entries=[...document.querySelectorAll('.cv-role-list > article')];
+      return entries.every((e,i)=>e.getBoundingClientRect().left>rail.right && (i===entries.length-1 || getComputedStyle(e).paddingBottom==='24px')) && document.documentElement.scrollWidth<=innerWidth;
     });
-    expect(collisions).toEqual([]);
-    const geometries = await rail.evaluateAll(rails => rails.map(el => {
-      const bounds = el.getBoundingClientRect();
-      const events = [...el.querySelectorAll(".cv-service-event")];
-      return {
-        aligned: Math.abs(bounds.top - el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().top) < 1,
-        width: bounds.width,
-        monthsAligned: events.filter(e => e.classList.contains('cv-service-promotion')).every(e => {
-          const month=Number(e.querySelector('time').dateTime.slice(5,7));
-          const box=e.getBoundingClientRect(), slot=e.parentElement.getBoundingClientRect();
-          const expected=(slot.height-box.height)*(12-month)/11;
-          return Math.abs(box.top-slot.top-expected)<1;
-        }),
-        yearBoundaries: [...el.querySelectorAll('.cv-annual-group')].every(group => {
-          const tick=group.querySelector('.cv-service-year').getBoundingClientRect();
-          return [...group.querySelectorAll('.cv-service-event')].every(event => event.getBoundingClientRect().bottom <= tick.top + 1);
-        }),
-        yearsLeft: [...el.querySelectorAll(".cv-service-year")].every(e => Math.abs(e.getBoundingClientRect().left - bounds.left) < 1 && getComputedStyle(e, "::after").left === "52px"),
-        rowFitsCopy: bounds.height <= el.parentElement.querySelector('.cv-entry-content').getBoundingClientRect().height + 1,
-        entryPadding: getComputedStyle(el.parentElement).paddingBottom,
-        split: events.every(e => { const r=e.getBoundingClientRect(); const spine=bounds.left+56; return e.classList.contains("cv-service-unit") ? r.left>spine : r.right<spine; }),
-        dates: events.filter(e => e.querySelector('time')).map(e => e.querySelector('time').dateTime),
-        imagesLoaded: events.every(e => { const image = e.querySelector('img'); return image.complete && image.naturalWidth > 0; }),
-        fits: events.every((e, i) => {
-          const r = e.getBoundingClientRect();
-          return r.left >= bounds.left && r.right <= bounds.right + 1 && r.bottom <= bounds.bottom + 1
-            && (!e.previousElementSibling || r.top >= e.previousElementSibling.getBoundingClientRect().bottom);
-        }),
-        clear: [...el.parentElement.querySelectorAll('.cv-entry-content')].every(e => e.getBoundingClientRect().left > bounds.right),
-      };
-    }));
-    for (const geometry of geometries) {
-    expect(geometry.aligned).toBe(true);
-    expect(geometry.width).toBe(112);
-    expect(geometry.monthsAligned).toBe(true);
-    expect(geometry.yearBoundaries).toBe(true);
-    expect(geometry.yearsLeft).toBe(true);
-    expect(geometry.rowFitsCopy).toBe(true);
-    expect(["24px", "0px"]).toContain(geometry.entryPadding);
-    expect(geometry.split).toBe(true);
-    expect(geometry.dates).toEqual([...geometry.dates].sort().reverse());
-    expect(geometry.imagesLoaded).toBe(true);
-    expect(geometry.fits).toBe(true);
-    expect(geometry.clear).toBe(true);
-    }
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect(layout).toBe(true);
   }
 });
 

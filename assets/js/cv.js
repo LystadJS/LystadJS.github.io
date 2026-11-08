@@ -41,7 +41,7 @@
 /* Place role points on the same piecewise year scale as the annual ticks.
    Reading rendered ticks also accounts for compressed intervals and wrapping. */
 (() => {
-  const timeline = document.querySelector('.cv-military-timeline');
+  const timeline = document.querySelector('.cv-service-scale');
   if (!timeline) return;
   const position_role_points = () => {
     const years = new Map([...timeline.querySelectorAll('.cv-service-year')].map(label => {

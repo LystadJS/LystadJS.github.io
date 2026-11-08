@@ -2118,15 +2118,15 @@ body[data-page="cv"] .cv-service-event img { object-fit: contain; margin-bottom:
 body[data-page="cv"] .cv-service-event > span:not(.cv-milestone-note) { overflow-wrap: normal; }
 body[data-page="cv"] .cv-milestone-note { white-space: nowrap; }
 /* Month placement stays inside each annual slot, reserving room for labels. */
-body[data-page="cv"] .cv-service-promotion { display: grid; grid-template-columns: 20px 28px; column-gap: 4px; position: relative; top: var(--promotion-position); transform: translateY(calc(-1 * var(--promotion-position))); }
-body[data-page="cv"] .cv-service-promotion img { grid-row: 1; width: 20px; height: 28px; margin: 0; }
+body[data-page="cv"] .cv-service-promotion { display: grid; grid-template-columns: 24px 28px; column-gap: 4px; position: relative; left: -8px; top: var(--promotion-position); transform: translateY(calc(-1 * var(--promotion-position))); }
+body[data-page="cv"] .cv-service-promotion img { grid-row: 1; width: 24px; height: auto; margin: 0; }
 body[data-page="cv"] .cv-service-promotion time { grid-column: 2; white-space: normal; text-align: left; }
 body[data-page="cv"] .cv-service-promotion > span { grid-column: 1 / span 2; }
 body[data-page="cv"] .cv-service-column > .cv-unit-events { display: flex; flex-direction: column; gap: 0; }
 body[data-page="cv"] .cv-unit-gap { flex-basis: 0; min-height: 0; margin: 0; padding: 0; list-style: none; }
 body[data-page="cv"] .cv-unit-gap-between { min-height: 4px; }
 body[data-page="cv"] .cv-service-unit { flex-shrink: 0; align-self: flex-end; }
-body[data-page="cv"] .cv-service-unit img { width: 24px; height: 28px; }
+body[data-page="cv"] .cv-service-unit img { width: 24px; height: auto; }
 /* Descriptions keep the standard entry padding, without a second rail. */
 body[data-page="cv"] #military-service .cv-role-list { margin: 0; padding: 0; }
 body[data-page="cv"] #military-service .cv-role-list::before,

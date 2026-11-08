@@ -113,7 +113,13 @@ def render(document,data):
             if g=='applied':c='<div class="cv-disclosure">'+p(data['disclosure'],'document-copy')+'</div>'+c
             if g=='military':
                 c='<div class="cv-military-identity"><img class="cv-army-mark" src="assets/images/experience/us-army.webp" alt="United States Army emblem" width="58" height="58" loading="lazy" decoding="async"><h3 class="document-title">United States Army</h3>'+p('U.S. Department of Defense')+'</div>'+c
-                c+='<div class="cv-training-awards"><h3 class="document-title">Specialized Training and Awards</h3><h4 class="document-title">Special Skills Badges</h4>'+bullets(data['badges'])+'<h4 class="document-title">Awards</h4>'+bullets(data['awards'])+'</div>'
+                # Reuse the print CV's original artwork; CSS reveals each relevant area.
+                artwork='<img src="assets/images/about/military/print-cv-badges-ribbons.png" alt="" width="423" height="445" decoding="async">'
+                badge_art='<div class="cv-award-art" aria-hidden="true"><div class="cv-art-tabs">'+artwork+'</div><div class="cv-art-badges">'+artwork+'</div></div>'
+                ribbon_art='<div class="cv-award-art" aria-hidden="true"><div class="cv-art-ribbons">'+artwork+'</div></div>'
+                c+='<div class="cv-training-awards"><h3 class="document-title">Specialized Training and Awards</h3>'
+                c+='<section class="cv-award-group">'+badge_art+'<div class="cv-award-copy"><h4 class="document-title">Special Skills Badges</h4>'+bullets(data['badges'])+'</div></section>'
+                c+='<section class="cv-award-group">'+ribbon_art+'<div class="cv-award-copy"><h4 class="document-title">Awards</h4>'+bullets(data['awards'])+'</div></section></div>'
         blocks.append('<section class="cv-section" id="'+sid+'"><h2 class="cv-section-label document-section-title">'+esc(title)+'</h2><div class="cv-section-body">'+c+'</div></section>')
     start=re.search(r'<section class="cv-section" id="[^"]+">',document)
     if not start:raise ValueError('Missing CV sections')

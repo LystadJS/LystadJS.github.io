@@ -68,6 +68,15 @@
       today.setAttribute('aria-label', today.title);
       today.hidden = false;
     }
+    // Align requested unit/rank pairs by the artwork centers, regardless of label height.
+    timeline.querySelectorAll('[data-align-promotion]').forEach(unit => {
+      const promotion = timeline.querySelector('.cv-service-promotion time[datetime="' + unit.dataset.alignPromotion + '"]');
+      if (!promotion) return;
+      unit.style.transform = '';
+      const badge = unit.querySelector('img').getBoundingClientRect();
+      const rank = promotion.parentElement.querySelector('img').getBoundingClientRect();
+      unit.style.transform = 'translateY(' + (rank.top + rank.height / 2 - badge.top - badge.height / 2) + 'px)';
+    });
     timeline.querySelectorAll('.cv-role-point').forEach(point => {
       const [year, month] = point.dataset.startDate.split('-').map(Number);
       const january = years.get(year);

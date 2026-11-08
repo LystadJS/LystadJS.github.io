@@ -446,7 +446,9 @@
       "label": "198th Infantry",
       "date": "Apr. 2022",
       "datetime": "2022-04",
-      "image": "assets/images/about/military/198th-infantry-brigade.svg"
+      "image": "assets/images/about/military/198th-infantry-brigade.svg",
+      "display_datetime": "2021-11",
+      "align_promotion": "2021-11"
     },
     {
       "kind": "promotion",

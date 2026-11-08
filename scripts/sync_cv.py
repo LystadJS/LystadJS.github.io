@@ -49,6 +49,8 @@ def rail(r,education=False,project_key=None):
     return '<div class="'+cls+'"'+(' aria-label="'+esc(label)+'"' if label else ' aria-hidden="true"')+'>'+spans+action+'</div>'
 def military_timeline(events, record):
     """Annual ticks with compact promotion/date pairs and undated unit badges."""
+    # Display-only placement can align a unit with a rank without rewriting source dates.
+    events=[dict(e, datetime=e.get("display_datetime",e["datetime"])) for e in events]
     years=[]
     for year in record['timeline_years']:
         groups=[]
@@ -69,7 +71,8 @@ def military_timeline(events, record):
                 # December sits near the upper boundary; January near the lower.
                 month=int(event['datetime'][5:7])
                 position=' style="--promotion-position: '+str(round((12-month)/11*100,2))+'%"' if kind=='promotion' else ''
-                items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+'>'
+                alignment=' data-align-promotion="'+esc(event['align_promotion'])+'"' if event.get('align_promotion') else ''
+                items.append('<li class="cv-service-event cv-service-'+kind+'"'+position+alignment+'>'
                     '<img src="'+esc(event['image'])+'" alt="" width="28" height="36" decoding="async">'
                     +date+'<span>'+esc(event['label'])+'</span>'+note+'</li>')
             if kind=='unit' and ordered:

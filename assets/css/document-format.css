@@ -270,9 +270,7 @@ body[data-page="cv"] main [data-cv-group="academic"] .cv-org-header .document-ti
 body[data-page="cv"] main [data-cv-group="military"] .cv-entry-content > .document-title {
   font-weight: 700;
 }
-body[data-page="cv"] main [data-cv-group="professional"] .cv-org-header .document-title {
-  color: var(--document-secondary) !important;
-}
+
 
 /* Description markers sit in a gutter; every wrapped line shares the text edge. */
 body[data-page="cv"] .cv-timeline .cv-bullets > li {

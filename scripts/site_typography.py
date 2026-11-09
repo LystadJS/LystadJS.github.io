@@ -4,7 +4,7 @@ import posixpath
 import re
 
 SERIF = '"EB Garamond", Georgia, serif'
-SANS = '"Atkinson Hyperlegible", system-ui, sans-serif'
+SANS = '"Atkinson Hyperlegible Next", system-ui, sans-serif'
 MONO = '"JetBrains Mono", ui-monospace, monospace'
 
 
@@ -40,12 +40,12 @@ def apply_typography(root: Path, *, prefix: str = 'un/transcript-agent') -> None
         if path.suffix == '.html':
             # A cached pre-migration CSS file may still contain literal old faces.
             text = re.sub(r'(href=["\'])(?!https?:|//)([^"\']+\.css)(?:\?[^"\']*)?(["\'])',
-                          r'\1\2?v=20261023-1\3', text)
+                          r'\1\2?v=20261108-atkinson-next\3', text)
             parent = posixpath.dirname(prefix + '/' + path.relative_to(root).as_posix())
             href = posixpath.relpath('assets/css/typography.css', parent)
             scale_href = posixpath.relpath('assets/css/type-scale.css', parent)
             spacing_href = posixpath.relpath('assets/css/spacing.css', parent)
-            link = (f'<link rel="stylesheet" href="{href}?v=20261023-1">'
+            link = (f'<link rel="stylesheet" href="{href}?v=20261108-atkinson-next">'
                     f'<link rel="stylesheet" href="{scale_href}?v=20261024-1">'
                     f'<link rel="stylesheet" href="{spacing_href}?v=20261024-1">')
             if '</head>' in text:

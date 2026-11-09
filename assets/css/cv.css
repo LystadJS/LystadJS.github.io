@@ -2188,8 +2188,6 @@ body[data-page="cv"] .cv-service-promotion:not(:has(.cv-milestone-note)) time { 
 body[data-page="cv"] .cv-service-unit > span:not(.cv-insignia-art) { position: relative; top: -2px; }
 
 /* Professional experience uses Next with the same heading scale as Military Service. */
-@font-face { font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/atkinson-hyperlegible-next-regular.woff2") format("woff2"); }
-@font-face { font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/atkinson-hyperlegible-next-bold.woff2") format("woff2"); }
 body[data-page="cv"] #professional-work .cv-org-main :is(h3, h4, p, li) { font-family: "Atkinson Hyperlegible Next", var(--sans) !important; }
 body[data-page="cv"] #professional-work .cv-org-header .document-title,
 body[data-page="cv"] #professional-work .cv-role-heading .document-title { color: var(--color-text) !important; font-weight: 700; }

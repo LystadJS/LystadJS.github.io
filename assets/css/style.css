@@ -30,7 +30,7 @@
   --success: var(--color-steel);
   --max: 1180px;
   --serif: "EB Garamond", Georgia, serif;
-  --sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --sans: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --section-heading-size: clamp(2.8rem, 6vw, 5rem);
   --section-index-rail-width: clamp(3.5rem, 8.5vw, 7rem);

@@ -1,6 +1,6 @@
 :root{color-scheme:light;--navy:#172941;--ink:#25354a;--muted:#5c6878;--gold:#a9894a;--line:#d8dfe6;--canvas:#f5f7f9;--paper:#fff;--red:#873c41}
 *{box-sizing:border-box}
-html{font-family:"Atkinson Hyperlegible", system-ui, sans-serif;color:var(--ink);background:var(--canvas);line-height:1.5}
+html{font-family:"Atkinson Hyperlegible Next", system-ui, sans-serif;color:var(--ink);background:var(--canvas);line-height:1.5}
 body{margin:0}
 .masthead{background:var(--navy);color:#fff;padding:2.1rem max(1.25rem,calc((100vw - 1220px)/2))}
 .topline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:#e0cc9f}

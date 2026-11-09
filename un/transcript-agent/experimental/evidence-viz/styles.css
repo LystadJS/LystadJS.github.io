@@ -5,7 +5,7 @@
   --ev-rule:#d5dee6; --ev-wash:#f5f7f9;
 }
 * { box-sizing:border-box }
-body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 "Atkinson Hyperlegible", system-ui, sans-serif}
+body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 "Atkinson Hyperlegible Next", system-ui, sans-serif}
 .ev-demo a { color:var(--ev-blue); text-underline-offset:3px }
 .ev-demo :is(button,select,a,summary):focus-visible {
   outline:3px solid #a88750; outline-offset:3px;
@@ -42,7 +42,7 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 .ev-panel h2 { font:normal 25px "EB Garamond", Georgia, serif; color:var(--ev-navy); margin:0; }
 .ev-panel h3 { color:var(--ev-blue); margin:22px 0 7px; font-size:14px }
 .ev-state { border:1px solid var(--ev-rule); padding:4px 9px; color:var(--ev-muted);
-  font:700 11px "Atkinson Hyperlegible", system-ui, sans-serif; text-transform:uppercase; letter-spacing:.08em }
+  font:700 11px "Atkinson Hyperlegible Next", system-ui, sans-serif; text-transform:uppercase; letter-spacing:.08em }
 .ev-provenance { font-size:12px; color:var(--ev-blue); letter-spacing:.01em; margin:13px 0 6px; }
 .ev-note { font-size:13px; line-height:1.5; color:var(--ev-muted); margin:8px 0 12px;
   max-width:105ch; }
@@ -63,7 +63,7 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 .ev-panel tbody th { background:#f9fafb; font-weight:700; white-space:nowrap; }
 .ev-hit { display:block; padding:5px 7px; width:100%; border:1px solid transparent;
   border-radius:2px; cursor:pointer; background:#edf3f7; text-align:left;
-  color:#183b5d; font:12px/1.4 "Atkinson Hyperlegible", system-ui, sans-serif; }
+  color:#183b5d; font:12px/1.4 "Atkinson Hyperlegible Next", system-ui, sans-serif; }
 .ev-hit:hover { border-color:#9babbc; background:#dbe9f2 }
 .ev-missing { color:#6c5762; background:#eee; padding:6px 8px; display:block }
 .ev-diagonal { color:#9aa6b1; font-weight:700 }
@@ -74,7 +74,7 @@ body.ev-demo { margin:0; background:#f5f7f9; color:var(--ev-ink); font:15px/1.5 
 .ev-ledger { border-top:1px solid var(--ev-rule); margin-top:14px; padding-top:11px }
 .ev-ledger summary { font-size:13px; font-weight:700; color:var(--ev-blue); cursor:pointer; }
 .ev-panel-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:7px; }
-.ev-panel-actions button { font:700 12px "Atkinson Hyperlegible", system-ui, sans-serif; border:1px solid #9cabb7;
+.ev-panel-actions button { font:700 12px "Atkinson Hyperlegible Next", system-ui, sans-serif; border:1px solid #9cabb7;
   padding:8px 12px; background:#fff; color:var(--ev-blue); cursor:pointer }
 .ev-panel-actions button:hover { background:#e9f0f5; }
 .ev-method-footer { border-top:1px solid var(--ev-rule); padding-top:15px; margin:28px 0 0;

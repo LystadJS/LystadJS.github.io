@@ -1,31 +1,31 @@
 /* Self-hosted font families. Sources and licenses: assets/fonts/README.md. */
 @font-face {
-  font-family: "Atkinson Hyperlegible";
+  font-family: "Atkinson Hyperlegible Next";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-regular.woff2") format("woff2");
+  src: url("../fonts/atkinson-hyperlegible-next-regular.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Atkinson Hyperlegible";
+  font-family: "Atkinson Hyperlegible Next";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-bold.woff2") format("woff2");
+  src: url("../fonts/atkinson-hyperlegible-next-bold.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Atkinson Hyperlegible";
+  font-family: "Atkinson Hyperlegible Next";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-italic.woff2") format("woff2");
+  src: url("../fonts/atkinson-hyperlegible-next-italic.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Atkinson Hyperlegible";
+  font-family: "Atkinson Hyperlegible Next";
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-bold-italic.woff2") format("woff2");
+  src: url("../fonts/atkinson-hyperlegible-next-bold-italic.woff2") format("woff2");
 }
 @font-face {
   font-family: "EB Garamond";
@@ -59,7 +59,7 @@
 /* Loaded last on each page, including the public UN mirror. */
 :root {
   --serif: "EB Garamond", Georgia, serif;
-  --sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --sans: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --usun-serif: var(--serif);
   --usun-sans: var(--sans);

@@ -57,10 +57,10 @@ def build(output):
         module.sync(self.source, site=self.site)
         target = self.site / "un/transcript-agent/nested/index.html"
         text = target.read_text()
-        self.assertIn('../../../assets/css/typography.css?v=20261023-1', text)
+        self.assertIn('../../../assets/css/typography.css?v=20261108-atkinson-next', text)
         self.assertIn('../../../assets/css/type-scale.css?v=20261024-1', text)
         self.assertIn('../../../assets/css/spacing.css?v=20261024-1', text)
-        self.assertIn('"Atkinson Hyperlegible"', text)
+        self.assertIn('"Atkinson Hyperlegible Next"', text)
         self.assertIn('"EB Garamond"', text)
         self.assertIn('const label="Arial"', text)
         self.assertEqual(module.sync(self.source, site=self.site)["copied"], 0)
@@ -73,7 +73,7 @@ def build(output):
 ''')
         module.sync(self.source, site=self.site)
         text = (self.site / "un/transcript-agent/index.html").read_text()
-        self.assertIn('../../assets/css/typography.css?v=20261023-1', text)
+        self.assertIn('../../assets/css/typography.css?v=20261108-atkinson-next', text)
         self.assertLess(text.index('typography.css'), text.index('<header>'))
 
     def test_traversal_is_rejected_before_changes(self):

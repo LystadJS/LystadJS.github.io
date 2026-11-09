@@ -26,8 +26,8 @@ test('CV and all navigation links fit without internal scrolling', async ({ page
     expect(geometry.documentRight).toBeLessThanOrEqual(width);
     expect(geometry.titleRight, `CV title at ${width}px`).toBeLessThanOrEqual(width);
     expect(geometry.serif).toContain('EB Garamond');
-    expect(geometry.sans).toContain('Atkinson Hyperlegible');
-    expect(geometry.mono).toContain('Atkinson Hyperlegible');
+    expect(geometry.sans).toContain('Atkinson Hyperlegible Next');
+    expect(geometry.mono).toContain('Atkinson Hyperlegible Next');
     // Resource labels must stay in their date rail rather than cover a title.
     expect(await page.locator('.cv-entry-rail .cv-side-button').evaluateAll(items => items.every(item => {
       const label_bounds = item.getBoundingClientRect();

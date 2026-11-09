@@ -15,7 +15,7 @@ test('every page loads the self-hosted font framework and semantic font roles', 
   for (const file of pages) {
     await page.goto(`/${file}`);
     const result = await page.evaluate(async () => {
-      const faces = await Promise.all(['EB Garamond', 'Atkinson Hyperlegible', 'JetBrains Mono'].map(async name => {
+      const faces = await Promise.all(['EB Garamond', 'Atkinson Hyperlegible Next', 'JetBrains Mono'].map(async name => {
         const loaded = await document.fonts.load(`400 16px "${name}"`, 'Statistics 01 é');
         return { name, loaded: loaded.length > 0 && loaded.every(face => face.status === 'loaded') };
       }));
@@ -28,9 +28,9 @@ test('every page loads the self-hosted font framework and semantic font roles', 
       };
     });
     expect(result.faces.every(face => face.loaded), `${file}: font files actually decoded`).toBe(true);
-    expect(result.body, file).toContain('Atkinson Hyperlegible');
-    for (const prose of result.prose) expect(prose.family, `${file}: ${prose.label}`).toMatch(/Atkinson Hyperlegible|JetBrains Mono/);
-    for (const h of result.headings) expect(h.family, `${file} ${h.tag}`).toContain(h.compactLabel ? 'JetBrains Mono' : ['H1','H2'].includes(h.tag) ? 'EB Garamond' : 'Atkinson Hyperlegible');
+    expect(result.body, file).toContain('Atkinson Hyperlegible Next');
+    for (const prose of result.prose) expect(prose.family, `${file}: ${prose.label}`).toMatch(/Atkinson Hyperlegible Next|JetBrains Mono/);
+    for (const h of result.headings) expect(h.family, `${file} ${h.tag}`).toContain(['H1','H2'].includes(h.tag) ? 'EB Garamond' : 'Atkinson Hyperlegible Next');
     for (const h of result.headings.filter(h => ['H1','H2'].includes(h.tag))) expect(h.weight, `${file}: bold ${h.tag}`).toBe('700');
     for (const family of result.technical) expect(family, `${file}: technical face`).toContain('JetBrains Mono');
     if (['index.html', 'about.html', 'research.html', 'code.html', 'cv.html', 'un/index.html'].includes(file)) {

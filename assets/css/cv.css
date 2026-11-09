@@ -2183,3 +2183,6 @@ body[data-page="cv"] .cv-service-promotion .cv-milestone-note { color: var(--col
 /* Full-size ranks need only a small gap reduction; keep their artwork and
    layout slots fixed so paired units and the annual scale remain unchanged. */
 body[data-page="cv"] .cv-service-promotion:not(:has(.cv-milestone-note)) time { transform: translateX(-2px); }
+
+/* Tighten unit captions visually without changing badge alignment or year slots. */
+body[data-page="cv"] .cv-service-unit > span:not(.cv-insignia-art) { position: relative; top: -2px; }

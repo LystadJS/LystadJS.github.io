@@ -123,106 +123,7 @@ button, input, textarea, select { font: inherit; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: .85rem;
   min-width: max-content;
-}
-
-.brand-sigil {
-  position: relative;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-
-  transform: rotate(45deg);
-
-  border: 1px solid var(--color-line);
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(156,56,70,.10),
-      transparent 58%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(238,233,224,.035),
-      rgba(87,66,72,.06) 45%,
-      rgba(156,56,70,.08)
-    ),
-    var(--color-panel);
-
-  box-shadow:
-    inset 1px 1px 0 rgba(238,233,224,.055),
-    inset -1px -1px 0 rgba(0,0,0,.75),
-    inset 0 0 18px rgba(0,0,0,.42),
-
-    /* faint oxblood leakage around the plate */
-    0 0 7px rgba(156,56,70,.16),
-    0 0 18px rgba(156,56,70,.08);
-}
-
-/* etched inner border */
-.brand-sigil::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
-
-  border: 1px solid rgba(238,233,224,.065);
-
-  box-shadow:
-    inset 1px 1px 0 rgba(0,0,0,.55),
-    1px 1px 0 rgba(238,233,224,.018);
-
-  pointer-events: none;
-}
-
-.brand-sigil span {
-  position: relative;
-
-  transform: rotate(-45deg);
-
-  font-family: var(--serif);
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .075em;
-  line-height: 1;
-  white-space: nowrap;
-
-  /* engraved pewter surface */
-  color: var(--color-muted);
-
-  text-shadow:
-    /* dark cut edge */
-    -1px -1px 0 rgba(0,0,0,.95),
-
-    /* lower engraved highlight */
-    1px 1px 0 rgba(238,233,224,.08),
-
-    /* light leaking through engraving */
-    0 0 2px rgba(156,56,70,.75),
-    0 0 5px rgba(156,56,70,.52),
-    0 0 10px rgba(156,56,70,.30);
-}
-
-/* blurred light behind the engraved letters */
-.brand-sigil span::before {
-  content: "JSL";
-
-  position: absolute;
-  inset: 0;
-
-  color: var(--crimson-bright);
-
-  opacity: .55;
-  filter: blur(4px);
-
-  text-shadow:
-    0 0 5px rgba(156,56,70,.9),
-    0 0 11px rgba(156,56,70,.65),
-    0 0 18px rgba(156,56,70,.34);
-
-  z-index: -1;
 }
 
 .brand-text {
@@ -280,8 +181,9 @@ button, input, textarea, select { font: inherit; }
 
 .menu-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   border: 1px solid var(--line);
   background: transparent;
   color: var(--paper);

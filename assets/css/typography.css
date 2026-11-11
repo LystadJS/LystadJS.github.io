@@ -67,7 +67,7 @@
 
 html, body { font-family: var(--sans) !important; }
 h1, h2 { font-family: var(--serif) !important; font-weight: 700 !important; }
-.brand-name, .brand-sigil span, .headshot-fallback span, .footer-title,
+.brand-name, .headshot-fallback span, .footer-title,
 .usun-identity, .usun-title {
   font-family: var(--serif);
   font-weight: 700;

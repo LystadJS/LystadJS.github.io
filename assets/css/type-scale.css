@@ -21,7 +21,7 @@
   h1, .headshot-fallback span { font-size: var(--type-display) !important; }
   h2, [data-section-index] { font-size: var(--type-section) !important; }
   h3, h4, h5, h6, legend,
-  .brand-name, .brand-sigil span, .footer-title, .un-mark,
+  .brand-name, .footer-title, .un-mark,
   .hero-practice-links strong, .page-index-card strong,
   .code-hub-link strong, .cv-org-logo-fallback, .cv-role-logo-fallback,
   .empirical-country-title, .metric strong, .metrics strong,

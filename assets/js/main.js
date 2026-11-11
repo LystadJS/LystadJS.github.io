@@ -20,6 +20,12 @@
     document.addEventListener("keydown", event => {
       if (event.key === "Escape" && nav.classList.contains("open")) setMenu(false, true);
     });
+    // Dismiss the mobile dropdown when visitors return to the page content.
+    document.addEventListener("click", event => {
+      if (mobile.matches && !nav.contains(event.target) && !menuButton.contains(event.target)) {
+        setMenu(false);
+      }
+    });
     mobile.addEventListener("change", event => {
       if (!event.matches) setMenu(false);
     });

@@ -268,7 +268,7 @@ test('number-only section indexes match their headings at every responsive width
         expect(index.size).toBe(index.headingSize);
         expect(index.font).toContain('JetBrains Mono');
         expect(index.headingFont).toContain('EB Garamond');
-        expect(index.color).toBe('rgb(191, 49, 82)');
+        expect(index.color, `${name} section index`).toBe(['research','code'].includes(name) ? 'rgb(238, 233, 224)' : 'rgb(156, 56, 70)');
         expect(index.marker).toBe('none');
         expect(index.right, `${name} ${index.text} at ${width}px`).toBeLessThan(index.headingLeft);
         expect(index.top).toBeLessThan(index.headingBottom);
@@ -289,12 +289,13 @@ test('portrait variants and explicit CV logo paths load without probe requests',
   await expect.poll(() => portrait.evaluate(image => image.complete && image.naturalWidth > 0), { timeout: 15000 }).toBe(true);
   expect(await portrait.evaluate(image => image.currentSrc)).toMatch(/headshot-(480|960)\.webp$/);
   await page.goto('/cv.html');
-  const logos = page.locator('.cv-org-logo img,.cv-role-logo img');
-  await expect(logos).toHaveCount(19);
+  // Education art and the shared military timeline replaced repeated role logos.
+  const logos = page.locator('.cv-org-logo img,.cv-role-logo img,.cv-school-art img,.cv-military-identity img,.cv-insignia-art img');
+  await expect(logos).toHaveCount(18);
   // Some logos are intentionally inside collapsed disclosures. Verify every
   // declared URL without pretending those hidden elements are scroll targets.
   await logos.evaluateAll(images => images.forEach(image => { image.loading = 'eager'; }));
-  await expect.poll(() => logos.evaluateAll(images => images.filter(image => image.complete && image.naturalWidth > 0).length), { timeout: 15000 }).toBe(19);
+  await expect.poll(() => logos.evaluateAll(images => images.filter(image => image.complete && image.naturalWidth > 0).length), { timeout: 15000 }).toBe(18);
   await expect(page.locator('[href^="YOUR-"]')).toHaveCount(0);
   expect(failures).toEqual([]);
 });

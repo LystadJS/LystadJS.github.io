@@ -16,15 +16,20 @@ test('shared reading and control spacing stays consistent on every page', async 
       const add = (selector, property, expected) => {
         for (const e of document.querySelectorAll(selector)) {
           if (!e.getBoundingClientRect().width || e.closest('svg')) continue;
-          checks.push({ selector, property, actual: parseFloat(getComputedStyle(e)[property]), expected });
+          checks.push({ selector, property, actual: parseFloat(getComputedStyle(e)[property]), expected: typeof expected === 'function' ? expected(e) : expected });
         }
       };
       const card = innerWidth <= 700 ? 16 : 24;
-      const personal = !!document.body.dataset.page;
+      const personal = ['index','about','research','code','cv','notes','404'].includes(document.body.dataset.page);
       const heading = personal ? 24 : innerWidth <= 780 ? 32 : 48;
       add('h1:not(.masthead h1):not(.un-banner-copy h1)', 'marginBottom', card);
-      add('h3:not(.cv-degree-title),h4,h5,h6', 'marginBottom', 16);
-      add('#education .cv-degree-title,#education .cv-degree-university', 'marginBottom', 4);
+      add('h3:not(.cv-degree-title),h4,h5,h6', 'marginBottom', e => {
+        if (e.matches('body[data-page="cv"] main .cv-entry-content > .document-title')) return 4;
+        if (e.matches('body[data-page] main .document-title:has(+ .document-muted, + .document-list),body[data-page] .cv-org-header .document-title,body[data-page] .cv-role-heading .document-title')) return 2;
+        return 16;
+      });
+      add('#education .cv-degree-title,#education .cv-degree-concentration', 'marginBottom', 2);
+      add('#education .cv-degree-university', 'marginBottom', 0);
       add('#education .cv-degree-department', 'marginBottom', 0);
       add('main > p:not([class]),.hero-lede,.about-summary,.rp-summary > p', 'marginBottom', 16);
       add('.section-header,.essay-heading,.research-section-heading,.code-section-heading,.dm-header', 'marginBottom', heading);

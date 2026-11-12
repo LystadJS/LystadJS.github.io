@@ -1,9 +1,10 @@
-/* Five shared text sizes. SVG charts retain their viewBox-coordinate labels. */
+/* Shared semantic text sizes. SVG charts retain their viewBox-coordinate labels. */
 @layer type-scale {
  @media screen {
   :root {
-    --type-body: clamp(1rem, .96rem + .18vw, 1.0625rem);
-    --type-meta: .875rem;
+    /* Reports own --reading through their accessible appearance control. */
+    --type-body: var(--reading, clamp(1rem, .96rem + .18vw, 1.0625rem));
+    --type-meta: calc(var(--reading, 1.1666666667rem) * .75);
     --type-minor-heading: calc(var(--type-body) * 1.125);
     --type-subheading: calc(var(--type-body) * 1.25);
     --type-section: clamp(calc(var(--type-body) * 2), 2.4vw, calc(var(--type-body) * 2.25));

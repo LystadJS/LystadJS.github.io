@@ -18,9 +18,8 @@ test('photographic banner and profile layout work across desktop and mobile widt
       expect(box.height).toBeCloseTo(file === 'index.html' ? 1000 : Math.min(460, Math.max(210, width * 0.32)), 1);
       const header = page.locator('.site-header');
       expect((await header.boundingBox()).y).toBe(0);
-      const alpha = await header.evaluate(e => parseFloat(getComputedStyle(e).backgroundColor.split(',').at(-1)));
-      expect(alpha).toBeGreaterThan(0);
-      expect(alpha).toBeLessThan(1);
+      // The opaque canvas header was adopted in the November palette migration.
+      await expect(header).toHaveCSS('background-color', 'rgb(9, 11, 13)');
       await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 500); });
       expect((await header.boundingBox()).y).toBe(0);
       await page.evaluate(() => window.scrollTo(0, 0));
@@ -51,7 +50,8 @@ test('photographic banner and profile layout work across desktop and mobile widt
         for (const card of await cards.all()) {
           await expect(card.locator('svg')).toHaveCount(1);
           await expect(card.locator('strong')).toBeVisible();
-          await expect(card.locator('small')).toBeVisible();
+          await expect(card).toHaveAccessibleName(/^(Research & Applied Work|Code & Development|Curriculum Vitae)$/);
+          await expect(card).toHaveAttribute('href', /^(research|code|cv)\.html$/);
           const bounds = await card.boundingBox();
           expect(bounds.x).toBeGreaterThanOrEqual(profile.x);
           expect(bounds.x + bounds.width).toBeLessThanOrEqual(profile.x + profile.width + 1);
@@ -72,7 +72,7 @@ test('profile, contact details and navigation are available without JavaScript',
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('.banner-title')).toHaveText('John S. Lystad');
   await expect(page.locator('.academic-profile h2')).toHaveText('John S. Lystad');
-  await expect(page.locator('.profile-pages a')).toHaveCount(4);
+  await expect(page.locator('.profile-pages a')).toHaveCount(3);
   await expect(page.locator('.profile-page-card')).toHaveCount(3);
   for (const href of ['research.html', 'code.html', 'cv.html']) {
     await expect(page.locator(`.profile-page-card[href="${href}"]`)).toBeVisible();

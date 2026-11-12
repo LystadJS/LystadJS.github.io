@@ -119,10 +119,8 @@ test("military timeline remains centered, symmetric, and interactive", async ({ 
   await expect(privateRank).toHaveAttribute("aria-expanded", "true");
   await expect(leader).toHaveAttribute("aria-expanded", "false");
 
-  const todayOpacity = await page.locator(".current-day-label").evaluate((node) =>
-    Number.parseFloat(getComputedStyle(node).opacity)
-  );
-  expect(todayOpacity).toBeLessThan(0.5);
+  // Wait for the existing 150 ms detail transition, then assert its exact state.
+  await expect(page.locator('.current-day-label')).toHaveCSS('opacity', '0.38');
 
   await page.keyboard.press("Escape");
   await expect(privateRank).toHaveAttribute("aria-expanded", "false");

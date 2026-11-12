@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: edd3531b76a8de4c7e98eb0770f81407b63624ae
+  SOURCE_COMMIT: d8a2761b8cb87f90df25b94ad92bda6ffd4edeae
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
-          assert archive['manifest_url'] is None, 'The initial mirror must not imply provisioned storage'
+          assert archive['manifest_url']=='https://huggingface.co/datasets/LystadJS/UN-Transcript-Agent-Public/resolve/main/latest.json', 'Archive must match verified public provisioning'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'

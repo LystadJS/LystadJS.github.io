@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 974ae531707752ec6dc7ec7236851bd640fbfcb1
+  SOURCE_COMMIT: 1ebea39903d8b3cb3780e0821ad2ec27898dfd61
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,8 +59,8 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.42.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json'):
+          assert release['browser_engine']=='browser-descriptive-1.43.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
@@ -113,7 +113,8 @@ jobs:
             'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
-            'archive.html','archive.js','archive.css','archive-config.json']
+            'archive.html','archive.js','archive.css','archive-config.json',
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -242,6 +243,10 @@ jobs:
           node source/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
           node source/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
           node source/tools/test_daily_collection_ui.cjs https://lystadjs.github.io/un/transcript-agent/ work/live-daily-validation
+      - name: Exercise the deployed reporting workflow with synthetic sources
+        run: |
+          export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
+          node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
       - name: Require actual live meeting inventory and selected-meeting collection
         env:
           REQUIRE_LIVE_MEETING: '1'

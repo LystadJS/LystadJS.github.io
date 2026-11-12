@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 1ebea39903d8b3cb3780e0821ad2ec27898dfd61
+  SOURCE_COMMIT: 3e293167f280baad0d41a551535b55a7f54e5731
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,8 +59,8 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.43.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json'):
+          assert release['browser_engine']=='browser-descriptive-1.44.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
@@ -114,7 +114,7 @@ jobs:
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
             'archive.html','archive.js','archive.css','archive-config.json',
-            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json']
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -247,6 +247,7 @@ jobs:
         run: |
           export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_archive_reporting_ui.cjs https://lystadjs.github.io/un/transcript-agent/
       - name: Require actual live meeting inventory and selected-meeting collection
         env:
           REQUIRE_LIVE_MEETING: '1'

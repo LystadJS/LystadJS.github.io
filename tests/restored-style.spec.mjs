@@ -24,7 +24,7 @@ test('dark atmospheric surfaces and interactive controls are restored', async ({
   const navBefore = await research.evaluate(element => getComputedStyle(element).backgroundColor);
   await research.hover();
   await expect.poll(() => research.evaluate(element => getComputedStyle(element).backgroundColor)).not.toBe(navBefore);
-  await expect(research).toHaveCSS('color', 'rgb(238, 229, 217)');
+  await expect(research).toHaveCSS('color', 'rgb(238, 233, 224)');
   if (await menu.isVisible()) await menu.click();
 
   const primary = page.locator('#correspondence .button-primary');
@@ -65,7 +65,9 @@ test('reveals and native page changes preserve content and keyboard navigation',
   await expect(section).toHaveCSS('opacity', '1');
   await expect(section).not.toHaveClass(/reveal-pending/);
 
-  const about = page.locator('.profile-pages a[href="about.html"]');
+  const menu = page.locator('.menu-toggle');
+  if (await menu.isVisible()) await menu.click();
+  const about = page.locator('.site-nav a[href="about.html"]');
   await about.scrollIntoViewIfNeeded();
   await about.focus();
   await expect(about).toBeFocused();

@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 395a9b5f5708957fe0f0a87d935027ce65b2c492
+  SOURCE_COMMIT: edd3531b76a8de4c7e98eb0770f81407b63624ae
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,12 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.40.0'
+          assert release['browser_engine']=='browser-descriptive-1.41.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json'):
+              assert name in manifest['files'],name
+          archive=json.loads((root/'archive-config.json').read_text())
+          assert archive['schema']=='un.archive-config.v1'
+          assert archive['manifest_url'] is None, 'The initial mirror must not imply provisioned storage'
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'
@@ -107,7 +112,8 @@ jobs:
           must=['index.html','latent.html','release.json',
             'research.html','research-wiring.js','research-wiring.css','research-consensus.js',
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
-            'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js']
+            'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
+            'archive.html','archive.js','archive.css','archive-config.json']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))

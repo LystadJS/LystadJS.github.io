@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 89821016e9e247f14f0b5abcb691f35c1ea6775e
+  SOURCE_COMMIT: 280f980da082b0c9434f842324f9bdc10328732d
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,8 +59,8 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.53.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js'):
+          assert release['browser_engine']=='browser-descriptive-1.54.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
@@ -114,7 +114,7 @@ jobs:
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
             'archive.html','archive.js','archive.css','archive-config.json',
-            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js']
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -248,6 +248,7 @@ jobs:
           export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_replacement_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_package_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_archive_reporting_ui.cjs https://lystadjs.github.io/un/transcript-agent/
       - name: Require actual live meeting inventory and selected-meeting collection
         env:

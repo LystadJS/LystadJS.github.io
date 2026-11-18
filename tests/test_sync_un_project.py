@@ -76,6 +76,26 @@ def build(output):
         self.assertIn('../../assets/css/typography.css?v=20261108-atkinson-next', text)
         self.assertLess(text.index('typography.css'), text.index('<header>'))
 
+    def test_changed_styles_invalidate_their_html_cache_key(self):
+        self.builder.write_text("""from pathlib import Path
+def build(output):
+    output = Path(output); output.mkdir(parents=True)
+    (output / 'index.html').write_text('<html><head><link rel="stylesheet" href="app.css?v=source-release"></head><body>Home</body></html>')
+    (output / 'app.css').write_text('body{color:navy}')
+""")
+        module.sync(self.source, site=self.site)
+        target = self.site / 'un/transcript-agent'
+        first = (target / 'index.html').read_text()
+        import hashlib
+        digest = hashlib.sha256((target / 'app.css').read_bytes()).hexdigest()[:16]
+        self.assertIn('app.css?v=20261108-atkinson-next&amp;asset=' + digest, first)
+        self.builder.write_text(self.builder.read_text().replace('color:navy', 'color:darkcyan'))
+        module.sync(self.source, site=self.site)
+        second = (target / 'index.html').read_text()
+        self.assertNotEqual(first, second)
+        self.assertNotIn('asset=' + digest, second)
+        self.assertEqual(module.sync(self.source, site=self.site)['copied'], 0)
+
     def test_traversal_is_rejected_before_changes(self):
         module.sync(self.source, site=self.site)
         target = self.site / "un/transcript-agent"

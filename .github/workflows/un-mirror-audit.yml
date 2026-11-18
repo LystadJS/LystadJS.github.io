@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 93f35f9e40e326d129f48e368e61a208a02529f9
+  SOURCE_COMMIT: e254a13cc58e7f4c2fa7f3df43b86150b2aa54da
 jobs:
   audit:
     runs-on: ubuntu-latest

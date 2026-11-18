@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 315be7af02eb2dc42fd56dcd6a8cf9ab41a6a895
+  SOURCE_COMMIT: 51256cee90929c53362745fc3da864332d69f804
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.64.1'
+          assert release['browser_engine']=='browser-descriptive-1.65.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -248,6 +248,7 @@ jobs:
           export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_append_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_device_report_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_replacement_ui.cjs https://lystadjs.github.io/un/transcript-agent/

@@ -1,5 +1,6 @@
 """Apply the website's presentation layer to generated public mirror assets."""
 from pathlib import Path
+import hashlib
 import posixpath
 import re
 
@@ -56,3 +57,17 @@ def apply_typography(root: Path, *, prefix: str = 'un/transcript-agent') -> None
                               text, count=1)
         if text != original:
             path.write_bytes(text.encode('utf-8'))
+
+    # Fingerprint transformed local styles, not only the shared typography release.
+    # A source style change must invalidate CSS even when the font theme is stable.
+    for path in root.rglob('*.html'):
+        def stylesheet(match):
+            target = (path.parent / match[2]).resolve()
+            if not target.is_relative_to(root.resolve()) or not target.is_file():
+                return match[0]
+            version = hashlib.sha256(target.read_bytes()).hexdigest()[:16]
+            return f'{match[1]}{match[2]}?v=20261108-atkinson-next&amp;asset={version}{match[3]}'
+        original = path.read_text(encoding='utf-8')
+        updated = re.sub(r'(href=["\'])(?!https?:|//)([^"\']+\.css)(?:\?[^"\']*)?(["\'])', stylesheet, original)
+        if updated != original:
+            path.write_text(updated, encoding='utf-8')

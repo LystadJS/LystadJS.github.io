@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: c9fc02563aa68040bf86428126f10a3b05d04578
+  SOURCE_COMMIT: cf8fecf7caecdd76465701535148c9c75c0d6c57
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.66.0'
+          assert release['browser_engine']=='browser-descriptive-1.67.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -249,6 +249,7 @@ jobs:
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_affiliation_navigation_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_bulk_appendix_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_append_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_device_report_ui.cjs https://lystadjs.github.io/un/transcript-agent/

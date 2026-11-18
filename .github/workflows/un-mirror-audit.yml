@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 76b7ace0df39da2ae27e06916d35053950520380
+  SOURCE_COMMIT: 0c0b334331a1ad830b5697f229d8507a36f55239
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,8 +59,8 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.55.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js'):
+          assert release['browser_engine']=='browser-descriptive-1.56.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-storage.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
@@ -114,7 +114,7 @@ jobs:
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
             'archive.html','archive.js','archive.css','archive-config.json',
-            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js']
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-storage.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))

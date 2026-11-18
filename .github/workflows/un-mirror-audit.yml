@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 75ccf294a8c792a870ea0a5464a6d8471c62a829
+  SOURCE_COMMIT: 988f90b2ce23800689e61af3242e3f4b69740c1e
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.63.0'
+          assert release['browser_engine']=='browser-descriptive-1.64.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -251,6 +251,7 @@ jobs:
           node source/tests/test_report_append_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_device_report_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_replacement_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_package_open_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_package_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_word_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_print_ui.cjs https://lystadjs.github.io/un/transcript-agent/

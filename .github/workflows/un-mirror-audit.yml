@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 7103b6fb51ff4170dc66f1b9a014b79998dad80b
+  SOURCE_COMMIT: 52b36f2dc79ad7358e38ade08892bc32cec1fbaf
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.59.0'
+          assert release['browser_engine']=='browser-descriptive-1.60.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -251,6 +251,7 @@ jobs:
           node source/tests/test_report_replacement_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_package_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_word_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_print_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_archive_reporting_ui.cjs https://lystadjs.github.io/un/transcript-agent/
       - name: Require actual live meeting inventory and selected-meeting collection
         env:

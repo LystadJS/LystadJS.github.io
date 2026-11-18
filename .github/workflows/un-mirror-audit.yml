@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 280f980da082b0c9434f842324f9bdc10328732d
+  SOURCE_COMMIT: 76b7ace0df39da2ae27e06916d35053950520380
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.54.0'
+          assert release['browser_engine']=='browser-descriptive-1.55.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())

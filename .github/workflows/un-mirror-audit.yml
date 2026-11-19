@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: b0254614276da7df7fa6c94a44a930704a7a97cf
+  SOURCE_COMMIT: 890a649f3efce2980b597df1ab71afeba1334a0e
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,8 +59,8 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.73.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js'):
+          assert release['browser_engine']=='browser-descriptive-1.74.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
@@ -114,7 +114,7 @@ jobs:
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
             'archive.html','archive.js','archive.css','archive-config.json',
-            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js']
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -249,6 +249,7 @@ jobs:
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_report_draft_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_calendar_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_affiliation_navigation_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_bulk_appendix_ui.cjs https://lystadjs.github.io/un/transcript-agent/

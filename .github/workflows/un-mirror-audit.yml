@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 62a1cd471c67590faf4aaed445f1cd079bed48d8
+  SOURCE_COMMIT: b1de70877ff917d3fdb2637ffecb68f061e8a141
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.80.0'
+          assert release['browser_engine']=='browser-descriptive-1.81.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js','campaign-notebook.html','campaign-notebook-core.js','campaign-notebook.js','campaign-notebook.css'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -67,6 +67,7 @@ jobs:
           assert archive['manifest_url']=='https://huggingface.co/datasets/LystadJS/UN-Transcript-Agent-Public/resolve/main/latest.json', 'Archive must match verified public provisioning'
           assert release['campaign_notebook']['schema']=='un.campaign-notebook.v3'
           assert release['campaign_notebook']['contact_transfer_schema']=='un.campaign-contacts.v1'
+          assert release['campaign_notebook']['calendar_invites_or_alarms'] is False
           assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
           assert release['campaign_notebook']['actual_vote_predictions'] is False
           assert release['campaign_notebook']['authenticated_shared_workspace'] is False
@@ -151,6 +152,7 @@ jobs:
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['campaign_notebook']['schema']=='un.campaign-notebook.v3'
           assert release['campaign_notebook']['contact_transfer_schema']=='un.campaign-contacts.v1'
+          assert release['campaign_notebook']['calendar_invites_or_alarms'] is False
           assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
           assert release['campaign_notebook']['actual_vote_predictions'] is False
           assert release['campaign_notebook']['authenticated_shared_workspace'] is False
@@ -258,6 +260,7 @@ jobs:
           export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
           node source/tests/test_campaign_notebook_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_campaign_contact_transfer_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_campaign_calendar_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/

@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: f4bc956db2fa3ec7f0214cc4fc2922c008cf5a31
+  SOURCE_COMMIT: 60f2b4fa57d384dd108f95cbf4497d8854321052
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,13 +59,13 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.77.0'
+          assert release['browser_engine']=='browser-descriptive-1.78.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js','campaign-notebook.html','campaign-notebook-core.js','campaign-notebook.js','campaign-notebook.css'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
           assert archive['manifest_url']=='https://huggingface.co/datasets/LystadJS/UN-Transcript-Agent-Public/resolve/main/latest.json', 'Archive must match verified public provisioning'
-          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v1'
+          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v2'
           assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
           assert release['campaign_notebook']['actual_vote_predictions'] is False
           assert release['campaign_notebook']['authenticated_shared_workspace'] is False
@@ -148,7 +148,7 @@ jobs:
             'Live portfolio mirror did not converge to verified manifest: '+last_error)
           release=json.loads((root/'release.json').read_text())
           assert release['research_browser']['status']=='released_synthetic_research_preview'
-          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v1'
+          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v2'
           assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
           assert release['campaign_notebook']['actual_vote_predictions'] is False
           assert release['campaign_notebook']['authenticated_shared_workspace'] is False

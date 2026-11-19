@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: website
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: LystadJS/UNGA81-Transcript-Agent
           ref: ${{ env.SOURCE_COMMIT }}
@@ -87,7 +87,7 @@ jobs:
           print(json.dumps({'status':'PASS','public_files':data['public_files'],'copied':data['copied'],'removed':data['removed']}))
           PY
           git -C website diff --exit-code -- un/transcript-agent
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: meeting-quick-reader-mirror-validation
           path: mirror-sync.json
@@ -101,8 +101,8 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
       - name: Compare changed live research/browser assets against exact mirror SHA256
@@ -219,7 +219,7 @@ jobs:
             finally:b.close()
           print('PASS actual live hosted research browser, W5/W6 frames, two viewports, no external requests')
           PY
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: live-un-synthetic-research-asset-validation

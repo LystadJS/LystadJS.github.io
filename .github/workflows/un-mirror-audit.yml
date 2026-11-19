@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: e6f663d2060de0557eee8e8fbd2a77e1fa633e96
+  SOURCE_COMMIT: f4bc956db2fa3ec7f0214cc4fc2922c008cf5a31
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,12 +59,16 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.76.0'
-          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js'):
+          assert release['browser_engine']=='browser-descriptive-1.77.0'
+          for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js','campaign-notebook.html','campaign-notebook-core.js','campaign-notebook.js','campaign-notebook.css'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
           assert archive['schema']=='un.archive-config.v1'
           assert archive['manifest_url']=='https://huggingface.co/datasets/LystadJS/UN-Transcript-Agent-Public/resolve/main/latest.json', 'Archive must match verified public provisioning'
+          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v1'
+          assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
+          assert release['campaign_notebook']['actual_vote_predictions'] is False
+          assert release['campaign_notebook']['authenticated_shared_workspace'] is False
           assert release['D1_publication_gates_changed'] is False
           assert release['research_browser']['status']=='released_synthetic_research_preview'
           assert release['research_browser']['empirical_validation']=='not_run'
@@ -114,7 +118,7 @@ jobs:
             'meeting-quick-reader.js','collector.js','analysis-ui.js','analysis-core.js',
             'reporting-date.js','meeting-picker.js','day-summary.js','day-summary-view.js',
             'archive.html','archive.js','archive.css','archive-config.json',
-            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js']
+            'meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js','campaign-notebook.html','campaign-notebook-core.js','campaign-notebook.js','campaign-notebook.css']
           select=sorted(set(must+[p for p in files if
             p.startswith('experimental/evidence-viz/') or
             p.startswith('parallel/w05-browser/experimental/method-lab/')]))
@@ -144,6 +148,10 @@ jobs:
             'Live portfolio mirror did not converge to verified manifest: '+last_error)
           release=json.loads((root/'release.json').read_text())
           assert release['research_browser']['status']=='released_synthetic_research_preview'
+          assert release['campaign_notebook']['schema']=='un.campaign-notebook.v1'
+          assert release['campaign_notebook']['data_origin']=='user_entered_outreach'
+          assert release['campaign_notebook']['actual_vote_predictions'] is False
+          assert release['campaign_notebook']['authenticated_shared_workspace'] is False
           assert release['D1_publication_gates_changed'] is False
           result={
             'status':'PASS','site':base,'source_commit':os.environ['SOURCE_COMMIT'],
@@ -243,9 +251,10 @@ jobs:
           node source/tools/test_latent_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-browser-validation
           node source/tools/test_meeting_picker_ui.cjs https://lystadjs.github.io/un/transcript-agent/ live-picker-validation
           node source/tools/test_daily_collection_ui.cjs https://lystadjs.github.io/un/transcript-agent/ work/live-daily-validation
-      - name: Exercise the deployed reporting workflow with synthetic sources
+      - name: Exercise deployed reporting and campaign workflows with fictional data
         run: |
           export BROWSER_PATH="$(node -p "require('playwright').chromium.executablePath()")"
+          node source/tests/test_campaign_notebook_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/

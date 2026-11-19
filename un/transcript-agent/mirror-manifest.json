@@ -44,8 +44,6 @@
     "issue-archive-view.js": "d4fe096d31d0581fde1a80c8ff0f85459ddc8cc2df091b6b6f492643ffcb50c3",
     "issue-archive-worker.js": "01f8c73c4890f587adc6a74e3562c56f4f6c14f615cc3e0264104205fc49f6ae",
     "issue-archive.html": "be44c5eff3e363cc070d29df1836ae5dc8cd15c4c1412990037f6294c8770261",
-    "issue-candidates.js": "1a49ce4a530c15222074c1f827f53ca8361aceb331e2934e728ebce7304380b5",
-    "issue-extraction.js": "26d821e7e8738c4303bd7c73011f0ee894f28f608404ea2d7d0ad897fba015a4",
     "issue-history-client.js": "46c8193fa8a3a6737110b5275b390d825bc9c0f0d4bf67262a447bb659e5bec5",
     "issue-history-config.json": "a6ac6f76cf9df9084b9af8d2add49a8da2e00247dac2a6774f31f422a2fd1a7d",
     "issue-models.js": "87fced6c5e0b3a6b5216210c287fd1977461249a5dd222366af50ec009da96c6",

@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_COMMIT: 505d9e7e301128566b11418d0ca9890dbe71a6c9
+  SOURCE_COMMIT: b73ba8d505380a27f15d1bbbb61336a14ed162e5
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           ):
               assert excluded not in manifest['files'],excluded
           release=json.loads((root/'release.json').read_text())
-          assert release['browser_engine']=='browser-descriptive-1.82.0'
+          assert release['browser_engine']=='browser-descriptive-1.83.0'
           for name in ('archive.html','archive.js','archive.css','archive-config.json','meeting-reports.html','meeting-reports.js','meeting-report-core.js','meeting-reports.css','reporting-exclusions.json','meeting-report-selection.js','meeting-report-package.js','meeting-report-word.js','meeting-report-storage.js','meeting-report-draft.js','campaign-notebook.html','campaign-notebook-core.js','campaign-notebook.js','campaign-notebook.css'):
               assert name in manifest['files'],name
           archive=json.loads((root/'archive-config.json').read_text())
@@ -261,6 +261,7 @@ jobs:
           node source/tests/test_campaign_notebook_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_campaign_contact_transfer_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_campaign_calendar_ui.cjs https://lystadjs.github.io/un/transcript-agent/
+          node source/tests/test_campaign_word_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_meeting_reports_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_remove_sources_ui.cjs https://lystadjs.github.io/un/transcript-agent/
           node source/tests/test_report_collect_append_ui.cjs https://lystadjs.github.io/un/transcript-agent/
